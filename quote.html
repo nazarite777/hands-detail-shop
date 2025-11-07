@@ -704,7 +704,7 @@
         <div class="nav-container">
             <div class="logo-section">
                 <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="https://i.imgur.com/your-logo-here.png" alt="Hands Detail Shop Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <img src="20200723_030424~2.png" alt="Hands Detail Shop Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div style="display: none; font-size: 1.5rem; font-weight: 800; color: #c0c0c0; font-style: italic;">HANDS DETAIL</div>
                 </a>
                 <span class="mobile-badge">🚗 Mobile - We Come to You!</span>
@@ -807,21 +807,106 @@
                     <div class="option-price">BMW, Mercedes</div>
                 </div>
             </div>
-            
-            <div id="priceDisplay" style="display: none; margin-top: 40px; padding: 30px; background: linear-gradient(135deg, #0d1b2a, #1a2942); border-radius: 15px; border: 1px solid rgba(100,100,100,0.3);">
-                <h3 style="color: #d4d4d4; margin-bottom: 20px;">Estimated Pricing Range</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                    <div>
-                        <div style="color: #a0a0a0;" id="package1Label">Essential Package</div>
-                        <div style="font-size: 1.8rem; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;" id="essentialPrice">$65</div>
+
+            <div id="priceDisplay" style="display: none; margin-top: 60px;">
+                <h3 style="color: #e8f1f8; margin-bottom: 40px; text-align: center; font-size: 2rem;">Choose Your Package</h3>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+                    <!-- Package 1: Essential -->
+                    <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border-radius: 20px; padding: 30px; border: 2px solid rgba(66, 165, 245, 0.3); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(66, 165, 245, 0.1), transparent); border-radius: 50%;"></div>
+
+                        <div style="position: relative; z-index: 1;">
+                            <h4 style="color: #64b5f6; font-size: 1.5rem; margin-bottom: 10px;" id="package1Label">Essential Package</h4>
+                            <div style="font-size: 2.5rem; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 800; margin-bottom: 20px;" id="essentialPrice">$65</div>
+
+                            <div style="color: #b3d9ff; margin-bottom: 20px; line-height: 1.8;" id="package1Details">
+                                <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid rgba(66, 165, 245, 0.2);">
+                                    <strong style="color: #90caf9;">Perfect for regular maintenance</strong>
+                                </div>
+                                ✓ Exterior hand wash & dry<br>
+                                ✓ Wheel & tire cleaning<br>
+                                ✓ Interior vacuum<br>
+                                ✓ Dashboard & console wipe<br>
+                                ✓ Window cleaning (interior & exterior)<br>
+                                ✓ Door jamb cleaning
+                            </div>
+
+                            <button onclick="openBookingModal('essential')" style="width: 100%; background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5); color: white; padding: 15px; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-top: 20px;">
+                                Book Essential Package →
+                            </button>
+                        </div>
                     </div>
-                    <div>
-                        <div style="color: #a0a0a0;" id="package2Label">Executive Package</div>
-                        <div style="font-size: 1.8rem; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;" id="executivePrice">$145</div>
+
+                    <!-- Package 2: Executive -->
+                    <div style="background: linear-gradient(135deg, #0d47a1, #1565c0); border-radius: 20px; padding: 30px; border: 3px solid #42a5f5; transition: all 0.3s ease; position: relative; overflow: hidden; transform: scale(1.05); box-shadow: 0 20px 50px rgba(66, 165, 245, 0.4);">
+                        <div style="position: absolute; top: 10px; right: 10px; background: #ffc107; color: #000; padding: 5px 15px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;">POPULAR</div>
+                        <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent); border-radius: 50%;"></div>
+
+                        <div style="position: relative; z-index: 1;">
+                            <h4 style="color: #e3f2fd; font-size: 1.5rem; margin-bottom: 10px;" id="package2Label">Executive Package</h4>
+                            <div style="font-size: 2.5rem; color: #ffffff; font-weight: 800; margin-bottom: 20px; text-shadow: 0 0 20px rgba(255,255,255,0.5);" id="executivePrice">$145</div>
+
+                            <div style="color: #e3f2fd; margin-bottom: 20px; line-height: 1.8;" id="package2Details">
+                                <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.3);">
+                                    <strong style="color: #ffffff;">Most popular choice!</strong>
+                                </div>
+                                ✓ Everything in Essential, PLUS:<br>
+                                ✓ Clay bar treatment<br>
+                                ✓ Paint sealant application<br>
+                                ✓ Deep interior shampooing<br>
+                                ✓ Leather conditioning<br>
+                                ✓ Engine bay cleaning<br>
+                                ✓ Headlight restoration
+                            </div>
+
+                            <button onclick="openBookingModal('executive')" style="width: 100%; background: #ffffff; color: #1565c0; padding: 15px; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-top: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+                                Book Executive Package →
+                            </button>
+                        </div>
                     </div>
-                    <div>
-                        <div style="color: #a0a0a0;" id="package3Label">Presidential (Ceramic)</div>
-                        <div style="font-size: 1.8rem; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;" id="ceramicPrice">$585</div>
+
+                    <!-- Package 3: Presidential/Ceramic -->
+                    <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border-radius: 20px; padding: 30px; border: 2px solid rgba(66, 165, 245, 0.3); transition: all 0.3s ease; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: radial-gradient(circle, rgba(66, 165, 245, 0.1), transparent); border-radius: 50%;"></div>
+
+                        <div style="position: relative; z-index: 1;">
+                            <h4 style="color: #64b5f6; font-size: 1.5rem; margin-bottom: 10px;" id="package3Label">Presidential (Ceramic)</h4>
+                            <div style="font-size: 2.5rem; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 800; margin-bottom: 20px;" id="ceramicPrice">$585</div>
+
+                            <div style="color: #b3d9ff; margin-bottom: 20px; line-height: 1.8;" id="package3Details">
+                                <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid rgba(66, 165, 245, 0.2);">
+                                    <strong style="color: #90caf9;">Ultimate protection & shine</strong>
+                                </div>
+                                ✓ Everything in Executive, PLUS:<br>
+                                ✓ Professional ceramic coating<br>
+                                ✓ Paint correction (1-step)<br>
+                                ✓ 2-year protection warranty<br>
+                                ✓ Hydrophobic glass coating<br>
+                                ✓ Wheel & caliper coating<br>
+                                ✓ Complete UV protection
+                            </div>
+
+                            <button onclick="openBookingModal('ceramic')" style="width: 100%; background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5); color: white; padding: 15px; border: none; border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-top: 20px;">
+                                Book Presidential Package →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Info -->
+                <div style="margin-top: 50px; padding: 30px; background: linear-gradient(135deg, #0d47a1, #1565c0); border-radius: 15px; text-align: center; border: 1px solid rgba(66, 165, 245, 0.4);">
+                    <h4 style="color: #ffffff; font-size: 1.3rem; margin-bottom: 15px;">🎁 Special Offer</h4>
+                    <p style="color: #e3f2fd; font-size: 1.1rem; margin-bottom: 20px;">
+                        15% OFF for first-time customers! | FREE tire shine with any package
+                    </p>
+                    <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 25px;">
+                        <a href="tel:4127528684" style="background: #ffffff; color: #1565c0; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease;">
+                            📞 Call Now
+                        </a>
+                        <a href="sms:4127528684" style="background: rgba(255,255,255,0.2); color: #ffffff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; border: 2px solid #ffffff; transition: all 0.3s ease;">
+                            💬 Text Us
+                        </a>
                     </div>
                 </div>
             </div>
