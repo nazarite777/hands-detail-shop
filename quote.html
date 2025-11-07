@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get a Quote | Hands Detail Shop | Arnold, PA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            overflow-x: hidden;
+            background: #0f0f0f;
+        }
+
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+        }
+
+        header.scrolled {
+            background: rgba(15, 15, 15, 0.98);
+            box-shadow: 0 2px 30px rgba(192, 192, 192, 0.15);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+            filter: drop-shadow(0 2px 8px rgba(192, 192, 192, 0.3));
+        }
+
+        .mobile-badge {
+            font-size: 0.75rem;
+            color: rgba(180, 180, 180, 0.8);
+            border-left: 2px solid rgba(160, 160, 160, 0.4);
+            padding-left: 15px;
+            font-weight: 500;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #b8b8b8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #909090, #c8c8c8);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+        }
+
+        .contact-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .phone-header {
+            color: rgba(200, 200, 200, 0.9);
+            font-size: 0.9rem;
+        }
+
+        .hours-header {
+            color: rgba(180, 180, 180, 0.7);
+            font-size: 0.8rem;
+            border-right: 1px solid rgba(160, 160, 160, 0.4);
+            padding-right: 15px;
+        }
+
+        .cta-header {
+            background: linear-gradient(135deg, #4a4a4a, #6a6a6a);
+            color: white;
+            padding: 10px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(160, 160, 160, 0.3);
+            font-size: 0.9rem;
+        }
+
+        .cta-header:hover {
+            background: linear-gradient(135deg, #5a5a5a, #7a7a7a);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 25px rgba(180, 180, 180, 0.3);
+            border-color: rgba(200, 200, 200, 0.5);
+        }
+
+        /* Promotional Banner */
+        .promo-banner {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: #c8c8c8;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            position: relative;
+            animation: slideDown 0.5s ease-out;
+            border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid rgba(160, 160, 160, 0.3);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+            color: white;
+            padding: 30px;
+            border-radius: 20px 20px 0 0;
+            border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(160, 160, 160, 0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(180, 180, 180, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #c8c8c8;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid rgba(100, 100, 100, 0.5);
+            background: rgba(30, 30, 30, 0.8);
+            color: #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #909090;
+            background: rgba(40, 40, 40, 0.9);
+        }
+
+        .form-submit {
+            background: linear-gradient(135deg, #4a4a4a, #6a6a6a);
+            color: white;
+            padding: 15px 40px;
+            border: 1px solid rgba(160, 160, 160, 0.3);
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .form-submit:hover {
+            background: linear-gradient(135deg, #5a5a5a, #7a7a7a);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(180, 180, 180, 0.3);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #c0c0c0;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: rgba(20, 20, 20, 0.98);
+            padding: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+            border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: block;
+            color: #c0c0c0;
+            text-decoration: none;
+            padding: 15px;
+            border-bottom: 1px solid rgba(100,100,100,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            background: rgba(80,80,80,0.3);
+            padding-left: 25px;
+            color: white;
+        }
+
+        /* Welcome Hero Section */
+        .welcome-hero {
+            min-height: 100vh;
+            padding-top: 80px;
+            background:
+                linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(40, 40, 40, 0.9)),
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(100, 100, 100, 0.03) 10px,
+                    rgba(100, 100, 100, 0.03) 20px
+                );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .welcome-content {
+            max-width: 1000px;
+            padding: 40px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-logo {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            margin: 0 auto 30px;
+            filter: drop-shadow(0 10px 30px rgba(192, 192, 192, 0.3));
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .tagline {
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #a0a0a0, #d0d0d0, #a0a0a0);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 4s ease infinite, fadeInUp 1s ease-out 0.2s both;
+            letter-spacing: 1px;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .experience-banner {
+            display: inline-block;
+            background: linear-gradient(135deg, #3a3a3a, #505050);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin: 20px 0;
+            border: 2px solid rgba(160, 160, 160, 0.3);
+            animation: fadeInUp 1s ease-out 0.4s both;
+            letter-spacing: 1px;
+        }
+
+        .welcome-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.5s both;
+            color: #c0c0c0;
+        }
+
+        .welcome-description {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            opacity: 0.85;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.6s both;
+            color: #b0b0b0;
+            line-height: 1.8;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-20px); }
+            60% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        .scroll-indicator::after {
+            content: "↓";
+            font-size: 2rem;
+            color: rgba(160,160,160,0.6);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #1a1a1a, #252525);
+            border-top: 1px solid rgba(160, 160, 160, 0.2);
+            border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .about-title {
+            font-size: 2.8rem;
+            color: #d4d4d4;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .about-subtitle {
+            font-size: 1.3rem;
+            color: #a0a0a0;
+            font-style: italic;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text {
+            color: #b8b8b8;
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .about-highlight {
+            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(160, 160, 160, 0.2);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(50, 50, 50, 0.5);
+            border-radius: 15px;
+            border: 1px solid rgba(160, 160, 160, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #909090, #c8c8c8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: #a0a0a0;
+            margin-top: 10px;
+            font-size: 0.95rem;
+        }
+
+        /* Contact CTA Section */
+        .contact-section {
+            background: linear-gradient(135deg, #2a2a2a, #404040);
+            padding: 60px 20px;
+            border-radius: 0;
+            margin-top: 0;
+            border-top: 1px solid rgba(160, 160, 160, 0.3);
+            border-bottom: 1px solid rgba(160, 160, 160, 0.3);
+        }
+
+        .contact-title {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            background: linear-gradient(135deg, #505050, #707070);
+            color: white;
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid rgba(160, 160, 160, 0.3);
+        }
+
+        .contact-btn:hover {
+            background: linear-gradient(135deg, #606060, #808080);
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(180,180,180,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            color: #b0b0b0;
+            padding: 60px 20px 30px;
+            border-top: 1px solid rgba(160, 160, 160, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: #c0c0c0;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(180,180,180,0.8);
+            text-decoration: none;
+            line-height: 1.8;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #c8c8c8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .partner-info {
+            background: rgba(60,60,60,0.3);
+            border-left: 3px solid #808080;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .partner-info h4 {
+            color: #a0a0a0;
+            margin-bottom: 10px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(100,100,100,0.3);
+            color: rgba(160,160,160,0.6);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(80,80,80,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: #a0a0a0;
+            text-decoration: none;
+            border: 1px solid rgba(100, 100, 100, 0.3);
+        }
+
+        .social-link:hover {
+            background: rgba(100,100,100,0.5);
+            transform: translateY(-3px);
+            border-color: rgba(160, 160, 160, 0.5);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu,
+            .contact-header .phone-header {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .mobile-badge {
+                display: none;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo-section">
+                <img src="https://i.imgur.com/your-logo-here.png" alt="Hands Detail Shop Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display: none; font-size: 1.5rem; font-weight: 800; color: #c0c0c0; font-style: italic;">HANDS DETAIL</div>
+                <span class="mobile-badge">🚗 Mobile - We Come to You!</span>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="membership.html" class="nav-link">Membership</a>
+                <a href="services.html#packages" class="nav-link">Packages</a>
+                <a href="services.html#how-it-works" class="nav-link">Process</a>
+                <a href="quote.html" class="nav-link">Quote</a>
+                <a href="reviews.html" class="nav-link">Reviews</a>
+                <a href="https://medium.com/@handsdetailshop" target="_blank" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="contact-header">
+                <span class="hours-header">Mon-Sat 8AM-6PM</span>
+                <span class="phone-header">📞 (412) 752-8684</span>
+                <span class="phone-header">💬 Text: (412) 752-8684</span>
+                <a href="#" onclick="openBookingModal(); return false;" class="cta-header">Book Now</a>
+            </div>
+
+            <div class="mobile-menu-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About Nazir</a>
+            <a href="services.html">Services</a>
+            <a href="membership.html">Membership</a>
+            <a href="services.html#packages">Packages</a>
+            <a href="services.html#how-it-works">Process</a>
+            <a href="quote.html">Get Quote</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="https://medium.com/@handsdetailshop" target="_blank">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="tel:4127528684" style="background: linear-gradient(135deg, #505050, #707070); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">📞 Call Now</a>
+            <a href="sms:4127528684" style="background: rgba(50,50,50,0.5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">💬 Text Now</a>
+        </nav>
+    </header>
+
+    <!-- Promotional Banner -->
+    <div class="promo-banner" style="margin-top: 70px;">
+        🎊 NEW YEAR SPECIAL: 15% OFF First-Time Customers | 💎 FREE Tire Shine with Any Package | 💳 $30 Deposit Secures Your Appointment | 📞 (412) 752-8684
+    </div>
+
+    
+    <!-- Quick Quote Section -->
+    <section class="quick-quote" id="quote" style="padding-top: 180px;">
+        <div class="quote-container">
+            <!-- Weather Widget -->
+            <div style="background: linear-gradient(135deg, #2a2a2a, #3a3a3a); color: #c0c0c0; padding: 20px; border-radius: 15px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; border: 1px solid rgba(100,100,100,0.3);">
+                <div>
+                    <h3 style="margin: 0; font-size: 1.3rem; color: #d4d4d4;">Today's Detailing Weather</h3>
+                    <p style="margin: 5px 0; opacity: 0.9;">Arnold, PA</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2.5rem;">☀️</div>
+                    <div style="font-size: 1.2rem; font-weight: 600;">Perfect Day for Detailing!</div>
+                </div>
+                <div style="text-align: right;">
+                    <div style="font-size: 1.1rem;">Indoor facility available</div>
+                    <div style="opacity: 0.8;">Weather won't stop us!</div>
+                </div>
+            </div>
+
+            <h2 class="quote-title">Get an Instant Estimate</h2>
+            <p style="color: #a0a0a0; font-size: 1.1rem; margin-bottom: 40px;">Select your vehicle type for pricing</p>
+            
+            <div class="quote-options">
+                <div class="quote-option" onclick="selectVehicle(this, 'compact')">
+                    <div class="option-title">Compact Car</div>
+                    <div class="option-price">Honda Civic, Corolla</div>
+                </div>
+                
+                <div class="quote-option" onclick="selectVehicle(this, 'midsize')">
+                    <div class="option-title">Mid-Size Car</div>
+                    <div class="option-price">Accord, Camry</div>
+                </div>
+                
+                <div class="quote-option" onclick="selectVehicle(this, 'suv')">
+                    <div class="option-title">SUV/Truck</div>
+                    <div class="option-price">Explorer, F-150</div>
+                </div>
+                
+                <div class="quote-option" onclick="selectVehicle(this, 'motorcycle')">
+                    <div class="option-title">Motorcycle</div>
+                    <div class="option-price">All bike types</div>
+                </div>
+                
+                <div class="quote-option" onclick="selectVehicle(this, 'luxury')">
+                    <div class="option-title">Luxury/Exotic</div>
+                    <div class="option-price">BMW, Mercedes</div>
+                </div>
+            </div>
+            
+            <div id="priceDisplay" style="display: none; margin-top: 40px; padding: 30px; background: linear-gradient(135deg, #1a1a1a, #252525); border-radius: 15px; border: 1px solid rgba(100,100,100,0.3);">
+                <h3 style="color: #d4d4d4; margin-bottom: 20px;">Estimated Pricing Range</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                    <div>
+                        <div style="color: #a0a0a0;" id="package1Label">Essential Package</div>
+                        <div style="font-size: 1.8rem; background: linear-gradient(90deg, #808080, #b0b0b0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;" id="essentialPrice">$65</div>
+                    </div>
+                    <div>
+                        <div style="color: #a0a0a0;" id="package2Label">Executive Package</div>
+                        <div style="font-size: 1.8rem; background: linear-gradient(90deg, #808080, #b0b0b0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;" id="executivePrice">$145</div>
+                    </div>
+                    <div>
+                        <div style="color: #a0a0a0;" id="package3Label">Presidential (Ceramic)</div>
+                        <div style="font-size: 1.8rem; background: linear-gradient(90deg, #808080, #b0b0b0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;" id="ceramicPrice">$585</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact CTA Section -->
+    <section class="contact-section">
+        <h3 class="contact-title">Ready to Book Your Detail?</h3>
+        <div class="contact-buttons">
+            <a href="tel:4127528684" class="contact-btn">
+                <span>📞</span>
+                <span>Call (412) 752-8684</span>
+            </a>
+            <a href="contact.html" class="contact-btn">
+                <span>✉️</span>
+                <span>Contact Us</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Hands Detail Shop</h3>
+                <p>Professional mobile auto detailing services. We come to you!</p>
+                <p style="margin-top: 15px;">
+                    <strong>📞 Phone:</strong> (412) 752-8684<br>
+                    <strong>✉️ Email:</strong> <a href="mailto:handsdetailshop@gmail.com">handsdetailshop@gmail.com</a>
+                </p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1FQft2edbP/" target="_blank" class="social-link">f</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">in</a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Our Services</h3>
+                <ul class="footer-links">
+                    <li><a href="services.html#packages">Personal Vehicle Detailing</a></li>
+                    <li><a href="membership.html">Monthly Residential Plans</a></li>
+                    <li><a href="services.html">Commercial Fleet Services</a></li>
+                    <li><a href="services.html">Yacht & Marine Detailing</a></li>
+                    <li><a href="services.html">RV & Motorhome Services</a></li>
+                    <li><a href="services.html#packages">Ceramic Coating Protection</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Location & Hours</h3>
+                <p>
+                    <strong>📍 Address:</strong><br>
+                    1532 Constitution Blvd<br>
+                    Arnold, PA 15068
+                </p>
+                <p style="margin-top: 15px;">
+                    <strong>🕒 Hours:</strong><br>
+                    Monday - Saturday: 8AM - 6PM<br>
+                    Sunday: By Appointment
+                </p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Service Area</h3>
+                <div class="partner-info">
+                    <h4>Mobile Service</h4>
+                    <p>
+                        We come directly to you!<br>
+                        <strong style="color: #a0a0a0;">Convenience at your location</strong>
+                    </p>
+                </div>
+                <p style="margin-top: 15px;">
+                    Proudly serving the Greater Pittsburgh area including Fox Chapel, Sewickley Heights, Upper St. Clair, Arnold, and surrounding communities.
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Hands Detail Shop | Mobile Detailing Services | All Rights Reserved</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Professional Auto Detailing Services | Arnold, PA | Licensed & Insured</p>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeBookingModal()">&times;</button>
+                <h2 style="margin: 0;">Book Your Detail Service</h2>
+                <p style="margin-top: 10px; opacity: 0.9;">Get a free quote or schedule your appointment</p>
+            </div>
+            <form style="padding: 30px;" id="bookingForm">
+                <div class="form-group">
+                    <label>Name *</label>
+                    <input type="text" required placeholder="Your full name">
+                </div>
+
+                <div class="form-group">
+                    <label>Phone *</label>
+                    <input type="tel" required placeholder="(412) 555-0000">
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="your@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Vehicle Information *</label>
+                    <input type="text" required placeholder="Year, Make, Model (e.g., 2020 Honda Accord)">
+                </div>
+
+                <div class="form-group">
+                    <label>Service Type *</label>
+                    <select required>
+                        <option value="">Select a service...</option>
+                        <optgroup label="Personal Vehicles">
+                            <option>Essential Package ($65-85)</option>
+                            <option>Executive Package ($145-185)</option>
+                            <option>Signature Package ($285-365)</option>
+                            <option>Presidential Package ($585-785)</option>
+                            <option>Ultimate Armor ($1,285-1,685)</option>
+                        </optgroup>
+                        <optgroup label="Motorcycle Services">
+                            <option>Road Ready ($85-105)</option>
+                            <option>Chrome & Shine ($145-185)</option>
+                            <option>Show Bike ($245-295)</option>
+                            <option>Seasonal Prep ($125-155)</option>
+                        </optgroup>
+                        <optgroup label="Monthly Plans">
+                            <option>Single Car Monthly ($80/mo)</option>
+                            <option>Two Car Monthly ($140/mo)</option>
+                            <option>Three+ Cars Monthly</option>
+                        </optgroup>
+                        <optgroup label="Specialty">
+                            <option>Yacht/Boat Detail</option>
+                            <option>RV/Motorhome Detail</option>
+                            <option>Fleet Services</option>
+                        </optgroup>
+                        <option>Not Sure - Need Consultation</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Preferred Date</label>
+                    <input type="date">
+                </div>
+
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="3" placeholder="Tell us about your vehicle's condition or special requests..."></textarea>
+                </div>
+
+                <button type="submit" class="form-submit">Submit Booking Request</button>
+                <p style="text-align: center; margin-top: 15px; color: #909090; font-size: 0.9rem;">
+                    Or call us directly: <strong>(412) 752-8684</strong>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileNav = document.getElementById('mobileNav');
+
+        mobileToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        });
+
+        // Close mobile menu when link clicked
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileToggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = 80;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Booking Modal Functions
+        function openBookingModal(preSelectedService = '') {
+            document.getElementById('bookingModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            if (preSelectedService) {
+                const serviceSelect = document.querySelector('#bookingForm select');
+                if (serviceSelect) {
+                    const options = serviceSelect.querySelectorAll('option');
+                    options.forEach(option => {
+                        if (option.textContent.toLowerCase().includes(preSelectedService.toLowerCase())) {
+                            option.selected = true;
+                        }
+                    });
+                }
+            }
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Booking form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const name = this.querySelector('input[type="text"]').value;
+            const phone = this.querySelector('input[type="tel"]').value;
+            const service = this.querySelector('select').value;
+
+            const squareDepositLink = 'https://square.link/u/vScfV4jK';
+            const details = `${name} - ${phone} - ${service}`;
+
+            window.open(squareDepositLink + `?note=${encodeURIComponent(details)}`, '_blank');
+
+            setTimeout(() => {
+                alert(`Payment window opened for $30 deposit.\n\nAfter payment, we'll contact you at ${phone} within 24 hours to confirm your appointment.`);
+                closeBookingModal();
+                this.reset();
+            }, 500);
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('bookingModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBookingModal();
+            }
+        });
+
+        // Vehicle selection function for quote calculator
+        let selectedVehicle = null;
+
+        function selectVehicle(element, type) {
+            document.querySelectorAll('.quote-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+
+            element.classList.add('selected');
+            selectedVehicle = type;
+
+            const prices = {
+                compact: { essential: '$65', executive: '$145', ceramic: '$585' },
+                midsize: { essential: '$75', executive: '$165', ceramic: '$685' },
+                suv: { essential: '$85', executive: '$185', ceramic: '$785' },
+                motorcycle: { essential: '$85', executive: '$145', ceramic: '$245' },
+                luxury: { essential: '$95+', executive: '$225+', ceramic: '$985+' }
+            };
+
+            const priceLabels = {
+                compact: { label1: 'Essential Package', label2: 'Executive Package', label3: 'Presidential (Ceramic)' },
+                midsize: { label1: 'Essential Package', label2: 'Executive Package', label3: 'Presidential (Ceramic)' },
+                suv: { label1: 'Essential Package', label2: 'Executive Package', label3: 'Presidential (Ceramic)' },
+                motorcycle: { label1: 'Road Ready', label2: 'Chrome & Shine', label3: 'Show Bike' },
+                luxury: { label1: 'Essential Package', label2: 'Executive Package', label3: 'Presidential (Ceramic)' }
+            };
+
+            const priceDisplay = document.getElementById('priceDisplay');
+            priceDisplay.style.display = 'block';
+            priceDisplay.style.opacity = '0';
+
+            setTimeout(() => {
+                priceDisplay.style.transition = 'opacity 0.5s ease';
+                priceDisplay.style.opacity = '1';
+            }, 10);
+
+            document.getElementById('essentialPrice').textContent = prices[type].essential;
+            document.getElementById('executivePrice').textContent = prices[type].executive;
+            document.getElementById('ceramicPrice').textContent = prices[type].ceramic;
+
+            document.getElementById('package1Label').textContent = priceLabels[type].label1;
+            document.getElementById('package2Label').textContent = priceLabels[type].label2;
+            document.getElementById('package3Label').textContent = priceLabels[type].label3;
+
+            const existingBtn = document.getElementById('quoteBookingBtn');
+            if (existingBtn) {
+                existingBtn.remove();
+            }
+
+            const bookingBtn = document.createElement('div');
+            bookingBtn.id = 'quoteBookingBtn';
+            bookingBtn.style.textAlign = 'center';
+            bookingBtn.style.marginTop = '30px';
+
+            const buttonTexts = {
+                compact: 'Book Your Car Detail',
+                midsize: 'Book Your Car Detail',
+                suv: 'Book Your SUV Detail',
+                motorcycle: 'Book Your Motorcycle Detail',
+                luxury: 'Book Your Luxury Detail'
+            };
+
+            bookingBtn.innerHTML = `
+                <button onclick="openBookingModal('${type}')" style="background: linear-gradient(135deg, #505050, #707070); color: white; padding: 15px 40px; border: 1px solid rgba(160,160,160,0.3); border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+                    ${buttonTexts[type]} →
+                </button>
+            `;
+
+            priceDisplay.appendChild(bookingBtn);
+
+            setTimeout(() => {
+                priceDisplay.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
+    </script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/68e2fac9bf465d19518ec75b/1j6ra78mi';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+</body>
+</html>

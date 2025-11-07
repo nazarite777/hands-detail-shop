@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hands Detail Shop | 16 Years of Excellence | Arnold, PA</title>
+    <title>Membership Program | Hands Detail Shop | Arnold, PA</title>
     <style>
         * {
             margin: 0;
@@ -58,7 +58,7 @@
             filter: drop-shadow(0 2px 8px rgba(192, 192, 192, 0.3));
         }
 
-        .partnership-badge {
+        .mobile-badge {
             font-size: 0.75rem;
             color: rgba(180, 180, 180, 0.8);
             border-left: 2px solid rgba(160, 160, 160, 0.4);
@@ -111,7 +111,7 @@
             color: rgba(200, 200, 200, 0.9);
             font-size: 0.9rem;
         }
-        
+
         .hours-header {
             color: rgba(180, 180, 180, 0.7);
             font-size: 0.8rem;
@@ -149,7 +149,7 @@
             animation: slideDown 0.5s ease-out;
             border-bottom: 1px solid rgba(160, 160, 160, 0.2);
         }
-        
+
         @keyframes slideDown {
             from { transform: translateY(-30px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
@@ -326,7 +326,7 @@
         .welcome-hero {
             min-height: 100vh;
             padding-top: 80px;
-            background: 
+            background:
                 linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(40, 40, 40, 0.9)),
                 repeating-linear-gradient(
                     45deg,
@@ -430,7 +430,7 @@
             color: rgba(160,160,160,0.6);
         }
 
-        /* About Section - NEW */
+        /* About Section */
         .about-section {
             padding: 100px 20px;
             background: linear-gradient(135deg, #1a1a1a, #252525);
@@ -515,261 +515,12 @@
             font-size: 0.95rem;
         }
 
-        /* Service Selector Section */
-        .service-selector {
-            padding: 100px 20px;
-            background: #0f0f0f;
-        }
-
-        .selector-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .selector-title {
-            font-size: 2.8rem;
-            color: #d4d4d4;
-            margin-bottom: 20px;
-            font-weight: 800;
-        }
-
-        .selector-subtitle {
-            font-size: 1.2rem;
-            color: #a0a0a0;
-        }
-
-        .service-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .service-card {
-            background: linear-gradient(135deg, #1a1a1a, #252525);
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            border: 1px solid rgba(100, 100, 100, 0.3);
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #707070, #a0a0a0);
-            transform: translateY(-100%);
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover::before {
-            transform: translateY(0);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(160,160,160,0.2);
-            border-color: rgba(160, 160, 160, 0.5);
-        }
-
-        .service-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            display: block;
-            filter: grayscale(30%);
-        }
-
-        .service-title {
-            font-size: 1.5rem;
-            color: #d4d4d4;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .service-description {
-            color: #a0a0a0;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .service-highlights {
-            list-style: none;
-            margin: 20px 0;
-            text-align: left;
-        }
-
-        .service-highlights li {
-            padding: 8px 0;
-            color: #b0b0b0;
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .service-highlights li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: #909090;
-            font-weight: bold;
-        }
-
-        .starting-price {
-            font-size: 1.3rem;
-            background: linear-gradient(90deg, #808080, #b0b0b0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 700;
-            margin-top: 20px;
-        }
-
-        .explore-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #4a4a4a, #6a6a6a);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(160, 160, 160, 0.3);
-        }
-
-        .explore-btn:hover {
-            background: linear-gradient(135deg, #5a5a5a, #7a7a7a);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(180,180,180,0.3);
-        }
-
-        /* How It Works */
-        .how-it-works {
-            padding: 100px 20px;
-            background: linear-gradient(135deg, #1a1a1a, #252525);
-            color: white;
-            border-top: 1px solid rgba(160, 160, 160, 0.2);
-            border-bottom: 1px solid rgba(160, 160, 160, 0.2);
-        }
-
-        .steps-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .step-card {
-            text-align: center;
-            position: relative;
-            padding: 30px;
-            background: rgba(30, 30, 30, 0.5);
-            border-radius: 20px;
-            border: 1px solid rgba(100, 100, 100, 0.3);
-        }
-
-        .step-number {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #505050, #707070);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            font-weight: 700;
-            margin: 0 auto 20px;
-            border: 2px solid rgba(160, 160, 160, 0.3);
-        }
-
-        .step-title {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: #d4d4d4;
-        }
-
-        .step-description {
-            opacity: 0.8;
-            line-height: 1.6;
-            color: #b0b0b0;
-        }
-
-        /* Quick Quote Section */
-        .quick-quote {
-            padding: 100px 20px;
-            background: #0f0f0f;
-            text-align: center;
-        }
-
-        .quote-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .quote-title {
-            font-size: 2.5rem;
-            color: #d4d4d4;
-            margin-bottom: 30px;
-            font-weight: 800;
-        }
-
-        .quote-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
-        }
-
-        .quote-option {
-            background: linear-gradient(135deg, #1a1a1a, #252525);
-            padding: 30px 20px;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 3px solid rgba(100, 100, 100, 0.3);
-        }
-
-        .quote-option:hover,
-        .quote-option.selected {
-            border-color: #808080;
-            background: linear-gradient(135deg, #252525, #303030);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(160,160,160,0.2);
-        }
-
-        .option-title {
-            font-size: 1.3rem;
-            color: #d4d4d4;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .option-price {
-            font-size: 1.1rem;
-            color: #a0a0a0;
-        }
-
+        /* Contact CTA Section */
         .contact-section {
             background: linear-gradient(135deg, #2a2a2a, #404040);
             padding: 60px 20px;
             border-radius: 0;
-            margin-top: 40px;
+            margin-top: 0;
             border-top: 1px solid rgba(160, 160, 160, 0.3);
             border-bottom: 1px solid rgba(160, 160, 160, 0.3);
         }
@@ -778,6 +529,7 @@
             font-size: 2rem;
             color: white;
             margin-bottom: 30px;
+            text-align: center;
         }
 
         .contact-buttons {
@@ -921,20 +673,20 @@
             .contact-header .phone-header {
                 display: none;
             }
-            
+
             .mobile-menu-toggle {
                 display: flex;
             }
-            
-            .partnership-badge {
+
+            .mobile-badge {
                 display: none;
             }
-            
+
             .footer-content {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-            
+
             .social-links {
                 justify-content: center;
             }
@@ -952,45 +704,47 @@
             <div class="logo-section">
                 <img src="https://i.imgur.com/your-logo-here.png" alt="Hands Detail Shop Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 <div style="display: none; font-size: 1.5rem; font-weight: 800; color: #c0c0c0; font-style: italic;">HANDS DETAIL</div>
-                <span class="partnership-badge">Partner with 100 Details</span>
+                <span class="mobile-badge">🚗 Mobile - We Come to You!</span>
             </div>
-            
+
             <nav class="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#membership" class="nav-link">Membership</a>
-                <a href="#packages" class="nav-link">Packages</a>
-                <a href="#how-it-works" class="nav-link">Process</a>
-                <a href="#quote" class="nav-link">Quote</a>
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="membership.html" class="nav-link">Membership</a>
+                <a href="services.html#packages" class="nav-link">Packages</a>
+                <a href="services.html#how-it-works" class="nav-link">Process</a>
+                <a href="quote.html" class="nav-link">Quote</a>
+                <a href="reviews.html" class="nav-link">Reviews</a>
                 <a href="https://medium.com/@handsdetailshop" target="_blank" class="nav-link">Blog</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                <a href="contact.html" class="nav-link">Contact</a>
             </nav>
-            
+
             <div class="contact-header">
                 <span class="hours-header">Mon-Sat 8AM-6PM</span>
                 <span class="phone-header">📞 (412) 752-8684</span>
                 <span class="phone-header">💬 Text: (412) 752-8684</span>
                 <a href="#" onclick="openBookingModal(); return false;" class="cta-header">Book Now</a>
             </div>
-            
+
             <div class="mobile-menu-toggle" id="mobileToggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
         </div>
-        
+
         <nav class="mobile-nav" id="mobileNav">
-            <a href="#home">Home</a>
-            <a href="#about">About Nazir</a>
-            <a href="#services">Services</a>
-            <a href="#membership">Membership</a>
-            <a href="#packages">Packages</a>
-            <a href="#how-it-works">Process</a>
-            <a href="#quote">Get Quote</a>
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About Nazir</a>
+            <a href="services.html">Services</a>
+            <a href="membership.html">Membership</a>
+            <a href="services.html#packages">Packages</a>
+            <a href="services.html#how-it-works">Process</a>
+            <a href="quote.html">Get Quote</a>
+            <a href="reviews.html">Reviews</a>
             <a href="https://medium.com/@handsdetailshop" target="_blank">Blog</a>
-            <a href="#contact">Contact</a>
+            <a href="contact.html">Contact</a>
             <a href="tel:4127528684" style="background: linear-gradient(135deg, #505050, #707070); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">📞 Call Now</a>
             <a href="sms:4127528684" style="background: rgba(50,50,50,0.5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">💬 Text Now</a>
         </nav>
@@ -1001,87 +755,8 @@
         🎊 NEW YEAR SPECIAL: 15% OFF First-Time Customers | 💎 FREE Tire Shine with Any Package | 💳 $30 Deposit Secures Your Appointment | 📞 (412) 752-8684
     </div>
 
-    <!-- Welcome Hero Section -->
-    <section class="welcome-hero" id="home">
-        <div class="welcome-content">
-            <img src="https://i.postimg.cc/qqTWZqLC/hands-logo.png" alt="Hands Detail Shop Logo" class="hero-logo">
-            
-            <div class="tagline">Paying attention to detail is our driving factor</div>
-            
-            <div class="experience-banner">16 YEARS OF EXCELLENCE</div>
-            
-            <p class="welcome-subtitle">Military Precision Meets Automotive Perfection</p>
-            <p class="welcome-description">From monthly residential plans to yacht detailing, we bring professional-grade service to every vehicle we touch. Air Force trained, locally trusted.</p>
-            
-            <!-- Trust Badges -->
-            <div style="display: flex; gap: 20px; justify-content: center; margin-top: 30px; flex-wrap: wrap;">
-                <span style="background: rgba(80,80,80,0.3); padding: 10px 20px; border-radius: 25px; border: 1px solid rgba(160,160,160,0.3); display: inline-block; color: #b8b8b8;">
-                    👨‍👩‍👧‍👦 Family Owned & Operated
-                </span>
-                <span style="background: rgba(80,80,80,0.3); padding: 10px 20px; border-radius: 25px; border: 1px solid rgba(160,160,160,0.3); display: inline-block; color: #b8b8b8;">
-                    🛡️ Licensed & Insured
-                </span>
-                <span style="background: rgba(80,80,80,0.3); padding: 10px 20px; border-radius: 25px; border: 1px solid rgba(160,160,160,0.3); display: inline-block; color: #b8b8b8;">
-                    ✨ FREE ESTIMATES
-                </span>
-            </div>
-            
-            <!-- Service Counter -->
-            <div style="margin-top: 30px;">
-                <div style="font-size: 2.5rem; font-weight: 700; background: linear-gradient(90deg, #909090, #c8c8c8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">5,000+</div>
-                <div style="opacity: 0.8; color: #a0a0a0;">Vehicles Detailed & Counting</div>
-            </div>
-            
-            <div class="scroll-indicator"></div>
-        </div>
-    </section>
-
-    <!-- About Section - NEW -->
-    <section class="about-section" id="about">
-        <div class="about-container">
-            <div class="about-header">
-                <h2 class="about-title">Meet Nazir El</h2>
-                <p class="about-subtitle">Air Force Veteran | Master Detailer | Arnold, PA</p>
-            </div>
-            
-            <div class="about-content">
-                <div class="about-text">
-                    <p>My story starts in Baton Rouge as the eldest of 5, where my uncle first opened my eyes to the power of a perfectly detailed vehicle—how it can transform not just a car, but someone's entire day.</p>
-                    
-                    <p>Life took an unexpected turn when Hurricane Katrina led me north at 16. After graduating from New Concord, Ohio, I served my country in the Air Force, working on diesel and jet engines. Those years taught me that perfection is in the details.</p>
-                    
-                    <p>For 16 years now, I've been bringing that same passion and precision to every detailing job—whether it's your daily driver, yacht, RV, tractor, or bus. From deep interior detailing to ceramic coating and beyond, no job is too big or small.</p>
-                    
-                    <p>Now partnered with 100 Details in Arnold City, PA, I'm ready to serve you with the care and expertise your vehicle deserves.</p>
-                </div>
-                
-                <div class="about-highlight">
-                    <h3 style="color: #d4d4d4; margin-bottom: 20px; font-size: 1.6rem;">Why Choose Hands Detail?</h3>
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">16</div>
-                            <div class="stat-label">Years of Excellence</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">5K+</div>
-                            <div class="stat-label">Vehicles Detailed</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Customer Focused</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">⭐⭐⭐⭐⭐</div>
-                            <div class="stat-label">5-Star Service</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Membership Program Section - NEW -->
-    <section style="padding: 100px 20px; background: linear-gradient(135deg, #0a0a0a, #1a1a1a); border-top: 1px solid rgba(160,160,160,0.2); border-bottom: 1px solid rgba(160,160,160,0.2);" id="membership">
+    
+    <section style="padding: 100px 20px; background: linear-gradient(135deg, #0a0a0a, #1a1a1a); border-top: 1px solid rgba(160,160,160,0.2); border-bottom: 1px solid rgba(160,160,160,0.2);" id="membership" style="padding-top: 180px;">
         <div style="max-width: 1400px; margin: 0 auto;">
             <!-- Section Header -->
             <div style="text-align: center; margin-bottom: 60px;">
@@ -1416,491 +1091,12 @@
         </div>
     </section>
 
-    <!-- Service Selector Section -->
-    <section class="service-selector" id="services">
-        <div class="selector-header">
-            <h2 class="selector-title">What Can We Detail For You?</h2>
-            <p class="selector-subtitle">Choose your service category to explore our professional packages</p>
-        </div>
-        
-        <div class="service-options">
-            <!-- Personal Vehicles -->
-            <div class="service-card" onclick="openBookingModal('personal')">
-                <span class="service-icon">🚗</span>
-                <h3 class="service-title">Personal Vehicles</h3>
-                <p class="service-description">Professional detailing for your car, truck, or SUV</p>
-                <ul class="service-highlights">
-                    <li>5 package tiers available</li>
-                    <li>Wash to ceramic coating</li>
-                    <li>Same-day service</li>
-                </ul>
-                <div class="starting-price">Starting at $65</div>
-                <span class="explore-btn">Explore Packages</span>
-            </div>
-
-            <!-- Monthly Plans -->
-            <div class="service-card" onclick="openBookingModal('monthly')">
-                <span class="service-icon">📅</span>
-                <h3 class="service-title">Monthly Plans</h3>
-                <p class="service-description">Convenient residential monthly contracts</p>
-                <ul class="service-highlights">
-                    <li>Scheduled service</li>
-                    <li>Multi-car discounts</li>
-                    <li>Priority booking</li>
-                </ul>
-                <div class="starting-price">From $80/month</div>
-                <span class="explore-btn">View Plans</span>
-            </div>
-
-            <!-- Fleet Services -->
-            <div class="service-card" onclick="openBookingModal('fleet')">
-                <span class="service-icon">🚛</span>
-                <h3 class="service-title">Commercial Fleet</h3>
-                <p class="service-description">Volume contracts for businesses</p>
-                <ul class="service-highlights">
-                    <li>Dealership programs</li>
-                    <li>Rental reconditioning</li>
-                    <li>NET terms available</li>
-                </ul>
-                <div class="starting-price">Volume Pricing</div>
-                <span class="explore-btn">Get Quote</span>
-            </div>
-
-            <!-- Marine & RV -->
-            <div class="service-card" onclick="openBookingModal('marine')">
-                <span class="service-icon">🛥️</span>
-                <h3 class="service-title">Yacht & RV</h3>
-                <p class="service-description">Mobile service for boats & motorhomes</p>
-                <ul class="service-highlights">
-                    <li>Marina-side service</li>
-                    <li>Full RV detailing</li>
-                    <li>Ceramic protection</li>
-                </ul>
-                <div class="starting-price">From $285</div>
-                <span class="explore-btn">Learn More</span>
-            </div>
-
-            <!-- Motorcycle Services -->
-            <div class="service-card" onclick="openBookingModal('motorcycle')">
-                <span class="service-icon">🏍️</span>
-                <h3 class="service-title">Motorcycle Detail</h3>
-                <p class="service-description">Specialized bike detailing & protection</p>
-                <ul class="service-highlights">
-                    <li>Chrome & metal polishing</li>
-                    <li>Chain cleaning & lube</li>
-                    <li>Seasonal prep packages</li>
-                </ul>
-                <div class="starting-price">Starting at $85</div>
-                <span class="explore-btn">View Packages</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section class="how-it-works" id="how-it-works">
-        <div class="steps-container">
-            <div class="selector-header">
-                <h2 class="selector-title" style="color: white;">How It Works</h2>
-                <p class="selector-subtitle" style="color: rgba(180,180,180,0.8);">Simple process, exceptional results</p>
-            </div>
-            
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">Choose Your Service</h3>
-                    <p class="step-description">Select from our comprehensive packages or build a custom solution</p>
-                </div>
-                
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <h3 class="step-title">Schedule Appointment</h3>
-                    <p class="step-description">Call us or email for a time that works for you</p>
-                </div>
-                
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">Professional Service</h3>
-                    <p class="step-description">Our certified technicians deliver meticulous detailing</p>
-                </div>
-                
-                <div class="step-card">
-                    <div class="step-number">4</div>
-                    <h3 class="step-title">Enjoy Your Vehicle</h3>
-                    <p class="step-description">Drive away with a showroom-quality finish</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quick Quote Section -->
-    <section class="quick-quote" id="quote">
-        <div class="quote-container">
-            <!-- Weather Widget -->
-            <div style="background: linear-gradient(135deg, #2a2a2a, #3a3a3a); color: #c0c0c0; padding: 20px; border-radius: 15px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; border: 1px solid rgba(100,100,100,0.3);">
-                <div>
-                    <h3 style="margin: 0; font-size: 1.3rem; color: #d4d4d4;">Today's Detailing Weather</h3>
-                    <p style="margin: 5px 0; opacity: 0.9;">Arnold, PA</p>
-                </div>
-                <div style="text-align: center;">
-                    <div style="font-size: 2.5rem;">☀️</div>
-                    <div style="font-size: 1.2rem; font-weight: 600;">Perfect Day for Detailing!</div>
-                </div>
-                <div style="text-align: right;">
-                    <div style="font-size: 1.1rem;">Indoor facility available</div>
-                    <div style="opacity: 0.8;">Weather won't stop us!</div>
-                </div>
-            </div>
-
-            <h2 class="quote-title">Get an Instant Estimate</h2>
-            <p style="color: #a0a0a0; font-size: 1.1rem; margin-bottom: 40px;">Select your vehicle type for pricing</p>
-            
-            <div class="quote-options">
-                <div class="quote-option" onclick="selectVehicle(this, 'compact')">
-                    <div class="option-title">Compact Car</div>
-                    <div class="option-price">Honda Civic, Corolla</div>
-                </div>
-                
-                <div class="quote-option" onclick="selectVehicle(this, 'midsize')">
-                    <div class="option-title">Mid-Size Car</div>
-                    <div class="option-price">Accord, Camry</div>
-                </div>
-                
-                <div class="quote-option" onclick="selectVehicle(this, 'suv')">
-                    <div class="option-title">SUV/Truck</div>
-                    <div class="option-price">Explorer, F-150</div>
-                </div>
-                
-                <div class="quote-option" onclick="selectVehicle(this, 'motorcycle')">
-                    <div class="option-title">Motorcycle</div>
-                    <div class="option-price">All bike types</div>
-                </div>
-                
-                <div class="quote-option" onclick="selectVehicle(this, 'luxury')">
-                    <div class="option-title">Luxury/Exotic</div>
-                    <div class="option-price">BMW, Mercedes</div>
-                </div>
-            </div>
-            
-            <div id="priceDisplay" style="display: none; margin-top: 40px; padding: 30px; background: linear-gradient(135deg, #1a1a1a, #252525); border-radius: 15px; border: 1px solid rgba(100,100,100,0.3);">
-                <h3 style="color: #d4d4d4; margin-bottom: 20px;">Estimated Pricing Range</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                    <div>
-                        <div style="color: #a0a0a0;" id="package1Label">Essential Package</div>
-                        <div style="font-size: 1.8rem; background: linear-gradient(90deg, #808080, #b0b0b0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;" id="essentialPrice">$65</div>
-                    </div>
-                    <div>
-                        <div style="color: #a0a0a0;" id="package2Label">Executive Package</div>
-                        <div style="font-size: 1.8rem; background: linear-gradient(90deg, #808080, #b0b0b0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;" id="executivePrice">$145</div>
-                    </div>
-                    <div>
-                        <div style="color: #a0a0a0;" id="package3Label">Presidential (Ceramic)</div>
-                        <div style="font-size: 1.8rem; background: linear-gradient(90deg, #808080, #b0b0b0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;" id="ceramicPrice">$585</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Customer Reviews Section -->
-    <section style="padding: 100px 20px; background: linear-gradient(135deg, #1a1a1a, #252525); border-top: 1px solid rgba(160,160,160,0.2); border-bottom: 1px solid rgba(160,160,160,0.2);">
-        <div style="max-width: 1400px; margin: 0 auto;">
-            <!-- Section Header -->
-            <div style="text-align: center; margin-bottom: 60px;">
-                <h2 style="font-size: 2.8rem; color: #d4d4d4; margin-bottom: 20px;">What Our Customers Say</h2>
-                <p style="font-size: 1.2rem; color: #a0a0a0; margin-bottom: 30px;">Over 100+ five-star reviews from satisfied customers across PA, OH, and WV</p>
-                
-                <!-- Overall Rating Display -->
-                <div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 40px; flex-wrap: wrap;">
-                    <div style="text-align: center;">
-                        <div style="font-size: 3rem; background: linear-gradient(90deg, #909090, #c8c8c8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 800;">4.9</div>
-                        <div style="color: #c8c8c8; font-size: 1.5rem; margin: 10px 0;">★★★★★</div>
-                        <div style="color: #a0a0a0;">Average Rating</div>
-                    </div>
-                    <div style="height: 60px; width: 1px; background: rgba(100,100,100,0.5);"></div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 3rem; background: linear-gradient(90deg, #909090, #c8c8c8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 800;">150+</div>
-                        <div style="color: #a0a0a0; margin-top: 10px;">Happy Customers</div>
-                    </div>
-                    <div style="height: 60px; width: 1px; background: rgba(100,100,100,0.5);"></div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 3rem; background: linear-gradient(90deg, #909090, #c8c8c8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 800;">16+</div>
-                        <div style="color: #a0a0a0; margin-top: 10px;">Years Experience</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Featured Reviews Grid -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 50px;">
-                
-                <!-- Review 1 -->
-                <div style="background: rgba(30,30,30,0.5); border-radius: 15px; padding: 30px; border-left: 4px solid #808080; border: 1px solid rgba(100,100,100,0.3);">
-                    <div style="color: #c8c8c8; font-size: 1.2rem; margin-bottom: 15px;">★★★★★</div>
-                    <p style="color: #b8b8b8; line-height: 1.6; margin-bottom: 20px; font-style: italic;">"Detailed was so friendly and did an amazing job. Will definitely be a repeat customer."</p>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <strong style="color: #d4d4d4;">Kristy E.</strong><br>
-                            <span style="color: #a0a0a0; font-size: 0.9rem;">Pittsburgh, PA</span>
-                        </div>
-                        <span style="color: #909090; font-size: 0.9rem;">June 2025</span>
-                    </div>
-                </div>
-
-                <!-- Review 2 -->
-                <div style="background: rgba(30,30,30,0.5); border-radius: 15px; padding: 30px; border-left: 4px solid #808080; border: 1px solid rgba(100,100,100,0.3);">
-                    <div style="color: #c8c8c8; font-size: 1.2rem; margin-bottom: 15px;">★★★★★</div>
-                    <p style="color: #b8b8b8; line-height: 1.6; margin-bottom: 20px; font-style: italic;">"Carlton, great professional detailer above and beyond my foot motorhome was cleaner than when I picked it up at the dealer I will be requesting Carlton as a repeat customer"</p>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <strong style="color: #d4d4d4;">Ben A D.</strong><br>
-                            <span style="color: #a0a0a0; font-size: 0.9rem;">McDonald, PA</span>
-                        </div>
-                        <span style="color: #909090; font-size: 0.9rem;">Oct 2024</span>
-                    </div>
-                </div>
-
-                <!-- Review 3 -->
-                <div style="background: rgba(30,30,30,0.5); border-radius: 15px; padding: 30px; border-left: 4px solid #808080; border: 1px solid rgba(100,100,100,0.3);">
-                    <div style="color: #c8c8c8; font-size: 1.2rem; margin-bottom: 15px;">★★★★★</div>
-                    <p style="color: #b8b8b8; line-height: 1.6; margin-bottom: 20px; font-style: italic;">"I was extremely impressed with how through my car was done. Everything looked like it was showroom perfect. He spent hours on my car and it shows!"</p>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <strong style="color: #d4d4d4;">Lisa I.</strong><br>
-                            <span style="color: #a0a0a0; font-size: 0.9rem;">Pittsburgh, PA</span>
-                        </div>
-                        <span style="color: #909090; font-size: 0.9rem;">June 2024</span>
-                    </div>
-                </div>
-
-                <!-- Review 4 -->
-                <div style="background: rgba(30,30,30,0.5); border-radius: 15px; padding: 30px; border-left: 4px solid #808080; border: 1px solid rgba(100,100,100,0.3);">
-                    <div style="color: #c8c8c8; font-size: 1.2rem; margin-bottom: 15px;">★★★★★</div>
-                    <p style="color: #b8b8b8; line-height: 1.6; margin-bottom: 20px; font-style: italic;">"Had a last minute schedule change that caused the need to reschedule and Carlton accommodated my request. Car looks fabulous. My wife and I are extremely happy and Carlton was professional, courteous, and polite."</p>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <strong style="color: #d4d4d4;">Robert G.</strong><br>
-                            <span style="color: #a0a0a0; font-size: 0.9rem;">Pittsburgh, PA</span>
-                        </div>
-                        <span style="color: #909090; font-size: 0.9rem;">July 2022</span>
-                    </div>
-                </div>
-
-                <!-- Review 5 -->
-                <div style="background: rgba(30,30,30,0.5); border-radius: 15px; padding: 30px; border-left: 4px solid #808080; border: 1px solid rgba(100,100,100,0.3);">
-                    <div style="color: #c8c8c8; font-size: 1.2rem; margin-bottom: 15px;">★★★★★</div>
-                    <p style="color: #b8b8b8; line-height: 1.6; margin-bottom: 20px; font-style: italic;">"This man is a jewel, hang on to him for dear life. His attention to detail is unprecedented. My car has never looked better! I will definitely use your detailing service in the future."</p>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <strong style="color: #d4d4d4;">Geoff S.</strong><br>
-                            <span style="color: #a0a0a0; font-size: 0.9rem;">Cuyahoga Falls, OH</span>
-                        </div>
-                        <span style="color: #909090; font-size: 0.9rem;">Aug 2022</span>
-                    </div>
-                </div>
-
-                <!-- Review 6 -->
-                <div style="background: rgba(30,30,30,0.5); border-radius: 15px; padding: 30px; border-left: 4px solid #808080; border: 1px solid rgba(100,100,100,0.3);">
-                    <div style="color: #c8c8c8; font-size: 1.2rem; margin-bottom: 15px;">★★★★★</div>
-                    <p style="color: #b8b8b8; line-height: 1.6; margin-bottom: 20px; font-style: italic;">"He was extremely polite and friendly. He took extra time and care with the car as we had dog hair all over the back. My car hasn't looked this good since the day I first brought it home! Thank you Carlton!"</p>
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <strong style="color: #d4d4d4;">Lynn B.</strong><br>
-                            <span style="color: #a0a0a0; font-size: 0.9rem;">New Kensington, PA</span>
-                        </div>
-                        <span style="color: #909090; font-size: 0.9rem;">May 2025</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Call to Action -->
-            <div style="text-align: center; margin-top: 50px;">
-                <h3 style="color: #d4d4d4; margin-bottom: 20px;">Join Our Happy Customers</h3>
-                <p style="color: #a0a0a0; margin-bottom: 30px; font-size: 1.1rem;">Experience the same professional service that earned us 150+ five-star reviews</p>
-                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                    <a href="tel:4127528684" style="background: linear-gradient(135deg, #505050, #707070); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; border: 1px solid rgba(160,160,160,0.3);">
-                        📞 Call (412) 752-8684
-                    </a>
-                    <a href="#quote" style="background: rgba(60,60,60,0.5); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.1rem; border: 1px solid rgba(160,160,160,0.3);">
-                        Get Your Quote
-                    </a>
-                </div>
-            </div>
-
-            <!-- Leave a Review Section -->
-            <div style="margin-top: 80px; padding: 50px 30px; background: linear-gradient(135deg, #252525, #303030); border-radius: 20px; border: 1px solid rgba(160,160,160,0.3);">
-                <h3 style="color: #d4d4d4; margin-bottom: 15px; font-size: 2rem; text-align: center;">Share Your Experience</h3>
-                <p style="color: #a0a0a0; margin-bottom: 30px; text-align: center;">We'd love to hear about your detailing experience</p>
-                
-                <form id="reviewForm" style="max-width: 600px; margin: 0 auto;">
-                    <div style="margin-bottom: 20px;">
-                        <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #c8c8c8;">Your Name *</label>
-                        <input type="text" name="reviewName" required placeholder="John Smith" style="width: 100%; padding: 12px; border: 2px solid rgba(100, 100, 100, 0.5); background: rgba(30, 30, 30, 0.8); color: #e0e0e0; border-radius: 10px; font-size: 1rem;">
-                    </div>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #c8c8c8;">Rating *</label>
-                        <div style="display: flex; gap: 10px; font-size: 2rem;">
-                            <span class="star-rating" data-rating="1" style="cursor: pointer; color: #606060;">★</span>
-                            <span class="star-rating" data-rating="2" style="cursor: pointer; color: #606060;">★</span>
-                            <span class="star-rating" data-rating="3" style="cursor: pointer; color: #606060;">★</span>
-                            <span class="star-rating" data-rating="4" style="cursor: pointer; color: #606060;">★</span>
-                            <span class="star-rating" data-rating="5" style="cursor: pointer; color: #606060;">★</span>
-                        </div>
-                        <input type="hidden" name="rating" id="ratingValue" required>
-                    </div>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #c8c8c8;">Your Review *</label>
-                        <textarea name="reviewText" required rows="4" placeholder="Tell us about your experience with Hands Detail Shop..." style="width: 100%; padding: 12px; border: 2px solid rgba(100, 100, 100, 0.5); background: rgba(30, 30, 30, 0.8); color: #e0e0e0; border-radius: 10px; font-size: 1rem; resize: vertical;"></textarea>
-                    </div>
-                    
-                    <div style="margin-bottom: 20px;">
-                        <label style="display: block; margin-bottom: 8px; font-weight: 600; color: #c8c8c8;">Email (optional)</label>
-                        <input type="email" name="reviewEmail" placeholder="your@email.com" style="width: 100%; padding: 12px; border: 2px solid rgba(100, 100, 100, 0.5); background: rgba(30, 30, 30, 0.8); color: #e0e0e0; border-radius: 10px; font-size: 1rem;">
-                    </div>
-                    
-                    <button type="submit" style="background: linear-gradient(135deg, #505050, #707070); color: white; padding: 15px 40px; border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; width: 100%;">
-                        Submit Review
-                    </button>
-                </form>
-                
-                <p style="text-align: center; margin-top: 20px; color: #909090; font-size: 0.9rem;">
-                    Or leave a review on <a href="https://www.facebook.com/share/1FQft2edbP/" target="_blank" style="color: #b0b0b0; text-decoration: underline;">Facebook</a> or <a href="https://g.page/r/YOUR_GOOGLE_BUSINESS_LINK/review" target="_blank" style="color: #b0b0b0; text-decoration: underline;">Google</a>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Complete Vehicle Services Section -->
-    <section style="padding: 100px 20px; background: #0f0f0f; color: white;" id="packages">
-        <div style="max-width: 1400px; margin: 0 auto;">
-            <div style="text-align: center; margin-bottom: 60px;">
-                <h2 style="font-size: 2.8rem; margin-bottom: 20px; color: #d4d4d4;">Complete Vehicle Services</h2>
-                <p style="font-size: 1.3rem; opacity: 0.9; max-width: 800px; margin: 0 auto; color: #a0a0a0;">Beyond detailing, we're your one-stop shop for complete vehicle enhancement and repair</p>
-            </div>
-
-            <!-- Professional Benefits Banner -->
-            <div style="background: linear-gradient(135deg, #2a2a2a, #3a3a3a); border-radius: 20px; padding: 40px; margin-bottom: 60px; border: 1px solid rgba(100,100,100,0.3);">
-                <h3 style="text-align: center; font-size: 1.8rem; margin-bottom: 30px; color: #d4d4d4;">Why Choose Professional Detailing?</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: center;">
-                    <div>
-                        <div style="font-size: 3rem; margin-bottom: 10px;">🦠</div>
-                        <h4 style="margin-bottom: 10px; color: #c8c8c8;">99.9% Sanitization</h4>
-                        <p style="opacity: 0.85; color: #a0a0a0;">Removes bacteria & germs for a healthier environment</p>
-                    </div>
-                    <div>
-                        <div style="font-size: 3rem; margin-bottom: 10px;">🌸</div>
-                        <h4 style="margin-bottom: 10px; color: #c8c8c8;">Odor Elimination</h4>
-                        <p style="opacity: 0.85; color: #a0a0a0;">Eliminates odors at the source, not just masking</p>
-                    </div>
-                    <div>
-                        <div style="font-size: 3rem; margin-bottom: 10px;">✨</div>
-                        <h4 style="margin-bottom: 10px; color: #c8c8c8;">Deep Restoration</h4>
-                        <p style="opacity: 0.85; color: #a0a0a0;">Deep cleans carpets & upholstery to like-new condition</p>
-                    </div>
-                    <div>
-                        <div style="font-size: 3rem; margin-bottom: 10px;">💎</div>
-                        <h4 style="margin-bottom: 10px; color: #c8c8c8;">Investment Protection</h4>
-                        <p style="opacity: 0.85; color: #a0a0a0;">Maintains value and extends vehicle life</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Additional Services Grid -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
-                
-                <!-- Window Tinting -->
-                <div style="background: linear-gradient(135deg, #1a1a1a, #252525); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(100,100,100,0.3);">
-                    <div style="background: linear-gradient(135deg, #2a2a2a, #3a3a3a); padding: 30px; text-align: center;">
-                        <div style="font-size: 3rem; margin-bottom: 10px;">🔲</div>
-                        <h3 style="color: white; font-size: 1.8rem; margin: 0;">Window Tinting</h3>
-                    </div>
-                    <div style="padding: 30px; color: #b8b8b8;">
-                        <p style="margin-bottom: 20px; line-height: 1.6;">Professional automotive window tinting for privacy, UV protection, and enhanced appearance.</p>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Legal tint levels (PA compliant)</li>
-                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Premium ceramic film options</li>
-                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ 99% UV ray protection</li>
-                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Heat rejection technology</li>
-                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Lifetime warranty available</li>
-                            <li style="padding: 10px 0;">✓ Reduces interior fading</li>
-                        </ul>
-                        <div style="text-align: center; margin-top: 25px;">
-                            <div style="font-size: 1.8rem; background: linear-gradient(90deg, #808080, #b0b0b0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;">Starting at $185</div>
-                            <p style="color: #909090; font-size: 0.9rem; margin-top: 5px;">Full vehicle from $285</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Vinyl Wrap & Graphics -->
-                <div style="background: linear-gradient(135deg, #1a1a1a, #252525); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(100,100,100,0.3);">
-                    <div style="background: linear-gradient(135deg, #3a2a4a, #4a3a5a); padding: 30px; text-align: center;">
-                        <div style="font-size: 3rem; margin-bottom: 10px;">🎨</div>
-                        <h3 style="color: white; font-size: 1.8rem; margin: 0;">Vinyl Wrap & Graphics</h3>
-                    </div>
-                    <div style="padding: 30px; color: #b8b8b8;">
-                        <p style="margin-bottom: 20px; line-height: 1.6;">Transform your vehicle's appearance with custom vinyl wraps and professional graphics.</p>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Full vehicle color change wraps</li>
-                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Custom business graphics</li>
-                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Racing stripes & accents</li>
-                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Chrome delete packages</li>
-                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Matte, gloss, & satin finishes</li>
-                            <li style="padding: 10px 0;">✓ Paint protection film (PPF)</li>
-                        </ul>
-                        <div style="text-align: center; margin-top: 25px;">
-                            <div style="font-size: 1.8rem; background: linear-gradient(90deg, #808080, #b0b0b0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;">Custom Quotes</div>
-                            <p style="color: #909090; font-size: 0.9rem; margin-top: 5px;">Partial wraps from $485</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Headlight Restoration -->
-                <div style="background: linear-gradient(135deg, #1a1a1a, #252525); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(100,100,100,0.3);">
-                    <div style="background: linear-gradient(135deg, #3a3a2a, #4a4a3a); padding: 30px; text-align: center;">
-                        <div style="font-size: 3rem; margin-bottom: 10px;">💡</div>
-                        <h3 style="color: white; font-size: 1.8rem; margin: 0;">Headlight Restoration</h3>
-                    </div>
-                    <div style="padding: 30px; color: #b8b8b8;">
-                        <p style="margin-bottom: 20px; line-height: 1.6;">Restore clarity and brightness to foggy, yellowed headlights for improved safety and appearance.</p>
-                        <ul style="list-style: none; padding: 0;">
-                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Multi-stage sanding process</li>
-                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Professional grade compounds</li>
-                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ UV protective sealant</li>
-                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Improves night visibility</li>
-                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Passes PA inspection</li>
-                            <li style="padding: 10px 0;">✓ 1-year clarity guarantee</li>
-                        </ul>
-                        <div style="text-align: center; margin-top: 25px;">
-                            <div style="font-size: 1.8rem; background: linear-gradient(90deg, #808080, #b0b0b0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 700;">$85 per pair</div>
-                            <p style="color: #909090; font-size: 0.9rem; margin-top: 5px;">Same-day service available</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <h3 class="contact-title" style="text-align: center;">Ready to Schedule Your Detail?</h3>
-        <div class="contact-buttons">
-            <a href="tel:4127528684" class="contact-btn">
-                <span>📞</span>
-                <span>Call (412) 752-8684</span>
-            </a>
-            <a href="mailto:handsdetailshop@gmail.com" class="contact-btn">
-                <span>✉️</span>
-                <span>Email Us</span>
-            </a>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Hands Detail Shop</h3>
-                <p>Professional auto detailing services in partnership with 100 Details.</p>
+                <p>Professional mobile auto detailing services. We come to you!</p>
                 <p style="margin-top: 15px;">
                     <strong>📞 Phone:</strong> (412) 752-8684<br>
                     <strong>✉️ Email:</strong> <a href="mailto:handsdetailshop@gmail.com">handsdetailshop@gmail.com</a>
@@ -1911,19 +1107,19 @@
                     <a href="#" class="social-link">in</a>
                 </div>
             </div>
-            
+
             <div class="footer-section">
                 <h3>Our Services</h3>
                 <ul class="footer-links">
-                    <li><a href="#packages">Personal Vehicle Detailing</a></li>
-                    <li><a href="#packages">Monthly Residential Plans</a></li>
-                    <li><a href="#packages">Commercial Fleet Services</a></li>
-                    <li><a href="#packages">Yacht & Marine Detailing</a></li>
-                    <li><a href="#packages">RV & Motorhome Services</a></li>
-                    <li><a href="#packages">Ceramic Coating Protection</a></li>
+                    <li><a href="services.html#packages">Personal Vehicle Detailing</a></li>
+                    <li><a href="membership.html">Monthly Residential Plans</a></li>
+                    <li><a href="services.html">Commercial Fleet Services</a></li>
+                    <li><a href="services.html">Yacht & Marine Detailing</a></li>
+                    <li><a href="services.html">RV & Motorhome Services</a></li>
+                    <li><a href="services.html#packages">Ceramic Coating Protection</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-section">
                 <h3>Location & Hours</h3>
                 <p>
@@ -1937,24 +1133,24 @@
                     Sunday: By Appointment
                 </p>
             </div>
-            
+
             <div class="footer-section">
-                <h3>Our Partnership</h3>
+                <h3>Service Area</h3>
                 <div class="partner-info">
-                    <h4>100 Details</h4>
+                    <h4>Mobile Service</h4>
                     <p>
-                        Located in Arnold, PA<br>
-                        <a href="https://www.100details.com" target="_blank" style="color: #909090;">Visit 100 Details →</a>
+                        We come directly to you!<br>
+                        <strong style="color: #a0a0a0;">Convenience at your location</strong>
                     </p>
                 </div>
                 <p style="margin-top: 15px;">
-                    Proudly serving the Greater Pittsburgh area including Fox Chapel, Sewickley Heights, Upper St. Clair, and surrounding communities.
+                    Proudly serving the Greater Pittsburgh area including Fox Chapel, Sewickley Heights, Upper St. Clair, Arnold, and surrounding communities.
                 </p>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
-            <p>&copy; 2025 Hands Detail Shop | Partnership with 100 Details | All Rights Reserved</p>
+            <p>&copy; 2025 Hands Detail Shop | Mobile Detailing Services | All Rights Reserved</p>
             <p style="margin-top: 10px; font-size: 0.9rem;">Professional Auto Detailing Services | Arnold, PA | Licensed & Insured</p>
         </div>
     </footer>
@@ -1972,22 +1168,22 @@
                     <label>Name *</label>
                     <input type="text" required placeholder="Your full name">
                 </div>
-                
+
                 <div class="form-group">
                     <label>Phone *</label>
                     <input type="tel" required placeholder="(412) 555-0000">
                 </div>
-                
+
                 <div class="form-group">
                     <label>Email</label>
                     <input type="email" placeholder="your@email.com">
                 </div>
-                
+
                 <div class="form-group">
                     <label>Vehicle Information *</label>
                     <input type="text" required placeholder="Year, Make, Model (e.g., 2020 Honda Accord)">
                 </div>
-                
+
                 <div class="form-group">
                     <label>Service Type *</label>
                     <select required>
@@ -2018,17 +1214,17 @@
                         <option>Not Sure - Need Consultation</option>
                     </select>
                 </div>
-                
+
                 <div class="form-group">
                     <label>Preferred Date</label>
                     <input type="date">
                 </div>
-                
+
                 <div class="form-group">
                     <label>Message</label>
                     <textarea rows="3" placeholder="Tell us about your vehicle's condition or special requests..."></textarea>
                 </div>
-                
+
                 <button type="submit" class="form-submit">Submit Booking Request</button>
                 <p style="text-align: center; margin-top: 15px; color: #909090; font-size: 0.9rem;">
                     Or call us directly: <strong>(412) 752-8684</strong>
@@ -2038,14 +1234,6 @@
     </div>
 
     <script>
-        // Global variables
-        let selectedVehicle = null;
-        let selectedVehiclePrice = 0;
-        let selectedVehicleName = '';
-        let selectedTierPrice = 0;
-        let selectedTierName = '';
-        let ceramicAdded = false;
-
         // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.getElementById('header');
@@ -2059,7 +1247,7 @@
         // Mobile menu toggle
         const mobileToggle = document.getElementById('mobileToggle');
         const mobileNav = document.getElementById('mobileNav');
-        
+
         mobileToggle.addEventListener('click', function() {
             this.classList.toggle('active');
             mobileNav.classList.toggle('active');
@@ -2081,7 +1269,7 @@
                 if (target) {
                     const headerHeight = 80;
                     const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                    
+
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
@@ -2094,7 +1282,7 @@
         function openBookingModal(preSelectedService = '') {
             document.getElementById('bookingModal').classList.add('active');
             document.body.style.overflow = 'hidden';
-            
+
             if (preSelectedService) {
                 const serviceSelect = document.querySelector('#bookingForm select');
                 if (serviceSelect) {
@@ -2113,78 +1301,40 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Vehicle selection function
-        function selectVehicle(element, type) {
-            document.querySelectorAll('.quote-option').forEach(opt => {
-                opt.classList.remove('selected');
-            });
-            
-            element.classList.add('selected');
-            selectedVehicle = type;
-            
-            const prices = {
-                compact: { essential: '$65', executive: '$145', ceramic: '$585' },
-                midsize: { essential: '$75', executive: '$165', ceramic: '$685' },
-                suv: { essential: '$85', executive: '$185', ceramic: '$785' },
-                motorcycle: { essential: '$85', executive: '$145', ceramic: '$245' },
-                luxury: { essential: '$95+', executive: '$225+', ceramic: '$985+' }
-            };
-            
-            const priceLabels = {
-                compact: { label1: 'Essential Package', label2: 'Executive Package', label3: 'Presidential (Ceramic)' },
-                midsize: { label1: 'Essential Package', label2: 'Executive Package', label3: 'Presidential (Ceramic)' },
-                suv: { label1: 'Essential Package', label2: 'Executive Package', label3: 'Presidential (Ceramic)' },
-                motorcycle: { label1: 'Road Ready', label2: 'Chrome & Shine', label3: 'Show Bike' },
-                luxury: { label1: 'Essential Package', label2: 'Executive Package', label3: 'Presidential (Ceramic)' }
-            };
-            
-            const priceDisplay = document.getElementById('priceDisplay');
-            priceDisplay.style.display = 'block';
-            priceDisplay.style.opacity = '0';
-            
+        // Booking form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const name = this.querySelector('input[type="text"]').value;
+            const phone = this.querySelector('input[type="tel"]').value;
+            const service = this.querySelector('select').value;
+
+            const squareDepositLink = 'https://square.link/u/vScfV4jK';
+            const details = `${name} - ${phone} - ${service}`;
+
+            window.open(squareDepositLink + `?note=${encodeURIComponent(details)}`, '_blank');
+
             setTimeout(() => {
-                priceDisplay.style.transition = 'opacity 0.5s ease';
-                priceDisplay.style.opacity = '1';
-            }, 10);
-            
-            document.getElementById('essentialPrice').textContent = prices[type].essential;
-            document.getElementById('executivePrice').textContent = prices[type].executive;
-            document.getElementById('ceramicPrice').textContent = prices[type].ceramic;
-            
-            document.getElementById('package1Label').textContent = priceLabels[type].label1;
-            document.getElementById('package2Label').textContent = priceLabels[type].label2;
-            document.getElementById('package3Label').textContent = priceLabels[type].label3;
-            
-            const existingBtn = document.getElementById('quoteBookingBtn');
-            if (existingBtn) {
-                existingBtn.remove();
+                alert(`Payment window opened for $30 deposit.\n\nAfter payment, we'll contact you at ${phone} within 24 hours to confirm your appointment.`);
+                closeBookingModal();
+                this.reset();
+            }, 500);
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('bookingModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBookingModal();
             }
-            
-            const bookingBtn = document.createElement('div');
-            bookingBtn.id = 'quoteBookingBtn';
-            bookingBtn.style.textAlign = 'center';
-            bookingBtn.style.marginTop = '30px';
-            
-            const buttonTexts = {
-                compact: 'Book Your Car Detail',
-                midsize: 'Book Your Car Detail', 
-                suv: 'Book Your SUV Detail',
-                motorcycle: 'Book Your Motorcycle Detail',
-                luxury: 'Book Your Luxury Detail'
-            };
-            
-            bookingBtn.innerHTML = `
-                <button onclick="openBookingModal('${type}')" style="background: linear-gradient(135deg, #505050, #707070); color: white; padding: 15px 40px; border: 1px solid rgba(160,160,160,0.3); border-radius: 50px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
-                    ${buttonTexts[type]} →
-                </button>
-            `;
-            
-            priceDisplay.appendChild(bookingBtn);
-            
-            setTimeout(() => {
-                priceDisplay.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }, 100);
-        }
+        });
+
+        // Membership Calculator Variables
+        let selectedVehiclePrice = 0;
+        let selectedVehicleName = '';
+        let selectedTierPrice = 0;
+        let selectedTierName = '';
+        let ceramicAdded = false;
 
         // Membership Calculator Functions
         function selectVehicleType(element, price, name) {
@@ -2192,10 +1342,10 @@
                 btn.style.background = 'rgba(60,60,60,0.5)';
                 btn.style.borderColor = 'rgba(100,100,100,0.3)';
             });
-            
+
             element.style.background = 'rgba(80,80,80,0.7)';
             element.style.borderColor = '#909090';
-            
+
             selectedVehiclePrice = price;
             selectedVehicleName = name;
             calculateTotal();
@@ -2206,10 +1356,10 @@
                 btn.style.background = 'rgba(60,60,60,0.5)';
                 btn.style.borderColor = 'rgba(100,100,100,0.3)';
             });
-            
+
             element.style.background = 'rgba(80,80,80,0.7)';
             element.style.borderColor = '#909090';
-            
+
             selectedTierPrice = price;
             selectedTierName = name;
             calculateTotal();
@@ -2239,7 +1389,7 @@
             document.getElementById('breakdownText').innerHTML = breakdown;
             document.getElementById('totalAmount').textContent = `$${totalUpfront}`;
             document.getElementById('monthlyAmount').textContent = `$${monthlyFee}/month`;
-            
+
             document.getElementById('membershipTotal').style.display = 'block';
             document.getElementById('paymentButton').style.display = 'block';
 
@@ -2256,100 +1406,13 @@
             const payment = window.membershipPayment;
             const squareVariableLink = 'https://square.link/u/bz9x5CLc';
             const details = `Membership: ${payment.vehicle} ${payment.tier}${payment.ceramic ? ' + Ceramic' : ''} | Monthly: $${payment.monthly}`;
-            
+
             window.open(squareVariableLink + `?amount=${payment.total}00&note=${encodeURIComponent(details)}`, '_blank');
-            
+
             setTimeout(() => {
                 alert(`Payment window opened for $${payment.total}\n\nPlease enter exactly: $${payment.total}\n\nAfter payment, we'll contact you within 24 hours to:\n✓ Assign your service day (Mon-Thu)\n✓ Schedule restoration detail\n✓ Set up monthly billing ($${payment.monthly}/month)`);
             }, 500);
         }
-
-        // Booking form submission
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const name = this.querySelector('input[type="text"]').value;
-            const phone = this.querySelector('input[type="tel"]').value;
-            const service = this.querySelector('select').value;
-            
-            const squareDepositLink = 'https://square.link/u/vScfV4jK';
-            const details = `${name} - ${phone} - ${service}`;
-            
-            window.open(squareDepositLink + `?note=${encodeURIComponent(details)}`, '_blank');
-            
-            setTimeout(() => {
-                alert(`Payment window opened for $30 deposit.\n\nAfter payment, we'll contact you at ${phone} within 24 hours to confirm your appointment.`);
-                closeBookingModal();
-                this.reset();
-            }, 500);
-        });
-
-        // Close modal when clicking outside
-        document.getElementById('bookingModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeBookingModal();
-            }
-        });
-
-        // Star Rating System
-        const stars = document.querySelectorAll('.star-rating');
-        const ratingValue = document.getElementById('ratingValue');
-        
-        stars.forEach(star => {
-            star.addEventListener('click', function() {
-                const rating = this.getAttribute('data-rating');
-                ratingValue.value = rating;
-                
-                stars.forEach(s => {
-                    if (s.getAttribute('data-rating') <= rating) {
-                        s.style.color = '#c8c8c8';
-                    } else {
-                        s.style.color = '#606060';
-                    }
-                });
-            });
-            
-            star.addEventListener('mouseenter', function() {
-                const rating = this.getAttribute('data-rating');
-                stars.forEach(s => {
-                    if (s.getAttribute('data-rating') <= rating) {
-                        s.style.color = '#a0a0a0';
-                    }
-                });
-            });
-        });
-        
-        document.querySelector('.star-rating').parentElement.addEventListener('mouseleave', function() {
-            const currentRating = ratingValue.value;
-            stars.forEach(s => {
-                if (currentRating && s.getAttribute('data-rating') <= currentRating) {
-                    s.style.color = '#c8c8c8';
-                } else {
-                    s.style.color = '#606060';
-                }
-            });
-        });
-
-        // Review Form Submission
-        document.getElementById('reviewForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
-            const reviewData = {
-                name: formData.get('reviewName'),
-                rating: formData.get('rating'),
-                text: formData.get('reviewText'),
-                email: formData.get('reviewEmail'),
-                date: new Date().toISOString()
-            };
-            
-            alert(`Thank you ${reviewData.name}!\n\nYour ${reviewData.rating}-star review has been submitted.\n\nWe appreciate your feedback and will review it shortly.`);
-            
-            this.reset();
-            ratingValue.value = '';
-            stars.forEach(s => s.style.color = '#606060');
-        });
     </script>
 
     <!--Start of Tawk.to Script-->
