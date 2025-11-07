@@ -16,7 +16,8 @@
             line-height: 1.6;
             color: #e0e0e0;
             overflow-x: hidden;
-            background: #0f0f0f;
+            background: linear-gradient(135deg, #0a1929 0%, #0d1b2a 50%, #001219 100%);
+            background-attachment: fixed;
         }
 
         /* Header Navigation */
@@ -25,16 +26,16 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(20, 20, 20, 0.95);
+            background: rgba(10, 25, 41, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+            border-bottom: 1px solid rgba(66, 165, 245, 0.3);
         }
 
         header.scrolled {
-            background: rgba(15, 15, 15, 0.98);
-            box-shadow: 0 2px 30px rgba(192, 192, 192, 0.15);
+            background: rgba(13, 27, 42, 0.98);
+            box-shadow: 0 2px 30px rgba(66, 165, 245, 0.25);
         }
 
         .nav-container {
@@ -61,7 +62,7 @@
         .mobile-badge {
             font-size: 0.75rem;
             color: rgba(180, 180, 180, 0.8);
-            border-left: 2px solid rgba(160, 160, 160, 0.4);
+            border-left: 2px solid rgba(66, 165, 245, 0.5);
             padding-left: 15px;
             font-weight: 500;
         }
@@ -89,7 +90,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, #909090, #c8c8c8);
+            background: linear-gradient(90deg, #42a5f5, #90caf9);
             transition: width 0.3s ease;
         }
 
@@ -115,39 +116,39 @@
         .hours-header {
             color: rgba(180, 180, 180, 0.7);
             font-size: 0.8rem;
-            border-right: 1px solid rgba(160, 160, 160, 0.4);
+            border-right: 1px solid rgba(66, 165, 245, 0.5);
             padding-right: 15px;
         }
 
         .cta-header {
-            background: linear-gradient(135deg, #4a4a4a, #6a6a6a);
+            background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5);
             color: white;
             padding: 10px 28px;
             border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            border: 1px solid rgba(160, 160, 160, 0.3);
+            border: 1px solid rgba(66, 165, 245, 0.4);
             font-size: 0.9rem;
         }
 
         .cta-header:hover {
-            background: linear-gradient(135deg, #5a5a5a, #7a7a7a);
+            background: linear-gradient(135deg, #1976d2, #2196f3, #64b5f6);
             transform: translateY(-2px);
-            box-shadow: 0 5px 25px rgba(180, 180, 180, 0.3);
+            box-shadow: 0 5px 25px rgba(66, 165, 245, 0.5);
             border-color: rgba(200, 200, 200, 0.5);
         }
 
         /* Promotional Banner */
         .promo-banner {
-            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            background: linear-gradient(135deg, #0d47a1, #1565c0, #1976d2);
             color: #c8c8c8;
             padding: 15px;
             text-align: center;
             font-weight: 600;
             position: relative;
             animation: slideDown 0.5s ease-out;
-            border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+            border-bottom: 1px solid rgba(66, 165, 245, 0.3);
         }
 
         @keyframes slideDown {
@@ -175,29 +176,29 @@
         }
 
         .modal-content {
-            background: #1a1a1a;
+            background: #0d1b2a;
             border-radius: 20px;
             max-width: 600px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
-            border: 1px solid rgba(160, 160, 160, 0.3);
+            border: 1px solid rgba(66, 165, 245, 0.4);
         }
 
         .modal-header {
-            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+            background: linear-gradient(135deg, #0d47a1, #1565c0);
             color: white;
             padding: 30px;
             border-radius: 20px 20px 0 0;
-            border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+            border-bottom: 1px solid rgba(66, 165, 245, 0.3);
         }
 
         .modal-close {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: rgba(160, 160, 160, 0.2);
+            background: rgba(66, 165, 245, 0.3);
             border: none;
             color: white;
             width: 40px;
@@ -209,7 +210,7 @@
         }
 
         .modal-close:hover {
-            background: rgba(180, 180, 180, 0.3);
+            background: rgba(66, 165, 245, 0.5);
             transform: rotate(90deg);
         }
 
@@ -241,15 +242,15 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #909090;
-            background: rgba(40, 40, 40, 0.9);
+            border-color: #42a5f5;
+            background: rgba(13, 27, 42, 0.95);
         }
 
         .form-submit {
-            background: linear-gradient(135deg, #4a4a4a, #6a6a6a);
+            background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5);
             color: white;
             padding: 15px 40px;
-            border: 1px solid rgba(160, 160, 160, 0.3);
+            border: 1px solid rgba(66, 165, 245, 0.4);
             border-radius: 50px;
             font-size: 1.1rem;
             font-weight: 600;
@@ -259,9 +260,9 @@
         }
 
         .form-submit:hover {
-            background: linear-gradient(135deg, #5a5a5a, #7a7a7a);
+            background: linear-gradient(135deg, #1976d2, #2196f3, #64b5f6);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(180, 180, 180, 0.3);
+            box-shadow: 0 10px 30px rgba(66, 165, 245, 0.5);
         }
 
         /* Mobile Menu */
@@ -297,10 +298,10 @@
             top: 70px;
             left: 0;
             right: 0;
-            background: rgba(20, 20, 20, 0.98);
+            background: rgba(10, 25, 41, 0.98);
             padding: 20px;
             box-shadow: 0 5px 30px rgba(0,0,0,0.5);
-            border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+            border-bottom: 1px solid rgba(66, 165, 245, 0.3);
         }
 
         .mobile-nav.active {
@@ -317,7 +318,7 @@
         }
 
         .mobile-nav a:hover {
-            background: rgba(80,80,80,0.3);
+            background: rgba(21, 101, 192, 0.4);
             padding-left: 25px;
             color: white;
         }
@@ -327,13 +328,13 @@
             min-height: 100vh;
             padding-top: 80px;
             background:
-                linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(40, 40, 40, 0.9)),
+                linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(13, 27, 42, 0.95)),
                 repeating-linear-gradient(
                     45deg,
                     transparent,
                     transparent 10px,
-                    rgba(100, 100, 100, 0.03) 10px,
-                    rgba(100, 100, 100, 0.03) 20px
+                    rgba(66, 165, 245, 0.05) 10px,
+                    rgba(66, 165, 245, 0.05) 20px
                 );
             display: flex;
             align-items: center;
@@ -362,7 +363,7 @@
             font-size: clamp(1.3rem, 3vw, 1.8rem);
             font-weight: 700;
             margin-bottom: 15px;
-            background: linear-gradient(90deg, #a0a0a0, #d0d0d0, #a0a0a0);
+            background: linear-gradient(90deg, #64b5f6, #90caf9, #64b5f6);
             background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -379,13 +380,13 @@
 
         .experience-banner {
             display: inline-block;
-            background: linear-gradient(135deg, #3a3a3a, #505050);
+            background: linear-gradient(135deg, #0d47a1, #1565c0, #1976d2);
             padding: 15px 40px;
             border-radius: 50px;
             font-size: 1.4rem;
             font-weight: 800;
             margin: 20px 0;
-            border: 2px solid rgba(160, 160, 160, 0.3);
+            border: 2px solid rgba(66, 165, 245, 0.4);
             animation: fadeInUp 1s ease-out 0.4s both;
             letter-spacing: 1px;
         }
@@ -427,15 +428,15 @@
         .scroll-indicator::after {
             content: "↓";
             font-size: 2rem;
-            color: rgba(160,160,160,0.6);
+            color: rgba(100, 181, 246, 0.6);
         }
 
         /* About Section */
         .about-section {
             padding: 100px 20px;
-            background: linear-gradient(135deg, #1a1a1a, #252525);
-            border-top: 1px solid rgba(160, 160, 160, 0.2);
-            border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+            background: linear-gradient(135deg, #0d1b2a, #1a2942);
+            border-top: 1px solid rgba(66, 165, 245, 0.3);
+            border-bottom: 1px solid rgba(66, 165, 245, 0.3);
         }
 
         .about-container {
@@ -479,10 +480,10 @@
         }
 
         .about-highlight {
-            background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+            background: linear-gradient(135deg, #0d47a1, #1565c0);
             padding: 40px;
             border-radius: 20px;
-            border: 1px solid rgba(160, 160, 160, 0.2);
+            border: 1px solid rgba(66, 165, 245, 0.3);
         }
 
         .about-stats {
@@ -495,7 +496,7 @@
         .stat-item {
             text-align: center;
             padding: 20px;
-            background: rgba(50, 50, 50, 0.5);
+            background: rgba(13, 71, 161, 0.3);
             border-radius: 15px;
             border: 1px solid rgba(160, 160, 160, 0.15);
         }
@@ -503,7 +504,7 @@
         .stat-number {
             font-size: 2.5rem;
             font-weight: 800;
-            background: linear-gradient(90deg, #909090, #c8c8c8);
+            background: linear-gradient(90deg, #42a5f5, #90caf9);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -517,12 +518,12 @@
 
         /* Contact CTA Section */
         .contact-section {
-            background: linear-gradient(135deg, #2a2a2a, #404040);
+            background: linear-gradient(135deg, #0d47a1, #1565c0);
             padding: 60px 20px;
             border-radius: 0;
             margin-top: 0;
-            border-top: 1px solid rgba(160, 160, 160, 0.3);
-            border-bottom: 1px solid rgba(160, 160, 160, 0.3);
+            border-top: 1px solid rgba(66, 165, 245, 0.4);
+            border-bottom: 1px solid rgba(66, 165, 245, 0.4);
         }
 
         .contact-title {
@@ -540,7 +541,7 @@
         }
 
         .contact-btn {
-            background: linear-gradient(135deg, #505050, #707070);
+            background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5);
             color: white;
             padding: 18px 35px;
             border-radius: 50px;
@@ -551,21 +552,21 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            border: 1px solid rgba(160, 160, 160, 0.3);
+            border: 1px solid rgba(66, 165, 245, 0.4);
         }
 
         .contact-btn:hover {
-            background: linear-gradient(135deg, #606060, #808080);
+            background: linear-gradient(135deg, #1976d2, #2196f3, #64b5f6);
             transform: scale(1.05);
             box-shadow: 0 10px 40px rgba(180,180,180,0.3);
         }
 
         /* Footer */
         footer {
-            background: #0a0a0a;
+            background: #001219;
             color: #b0b0b0;
             padding: 60px 20px 30px;
-            border-top: 1px solid rgba(160, 160, 160, 0.2);
+            border-top: 1px solid rgba(66, 165, 245, 0.3);
         }
 
         .footer-content {
@@ -604,7 +605,7 @@
         }
 
         .partner-info {
-            background: rgba(60,60,60,0.3);
+            background: rgba(13, 71, 161, 0.3);
             border-left: 3px solid #808080;
             padding: 15px;
             margin-top: 15px;
@@ -619,7 +620,7 @@
             text-align: center;
             padding-top: 30px;
             border-top: 1px solid rgba(100,100,100,0.3);
-            color: rgba(160,160,160,0.6);
+            color: rgba(100, 181, 246, 0.6);
         }
 
         .social-links {
@@ -631,7 +632,7 @@
         .social-link {
             width: 40px;
             height: 40px;
-            background: rgba(80,80,80,0.3);
+            background: rgba(21, 101, 192, 0.4);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -645,7 +646,7 @@
         .social-link:hover {
             background: rgba(100,100,100,0.5);
             transform: translateY(-3px);
-            border-color: rgba(160, 160, 160, 0.5);
+            border-color: rgba(66, 165, 245, 0.6);
         }
 
         /* Animations */
@@ -747,7 +748,7 @@
             <a href="reviews.html">Reviews</a>
             <a href="https://medium.com/@handsdetailshop" target="_blank">Blog</a>
             <a href="contact.html">Contact</a>
-            <a href="tel:4127528684" style="background: linear-gradient(135deg, #505050, #707070); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">📞 Call Now</a>
+            <a href="tel:4127528684" style="background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">📞 Call Now</a>
             <a href="sms:4127528684" style="background: rgba(50,50,50,0.5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">💬 Text Now</a>
         </nav>
     </header>
@@ -767,7 +768,7 @@
             </div>
 
             <!-- How It Works -->
-            <div style="background: linear-gradient(135deg, #2a2a2a, #3a3a3a); border-radius: 20px; padding: 50px; margin-bottom: 60px; border: 1px solid rgba(160,160,160,0.3);">
+            <div style="background: linear-gradient(135deg, #0d47a1, #1565c0); border-radius: 20px; padding: 50px; margin-bottom: 60px; border: 1px solid rgba(160,160,160,0.3);">
                 <h3 style="color: #d4d4d4; margin-bottom: 30px; font-size: 1.8rem; text-align: center;">How Membership Works</h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
                     <div style="text-align: center;">
@@ -792,11 +793,11 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 60px;">
                 
                 <!-- Essential Tier -->
-                <div style="background: linear-gradient(135deg, #1a1a1a, #252525); border-radius: 20px; padding: 40px; border: 1px solid rgba(100,100,100,0.3); position: relative; overflow: hidden;">
+                <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border-radius: 20px; padding: 40px; border: 1px solid rgba(100,100,100,0.3); position: relative; overflow: hidden;">
                     <div style="position: absolute; top: 0; right: 0; background: linear-gradient(135deg, #505050, #606060); color: white; padding: 8px 20px; border-radius: 0 20px 0 15px; font-size: 0.85rem; font-weight: 600;">STARTER</div>
                     <h3 style="color: #d4d4d4; font-size: 1.8rem; margin: 20px 0 15px 0;">Essential Maintain</h3>
                     <div style="margin-bottom: 25px;">
-                        <span style="font-size: 3rem; font-weight: 800; background: linear-gradient(90deg, #909090, #c8c8c8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">$75</span>
+                        <span style="font-size: 3rem; font-weight: 800; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">$75</span>
                         <span style="color: #a0a0a0; font-size: 1.1rem;">/month</span>
                     </div>
                     <ul style="list-style: none; padding: 0; margin-bottom: 30px;">
@@ -806,7 +807,7 @@
                         <li style="padding: 12px 0; border-bottom: 1px solid rgba(100,100,100,0.3); color: #b8b8b8;">✓ Tire dressing</li>
                         <li style="padding: 12px 0; color: #b8b8b8;">✓ Assigned service day</li>
                     </ul>
-                    <button onclick="openBookingModal('essential-membership')" style="background: linear-gradient(135deg, #505050, #707070); color: white; padding: 15px; border: 1px solid rgba(160,160,160,0.3); border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.3s ease;">
+                    <button onclick="openBookingModal('essential-membership')" style="background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5); color: white; padding: 15px; border: 1px solid rgba(160,160,160,0.3); border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.3s ease;">
                         Join Essential
                     </button>
                 </div>
@@ -826,17 +827,17 @@
                         <li style="padding: 12px 0; border-bottom: 1px solid rgba(100,100,100,0.3); color: #c8c8c8;">✓ Door jamb cleaning</li>
                         <li style="padding: 12px 0; color: #c8c8c8;">✓ Priority scheduling</li>
                     </ul>
-                    <button onclick="openBookingModal('premium-membership')" style="background: linear-gradient(135deg, #606060, #808080); color: white; padding: 15px; border: 1px solid rgba(180,180,180,0.4); border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.3s ease;">
+                    <button onclick="openBookingModal('premium-membership')" style="background: linear-gradient(135deg, #1976d2, #2196f3, #64b5f6); color: white; padding: 15px; border: 1px solid rgba(180,180,180,0.4); border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.3s ease;">
                         Join Premium
                     </button>
                 </div>
 
                 <!-- Ultimate Tier -->
-                <div style="background: linear-gradient(135deg, #1a1a1a, #252525); border-radius: 20px; padding: 40px; border: 1px solid rgba(100,100,100,0.3); position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: 0; right: 0; background: linear-gradient(135deg, #505050, #707070); color: white; padding: 8px 20px; border-radius: 0 20px 0 15px; font-size: 0.85rem; font-weight: 600;">ELITE</div>
+                <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border-radius: 20px; padding: 40px; border: 1px solid rgba(100,100,100,0.3); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; right: 0; background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5); color: white; padding: 8px 20px; border-radius: 0 20px 0 15px; font-size: 0.85rem; font-weight: 600;">ELITE</div>
                     <h3 style="color: #d4d4d4; font-size: 1.8rem; margin: 20px 0 15px 0;">Ultimate Maintain</h3>
                     <div style="margin-bottom: 25px;">
-                        <span style="font-size: 3rem; font-weight: 800; background: linear-gradient(90deg, #909090, #c8c8c8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">$145</span>
+                        <span style="font-size: 3rem; font-weight: 800; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">$145</span>
                         <span style="color: #a0a0a0; font-size: 1.1rem;">/month</span>
                     </div>
                     <ul style="list-style: none; padding: 0; margin-bottom: 30px;">
@@ -846,7 +847,7 @@
                         <li style="padding: 12px 0; border-bottom: 1px solid rgba(100,100,100,0.3); color: #b8b8b8;">✓ Spot stain removal</li>
                         <li style="padding: 12px 0; color: #b8b8b8;">✓ Engine bay wipe down</li>
                     </ul>
-                    <button onclick="openBookingModal('ultimate-membership')" style="background: linear-gradient(135deg, #505050, #707070); color: white; padding: 15px; border: 1px solid rgba(160,160,160,0.3); border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.3s ease;">
+                    <button onclick="openBookingModal('ultimate-membership')" style="background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5); color: white; padding: 15px; border: 1px solid rgba(160,160,160,0.3); border-radius: 50px; font-size: 1rem; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.3s ease;">
                         Join Ultimate
                     </button>
                 </div>
@@ -859,25 +860,25 @@
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
                     <div style="text-align: center; padding: 20px; background: rgba(50,50,50,0.5); border-radius: 15px;">
                         <div style="color: #c8c8c8; font-size: 0.9rem; margin-bottom: 8px;">Compact Car</div>
-                        <div style="font-size: 2rem; font-weight: 700; background: linear-gradient(90deg, #909090, #c8c8c8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">$285</div>
+                        <div style="font-size: 2rem; font-weight: 700; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">$285</div>
                     </div>
                     <div style="text-align: center; padding: 20px; background: rgba(50,50,50,0.5); border-radius: 15px;">
                         <div style="color: #c8c8c8; font-size: 0.9rem; margin-bottom: 8px;">Mid-Size Car</div>
-                        <div style="font-size: 2rem; font-weight: 700; background: linear-gradient(90deg, #909090, #c8c8c8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">$365</div>
+                        <div style="font-size: 2rem; font-weight: 700; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">$365</div>
                     </div>
                     <div style="text-align: center; padding: 20px; background: rgba(50,50,50,0.5); border-radius: 15px;">
                         <div style="color: #c8c8c8; font-size: 0.9rem; margin-bottom: 8px;">SUV/Truck</div>
-                        <div style="font-size: 2rem; font-weight: 700; background: linear-gradient(90deg, #909090, #c8c8c8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">$445</div>
+                        <div style="font-size: 2rem; font-weight: 700; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">$445</div>
                     </div>
                     <div style="text-align: center; padding: 20px; background: rgba(50,50,50,0.5); border-radius: 15px;">
                         <div style="color: #c8c8c8; font-size: 0.9rem; margin-bottom: 8px;">Luxury Vehicle</div>
-                        <div style="font-size: 2rem; font-weight: 700; background: linear-gradient(90deg, #909090, #c8c8c8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">$525</div>
+                        <div style="font-size: 2rem; font-weight: 700; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">$525</div>
                     </div>
                 </div>
             </div>
 
             <!-- Ceramic Coating Upgrade -->
-            <div style="background: linear-gradient(135deg, #1a1a1a, #252525); border-radius: 20px; padding: 50px; border: 2px solid #808080; margin-bottom: 60px;">
+            <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border-radius: 20px; padding: 50px; border: 2px solid #808080; margin-bottom: 60px;">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
                     <div>
                         <h3 style="color: #d4d4d4; font-size: 2rem; margin-bottom: 20px;">Ceramic Coating Upgrade</h3>
@@ -903,7 +904,7 @@
             </div>
 
             <!-- Savings Calculator -->
-            <div style="background: linear-gradient(135deg, #2a2a2a, #3a3a3a); border-radius: 20px; padding: 50px; border: 1px solid rgba(160,160,160,0.3);">
+            <div style="background: linear-gradient(135deg, #0d47a1, #1565c0); border-radius: 20px; padding: 50px; border: 1px solid rgba(160,160,160,0.3);">
                 <h3 style="color: #d4d4d4; font-size: 2rem; margin-bottom: 30px; text-align: center;">Investment Breakdown: Premium Membership</h3>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
                     <!-- Without Ceramic -->
@@ -920,7 +921,7 @@
                             </div>
                             <div style="display: flex; justify-content: space-between; padding: 15px 0; font-weight: 700; font-size: 1.2rem;">
                                 <span style="color: #c8c8c8;">Year 1 Total</span>
-                                <span style="background: linear-gradient(90deg, #909090, #c8c8c8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">$1,685</span>
+                                <span style="background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">$1,685</span>
                             </div>
                             <div style="padding: 10px 0; color: #a0a0a0;">
                                 Years 2-5: $1,320/year
@@ -947,7 +948,7 @@
                             <div style="padding: 10px 0; color: #a0a0a0;">
                                 Years 2-5: $1,020/year
                             </div>
-                            <div style="background: rgba(80,80,80,0.3); padding: 15px; border-radius: 10px; margin-top: 15px; border: 1px solid rgba(160,160,160,0.2);">
+                            <div style="background: rgba(21, 101, 192, 0.4); padding: 15px; border-radius: 10px; margin-top: 15px; border: 1px solid rgba(160,160,160,0.2);">
                                 <div style="color: #d0d0d0; font-weight: 700; font-size: 1.1rem;">5-Year Savings: $1,500</div>
                                 <div style="color: #b0b0b0; font-size: 0.9rem; margin-top: 5px;">Plus 5-year paint protection</div>
                             </div>
@@ -960,14 +961,14 @@
             <div style="text-align: center; margin-top: 50px;">
                 <h3 style="color: #d4d4d4; margin-bottom: 20px; font-size: 1.6rem;">Ready to Maintain Excellence?</h3>
                 <p style="color: #a0a0a0; margin-bottom: 30px;">Join our elite membership program. Limited slots available per service day.</p>
-                <button onclick="openBookingModal('membership')" style="background: linear-gradient(135deg, #606060, #808080); color: white; padding: 18px 50px; border: 1px solid rgba(180,180,180,0.4); border-radius: 50px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease;">
+                <button onclick="openBookingModal('membership')" style="background: linear-gradient(135deg, #1976d2, #2196f3, #64b5f6); color: white; padding: 18px 50px; border: 1px solid rgba(180,180,180,0.4); border-radius: 50px; font-size: 1.2rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease;">
                     Apply for Membership
                 </button>
                 <p style="color: #909090; margin-top: 20px; font-size: 0.9rem;">Service days assigned at enrollment (Monday-Thursday, biweekly rotation)</p>
             </div>
 
             <!-- Membership Payment Calculator -->
-            <div style="background: linear-gradient(135deg, #1a1a1a, #252525); border-radius: 20px; padding: 50px; margin-top: 60px; border: 2px solid #808080;">
+            <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border-radius: 20px; padding: 50px; margin-top: 60px; border: 2px solid #808080;">
                 <h3 style="color: #d4d4d4; font-size: 2rem; margin-bottom: 15px; text-align: center;">Calculate Your Membership Investment</h3>
                 <p style="color: #a0a0a0; text-align: center; margin-bottom: 40px;">Select your options below to calculate total initial payment (Restoration + First Month)</p>
                 
@@ -1016,7 +1017,7 @@
                     </div>
 
                     <!-- Total Display -->
-                    <div id="membershipTotal" style="background: linear-gradient(135deg, #2a2a2a, #3a3a3a); padding: 30px; border-radius: 15px; border: 2px solid #909090; margin-bottom: 30px; display: none;">
+                    <div id="membershipTotal" style="background: linear-gradient(135deg, #0d47a1, #1565c0); padding: 30px; border-radius: 15px; border: 2px solid #909090; margin-bottom: 30px; display: none;">
                         <div style="text-align: center;">
                             <div style="color: #a0a0a0; margin-bottom: 10px;">Initial Payment Breakdown:</div>
                             <div id="breakdownText" style="color: #b8b8b8; margin-bottom: 15px; line-height: 1.8;"></div>
@@ -1032,14 +1033,14 @@
 
                     <!-- Payment Button -->
                     <div id="paymentButton" style="display: none; text-align: center;">
-                        <div style="background: rgba(80,80,80,0.3); padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 1px solid rgba(160,160,160,0.2);">
+                        <div style="background: rgba(21, 101, 192, 0.4); padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 1px solid rgba(160,160,160,0.2);">
                             <div style="color: #f39c12; font-size: 1.1rem; font-weight: 700; margin-bottom: 10px;">⚠️ IMPORTANT PAYMENT INSTRUCTIONS</div>
                             <div style="color: #c8c8c8; line-height: 1.6;">
                                 When Square opens, <strong>manually enter the amount shown above</strong> in the payment field.<br>
                                 The price will NOT auto-fill - you must type it in yourself.
                             </div>
                         </div>
-                        <button onclick="proceedToPayment()" style="background: linear-gradient(135deg, #606060, #808080); color: white; padding: 20px 60px; border: 1px solid rgba(180,180,180,0.4); border-radius: 50px; font-size: 1.3rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease; width: 100%;">
+                        <button onclick="proceedToPayment()" style="background: linear-gradient(135deg, #1976d2, #2196f3, #64b5f6); color: white; padding: 20px 60px; border: 1px solid rgba(180,180,180,0.4); border-radius: 50px; font-size: 1.3rem; font-weight: 700; cursor: pointer; transition: all 0.3s ease; width: 100%;">
                             Pay Now & Secure Your Spot →
                         </button>
                         <p style="color: #909090; margin-top: 15px; font-size: 0.9rem;">Secure payment via Square. We'll contact you within 24 hours to schedule.</p>
@@ -1048,7 +1049,7 @@
             </div>
 
             <!-- Blog & Social Follow CTA - NEW -->
-            <div style="background: linear-gradient(135deg, #2a2a2a, #3a3a3a); border-radius: 20px; padding: 50px 30px; margin-top: 60px; border: 1px solid rgba(160,160,160,0.3); text-align: center;">
+            <div style="background: linear-gradient(135deg, #0d47a1, #1565c0); border-radius: 20px; padding: 50px 30px; margin-top: 60px; border: 1px solid rgba(160,160,160,0.3); text-align: center;">
                 <h3 style="color: #d4d4d4; font-size: 2rem; margin-bottom: 20px;">Stay Informed. Protect Your Investment.</h3>
                 <p style="color: #b0b0b0; font-size: 1.2rem; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">Follow our blog for expert detailing insights, paint protection tips, and the science behind automotive care. New articles weekly.</p>
                 
@@ -1070,7 +1071,7 @@
                 </div>
                 
                 <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px;">
-                    <a href="https://medium.com/@handsdetailshop" target="_blank" style="background: linear-gradient(135deg, #606060, #808080); color: white; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.1rem; border: 1px solid rgba(180,180,180,0.4); display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s ease;">
+                    <a href="https://medium.com/@handsdetailshop" target="_blank" style="background: linear-gradient(135deg, #1976d2, #2196f3, #64b5f6); color: white; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.1rem; border: 1px solid rgba(180,180,180,0.4); display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s ease;">
                         <span>📚</span>
                         <span>Follow Blog & Get Free Guide</span>
                     </a>
@@ -1080,7 +1081,7 @@
                     </a>
                 </div>
                 
-                <div style="background: rgba(60,60,60,0.3); padding: 20px; border-radius: 15px; max-width: 600px; margin: 0 auto;">
+                <div style="background: rgba(13, 71, 161, 0.3); padding: 20px; border-radius: 15px; max-width: 600px; margin: 0 auto;">
                     <div style="color: #c8c8c8; font-weight: 600; margin-bottom: 15px;">Recent Blog Topics:</div>
                     <div style="color: #a0a0a0; line-height: 2; text-align: left;">
                         ✓ The Invisible War: What's Happening at the Microscopic Level<br>
