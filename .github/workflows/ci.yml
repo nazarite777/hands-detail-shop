@@ -221,31 +221,7 @@ jobs:
           uploadArtifacts: true
           temporaryPublicStorage: true
 
-  # Job 8: Deploy to Netlify (on main branch only)
-  deploy:
-    name: Deploy to Production
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    needs: [quality, test, build, security]
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@v2.1
-        with:
-          publish-dir: '.'
-          production-branch: main
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Deploy from GitHub Actions"
-          enable-pull-request-comment: true
-          enable-commit-comment: true
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        timeout-minutes: 5
-        continue-on-error: true
+  # Note: Deployment to GitHub Pages is handled by deploy-pages.yml workflow
 
 # Job Summary
 jobs-summary:
