@@ -109,7 +109,10 @@
     <section class="service-selector" id="quote" style="padding-top: 180px;">
         <div class="selector-header">
             <h2 class="selector-title">Get an Instant Estimate</h2>
-            <p class="selector-subtitle">Select your vehicle type for pricing</p>
+            <p class="selector-subtitle">Select your vehicle type for pricing or build your own custom package</p>
+            <button onclick="showPackageBuilder()" style="margin-top: 20px; padding: 15px 30px; background: linear-gradient(135deg, #1565c0, #1e88e5); border: 2px solid #42a5f5; border-radius: 10px; color: white; cursor: pointer; font-size: 1.1rem; font-weight: 700; box-shadow: 0 4px 15px rgba(66, 165, 245, 0.3); transition: all 0.3s ease;">
+                🛠️ Build Custom Package
+            </button>
         </div>
 
         <div class="quote-container">
@@ -215,6 +218,9 @@
                 <div class="section-header">
                     <h2 class="section-title">Build Your Custom Package</h2>
                     <p class="section-subtitle">Select the services you need - mix and match to fit your budget</p>
+                    <button onclick="showPresetPackages()" style="margin-top: 15px; padding: 10px 20px; background: rgba(255,255,255,0.1); border: 1px solid rgba(66, 165, 245, 0.3); border-radius: 8px; color: #42a5f5; cursor: pointer; font-size: 0.95rem;">
+                        ← Back to Preset Packages
+                    </button>
                 </div>
 
                 <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-top: 40px;">
@@ -990,6 +996,19 @@
         // Smooth scroll to builder
         setTimeout(() => {
             document.getElementById('packageBuilder').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+    }
+
+    /**
+     * Show preset packages and hide package builder
+     */
+    function showPresetPackages() {
+        document.getElementById('packageBuilder').style.display = 'none';
+        document.getElementById('priceDisplay').style.display = 'block';
+
+        // Smooth scroll to packages
+        setTimeout(() => {
+            document.getElementById('priceDisplay').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 100);
     }
 
