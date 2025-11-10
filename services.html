@@ -183,6 +183,47 @@
                 <div class="starting-price">Starting at $85</div>
                 <span class="explore-btn">View Packages</span>
             </div>
+
+            <!-- Winterizing Package - FEATURED -->
+            <div class="service-card" onclick="openBookingModal('winter')" style="position: relative; border: 3px solid #42a5f5; box-shadow: 0 20px 60px rgba(66, 165, 245, 0.5); transform: scale(1.03); background: linear-gradient(135deg, #0d47a1, #1565c0);">
+                <div style="position: absolute; top: -10px; right: -10px; background: linear-gradient(135deg, #ff6b35, #f7931e); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 800; font-size: 0.85rem; box-shadow: 0 5px 15px rgba(255, 107, 53, 0.6); z-index: 10; animation: pulse 2s infinite;">
+                    ❄️ SEASON SPECIAL
+                </div>
+                <span class="service-icon" style="font-size: 3.5rem; filter: drop-shadow(0 0 20px rgba(66, 165, 245, 0.8));">❄️</span>
+                <h3 class="service-title" style="color: #e3f2fd; font-size: 1.4rem;">Winter Protection Package</h3>
+                <p class="service-description" style="color: #90caf9;">Complete winterization & protection</p>
+                <ul class="service-highlights" style="color: #e3f2fd;">
+                    <li>✨ Full exterior ceramic coating</li>
+                    <li>🛡️ Salt & road grime defense</li>
+                    <li>🚗 Undercarriage protection treatment</li>
+                    <li>💎 Interior ceramic coating included</li>
+                    <li>⚡ 3-year protection warranty</li>
+                </ul>
+                <div class="starting-price" style="background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.8rem; font-weight: 900;">From $385</div>
+                <span class="explore-btn" style="background: linear-gradient(135deg, #ff6b35, #f7931e); box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);">🔥 Protect Your Vehicle Now</span>
+            </div>
+
+            <style>
+                @keyframes pulse {
+                    0%, 100% { transform: scale(1) rotate(-3deg); }
+                    50% { transform: scale(1.05) rotate(-3deg); }
+                }
+            </style>
+
+            <!-- Interior Ceramic Coating -->
+            <div class="service-card" onclick="openBookingModal('interior-ceramic')">
+                <span class="service-icon">✨</span>
+                <h3 class="service-title">Interior Ceramic Coating</h3>
+                <p class="service-description">Ultimate interior protection & stain resistance</p>
+                <ul class="service-highlights">
+                    <li>Fabric & leather protection</li>
+                    <li>UV & stain resistance</li>
+                    <li>Easy cleaning & maintenance</li>
+                    <li>3-year protection warranty</li>
+                </ul>
+                <div class="starting-price">From $285</div>
+                <span class="explore-btn">Book Now</span>
+            </div>
         </div>
     </section>
 
@@ -533,6 +574,11 @@
                             <option>Single Car Monthly ($80/mo)</option>
                             <option>Two Car Monthly ($140/mo)</option>
                             <option>Three+ Cars Monthly</option>
+                        </optgroup>
+                        <optgroup label="Protection & Seasonal">
+                            <option>Winter Protection Package ($385-585)</option>
+                            <option>Interior Ceramic Coating ($285-485)</option>
+                            <option>Exterior Ceramic Only ($585-785)</option>
                         </optgroup>
                         <optgroup label="Commercial & Specialty">
                             <option>Fleet Services ($55-75/vehicle)</option>

@@ -372,6 +372,21 @@ function selectVehicle(element, vehicleType) {
       essential: '$125',
       executive: '$185',
       ceramic: 'N/A'
+    },
+    winter: {
+      essential: '$385',
+      executive: '$485',
+      ceramic: '$585'
+    },
+    'interior-ceramic': {
+      essential: '$285',
+      executive: '$385',
+      ceramic: '$485'
+    },
+    'exterior-ceramic': {
+      essential: '$585',
+      executive: '$685',
+      ceramic: '$785'
     }
   };
 
