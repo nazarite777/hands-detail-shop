@@ -1,28 +1,73 @@
 {
   "name": "hands-detail-shop",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Hands Detail Shop - Professional auto detailing services website",
   "main": "index.html",
   "scripts": {
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --ci --coverage --maxWorkers=2",
     "lint": "eslint \"**/*.js\" --fix",
+    "lint:check": "eslint \"**/*.js\"",
     "format": "prettier --write \"**/*.{html,css,js,json,md}\"",
     "format:check": "prettier --check \"**/*.{html,css,js,json,md}\"",
-    "serve": "npx http-server -p 8080",
+    "validate:html": "node scripts/validate-html.js",
+    "validate:a11y": "node scripts/validate-accessibility.js",
+    "validate:all": "npm run lint:check && npm run format:check && npm run validate:html && npm run test:ci",
+    "serve": "npx http-server -p 8080 -c-1",
+    "build": "npm run validate:all && echo 'Build successful - ready for deployment'",
+    "deploy:netlify": "netlify deploy --prod",
     "optimize:images": "echo 'Run image optimization manually with imagemagick or sharp-cli'"
   },
   "keywords": [
     "auto-detailing",
     "car-wash",
-    "detailing-services"
+    "detailing-services",
+    "arnold-pa",
+    "veteran-owned",
+    "mobile-detailing"
   ],
   "author": "Hands Detail Shop",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nazarite777/hands-detail-shop.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nazarite777/hands-detail-shop/issues"
+  },
+  "homepage": "https://handsdetailshop.com",
   "devDependencies": {
     "@eslint/js": "^9.15.0",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
     "eslint": "^9.15.0",
     "eslint-config-prettier": "^9.1.0",
     "globals": "^15.12.0",
+    "html-validator": "^6.0.1",
     "http-server": "^14.1.1",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "pa11y": "^8.0.0",
     "prettier": "^3.3.3"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "main.js",
+      "!node_modules/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
+    "testMatch": [
+      "**/__tests__/**/*.test.js"
+    ]
   }
 }
