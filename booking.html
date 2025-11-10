@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment | Hands Detail Shop | Arnold, PA</title>
+    <meta name="description" content="Book your professional auto detailing appointment online. View real-time availability and secure your preferred time slot.">
+    <link rel="canonical" href="https://handsdetailshop.com/booking.html">
+    <meta name="theme-color" content="#1565c0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo-section">
+                <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="20200723_030424~2.png" alt="Hands Detail Shop Logo" class="logo-img">
+                </a>
+                <span class="mobile-badge">🚗 Mobile - We Come to You!</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="services.html" class="nav-link">Services</a>
+                <a href="membership.html" class="nav-link">Membership</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+            <div class="contact-header">
+                <span class="phone-header">📞 (412) 752-8684</span>
+                <a href="booking.html" class="cta-header active">Book Now</a>
+            </div>
+            <div class="mobile-menu-toggle" id="mobileToggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="promo-banner" style="margin-top: 70px;">
+        📅 Real-Time Availability | $30 Deposit Secures Your Spot | Flexible Rescheduling | 📞 (412) 752-8684
+    </div>
+
+    <section class="page-hero" style="margin-top: 20px; padding: 80px 20px 40px; text-align: center;">
+        <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 20px; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            Book Your Appointment
+        </h1>
+        <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; color: #c0c0c0;">
+            Select your preferred date and time from our live calendar
+        </p>
+    </section>
+
+    <div class="calendar-container">
+        <!-- Booking Progress Steps -->
+        <div class="booking-steps">
+            <div class="booking-step active">
+                <div class="step-circle">1</div>
+                <div class="step-label">Select Service</div>
+            </div>
+            <div class="booking-step">
+                <div class="step-circle">2</div>
+                <div class="step-label">Choose Date & Time</div>
+            </div>
+            <div class="booking-step">
+                <div class="step-circle">3</div>
+                <div class="step-label">Your Information</div>
+            </div>
+            <div class="booking-step">
+                <div class="step-circle">4</div>
+                <div class="step-label">Confirmation</div>
+            </div>
+        </div>
+
+        <!-- Step 1: Service Selection -->
+        <div id="step1" class="booking-section">
+            <div class="calendar-grid">
+                <h2 style="color: #e8f1f8; margin-bottom: 25px;">Select Your Service</h2>
+                <div style="display: grid; gap: 15px;">
+                    <label class="service-option" style="display: flex; align-items: center; padding: 20px; background: rgba(40, 40, 45, 0.5); border: 1px solid rgba(160, 160, 160, 0.2); border-radius: 10px; cursor: pointer; transition: all 0.3s ease;">
+                        <input type="radio" name="service" value="essential" style="margin-right: 15px;">
+                        <div>
+                            <div style="font-weight: 600; color: #e8f1f8; font-size: 1.1rem;">Essential Package - $65-85</div>
+                            <div style="color: #a0a0a0; font-size: 0.9rem;">Exterior wash, vacuum, tire shine (2-3 hours)</div>
+                        </div>
+                    </label>
+                    <label class="service-option" style="display: flex; align-items: center; padding: 20px; background: rgba(40, 40, 45, 0.5); border: 1px solid rgba(160, 160, 160, 0.2); border-radius: 10px; cursor: pointer; transition: all 0.3s ease;">
+                        <input type="radio" name="service" value="executive" style="margin-right: 15px;">
+                        <div>
+                            <div style="font-weight: 600; color: #e8f1f8; font-size: 1.1rem;">Executive Package - $145-185</div>
+                            <div style="color: #a0a0a0; font-size: 0.9rem;">Full detail with clay bar, wax, deep interior (4-5 hours)</div>
+                        </div>
+                    </label>
+                    <label class="service-option" style="display: flex; align-items: center; padding: 20px; background: rgba(40, 40, 45, 0.5); border: 1px solid rgba(160, 160, 160, 0.2); border-radius: 10px; cursor: pointer; transition: all 0.3s ease;">
+                        <input type="radio" name="service" value="signature" style="margin-right: 15px;">
+                        <div>
+                            <div style="font-weight: 600; color: #e8f1f8; font-size: 1.1rem;">Signature Package - $285-365</div>
+                            <div style="color: #a0a0a0; font-size: 0.9rem;">Premium detail with sealant, leather conditioning (6-8 hours)</div>
+                        </div>
+                    </label>
+                    <label class="service-option" style="display: flex; align-items: center; padding: 20px; background: rgba(40, 40, 45, 0.5); border: 1px solid rgba(160, 160, 160, 0.2); border-radius: 10px; cursor: pointer; transition: all 0.3s ease;">
+                        <input type="radio" name="service" value="other" style="margin-right: 15px;">
+                        <div>
+                            <div style="font-weight: 600; color: #e8f1f8; font-size: 1.1rem;">Other Service</div>
+                            <div style="color: #a0a0a0; font-size: 0.9rem;">VIP Membership, Motorcycle, RV, or Custom Package</div>
+                        </div>
+                    </label>
+                </div>
+                <button onclick="nextStep(2)" style="margin-top: 30px; padding: 15px 40px; background: linear-gradient(135deg, #1565c0, #1e88e5); color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
+                    Continue to Date Selection →
+                </button>
+            </div>
+        </div>
+
+        <!-- Step 2: Date & Time Selection (placeholder - would integrate with actual booking system) -->
+        <div id="step2" class="booking-section" style="display: none;">
+            <div class="calendar-grid">
+                <div class="calendar-header">
+                    <h2 class="calendar-month">January 2025</h2>
+                    <div class="calendar-nav">
+                        <button>← Previous</button>
+                        <button>Next →</button>
+                    </div>
+                </div>
+                <p style="color: #a0a0a0; margin-bottom: 20px;">Select your preferred date (green = available)</p>
+                <div class="calendar-days">
+                    <!-- Sample calendar days - in production this would be generated dynamically -->
+                    <div class="calendar-day disabled">
+                        <div class="day-number">1</div>
+                        <div class="day-slots">Booked</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">2</div>
+                        <div class="day-slots">3 slots</div>
+                    </div>
+                    <div class="calendar-day">
+                        <div class="day-number">3</div>
+                        <div class="day-slots">5 slots</div>
+                    </div>
+                    <!-- More days would be added dynamically -->
+                </div>
+                <div id="timeSlots" style="display: none; margin-top: 30px;">
+                    <h3 style="color: #e8f1f8; margin-bottom: 20px;">Available Times</h3>
+                    <div class="time-slots">
+                        <div class="time-slot">8:00 AM</div>
+                        <div class="time-slot">10:00 AM</div>
+                        <div class="time-slot booked">12:00 PM</div>
+                        <div class="time-slot">2:00 PM</div>
+                        <div class="time-slot">4:00 PM</div>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 15px; margin-top: 30px;">
+                    <button onclick="nextStep(1)" style="padding: 15px 30px; background: rgba(40, 40, 45, 0.8); color: #e8f1f8; border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 10px; cursor: pointer;">
+                        ← Back
+                    </button>
+                    <button onclick="nextStep(3)" style="flex: 1; padding: 15px 40px; background: linear-gradient(135deg, #1565c0, #1e88e5); color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
+                        Continue to Contact Info →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Contact Information -->
+        <div id="step3" class="booking-section" style="display: none;">
+            <div class="calendar-grid">
+                <h2 style="color: #e8f1f8; margin-bottom: 25px;">Your Information</h2>
+                <form id="bookingForm">
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label style="display: block; color: #c0c0c0; margin-bottom: 8px; font-weight: 600;">Full Name *</label>
+                        <input type="text" required style="width: 100%; padding: 12px; background: rgba(40, 40, 45, 0.8); border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 8px; color: #e8f1f8; font-size: 1rem;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label style="display: block; color: #c0c0c0; margin-bottom: 8px; font-weight: 600;">Phone Number *</label>
+                        <input type="tel" required style="width: 100%; padding: 12px; background: rgba(40, 40, 45, 0.8); border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 8px; color: #e8f1f8; font-size: 1rem;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label style="display: block; color: #c0c0c0; margin-bottom: 8px; font-weight: 600;">Email Address *</label>
+                        <input type="email" required style="width: 100%; padding: 12px; background: rgba(40, 40, 45, 0.8); border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 8px; color: #e8f1f8; font-size: 1rem;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label style="display: block; color: #c0c0c0; margin-bottom: 8px; font-weight: 600;">Service Address *</label>
+                        <input type="text" required placeholder="Street address where we'll meet you" style="width: 100%; padding: 12px; background: rgba(40, 40, 45, 0.8); border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 8px; color: #e8f1f8; font-size: 1rem;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label style="display: block; color: #c0c0c0; margin-bottom: 8px; font-weight: 600;">Vehicle Information *</label>
+                        <input type="text" required placeholder="Year, Make, Model (e.g., 2020 Honda Accord)" style="width: 100%; padding: 12px; background: rgba(40, 40, 45, 0.8); border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 8px; color: #e8f1f8; font-size: 1rem;">
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label style="display: block; color: #c0c0c0; margin-bottom: 8px; font-weight: 600;">Special Requests or Notes</label>
+                        <textarea rows="3" placeholder="Any special needs or requests..." style="width: 100%; padding: 12px; background: rgba(40, 40, 45, 0.8); border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 8px; color: #e8f1f8; font-size: 1rem;"></textarea>
+                    </div>
+                </form>
+                <div style="display: flex; gap: 15px; margin-top: 30px;">
+                    <button onclick="nextStep(2)" style="padding: 15px 30px; background: rgba(40, 40, 45, 0.8); color: #e8f1f8; border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 10px; cursor: pointer;">
+                        ← Back
+                    </button>
+                    <button onclick="nextStep(4)" style="flex: 1; padding: 15px 40px; background: linear-gradient(135deg, #1565c0, #1e88e5); color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
+                        Review & Confirm →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4: Confirmation -->
+        <div id="step4" class="booking-section" style="display: none;">
+            <div class="calendar-grid">
+                <div style="text-align: center; padding: 40px 20px;">
+                    <div style="font-size: 4rem; margin-bottom: 20px;">✅</div>
+                    <h2 style="color: #e8f1f8; font-size: 2rem; margin-bottom: 20px;">Review Your Booking</h2>
+                    <div style="background: rgba(40, 40, 45, 0.5); border: 1px solid rgba(160, 160, 160, 0.2); border-radius: 15px; padding: 30px; text-align: left; max-width: 500px; margin: 0 auto 30px;">
+                        <p style="color: #c0c0c0; margin-bottom: 12px;"><strong style="color: #42a5f5;">Service:</strong> Executive Package</p>
+                        <p style="color: #c0c0c0; margin-bottom: 12px;"><strong style="color: #42a5f5;">Date:</strong> January 15, 2025</p>
+                        <p style="color: #c0c0c0; margin-bottom: 12px;"><strong style="color: #42a5f5;">Time:</strong> 10:00 AM</p>
+                        <p style="color: #c0c0c0; margin-bottom: 12px;"><strong style="color: #42a5f5;">Location:</strong> Your address</p>
+                        <p style="color: #c0c0c0; margin-bottom: 12px;"><strong style="color: #42a5f5;">Vehicle:</strong> Your vehicle</p>
+                        <p style="color: #c0c0c0; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(160, 160, 160, 0.2);"><strong style="color: #42a5f5;">Total:</strong> $145-185 (based on vehicle size)</p>
+                        <p style="color: #c0c0c0;"><strong style="color: #42a5f5;">Deposit Due:</strong> $30 (applied to total)</p>
+                    </div>
+                    <p style="color: #a0a0a0; margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                        You'll receive a confirmation email and text reminder 24 hours before your appointment.
+                    </p>
+                    <div style="display: flex; gap: 15px; justify-content: center; max-width: 500px; margin: 0 auto;">
+                        <button onclick="nextStep(3)" style="padding: 15px 30px; background: rgba(40, 40, 45, 0.8); color: #e8f1f8; border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 10px; cursor: pointer;">
+                            ← Back
+                        </button>
+                        <button onclick="confirmBooking()" style="flex: 1; padding: 15px 40px; background: linear-gradient(135deg, #1565c0, #1e88e5); color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
+                            Pay $30 Deposit & Confirm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section style="max-width: 800px; margin: 60px auto 80px; padding: 30px 20px; text-align: center;">
+        <h3 style="color: #e8f1f8; margin-bottom: 20px;">Prefer to Book by Phone?</h3>
+        <p style="color: #a0a0a0; margin-bottom: 25px;">
+            Call or text us directly and we'll get you scheduled right away!
+        </p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <a href="tel:4127528684" class="contact-btn" style="text-decoration: none;">
+                <span>📞</span>
+                <span>Call (412) 752-8684</span>
+            </a>
+            <a href="sms:4127528684" class="contact-btn" style="text-decoration: none;">
+                <span>💬</span>
+                <span>Text (412) 752-8684</span>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Hands Detail Shop</h3>
+                <p><strong>📞 Phone:</strong> (412) 752-8684<br>
+                <strong>✉️ Email:</strong> <a href="mailto:handsdetailshop@gmail.com">handsdetailshop@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Hands Detail Shop | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+    function nextStep(step) {
+        // Hide all sections
+        document.querySelectorAll('.booking-section').forEach(s => s.style.display = 'none');
+        // Show selected section
+        document.getElementById('step' + step).style.display = 'block';
+        
+        // Update progress indicators
+        document.querySelectorAll('.booking-step').forEach((s, i) => {
+            s.classList.remove('active', 'completed');
+            if (i + 1 < step) s.classList.add('completed');
+            if (i + 1 === step) s.classList.add('active');
+        });
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function confirmBooking() {
+        alert('In production, this would redirect to Square payment for $30 deposit.\n\nFor now, please call (412) 752-8684 to complete your booking!');
+    }
+
+    // Service option hover effects
+    document.querySelectorAll('.service-option').forEach(option => {
+        option.addEventListener('mouseenter', function() {
+            this.style.borderColor = 'rgba(66, 165, 245, 0.5)';
+            this.style.background = 'rgba(21, 101, 192, 0.2)';
+        });
+        option.addEventListener('mouseleave', function() {
+            if (!this.querySelector('input').checked) {
+                this.style.borderColor = 'rgba(160, 160, 160, 0.2)';
+                this.style.background = 'rgba(40, 40, 45, 0.5)';
+            }
+        });
+    });
+    </script>
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/68e2fac9bf465d19518ec75b/1j6ra78mi';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+</body>
+</html>
