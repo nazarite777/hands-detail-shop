@@ -1330,6 +1330,20 @@ footer {
   border-color: rgba(66, 165, 245, 0.5) !important;
 }
 
+/* Build Custom Package Button (in header) */
+.selector-header button:hover {
+  background: linear-gradient(135deg, #0d47a1, #1565c0) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(66, 165, 245, 0.5) !important;
+}
+
+/* Back to Preset Packages Button */
+.section-header button:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(66, 165, 245, 0.6) !important;
+  transform: translateX(-3px);
+}
+
 /* Responsive Design for Package Builder */
 @media (max-width: 1024px) {
   .package-builder-section > div[style*="grid-template-columns"] {
