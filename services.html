@@ -63,6 +63,7 @@
                 <a href="services.html" class="nav-link">Services</a>
                 <a href="membership.html" class="nav-link">Membership</a>
                 <a href="services.html#packages" class="nav-link">Packages</a>
+                <a href="services.html#interior-packages" class="nav-link">Interior</a>
                 <a href="services.html#how-it-works" class="nav-link">Process</a>
                 <a href="quote.html" class="nav-link">Quote</a>
                 <a href="reviews.html" class="nav-link">Reviews</a>
@@ -348,6 +349,118 @@
         </div>
     </section>
 
+    <!-- Interior-Only Packages Section -->
+    <section class="detail-section" id="interior-packages" style="background: linear-gradient(135deg, #1a2942, #0d1b2a); border-top: 1px solid rgba(66, 165, 245, 0.3);">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Interior-Only Detailing Packages</h2>
+                <p class="section-subtitle">Professional interior detailing services without exterior work</p>
+            </div>
+
+            <!-- Interior Package Grid -->
+            <div class="package-grid">
+                <!-- Interior Express Package -->
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-title">Interior Express</h3>
+                        <div class="package-price">$85 - $125</div>
+                        <p class="package-tier">Quick refresh & maintenance</p>
+                    </div>
+                    <div class="package-body">
+                        <p class="package-description">Essential interior cleaning for busy schedules</p>
+                        <ul class="package-features">
+                            <li>✓ Full vacuum (floors, seats, trunk)</li>
+                            <li>✓ Dashboard & console wipe down</li>
+                            <li>✓ Door panels cleaned</li>
+                            <li>✓ Cup holders detailed</li>
+                            <li>✓ Windows cleaned (interior)</li>
+                            <li>✓ Air freshener application</li>
+                            <li>✓ Floor mats cleaned</li>
+                        </ul>
+                        <button onclick="openBookingModal('Interior Express')" class="package-btn">Book Interior Express</button>
+                    </div>
+                </div>
+
+                <!-- Interior Deep Clean Package -->
+                <div class="package-card">
+                    <div class="package-header executive">
+                        <div class="package-badge">MOST POPULAR</div>
+                        <h3 class="package-title">Interior Deep Clean</h3>
+                        <div class="package-price">$185 - $265</div>
+                        <p class="package-tier">Comprehensive interior restoration</p>
+                    </div>
+                    <div class="package-body">
+                        <p class="package-description">Deep cleaning for heavily used interiors</p>
+                        <ul class="package-features">
+                            <li>✓ Everything in Interior Express, plus:</li>
+                            <li>✓ Carpet & upholstery shampooing</li>
+                            <li>✓ Leather cleaning & conditioning</li>
+                            <li>✓ Stain treatment & removal</li>
+                            <li>✓ Crevice & vent detailing</li>
+                            <li>✓ Pet hair removal</li>
+                            <li>✓ Headliner cleaning</li>
+                            <li>✓ Steam cleaning treatment</li>
+                        </ul>
+                        <button onclick="openBookingModal('Interior Deep Clean')" class="package-btn executive">Book Deep Clean</button>
+                    </div>
+                </div>
+
+                <!-- Interior Premium Package -->
+                <div class="package-card">
+                    <div class="package-header signature">
+                        <h3 class="package-title">Interior Premium</h3>
+                        <div class="package-price">$365 - $485</div>
+                        <p class="package-tier">Ultimate interior restoration</p>
+                    </div>
+                    <div class="package-body">
+                        <p class="package-description">Complete interior transformation</p>
+                        <ul class="package-features">
+                            <li>✓ Everything in Deep Clean, plus:</li>
+                            <li>✓ Odor elimination treatment</li>
+                            <li>✓ Leather restoration & protection</li>
+                            <li>✓ Plastic & trim restoration</li>
+                            <li>✓ Fabric protection coating</li>
+                            <li>✓ Seat extraction cleaning</li>
+                            <li>✓ Carpet shampooing & extraction</li>
+                            <li>✓ UV protection treatment</li>
+                        </ul>
+                        <button onclick="openBookingModal('Interior Premium')" class="package-btn signature">Book Premium</button>
+                    </div>
+                </div>
+
+                <!-- Interior Ceramic Protection Package -->
+                <div class="package-card">
+                    <div class="package-header presidential">
+                        <div class="package-badge">ULTIMATE</div>
+                        <h3 class="package-title">Interior Ceramic Protection</h3>
+                        <div class="package-price">$585 - $785</div>
+                        <p class="package-tier">Maximum protection & preservation</p>
+                    </div>
+                    <div class="package-body">
+                        <p class="package-description">Ultimate protection with ceramic coating</p>
+                        <ul class="package-features">
+                            <li>✓ Everything in Interior Premium, plus:</li>
+                            <li>✓ Interior ceramic coating application</li>
+                            <li>✓ Fabric & leather protection (3-year)</li>
+                            <li>✓ UV & stain resistance coating</li>
+                            <li>✓ Anti-bacterial treatment</li>
+                            <li>✓ Hydrophobic surface treatment</li>
+                            <li>✓ Easy-clean maintenance coating</li>
+                            <li>✓ 3-year warranty included</li>
+                        </ul>
+                        <button onclick="openBookingModal('Interior Ceramic Protection')" class="package-btn presidential">Book Ceramic Protection</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interior Services Note -->
+            <div class="cta-container">
+                <p class="cta-text" style="max-width: 800px; margin: 0 auto 20px;">Perfect for vehicles that don't need exterior work, or to complement exterior-only services. All packages include mobile service - we come to you!</p>
+                <a href="quote.html" class="cta-button">📝 Get Custom Interior Quote</a>
+            </div>
+        </div>
+    </section>
+
     <!-- How It Works -->
     <section class="how-it-works" id="how-it-works">
         <div class="steps-container">
@@ -551,6 +664,12 @@
                             <option>Signature Package ($285-365)</option>
                             <option>Presidential Package ($585-785)</option>
                             <option>Ultimate Armor ($1,285-1,685)</option>
+                        </optgroup>
+                        <optgroup label="Interior-Only Packages">
+                            <option>Interior Express ($85-125)</option>
+                            <option>Interior Deep Clean ($185-265)</option>
+                            <option>Interior Premium ($365-485)</option>
+                            <option>Interior Ceramic Protection ($585-785)</option>
                         </optgroup>
                         <optgroup label="Motorcycle Services">
                             <option>Road Ready ($85-105)</option>
