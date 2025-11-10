@@ -1900,3 +1900,777 @@ footer {
     transform: scale(1);
   }
 }
+
+/* ===== GALLERY PAGE STYLES ===== */
+
+.gallery-filters {
+  margin-bottom: 40px;
+}
+
+.filter-btn {
+  background: rgba(30, 30, 35, 0.8);
+  border: 1px solid rgba(160, 160, 160, 0.3);
+  color: #c0c0c0;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background: rgba(21, 101, 192, 0.3);
+  border-color: rgba(66, 165, 245, 0.5);
+  color: #e8f1f8;
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, #1565c0, #1e88e5);
+  border-color: #42a5f5;
+  color: white;
+  box-shadow: 0 4px 15px rgba(66, 165, 245, 0.3);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+}
+
+.gallery-item {
+  background: rgba(30, 30, 35, 0.6);
+  border: 1px solid rgba(160, 160, 160, 0.2);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+  border-color: rgba(66, 165, 245, 0.5);
+  box-shadow: 0 8px 30px rgba(66, 165, 245, 0.2);
+  transform: translateY(-5px);
+}
+
+.comparison-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.before-after-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.before-image,
+.after-image {
+  width: 100%;
+  min-height: 300px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.gallery-info {
+  padding: 20px;
+}
+
+.gallery-info h3 {
+  color: #e8f1f8;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.gallery-info p {
+  color: #a0a0a0;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.gallery-tags {
+  display: inline-block;
+  background: rgba(21, 101, 192, 0.3);
+  padding: 6px 14px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  color: #90caf9;
+  border: 1px solid rgba(66, 165, 245, 0.3);
+}
+
+/* ===== FAQ PAGE STYLES ===== */
+
+.faq-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.faq-category {
+  margin-bottom: 50px;
+}
+
+.faq-category-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #42a5f5;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(66, 165, 245, 0.3);
+}
+
+.faq-item {
+  background: rgba(30, 30, 35, 0.6);
+  border: 1px solid rgba(160, 160, 160, 0.2);
+  border-radius: 12px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(66, 165, 245, 0.4);
+  box-shadow: 0 4px 20px rgba(66, 165, 245, 0.15);
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+  background: rgba(21, 101, 192, 0.1);
+}
+
+.faq-question h3 {
+  color: #e8f1f8;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0;
+  padding-right: 20px;
+}
+
+.faq-toggle {
+  font-size: 1.5rem;
+  color: #42a5f5;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.faq-item.active .faq-toggle {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding: 0 25px;
+  color: #c0c0c0;
+  line-height: 1.7;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 1000px;
+  padding: 0 25px 20px;
+}
+
+.faq-answer p {
+  margin-bottom: 12px;
+}
+
+.faq-answer ul {
+  margin-left: 20px;
+  margin-bottom: 12px;
+}
+
+.faq-answer li {
+  margin-bottom: 8px;
+}
+
+.faq-answer a {
+  color: #42a5f5;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.faq-answer a:hover {
+  border-bottom-color: #42a5f5;
+}
+
+/* ===== GIFT CERTIFICATES PAGE STYLES ===== */
+
+.gift-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+.gift-card {
+  background: linear-gradient(135deg, rgba(21, 101, 192, 0.4), rgba(30, 88, 142, 0.3));
+  border: 2px solid rgba(66, 165, 245, 0.4);
+  border-radius: 20px;
+  padding: 35px;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.gift-card::before {
+  content: '🎁';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 8rem;
+  opacity: 0.1;
+}
+
+.gift-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(66, 165, 245, 0.3);
+  border-color: #42a5f5;
+}
+
+.gift-card-value {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #42a5f5, #90caf9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 15px;
+}
+
+.gift-card-title {
+  font-size: 1.3rem;
+  color: #e8f1f8;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.gift-card-description {
+  color: #a0a0a0;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.gift-card-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #1565c0, #1e88e5);
+  color: white;
+  padding: 14px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(66, 165, 245, 0.5);
+}
+
+.gift-card-btn:hover {
+  background: linear-gradient(135deg, #1e88e5, #42a5f5);
+  box-shadow: 0 6px 25px rgba(66, 165, 245, 0.4);
+  transform: scale(1.05);
+}
+
+.custom-amount-form {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 35px;
+  background: rgba(30, 30, 35, 0.6);
+  border: 1px solid rgba(160, 160, 160, 0.2);
+  border-radius: 15px;
+}
+
+.custom-amount-form h3 {
+  color: #e8f1f8;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* ===== REWARDS PROGRAM PAGE STYLES ===== */
+
+.rewards-hero {
+  background: linear-gradient(135deg, rgba(21, 101, 192, 0.4), rgba(30, 88, 142, 0.3));
+  border: 2px solid rgba(66, 165, 245, 0.4);
+  border-radius: 20px;
+  padding: 60px 40px;
+  text-align: center;
+  margin: 0 20px 60px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rewards-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+}
+
+.reward-step {
+  background: rgba(30, 30, 35, 0.6);
+  border: 1px solid rgba(160, 160, 160, 0.2);
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.reward-step:hover {
+  border-color: rgba(66, 165, 245, 0.5);
+  box-shadow: 0 8px 30px rgba(66, 165, 245, 0.2);
+  transform: translateY(-5px);
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #1565c0, #1e88e5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: white;
+  margin: 0 auto 20px;
+}
+
+.reward-step h3 {
+  color: #e8f1f8;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.reward-step p {
+  color: #a0a0a0;
+  line-height: 1.6;
+}
+
+.rewards-tiers {
+  max-width: 900px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+}
+
+.tier-card {
+  background: rgba(30, 30, 35, 0.6);
+  border: 2px solid rgba(160, 160, 160, 0.2);
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+}
+
+.tier-card:hover {
+  border-color: rgba(66, 165, 245, 0.5);
+  box-shadow: 0 8px 30px rgba(66, 165, 245, 0.2);
+}
+
+.tier-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.tier-bronze .tier-badge {
+  background: linear-gradient(135deg, #cd7f32, #c87533);
+  color: white;
+}
+
+.tier-silver .tier-badge {
+  background: linear-gradient(135deg, #c0c0c0, #b8b8b8);
+  color: #333;
+}
+
+.tier-gold .tier-badge {
+  background: linear-gradient(135deg, #ffd700, #ffed4e);
+  color: #333;
+}
+
+.tier-card h3 {
+  color: #e8f1f8;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.tier-benefits {
+  list-style: none;
+  padding: 0;
+}
+
+.tier-benefits li {
+  color: #c0c0c0;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(160, 160, 160, 0.1);
+}
+
+.tier-benefits li:last-child {
+  border-bottom: none;
+}
+
+/* ===== BOOKING CALENDAR STYLES ===== */
+
+.calendar-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.booking-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  padding: 0 20px;
+  position: relative;
+}
+
+.booking-steps::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: rgba(160, 160, 160, 0.3);
+  z-index: -1;
+}
+
+.booking-step {
+  text-align: center;
+  flex: 1;
+}
+
+.step-circle {
+  width: 40px;
+  height: 40px;
+  background: rgba(30, 30, 35, 0.8);
+  border: 2px solid rgba(160, 160, 160, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+  font-weight: 700;
+  color: #a0a0a0;
+  transition: all 0.3s ease;
+}
+
+.booking-step.active .step-circle {
+  background: linear-gradient(135deg, #1565c0, #1e88e5);
+  border-color: #42a5f5;
+  color: white;
+}
+
+.booking-step.completed .step-circle {
+  background: #4caf50;
+  border-color: #66bb6a;
+  color: white;
+}
+
+.step-label {
+  font-size: 0.9rem;
+  color: #909090;
+}
+
+.booking-step.active .step-label {
+  color: #42a5f5;
+  font-weight: 600;
+}
+
+.calendar-grid {
+  background: rgba(30, 30, 35, 0.6);
+  border: 1px solid rgba(160, 160, 160, 0.2);
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.calendar-month {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #e8f1f8;
+}
+
+.calendar-nav {
+  display: flex;
+  gap: 10px;
+}
+
+.calendar-nav button {
+  background: rgba(21, 101, 192, 0.3);
+  border: 1px solid rgba(66, 165, 245, 0.4);
+  color: #e8f1f8;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.calendar-nav button:hover {
+  background: rgba(21, 101, 192, 0.5);
+  border-color: #42a5f5;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(40, 40, 45, 0.5);
+  border: 1px solid rgba(160, 160, 160, 0.2);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 10px;
+}
+
+.calendar-day:hover:not(.disabled) {
+  background: rgba(21, 101, 192, 0.3);
+  border-color: #42a5f5;
+  transform: scale(1.05);
+}
+
+.calendar-day.selected {
+  background: linear-gradient(135deg, #1565c0, #1e88e5);
+  border-color: #42a5f5;
+  color: white;
+}
+
+.calendar-day.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.day-number {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #e8f1f8;
+}
+
+.day-slots {
+  font-size: 0.75rem;
+  color: #90caf9;
+  margin-top: 5px;
+}
+
+.time-slots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.time-slot {
+  background: rgba(40, 40, 45, 0.5);
+  border: 1px solid rgba(160, 160, 160, 0.2);
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #e8f1f8;
+}
+
+.time-slot:hover:not(.booked) {
+  background: rgba(21, 101, 192, 0.3);
+  border-color: #42a5f5;
+  transform: scale(1.05);
+}
+
+.time-slot.selected {
+  background: linear-gradient(135deg, #1565c0, #1e88e5);
+  border-color: #42a5f5;
+  color: white;
+}
+
+.time-slot.booked {
+  opacity: 0.4;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+/* ===== CUSTOMER PORTAL STYLES ===== */
+
+.portal-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.portal-grid {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .portal-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.portal-sidebar {
+  background: rgba(30, 30, 35, 0.6);
+  border: 1px solid rgba(160, 160, 160, 0.2);
+  border-radius: 15px;
+  padding: 25px;
+  height: fit-content;
+}
+
+.portal-nav {
+  list-style: none;
+  padding: 0;
+}
+
+.portal-nav li {
+  margin-bottom: 10px;
+}
+
+.portal-nav a {
+  display: block;
+  padding: 12px 15px;
+  color: #c0c0c0;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.portal-nav a:hover,
+.portal-nav a.active {
+  background: rgba(21, 101, 192, 0.3);
+  color: #e8f1f8;
+}
+
+.portal-main {
+  background: rgba(30, 30, 35, 0.6);
+  border: 1px solid rgba(160, 160, 160, 0.2);
+  border-radius: 15px;
+  padding: 35px;
+}
+
+.portal-section {
+  display: none;
+}
+
+.portal-section.active {
+  display: block;
+}
+
+.portal-section h2 {
+  color: #e8f1f8;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(66, 165, 245, 0.3);
+}
+
+.membership-card {
+  background: linear-gradient(135deg, rgba(21, 101, 192, 0.4), rgba(30, 88, 142, 0.3));
+  border: 2px solid rgba(66, 165, 245, 0.4);
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.membership-status {
+  display: inline-block;
+  background: #4caf50;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.appointment-list {
+  list-style: none;
+  padding: 0;
+}
+
+.appointment-item {
+  background: rgba(40, 40, 45, 0.5);
+  border: 1px solid rgba(160, 160, 160, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.appointment-info h4 {
+  color: #e8f1f8;
+  margin-bottom: 8px;
+}
+
+.appointment-info p {
+  color: #a0a0a0;
+  font-size: 0.9rem;
+}
+
+.appointment-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-small {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(160, 160, 160, 0.3);
+  background: rgba(40, 40, 45, 0.8);
+  color: #e8f1f8;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.btn-small:hover {
+  background: rgba(21, 101, 192, 0.3);
+  border-color: #42a5f5;
+}
