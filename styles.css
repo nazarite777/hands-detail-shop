@@ -1033,6 +1033,246 @@ footer {
   font-weight: 700;
 }
 
+/* Quote Page Specific Styles */
+.quote-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Weather Widget */
+.weather-widget {
+  background: linear-gradient(135deg, #0d47a1, #1565c0);
+  color: #c0c0c0;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border: 1px solid rgba(100, 100, 100, 0.3);
+  gap: 20px;
+}
+
+.weather-info h3.weather-title {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #d4d4d4;
+}
+
+.weather-location {
+  margin: 5px 0;
+  opacity: 0.9;
+  color: #c0c0c0;
+}
+
+.weather-status {
+  text-align: center;
+}
+
+.weather-icon {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.weather-condition {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #e3f2fd;
+}
+
+.weather-details {
+  text-align: right;
+}
+
+.weather-note {
+  font-size: 1.1rem;
+  color: #e3f2fd;
+  margin-bottom: 5px;
+}
+
+.weather-note-secondary {
+  opacity: 0.8;
+  color: #c0c0c0;
+}
+
+/* Quote Options */
+.quote-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1400px;
+  margin: 40px auto;
+}
+
+.quote-option {
+  background: linear-gradient(135deg, #0d1b2a, #1a2942);
+  border: 2px solid rgba(66, 165, 245, 0.3);
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.quote-option:hover {
+  transform: translateY(-8px);
+  border-color: rgba(66, 165, 245, 0.6);
+  box-shadow: 0 15px 40px rgba(66, 165, 245, 0.4);
+}
+
+.quote-option.selected {
+  border-color: #42a5f5;
+  background: linear-gradient(135deg, #1565c0, #1e88e5);
+}
+
+.option-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #e3f2fd;
+  margin-bottom: 10px;
+}
+
+.option-price {
+  color: #b3d9ff;
+  font-size: 1rem;
+}
+
+/* Featured Quote Option */
+.quote-option.featured-option {
+  border: 3px solid #42a5f5;
+  box-shadow: 0 15px 40px rgba(66, 165, 245, 0.4);
+}
+
+.featured-badge-small {
+  position: absolute;
+  top: -12px;
+  right: 10px;
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 0.75rem;
+  box-shadow: 0 3px 10px rgba(255, 107, 53, 0.5);
+}
+
+.option-title.featured-title {
+  color: #42a5f5;
+  font-size: 1.2rem;
+}
+
+/* Seasonal Header */
+.seasonal-header {
+  text-align: center;
+  margin: 60px 0 30px;
+}
+
+.seasonal-title {
+  color: #e8f1f8;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.seasonal-subtitle {
+  color: #90caf9;
+  font-size: 1.1rem;
+}
+
+/* Price Display Section */
+.price-display-section {
+  display: none;
+  margin-top: 60px;
+}
+
+.price-display-section .section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.price-display-section .section-title {
+  color: #e8f1f8;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+/* Package Card Variant for Quote Page */
+.package-card.popular {
+  transform: scale(1.02);
+  box-shadow: 0 20px 50px rgba(66, 165, 245, 0.4);
+}
+
+.package-card.popular .package-header {
+  background: linear-gradient(135deg, #0d47a1, #1565c0);
+  border: 3px solid #42a5f5;
+}
+
+/* Special Offer Banner */
+.special-offer-banner {
+  margin-top: 50px;
+  padding: 30px;
+  background: linear-gradient(135deg, #0d47a1, #1565c0);
+  border-radius: 15px;
+  text-align: center;
+  border: 1px solid rgba(66, 165, 245, 0.4);
+}
+
+.special-offer-title {
+  color: #ffffff;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.special-offer-text {
+  color: #e3f2fd;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.special-offer-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.special-offer-btn {
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.special-offer-btn.primary {
+  background: #ffffff;
+  color: #1565c0;
+}
+
+.special-offer-btn.primary:hover {
+  background: #e3f2fd;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+}
+
+.special-offer-btn.secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.special-offer-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+}
+
 /* How It Works Section */
 .how-it-works {
   padding: 100px 20px;
