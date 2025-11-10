@@ -54,4 +54,7 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Note: Blog hosted externally at https://medium.com/@handsdetailshop -->
+  <!-- Medium handles its own sitemap and SEO - linked from all pages -->
+
 </urlset>
