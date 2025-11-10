@@ -338,6 +338,7 @@ function selectVehicle(element, vehicleType) {
 
   // Define pricing tiers for different vehicle types
   const pricing = {
+    // Personal Vehicles
     compact: {
       essential: '$65',
       executive: '$145',
@@ -358,21 +359,100 @@ function selectVehicle(element, vehicleType) {
       executive: '$185',
       ceramic: '$785'
     },
+
+    // Motorcycles
     motorcycle: {
-      essential: '$45',
-      executive: '$95',
-      ceramic: '$385'
+      essential: '$85',
+      executive: '$145',
+      ceramic: '$245'
     },
+
+    // Fleet Vehicles
     fleet: {
-      essential: '$55',
-      executive: '$65',
+      essential: '$45',
+      executive: '$75',
       ceramic: 'N/A'
     },
+    'fleet-premium': {
+      essential: '$75',
+      executive: '$95',
+      ceramic: 'N/A'
+    },
+    'box-truck': {
+      essential: '$95',
+      executive: '$145',
+      ceramic: 'N/A'
+    },
+
+    // Semi Tractors
     semi: {
       essential: '$125',
       executive: '$185',
       ceramic: 'N/A'
     },
+
+    // Buses
+    'mini-bus': {
+      essential: '$145',
+      executive: '$225',
+      ceramic: 'N/A'
+    },
+    'full-bus': {
+      essential: '$285',
+      executive: '$385',
+      ceramic: 'N/A'
+    },
+    'coach-bus': {
+      essential: '$485',
+      executive: '$685',
+      ceramic: 'N/A'
+    },
+
+    // Yachts & Boats
+    'small-yacht': {
+      essential: '$285',
+      executive: '$385',
+      ceramic: '+$200'
+    },
+    'medium-yacht': {
+      essential: '$485',
+      executive: '$685',
+      ceramic: '+$300'
+    },
+    'large-yacht': {
+      essential: '$885',
+      executive: '$1,485',
+      ceramic: '+$500'
+    },
+    'super-yacht': {
+      essential: 'Custom',
+      executive: 'Quote',
+      ceramic: 'Quote'
+    },
+
+    // RVs
+    'class-b-rv': {
+      essential: '$285',
+      executive: '$385',
+      ceramic: '+$200'
+    },
+    'class-c-rv': {
+      essential: '$485',
+      executive: '$685',
+      ceramic: '+$300'
+    },
+    'class-a-rv': {
+      essential: '$885',
+      executive: '$1,285',
+      ceramic: '+$400'
+    },
+    'luxury-rv': {
+      essential: '$1,485',
+      executive: '$2,485',
+      ceramic: '+$600'
+    },
+
+    // Seasonal & Special
     winter: {
       essential: '$385',
       executive: '$485',
