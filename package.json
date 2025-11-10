@@ -1,0 +1,28 @@
+{
+  "name": "hands-detail-shop",
+  "version": "1.0.0",
+  "description": "Hands Detail Shop - Professional auto detailing services website",
+  "main": "index.html",
+  "scripts": {
+    "lint": "eslint \"**/*.js\" --fix",
+    "format": "prettier --write \"**/*.{html,css,js,json,md}\"",
+    "format:check": "prettier --check \"**/*.{html,css,js,json,md}\"",
+    "serve": "npx http-server -p 8080",
+    "optimize:images": "echo 'Run image optimization manually with imagemagick or sharp-cli'"
+  },
+  "keywords": [
+    "auto-detailing",
+    "car-wash",
+    "detailing-services"
+  ],
+  "author": "Hands Detail Shop",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "eslint": "^9.15.0",
+    "eslint-config-prettier": "^9.1.0",
+    "globals": "^15.12.0",
+    "http-server": "^14.1.1",
+    "prettier": "^3.3.3"
+  }
+}

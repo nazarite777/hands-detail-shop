@@ -1,0 +1,351 @@
+// ===== UTILITY FUNCTIONS =====
+
+/**
+ * Sanitize user input to prevent XSS
+ * @param {string} str - Input string to sanitize
+ * @returns {string} - Sanitized string
+ */
+function sanitizeInput(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+/**
+ * Validate phone number format
+ * @param {string} phone - Phone number to validate
+ * @returns {boolean} - True if valid
+ */
+function validatePhone(phone) {
+  const phoneRegex = /^[\d\s\-\(\)]+$/;
+  const digitsOnly = phone.replace(/\D/g, '');
+  return phoneRegex.test(phone) && digitsOnly.length >= 10;
+}
+
+/**
+ * Validate name (letters, spaces, hyphens only)
+ * @param {string} name - Name to validate
+ * @returns {boolean} - True if valid
+ */
+function validateName(name) {
+  const nameRegex = /^[a-zA-Z\s\-']+$/;
+  return nameRegex.test(name) && name.trim().length >= 2;
+}
+
+/**
+ * Show inline error message on form field
+ * @param {HTMLElement} field - Input field
+ * @param {string} message - Error message
+ */
+function showFieldError(field, message) {
+  // Remove existing error
+  const existingError = field.parentElement.querySelector('.field-error');
+  if (existingError) {
+    existingError.remove();
+  }
+
+  // Add error styling
+  field.style.borderColor = '#ff5252';
+
+  // Create and insert error message
+  const errorDiv = document.createElement('div');
+  errorDiv.className = 'field-error';
+  errorDiv.style.color = '#ff5252';
+  errorDiv.style.fontSize = '0.85rem';
+  errorDiv.style.marginTop = '5px';
+  errorDiv.textContent = message;
+  field.parentElement.appendChild(errorDiv);
+}
+
+/**
+ * Clear error message from form field
+ * @param {HTMLElement} field - Input field
+ */
+function clearFieldError(field) {
+  field.style.borderColor = '';
+  const existingError = field.parentElement.querySelector('.field-error');
+  if (existingError) {
+    existingError.remove();
+  }
+}
+
+// ===== HEADER SCROLL EFFECT =====
+
+window.addEventListener('scroll', function () {
+  const header = document.getElementById('header');
+  if (header) {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  }
+});
+
+// ===== MOBILE MENU =====
+
+const mobileToggle = document.getElementById('mobileToggle');
+const mobileNav = document.getElementById('mobileNav');
+
+if (mobileToggle && mobileNav) {
+  mobileToggle.addEventListener('click', function () {
+    this.classList.toggle('active');
+    mobileNav.classList.toggle('active');
+  });
+
+  // Close mobile menu when link clicked
+  document.querySelectorAll('.mobile-nav a').forEach((link) => {
+    link.addEventListener('click', function () {
+      mobileToggle.classList.remove('active');
+      mobileNav.classList.remove('active');
+    });
+  });
+}
+
+// ===== SMOOTH SCROLLING =====
+
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      const headerHeight = 80;
+      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth',
+      });
+    }
+  });
+});
+
+// ===== MODAL MANAGEMENT =====
+
+/**
+ * Open booking modal
+ * @param {string} preSelectedService - Pre-select a service (optional)
+ */
+function openBookingModal(preSelectedService = '') {
+  const modal = document.getElementById('bookingModal');
+  if (!modal) return;
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  // Focus management for accessibility
+  const firstInput = modal.querySelector('input, select, textarea');
+  if (firstInput) {
+    setTimeout(() => firstInput.focus(), 100);
+  }
+
+  // Pre-select service if provided
+  if (preSelectedService) {
+    const serviceSelect = document.querySelector('#bookingForm select');
+    if (serviceSelect) {
+      const options = serviceSelect.querySelectorAll('option');
+      options.forEach((option) => {
+        if (option.textContent.toLowerCase().includes(preSelectedService.toLowerCase())) {
+          option.selected = true;
+        }
+      });
+    }
+  }
+}
+
+/**
+ * Close booking modal
+ */
+function closeBookingModal() {
+  const modal = document.getElementById('bookingModal');
+  if (!modal) return;
+
+  modal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+
+  // Clear any error messages
+  modal.querySelectorAll('.field-error').forEach((error) => error.remove());
+  modal.querySelectorAll('input, select, textarea').forEach((field) => {
+    field.style.borderColor = '';
+  });
+}
+
+// ===== KEYBOARD ACCESSIBILITY =====
+
+// Close modal on Escape key
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') {
+    const modal = document.getElementById('bookingModal');
+    if (modal && modal.classList.contains('active')) {
+      closeBookingModal();
+    }
+  }
+});
+
+// ===== FORM VALIDATION & SUBMISSION =====
+
+const bookingForm = document.getElementById('bookingForm');
+if (bookingForm) {
+  // Real-time validation on blur
+  const nameInput = bookingForm.querySelector('input[type="text"]');
+  const phoneInput = bookingForm.querySelector('input[type="tel"]');
+
+  if (nameInput) {
+    nameInput.addEventListener('blur', function () {
+      if (!this.value.trim()) {
+        showFieldError(this, 'Please enter your name');
+      } else if (!validateName(this.value)) {
+        showFieldError(this, 'Please enter a valid name (letters only)');
+      } else {
+        clearFieldError(this);
+      }
+    });
+
+    nameInput.addEventListener('input', function () {
+      if (this.value.trim()) {
+        clearFieldError(this);
+      }
+    });
+  }
+
+  if (phoneInput) {
+    phoneInput.addEventListener('blur', function () {
+      if (!this.value.trim()) {
+        showFieldError(this, 'Please enter your phone number');
+      } else if (!validatePhone(this.value)) {
+        showFieldError(this, 'Please enter a valid phone number (10+ digits)');
+      } else {
+        clearFieldError(this);
+      }
+    });
+
+    phoneInput.addEventListener('input', function () {
+      if (this.value.trim()) {
+        clearFieldError(this);
+      }
+    });
+  }
+
+  // Form submission with validation
+  bookingForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const nameField = this.querySelector('input[type="text"]');
+    const phoneField = this.querySelector('input[type="tel"]');
+    const serviceField = this.querySelector('select');
+
+    let isValid = true;
+
+    // Validate name
+    if (!nameField.value.trim()) {
+      showFieldError(nameField, 'Please enter your name');
+      isValid = false;
+    } else if (!validateName(nameField.value)) {
+      showFieldError(nameField, 'Please enter a valid name (letters only)');
+      isValid = false;
+    } else {
+      clearFieldError(nameField);
+    }
+
+    // Validate phone
+    if (!phoneField.value.trim()) {
+      showFieldError(phoneField, 'Please enter your phone number');
+      isValid = false;
+    } else if (!validatePhone(phoneField.value)) {
+      showFieldError(phoneField, 'Please enter a valid phone number (10+ digits)');
+      isValid = false;
+    } else {
+      clearFieldError(phoneField);
+    }
+
+    // Validate service selection
+    if (!serviceField.value) {
+      showFieldError(serviceField, 'Please select a service');
+      isValid = false;
+    } else {
+      clearFieldError(serviceField);
+    }
+
+    // If validation fails, focus on first error field
+    if (!isValid) {
+      const firstError = this.querySelector('.field-error');
+      if (firstError && firstError.previousElementSibling) {
+        firstError.previousElementSibling.focus();
+      }
+      return;
+    }
+
+    // Sanitize inputs
+    const name = sanitizeInput(nameField.value.trim());
+    const phone = sanitizeInput(phoneField.value.trim());
+    const service = sanitizeInput(serviceField.value);
+
+    // Proceed with payment
+    const squareDepositLink = 'https://square.link/u/vScfV4jK';
+    const details = `${name} - ${phone} - ${service}`;
+
+    // Open payment window
+    const paymentWindow = window.open(
+      squareDepositLink + `?note=${encodeURIComponent(details)}`,
+      '_blank',
+      'noopener,noreferrer'
+    );
+
+    if (paymentWindow) {
+      setTimeout(() => {
+        alert(
+          `Payment window opened for $30 deposit.\n\nAfter payment, we'll contact you at ${phone} within 24 hours to confirm your appointment.`
+        );
+        closeBookingModal();
+        this.reset();
+      }, 500);
+    } else {
+      alert(
+        'Pop-up blocked! Please allow pop-ups for this site and try again.\n\nAlternatively, call us at (412) 752-8684 to book your appointment.'
+      );
+    }
+  });
+}
+
+// ===== MODAL CLICK OUTSIDE TO CLOSE =====
+
+const bookingModal = document.getElementById('bookingModal');
+if (bookingModal) {
+  bookingModal.addEventListener('click', function (e) {
+    if (e.target === this) {
+      closeBookingModal();
+    }
+  });
+}
+
+// ===== PAGE LOAD ACCESSIBILITY ENHANCEMENTS =====
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Add ARIA labels to interactive elements without them
+  const mobileToggle = document.getElementById('mobileToggle');
+  if (mobileToggle && !mobileToggle.getAttribute('aria-label')) {
+    mobileToggle.setAttribute('aria-label', 'Toggle mobile menu');
+    mobileToggle.setAttribute('role', 'button');
+    mobileToggle.setAttribute('aria-expanded', 'false');
+  }
+
+  // Update ARIA state when mobile menu toggles
+  if (mobileToggle) {
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        if (mutation.attributeName === 'class') {
+          const isActive = mobileToggle.classList.contains('active');
+          mobileToggle.setAttribute('aria-expanded', isActive.toString());
+        }
+      });
+    });
+    observer.observe(mobileToggle, { attributes: true });
+  }
+
+  // Add ARIA labels to modal close buttons
+  document.querySelectorAll('.modal-close').forEach((closeBtn) => {
+    if (!closeBtn.getAttribute('aria-label')) {
+      closeBtn.setAttribute('aria-label', 'Close modal');
+    }
+  });
+});
