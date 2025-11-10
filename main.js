@@ -318,6 +318,86 @@ if (bookingModal) {
   });
 }
 
+// ===== QUOTE PAGE VEHICLE SELECTION =====
+
+/**
+ * Select vehicle type and display pricing
+ * @param {HTMLElement} element - Clicked vehicle option element
+ * @param {string} vehicleType - Type of vehicle selected
+ */
+function selectVehicle(element, vehicleType) {
+  // Remove active class from all options
+  document.querySelectorAll('.quote-option').forEach(opt => {
+    opt.style.borderColor = 'rgba(66, 165, 245, 0.3)';
+    opt.style.background = 'linear-gradient(135deg, #0d1b2a, #1a2942)';
+  });
+
+  // Highlight selected option
+  element.style.borderColor = '#42a5f5';
+  element.style.background = 'linear-gradient(135deg, #0d47a1, #1565c0)';
+
+  // Define pricing tiers for different vehicle types
+  const pricing = {
+    compact: {
+      essential: '$65',
+      executive: '$145',
+      ceramic: '$585'
+    },
+    midsize: {
+      essential: '$75',
+      executive: '$165',
+      ceramic: '$685'
+    },
+    suv: {
+      essential: '$85',
+      executive: '$185',
+      ceramic: '$785'
+    },
+    luxury: {
+      essential: '$85',
+      executive: '$185',
+      ceramic: '$785'
+    },
+    motorcycle: {
+      essential: '$45',
+      executive: '$95',
+      ceramic: '$385'
+    },
+    fleet: {
+      essential: '$55',
+      executive: '$65',
+      ceramic: 'N/A'
+    },
+    semi: {
+      essential: '$125',
+      executive: '$185',
+      ceramic: 'N/A'
+    }
+  };
+
+  // Update prices if elements exist
+  const prices = pricing[vehicleType];
+  if (prices) {
+    const essentialEl = document.getElementById('essentialPrice');
+    const executiveEl = document.getElementById('executivePrice');
+    const ceramicEl = document.getElementById('ceramicPrice');
+
+    if (essentialEl) essentialEl.textContent = prices.essential;
+    if (executiveEl) executiveEl.textContent = prices.executive;
+    if (ceramicEl) ceramicEl.textContent = prices.ceramic;
+  }
+
+  // Show price display
+  const priceDisplay = document.getElementById('priceDisplay');
+  if (priceDisplay) {
+    priceDisplay.style.display = 'block';
+    // Smooth scroll to prices
+    setTimeout(() => {
+      priceDisplay.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+}
+
 // ===== PAGE LOAD ACCESSIBILITY ENHANCEMENTS =====
 
 document.addEventListener('DOMContentLoaded', function () {
