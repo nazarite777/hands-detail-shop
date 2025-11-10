@@ -1,0 +1,218 @@
+# .htaccess for Hands Detail Shop
+# Apache Configuration for Security, Performance, and SEO
+
+# ============================================
+# FORCE HTTPS (SSL)
+# ============================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Force www (or remove www - choose one)
+    # Uncomment next 2 lines to force www
+    # RewriteCond %{HTTP_HOST} !^www\. [NC]
+    # RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [L,R=301]
+</IfModule>
+
+# ============================================
+# SECURITY HEADERS
+# ============================================
+<IfModule mod_headers.c>
+    # Prevent clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # Prevent MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Enable XSS protection
+    Header always set X-XSS-Protection "1; mode=block"
+
+    # Referrer Policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Permissions Policy (formerly Feature-Policy)
+    Header always set Permissions-Policy "geolocation=(self), microphone=(), camera=()"
+
+    # Content Security Policy (CSP)
+    # Allows Tawk.to chat widget and Square payment integration
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://embed.tawk.to https://square.link; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://embed.tawk.to wss://embed.tawk.to https://square.link; frame-src https://square.link https://tawk.to; object-src 'none'; base-uri 'self'; form-action 'self' https://square.link"
+
+    # HSTS (HTTP Strict Transport Security) - 1 year
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
+
+# ============================================
+# PERFORMANCE - BROWSER CACHING
+# ============================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # Default expiration: 1 hour
+    ExpiresDefault "access plus 1 hour"
+
+    # HTML (no cache for dynamic content)
+    ExpiresByType text/html "access plus 0 seconds"
+
+    # CSS and JavaScript (1 year)
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType application/x-javascript "access plus 1 year"
+
+    # Images (1 year)
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # Fonts (1 year)
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+
+    # PDF and other documents (1 month)
+    ExpiresByType application/pdf "access plus 1 month"
+
+    # Sitemap and robots.txt (1 week)
+    ExpiresByType application/xml "access plus 1 week"
+    ExpiresByType text/xml "access plus 1 week"
+    ExpiresByType text/plain "access plus 1 week"
+</IfModule>
+
+# Cache-Control headers
+<IfModule mod_headers.c>
+    # CSS and JavaScript
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+    # Images
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+    # HTML (no cache)
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+</IfModule>
+
+# ============================================
+# COMPRESSION (GZIP)
+# ============================================
+<IfModule mod_deflate.c>
+    # Compress HTML, CSS, JavaScript, Text, XML
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+
+    # Don't compress images (already compressed)
+    SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|webp)$ no-gzip
+</IfModule>
+
+# ============================================
+# FILE ACCESS SECURITY
+# ============================================
+
+# Disable directory browsing
+Options -Indexes
+
+# Block access to sensitive files
+<FilesMatch "(^#.*#|\.(bak|conf|dist|fla|in[ci]|log|orig|psd|sh|sql|sw[op])|~)$">
+    Require all denied
+</FilesMatch>
+
+# Protect .htaccess
+<Files .htaccess>
+    Require all denied
+</Files>
+
+# Protect .git directory
+<DirectoryMatch "\.git">
+    Require all denied
+</DirectoryMatch>
+
+# Protect node_modules
+<DirectoryMatch "node_modules">
+    Require all denied
+</DirectoryMatch>
+
+# Protect package files
+<FilesMatch "(package\.json|package-lock\.json|\.npmrc)$">
+    Require all denied
+</FilesMatch>
+
+# ============================================
+# ERROR PAGES (Optional - create custom error pages)
+# ============================================
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html
+
+# ============================================
+# SEO - REDIRECT www to non-www (or vice versa)
+# ============================================
+# Uncomment the section you prefer:
+
+# Option 1: Redirect www to non-www
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+#     RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+# </IfModule>
+
+# Option 2: Redirect non-www to www
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTP_HOST} !^www\. [NC]
+#     RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
+# </IfModule>
+
+# ============================================
+# MIME TYPES
+# ============================================
+<IfModule mod_mime.c>
+    # JavaScript
+    AddType application/javascript js
+
+    # JSON
+    AddType application/json json
+
+    # Web fonts
+    AddType font/woff woff
+    AddType font/woff2 woff2
+    AddType application/vnd.ms-fontobject eot
+    AddType font/ttf ttf
+    AddType font/otf otf
+
+    # Images
+    AddType image/webp webp
+    AddType image/svg+xml svg svgz
+
+    # UTF-8 encoding
+    AddDefaultCharset utf-8
+    AddCharset utf-8 .html .css .js .xml .json .webmanifest
+</IfModule>
+
+# ============================================
+# PERFORMANCE - ETags
+# ============================================
+# Remove ETags (use Cache-Control instead)
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None
