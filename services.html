@@ -185,6 +185,138 @@
         </div>
     </section>
 
+    <!-- Detailing Packages Section -->
+    <section style="padding: 100px 20px; background: linear-gradient(135deg, #0a1929 0%, #0d1b2a 50%, #001219 100%); background-attachment: fixed;" id="packages">
+        <div style="max-width: 1400px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 style="font-size: 2.8rem; margin-bottom: 20px; color: #d4d4d4;">Our Detailing Packages</h2>
+                <p style="font-size: 1.3rem; opacity: 0.9; max-width: 800px; margin: 0 auto; color: #a0a0a0;">Professional packages tailored to your vehicle's needs</p>
+            </div>
+
+            <!-- Package Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+
+                <!-- Essential Package -->
+                <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(66, 165, 245, 0.3); transition: transform 0.3s ease;">
+                    <div style="background: linear-gradient(135deg, #1565c0, #1e88e5); padding: 30px; text-align: center;">
+                        <h3 style="color: white; font-size: 1.8rem; margin: 0;">Essential Package</h3>
+                        <div style="font-size: 2rem; font-weight: 800; margin-top: 15px; color: #e3f2fd;">$65 - $85</div>
+                        <p style="margin-top: 10px; opacity: 0.9; font-size: 0.9rem;">Perfect for regular maintenance</p>
+                    </div>
+                    <div style="padding: 30px; color: #b8b8b8;">
+                        <p style="margin-bottom: 20px; line-height: 1.6; font-weight: 600; color: #c8c8c8;">Complete exterior wash & detail</p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Hand wash & dry</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Wheel & tire cleaning</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Tire shine application</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Windows cleaned</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Door jambs cleaned</li>
+                            <li style="padding: 10px 0;">✓ Quick interior vacuum</li>
+                        </ul>
+                        <button onclick="openBookingModal('Essential Package')" style="width: 100%; margin-top: 25px; padding: 15px; background: linear-gradient(135deg, #1565c0, #42a5f5); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 1.1rem;">Book Essential</button>
+                    </div>
+                </div>
+
+                <!-- Executive Package -->
+                <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(66, 165, 245, 0.3);">
+                    <div style="background: linear-gradient(135deg, #0d47a1, #1565c0); padding: 30px; text-align: center;">
+                        <h3 style="color: white; font-size: 1.8rem; margin: 0;">Executive Package</h3>
+                        <div style="font-size: 2rem; font-weight: 800; margin-top: 15px; color: #e3f2fd;">$145 - $185</div>
+                        <p style="margin-top: 10px; opacity: 0.9; font-size: 0.9rem;">Most popular choice</p>
+                    </div>
+                    <div style="padding: 30px; color: #b8b8b8;">
+                        <p style="margin-bottom: 20px; line-height: 1.6; font-weight: 600; color: #c8c8c8;">Full exterior & interior detail</p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Everything in Essential, plus:</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Clay bar treatment</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ One-step polish</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Wax protection</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Full interior vacuum & wipe down</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Leather conditioning</li>
+                            <li style="padding: 10px 0;">✓ Air freshener</li>
+                        </ul>
+                        <button onclick="openBookingModal('Executive Package')" style="width: 100%; margin-top: 25px; padding: 15px; background: linear-gradient(135deg, #0d47a1, #1976d2); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 1.1rem;">Book Executive</button>
+                    </div>
+                </div>
+
+                <!-- Signature Package -->
+                <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 2px solid rgba(255, 215, 0, 0.5); position: relative;">
+                    <div style="position: absolute; top: 15px; right: 15px; background: linear-gradient(135deg, #FFD700, #FFA500); padding: 8px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; color: #000;">BEST VALUE</div>
+                    <div style="background: linear-gradient(135deg, #1a237e, #283593); padding: 30px; text-align: center;">
+                        <h3 style="color: white; font-size: 1.8rem; margin: 0;">Signature Package</h3>
+                        <div style="font-size: 2rem; font-weight: 800; margin-top: 15px; color: #e3f2fd;">$285 - $365</div>
+                        <p style="margin-top: 10px; opacity: 0.9; font-size: 0.9rem;">Premium restoration</p>
+                    </div>
+                    <div style="padding: 30px; color: #b8b8b8;">
+                        <p style="margin-bottom: 20px; line-height: 1.6; font-weight: 600; color: #c8c8c8;">Complete restoration & protection</p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Everything in Executive, plus:</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Multi-stage paint correction</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Engine bay detail</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Carpet & upholstery shampoo</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Headlight restoration</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Trim restoration</li>
+                            <li style="padding: 10px 0;">✓ 6-month sealant protection</li>
+                        </ul>
+                        <button onclick="openBookingModal('Signature Package')" style="width: 100%; margin-top: 25px; padding: 15px; background: linear-gradient(135deg, #283593, #3949ab); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 1.1rem;">Book Signature</button>
+                    </div>
+                </div>
+
+                <!-- Presidential Package -->
+                <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(138, 43, 226, 0.5);">
+                    <div style="background: linear-gradient(135deg, #4a148c, #6a1b9a); padding: 30px; text-align: center;">
+                        <h3 style="color: white; font-size: 1.8rem; margin: 0;">Presidential Package</h3>
+                        <div style="font-size: 2rem; font-weight: 800; margin-top: 15px; color: #e3f2fd;">$585 - $785</div>
+                        <p style="margin-top: 10px; opacity: 0.9; font-size: 0.9rem;">Elite concours-level detail</p>
+                    </div>
+                    <div style="padding: 30px; color: #b8b8b8;">
+                        <p style="margin-bottom: 20px; line-height: 1.6; font-weight: 600; color: #c8c8c8;">Showroom perfection</p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Everything in Signature, plus:</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Professional paint correction</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Premium ceramic coating</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Complete leather treatment</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Odor elimination treatment</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Chrome & trim polish</li>
+                            <li style="padding: 10px 0;">✓ 2-year warranty protection</li>
+                        </ul>
+                        <button onclick="openBookingModal('Presidential Package')" style="width: 100%; margin-top: 25px; padding: 15px; background: linear-gradient(135deg, #6a1b9a, #8e24aa); color: white; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 1.1rem;">Book Presidential</button>
+                    </div>
+                </div>
+
+                <!-- Ultimate Armor Package -->
+                <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(255,215,0,0.3); border: 2px solid rgba(255, 215, 0, 0.8); position: relative;">
+                    <div style="position: absolute; top: 15px; right: 15px; background: linear-gradient(135deg, #FFD700, #FFA500); padding: 8px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; color: #000;">ULTIMATE</div>
+                    <div style="background: linear-gradient(135deg, #b8860b, #daa520); padding: 30px; text-align: center;">
+                        <h3 style="color: white; font-size: 1.8rem; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Ultimate Armor</h3>
+                        <div style="font-size: 2rem; font-weight: 800; margin-top: 15px; color: white;">$1,285 - $1,685</div>
+                        <p style="margin-top: 10px; opacity: 0.95; font-size: 0.9rem;">Maximum protection</p>
+                    </div>
+                    <div style="padding: 30px; color: #b8b8b8;">
+                        <p style="margin-bottom: 20px; line-height: 1.6; font-weight: 600; color: #c8c8c8;">The ultimate in vehicle protection</p>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Everything in Presidential, plus:</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ 9H ceramic coating (5-year)</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Paint protection film (PPF)</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Wheel ceramic coating</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Interior ceramic treatment</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid rgba(100,100,100,0.3);">✓ Complete undercarriage detail</li>
+                            <li style="padding: 10px 0;">✓ 5-year warranty included</li>
+                        </ul>
+                        <button onclick="openBookingModal('Ultimate Armor')" style="width: 100%; margin-top: 25px; padding: 15px; background: linear-gradient(135deg, #daa520, #ffd700); color: #000; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; font-size: 1.1rem;">Book Ultimate Armor</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin-top: 60px;">
+                <p style="font-size: 1.3rem; margin-bottom: 20px; color: #c0c0c0;">Not sure which package is right for you?</p>
+                <a href="tel:4127528684" style="display: inline-block; padding: 18px 40px; background: linear-gradient(135deg, #1565c0, #42a5f5); color: white; text-decoration: none; border-radius: 50px; font-weight: 700; font-size: 1.2rem; box-shadow: 0 10px 30px rgba(66,165,245,0.3);">📞 Call for Free Consultation</a>
+            </div>
+        </div>
+    </section>
+
     <!-- How It Works -->
     <section class="how-it-works" id="how-it-works">
         <div class="steps-container">
@@ -221,13 +353,13 @@
         </div>
     </section>
 
-    <!-- Complete Vehicle Services Section -->
+    <!-- Additional Services Section -->
     <section style="padding: 100px 20px; background: linear-gradient(135deg, #0a1929 0%, #0d1b2a 50%, #001219 100%);
-            background-attachment: fixed; color: white;" id="packages">
+            background-attachment: fixed; color: white;" id="additional-services">
         <div style="max-width: 1400px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 60px;">
-                <h2 style="font-size: 2.8rem; margin-bottom: 20px; color: #d4d4d4;">Complete Vehicle Services</h2>
-                <p style="font-size: 1.3rem; opacity: 0.9; max-width: 800px; margin: 0 auto; color: #a0a0a0;">Beyond detailing, we're your one-stop shop for complete vehicle enhancement and repair</p>
+                <h2 style="font-size: 2.8rem; margin-bottom: 20px; color: #d4d4d4;">Additional Services</h2>
+                <p style="font-size: 1.3rem; opacity: 0.9; max-width: 800px; margin: 0 auto; color: #a0a0a0;">Beyond detailing, we offer complete vehicle enhancement services</p>
             </div>
 
             <!-- Professional Benefits Banner -->
