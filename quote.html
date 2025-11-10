@@ -210,9 +210,251 @@
                 </div>
             </div>
 
+            <!-- Package Builder Section -->
+            <div id="packageBuilder" class="package-builder-section" style="display: none;">
+                <div class="section-header">
+                    <h2 class="section-title">Build Your Custom Package</h2>
+                    <p class="section-subtitle">Select the services you need - mix and match to fit your budget</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-top: 40px;">
+                    <!-- Service Selection Column -->
+                    <div>
+                        <!-- Exterior Services -->
+                        <div class="service-category">
+                            <h3 style="color: #42a5f5; font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid rgba(66, 165, 245, 0.3); padding-bottom: 10px;">🚗 Exterior Services</h3>
+                            <div class="service-items-grid">
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Hand Wash & Dry" data-price="25" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Hand Wash & Dry</span>
+                                        <span class="service-price">$25</span>
+                                    </span>
+                                </label>
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Clay Bar Treatment" data-price="45" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Clay Bar Treatment</span>
+                                        <span class="service-price">$45</span>
+                                    </span>
+                                </label>
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Paint Sealant/Wax" data-price="65" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Paint Sealant/Wax</span>
+                                        <span class="service-price">$65</span>
+                                    </span>
+                                </label>
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Wheel & Tire Detail" data-price="35" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Wheel & Tire Detail</span>
+                                        <span class="service-price">$35</span>
+                                    </span>
+                                </label>
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Headlight Restoration" data-price="85" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Headlight Restoration</span>
+                                        <span class="service-price">$85</span>
+                                    </span>
+                                </label>
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Chrome/Metal Polish" data-price="55" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Chrome/Metal Polish</span>
+                                        <span class="service-price">$55</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Interior Services -->
+                        <div class="service-category" style="margin-top: 30px;">
+                            <h3 style="color: #42a5f5; font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid rgba(66, 165, 245, 0.3); padding-bottom: 10px;">🪑 Interior Services</h3>
+                            <div class="service-items-grid">
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Interior Vacuum & Wipe" data-price="30" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Interior Vacuum & Wipe</span>
+                                        <span class="service-price">$30</span>
+                                    </span>
+                                </label>
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Carpet/Upholstery Shampoo" data-price="75" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Carpet/Upholstery Shampoo</span>
+                                        <span class="service-price">$75</span>
+                                    </span>
+                                </label>
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Leather Conditioning" data-price="45" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Leather Conditioning</span>
+                                        <span class="service-price">$45</span>
+                                    </span>
+                                </label>
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Dashboard & Console Detail" data-price="25" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Dashboard & Console Detail</span>
+                                        <span class="service-price">$25</span>
+                                    </span>
+                                </label>
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Odor Elimination" data-price="65" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Odor Elimination</span>
+                                        <span class="service-price">$65</span>
+                                    </span>
+                                </label>
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Pet Hair Removal" data-price="55" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Pet Hair Removal</span>
+                                        <span class="service-price">$55</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Protection & Premium Services -->
+                        <div class="service-category" style="margin-top: 30px;">
+                            <h3 style="color: #42a5f5; font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid rgba(66, 165, 245, 0.3); padding-bottom: 10px;">💎 Protection & Premium</h3>
+                            <div class="service-items-grid">
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Ceramic Coating (Compact)" data-price="585" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Ceramic Coating (Compact)</span>
+                                        <span class="service-price">$585</span>
+                                    </span>
+                                </label>
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Paint Correction (1-Step)" data-price="185" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Paint Correction (1-Step)</span>
+                                        <span class="service-price">$185</span>
+                                    </span>
+                                </label>
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Paint Correction (2-Step)" data-price="285" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Paint Correction (2-Step)</span>
+                                        <span class="service-price">$285</span>
+                                    </span>
+                                </label>
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Interior Ceramic Protection" data-price="285" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Interior Ceramic Protection</span>
+                                        <span class="service-price">$285</span>
+                                    </span>
+                                </label>
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Engine Bay Cleaning" data-price="55" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Engine Bay Cleaning</span>
+                                        <span class="service-price">$55</span>
+                                    </span>
+                                </label>
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Undercarriage Coating" data-price="145" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Undercarriage Coating</span>
+                                        <span class="service-price">$145</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Add-Ons -->
+                        <div class="service-category" style="margin-top: 30px;">
+                            <h3 style="color: #42a5f5; font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid rgba(66, 165, 245, 0.3); padding-bottom: 10px;">⭐ Add-Ons & Extras</h3>
+                            <div class="service-items-grid">
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Window Tinting" data-price="285" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Window Tinting</span>
+                                        <span class="service-price">$285</span>
+                                    </span>
+                                </label>
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Trim Restoration" data-price="75" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Trim Restoration</span>
+                                        <span class="service-price">$75</span>
+                                    </span>
+                                </label>
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Glass Coating" data-price="95" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Glass Coating</span>
+                                        <span class="service-price">$95</span>
+                                    </span>
+                                </label>
+                                <label class="service-checkbox-item">
+                                    <input type="checkbox" class="service-check" data-service="Door Jamb Detailing" data-price="35" onchange="updateReceipt()">
+                                    <span class="service-check-label">
+                                        <span class="service-name">Door Jamb Detailing</span>
+                                        <span class="service-price">$35</span>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Receipt/Summary Column (Sticky) -->
+                    <div>
+                        <div id="receiptBox" class="receipt-box" style="position: sticky; top: 100px;">
+                            <div class="receipt-header">
+                                <h3 style="margin: 0; color: #d4d4d4; font-size: 1.5rem;">📋 Your Custom Package</h3>
+                                <p style="margin: 5px 0 0; color: #a0a0a0; font-size: 0.9rem;" id="vehicleTypeLabel">Select services below</p>
+                            </div>
+
+                            <div class="receipt-items" id="receiptItems">
+                                <div style="text-align: center; padding: 40px 20px; color: #909090;">
+                                    <div style="font-size: 3rem; margin-bottom: 10px;">🛒</div>
+                                    <p>No services selected yet</p>
+                                    <p style="font-size: 0.9rem; margin-top: 10px;">Check boxes to add services</p>
+                                </div>
+                            </div>
+
+                            <div class="receipt-footer">
+                                <div class="receipt-subtotal">
+                                    <span>Subtotal:</span>
+                                    <span id="receiptSubtotal">$0</span>
+                                </div>
+                                <div class="receipt-discount" id="discountRow" style="display: none;">
+                                    <span>First-Time Discount (15%):</span>
+                                    <span id="receiptDiscount">-$0</span>
+                                </div>
+                                <div class="receipt-total">
+                                    <span>Total:</span>
+                                    <span id="receiptTotal">$0</span>
+                                </div>
+                                <label class="discount-toggle">
+                                    <input type="checkbox" id="applyDiscount" onchange="updateReceipt()">
+                                    <span style="margin-left: 8px; color: #c0c0c0;">Apply 15% first-time discount</span>
+                                </label>
+                            </div>
+
+                            <div style="margin-top: 20px;">
+                                <button onclick="requestCustomQuote()" class="custom-quote-btn" id="requestQuoteBtn" disabled>
+                                    📞 Request This Quote
+                                </button>
+                                <button onclick="clearAllServices()" class="clear-btn" style="margin-top: 10px; width: 100%; padding: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(160,160,160,0.3); border-radius: 8px; color: #c0c0c0; cursor: pointer;">
+                                    Clear All
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div id="priceDisplay" class="price-display-section">
                 <div class="section-header">
                     <h2 class="section-title">Choose Your Package</h2>
+                    <p class="section-subtitle">Or <a href="#" onclick="showPackageBuilder(); return false;" style="color: #42a5f5; text-decoration: underline;">build your own custom package</a></p>
                 </div>
 
                 <div class="package-grid">
@@ -735,6 +977,162 @@
         // Refresh weather every 30 minutes
         setInterval(fetchWeather, 1800000);
     });
+
+    // ===== PACKAGE BUILDER FUNCTIONS =====
+
+    /**
+     * Show package builder and hide pre-built packages
+     */
+    function showPackageBuilder() {
+        document.getElementById('priceDisplay').style.display = 'none';
+        document.getElementById('packageBuilder').style.display = 'block';
+
+        // Smooth scroll to builder
+        setTimeout(() => {
+            document.getElementById('packageBuilder').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+    }
+
+    /**
+     * Update receipt with selected services and calculate totals
+     */
+    function updateReceipt() {
+        const checkboxes = document.querySelectorAll('.service-check:checked');
+        const receiptItems = document.getElementById('receiptItems');
+        const receiptSubtotal = document.getElementById('receiptSubtotal');
+        const receiptTotal = document.getElementById('receiptTotal');
+        const receiptDiscount = document.getElementById('receiptDiscount');
+        const discountRow = document.getElementById('discountRow');
+        const requestQuoteBtn = document.getElementById('requestQuoteBtn');
+        const applyDiscount = document.getElementById('applyDiscount');
+
+        // If no services selected, show empty state
+        if (checkboxes.length === 0) {
+            receiptItems.innerHTML = `
+                <div style="text-align: center; padding: 40px 20px; color: #909090;">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">🛒</div>
+                    <p>No services selected yet</p>
+                    <p style="font-size: 0.9rem; margin-top: 10px;">Check boxes to add services</p>
+                </div>
+            `;
+            receiptSubtotal.textContent = '$0';
+            receiptTotal.textContent = '$0';
+            discountRow.style.display = 'none';
+            requestQuoteBtn.disabled = true;
+            requestQuoteBtn.style.opacity = '0.5';
+            requestQuoteBtn.style.cursor = 'not-allowed';
+            return;
+        }
+
+        // Build receipt list
+        let subtotal = 0;
+        let itemsHTML = '';
+
+        checkboxes.forEach(checkbox => {
+            const serviceName = checkbox.dataset.service;
+            const servicePrice = parseInt(checkbox.dataset.price);
+            subtotal += servicePrice;
+
+            itemsHTML += `
+                <div class="receipt-item">
+                    <span class="receipt-item-name">${serviceName}</span>
+                    <span class="receipt-item-price">$${servicePrice}</span>
+                </div>
+            `;
+        });
+
+        receiptItems.innerHTML = itemsHTML;
+        receiptSubtotal.textContent = `$${subtotal}`;
+
+        // Apply discount if checked
+        let total = subtotal;
+        if (applyDiscount.checked) {
+            const discount = Math.round(subtotal * 0.15);
+            total = subtotal - discount;
+            receiptDiscount.textContent = `-$${discount}`;
+            discountRow.style.display = 'flex';
+        } else {
+            discountRow.style.display = 'none';
+        }
+
+        receiptTotal.textContent = `$${total}`;
+
+        // Enable request quote button
+        requestQuoteBtn.disabled = false;
+        requestQuoteBtn.style.opacity = '1';
+        requestQuoteBtn.style.cursor = 'pointer';
+    }
+
+    /**
+     * Clear all selected services
+     */
+    function clearAllServices() {
+        document.querySelectorAll('.service-check').forEach(checkbox => {
+            checkbox.checked = false;
+        });
+        document.getElementById('applyDiscount').checked = false;
+        updateReceipt();
+    }
+
+    /**
+     * Request custom quote - collect services and open booking modal
+     */
+    function requestCustomQuote() {
+        const checkboxes = document.querySelectorAll('.service-check:checked');
+
+        if (checkboxes.length === 0) {
+            alert('Please select at least one service to request a quote.');
+            return;
+        }
+
+        // Collect selected services
+        const services = [];
+        let total = 0;
+
+        checkboxes.forEach(checkbox => {
+            const serviceName = checkbox.dataset.service;
+            const servicePrice = parseInt(checkbox.dataset.price);
+            services.push(`${serviceName} - $${servicePrice}`);
+            total += servicePrice;
+        });
+
+        // Apply discount if checked
+        const applyDiscount = document.getElementById('applyDiscount').checked;
+        let finalTotal = total;
+        let discountText = '';
+
+        if (applyDiscount) {
+            const discount = Math.round(total * 0.15);
+            finalTotal = total - discount;
+            discountText = `\nFirst-Time Discount (15%): -$${discount}`;
+        }
+
+        // Create service summary
+        const serviceSummary = services.join('\n');
+        const quoteSummary = `Custom Package Quote:\n\n${serviceSummary}\n\nSubtotal: $${total}${discountText}\nTotal: $${finalTotal}`;
+
+        // Open booking modal with pre-filled information
+        openBookingModal();
+
+        // Pre-fill the message field with service details
+        setTimeout(() => {
+            const messageField = document.querySelector('#bookingForm textarea');
+            if (messageField) {
+                messageField.value = quoteSummary;
+            }
+
+            // Set service type to custom
+            const serviceSelect = document.querySelector('#bookingForm select');
+            if (serviceSelect) {
+                serviceSelect.value = 'Not Sure - Need Consultation';
+            }
+        }, 200);
+
+        // Show success message
+        setTimeout(() => {
+            alert(`Custom Quote Prepared!\n\nTotal Services: ${services.length}\nEstimated Total: $${finalTotal}\n\nPlease fill out your contact information to receive this quote.`);
+        }, 300);
+    }
     </script>
 
     <!--Start of Tawk.to Script-->
