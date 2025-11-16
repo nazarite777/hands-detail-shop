@@ -16,14 +16,14 @@ describe('Input Validation Functions', () => {
     }
 
     test('should accept valid 10-digit phone number', () => {
-      expect(validatePhone('4127528684')).toBe(true);
-      expect(validatePhone('412-752-8684')).toBe(true);
-      expect(validatePhone('(412) 752-8684')).toBe(true);
+      expect(validatePhone('4129476098')).toBe(true);
+      expect(validatePhone('412-947-6098')).toBe(true);
+      expect(validatePhone('(412) 947-6098')).toBe(true);
     });
 
     test('should accept 11-digit phone with country code', () => {
-      expect(validatePhone('14127528684')).toBe(true);
-      expect(validatePhone('1-412-752-8684')).toBe(true);
+      expect(validatePhone('14129476098')).toBe(true);
+      expect(validatePhone('1-412-947-6098')).toBe(true);
     });
 
     test('should reject phone numbers with less than 10 digits', () => {
@@ -38,7 +38,7 @@ describe('Input Validation Functions', () => {
 
     test('should reject phone numbers with special characters', () => {
       expect(validatePhone('412@752#8684')).toBe(false);
-      expect(validatePhone('412.752.8684')).toBe(false); // Dots not allowed
+      expect(validatePhone('412.947.6098')).toBe(false); // Dots not allowed
     });
 
     test('should handle empty or whitespace input', () => {
@@ -114,7 +114,7 @@ describe('Input Validation Functions', () => {
 
     test('should preserve normal text', () => {
       expect(sanitizeInput('John Doe')).toBe('John Doe');
-      expect(sanitizeInput('4127528684')).toBe('4127528684');
+      expect(sanitizeInput('4129476098')).toBe('4129476098');
       expect(sanitizeInput('Normal text here')).toBe('Normal text here');
     });
 
@@ -240,7 +240,7 @@ describe('Form Field Error Handling', () => {
 describe('URL Encoding and Security', () => {
   test('should properly encode special characters in URLs', () => {
     const name = 'John & Jane';
-    const phone = '(412) 752-8684';
+    const phone = '(412) 947-6098';
     const service = 'Elite Detail - $145';
 
     const details = `${name} - ${phone} - ${service}`;
@@ -335,7 +335,7 @@ describe('Integration Tests', () => {
     // Simulate valid form submission
     const formData = {
       name: 'John Doe',
-      phone: '(412) 752-8684',
+      phone: '(412) 947-6098',
       service: 'Elite Detail Package',
     };
 
@@ -348,7 +348,7 @@ describe('Integration Tests', () => {
     const sanitizedService = sanitizeInput(formData.service);
 
     expect(sanitizedName).toBe('John Doe');
-    expect(sanitizedPhone).toBe('(412) 752-8684');
+    expect(sanitizedPhone).toBe('(412) 947-6098');
     expect(sanitizedService).toBe('Elite Detail Package');
 
     // Build URL

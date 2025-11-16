@@ -284,7 +284,7 @@ All new pages follow the existing design system:
 
 For questions or issues:
 - Email: handsdetailshop@gmail.com
-- Phone: (412) 752-8684
+- Phone: (412) 947-6098
 
 For code updates:
 - All new feature code is well-commented

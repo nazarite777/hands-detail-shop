@@ -123,7 +123,7 @@ function handleContactForm(event) {
     },
     // Error callback
     function(error) {
-      alert('Failed to send message. Please call us at (412) 752-8684 or try again later.');
+      alert('Failed to send message. Please call us at (412) 947-6098 or try again later.');
       submitButton.disabled = false;
       submitButton.textContent = originalButtonText;
     }
