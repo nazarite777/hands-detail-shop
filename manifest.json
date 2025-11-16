@@ -1,0 +1,87 @@
+{
+  "name": "Hands Detail Shop - Professional Auto Detailing",
+  "short_name": "Hands Detail",
+  "description": "Expert auto detailing services in Arnold, PA with 16 years of excellence. Veteran-owned, professional ceramic coating, paint correction, interior detailing.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#1565c0",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/20200723_030424~2.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/20200723_030424~2.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "automotive", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "/autopic.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Book Appointment",
+      "short_name": "Book",
+      "description": "Book your detailing appointment",
+      "url": "/booking.html",
+      "icons": [
+        {
+          "src": "/20200723_030424~2.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Get Quote",
+      "short_name": "Quote",
+      "description": "Get a quick quote",
+      "url": "/quote.html",
+      "icons": [
+        {
+          "src": "/20200723_030424~2.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "View Services",
+      "short_name": "Services",
+      "description": "View our detailing services",
+      "url": "/services.html",
+      "icons": [
+        {
+          "src": "/20200723_030424~2.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "description": "Contact Hands Detail Shop",
+      "url": "/contact.html",
+      "icons": [
+        {
+          "src": "/20200723_030424~2.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "dir": "ltr",
+  "lang": "en-US"
+}

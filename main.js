@@ -301,7 +301,7 @@ if (bookingForm) {
       }, 500);
     } else {
       alert(
-        'Pop-up blocked! Please allow pop-ups for this site and try again.\n\nAlternatively, call us at (412) 752-8684 to book your appointment.'
+        'Pop-up blocked! Please allow pop-ups for this site and try again.\n\nAlternatively, call us at (412) 947-6098 to book your appointment.'
       );
     }
   });

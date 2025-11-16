@@ -7,6 +7,21 @@
     <meta name="description" content="Book your professional auto detailing appointment online. View real-time availability and secure your preferred time slot.">
     <link rel="canonical" href="https://handsdetailshop.com/booking.html">
     <meta name="theme-color" content="#1565c0">
+
+    <!-- PWA Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Hands Detail">
+
+    <!-- PWA Icons -->
+    <link rel="apple-touch-icon" href="/20200723_030424~2.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/20200723_030424~2.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/20200723_030424~2.png">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -26,7 +41,7 @@
                 <a href="contact.html" class="nav-link">Contact</a>
             </nav>
             <div class="contact-header">
-                <span class="phone-header">📞 (412) 752-8684</span>
+                <span class="phone-header">📞 (412) 947-6098</span>
                 <a href="booking.html" class="cta-header active">Book Now</a>
             </div>
             <div class="mobile-menu-toggle" id="mobileToggle">
@@ -41,7 +56,7 @@
     </header>
 
     <div class="promo-banner" style="margin-top: 70px;">
-        📅 Real-Time Availability | $30 Deposit Secures Your Spot | Flexible Rescheduling | 📞 (412) 752-8684
+        📅 Real-Time Availability | $30 Deposit Secures Your Spot | Flexible Rescheduling | 📞 (412) 947-6098
     </div>
 
     <section class="page-hero" style="margin-top: 20px; padding: 80px 20px 40px; text-align: center;">
@@ -240,13 +255,13 @@
             Call or text us directly and we'll get you scheduled right away!
         </p>
         <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <a href="tel:4127528684" class="contact-btn" style="text-decoration: none;">
+            <a href="tel:4129476098" class="contact-btn" style="text-decoration: none;">
                 <span>📞</span>
-                <span>Call (412) 752-8684</span>
+                <span>Call (412) 947-6098</span>
             </a>
-            <a href="sms:4127528684" class="contact-btn" style="text-decoration: none;">
+            <a href="sms:4129476098" class="contact-btn" style="text-decoration: none;">
                 <span>💬</span>
-                <span>Text (412) 752-8684</span>
+                <span>Text (412) 947-6098</span>
             </a>
         </div>
     </section>
@@ -255,7 +270,7 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Hands Detail Shop</h3>
-                <p><strong>📞 Phone:</strong> (412) 752-8684<br>
+                <p><strong>📞 Phone:</strong> (412) 947-6098<br>
                 <strong>✉️ Email:</strong> <a href="mailto:handsdetailshop@gmail.com">handsdetailshop@gmail.com</a></p>
             </div>
         </div>
@@ -265,6 +280,8 @@
     </footer>
 
     <script src="main.js"></script>
+    <script src="pwa-installer.js"></script>
+
     <script>
     function nextStep(step) {
         // Hide all sections
@@ -284,7 +301,7 @@
     }
 
     function confirmBooking() {
-        alert('In production, this would redirect to Square payment for $30 deposit.\n\nFor now, please call (412) 752-8684 to complete your booking!');
+        alert('In production, this would redirect to Square payment for $30 deposit.\n\nFor now, please call (412) 947-6098 to complete your booking!');
     }
 
     // Service option hover effects

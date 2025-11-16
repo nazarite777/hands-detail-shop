@@ -171,7 +171,7 @@ All new JavaScript functions **must** have unit tests.
 ```javascript
 describe('validatePhone', () => {
   test('should accept valid 10-digit phone number', () => {
-    expect(validatePhone('4127528684')).toBe(true);
+    expect(validatePhone('4129476098')).toBe(true);
   });
 
   test('should reject invalid phone', () => {
@@ -423,7 +423,7 @@ Include:
 
 - **GitHub Issues**: For bugs and features
 - **Website Contact Form**: For general questions
-- **Phone**: (412) 752-8684 for business inquiries
+- **Phone**: (412) 947-6098 for business inquiries
 
 ---
 

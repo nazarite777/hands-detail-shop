@@ -139,7 +139,7 @@ npm run lint
 2. **Optimize Profile**:
    - Add photos (use optimized images)
    - Add business hours: Mon-Sat 8AM-6PM
-   - Add phone: (412) 752-8684
+   - Add phone: (412) 947-6098
    - Add services from services.html
    - Request customer reviews
 
@@ -322,7 +322,7 @@ npx csso styles.css -o styles.min.css
 ## 📞 Contact & Support
 
 **Business Contact**:
-- **Phone**: (412) 752-8684
+- **Phone**: (412) 947-6098
 - **Location**: Arnold, PA 15068
 - **Hours**: Monday-Saturday, 8AM-6PM
 - **Email**: Contact via website form
@@ -384,4 +384,4 @@ Copyright © 2025 Hands Detail Shop. All rights reserved.
 
 **Built with ❤️ for the Greater Pittsburgh community**
 
-*Need auto detailing? Call (412) 752-8684 or visit [handsdetailshop.com](https://handsdetailshop.com)*
+*Need auto detailing? Call (412) 947-6098 or visit [handsdetailshop.com](https://handsdetailshop.com)*
