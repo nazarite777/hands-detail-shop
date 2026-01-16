@@ -2937,3 +2937,145 @@ footer {
   background: rgba(21, 101, 192, 0.3);
   border-color: #42a5f5;
 }
+
+/* ===== SEO OPTIMIZATION - MOVED INLINE STYLES ===== */
+
+/* Hero H1 styling */
+.hero-h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #e8f1f8;
+  margin: 20px 0;
+  text-align: center;
+  line-height: 1.4;
+  background: linear-gradient(90deg, #42a5f5, #90caf9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Logo link styling */
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* Logo fallback text */
+.logo-fallback {
+  display: none;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #c0c0c0;
+  font-style: italic;
+}
+
+/* Mobile menu call buttons */
+.mobile-call-btn {
+  background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5);
+  text-align: center;
+  margin-top: 10px;
+  border: 1px solid rgba(160, 160, 160, 0.3);
+}
+
+.mobile-text-btn {
+  background: rgba(50, 50, 50, 0.5);
+  text-align: center;
+  margin-top: 10px;
+  border: 1px solid rgba(160, 160, 160, 0.3);
+}
+
+/* Promo banner spacing */
+.promo-banner-spacing {
+  margin-top: 70px;
+}
+
+/* Trust badges container */
+.trust-badges {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.trust-badge {
+  background: rgba(21, 101, 192, 0.4);
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 1px solid rgba(160, 160, 160, 0.3);
+  display: inline-block;
+  color: #b8b8b8;
+}
+
+/* Service counter */
+.service-counter {
+  margin-top: 30px;
+}
+
+.counter-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #42a5f5, #90caf9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.counter-label {
+  opacity: 0.8;
+  color: #a0a0a0;
+}
+
+/* About section spacing */
+.about-section-spacing {
+  width: 100%;
+}
+
+.about-highlight-title {
+  color: #d4d4d4;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+/* Footer spacing */
+.footer-spacing-top {
+  margin-top: 15px;
+}
+
+.footer-link-muted {
+  color: #a0a0a0;
+}
+
+/* Modal styling */
+.modal-header-title {
+  margin: 0;
+}
+
+.modal-header-subtitle {
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
+.modal-form-padding {
+  padding: 30px;
+}
+
+.form-footer-note {
+  text-align: center;
+  margin-top: 15px;
+  color: #909090;
+  font-size: 0.9rem;
+}
+
+.footer-bottom-spacing {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .hero-h1 {
+    font-size: 1.4rem;
+  }
+}
