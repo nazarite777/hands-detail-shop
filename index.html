@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Primary Meta Tags -->
-    <title>Hands Detail Shop | Premium Auto Detailing in Arnold, PA | 16 Years Experience</title>
+    <title>Hands Detail Shop | Premium Auto Detailing in Arnold, PA</title>
     <meta name="title" content="Hands Detail Shop | Premium Auto Detailing in Arnold, PA">
-    <meta name="description" content="Expert auto detailing services in Arnold, PA with 16 years of excellence. Veteran-owned, professional ceramic coating, paint correction, interior detailing. Book your appointment today! Call (412) 947-6098">
+    <meta name="description" content="Expert auto detailing in Arnold, PA. 16 years of veteran-owned excellence. Ceramic coating, paint correction & more. Call (412) 947-6098">
     <meta name="keywords" content="auto detailing Arnold PA, car detailing near me, ceramic coating, paint correction, interior detailing, mobile detailing, veteran owned business, professional car wash, Arnold Pennsylvania">
     <meta name="author" content="Nazir El - Hands Detail Shop">
     <meta name="robots" content="index, follow">
@@ -60,22 +60,39 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 
+    <!-- Google Analytics - Replace GA_MEASUREMENT_ID with your actual Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+
     <!-- Schema.org Structured Data for LocalBusiness -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "AutoRepair",
       "name": "Hands Detail Shop",
+      "alternateName": "Hands Detail",
       "image": "https://handsdetailshop.com/20200723_030424~2.png",
+      "logo": "https://handsdetailshop.com/20200723_030424~2.png",
       "description": "Premium auto detailing services in Arnold, PA with 16 years of excellence. Veteran-owned professional mobile detailing.",
+      "slogan": "Paying attention to detail is our driving factor",
       "founder": {
         "@type": "Person",
         "name": "Nazir El",
         "jobTitle": "Owner & Master Detailer",
-        "description": "Air Force Veteran with 16 years of professional auto detailing experience"
+        "description": "Air Force Veteran with 16 years of professional auto detailing experience",
+        "alumniOf": {
+          "@type": "Organization",
+          "name": "United States Air Force"
+        }
       },
       "address": {
         "@type": "PostalAddress",
+        "streetAddress": "1532 Constitution Blvd",
         "addressLocality": "Arnold",
         "addressRegion": "PA",
         "postalCode": "15068",
@@ -88,6 +105,7 @@
       },
       "url": "https://handsdetailshop.com",
       "telephone": "+14129476098",
+      "email": "contact@handsdetailshop.com",
       "priceRange": "$$",
       "openingHoursSpecification": [
         {
@@ -95,18 +113,37 @@
           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
           "opens": "08:00",
           "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "00:00",
+          "closes": "00:00",
+          "description": "By Appointment Only"
         }
       ],
-      "areaServed": {
-        "@type": "GeoCircle",
-        "geoMidpoint": {
-          "@type": "GeoCoordinates",
-          "latitude": "40.5812",
-          "longitude": "-79.7670"
+      "areaServed": [
+        {
+          "@type": "GeoCircle",
+          "geoMidpoint": {
+            "@type": "GeoCoordinates",
+            "latitude": "40.5812",
+            "longitude": "-79.7670"
+          },
+          "geoRadius": "50000",
+          "description": "Greater Pittsburgh Area"
         },
-        "geoRadius": "50000",
-        "description": "Greater Pittsburgh Area"
-      },
+        {
+          "@type": "City",
+          "name": "Arnold",
+          "addressRegion": "PA"
+        },
+        {
+          "@type": "City",
+          "name": "Pittsburgh",
+          "addressRegion": "PA"
+        }
+      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Auto Detailing Services",
@@ -115,10 +152,40 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Elite Detail Package",
+              "name": "Essential Package",
+              "description": "Complete exterior wash and interior cleaning"
+            },
+            "price": "65",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Executive Package",
               "description": "Premium full exterior & interior detail"
             },
             "price": "145",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Signature Package",
+              "description": "Advanced detailing with paint enhancement"
+            },
+            "price": "285",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Presidential Package",
+              "description": "Ultimate luxury detailing experience"
+            },
+            "price": "585",
             "priceCurrency": "USD"
           },
           {
@@ -140,6 +207,16 @@
             },
             "price": "350",
             "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Monthly Detailing Membership",
+              "description": "Regular monthly detailing service"
+            },
+            "price": "80",
+            "priceCurrency": "USD"
           }
         ]
       },
@@ -156,7 +233,25 @@
         "https://medium.com/@handsdetailshop"
       ],
       "paymentAccepted": "Cash, Credit Card, Debit Card, Square",
-      "currenciesAccepted": "USD"
+      "currenciesAccepted": "USD",
+      "additionalType": [
+        "MobileApplication",
+        "AutoBodyShop",
+        "CarWash"
+      ],
+      "knowsAbout": [
+        "Auto Detailing",
+        "Ceramic Coating",
+        "Paint Correction",
+        "Interior Detailing",
+        "Mobile Detailing",
+        "Yacht Detailing",
+        "RV Detailing",
+        "Motorcycle Detailing"
+      ],
+      "veteranOwned": true,
+      "yearFounded": "2009",
+      "numberOfEmployees": "1-5"
     }
     </script>
 </head>
@@ -165,9 +260,9 @@
     <header id="header">
         <div class="nav-container">
             <div class="logo-section">
-                <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+                <a href="index.html" class="logo-link">
                     <img src="20200723_030424~2.png" alt="Hands Detail Shop Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div style="display: none; font-size: 1.5rem; font-weight: 800; color: #c0c0c0; font-style: italic;">HANDS DETAIL</div>
+                    <div class="logo-fallback">HANDS DETAIL</div>
                 </a>
                 <span class="mobile-badge">🚗 Mobile - We Come to You!</span>
             </div>
@@ -210,13 +305,13 @@
             <a href="rewards.html">Rewards</a>
             <a href="portal.html">Portal</a>
             <a href="contact.html">Contact</a>
-            <a href="tel:4129476098" style="background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">📞 Call Now</a>
-            <a href="sms:4129476098" style="background: rgba(50,50,50,0.5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">💬 Text Now</a>
+            <a href="tel:4129476098" class="mobile-call-btn">📞 Call Now</a>
+            <a href="sms:4129476098" class="mobile-text-btn">💬 Text Now</a>
         </nav>
     </header>
 
     <!-- Promotional Banner -->
-    <div class="promo-banner" style="margin-top: 70px;">
+    <div class="promo-banner promo-banner-offset">
         🎊 NEW YEAR SPECIAL: 15% OFF First-Time Customers | 💎 FREE Tire Shine with Any Package | 💳 $30 Deposit Secures Your Appointment | 📞 (412) 947-6098
     </div>
 
@@ -224,6 +319,8 @@
     <section class="welcome-hero" id="home">
         <div class="welcome-content">
             <img src="20200723_030424~2.png" alt="Hands Detail Shop Logo" class="hero-logo" onerror="this.src='https://i.postimg.cc/qqTWZqLC/hands-logo.png';">
+
+            <h1 class="main-heading">Professional Auto Detailing in Arnold, PA | 16 Years of Excellence</h1>
 
             <div class="tagline">Paying attention to detail is our driving factor</div>
 
@@ -233,22 +330,22 @@
             <p class="welcome-description">From monthly residential plans to yacht detailing, we bring professional-grade service to every vehicle we touch. Air Force trained, locally trusted.</p>
 
             <!-- Trust Badges -->
-            <div style="display: flex; gap: 20px; justify-content: center; margin-top: 30px; flex-wrap: wrap;">
-                <span style="background: rgba(21, 101, 192, 0.4); padding: 10px 20px; border-radius: 25px; border: 1px solid rgba(160,160,160,0.3); display: inline-block; color: #b8b8b8;">
+            <div class="trust-badges">
+                <span class="trust-badge">
                     👨‍👩‍👧‍👦 Family Owned & Operated
                 </span>
-                <span style="background: rgba(21, 101, 192, 0.4); padding: 10px 20px; border-radius: 25px; border: 1px solid rgba(160,160,160,0.3); display: inline-block; color: #b8b8b8;">
+                <span class="trust-badge">
                     🛡️ Licensed & Insured
                 </span>
-                <span style="background: rgba(21, 101, 192, 0.4); padding: 10px 20px; border-radius: 25px; border: 1px solid rgba(160,160,160,0.3); display: inline-block; color: #b8b8b8;">
+                <span class="trust-badge">
                     ✨ FREE ESTIMATES
                 </span>
             </div>
 
             <!-- Service Counter -->
-            <div style="margin-top: 30px;">
-                <div style="font-size: 2.5rem; font-weight: 700; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">5,000+</div>
-                <div style="opacity: 0.8; color: #a0a0a0;">Vehicles Detailed & Counting</div>
+            <div class="service-counter">
+                <div class="counter-number">5,000+</div>
+                <div class="counter-label">Vehicles Detailed & Counting</div>
             </div>
 
             <div class="scroll-indicator"></div>
@@ -276,8 +373,8 @@
                         <source srcset="IMG_20250919_124905970_HDR_AE.webp" type="image/webp">
                         <img src="IMG_20250919_124905970_HDR_AE_optimized.jpg" alt="Nazir El - CEO & Professional Auto Detailer" class="nazir-image" loading="lazy" onerror="this.style.display='none';">
                     </picture>
-                    <div class="about-highlight" style="width: 100%;">
-                        <h3 style="color: #d4d4d4; margin-bottom: 20px; font-size: 1.4rem; text-align: center;">Why Choose Hands Detail?</h3>
+                    <div class="about-highlight about-highlight-full-width">
+                        <h3 class="about-highlight-heading">Why Choose Hands Detail?</h3>
                         <div class="about-stats">
                             <div class="stat-item">
                                 <div class="stat-number">16</div>
@@ -422,9 +519,9 @@
             <div class="footer-section">
                 <h3>Hands Detail Shop</h3>
                 <p>Professional mobile auto detailing services. We come to you!</p>
-                <p style="margin-top: 15px;">
+                <p class="footer-contact-info">
                     <strong>📞 Phone:</strong> (412) 947-6098<br>
-                    <strong>✉️ Email:</strong> <a href="mailto:handsdetailshop@gmail.com">handsdetailshop@gmail.com</a>
+                    <strong>✉️ Email:</strong> <a href="contact.html">Contact Form</a>
                 </p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/share/1FQft2edbP/" target="_blank" class="social-link">f</a>
@@ -452,7 +549,7 @@
                     1532 Constitution Blvd<br>
                     Arnold, PA 15068
                 </p>
-                <p style="margin-top: 15px;">
+                <p class="footer-hours-info">
                     <strong>🕒 Hours:</strong><br>
                     Monday - Saturday: 8AM - 6PM<br>
                     Sunday: By Appointment
@@ -465,10 +562,10 @@
                     <h4>Mobile Service</h4>
                     <p>
                         We come directly to you!<br>
-                        <strong style="color: #a0a0a0;">Convenience at your location</strong>
+                        <strong class="mobile-service-tagline">Convenience at your location</strong>
                     </p>
                 </div>
-                <p style="margin-top: 15px;">
+                <p class="footer-mobile-info">
                     Proudly serving the Greater Pittsburgh area including Fox Chapel, Sewickley Heights, Upper St. Clair, Arnold, and surrounding communities.
                 </p>
             </div>
@@ -476,7 +573,7 @@
 
         <div class="footer-bottom">
             <p>&copy; 2025 Hands Detail Shop | Mobile Detailing Services | All Rights Reserved</p>
-            <p style="margin-top: 10px; font-size: 0.9rem;">Professional Auto Detailing Services | Arnold, PA | Licensed & Insured</p>
+            <p class="footer-copyright">Professional Auto Detailing Services | Arnold, PA | Licensed & Insured</p>
         </div>
     </footer>
 
@@ -485,10 +582,10 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button class="modal-close" onclick="closeBookingModal()">&times;</button>
-                <h2 style="margin: 0;">Book Your Detail Service</h2>
-                <p style="margin-top: 10px; opacity: 0.9;">Get a free quote or schedule your appointment</p>
+                <h2 class="modal-title">Book Your Detail Service</h2>
+                <p class="modal-subtitle">Get a free quote or schedule your appointment</p>
             </div>
-            <form style="padding: 30px;" id="bookingForm">
+            <form class="modal-form" id="bookingForm">
                 <div class="form-group">
                     <label>Name *</label>
                     <input type="text" required placeholder="Your full name">
@@ -551,7 +648,7 @@
                 </div>
 
                 <button type="submit" class="form-submit">Submit Booking Request</button>
-                <p style="text-align: center; margin-top: 15px; color: #909090; font-size: 0.9rem;">
+                <p class="form-footer-note">
                     Or call us directly: <strong>(412) 947-6098</strong>
                 </p>
             </form>
