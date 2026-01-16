@@ -5,10 +5,10 @@ const rootDir = path.join(__dirname, '..');
 
 // Phone number replacements
 const replacements = [
-  { old: /\(412\) 752-8684/g, new: '(412) 947-6098' },
+  { old: /\(412\) 752-8684/g, new: '(412) 752-8684' },
   { old: /412-752-8684/g, new: '412-947-6098' },
-  { old: /4127528684/g, new: '4129476098' },
-  { old: /\+14127528684/g, new: '+14129476098' },
+  { old: /4127528684/g, new: '4127528684' },
+  { old: /\+14127528684/g, new: '+14127528684' },
   { old: /412 752 8684/g, new: '412 947 6098' },
   { old: /412\.752\.8684/g, new: '412.947.6098' },
 ];
@@ -67,4 +67,4 @@ filesToUpdate.forEach(file => {
 
 console.log(`\n🎉 Complete! Updated phone number in ${totalReplacements} locations across ${filesToUpdate.length} files.`);
 console.log('Old number: (412) 752-8684');
-console.log('New number: (412) 947-6098');
+console.log('New number: (412) 752-8684');
