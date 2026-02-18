@@ -1428,6 +1428,34 @@ footer {
   font-weight: 700;
 }
 
+/* Vehicle Type Filter Buttons */
+.vehicle-type-btn {
+  padding: 10px 18px;
+  background: rgba(66, 165, 245, 0.15);
+  color: #a0a0a0;
+  border: 1px solid rgba(66, 165, 245, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.vehicle-type-btn:hover {
+  background: rgba(66, 165, 245, 0.25);
+  color: #e8f1f8;
+  border-color: rgba(66, 165, 245, 0.6);
+  transform: translateY(-2px);
+}
+
+.vehicle-type-btn.active {
+  background: linear-gradient(135deg, #1565c0, #42a5f5);
+  color: white;
+  border-color: #42a5f5;
+  box-shadow: 0 4px 15px rgba(66, 165, 245, 0.4);
+}
+
 /* Quote Page Specific Styles */
 .quote-container {
   max-width: 1400px;

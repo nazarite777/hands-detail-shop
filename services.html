@@ -245,13 +245,29 @@
                 <p class="section-subtitle">Professional packages tailored to your vehicle's needs</p>
             </div>
 
+            <!-- Vehicle Type Selector -->
+            <div style="margin-bottom: 40px; padding: 20px; background: rgba(66, 165, 245, 0.1); border-radius: 8px; border-left: 4px solid #42a5f5;">
+                <p style="color: #a0a0a0; margin-bottom: 15px; font-size: 0.95rem;"><strong>💡 Pricing by Vehicle Type:</strong> Select your vehicle to see exact pricing</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <button onclick="toggleVehicleType('sedan', this)" class="vehicle-type-btn active">🚗 Sedan/Coupe</button>
+                    <button onclick="toggleVehicleType('suv', this)" class="vehicle-type-btn">🚙 SUV/Crossover</button>
+                    <button onclick="toggleVehicleType('truck', this)" class="vehicle-type-btn">🚕 Truck/Van</button>
+                    <button onclick="toggleVehicleType('luxury', this)" class="vehicle-type-btn">✨ Luxury/Performance</button>
+                    <button onclick="toggleVehicleType('all', this)" class="vehicle-type-btn">📊 View All</button>
+                </div>
+            </div>
+
             <!-- Package Grid -->
             <div class="package-grid">
                 <!-- Essential Package -->
                 <div class="package-card">
                     <div class="package-header">
                         <h3 class="package-title">Essential Package</h3>
-                        <div class="package-price">$65 - $85</div>
+                        <div class="package-price vehicle-price" data-vehicle="all">$65 - $95</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="sedan">$65 - $75</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="suv">$75 - $85</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="truck">$85 - $95</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="luxury">$85 - $95</div>
                         <p class="package-tier">Perfect for regular maintenance</p>
                     </div>
                     <div class="package-body">
@@ -260,9 +276,10 @@
                             <li>✓ Hand wash & dry</li>
                             <li>✓ Wheel & tire cleaning</li>
                             <li>✓ Tire shine application</li>
-                            <li>✓ Windows cleaned</li>
+                            <li>✓ Windows cleaned (interior & exterior)</li>
                             <li>✓ Door jambs cleaned</li>
                             <li>✓ Quick interior vacuum</li>
+                            <li>✓ Exterior trim inspection</li>
                         </ul>
                         <button onclick="openBookingModal('Essential Package')" class="package-btn">Book Essential</button>
                     </div>
@@ -272,7 +289,11 @@
                 <div class="package-card">
                     <div class="package-header executive">
                         <h3 class="package-title">Executive Package</h3>
-                        <div class="package-price">$145 - $185</div>
+                        <div class="package-price vehicle-price" data-vehicle="all">$145 - $195</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="sedan">$145 - $165</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="suv">$165 - $180</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="truck">$180 - $195</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="luxury">$180 - $195</div>
                         <p class="package-tier">Most popular choice</p>
                     </div>
                     <div class="package-body">
@@ -281,12 +302,41 @@
                             <li>✓ Everything in Essential, plus:</li>
                             <li>✓ Clay bar treatment</li>
                             <li>✓ One-step polish</li>
-                            <li>✓ Wax protection</li>
+                            <li>✓ Premium wax protection</li>
                             <li>✓ Full interior vacuum & wipe down</li>
-                            <li>✓ Leather conditioning</li>
-                            <li>✓ Air freshener</li>
+                            <li>✓ Leather/upholstery conditioning</li>
+                            <li>✓ Premium air freshener</li>
+                            <li>✓ 1-month protection guarantee</li>
                         </ul>
                         <button onclick="openBookingModal('Executive Package')" class="package-btn executive">Book Executive</button>
+                    </div>
+                </div>
+
+                <!-- Premium Plus Package -->
+                <div class="package-card">
+                    <div class="package-header" style="background: linear-gradient(135deg, rgba(255, 152, 0, 0.3), rgba(255, 87, 34, 0.3)); border-bottom: 2px solid #ff9800;">
+                        <div class="package-badge" style="background: #ff9800;">NEW</div>
+                        <h3 class="package-title">Premium Plus</h3>
+                        <div class="package-price vehicle-price" data-vehicle="all">$215 - $285</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="sedan">$215 - $245</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="suv">$245 - $265</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="truck">$265 - $285</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="luxury">$270 - $285</div>
+                        <p class="package-tier">Enhanced restoration</p>
+                    </div>
+                    <div class="package-body">
+                        <p class="package-description">Superior detailing with advanced treatments</p>
+                        <ul class="package-features">
+                            <li>✓ Everything in Executive, plus:</li>
+                            <li>✓ Advanced paint correction (minor)</li>
+                            <li>✓ Engine bay light detail</li>
+                            <li>✓ Carpet & upholstery shampooing</li>
+                            <li>✓ Headlight cleaning & restoration</li>
+                            <li>✓ Trim restoration treatment</li>
+                            <li>✓ Interior protection coating</li>
+                            <li>✓ 3-month protection guarantee</li>
+                        </ul>
+                        <button onclick="openBookingModal('Premium Plus Package')" class="package-btn" style="background: #ff9800;">Book Premium Plus</button>
                     </div>
                 </div>
 
@@ -295,19 +345,24 @@
                     <div class="package-header signature">
                         <div class="package-badge">BEST VALUE</div>
                         <h3 class="package-title">Signature Package</h3>
-                        <div class="package-price">$285 - $365</div>
+                        <div class="package-price vehicle-price" data-vehicle="all">$325 - $425</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="sedan">$325 - $365</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="suv">$365 - $395</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="truck">$395 - $425</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="luxury">$400 - $425</div>
                         <p class="package-tier">Premium restoration</p>
                     </div>
                     <div class="package-body">
                         <p class="package-description">Complete restoration & protection</p>
                         <ul class="package-features">
-                            <li>✓ Everything in Executive, plus:</li>
+                            <li>✓ Everything in Premium Plus, plus:</li>
                             <li>✓ Multi-stage paint correction</li>
-                            <li>✓ Engine bay detail</li>
-                            <li>✓ Carpet & upholstery shampoo</li>
-                            <li>✓ Headlight restoration</li>
-                            <li>✓ Trim restoration</li>
+                            <li>✓ Full engine bay detail</li>
+                            <li>✓ Professional carpet extraction</li>
+                            <li>✓ Headlight restoration & coating</li>
+                            <li>✓ Complete trim restoration</li>
                             <li>✓ 6-month sealant protection</li>
+                            <li>✓ Warranty included</li>
                         </ul>
                         <button onclick="openBookingModal('Signature Package')" class="package-btn signature">Book Signature</button>
                     </div>
@@ -317,19 +372,24 @@
                 <div class="package-card">
                     <div class="package-header presidential">
                         <h3 class="package-title">Presidential Package</h3>
-                        <div class="package-price">$585 - $785</div>
+                        <div class="package-price vehicle-price" data-vehicle="all">$650 - $850</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="sedan">$650 - $750</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="suv">$750 - $800</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="truck">$800 - $850</div>
+                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="luxury">$800 - $850</div>
                         <p class="package-tier">Elite concours-level detail</p>
                     </div>
                     <div class="package-body">
                         <p class="package-description">Showroom perfection</p>
                         <ul class="package-features">
                             <li>✓ Everything in Signature, plus:</li>
-                            <li>✓ Professional paint correction</li>
+                            <li>✓ Professional paint correction (advanced)</li>
                             <li>✓ Premium ceramic coating</li>
-                            <li>✓ Complete leather treatment</li>
+                            <li>✓ Complete leather treatment (condition-specific)</li>
                             <li>✓ Odor elimination treatment</li>
                             <li>✓ Chrome & trim polish</li>
                             <li>✓ 2-year warranty protection</li>
+                            <li>✓ Maintenance plan included</li>
                         </ul>
                         <button onclick="openBookingModal('Presidential Package')" class="package-btn presidential">Book Presidential</button>
                     </div>
@@ -340,19 +400,24 @@
                     <div class="package-header ultimate">
                         <div class="package-badge">ULTIMATE</div>
                         <h3 class="package-title" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Ultimate Armor</h3>
-                        <div class="package-price" style="color: white;">$1,285 - $1,685</div>
+                        <div class="package-price vehicle-price" style="color: white;" data-vehicle="all">$1,400 - $1,850</div>
+                        <div class="package-price vehicle-price" style="color: white; display: none;" data-vehicle="sedan">$1,400 - $1,550</div>
+                        <div class="package-price vehicle-price" style="color: white; display: none;" data-vehicle="suv">$1,550 - $1,700</div>
+                        <div class="package-price vehicle-price" style="color: white; display: none;" data-vehicle="truck">$1,700 - $1,850</div>
+                        <div class="package-price vehicle-price" style="color: white; display: none;" data-vehicle="luxury">$1,750 - $1,850</div>
                         <p class="package-tier" style="opacity: 0.95;">Maximum protection</p>
                     </div>
                     <div class="package-body">
                         <p class="package-description">The ultimate in vehicle protection</p>
                         <ul class="package-features">
                             <li>✓ Everything in Presidential, plus:</li>
-                            <li>✓ 9H ceramic coating (5-year)</li>
-                            <li>✓ Paint protection film (PPF)</li>
+                            <li>✓ 9H ceramic coating (5-year warranty)</li>
+                            <li>✓ Paint protection film (PPF) on high-risk areas</li>
                             <li>✓ Wheel ceramic coating</li>
                             <li>✓ Interior ceramic treatment</li>
                             <li>✓ Complete undercarriage detail</li>
-                            <li>✓ 5-year warranty included</li>
+                            <li>✓ 5-year comprehensive warranty</li>
+                            <li>✓ Annual maintenance service included</li>
                         </ul>
                         <button onclick="openBookingModal('Ultimate Armor')" class="package-btn ultimate">Book Ultimate Armor</button>
                     </div>
@@ -1461,6 +1526,27 @@
     })();
     </script>
     <!--End of Tawk.to Script-->
+
+    <!-- Vehicle Type Filter Script -->
+    <script>
+        function toggleVehicleType(type, button) {
+            // Update active button
+            document.querySelectorAll('.vehicle-type-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            button.classList.add('active');
+
+            // Show/hide prices based on selected type
+            document.querySelectorAll('.vehicle-price').forEach(priceElement => {
+                if (priceElement.getAttribute('data-vehicle') === type || 
+                    (type === 'all' && priceElement.getAttribute('data-vehicle') === 'all')) {
+                    priceElement.style.display = 'block';
+                } else {
+                    priceElement.style.display = 'none';
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
