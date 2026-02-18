@@ -529,6 +529,41 @@ header.scrolled {
   letter-spacing: 1px;
 }
 
+/* Service Area Badge */
+.service-area-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(66, 165, 245, 0.1));
+  border: 2px solid rgba(76, 175, 80, 0.4);
+  border-radius: 12px;
+  padding: 15px 30px;
+  margin: 25px 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.service-area-icon {
+  font-size: 1.8rem;
+}
+
+.service-area-text {
+  font-size: 1.1rem;
+  color: #90caf9;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.service-area-subtitle {
+  font-size: 0.95rem;
+  color: #66bb6a;
+  font-style: italic;
+  text-align: center;
+}
+
 .welcome-subtitle {
   font-size: 1.3rem;
   margin-bottom: 30px;
@@ -3141,4 +3176,40 @@ footer {
 .btn-small:hover {
   background: rgba(21, 101, 192, 0.3);
   border-color: #42a5f5;
+}
+/* Service Area Details Footer */
+.service-area-details {
+  background: rgba(66, 165, 245, 0.1);
+  border-left: 3px solid #66bb6a;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+.service-area-details p {
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.service-states-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.service-state-item {
+  background: rgba(66, 165, 245, 0.15);
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  border-left: 3px solid rgba(66, 165, 245, 0.5);
+  transition: all 0.3s ease;
+}
+
+.service-state-item:hover {
+  background: rgba(66, 165, 245, 0.25);
+  border-left-color: #42a5f5;
+  transform: translateX(3px);
 }
