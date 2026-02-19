@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Audio Uploader</title>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #1565c0, #42a5f5);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+        }
+        h1 {
+            color: #1565c0;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .upload-area {
+            border: 2px dashed #1565c0;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f5f9ff;
+        }
+        .upload-area:hover {
+            background: #e3f2fd;
+            border-color: #0d47a1;
+        }
+        .upload-area.dragover {
+            background: #e3f2fd;
+            border-color: #0d47a1;
+            transform: scale(1.02);
+        }
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        .upload-text {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .upload-hint {
+            color: #999;
+            font-size: 12px;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .files-list {
+            margin-top: 30px;
+        }
+        .file-item {
+            background: #f5f5f5;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .file-item.uploading {
+            background: #fff3e0;
+        }
+        .file-item.success {
+            background: #e8f5e9;
+        }
+        .file-item.error {
+            background: #ffebee;
+        }
+        .file-info {
+            flex: 1;
+        }
+        .file-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .file-size {
+            font-size: 12px;
+            color: #999;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #1565c0;
+            transition: width 0.3s ease;
+        }
+        .status {
+            font-size: 12px;
+            font-weight: 600;
+            text-align: right;
+            min-width: 80px;
+        }
+        .status.uploading {
+            color: #f57c00;
+        }
+        .status.success {
+            color: #388e3c;
+        }
+        .status.error {
+            color: #d32f2f;
+        }
+        .url-display {
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            word-break: break-all;
+            max-height: 100px;
+            overflow-y: auto;
+            margin-top: 8px;
+            color: #333;
+        }
+        .copy-btn {
+            background: #1565c0;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.2s ease;
+        }
+        .copy-btn:hover {
+            background: #0d47a1;
+        }
+        .summary {
+            background: #e8f5e9;
+            border-left: 4px solid #388e3c;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 30px;
+            display: none;
+        }
+        .summary.show {
+            display: block;
+        }
+        .summary-title {
+            font-weight: 600;
+            color: #1b5e20;
+            margin-bottom: 10px;
+        }
+        .summary-links {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #2e7d32;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎵 Firebase Audio Uploader</h1>
+        <p class="subtitle">Upload your audio files to Firebase Storage</p>
+        
+        <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">📁</div>
+            <div class="upload-text">Drag and drop audio files here</div>
+            <div class="upload-hint">or click to browse (MP3, WAV, M4A, OGG)</div>
+            <input type="file" id="fileInput" multiple accept=".mp3,.wav,.m4a,.ogg,audio/*">
+        </div>
+
+        <div class="files-list" id="filesList"></div>
+        
+        <div class="summary" id="summary">
+            <div class="summary-title">✓ Uploads Complete!</div>
+            <div>Firebase URLs for your audio files:</div>
+            <div class="summary-links" id="summaryLinks"></div>
+        </div>
+    </div>
+
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDEXAmple",  // Will use anonymous auth
+            projectId: "hands-detail",
+            storageBucket: "hands-detail.appspot.com",
+            appId: "1:123456789:web:example"
+        };
+
+        // Initialize Firebase
+        try {
+            firebase.initializeApp(firebaseConfig);
+        } catch (e) {
+            console.log('Firebase already initialized');
+        }
+
+        const storage = firebase.storage();
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const filesList = document.getElementById('filesList');
+        const summary = document.getElementById('summary');
+        const summaryLinks = document.getElementById('summaryLinks');
+        const uploadedUrls = [];
+
+        // Drag and drop
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        async function handleFiles(files) {
+            for (let file of files) {
+                if (!file.type.startsWith('audio/')) {
+                    alert(`${file.name} is not an audio file`);
+                    continue;
+                }
+
+                await uploadFile(file);
+            }
+        }
+
+        async function uploadFile(file) {
+            const fileItem = document.createElement('div');
+            fileItem.className = 'file-item uploading';
+            fileItem.innerHTML = `
+                <div class="file-info">
+                    <div class="file-name">${file.name}</div>
+                    <div class="file-size">${(file.size / 1024 / 1024).toFixed(2)} MB</div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                </div>
+                <div class="status uploading">Uploading...</div>
+            `;
+            filesList.appendChild(fileItem);
+
+            const progressFill = fileItem.querySelector('.progress-fill');
+            const statusEl = fileItem.querySelector('.status');
+            const filePath = `audio/${file.name}`;
+            const fileRef = storage.ref().child(filePath);
+
+            try {
+                const task = fileRef.put(file, {
+                    cacheControl: 'public,max-age=31536000'
+                });
+
+                task.on('state_changed',
+                    (snapshot) => {
+                        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                        progressFill.style.width = progress + '%';
+                    },
+                    (error) => {
+                        fileItem.classList.remove('uploading');
+                        fileItem.classList.add('error');
+                        statusEl.className = 'status error';
+                        statusEl.textContent = 'Error';
+                        console.error('Upload error:', error);
+                    },
+                    async () => {
+                        const url = await fileRef.getDownloadURL();
+                        fileItem.classList.remove('uploading');
+                        fileItem.classList.add('success');
+                        statusEl.className = 'status success';
+                        statusEl.textContent = '✓ Done';
+                        
+                        uploadedUrls.push({ name: file.name, url });
+                        
+                        // Add URL display
+                        const urlDisplay = document.createElement('div');
+                        urlDisplay.className = 'url-display';
+                        urlDisplay.textContent = url;
+                        
+                        const copyBtn = document.createElement('button');
+                        copyBtn.className = 'copy-btn';
+                        copyBtn.textContent = 'Copy URL';
+                        copyBtn.onclick = () => {
+                            navigator.clipboard.writeText(url);
+                            copyBtn.textContent = 'Copied!';
+                            setTimeout(() => copyBtn.textContent = 'Copy URL', 2000);
+                        };
+                        
+                        fileItem.querySelector('.file-info').appendChild(urlDisplay);
+                        fileItem.querySelector('.file-info').appendChild(copyBtn);
+
+                        // Update summary
+                        updateSummary();
+                    }
+                );
+            } catch (error) {
+                fileItem.classList.remove('uploading');
+                fileItem.classList.add('error');
+                statusEl.className = 'status error';
+                statusEl.textContent = 'Error';
+                console.error('Error:', error);
+            }
+        }
+
+        function updateSummary() {
+            if (uploadedUrls.length > 0) {
+                summary.classList.add('show');
+                summaryLinks.innerHTML = uploadedUrls.map(item => 
+                    `<div><strong>${item.name}</strong><br>${item.url}</div>`
+                ).join('<br>');
+            }
+        }
+    </script>
+</body>
+</html>
