@@ -374,6 +374,68 @@
     </script>
     <!--End of Tawk.to Script-->
 
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeBookingModal()">&times;</button>
+                <h2 class="modal-title">Book Your Detail Service</h2>
+                <p class="modal-subtitle">Get a free quote or schedule your appointment</p>
+            </div>
+            <div style="background: rgba(66, 165, 245, 0.15); border: 1px solid #42a5f5; border-radius: 10px; padding: 12px 15px; margin: 0 20px 20px 20px; text-align: center;">
+                <p style="color: #42a5f5; font-weight: 600; margin: 0;">💳 $30 DEPOSIT SECURES YOUR APPOINTMENT</p>
+                <p style="color: #a0a0a0; font-size: 0.9rem; margin: 5px 0 0 0;">Applied toward your total service cost</p>
+            </div>
+            <form class="modal-form" id="bookingForm">
+                <div class="form-group">
+                    <label>Name *</label>
+                    <input type="text" required placeholder="Your full name">
+                </div>
+
+                <div class="form-group">
+                    <label>Phone *</label>
+                    <input type="tel" required placeholder="(412) 555-0000">
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="your@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Motorcycle Information *</label>
+                    <input type="text" required placeholder="Year, Make, Model, Type">
+                </div>
+
+                <div class="form-group">
+                    <label>Service Type *</label>
+                    <select required>
+                        <option value="">Select a service...</option>
+                        <option>Road Ready ($85-105)</option>
+                        <option>Chrome & Shine ($145-185)</option>
+                        <option>Show Bike ($245-295)</option>
+                        <option>Seasonal Prep ($125-155)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Preferred Date</label>
+                    <input type="date">
+                </div>
+
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="3" placeholder="Tell us about your motorcycle or special requests..."></textarea>
+                </div>
+
+                <button type="submit" class="form-submit">Submit Booking Request</button>
+                <p class="form-footer-note">
+                    Or call us directly: <strong>(412) 752-8684</strong>
+                </p>
+            </form>
+        </div>
+    </div>
+
     <!-- Vehicle Type Filter Script -->
     <script>
         function toggleServicesDropdown(button) {
