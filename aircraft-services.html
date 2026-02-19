@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Premium Aircraft Detailing Services | Hands Detail Shop | Pittsburgh</title>
+    <meta name="title" content="Professional Premium Aircraft Detailing | Hands Detail Shop">
+    <meta name="description" content="Exclusive aircraft detailing services in Pittsburgh Area. Only facility offering premium private aircraft, business jet and aviation detailing. Starting at $2,500. Mobile service available.">
+    <meta name="keywords" content="aircraft detailing Pittsburgh, aviation detailing, private jet detailing, business jet detailing, aircraft cleaning, professional aircraft services">
+    <meta name="author" content="Nazir El - Hands Detail Shop">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://handsdetailshop.com/aircraft-services.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://handsdetailshop.com/aircraft-services.html">
+    <meta property="og:title" content="Professional Aircraft Detailing | Hands Detail Shop">
+    <meta property="og:description" content="Exclusive aircraft detailing for private aircraft, business jets, and aviation. Only service in Pittsburgh region.">
+    <meta property="og:image" content="https://handsdetailshop.com/20200723_030424~2.png">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Hands Detail Shop">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://handsdetailshop.com/aircraft-services.html">
+    <meta property="twitter:title" content="Professional Aircraft Detailing | Hands Detail Shop">
+    <meta property="twitter:description" content="Premium aircraft detailing for private aircraft and business jets starting at $2,500.">
+    <meta property="twitter:image" content="https://handsdetailshop.com/20200723_030424~2.png">
+
+    <!-- Business Contact Info -->
+    <meta name="geo.region" content="US-PA">
+    <meta name="geo.placename" content="Pittsburgh, Pennsylvania">
+    <meta name="geo.position" content="">
+    <meta name="ICBM" content="">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#1565c0">
+    <meta name="msapplication-TileColor" content="#1565c0">
+    <!-- PWA Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Hands Detail">
+
+    <!-- PWA Icons -->
+    <link rel="apple-touch-icon" href="/20200723_030424~2.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/20200723_030424~2.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/20200723_030424~2.png">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo-section">
+                <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="20200723_030424~2.png" alt="Hands Detail Shop Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; font-size: 1.5rem; font-weight: 800; color: #c0c0c0; font-style: italic;">HANDS DETAIL</div>
+                </a>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <div class="services-dropdown">
+                    <button class="services-dropdown-btn nav-link" onclick="toggleServicesDropdown(this)">Services</button>
+                    <div class="dropdown-menu">
+                        <a href="services.html" class="dropdown-item">📋 All Services Overview</a>
+                        <a href="personal-vehicles.html" class="dropdown-item">🚗 Personal Vehicles</a>
+                        <a href="marine-services.html" class="dropdown-item">🛥️ Yacht & RV</a>
+                        <a href="fleet-services.html" class="dropdown-item">🚛 Fleet & Commercial</a>
+                        <a href="motorcycle-services.html" class="dropdown-item">🏍️ Motorcycle</a>
+                        <a href="aircraft-services.html" class="dropdown-item">✈️ Aircraft</a>
+                    </div>
+                </div>
+                <a href="membership.html" class="nav-link">Membership</a>
+                <a href="quote.html" class="nav-link">Quote</a>
+                <a href="reviews.html" class="nav-link">Reviews</a>
+                <a href="https://medium.com/@handsdetailshop" target="_blank" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="contact-header">
+                <span class="hours-header">🕒 Mon-Sat 8AM-6PM</span>
+                <a href="tel:4127528684" class="btn-call">📞 Call</a>
+                <a href="sms:4127528684" class="btn-text">💬 Text</a>
+                <a href="#" onclick="openBookingModal(); return false;" class="cta-header">Book Now</a>
+            </div>
+
+            <div class="mobile-menu-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About Nazir</a>
+            <a href="services.html">All Services Overview</a>
+            <a href="personal-vehicles.html">🚗 Personal Vehicles</a>
+            <a href="marine-services.html">🛥️ Yacht & RV</a>
+            <a href="fleet-services.html">🚛 Fleet & Commercial</a>
+            <a href="motorcycle-services.html">🏍️ Motorcycle</a>
+            <a href="aircraft-services.html">✈️ Aircraft</a>
+            <a href="membership.html">Membership</a>
+            <a href="quote.html">Get Quote</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="https://medium.com/@handsdetailshop" target="_blank">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="tel:4127528684" style="background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">📞 Call Now</a>
+            <a href="sms:4127528684" style="background: rgba(50,50,50,0.5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">💬 Text Now</a>
+        </nav>
+    </header>
+
+    <!-- Promotional Banner -->
+    <div class="promo-banner" style="margin-top: 70px;">
+        🎊 SPRING SPECIAL: 15% OFF First-Time Customers | 💎 FREE Tire Shine with Any Package | 💳 $30 Deposit Secures Your Appointment | 📞 (412) 752-8684
+    </div>
+
+    <!-- Hero Section -->
+    <section style="padding-top: 180px; background: linear-gradient(135deg, #1a1a1a 0%, #0d1b2a 50%, #1a1a1a 100%); position: relative; overflow: hidden; text-align: center;">
+        <div class="section-container" style="z-index: 2; position: relative;">
+            <h1 style="font-size: 3.5rem; color: #ffd700; margin-bottom: 15px; font-weight: 900; letter-spacing: -1px;">
+                ✈️ Premium Aircraft Detailing
+            </h1>
+            <p style="font-size: 1.3rem; color: #daa520; margin-bottom: 30px;">
+                Exclusive professional mobile detailing for private aircraft, business jets, and aviation - Only service in Pittsburgh region
+            </p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#" onclick="openBookingModal(); return false;" class="cta-button" style="font-size: 1.1rem; background: linear-gradient(135deg, #daa520, #ffc107);">✈️ Book Aircraft Detail</a>
+                <a href="tel:4127528684" class="cta-button" style="background: rgba(218, 165, 32, 0.2); border: 2px solid #daa520; font-size: 1.1rem; color: #ffc107;">📞 Call: (412) 752-8684</a>
+            </div>
+        </div>
+        <div style="position: absolute; top: -50px; right: -50px; font-size: 25rem; opacity: 0.03; z-index: 1;">✈️</div>
+    </section>
+
+    <!-- Aircraft & Aviation Detailing Section -->
+    <section class="detail-section" id="aircraft-packages" style="background: linear-gradient(135deg, #1a2942 0%, #0d1b2a 50%, #1a1a1a 100%); border-top: 3px solid #daa520; position: relative; overflow: hidden;">
+        <!-- Aviation Background Accent -->
+        <div style="position: absolute; top: 0; right: 0; font-size: 8rem; opacity: 0.05; pointer-events: none;">✈️</div>
+        
+        <div class="section-container">
+            <div class="section-header">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;">
+                    <span style="font-size: 2.5rem;">✈️</span>
+                    <h2 class="section-title">Premium Aircraft Detailing</h2>
+                    <span style="font-size: 2.5rem;">🛩️</span>
+                </div>
+                <p class="section-subtitle" style="font-size: 1.15rem; color: #90caf9;">Expanding Horizons: Professional Mobile Detailing for Private Aircraft, Business Jets & Aviation</p>
+                <p style="color: #66bb6a; margin-top: 15px; font-size: 1rem; font-weight: 600;">
+                    ⭐ EXCLUSIVE SERVICE: Only premium aircraft detailing company in the Pittsburgh region
+                </p>
+            </div>
+
+            <!-- Aircraft Type Selector -->
+            <div style="margin-bottom: 40px; padding: 20px; background: rgba(218, 165, 32, 0.1); border-radius: 8px; border-left: 4px solid #daa520;">
+                <p style="color: #a0a0a0; margin-bottom: 15px; font-size: 0.95rem;"><strong>💡 Pricing by Aircraft Type:</strong> Select your aircraft category to see exact pricing</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <button onclick="toggleAircraftType('single', this)" class="vehicle-type-btn active" style="background: linear-gradient(135deg, rgba(218, 165, 32, 0.3), rgba(212, 175, 55, 0.2)); border: 1px solid rgba(218, 165, 32, 0.5);">🚁 Single-Engine</button>
+                    <button onclick="toggleAircraftType('twin', this)" class="vehicle-type-btn" style="border: 1px solid rgba(218, 165, 32, 0.3);">✈️ Twin-Engine</button>
+                    <button onclick="toggleAircraftType('jet', this)" class="vehicle-type-btn" style="border: 1px solid rgba(218, 165, 32, 0.3);">🛩️ Business Jet</button>
+                    <button onclick="toggleAircraftType('large', this)" class="vehicle-type-btn" style="border: 1px solid rgba(218, 165, 32, 0.3);">🛫 Large Aircraft</button>
+                    <button onclick="toggleAircraftType('all-aircraft', this)" class="vehicle-type-btn" style="border: 1px solid rgba(218, 165, 32, 0.3);">📊 View All</button>
+                </div>
+            </div>
+
+            <!-- Aircraft Package Grid -->
+            <div class="package-grid">
+                <!-- Exterior Polish & Protection Package -->
+                <div class="package-card" style="border-top: 4px solid #daa520;">
+                    <div class="package-header" style="background: linear-gradient(135deg, rgba(218, 165, 32, 0.2), rgba(212, 175, 55, 0.1));">
+                        <h3 class="package-title">Exterior Polish & Protection</h3>
+                        <div class="package-price aircraft-price" data-aircraft="all-aircraft">$2,500 - $6,500</div>
+                        <div class="package-price aircraft-price" style="display: none;" data-aircraft="single">$2,500 - $3,500</div>
+                        <div class="package-price aircraft-price" style="display: none;" data-aircraft="twin">$3,500 - $4,500</div>
+                        <div class="package-price aircraft-price" style="display: none;" data-aircraft="jet">$4,500 - $6,000</div>
+                        <div class="package-price aircraft-price" style="display: none;" data-aircraft="large">$6,000 - $6,500</div>
+                        <p class="package-tier">Professional exterior restoration</p>
+                    </div>
+                    <div class="package-body">
+                        <p class="package-description">Complete exterior wash, polish & protective coating</p>
+                        <ul class="package-features">
+                            <li>✓ Hand wash & dry (no water damage risk)</li>
+                            <li>✓ Decontamination & clay bar treatment</li>
+                            <li>✓ Professional polish & buffing</li>
+                            <li>✓ Premium wax or sealant protection</li>
+                            <li>✓ Window & windscreen polish</li>
+                            <li>✓ Landing gear & strut detailing</li>
+                            <li>✓ Decal & trim restoration</li>
+                            <li>✓ 3-month protection guarantee</li>
+                        </ul>
+                        <button onclick="openBookingModal('Aircraft Exterior Polish & Protection')" class="package-btn" style="background: linear-gradient(135deg, #daa520, #ffc107);">Book Exterior Detail</button>
+                    </div>
+                </div>
+
+                <!-- Cabin & Interior Restoration Package -->
+                <div class="package-card" style="border-top: 4px solid #ffc107;">
+                    <div class="package-header" style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.2), rgba(255, 193, 7, 0.1));">
+                        <h3 class="package-title">Cabin & Interior Restoration</h3>
+                        <div class="package-price aircraft-price" data-aircraft="all-aircraft">$3,000 - $8,500</div>
+                        <div class="package-price aircraft-price" style="display: none;" data-aircraft="single">$3,000 - $4,500</div>
+                        <div class="package-price aircraft-price" style="display: none;" data-aircraft="twin">$4,500 - $6,000</div>
+                        <div class="package-price aircraft-price" style="display: none;" data-aircraft="jet">$6,000 - $7,500</div>
+                        <div class="package-price aircraft-price" style="display: none;" data-aircraft="large">$7,500 - $8,500</div>
+                        <p class="package-tier">Complete cabin transformation</p>
+                    </div>
+                    <div class="package-body">
+                        <p class="package-description">Premium interior cleaning & restoration</p>
+                        <ul class="package-features">
+                            <li>✓ Everything in Exterior Polish, plus:</li>
+                            <li>✓ Cabin deep clean & sanitization</li>
+                            <li>✓ Leather seat conditioning & restoration</li>
+                            <li>✓ Upholstery shampooing & extraction</li>
+                            <li>✓ Carpet & mat cleaning/replacement consultation</li>
+                            <li>✓ Window & viewport cleaning (interior)</li>
+                            <li>✓ Lavatory sanitation & detailing</li>
+                            <li>✓ Galley area deep cleaning</li>
+                            <li>✓ Odor elimination treatment</li>
+                            <li>✓ 6-month protection guarantee</li>
+                        </ul>
+                        <button onclick="openBookingModal('Aircraft Cabin & Interior Restoration')" class="package-btn" style="background: linear-gradient(135deg, #ffc107, #ffb300);">Book Cabin Detail</button>
+                    </div>
+                </div>
+
+                <!-- Complete Aviator Package -->
+                <div class="package-card" style="border-top: 4px solid #42a5f5;">
+                    <div class="package-header signature" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.3), rgba(66, 165, 245, 0.15));">
+                        <div class="package-badge" style="background: linear-gradient(135deg, #42a5f5, #64b5f6); color: white;">MOST POPULAR</div>
+                        <h3 class="package-title">Complete Aviator Package</h3>
+                        <div class="package-price aircraft-price" data-aircraft="all-aircraft">$7,500 - $16,000</div>
+                        <div class="package-price aircraft-price" style="display: none;" data-aircraft="single">$7,500 - $10,000</div>
+                        <div class="package-price aircraft-price" style="display: none;" data-aircraft="twin">$10,000 - $12,000</div>
+                        <div class="package-price aircraft-price" style="display: none;" data-aircraft="jet">$12,000 - $14,500</div>
+                        <div class="package-price aircraft-price" style="display: none;" data-aircraft="large">$14,500 - $16,000</div>
+                        <p class="package-tier">Exterior + Interior premium detail</p>
+                    </div>
+                    <div class="package-body">
+                        <p class="package-description">Comprehensive aircraft restoration & protection</p>
+                        <ul class="package-features">
+                            <li>✓ Everything in Cabin Restoration, plus:</li>
+                            <li>✓ Professional paint correction (minor)</li>
+                            <li>✓ Avionics panel cleaning & protection</li>
+                            <li>✓ Engine exterior detail & degreasing</li>
+                            <li>✓ Propeller & spinner detailing</li>
+                            <li>✓ Windscreen ceramic coating</li>
+                            <li>✓ Fuel filler caps polishing</li>
+                            <li>✓ Complete undercarriage inspection & detail</li>
+                            <li>✓ Aircraft exterior ceramic coating (optional add-on)</li>
+                            <li>✓ Professional flight-readiness certification</li>
+                            <li>✓ 6-month maintenance follow-up included</li>
+                        </ul>
+                        <button onclick="openBookingModal('Complete Aviator Package')" class="package-btn signature">Book Complete Aviator</button>
+                    </div>
+                </div>
+
+                <!-- Presidential Aviation Detail Package -->
+                <div class="package-card" style="border-top: 4px solid #6a1b9a;">
+                    <div class="package-header presidential" style="background: linear-gradient(135deg, rgba(106, 27, 154, 0.2), rgba(142, 36, 170, 0.1));">
+                        <h3 class="package-title">Presidential Aviation Detail</h3>
+                        <div class="package-price aircraft-price" data-aircraft="all-aircraft">$15,000 - $32,000</div>
+                        <div class="package-price aircraft-price" style="display: none;" data-aircraft="single">$15,000 - $18,000</div>
+                        <div class="package-price aircraft-price" style="display: none;" data-aircraft="twin">$18,000 - $24,000</div>
+                        <div class="package-price aircraft-price" style="display: none;" data-aircraft="jet">$24,000 - $28,000</div>
+                        <div class="package-price aircraft-price" style="display: none;" data-aircraft="large">$28,000 - $32,000</div>
+                        <p class="package-tier">Elite concours-level aviation detailing</p>
+                    </div>
+                    <div class="package-body">
+                        <p class="package-description">Show-quality excellence for premium aircraft</p>
+                        <ul class="package-features">
+                            <li>✓ Everything in Aviator Package, plus:</li>
+                            <li>✓ Advanced multi-stage paint correction</li>
+                            <li>✓ Premium aircraft ceramic coating (5-year)</li>
+                            <li>✓ Interior leather restoration (advanced)</li>
+                            <li>✓ Avionics deep cleaning & detailing</li>
+                            <li>✓ Engine compartment complete detail</li>
+                            <li>✓ Wheel & brake assembly polishing</li>
+                            <li>✓ Chrome & stainless steel refinishing</li>
+                            <li>✓ Custom interior odor elimination</li>
+                            <li>✓ Annual maintenance plan (Year 1)</li>
+                            <li>✓ 2-year warranty with warranty coverage</li>
+                        </ul>
+                        <button onclick="openBookingModal('Presidential Aviation Detail')" class="package-btn presidential">Book Presidential Detail</button>
+                    </div>
+                </div>
+
+                <!-- Ultimate Platinum Aircraft Package -->
+                <div class="package-card" style="border-top: 4px solid #ffd700;">
+                    <div class="package-header ultimate" style="background: linear-gradient(135deg, rgba(218, 165, 32, 0.3), rgba(255, 215, 0, 0.2));">
+                        <div class="package-badge" style="background: linear-gradient(135deg, #daa520, #ffd700); color: #000;">🌟 ULTIMATE</div>
+                        <h3 class="package-title" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">Ultimate Platinum Aircraft Package</h3>
+                        <div class="package-price aircraft-price" style="color: white;" data-aircraft="all-aircraft">$32,000 - $65,000+</div>
+                        <div class="package-price aircraft-price" style="color: white; display: none;" data-aircraft="single">$32,000 - $38,000</div>
+                        <div class="package-price aircraft-price" style="color: white; display: none;" data-aircraft="twin">$38,000 - $48,000</div>
+                        <div class="package-price aircraft-price" style="color: white; display: none;" data-aircraft="jet">$48,000 - $58,000</div>
+                        <div class="package-price aircraft-price" style="color: white; display: none;" data-aircraft="large">$58,000 - $65,000+</div>
+                        <p class="package-tier" style="opacity: 0.95;">Maximum protection & perfection</p>
+                    </div>
+                    <div class="package-body">
+                        <p class="package-description">The absolute pinnacle of aircraft detailing - exceptional for owners who demand perfection</p>
+                        <ul class="package-features">
+                            <li>✓ Everything in Presidential Package, plus:</li>
+                            <li>✓ 9H Ceramic coating (exterior fuselage - 5 year)</li>
+                            <li>✓ Aerospace-grade paint protection film (PPF)</li>
+                            <li>✓ Interior ceramic protection treatment</li>
+                            <li>✓ Complete undercarriage restoration</li>
+                            <li>✓ Landing gear full restoration & coating</li>
+                            <li>✓ Custom interior detailing (leather upgrade)</li>
+                            <li>✓ Engine restoration & protection detailing</li>
+                            <li>✓ Propeller refurbishment & coating</li>
+                            <li>✓ Professional aircraft photography</li>
+                            <li>✓ 3-year comprehensive warranty</li>
+                            <li>✓ Quarterly maintenance services (Year 1)</li>
+                            <li>✓ Dedicated concierge service</li>
+                        </ul>
+                        <button onclick="openBookingModal('Ultimate Platinum Aircraft')" class="package-btn ultimate" style="background: linear-gradient(135deg, #daa520, #ffd700); color: #000;">Book Ultimate Platinum</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aircraft Specialties & Add-Ons -->
+            <div class="section-header" style="margin-top: 60px;">
+                <h3 class="section-title" style="font-size: 1.6rem;">⭐ Aircraft Specialties & Add-Ons</h3>
+                <p class="section-subtitle">Enhance your aircraft package with premium specialized services</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px;">
+                <div style="background: linear-gradient(135deg, #1a2942, #0d1b2a); border: 2px solid rgba(218, 165, 32, 0.4); border-radius: 10px; padding: 25px;">
+                    <h4 style="color: #daa520; margin: 0 0 10px; font-size: 1.1rem;">✈️ Windscreen & Viewport Ceramic Coating</h4>
+                    <p style="color: #c0c0c0; margin: 0 0 10px; font-size: 0.95rem;">Premium aircraft glass protection</p>
+                    <p style="color: #ffc107; font-size: 1.3rem; font-weight: bold; margin: 0;">+$2,500 - $5,000</p>
+                    <ul style="color: #a0a0a0; font-size: 0.9rem; margin-top: 15px; padding-left: 20px;">
+                        <li>Hydrophobic coating application</li>
+                        <li>UV protection</li>
+                        <li>Enhanced visibility durability</li>
+                        <li>Easy maintenance coating</li>
+                    </ul>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #1a2942, #0d1b2a); border: 2px solid rgba(218, 165, 32, 0.4); border-radius: 10px; padding: 25px;">
+                    <h4 style="color: #daa520; margin: 0 0 10px; font-size: 1.1rem;">🛩️ Engine & Compartment Detail</h4>
+                    <p style="color: #c0c0c0; margin: 0 0 10px; font-size: 0.95rem;">Professional engine restoration</p>
+                    <p style="color: #ffc107; font-size: 1.3rem; font-weight: bold; margin: 0;">+$1,500 - $4,000</p>
+                    <ul style="color: #a0a0a0; font-size: 0.9rem; margin-top: 15px; padding-left: 20px;">
+                        <li>Engine degreasing & cleaning</li>
+                        <li>Component polishing</li>
+                        <li>Protective coating application</li>
+                        <li>Safety inspection included</li>
+                    </ul>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #1a2942, #0d1b2a); border: 2px solid rgba(218, 165, 32, 0.4); border-radius: 10px; padding: 25px;">
+                    <h4 style="color: #daa520; margin: 0 0 10px; font-size: 1.1rem;">🎨 Custom Interior Refurbishment</h4>
+                    <p style="color: #c0c0c0; margin: 0 0 10px; font-size: 0.95rem;">Premium cabin refresh & restoration</p>
+                    <p style="color: #ffc107; font-size: 1.3rem; font-weight: bold; margin: 0;">+$2,000 - $6,000</p>
+                    <ul style="color: #a0a0a0; font-size: 0.9rem; margin-top: 15px; padding-left: 20px;">
+                        <li>Leather restoration & conditioning</li>
+                        <li>Custom upholstery cleaning</li>
+                        <li>Carpet deep extraction</li>
+                        <li>Custom scent application</li>
+                    </ul>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #1a2942, #0d1b2a); border: 2px solid rgba(218, 165, 32, 0.4); border-radius: 10px; padding: 25px;">
+                    <h4 style="color: #daa520; margin: 0 0 10px; font-size: 1.1rem;">📞 Avionics Panel Professional Cleaning</h4>
+                    <p style="color: #c0c0c0; margin: 0 0 10px; font-size: 0.95rem;">Safe & specialized technology care</p>
+                    <p style="color: #ffc107; font-size: 1.3rem; font-weight: bold; margin: 0;">+$1,000 - $2,500</p>
+                    <ul style="color: #a0a0a0; font-size: 0.9rem; margin-top: 15px; padding-left: 20px;">
+                        <li>Anti-static safe cleaning</li>
+                        <li>Display panel polishing</li>
+                        <li>Control surface detailing</li>
+                        <li>Systems inspection safe</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Aircraft Services Note -->
+            <div class="cta-container" style="background: linear-gradient(135deg, rgba(218, 165, 32, 0.1), rgba(212, 175, 55, 0.05)); border: 1px solid rgba(218, 165, 32, 0.3); margin-top: 50px;">
+                <p class="cta-text" style="max-width: 1000px; margin: 0 auto 25px;">
+                    <strong>✈️ Premium Aviation Detailing Pioneer:</strong> We're expanding into aviation with the same military precision and attention to detail that defines our 16 years of automotive excellence.
+                    🌍 **Regional Authority:** Only detailed aircraft company in the Pittsburgh area with FBO partnerships and mobile service capability.
+                    🔧 **Specialized Equipment:** State-of-the-art detailing systems designed specifically for aerospace requirements.
+                    📅 **Flexible Scheduling:** Accommodate your aircraft's maintenance schedule with convenient booking options.
+                </p>
+                <div style="text-align: center;">
+                    <a href="tel:4127528684" class="cta-button" style="background: linear-gradient(135deg, #daa520, #ffc107); color: #000; font-weight: bold; margin-right: 15px;">✈️ Schedule Aircraft Detail: (412) 752-8684</a>
+                    <a href="quote.html" class="cta-button">📧 Request Custom Aviation Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Hands Detail Shop</h3>
+                    <div class="partner-info">
+                        <h4>Professional Auto Detailing</h4>
+                        <p>
+                            Serving Pittsburgh and surrounding areas since 2009.<br>
+                            <strong style="color: #a0a0a0;">Military-Precision Detailing</strong>
+                        </p>
+                    </div>
+                    <p style="margin-top: 15px;">
+                        <strong>🕒 Hours:</strong><br>
+                        Monday - Saturday: 8AM - 6PM<br>
+                        Sunday: By Appointment
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Service Area</h3>
+                    <div class="partner-info">
+                        <h4>Mobile Service</h4>
+                        <p>
+                            We come directly to you!<br>
+                            <strong style="color: #a0a0a0;">Convenience at your location</strong>
+                        </p>
+                    </div>
+                    <p style="margin-top: 15px;">
+                        Proudly serving the Greater Pittsburgh area including Fox Chapel, Sewickley Heights, Upper St. Clair, Arnold, and surrounding communities.
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Hands Detail Shop | Mobile Detailing Services | All Rights Reserved</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">Professional Auto Detailing Services | Pittsburgh Area | Licensed & Insured</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="pwa-installer.js"></script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/68e2fac9bf465d19518ec75b/1j6ra78mi';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <!-- Aircraft Type Filter Script -->
+    <script>
+        function toggleServicesDropdown(button) {
+            button.classList.toggle('active');
+        }
+
+        function toggleAircraftType(type, button) {
+            // Update active button
+            document.querySelectorAll('.vehicle-type-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            button.classList.add('active');
+
+            // Show/hide prices based on selected type
+            document.querySelectorAll('.aircraft-price').forEach(priceElement => {
+                if (priceElement.getAttribute('data-aircraft') === type || 
+                    (type === 'all-aircraft' && priceElement.getAttribute('data-aircraft') === 'all-aircraft')) {
+                    priceElement.style.display = 'block';
+                } else {
+                    priceElement.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

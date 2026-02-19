@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Yacht & RV Marine Detailing Services | Hands Detail Shop | Pittsburgh</title>
+    <meta name="title" content="Professional Yacht & RV Marine Detailing | Hands Detail Shop">
+    <meta name="description" content="Premium marine detailing for yachts, boats, RVs, and motorhomes in Pittsburgh Area. Mobile service to marinas and storage facilities. Professional packages from $285+.">
+    <meta name="keywords" content="yacht detailing Pittsburgh, RV detailing, boat detailing, marine detailing, motorhome detailing, professional marine services">
+    <meta name="author" content="Nazir El - Hands Detail Shop">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://handsdetailshop.com/marine-services.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://handsdetailshop.com/marine-services.html">
+    <meta property="og:title" content="Professional Yacht & RV Detailing | Hands Detail Shop">
+    <meta property="og:description" content="Premium marine detailing for yachts, boats, RVs, and motorhomes. Mobile service available to marinas and storage facilities.">
+    <meta property="og:image" content="https://handsdetailshop.com/20200723_030424~2.png">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Hands Detail Shop">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://handsdetailshop.com/marine-services.html">
+    <meta property="twitter:title" content="Professional Yacht & RV Detailing | Hands Detail Shop">
+    <meta property="twitter:description" content="Premium marine detailing for yachts, boats, RVs, and motorhomes starting at $285.">
+    <meta property="twitter:image" content="https://handsdetailshop.com/20200723_030424~2.png">
+
+    <!-- Business Contact Info -->
+    <meta name="geo.region" content="US-PA">
+    <meta name="geo.placename" content="Pittsburgh, Pennsylvania">
+    <meta name="geo.position" content="">
+    <meta name="ICBM" content="">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#1565c0">
+    <meta name="msapplication-TileColor" content="#1565c0">
+    <!-- PWA Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Hands Detail">
+
+    <!-- PWA Icons -->
+    <link rel="apple-touch-icon" href="/20200723_030424~2.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/20200723_030424~2.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/20200723_030424~2.png">
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo-section">
+                <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="20200723_030424~2.png" alt="Hands Detail Shop Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; font-size: 1.5rem; font-weight: 800; color: #c0c0c0; font-style: italic;">HANDS DETAIL</div>
+                </a>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <div class="services-dropdown">
+                    <button class="services-dropdown-btn nav-link" onclick="toggleServicesDropdown(this)">Services</button>
+                    <div class="dropdown-menu">
+                        <a href="services.html" class="dropdown-item">📋 All Services Overview</a>
+                        <a href="personal-vehicles.html" class="dropdown-item">🚗 Personal Vehicles</a>
+                        <a href="marine-services.html" class="dropdown-item">🛥️ Yacht & RV</a>
+                        <a href="fleet-services.html" class="dropdown-item">🚛 Fleet & Commercial</a>
+                        <a href="motorcycle-services.html" class="dropdown-item">🏍️ Motorcycle</a>
+                        <a href="aircraft-services.html" class="dropdown-item">✈️ Aircraft</a>
+                    </div>
+                </div>
+                <a href="membership.html" class="nav-link">Membership</a>
+                <a href="quote.html" class="nav-link">Quote</a>
+                <a href="reviews.html" class="nav-link">Reviews</a>
+                <a href="https://medium.com/@handsdetailshop" target="_blank" class="nav-link">Blog</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="contact-header">
+                <span class="hours-header">🕒 Mon-Sat 8AM-6PM</span>
+                <a href="tel:4127528684" class="btn-call">📞 Call</a>
+                <a href="sms:4127528684" class="btn-text">💬 Text</a>
+                <a href="#" onclick="openBookingModal(); return false;" class="cta-header">Book Now</a>
+            </div>
+
+            <div class="mobile-menu-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About Nazir</a>
+            <a href="services.html">All Services Overview</a>
+            <a href="personal-vehicles.html">🚗 Personal Vehicles</a>
+            <a href="marine-services.html">🛥️ Yacht & RV</a>
+            <a href="fleet-services.html">🚛 Fleet & Commercial</a>
+            <a href="motorcycle-services.html">🏍️ Motorcycle</a>
+            <a href="aircraft-services.html">✈️ Aircraft</a>
+            <a href="membership.html">Membership</a>
+            <a href="quote.html">Get Quote</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="https://medium.com/@handsdetailshop" target="_blank">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="tel:4127528684" style="background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">📞 Call Now</a>
+            <a href="sms:4127528684" style="background: rgba(50,50,50,0.5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">💬 Text Now</a>
+        </nav>
+    </header>
+
+    <!-- Promotional Banner -->
+    <div class="promo-banner" style="margin-top: 70px;">
+        🎊 SPRING SPECIAL: 15% OFF First-Time Customers | 💎 FREE Tire Shine with Any Package | 💳 $30 Deposit Secures Your Appointment | 📞 (412) 752-8684
+    </div>
+
+    <!-- Hero Section -->
+    <section style="padding-top: 180px; background: linear-gradient(135deg, #0d1b2a 0%, #1a2942 50%, #0d1b2a 100%); position: relative; overflow: hidden; text-align: center;">
+        <div class="section-container" style="z-index: 2; position: relative;">
+            <h1 style="font-size: 3.5rem; color: #e0e0e0; margin-bottom: 15px; font-weight: 900; letter-spacing: -1px;">
+                🛥️ Premium Yacht & RV Marine Detailing
+            </h1>
+            <p style="font-size: 1.3rem; color: #b3d9ff; margin-bottom: 30px;">
+                Professional mobile detailing for boats, yachts, RVs, and motorhomes - Marina-side or at your location
+            </p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#" onclick="openBookingModal(); return false;" class="cta-button" style="font-size: 1.1rem;">📅 Book Marine Detail Today</a>
+                <a href="tel:4127528684" class="cta-button" style="background: rgba(66, 165, 245, 0.2); border: 2px solid #42a5f5; font-size: 1.1rem;">📞 Call: (412) 752-8684</a>
+            </div>
+        </div>
+        <div style="position: absolute; top: -50px; right: -50px; font-size: 25rem; opacity: 0.03; z-index: 1;">🛥️</div>
+    </section>
+
+    <!-- Yacht & RV Detailing Packages Section -->
+    <section class="detail-section" id="yacht-rv-packages" style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border-top: 1px solid rgba(66, 165, 245, 0.3);">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Yacht & RV Detailing Packages</h2>
+                <p class="section-subtitle">Professional mobile detailing for boats, yachts, RVs, and motorhomes - Marina-side or at your location</p>
+            </div>
+
+            <!-- Yacht Packages -->
+            <div class="section-header" style="margin-top: 50px;">
+                <h3 class="section-title" style="font-size: 1.8rem;">⛵ Yacht & Boat Detailing</h3>
+                <p class="section-subtitle">Size-based pricing for all vessel types</p>
+            </div>
+
+            <div class="package-grid">
+                <!-- Small Yacht/Boat Package -->
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-title">Small Boat/Yacht Detail</h3>
+                        <div class="package-price">$285 - $385</div>
+                        <p class="package-tier">Up to 25 feet</p>
+                    </div>
+                    <div class="package-body">
+                        <p class="package-description">Complete detailing for smaller vessels</p>
+                        <ul class="package-features">
+                            <li>✓ Full exterior hull wash & wax</li>
+                            <li>✓ Deck cleaning & protection</li>
+                            <li>✓ Canvas & upholstery cleaning</li>
+                            <li>✓ Metal polish (rails, cleats)</li>
+                            <li>✓ Window & glass cleaning</li>
+                            <li>✓ Interior cabin detailing</li>
+                            <li>✓ Saltwater oxidation removal</li>
+                            <li>✓ UV protection treatment</li>
+                        </ul>
+                        <button onclick="openBookingModal('Small Boat/Yacht Detail')" class="package-btn">Book Small Boat Detail</button>
+                    </div>
+                </div>
+
+                <!-- Medium Yacht Package -->
+                <div class="package-card">
+                    <div class="package-header executive">
+                        <div class="package-badge">MOST POPULAR</div>
+                        <h3 class="package-title">Medium Yacht Detail</h3>
+                        <div class="package-price">$485 - $685</div>
+                        <p class="package-tier">26 - 40 feet</p>
+                    </div>
+                    <div class="package-body">
+                        <p class="package-description">Comprehensive yacht maintenance & restoration</p>
+                        <ul class="package-features">
+                            <li>✓ Everything in Small Boat, plus:</li>
+                            <li>✓ Multi-stage hull compound & polish</li>
+                            <li>✓ Teak deck cleaning & sealing</li>
+                            <li>✓ Full interior cabin detail</li>
+                            <li>✓ Galley deep cleaning</li>
+                            <li>✓ Head (bathroom) sanitization</li>
+                            <li>✓ Vinyl & leather conditioning</li>
+                            <li>✓ Stainless steel polishing</li>
+                            <li>✓ 6-month marine sealant</li>
+                        </ul>
+                        <button onclick="openBookingModal('Medium Yacht Detail')" class="package-btn executive">Book Medium Yacht</button>
+                    </div>
+                </div>
+
+                <!-- Large Yacht Package -->
+                <div class="package-card">
+                    <div class="package-header signature">
+                        <h3 class="package-title">Large Yacht Detail</h3>
+                        <div class="package-price">$885 - $1,485</div>
+                        <p class="package-tier">41 - 60 feet</p>
+                    </div>
+                    <div class="package-body">
+                        <p class="package-description">Premium yacht restoration & protection</p>
+                        <ul class="package-features">
+                            <li>✓ Everything in Medium Yacht, plus:</li>
+                            <li>✓ Full hull paint correction</li>
+                            <li>✓ Marine ceramic coating available</li>
+                            <li>✓ All cabin & stateroom detailing</li>
+                            <li>✓ Carpet & upholstery extraction</li>
+                            <li>✓ Teak restoration & oiling</li>
+                            <li>✓ Chrome hardware polishing</li>
+                            <li>✓ Engine compartment cleaning</li>
+                            <li>✓ 1-year marine protection</li>
+                        </ul>
+                        <button onclick="openBookingModal('Large Yacht Detail')" class="package-btn signature">Book Large Yacht</button>
+                    </div>
+                </div>
+
+                <!-- Super Yacht Package -->
+                <div class="package-card">
+                    <div class="package-header presidential">
+                        <div class="package-badge">PREMIUM</div>
+                        <h3 class="package-title">Super Yacht Detail</h3>
+                        <div class="package-price">Custom Quote</div>
+                        <p class="package-tier">60+ feet</p>
+                    </div>
+                    <div class="package-body">
+                        <p class="package-description">White-glove service for luxury vessels</p>
+                        <ul class="package-features">
+                            <li>✓ Customized detailing plan</li>
+                            <li>✓ Multi-day service available</li>
+                            <li>✓ Complete hull restoration</li>
+                            <li>✓ All interior spaces detailed</li>
+                            <li>✓ Premium marine ceramic coating</li>
+                            <li>✓ Teak deck restoration</li>
+                            <li>✓ All metal polishing & protection</li>
+                            <li>✓ Ongoing maintenance plans</li>
+                        </ul>
+                        <button onclick="openBookingModal('Super Yacht Detail')" class="package-btn presidential">Request Quote</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RV & Motorhome Packages -->
+            <div class="section-header" style="margin-top: 80px;">
+                <h3 class="section-title" style="font-size: 1.8rem;">🚐 RV & Motorhome Detailing</h3>
+                <p class="section-subtitle">Complete mobile RV detailing - We come to your location or storage facility</p>
+            </div>
+
+            <div class="package-grid">
+                <!-- Class B/Small RV Package -->
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-title">Class B / Small RV Detail</h3>
+                        <div class="package-price">$285 - $385</div>
+                        <p class="package-tier">Class B, small travel trailers (up to 25')</p>
+                    </div>
+                    <div class="package-body">
+                        <p class="package-description">Complete detailing for compact RVs</p>
+                        <ul class="package-features">
+                            <li>✓ Full exterior wash & wax</li>
+                            <li>✓ Roof cleaning & treatment</li>
+                            <li>✓ Awning cleaning</li>
+                            <li>✓ Wheel & tire cleaning</li>
+                            <li>✓ Window & glass cleaning</li>
+                            <li>✓ Interior vacuuming & wipe down</li>
+                            <li>✓ Oxidation removal</li>
+                            <li>✓ Rubber seal conditioning</li>
+                        </ul>
+                        <button onclick="openBookingModal('Class B / Small RV Detail')" class="package-btn">Book Class B Detail</button>
+                    </div>
+                </div>
+
+                <!-- Class C RV Package -->
+                <div class="package-card">
+                    <div class="package-header executive">
+                        <div class="package-badge">MOST POPULAR</div>
+                        <h3 class="package-title">Class C RV Detail</h3>
+                        <div class="package-price">$485 - $685</div>
+                        <p class="package-tier">Class C motorhomes, medium trailers (26'-35')</p>
+                    </div>
+                    <div class="package-body">
+                        <p class="package-description">Comprehensive Class C RV restoration</p>
+                        <ul class="package-features">
+                            <li>✓ Everything in Class B, plus:</li>
+                            <li>✓ Multi-stage paint correction</li>
+                            <li>✓ Full roof cleaning & sealing</li>
+                            <li>✓ Slide-out cleaning & lubrication</li>
+                            <li>✓ Complete interior detailing</li>
+                            <li>✓ Upholstery & carpet shampooing</li>
+                            <li>✓ Cabinet & surface restoration</li>
+                            <li>✓ Awning deep clean & treatment</li>
+                            <li>✓ 6-month UV protection</li>
+                        </ul>
+                        <button onclick="openBookingModal('Class C RV Detail')" class="package-btn executive">Book Class C Detail</button>
+                    </div>
+                </div>
+
+                <!-- Class A RV Package -->
+                <div class="package-card">
+                    <div class="package-header signature">
+                        <div class="package-badge">PREMIUM</div>
+                        <h3 class="package-title">Class A RV Detail</h3>
+                        <div class="package-price">$885 - $1,285</div>
+                        <p class="package-tier">Class A motorhomes, large 5th wheels (35'-45')</p>
+                    </div>
+                    <div class="package-body">
+                        <p class="package-description">Ultimate Class A motorhome restoration</p>
+                        <ul class="package-features">
+                            <li>✓ Everything in Class C, plus:</li>
+                            <li>✓ Full paint restoration & protection</li>
+                            <li>✓ Ceramic coating available</li>
+                            <li>✓ Complete interior transformation</li>
+                            <li>✓ All slide-outs detailed inside/out</li>
+                            <li>✓ Leather conditioning & protection</li>
+                            <li>✓ Generator compartment cleaning</li>
+                            <li>✓ Storage bay organization & cleaning</li>
+                            <li>✓ 1-year protection warranty</li>
+                        </ul>
+                        <button onclick="openBookingModal('Class A RV Detail')" class="package-btn signature">Book Class A Detail</button>
+                    </div>
+                </div>
+
+                <!-- Super Class A / Luxury RV Package -->
+                <div class="package-card">
+                    <div class="package-header presidential">
+                        <div class="package-badge">ULTIMATE</div>
+                        <h3 class="package-title">Luxury RV Detail</h3>
+                        <div class="package-price">$1,485 - $2,485</div>
+                        <p class="package-tier">Super Class A, luxury coaches (45'+)</p>
+                    </div>
+                    <div class="package-body">
+                        <p class="package-description">White-glove service for luxury motorhomes</p>
+                        <ul class="package-features">
+                            <li>✓ Everything in Class A, plus:</li>
+                            <li>✓ Multi-day comprehensive detail</li>
+                            <li>✓ Premium ceramic coating (5-year)</li>
+                            <li>✓ Paint protection film available</li>
+                            <li>✓ Complete interior restoration</li>
+                            <li>✓ All wood & cabinetry treatment</li>
+                            <li>✓ Undercarriage cleaning & protection</li>
+                            <li>✓ Chrome & metal polishing</li>
+                            <li>✓ Ongoing maintenance plans available</li>
+                        </ul>
+                        <button onclick="openBookingModal('Luxury RV Detail')" class="package-btn presidential">Book Luxury RV</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Marine & RV Note -->
+            <div class="cta-container">
+                <p class="cta-text" style="max-width: 900px; margin: 0 auto 20px;">
+                    🚐 <strong>Mobile Service:</strong> We come to your marina, storage facility, or home with our complete mobile detailing setup.
+                    ⛵ <strong>Custom Quotes:</strong> Every yacht and RV is unique - call for a personalized estimate based on your specific needs.
+                </p>
+                <a href="tel:4127528684" class="cta-button">📞 Call for Custom Quote: (412) 752-8684</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Hands Detail Shop</h3>
+                    <div class="partner-info">
+                        <h4>Professional Auto Detailing</h4>
+                        <p>
+                            Serving Pittsburgh and surrounding areas since 2009.<br>
+                            <strong style="color: #a0a0a0;">Military-Precision Detailing</strong>
+                        </p>
+                    </div>
+                    <p style="margin-top: 15px;">
+                        <strong>🕒 Hours:</strong><br>
+                        Monday - Saturday: 8AM - 6PM<br>
+                        Sunday: By Appointment
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Service Area</h3>
+                    <div class="partner-info">
+                        <h4>Mobile Service</h4>
+                        <p>
+                            We come directly to you!<br>
+                            <strong style="color: #a0a0a0;">Convenience at your location</strong>
+                        </p>
+                    </div>
+                    <p style="margin-top: 15px;">
+                        Proudly serving the Greater Pittsburgh area including Fox Chapel, Sewickley Heights, Upper St. Clair, Arnold, and surrounding communities.
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Hands Detail Shop | Mobile Detailing Services | All Rights Reserved</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">Professional Auto Detailing Services | Pittsburgh Area | Licensed & Insured</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="pwa-installer.js"></script>
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/68e2fac9bf465d19518ec75b/1j6ra78mi';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+
+    <!-- Vehicle Type Filter Script -->
+    <script>
+        function toggleServicesDropdown(button) {
+            button.classList.toggle('active');
+        }
+
+        function toggleVehicleType(type, button) {
+            // Update active button
+            document.querySelectorAll('.vehicle-type-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            button.classList.add('active');
+
+            // Show/hide prices based on selected type
+            document.querySelectorAll('.vehicle-price').forEach(priceElement => {
+                if (priceElement.getAttribute('data-vehicle') === type || 
+                    (type === 'all' && priceElement.getAttribute('data-vehicle') === 'all')) {
+                    priceElement.style.display = 'block';
+                } else {
+                    priceElement.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

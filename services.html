@@ -73,13 +73,18 @@
             <nav class="nav-menu">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="index.html#about" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
+                <div class="services-dropdown">
+                    <button class="services-dropdown-btn nav-link" onclick="toggleServicesDropdown(this)">Services</button>
+                    <div class="dropdown-menu">
+                        <a href="services.html" class="dropdown-item">📋 All Services Overview</a>
+                        <a href="personal-vehicles.html" class="dropdown-item">🚗 Personal Vehicles</a>
+                        <a href="marine-services.html" class="dropdown-item">🛥️ Yacht & RV</a>
+                        <a href="fleet-services.html" class="dropdown-item">🚛 Fleet & Commercial</a>
+                        <a href="motorcycle-services.html" class="dropdown-item">🏍️ Motorcycle</a>
+                        <a href="aircraft-services.html" class="dropdown-item">✈️ Aircraft</a>
+                    </div>
+                </div>
                 <a href="membership.html" class="nav-link">Membership</a>
-                <a href="services.html#packages" class="nav-link">Packages</a>
-                <a href="services.html#yacht-rv-packages" class="nav-link">Yacht/RV</a>
-                <a href="services.html#fleet-bus-packages" class="nav-link">Fleet</a>
-                <a href="services.html#motorcycle-packages" class="nav-link">Motorcycle</a>
-                <a href="services.html#aircraft-packages" class="nav-link">✈️ Aircraft</a>
                 <a href="quote.html" class="nav-link">Quote</a>
                 <a href="reviews.html" class="nav-link">Reviews</a>
                 <a href="https://medium.com/@handsdetailshop" target="_blank" class="nav-link">Blog</a>
@@ -103,13 +108,13 @@
         <nav class="mobile-nav" id="mobileNav">
             <a href="index.html">Home</a>
             <a href="index.html#about">About Nazir</a>
-            <a href="services.html">Services</a>
+            <a href="services.html">All Services Overview</a>
+            <a href="personal-vehicles.html">🚗 Personal Vehicles</a>
+            <a href="marine-services.html">🛥️ Yacht & RV</a>
+            <a href="fleet-services.html">🚛 Fleet & Commercial</a>
+            <a href="motorcycle-services.html">🏍️ Motorcycle</a>
+            <a href="aircraft-services.html">✈️ Aircraft</a>
             <a href="membership.html">Membership</a>
-            <a href="services.html#packages">Packages</a>
-            <a href="services.html#yacht-rv-packages">Yacht/RV</a>
-            <a href="services.html#fleet-bus-packages">Fleet</a>
-            <a href="services.html#motorcycle-packages">Motorcycle</a>
-            <a href="services.html#aircraft-packages">✈️ Aircraft</a>
             <a href="quote.html">Get Quote</a>
             <a href="reviews.html">Reviews</a>
             <a href="https://medium.com/@handsdetailshop" target="_blank">Blog</a>
@@ -127,23 +132,85 @@
     <!-- Service Selector Section -->
     <section class="service-selector" id="services" style="padding-top: 180px;">
         <div class="selector-header">
-            <h2 class="selector-title">What Can We Detail For You?</h2>
-            <p class="selector-subtitle">Choose your service category to explore our professional packages</p>
+            <h2 class="selector-title">Professional Detailing Services Overview</h2>
+            <p class="selector-subtitle">Explore our specialized service categories designed for every vehicle type</p>
         </div>
 
         <div class="service-options">
             <!-- Personal Vehicles -->
-            <div class="service-card" onclick="openBookingModal('personal')">
+            <div class="service-card" onclick="window.location.href='personal-vehicles.html'">
                 <span class="service-icon">🚗</span>
                 <h3 class="service-title">Personal Vehicles</h3>
                 <p class="service-description">Professional detailing for your car, truck, or SUV</p>
                 <ul class="service-highlights">
-                    <li>5 package tiers available</li>
-                    <li>Wash to ceramic coating</li>
-                    <li>Same-day service</li>
+                    <li>6 package tiers from Essential to Ultimate Armor</li>
+                    <li>Pricing by vehicle type (Sedan, SUV, Truck, Luxury)</li>
+                    <li>Interior-only options available</li>
+                    <li>Same-day service available</li>
                 </ul>
                 <div class="starting-price">Starting at $65</div>
-                <span class="explore-btn">Explore Packages</span>
+                <span class="explore-btn">View All Packages →</span>
+            </div>
+
+            <!-- Marine Services - Yacht & RV -->
+            <div class="service-card" onclick="window.location.href='marine-services.html'">
+                <span class="service-icon">🛥️</span>
+                <h3 class="service-title">Yacht & RV Detailing</h3>
+                <p class="service-description">Mobile service for boats, yachts, and motorhomes</p>
+                <ul class="service-highlights">
+                    <li>Yachts: Small to Super Yacht ($285-Custom)</li>
+                    <li>RVs: Class B to Luxury ($285-$2,485)</li>
+                    <li>Marina & storage facility service</li>
+                    <li>Size-based transparent pricing</li>
+                </ul>
+                <div class="starting-price">Starting at $285</div>
+                <span class="explore-btn">View Marine Packages →</span>
+            </div>
+
+            <!-- Fleet Services -->
+            <div class="service-card" onclick="window.location.href='fleet-services.html'">
+                <span class="service-icon">🚛</span>
+                <h3 class="service-title">Fleet & Commercial</h3>
+                <p class="service-description">Professional volume contracts for businesses</p>
+                <ul class="service-highlights">
+                    <li>Fleet vehicles: $45-$95 per vehicle</li>
+                    <li>Buses: $145-$685 per vehicle</li>
+                    <li>Semi Tractors: $125-$185</li>
+                    <li>NET 30 payment terms available</li>
+                </ul>
+                <div class="starting-price">From $45/vehicle</div>
+                <span class="explore-btn">View Fleet Packages →</span>
+            </div>
+
+            <!-- Motorcycle Services -->
+            <div class="service-card" onclick="window.location.href='motorcycle-services.html'">
+                <span class="service-icon">🏍️</span>
+                <h3 class="service-title">Motorcycle Detailing</h3>
+                <p class="service-description">Specialized bike detailing & protection for all riders</p>
+                <ul class="service-highlights">
+                    <li>Road Ready: $85-$105</li>
+                    <li>Chrome & Shine: $145-$185</li>
+                    <li>Show Bike: $245-$295</li>
+                    <li>4 specialty add-ons available</li>
+                </ul>
+                <div class="starting-price">Starting at $85</div>
+                <span class="explore-btn">View Motorcycle Packages →</span>
+            </div>
+
+            <!-- Aircraft Detailing -->
+            <div class="service-card featured" onclick="window.location.href='aircraft-services.html'">
+                <div class="featured-badge" style="background: #daa520;">✈️ PREMIUM EXCLUSIVE</div>
+                <span class="service-icon" style="font-size: 3.5rem; filter: drop-shadow(0 0 20px rgba(218, 165, 32, 0.8));">✈️</span>
+                <h3 class="service-title" style="color: #ffc107; font-size: 1.4rem;">Premium Aircraft Detailing</h3>
+                <p class="service-description" style="color: #daa520;">Expanding into aviation with military precision</p>
+                <ul class="service-highlights" style="color: #ffd700;">
+                    <li>✨ Single-engine to large aircraft</li>
+                    <li>💎 5 premium package tiers</li>
+                    <li>⭐ Only service in Pittsburgh area</li>
+                    <li>🏆 Aerospace-grade detailing</li>
+                </ul>
+                <div class="starting-price" style="background: linear-gradient(90deg, #daa520, #ffc107); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.8rem; font-weight: 900;">From $2,500</div>
+                <span class="explore-btn" style="background: linear-gradient(135deg, #daa520, #ffc107); box-shadow: 0 5px 20px rgba(218, 165, 32, 0.4);">✈️ View Aircraft Packages →</span>
             </div>
 
             <!-- Monthly Plans -->
@@ -152,61 +219,17 @@
                 <h3 class="service-title">Monthly Plans</h3>
                 <p class="service-description">Convenient residential monthly contracts</p>
                 <ul class="service-highlights">
-                    <li>Scheduled service</li>
-                    <li>Multi-car discounts</li>
                     <li>Priority booking</li>
+                    <li>Multi-car discounts</li>
+                    <li>Flexible scheduling</li>
+                    <li>Professional maintenance plan</li>
                 </ul>
                 <div class="starting-price">From $75/month</div>
-                <span class="explore-btn">View Plans</span>
-            </div>
-
-            <!-- Fleet Services -->
-            <div class="service-card" onclick="window.location.href='#fleet-bus-packages'">
-                <span class="service-icon">🚛</span>
-                <h3 class="service-title">Commercial Fleet & Semi Tractors</h3>
-                <p class="service-description">Volume contracts for businesses</p>
-                <ul class="service-highlights">
-                    <li>Fleet: $45-$95 per vehicle</li>
-                    <li>Buses: $145-$685</li>
-                    <li>Semi Tractors: $125-$185</li>
-                    <li>NET 30 terms available</li>
-                </ul>
-                <div class="starting-price">From $45/vehicle</div>
-                <span class="explore-btn">View Fleet Packages</span>
-            </div>
-
-            <!-- Marine & RV -->
-            <div class="service-card" onclick="window.location.href='#yacht-rv-packages'">
-                <span class="service-icon">🛥️</span>
-                <h3 class="service-title">Yacht & RV</h3>
-                <p class="service-description">Mobile service for boats & motorhomes</p>
-                <ul class="service-highlights">
-                    <li>Yachts: $285-$1,485+</li>
-                    <li>RVs: $285-$2,485</li>
-                    <li>Marina & storage facility service</li>
-                    <li>Size-based pricing</li>
-                </ul>
-                <div class="starting-price">From $285</div>
-                <span class="explore-btn">View Yacht & RV Packages</span>
-            </div>
-
-            <!-- Motorcycle Services -->
-            <div class="service-card" onclick="window.location.href='#motorcycle-packages'">
-                <span class="service-icon">🏍️</span>
-                <h3 class="service-title">Motorcycle Detail</h3>
-                <p class="service-description">Specialized bike detailing & protection</p>
-                <ul class="service-highlights">
-                    <li>Road Ready: $85-$105</li>
-                    <li>Chrome & Shine: $145-$185</li>
-                    <li>Show Bike: $245-$295</li>
-                    <li>Seasonal prep packages</li>
-                </ul>
-                <div class="starting-price">Starting at $85</div>
-                <span class="explore-btn">View Motorcycle Packages</span>
+                <span class="explore-btn">View Plans →</span>
             </div>
 
             <!-- Spring Detail Deal - FEATURED -->
-            <div class="service-card featured" onclick="openBookingModal('spring-deal')">
+            <div class="service-card featured" onclick="window.location.href='personal-vehicles.html'">
                 <div class="featured-badge" style="background: #4caf50;">🌱 SPRING SPECIAL</div>
                 <span class="service-icon" style="font-size: 3.5rem; filter: drop-shadow(0 0 20px rgba(76, 175, 80, 0.8));">🌸</span>
                 <h3 class="service-title" style="color: #c8e6c9; font-size: 1.4rem;">Spring Detail Deal</h3>
@@ -216,93 +239,101 @@
                     <li>🌿 Spring freshness interior cleaning</li>
                     <li>☀️ UV protection coating applied</li>
                     <li>💎 Premium wax & sealant included</li>
-                    <li>🏆 6-month protection guarantee</li>
                 </ul>
                 <div class="starting-price" style="background: linear-gradient(90deg, #66bb6a, #81c784); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.8rem; font-weight: 900;">From $245</div>
-                <span class="explore-btn" style="background: linear-gradient(135deg, #66bb6a, #4caf50); box-shadow: 0 5px 20px rgba(76, 175, 80, 0.4);">🌷 Get Spring Fresh Now</span>
+                <span class="explore-btn" style="background: linear-gradient(135deg, #66bb6a, #4caf50); box-shadow: 0 5px 20px rgba(76, 175, 80, 0.4);">🌷 Get Spring Fresh Now →</span>
             </div>
 
             <!-- Interior Ceramic Coating -->
-            <div class="service-card" onclick="openBookingModal('interior-ceramic')">
+            <div class="service-card" onclick="window.location.href='personal-vehicles.html#interior-packages'">
                 <span class="service-icon">✨</span>
                 <h3 class="service-title">Interior Ceramic Coating</h3>
                 <p class="service-description">Ultimate interior protection & stain resistance</p>
                 <ul class="service-highlights">
                     <li>Fabric & leather protection</li>
                     <li>UV & stain resistance</li>
-                    <li>Easy cleaning & maintenance</li>
                     <li>3-year protection warranty</li>
+                    <li>Easy cleaning & maintenance</li>
                 </ul>
-                <div class="starting-price">From $285</div>
-                <span class="explore-btn">Book Now</span>
-            </div>
-
-            <!-- Aircraft Detailing -->
-            <div class="service-card featured" onclick="window.location.href='#aircraft-packages'">
-                <div class="featured-badge" style="background: #daa520;">✈️ PREMIUM EXCLUSIVE</div>
-                <span class="service-icon" style="font-size: 3.5rem; filter: drop-shadow(0 0 20px rgba(218, 165, 32, 0.8));">✈️</span>
-                <h3 class="service-title" style="color: #ffc107; font-size: 1.4rem;">Premium Aircraft Detailing</h3>
-                <p class="service-description" style="color: #daa520;">Expanding into aviation with military precision</p>
-                <ul class="service-highlights" style="color: #ffd700;">
-                    <li>✨ Single-engine to large aircraft</li>
-                    <li>🛩️ Business jets & aircraft</li>
-                    <li>💎 5 premium package tiers</li>
-                    <li>⭐ Only service in Pittsburgh area</li>
-                    <li>🏆 Mobile service available</li>
-                </ul>
-                <div class="starting-price" style="background: linear-gradient(90deg, #daa520, #ffc107); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.8rem; font-weight: 900;">From $2,500</div>
-                <span class="explore-btn" style="background: linear-gradient(135deg, #daa520, #ffc107); box-shadow: 0 5px 20px rgba(218, 165, 32, 0.4);">✈️ Explore Aircraft Packages</span>
+                <div class="starting-price">From $585 - $785</div>
+                <span class="explore-btn">Learn More →</span>
             </div>
         </div>
     </section>
 
-    <!-- Detailing Packages Section -->
-    <section class="detail-section" id="packages">
+    <!-- Why Choose Us Section -->
+    <section style="padding: 100px 20px; background: linear-gradient(135deg, #1a2942, #0d1b2a); text-align: center;">
+        <div class="section-container">
+            <h2 class="section-title">Why Professional Detailing Matters</h2>
+            <p class="section-subtitle" style="margin-bottom: 50px;">More than just cleaning - it's preservation and protection</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+                <div>
+                    <div style="font-size: 2.5rem; margin-bottom: 20px;">💎</div>
+                    <h3 style="color: #42a5f5; margin-bottom: 15px;">Investment Protection</h3>
+                    <p style="color: #b3d9ff;">Maintains your vehicle's value and extends its life with proper care and protection coatings.</p>
+                </div>
+                <div>
+                    <div style="font-size: 2.5rem; margin-bottom: 20px;">🦠</div>
+                    <h3 style="color: #42a5f5; margin-bottom: 15px;">99.9% Sanitization</h3>
+                    <p style="color: #b3d9ff;">Professional cleaning removes bacteria, allergens, and contaminants for a healthier environment.</p>
+                </div>
+                <div>
+                    <div style="font-size: 2.5rem; margin-bottom: 20px;">⏱️</div>
+                    <h3 style="color: #42a5f5; margin-bottom: 15px;">Time Efficiency</h3>
+                    <p style="color: #b3d9ff;">Mobile service comes to you. No need to drive to a location. We handle the heavy lifting.</p>
+                </div>
+                <div>
+                    <div style="font-size: 2.5rem; margin-bottom: 20px;">🎯</div>
+                    <h3 style="color: #42a5f5; margin-bottom: 15px;">Expert Expertise</h3>
+                    <p style="color: #b3d9ff;">16+ years of professional detailing experience with certified, trained technicians.</p>
+                </div>
+                <div>
+                    <div style="font-size: 2.5rem; margin-bottom: 20px;">✨</div>
+                    <h3 style="color: #42a5f5; margin-bottom: 15px;">Showroom Quality</h3>
+                    <p style="color: #b3d9ff;">Professional-grade products and techniques deliver showroom-quality results consistently.</p>
+                </div>
+                <div>
+                    <div style="font-size: 2.5rem; margin-bottom: 20px;">🛡️</div>
+                    <h3 style="color: #42a5f5; margin-bottom: 15px;">Protection Warranty</h3>
+                    <p style="color: #b3d9ff;">Every package includes protection guarantees with options for extended coverage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
         <div class="section-container">
             <div class="section-header">
-                <h2 class="section-title">Our Detailing Packages</h2>
-                <p class="section-subtitle">Professional packages tailored to your vehicle's needs</p>
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Simple process, exceptional results</p>
             </div>
 
-            <!-- Vehicle Type Selector -->
-            <div style="margin-bottom: 40px; padding: 20px; background: rgba(66, 165, 245, 0.1); border-radius: 8px; border-left: 4px solid #42a5f5;">
-                <p style="color: #a0a0a0; margin-bottom: 15px; font-size: 0.95rem;"><strong>💡 Pricing by Vehicle Type:</strong> Select your vehicle to see exact pricing</p>
-                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                    <button onclick="toggleVehicleType('sedan', this)" class="vehicle-type-btn active">🚗 Sedan/Coupe</button>
-                    <button onclick="toggleVehicleType('suv', this)" class="vehicle-type-btn">🚙 SUV/Crossover</button>
-                    <button onclick="toggleVehicleType('truck', this)" class="vehicle-type-btn">🚕 Truck/Van</button>
-                    <button onclick="toggleVehicleType('luxury', this)" class="vehicle-type-btn">✨ Luxury/Performance</button>
-                    <button onclick="toggleVehicleType('all', this)" class="vehicle-type-btn">📊 View All</button>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Choose Your Service</h3>
+                    <p class="step-description">Select from our comprehensive packages or build a custom solution</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Schedule Appointment</h3>
+                    <p class="step-description">Call us or email for a time that works for you</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Professional Service</h3>
+                    <p class="step-description">Our certified technicians deliver meticulous detailing</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Enjoy Your Vehicle</h3>
+                    <p class="step-description">Drive away with a showroom-quality finish</p>
                 </div>
             </div>
-
-            <!-- Package Grid -->
-            <div class="package-grid">
-                <!-- Essential Package -->
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3 class="package-title">Essential Package</h3>
-                        <div class="package-price vehicle-price" data-vehicle="all">$65 - $95</div>
-                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="sedan">$65 - $75</div>
-                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="suv">$75 - $85</div>
-                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="truck">$85 - $95</div>
-                        <div class="package-price vehicle-price" style="display: none;" data-vehicle="luxury">$85 - $95</div>
-                        <p class="package-tier">Perfect for regular maintenance</p>
-                    </div>
-                    <div class="package-body">
-                        <p class="package-description">Complete exterior wash & detail</p>
-                        <ul class="package-features">
-                            <li>✓ Hand wash & dry</li>
-                            <li>✓ Wheel & tire cleaning</li>
-                            <li>✓ Tire shine application</li>
-                            <li>✓ Windows cleaned (interior & exterior)</li>
-                            <li>✓ Door jambs cleaned</li>
-                            <li>✓ Quick interior vacuum</li>
-                            <li>✓ Exterior trim inspection</li>
-                        </ul>
-                        <button onclick="openBookingModal('Essential Package')" class="package-btn">Book Essential</button>
-                    </div>
-                </div>
+        </div>
+    </section>
 
                 <!-- Executive Package -->
                 <div class="package-card">
@@ -1803,6 +1834,10 @@
 
     <!-- Vehicle Type Filter Script -->
     <script>
+        function toggleServicesDropdown(button) {
+            button.classList.toggle('active');
+        }
+
         function toggleVehicleType(type, button) {
             // Update active button
             document.querySelectorAll('.vehicle-type-btn').forEach(btn => {
