@@ -136,49 +136,41 @@ async function initializeJukebox() {
 
     console.log('🎵 Jukebox: Starting initialization');
 
-    // Fetch with timeout
-    let response;
-    let filePath = '/audio-urls.json';
+    // Use embedded audio config first, then try to fetch
+    let audioConfig = window.AUDIO_CONFIG;
     
-    console.log('🎵 Jukebox: Attempting to fetch from', filePath);
-    
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
-    
-    try {
-      response = await fetch(filePath, { signal: controller.signal });
-      clearTimeout(timeoutId);
+    if (!audioConfig) {
+      console.log('🎵 Jukebox: No embedded config, attempting to fetch');
       
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
-      }
-    } catch (e) {
-      clearTimeout(timeoutId);
-      if (e.name === 'AbortError') {
-        console.warn('🎵 Jukebox: Fetch timeout, trying relative path');
-      } else {
-        console.log('🎵 Jukebox: Failed to fetch from root, trying relative path');
-      }
+      // Fetch with timeout
+      let response;
+      let filePath = '/audio-urls.json';
       
-      filePath = './audio-urls.json';
-      const controller2 = new AbortController();
-      const timeoutId2 = setTimeout(() => controller2.abort(), 5000);
+      console.log('🎵 Jukebox: Attempting to fetch from', filePath);
+      
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
       
       try {
-        response = await fetch(filePath, { signal: controller2.signal });
-        clearTimeout(timeoutId2);
-      } catch (e2) {
-        clearTimeout(timeoutId2);
-        throw new Error('Could not load audio configuration');
+        response = await fetch(filePath, { signal: controller.signal });
+        clearTimeout(timeoutId);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+      } catch (e) {
+        clearTimeout(timeoutId);
+        throw new Error('Could not load audio configuration from file');
       }
+      
+      if (!response.ok) {
+        throw new Error(`Failed to load audio-urls.json: HTTP ${response.status}`);
+      }
+      
+      audioConfig = await response.json();
     }
     
-    if (!response.ok) {
-      throw new Error(`Failed to load audio-urls.json: HTTP ${response.status}`);
-    }
-    
-    const data = await response.json();
-    playlist = data.songs || [];
+    playlist = audioConfig.songs || [];
 
     console.log('🎵 Jukebox: Loaded', playlist.length, 'songs');
 

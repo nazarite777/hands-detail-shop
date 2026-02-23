@@ -27,6 +27,10 @@
     ],
     "rewrites": [
       {
+        "source": "/audio-urls.json",
+        "destination": "/audio-urls.json"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
