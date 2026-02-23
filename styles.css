@@ -3295,3 +3295,204 @@ footer {
   border-left-color: #42a5f5;
   transform: translateX(3px);
 }
+
+/* ===== JUKEBOX PLAYER ===== */
+
+.jukebox {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 280px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+}
+
+.jukebox.minimized {
+  width: auto;
+}
+
+.jukebox.minimized .jukebox-content {
+  display: none;
+}
+
+.jukebox-header {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+  user-select: none;
+}
+
+.jukebox-header:active {
+  cursor: grabbing;
+}
+
+.jukebox-title {
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.jukebox-minimize {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.jukebox-minimize:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.jukebox-content {
+  padding: 15px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.jukebox-display {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.track-name {
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  word-break: break-word;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.jukebox-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  justify-content: center;
+}
+
+.jukebox-controls button {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  flex: 1;
+}
+
+.jukebox-controls button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.jukebox-controls button:active {
+  transform: scale(0.95);
+}
+
+.btn-prev, .btn-next {
+  flex: 0 0 auto;
+}
+
+.btn-play {
+  flex: 1;
+}
+
+.jukebox-playlist {
+  max-height: 200px;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 8px 0;
+}
+
+.playlist-item {
+  padding: 10px 15px;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s ease;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-left: 3px solid transparent;
+}
+
+.playlist-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.playlist-item.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border-left-color: #4caf50;
+  font-weight: 600;
+}
+
+.playlist-number {
+  min-width: 20px;
+  text-align: center;
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.playlist-title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Mobile responsiveness for jukebox */
+@media (max-width: 768px) {
+  .jukebox {
+    width: 260px;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .jukebox-controls {
+    gap: 6px;
+  }
+
+  .jukebox-controls button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .jukebox-playlist {
+    max-height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .jukebox {
+    width: 240px;
+  }
+
+  .jukebox {
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border-radius: 15px 15px 0 0;
+  }
+}

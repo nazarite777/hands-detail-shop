@@ -129,14 +129,43 @@ let playlist = [];
 async function initializeJukebox() {
   try {
     // Load playlist from audio-urls.json
-    const response = await fetch('/audio-urls.json');
+    let response;
+    let filePath = '/audio-urls.json';
+    
+    console.log('🎵 Jukebox: Attempting to fetch from', filePath);
+    
+    try {
+      response = await fetch(filePath);
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+    } catch (e) {
+      console.log('🎵 Jukebox: Failed to fetch from root, trying relative path');
+      filePath = './audio-urls.json';
+      response = await fetch(filePath);
+    }
+    
+    if (!response.ok) {
+      throw new Error(`Failed to load audio-urls.json: HTTP ${response.status}`);
+    }
+    
     const data = await response.json();
     playlist = data.songs || [];
 
-    if (playlist.length === 0) return;
+    console.log('🎵 Jukebox: Loaded', playlist.length, 'songs');
+
+    if (playlist.length === 0) {
+      console.warn('🎵 Jukebox: No songs in playlist');
+      return;
+    }
 
     const jukebox = document.getElementById('jukebox');
-    if (!jukebox) return;
+    if (!jukebox) {
+      console.warn('🎵 Jukebox: HTML element not found');
+      return;
+    }
+
+    console.log('🎵 Jukebox: Initializing player UI');
 
     // Set up jukebox elements
     const displayName = jukebox.querySelector('.jukebox-display .track-name') || createDisplayElement(jukebox);
@@ -174,6 +203,7 @@ async function initializeJukebox() {
     if (minimizeBtn) {
       minimizeBtn.addEventListener('click', () => {
         jukebox.classList.toggle('minimized');
+        console.log('🎵 Jukebox: Toggled minimized');
       });
     }
 
@@ -187,8 +217,11 @@ async function initializeJukebox() {
       nextTrack(displayName, audioElement, playBtn);
     });
 
+    console.log('🎵 Jukebox: Initialized successfully');
+
   } catch (error) {
-    console.error('Error initializing jukebox:', error);
+    console.error('🎵 Jukebox: Error initializing jukebox:', error);
+    console.error('Error stack:', error.stack);
   }
 }
 
