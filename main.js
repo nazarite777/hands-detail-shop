@@ -128,21 +128,49 @@ let playlist = [];
 
 async function initializeJukebox() {
   try {
-    // Load playlist from audio-urls.json
+    const jukebox = document.getElementById('jukebox');
+    if (!jukebox) {
+      console.warn('🎵 Jukebox: HTML element not found');
+      return;
+    }
+
+    console.log('🎵 Jukebox: Starting initialization');
+
+    // Fetch with timeout
     let response;
     let filePath = '/audio-urls.json';
     
     console.log('🎵 Jukebox: Attempting to fetch from', filePath);
     
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+    
     try {
-      response = await fetch(filePath);
+      response = await fetch(filePath, { signal: controller.signal });
+      clearTimeout(timeoutId);
+      
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
       }
     } catch (e) {
-      console.log('🎵 Jukebox: Failed to fetch from root, trying relative path');
+      clearTimeout(timeoutId);
+      if (e.name === 'AbortError') {
+        console.warn('🎵 Jukebox: Fetch timeout, trying relative path');
+      } else {
+        console.log('🎵 Jukebox: Failed to fetch from root, trying relative path');
+      }
+      
       filePath = './audio-urls.json';
-      response = await fetch(filePath);
+      const controller2 = new AbortController();
+      const timeoutId2 = setTimeout(() => controller2.abort(), 5000);
+      
+      try {
+        response = await fetch(filePath, { signal: controller2.signal });
+        clearTimeout(timeoutId2);
+      } catch (e2) {
+        clearTimeout(timeoutId2);
+        throw new Error('Could not load audio configuration');
+      }
     }
     
     if (!response.ok) {
@@ -156,16 +184,10 @@ async function initializeJukebox() {
 
     if (playlist.length === 0) {
       console.warn('🎵 Jukebox: No songs in playlist');
+      const displayName = jukebox.querySelector('.track-name');
+      if (displayName) displayName.textContent = '❌ No songs available';
       return;
     }
-
-    const jukebox = document.getElementById('jukebox');
-    if (!jukebox) {
-      console.warn('🎵 Jukebox: HTML element not found');
-      return;
-    }
-
-    console.log('🎵 Jukebox: Initializing player UI');
 
     // Set up jukebox elements
     const displayName = jukebox.querySelector('.jukebox-display .track-name') || createDisplayElement(jukebox);
@@ -220,8 +242,17 @@ async function initializeJukebox() {
     console.log('🎵 Jukebox: Initialized successfully');
 
   } catch (error) {
-    console.error('🎵 Jukebox: Error initializing jukebox:', error);
+    console.error('🎵 Jukebox: Error initializing jukebox:', error.message);
     console.error('Error stack:', error.stack);
+    
+    // Show error in UI
+    const jukebox = document.getElementById('jukebox');
+    if (jukebox) {
+      const displayName = jukebox.querySelector('.track-name');
+      if (displayName) {
+        displayName.textContent = `❌ Error: ${error.message}`;
+      }
+    }
   }
 }
 
