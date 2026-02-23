@@ -120,6 +120,163 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
+// ===== JUKEBOX PLAYER FUNCTIONALITY =====
+
+let currentTrackIndex = 0;
+let isPlaying = false;
+let playlist = [];
+
+async function initializeJukebox() {
+  try {
+    // Load playlist from audio-urls.json
+    const response = await fetch('/audio-urls.json');
+    const data = await response.json();
+    playlist = data.songs || [];
+
+    if (playlist.length === 0) return;
+
+    const jukebox = document.getElementById('jukebox');
+    if (!jukebox) return;
+
+    // Set up jukebox elements
+    const displayName = jukebox.querySelector('.jukebox-display .track-name') || createDisplayElement(jukebox);
+    const playBtn = jukebox.querySelector('.btn-play');
+    const nextBtn = jukebox.querySelector('.btn-next');
+    const prevBtn = jukebox.querySelector('.btn-prev');
+    const playlistDiv = jukebox.querySelector('.jukebox-playlist');
+    const minimizeBtn = jukebox.querySelector('.jukebox-minimize');
+    const audioElement = document.getElementById('jukeboxAudio') || createAudioElement();
+
+    // Create audio element if not exists
+    if (!document.getElementById('jukeboxAudio')) {
+      document.body.appendChild(audioElement);
+    }
+
+    // Load first track
+    loadTrack(0, displayName, audioElement);
+
+    // Play button
+    if (playBtn) {
+      playBtn.addEventListener('click', () => togglePlayPause(playBtn, audioElement, displayName));
+    }
+
+    // Next button
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => nextTrack(displayName, audioElement, playBtn));
+    }
+
+    // Previous button
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => prevTrack(displayName, audioElement, playBtn));
+    }
+
+    // Minimize button
+    if (minimizeBtn) {
+      minimizeBtn.addEventListener('click', () => {
+        jukebox.classList.toggle('minimized');
+      });
+    }
+
+    // Populate playlist
+    if (playlistDiv) {
+      populatePlaylist(playlistDiv, audioElement, displayName, playBtn);
+    }
+
+    // Update display when track ends
+    audioElement.addEventListener('ended', () => {
+      nextTrack(displayName, audioElement, playBtn);
+    });
+
+  } catch (error) {
+    console.error('Error initializing jukebox:', error);
+  }
+}
+
+function createAudioElement() {
+  const audio = document.createElement('audio');
+  audio.id = 'jukeboxAudio';
+  audio.crossOrigin = 'anonymous';
+  return audio;
+}
+
+function createDisplayElement(jukebox) {
+  let display = jukebox.querySelector('.jukebox-display');
+  if (!display) {
+    display = document.createElement('div');
+    display.className = 'jukebox-display';
+    jukebox.querySelector('.jukebox-content').prepend(display);
+  }
+  let trackName = display.querySelector('.track-name');
+  if (!trackName) {
+    trackName = document.createElement('div');
+    trackName.className = 'track-name';
+    display.appendChild(trackName);
+  }
+  return trackName;
+}
+
+function loadTrack(index, displayElement, audioElement) {
+  if (index < 0 || index >= playlist.length) return;
+  
+  currentTrackIndex = index;
+  const track = playlist[index];
+  
+  audioElement.src = track.firebaseUrl;
+  displayElement.textContent = `🎵 ${track.title} - ${track.artist}`;
+}
+
+function togglePlayPause(btn, audioElement, displayElement) {
+  if (isPlaying) {
+    audioElement.pause();
+    btn.textContent = '▶ Play';
+    isPlaying = false;
+  } else {
+    audioElement.play();
+    btn.textContent = '⏸ Pause';
+    isPlaying = true;
+  }
+}
+
+function nextTrack(displayElement, audioElement, playBtn) {
+  currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+  loadTrack(currentTrackIndex, displayElement, audioElement);
+  if (isPlaying) {
+    audioElement.play();
+  }
+}
+
+function prevTrack(displayElement, audioElement, playBtn) {
+  currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+  loadTrack(currentTrackIndex, displayElement, audioElement);
+  if (isPlaying) {
+    audioElement.play();
+  }
+}
+
+function populatePlaylist(container, audioElement, displayElement, playBtn) {
+  container.innerHTML = '';
+  playlist.forEach((track, index) => {
+    const item = document.createElement('div');
+    item.className = 'playlist-item' + (index === currentTrackIndex ? ' active' : '');
+    item.innerHTML = `<span class="playlist-number">${index + 1}</span><span class="playlist-title">${track.title}</span>`;
+    item.addEventListener('click', () => {
+      currentTrackIndex = index;
+      loadTrack(index, displayElement, audioElement);
+      audioElement.play();
+      playBtn.textContent = '⏸ Pause';
+      isPlaying = true;
+      updatePlaylistUI(container);
+    });
+    container.appendChild(item);
+  });
+}
+
+function updatePlaylistUI(container) {
+  container.querySelectorAll('.playlist-item').forEach((item, index) => {
+    item.classList.toggle('active', index === currentTrackIndex);
+  });
+}
+
 // ===== MODAL MANAGEMENT =====
 
 /**
@@ -523,4 +680,7 @@ document.addEventListener('DOMContentLoaded', function () {
       closeBtn.setAttribute('aria-label', 'Close modal');
     }
   });
+
+  // ===== JUKEBOX PLAYER =====
+  initializeJukebox();
 });
