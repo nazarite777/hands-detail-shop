@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | Hands Detail Shop | Join Our Team | Pittsburgh Area</title>
+    <meta name="description" content="Join the Hands Detail Shop team. Now hiring mobile auto detailers, ceramic coating technicians, and fleet specialists in the Pittsburgh area. Veteran-owned, growth-focused.">
+    <meta name="keywords" content="detailing jobs Pittsburgh, auto detailer careers, ceramic coating jobs, veteran-owned workforce, Pittsburgh jobs">
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* ===== CAREERS PAGE SPECIFIC STYLES ===== */
+        .careers-hero {
+            position: relative;
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(21, 101, 192, 0.08) 0%, rgba(21, 101, 192, 0.03) 50%, transparent 100%);
+            border-bottom: 1px solid rgba(160, 160, 160, 0.1);
+        }
+        
+        .careers-hero h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            background: linear-gradient(90deg, #42a5f5, #90caf9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .careers-hero p {
+            font-size: 1.15rem;
+            color: #c0c0c0;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            max-width: 900px;
+            margin: 40px auto 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #42a5f5;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #a0a0a0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .why-card {
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid rgba(66, 165, 245, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .why-card:hover {
+            border-color: rgba(66, 165, 245, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(66, 165, 245, 0.1);
+        }
+
+        .why-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .why-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #e0e0e0;
+        }
+
+        .why-card p {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+            line-height: 1.6;
+        }
+
+        .positions-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .position-card {
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid rgba(100, 100, 100, 0.3);
+            border-radius: 12px;
+            padding: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .position-card:hover {
+            border-color: rgba(66, 165, 245, 0.4);
+            box-shadow: 0 8px 25px rgba(66, 165, 245, 0.1);
+        }
+
+        .position-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #e0e0e0;
+        }
+
+        .position-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(100, 100, 100, 0.3);
+        }
+
+        .tag-type {
+            background: rgba(66, 165, 245, 0.12);
+            color: #42a5f5;
+            border-color: rgba(66, 165, 245, 0.3);
+        }
+
+        .tag-active {
+            background: rgba(46, 204, 113, 0.12);
+            color: #2ecc71;
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+
+        .tag-exp {
+            background: rgba(160, 160, 160, 0.1);
+            color: #c0c0c0;
+            border-color: rgba(160, 160, 160, 0.2);
+        }
+
+        .position-desc {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+            line-height: 1.6;
+            margin-bottom: 14px;
+        }
+
+        .position-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 0.82rem;
+            color: #888888;
+            padding-top: 14px;
+            border-top: 1px solid rgba(100, 100, 100, 0.2);
+        }
+
+        .position-details span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-apply {
+            display: inline-block;
+            background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-top: 16px;
+        }
+
+        .btn-apply:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(66, 165, 245, 0.3);
+        }
+
+        .growth-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0;
+            margin-top: 30px;
+        }
+
+        .growth-step {
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid rgba(66, 165, 245, 0.2);
+            padding: 24px 20px;
+            text-align: center;
+            position: relative;
+            border-right: none;
+        }
+
+        .growth-step:last-child {
+            border-right: 1px solid rgba(66, 165, 245, 0.2);
+        }
+
+        .growth-step:first-child { border-radius: 12px 0 0 12px; }
+        .growth-step:last-child { border-radius: 0 12px 12px 0; }
+
+        .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5);
+            color: white;
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .growth-step h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #42a5f5;
+            margin-bottom: 8px;
+        }
+
+        .growth-step p {
+            font-size: 0.82rem;
+            color: #a0a0a0;
+            line-height: 1.5;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .value-card {
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid rgba(100, 100, 100, 0.2);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            border-color: rgba(66, 165, 245, 0.3);
+        }
+
+        .value-icon { font-size: 2rem; margin-bottom: 12px; }
+        .value-card h4 { font-size: 0.95rem; font-weight: 700; color: #e0e0e0; margin-bottom: 8px; }
+        .value-card p { font-size: 0.82rem; color: #a0a0a0; }
+
+        .form-section {
+            background: linear-gradient(180deg, rgba(21, 101, 192, 0.04) 0%, transparent 100%);
+            border-top: 1px solid rgba(160, 160, 160, 0.1);
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group.full { grid-column: 1 / -1; }
+
+        .form-group label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #d0d0d0;
+            letter-spacing: 0.3px;
+        }
+
+        .required { color: #e74c3c; }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(100, 100, 100, 0.3);
+            border-radius: 8px;
+            padding: 12px 14px;
+            color: #e0e0e0;
+            font-size: 0.9rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #42a5f5;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.1);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: #666666; }
+
+        .form-group textarea { min-height: 100px; resize: vertical; }
+
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5);
+            color: white;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(66, 165, 245, 0.3);
+        }
+
+        .form-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #888888;
+            margin-top: 12px;
+        }
+
+        .form-note a { color: #42a5f5; }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-icon {
+            font-size: 3.5rem;
+            margin-bottom: 16px;
+        }
+
+        .success-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #42a5f5;
+            margin-bottom: 12px;
+        }
+
+        .success-text {
+            color: #c0c0c0;
+            max-width: 500px;
+            margin: 0 auto;
+            font-size: 0.95rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: #a0a0a0;
+            margin-bottom: 6px;
+        }
+
+        .title-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #42a5f5, #90caf9);
+            margin-top: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .format-grid { grid-template-columns: 1fr; }
+            .growth-timeline { grid-template-columns: 1fr; }
+            .growth-step { border-right: 1px solid rgba(66, 165, 245, 0.2); }
+            .growth-step:last-child { border-radius: 0 12px 12px 0; }
+            .hero-stats-grid { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header Navigation -->
+<header id="header">
+    <div class="nav-container">
+        <div class="logo-section">
+            <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+                <img src="20200723_030424~2.png" alt="Hands Detail Shop Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display: none; font-size: 1.5rem; font-weight: 800; color: #c0c0c0; font-style: italic;">HANDS DETAIL</div>
+            </a>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="index.html#about" class="nav-link">About</a>
+            <div class="services-dropdown">
+                <button class="services-dropdown-btn nav-link" onclick="toggleServicesDropdown(this)">Services</button>
+                <div class="dropdown-menu">
+                    <a href="services.html" class="dropdown-item">📋 All Services Overview</a>
+                    <a href="personal-vehicles.html" class="dropdown-item">🚗 Personal Vehicles</a>
+                    <a href="marine-services.html" class="dropdown-item">🛥️ Yacht & RV</a>
+                    <a href="fleet-services.html" class="dropdown-item">🚛 Fleet & Commercial</a>
+                    <a href="motorcycle-services.html" class="dropdown-item">🏍️ Motorcycle</a>
+                    <a href="aircraft-services.html" class="dropdown-item">✈️ Aircraft</a>
+                </div>
+            </div>
+            <a href="membership.html" class="nav-link">Membership</a>
+            <a href="quote.html" class="nav-link">Quote</a>
+            <a href="reviews.html" class="nav-link">Reviews</a>
+            <a href="https://medium.com/@handsdetailshop" target="_blank" class="nav-link">Blog</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="careers.html" class="nav-link">Careers</a>
+        </nav>
+
+        <div class="contact-header">
+            <span class="hours-header">🕒 Mon-Sat 8AM-6PM</span>
+            <a href="tel:4127528684" class="btn-call">📞 Call</a>
+            <a href="sms:4127528684" class="btn-text">💬 Text</a>
+            <a href="booking.html" class="cta-header">Book Now</a>
+        </div>
+
+        <div class="mobile-menu-toggle" id="mobileToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About Nazir</a>
+        <a href="services.html">All Services Overview</a>
+        <a href="personal-vehicles.html">🚗 Personal Vehicles</a>
+        <a href="marine-services.html">🛥️ Yacht & RV</a>
+        <a href="fleet-services.html">🚛 Fleet & Commercial</a>
+        <a href="motorcycle-services.html">🏍️ Motorcycle</a>
+        <a href="aircraft-services.html">✈️ Aircraft</a>
+        <a href="membership.html">Membership</a>
+        <a href="quote.html">Get Quote</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="https://medium.com/@handsdetailshop" target="_blank">Blog</a>
+        <a href="contact.html">Contact</a>
+        <a href="careers.html">Careers</a>
+        <a href="tel:4127528684" style="background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">📞 Call Now</a>
+        <a href="sms:4127528684" style="background: rgba(50,50,50,0.5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">💬 Text Now</a>
+    </nav>
+</header>
+
+<!-- ===================== PROMOTIONAL BANNER ===================== -->
+<div class="promo-banner" style="margin-top: 70px;">
+    🎊 PRE-SPRING DETAIL: Prepare Your Vehicle for Warmer Weather | 15% OFF First-Time Customers | 💎 FREE Tire Shine with Any Package | 💳 $30 Deposit Secures Your Appointment | 📞 (412) 752-8684
+</div>
+
+<!-- HERO SECTION -->
+<section class="careers-hero">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <h1>🚀 Build a Career, Not Just a Job</h1>
+        <p>Hands Detail Shop is expanding across Pittsburgh and beyond. We're looking for driven individuals who take pride in their work and want to grow with a veteran-owned operation that's been trusted for 16+ years.</p>
+        
+        <div class="hero-stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">16+</div>
+                <div class="stat-label">Years in Business</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5,000+</div>
+                <div class="stat-label">Vehicles Detailed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4</div>
+                <div class="stat-label">States Served</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">7+</div>
+                <div class="stat-label">Service Categories</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY WORK WITH US -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 80px 20px;">
+    <div class="section-title">Why Work With Hands Detail?</div>
+    <div class="section-subtitle">More than a paycheck — we invest in our people</div>
+    <div class="title-divider"></div>
+    
+    <div class="why-grid">
+        <div class="why-card">
+            <div class="icon">💰</div>
+            <h3>Competitive Pay + Tips</h3>
+            <p>Earn what you're worth. Competitive base pay plus tips on every job. Performance bonuses for 5-star reviews and client retention.</p>
+        </div>
+        <div class="why-card">
+            <div class="icon">📈</div>
+            <h3>Real Growth Path</h3>
+            <p>Start as a detailer, grow into a team lead, specialist, or manager. We promote from within and invest in your development at every stage.</p>
+        </div>
+        <div class="why-card">
+            <div class="icon">🎓</div>
+            <h3>Paid Training & Certifications</h3>
+            <p>Learn ceramic coating, paint correction, aircraft detailing, and more. We pay for your certifications and hands-on training.</p>
+        </div>
+        <div class="why-card">
+            <div class="icon">🗓️</div>
+            <h3>Flexible Scheduling</h3>
+            <p>Full-time and part-time positions available. Monday through Saturday with consistent, predictable schedules that respect your time.</p>
+        </div>
+        <div class="why-card">
+            <div class="icon">🎖️</div>
+            <h3>Veteran-Owned Culture</h3>
+            <p>Military discipline meets family atmosphere. We value accountability, precision, teamwork, and taking care of our own. Veterans especially welcome.</p>
+        </div>
+        <div class="why-card">
+            <div class="icon">🚗</div>
+            <h3>Tools & Equipment Provided</h3>
+            <p>Professional-grade products and equipment supplied. You bring the work ethic — we provide everything else you need to deliver excellence.</p>
+        </div>
+    </div>
+</section>
+
+<!-- OPEN POSITIONS -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 80px 20px; border-top: 1px solid rgba(160,160,160,0.1);">
+    <div class="section-title">Open Positions</div>
+    <div class="section-subtitle">Find your role on a growing team</div>
+    <div class="title-divider"></div>
+    
+    <div class="positions-grid">
+        <!-- Position 1 -->
+        <div class="position-card">
+            <h3>Mobile Auto Detailer</h3>
+            <div class="position-tags">
+                <span class="tag tag-type">Full-Time / Part-Time</span>
+                <span class="tag tag-active">🟢 Actively Hiring</span>
+            </div>
+            <p class="position-desc">Our core role. You'll travel to client locations and deliver professional interior and exterior detailing services. Quality, punctuality, and professionalism are non-negotiable.</p>
+            <div class="position-details">
+                <span>💵 $15–$22/hr + tips</span>
+                <span>📅 Mon–Sat (flexible)</span>
+                <span>🎓 Training provided</span>
+            </div>
+            <a href="#apply" class="btn-apply">Apply Now →</a>
+        </div>
+
+        <!-- Position 2 -->
+        <div class="position-card">
+            <h3>Ceramic Coating & Paint Correction Technician</h3>
+            <div class="position-tags">
+                <span class="tag tag-type">Full-Time</span>
+                <span class="tag tag-exp">1+ Year Experience Preferred</span>
+            </div>
+            <p class="position-desc">Specialized role focused on ceramic coating installation, multi-stage paint correction, and premium protection services. Handle our highest-value packages.</p>
+            <div class="position-details">
+                <span>💵 $18–$28/hr + tips</span>
+                <span>📅 Mon–Sat</span>
+                <span>🔧 Certification available</span>
+            </div>
+            <a href="#apply" class="btn-apply">Apply Now →</a>
+        </div>
+
+        <!-- Position 3 -->
+        <div class="position-card">
+            <h3>Fleet & Commercial Detailer</h3>
+            <div class="position-tags">
+                <span class="tag tag-type">Full-Time</span>
+                <span class="tag tag-active">🟢 Actively Hiring</span>
+            </div>
+            <p class="position-desc">Handle commercial fleet contracts including dealership lots, business fleets, buses, and semi tractors. Must be comfortable working with larger vehicles and maintaining volume contracts.</p>
+            <div class="position-details">
+                <span>💵 $16–$24/hr</span>
+                <span>📅 Mon–Fri</span>
+                <span>🚛 Valid driver's license required</span>
+            </div>
+            <a href="#apply" class="btn-apply">Apply Now →</a>
+        </div>
+
+        <!-- Position 4 -->
+        <div class="position-card">
+            <h3>Marine & RV Detailing Specialist</h3>
+            <div class="position-tags">
+                <span class="tag tag-type">Full-Time / Seasonal</span>
+                <span class="tag tag-exp">Experience Preferred</span>
+            </div>
+            <p class="position-desc">Specialize in yacht, boat, RV, and motorhome detailing. Travel to marinas, storage facilities, and client locations across our 4-state service area.</p>
+            <div class="position-details">
+                <span>💵 $18–$26/hr + tips</span>
+                <span>📅 Seasonal flexibility</span>
+                <span>🛥️ Travel required</span>
+            </div>
+            <a href="#apply" class="btn-apply">Apply Now →</a>
+        </div>
+
+        <!-- Position 5 -->
+        <div class="position-card">
+            <h3>Aircraft Detailing Technician</h3>
+            <div class="position-tags">
+                <span class="tag tag-type">Full-Time</span>
+                <span class="tag tag-exp">Aviation or Detailing Exp. Preferred</span>
+            </div>
+            <p class="position-desc">Join our premium aircraft detailing division. Work on single-engine planes through large aircraft at local airports and private hangars.</p>
+            <div class="position-details">
+                <span>💵 $22–$35/hr</span>
+                <span>📅 Mon–Sat</span>
+                <span>✈️ Background check required</span>
+            </div>
+            <a href="#apply" class="btn-apply">Apply Now →</a>
+        </div>
+
+        <!-- Position 6 -->
+        <div class="position-card">
+            <h3>Team Lead / Operations Assistant</h3>
+            <div class="position-tags">
+                <span class="tag tag-type">Full-Time</span>
+                <span class="tag tag-exp">2+ Years Detailing Experience</span>
+            </div>
+            <p class="position-desc">Lead a crew of detailers in the field. Manage scheduling, quality control, client communication, and training. Step into leadership.</p>
+            <div class="position-details">
+                <span>💵 $22–$30/hr + bonuses</span>
+                <span>📅 Mon–Sat</span>
+                <span>👥 Leadership role</span>
+            </div>
+            <a href="#apply" class="btn-apply">Apply Now →</a>
+        </div>
+    </div>
+</section>
+
+<!-- GROWTH PATH -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 80px 20px; border-top: 1px solid rgba(160,160,160,0.1);">
+    <div class="section-title">Your Growth Path</div>
+    <div class="section-subtitle">We don't just hire — we build careers</div>
+    <div class="title-divider"></div>
+    
+    <div class="growth-timeline">
+        <div class="growth-step">
+            <div class="step-num">1</div>
+            <h4>Apprentice Detailer</h4>
+            <p>Paid training. Learn our methods, products, and standards hands-on.</p>
+        </div>
+        <div class="growth-step">
+            <div class="step-num">2</div>
+            <h4>Certified Detailer</h4>
+            <p>Handle jobs independently. Build your client base and earn tips.</p>
+        </div>
+        <div class="growth-step">
+            <div class="step-num">3</div>
+            <h4>Senior Specialist</h4>
+            <p>Master ceramic coatings, paint correction, and premium services.</p>
+        </div>
+        <div class="growth-step">
+            <div class="step-num">4</div>
+            <h4>Team Lead / Manager</h4>
+            <p>Lead crews, manage operations, and share in growth.</p>
+        </div>
+    </div>
+</section>
+
+<!-- OUR VALUES -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 80px 20px; border-top: 1px solid rgba(160,160,160,0.1);">
+    <div class="section-title">What We Stand For</div>
+    <div class="section-subtitle">The standards that define how we work</div>
+    <div class="title-divider"></div>
+    
+    <div class="values-grid">
+        <div class="value-card">
+            <div class="value-icon">🎯</div>
+            <h4>Precision Over Speed</h4>
+            <p>We never rush a job. Every vehicle gets the full treatment, every time.</p>
+        </div>
+        <div class="value-card">
+            <div class="value-icon">🤝</div>
+            <h4>Integrity First</h4>
+            <p>Honest pricing, honest work. We treat every client's vehicle like our own.</p>
+        </div>
+        <div class="value-card">
+            <div class="value-icon">📚</div>
+            <h4>Always Learning</h4>
+            <p>New techniques, new coatings, new certifications. Growth never stops here.</p>
+        </div>
+        <div class="value-card">
+            <div class="value-icon">💪</div>
+            <h4>Accountability</h4>
+            <p>Own your work. That's how we earn trust and build reputation.</p>
+        </div>
+        <div class="value-card">
+            <div class="value-icon">👥</div>
+            <h4>Team Over Individual</h4>
+            <p>We win together. Every crew member's success lifts the whole operation.</p>
+        </div>
+        <div class="value-card">
+            <div class="value-icon">⭐</div>
+            <h4>Client Experience</h4>
+            <p>Every interaction matters — from the first call to the final walk-around.</p>
+        </div>
+    </div>
+</section>
+
+<!-- APPLICATION FORM -->
+<section class="form-section" id="apply">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 80px 20px;">
+        <div class="section-title" style="text-align: center;">Apply Now</div>
+        <div class="section-subtitle" style="text-align: center;">Take the first step — we'll be in touch within 48 hours</div>
+        <div class="title-divider" style="margin: 12px auto 0;"></div>
+        
+        <div class="form-container">
+            <form id="career-form" onsubmit="handleSubmit(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Name <span class="required">*</span></label>
+                        <input type="text" name="name" placeholder="Your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number <span class="required">*</span></label>
+                        <input type="tel" name="phone" placeholder="(412) 000-0000" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email <span class="required">*</span></label>
+                        <input type="email" name="email" placeholder="you@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>City / Location <span class="required">*</span></label>
+                        <input type="text" name="location" placeholder="Pittsburgh, PA" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Position Applying For <span class="required">*</span></label>
+                        <select name="position" required>
+                            <option value="" disabled selected>Select a position...</option>
+                            <option value="Mobile Auto Detailer">Mobile Auto Detailer</option>
+                            <option value="Ceramic Coating & Paint Correction">Ceramic Coating & Paint Correction Technician</option>
+                            <option value="Fleet & Commercial Detailer">Fleet & Commercial Detailer</option>
+                            <option value="Marine & RV Specialist">Marine & RV Detailing Specialist</option>
+                            <option value="Aircraft Technician">Aircraft Detailing Technician</option>
+                            <option value="Team Lead">Team Lead / Operations Assistant</option>
+                            <option value="General Interest">Other / General Interest</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Availability <span class="required">*</span></label>
+                        <select name="availability" required>
+                            <option value="" disabled selected>Select availability...</option>
+                            <option value="Full-Time">Full-Time</option>
+                            <option value="Part-Time">Part-Time</option>
+                            <option value="Seasonal">Seasonal</option>
+                            <option value="Flexible">Flexible</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Valid Driver's License? <span class="required">*</span></label>
+                        <select name="license" required>
+                            <option value="" disabled selected>Select...</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Military Veteran?</label>
+                        <select name="veteran">
+                            <option value="" disabled selected>Select...</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                            <option value="Prefer not to say">Prefer not to say</option>
+                        </select>
+                    </div>
+                    <div class="form-group full">
+                        <label>Relevant Experience</label>
+                        <textarea name="experience" placeholder="Tell us about any detailing, automotive, or related experience. No experience? Tell us what makes you a hard worker and quick learner."></textarea>
+                    </div>
+                    <div class="form-group full">
+                        <label>Why Do You Want to Work With Hands Detail Shop?</label>
+                        <textarea name="why" placeholder="What draws you to this opportunity? What are you looking for in your next role?"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit">Submit Application →</button>
+                <p class="form-note">Questions? Call <a href="tel:4127528684">(412) 752-8684</a> or email <a href="mailto:handsdetailshop@gmail.com">handsdetailshop@gmail.com</a></p>
+            </form>
+
+            <div id="success-message" class="success-message">
+                <div class="success-icon">✅</div>
+                <div class="success-title">Application Submitted!</div>
+                <div class="success-text">Thank you for your interest in joining the Hands Detail Shop team. We'll review your application and be in touch within 48 hours.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Hands Detail Shop</h3>
+            <p>Professional mobile auto detailing services. We come to you!</p>
+            <p style="margin-top: 15px;">
+                <strong>📞 Phone:</strong> (412) 752-8684<br>
+                <strong>✉️ Email:</strong> <a href="mailto:handsdetailshop@gmail.com">handsdetailshop@gmail.com</a>
+            </p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1FQft2edbP/" target="_blank" class="social-link">f</a>
+                <a href="https://www.instagram.com/handsdetailshop" target="_blank" class="social-link">📷</a>
+                <a href="https://medium.com/@handsdetailshop" target="_blank" class="social-link">M</a>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <h3>Our Services</h3>
+            <ul class="footer-links">
+                <li><a href="personal-vehicles.html">Personal Vehicle Detailing</a></li>
+                <li><a href="membership.html">Monthly Residential Plans</a></li>
+                <li><a href="fleet-services.html">Commercial Fleet Services</a></li>
+                <li><a href="marine-services.html">Yacht & Marine Detailing</a></li>
+                <li><a href="aircraft-services.html">Aircraft Detailing</a></li>
+                <li><a href="motorcycle-services.html">Motorcycle Detailing</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Company</h3>
+            <ul class="footer-links">
+                <li><a href="index.html#about">About Nazir</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                <li><a href="https://medium.com/@handsdetailshop" target="_blank">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Service Area</h3>
+            <p style="margin-top: 15px;">
+                Proudly serving the Greater Pittsburgh area including Fox Chapel, Sewickley Heights, Upper St. Clair, Arnold, and surrounding communities in PA, OH, WV & MD.
+            </p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Hands Detail Shop | Mobile Detailing Services | All Rights Reserved</p>
+        <p style="margin-top: 10px; font-size: 0.9rem;">Professional Auto Detailing Services | Pittsburgh Area | Licensed & Insured</p>
+    </div>
+</footer>
+
+<script src="main.js"></script>
+
+<script>
+function handleSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('career-form');
+    const formData = new FormData(form);
+
+    // Build email body
+    let body = '';
+    body += 'Name: ' + formData.get('name') + '\n';
+    body += 'Phone: ' + formData.get('phone') + '\n';
+    body += 'Email: ' + formData.get('email') + '\n';
+    body += 'Location: ' + formData.get('location') + '\n';
+    body += 'Position: ' + formData.get('position') + '\n';
+    body += 'Availability: ' + formData.get('availability') + '\n';
+    body += 'Driver License: ' + formData.get('license') + '\n';
+    body += 'Veteran: ' + (formData.get('veteran') || 'Not specified') + '\n\n';
+    body += 'Experience:\n' + (formData.get('experience') || 'N/A') + '\n\n';
+    body += 'Why Hands Detail:\n' + (formData.get('why') || 'N/A');
+
+    const subject = 'Career Application: ' + formData.get('position') + ' - ' + formData.get('name');
+    const mailtoLink = 'mailto:handsdetailshop@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+
+    window.location.href = mailtoLink;
+
+    // Show success message
+    form.style.display = 'none';
+    document.getElementById('success-message').classList.add('show');
+}
+</script>
+
+</body>
+</html>
