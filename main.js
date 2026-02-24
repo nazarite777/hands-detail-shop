@@ -440,86 +440,317 @@ if (bookingForm) {
   }
 
   // Form submission with validation
-  bookingForm.addEventListener('submit', function (e) {
+  bookingForm.addEventListener('submit', async function (e) {
     e.preventDefault();
 
-    const nameField = this.querySelector('input[type="text"]');
-    const phoneField = this.querySelector('input[type="tel"]');
-    const serviceField = this.querySelector('select');
+    // Determine if this is a mechanical services form or regular booking form
+    const isMechanicalForm = document.querySelectorAll('input[name="services"]').length > 0;
 
-    let isValid = true;
-
-    // Validate name
-    if (!nameField.value.trim()) {
-      showFieldError(nameField, 'Please enter your name');
-      isValid = false;
-    } else if (!validateName(nameField.value)) {
-      showFieldError(nameField, 'Please enter a valid name (letters only)');
-      isValid = false;
+    if (isMechanicalForm) {
+      // Handle Mechanical Services Booking
+      await handleMechanicalBooking(this);
     } else {
-      clearFieldError(nameField);
-    }
-
-    // Validate phone
-    if (!phoneField.value.trim()) {
-      showFieldError(phoneField, 'Please enter your phone number');
-      isValid = false;
-    } else if (!validatePhone(phoneField.value)) {
-      showFieldError(phoneField, 'Please enter a valid phone number (10+ digits)');
-      isValid = false;
-    } else {
-      clearFieldError(phoneField);
-    }
-
-    // Validate service selection
-    if (!serviceField.value) {
-      showFieldError(serviceField, 'Please select a service');
-      isValid = false;
-    } else {
-      clearFieldError(serviceField);
-    }
-
-    // If validation fails, focus on first error field
-    if (!isValid) {
-      const firstError = this.querySelector('.field-error');
-      if (firstError && firstError.previousElementSibling) {
-        firstError.previousElementSibling.focus();
-      }
-      return;
-    }
-
-    // Sanitize inputs
-    const name = sanitizeInput(nameField.value.trim());
-    const phone = sanitizeInput(phoneField.value.trim());
-    const service = sanitizeInput(serviceField.value);
-
-    // Proceed with payment
-    const squareDepositLink = 'https://square.link/u/vScfV4jK';
-    const details = `${name} - ${phone} - ${service}`;
-
-    // Open payment window
-    const paymentWindow = window.open(
-      squareDepositLink + `?note=${encodeURIComponent(details)}`,
-      '_blank',
-      'noopener,noreferrer'
-    );
-
-    if (paymentWindow) {
-      // Close modal and reset form
-      closeBookingModal();
-      this.reset();
-      
-      // Redirect to booking confirmation page with "While You Wait" music experience
-      setTimeout(() => {
-        window.location.href = 'booking-confirmation.html';
-      }, 300);
-    } else {
-      alert(
-        'Pop-up blocked! Please allow pop-ups for this site and try again.\n\nAlternatively, call us at (412) 752-8684 to book your appointment.'
-      );
+      // Handle Original Booking Flow
+      handleOriginalBooking(this);
     }
   });
 }
+
+/**
+ * Handle mechanical services booking submission
+ */
+async function handleMechanicalBooking(form) {
+  const nameField = form.querySelector('input[type="text"][placeholder*="John"]') || form.querySelector('input[type="text"]');
+  const phoneField = form.querySelector('input[type="tel"]');
+  const emailField = form.querySelector('input[type="email"]');
+  const addressField = form.querySelector('input[type="text"][placeholder*="St,"]') || Array.from(form.querySelectorAll('input[type="text"]')).find(f => f.placeholder.includes('Pittsburgh'));
+  const makeField = Array.from(form.querySelectorAll('input[type="text"]')).find(f => f.placeholder.includes('Honda'));
+  const modelField = Array.from(form.querySelectorAll('input[type="text"]')).find(f => f.placeholder.includes('Accord'));
+  const yearField = form.querySelector('input[type="number"][placeholder="2020"]');
+  const mileageField = form.querySelector('input[type="number"][placeholder="65000"]');
+  const notesField = form.querySelector('textarea');
+  const serviceCheckboxes = form.querySelectorAll('input[name="services"]:checked');
+
+  let isValid = true;
+
+  // Validate required fields
+  if (!nameField?.value.trim()) {
+    showFieldError(nameField, 'Please enter your name');
+    isValid = false;
+  } else if (!validateName(nameField.value)) {
+    showFieldError(nameField, 'Please enter a valid name');
+    isValid = false;
+  } else {
+    clearFieldError(nameField);
+  }
+
+  if (!phoneField?.value.trim()) {
+    showFieldError(phoneField, 'Please enter your phone number');
+    isValid = false;
+  } else if (!validatePhone(phoneField.value)) {
+    showFieldError(phoneField, 'Please enter a valid phone number');
+    isValid = false;
+  } else {
+    clearFieldError(phoneField);
+  }
+
+  if (!emailField?.value.trim()) {
+    showFieldError(emailField, 'Please enter your email');
+    isValid = false;
+  } else {
+    clearFieldError(emailField);
+  }
+
+  if (!addressField?.value.trim()) {
+    showFieldError(addressField, 'Please enter your address');
+    isValid = false;
+  } else {
+    clearFieldError(addressField);
+  }
+
+  if (!makeField?.value.trim()) {
+    showFieldError(makeField, 'Please enter vehicle make');
+    isValid = false;
+  } else {
+    clearFieldError(makeField);
+  }
+
+  if (!modelField?.value.trim()) {
+    showFieldError(modelField, 'Please enter vehicle model');
+    isValid = false;
+  } else {
+    clearFieldError(modelField);
+  }
+
+  if (!yearField?.value.trim()) {
+    showFieldError(yearField, 'Please enter vehicle year');
+    isValid = false;
+  } else {
+    clearFieldError(yearField);
+  }
+
+  if (serviceCheckboxes.length === 0) {
+    alert('Please select at least one service');
+    isValid = false;
+  }
+
+  if (!isValid) {
+    return;
+  }
+
+  // Collect selected services
+  const selectedServices = Array.from(serviceCheckboxes).map(cb => cb.value);
+
+  // Create booking object
+  const bookingData = {
+    timestamp: new Date().toISOString(),
+    name: sanitizeInput(nameField.value.trim()),
+    phone: sanitizeInput(phoneField.value.trim()),
+    email: sanitizeInput(emailField.value.trim()),
+    address: sanitizeInput(addressField.value.trim()),
+    vehicle: {
+      make: sanitizeInput(makeField.value.trim()),
+      model: sanitizeInput(modelField.value.trim()),
+      year: yearField.value.trim(),
+      mileage: mileageField?.value || 'Not provided'
+    },
+    services: selectedServices,
+    notes: notesField?.value ? sanitizeInput(notesField.value.trim()) : '',
+    status: 'pending',
+    paymentStatus: 'awaiting_invoice'
+  };
+
+  try {
+    // Send to Firebase
+    const response = await fetch('https://hands-detail-default-rtdb.firebaseio.com/mechanical-bookings.json', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(bookingData)
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to save booking');
+    }
+
+    // Send email notification
+    await sendBookingEmail(bookingData);
+
+    // Show success message
+    showBookingSuccess(bookingData);
+
+    // Close modal and reset form
+    closeBookingModal();
+    form.reset();
+
+    // Redirect to confirmation page
+    setTimeout(() => {
+      window.location.href = 'booking-confirmation.html';
+    }, 2000);
+
+  } catch (error) {
+    console.error('Booking error:', error);
+    alert('Error submitting booking. Please call us at (412) 752-8684 to book your service.');
+  }
+}
+
+/**
+ * Send booking confirmation email
+ */
+async function sendBookingEmail(bookingData) {
+  try {
+    const emailBody = `
+New Mechanical Services Booking Request
+
+Customer Information:
+- Name: ${bookingData.name}
+- Phone: ${bookingData.phone}
+- Email: ${bookingData.email}
+- Address: ${bookingData.address}
+
+Vehicle Information:
+- Make: ${bookingData.vehicle.make}
+- Model: ${bookingData.vehicle.model}
+- Year: ${bookingData.vehicle.year}
+- Mileage: ${bookingData.vehicle.mileage}
+
+Services Requested:
+${bookingData.services.map(s => `- ${s}`).join('\n')}
+
+Additional Notes:
+${bookingData.notes || 'None'}
+
+Next Step: Send Square payment link invoice to ${bookingData.email}
+Status: ${bookingData.status}
+Submitted: ${new Date(bookingData.timestamp).toLocaleString()}
+    `;
+
+    // Using email-integration.js if available, otherwise log for manual handling
+    if (window.sendEmailViaEmailIntegration) {
+      await window.sendEmailViaEmailIntegration('handsdetailshop@gmail.com', `New Mechanical Booking: ${bookingData.name}`, emailBody);
+    } else {
+      console.log('Email would be sent:', emailBody);
+      // Email notification can be set up via Firebase Cloud Functions
+    }
+  } catch (error) {
+    console.error('Email send error:', error);
+  }
+}
+
+/**
+ * Show booking success message
+ */
+function showBookingSuccess(bookingData) {
+  const modal = document.getElementById('bookingModal');
+  const content = modal.querySelector('.modal-content');
+  
+  const successHTML = `
+    <div style="padding: 40px; text-align: center;">
+      <div style="font-size: 3rem; margin-bottom: 20px;">✅</div>
+      <h2 style="color: #42a5f5; margin: 0 0 15px 0;">Booking Submitted!</h2>
+      <p style="color: #b3d9ff; font-size: 1.05rem; margin: 0 0 20px 0;">
+        Thank you, <strong>${bookingData.name}</strong>!
+      </p>
+      <p style="color: #909090; margin: 0 0 20px 0;">
+        We've received your mechanical services booking request for your ${bookingData.vehicle.year} ${bookingData.vehicle.make} ${bookingData.vehicle.model}.
+      </p>
+      <div style="background: rgba(66, 165, 245, 0.1); padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #42a5f5;">
+        <p style="color: #a0a0a0; margin: 0;">
+          <strong>Next Step:</strong><br>
+          We'll contact you at <strong>${bookingData.phone}</strong> or <strong>${bookingData.email}</strong> shortly to confirm details and send you a Square payment invoice.
+        </p>
+      </div>
+      <p style="color: #707070; font-size: 0.95rem; margin: 20px 0 0 0;">
+        Redirecting to confirmation page...
+      </p>
+    </div>
+  `;
+
+  content.innerHTML = successHTML;
+}
+
+/**
+ * Handle original booking form submission (for other pages)
+ */
+function handleOriginalBooking(form) {
+  const nameField = form.querySelector('input[type="text"]');
+  const phoneField = form.querySelector('input[type="tel"]');
+  const serviceField = form.querySelector('select');
+
+  let isValid = true;
+
+  // Validate name
+  if (!nameField.value.trim()) {
+    showFieldError(nameField, 'Please enter your name');
+    isValid = false;
+  } else if (!validateName(nameField.value)) {
+    showFieldError(nameField, 'Please enter a valid name (letters only)');
+    isValid = false;
+  } else {
+    clearFieldError(nameField);
+  }
+
+  // Validate phone
+  if (!phoneField.value.trim()) {
+    showFieldError(phoneField, 'Please enter your phone number');
+    isValid = false;
+  } else if (!validatePhone(phoneField.value)) {
+    showFieldError(phoneField, 'Please enter a valid phone number (10+ digits)');
+    isValid = false;
+  } else {
+    clearFieldError(phoneField);
+  }
+
+  // Validate service selection
+  if (!serviceField.value) {
+    showFieldError(serviceField, 'Please select a service');
+    isValid = false;
+  } else {
+    clearFieldError(serviceField);
+  }
+
+  // If validation fails, focus on first error field
+  if (!isValid) {
+    const firstError = form.querySelector('.field-error');
+    if (firstError && firstError.previousElementSibling) {
+      firstError.previousElementSibling.focus();
+    }
+    return;
+  }
+
+  // Sanitize inputs
+  const name = sanitizeInput(nameField.value.trim());
+  const phone = sanitizeInput(phoneField.value.trim());
+  const service = sanitizeInput(serviceField.value);
+
+  // Proceed with payment
+  const squareDepositLink = 'https://square.link/u/vScfV4jK';
+  const details = `${name} - ${phone} - ${service}`;
+
+  // Open payment window
+  const paymentWindow = window.open(
+    squareDepositLink + `?note=${encodeURIComponent(details)}`,
+    '_blank',
+    'noopener,noreferrer'
+  );
+
+  if (paymentWindow) {
+    // Close modal and reset form
+    closeBookingModal();
+    form.reset();
+    
+    // Redirect to booking confirmation page with "While You Wait" music experience
+    setTimeout(() => {
+      window.location.href = 'booking-confirmation.html';
+    }, 300);
+  } else {
+    alert(
+      'Pop-up blocked! Please allow pop-ups for this site and try again.\n\nAlternatively, call us at (412) 752-8684 to book your appointment.'
+    );
+  }
+}
+
 
 // ===== MODAL CLICK OUTSIDE TO CLOSE =====
 
