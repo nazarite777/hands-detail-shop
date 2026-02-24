@@ -229,21 +229,30 @@
     <header id="header">
         <div class="nav-container">
             <div class="logo-section">
-                <a href="index.html" class="logo-link">
+                <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
                     <img src="20200723_030424~2.png" alt="Hands Detail Shop Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div class="logo-fallback">HANDS DETAIL</div>
+                    <div style="display: none; font-size: 1.5rem; font-weight: 800; color: #c0c0c0; font-style: italic;">HANDS DETAIL</div>
                 </a>
             </div>
 
             <nav class="nav-menu">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="index.html#about" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
+                <div class="services-dropdown">
+                    <button class="services-dropdown-btn nav-link" onclick="toggleServicesDropdown(this)">Services</button>
+                    <div class="dropdown-menu">
+                        <a href="services.html" class="dropdown-item">📋 All Services Overview</a>
+                        <a href="personal-vehicles.html" class="dropdown-item">🚗 Personal Vehicles</a>
+                        <a href="marine-services.html" class="dropdown-item">🛥️ Yacht & RV</a>
+                        <a href="fleet-services.html" class="dropdown-item">🚛 Fleet & Commercial</a>
+                        <a href="motorcycle-services.html" class="dropdown-item">🏍️ Motorcycle</a>
+                        <a href="aircraft-services.html" class="dropdown-item">✈️ Aircraft</a>
+                    </div>
+                </div>
                 <a href="membership.html" class="nav-link">Membership</a>
-                <a href="gallery.html" class="nav-link">Gallery</a>
                 <a href="quote.html" class="nav-link">Quote</a>
                 <a href="reviews.html" class="nav-link">Reviews</a>
-                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="https://medium.com/@handsdetailshop" target="_blank" class="nav-link">Blog</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             </nav>
 
@@ -251,7 +260,7 @@
                 <span class="hours-header">🕒 Mon-Sat 8AM-6PM</span>
                 <a href="tel:4127528684" class="btn-call">📞 Call</a>
                 <a href="sms:4127528684" class="btn-text">💬 Text</a>
-                <a href="booking.html" class="btn-book">Book Now</a>
+                <a href="booking.html" class="cta-header">Book Now</a>
             </div>
 
             <div class="mobile-menu-toggle" id="mobileToggle">
@@ -264,22 +273,24 @@
         <nav class="mobile-nav" id="mobileNav">
             <a href="index.html">Home</a>
             <a href="index.html#about">About Nazir</a>
-            <a href="services.html">Services</a>
+            <a href="services.html">All Services Overview</a>
+            <a href="personal-vehicles.html">🚗 Personal Vehicles</a>
+            <a href="marine-services.html">🛥️ Yacht & RV</a>
+            <a href="fleet-services.html">🚛 Fleet & Commercial</a>
+            <a href="motorcycle-services.html">🏍️ Motorcycle</a>
+            <a href="aircraft-services.html">✈️ Aircraft</a>
             <a href="membership.html">Membership</a>
-            <a href="gallery.html">Gallery</a>
             <a href="quote.html">Get Quote</a>
             <a href="reviews.html">Reviews</a>
-            <a href="faq.html">FAQ</a>
-            <a href="rewards.html">Rewards</a>
-            <a href="portal.html">Portal</a>
+            <a href="https://medium.com/@handsdetailshop" target="_blank">Blog</a>
             <a href="contact.html">Contact</a>
-            <a href="tel:4127528684" class="mobile-call-btn">📞 Call Now</a>
-            <a href="sms:4127528684" class="mobile-text-btn">💬 Text Now</a>
+            <a href="tel:4127528684" style="background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">📞 Call Now</a>
+            <a href="sms:4127528684" style="background: rgba(50,50,50,0.5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">💬 Text Now</a>
         </nav>
     </header>
 
-    <!-- Promotional Banner -->
-    <div class="promo-banner promo-banner-offset">
+    <!-- ===================== PROMOTIONAL BANNER ===================== -->
+    <div class="promo-banner" style="margin-top: 70px;">
         🎊 PRE-SPRING DETAIL: Prepare Your Vehicle for Warmer Weather | 15% OFF First-Time Customers | 💎 FREE Tire Shine with Any Package | 💳 $30 Deposit Secures Your Appointment | 📞 (412) 752-8684
     </div>
 
