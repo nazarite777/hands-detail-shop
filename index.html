@@ -247,6 +247,7 @@
                         <a href="fleet-services.html" class="dropdown-item">🚛 Fleet & Commercial</a>
                         <a href="motorcycle-services.html" class="dropdown-item">🏍️ Motorcycle</a>
                         <a href="aircraft-services.html" class="dropdown-item">✈️ Aircraft</a>
+                        <a href="under-the-hood.html" class="dropdown-item">⚙️ Mechanical Services</a>
                     </div>
                 </div>
                 <a href="membership.html" class="nav-link">Membership</a>
@@ -278,6 +279,7 @@
             <a href="fleet-services.html">🚛 Fleet & Commercial</a>
             <a href="motorcycle-services.html">🏍️ Motorcycle</a>
             <a href="aircraft-services.html">✈️ Aircraft</a>
+            <a href="under-the-hood.html">⚙️ Mechanical Services</a>
             <a href="membership.html">Membership</a>
             <a href="quote.html">Get Quote</a>
             <a href="reviews.html">Reviews</a>
@@ -383,6 +385,23 @@
 
                 <div class="about-text">
                     <h3 class="about-section-heading">Our Story</h3>
+                    
+                    <!-- Audio Player: Hear Our Story -->
+                    <div style="background: linear-gradient(135deg, rgba(21, 101, 192, 0.2), rgba(30, 136, 229, 0.2)); border-radius: 15px; padding: 25px; margin-bottom: 30px; border: 1px solid rgba(66, 165, 245, 0.3); display: flex; align-items: center; gap: 20px;">
+                        <button onclick="playAudio('https://firebasestorage.googleapis.com/v0/b/hands-detail.appspot.com/o/audio%2FSixteen%20years...%20(Remastered).mp3?alt=media'); this.style.opacity='0.7';" style="background: linear-gradient(135deg, #1565c0, #1e88e5); color: white; border: none; border-radius: 50%; width: 60px; height: 60px; font-size: 1.8rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; flex-shrink: 0;" onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 5px 20px rgba(66, 165, 245, 0.5)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+                            ▶️
+                        </button>
+                        <div>
+                            <div style="color: #c8c8c8; font-weight: 600; font-size: 1.1rem; margin-bottom: 5px;">🎵 Hear Our Story</div>
+                            <div style="color: #a0a0a0; font-size: 0.95rem;">Listen to the soundtrack of 16 years of excellence</div>
+                            <audio id="storyAudio" style="margin-top: 10px; width: 100%; max-width: 300px; height: 25px;">
+                                <source src="https://firebasestorage.googleapis.com/v0/b/hands-detail.appspot.com/o/audio%2FSixteen%20years...%20(Remastered).mp3?alt=media" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+                        <a href="our-story.html" style="margin-left: auto; background: rgba(100, 100, 100, 0.5); color: #a0a0a0; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 600; white-space: nowrap; transition: all 0.3s ease; border: 1px solid rgba(160, 160, 160, 0.3);" onmouseover="this.style.background='rgba(150, 150, 150, 0.6)'; this.style.color='#d0d0d0';" onmouseout="this.style.background='rgba(100, 100, 100, 0.5)'; this.style.color='#a0a0a0';">View Full Story →</a>
+                    </div>
+                    
                     <p>My story starts in Baton Rouge as the eldest of 5, where my uncle first opened my eyes to the power of a perfectly detailed vehicle—how it can transform not just a car, but someone's entire day.</p>
 
                     <p>Life took an unexpected turn when Hurricane Katrina led me north at 16. After graduating from New Concord, Ohio, I served my country in the Air Force, working on diesel and jet engines. Those years taught me that perfection is in the details.</p>

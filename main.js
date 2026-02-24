@@ -505,13 +505,14 @@ if (bookingForm) {
     );
 
     if (paymentWindow) {
+      // Close modal and reset form
+      closeBookingModal();
+      this.reset();
+      
+      // Redirect to booking confirmation page with "While You Wait" music experience
       setTimeout(() => {
-        alert(
-          `Payment window opened for $30 deposit.\n\nAfter payment, we'll contact you at ${phone} within 24 hours to confirm your appointment.`
-        );
-        closeBookingModal();
-        this.reset();
-      }, 500);
+        window.location.href = 'booking-confirmation.html';
+      }, 300);
     } else {
       alert(
         'Pop-up blocked! Please allow pop-ups for this site and try again.\n\nAlternatively, call us at (412) 752-8684 to book your appointment.'
@@ -703,6 +704,46 @@ function selectVehicle(element, vehicleType) {
     setTimeout(() => {
       priceDisplay.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 100);
+  }
+}
+
+// ===== AUDIO PLAYBACK HANDLER =====
+
+/**
+ * Play audio from URL or audio element
+ * @param {string|null} audioUrl - Optional audio URL to play
+ */
+function playAudio(audioUrl) {
+  let audioElement = document.getElementById('storyAudio');
+  
+  if (!audioElement) {
+    audioElement = document.createElement('audio');
+    audioElement.id = 'storyAudio';
+    document.body.appendChild(audioElement);
+  }
+  
+  if (audioUrl) {
+    audioElement.src = audioUrl;
+  }
+  
+  if (audioElement.paused) {
+    audioElement.play().catch(error => {
+      console.log('Audio playback error:', error);
+    });
+  } else {
+    audioElement.pause();
+    audioElement.currentTime = 0;
+  }
+}
+
+/**
+ * Stop currently playing audio
+ */
+function stopAudio() {
+  const audioElement = document.getElementById('storyAudio');
+  if (audioElement) {
+    audioElement.pause();
+    audioElement.currentTime = 0;
   }
 }
 
