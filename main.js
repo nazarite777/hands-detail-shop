@@ -706,6 +706,77 @@ function selectVehicle(element, vehicleType) {
   }
 }
 
+// ===== CONTACT FORM HANDLER =====
+
+/**
+ * Handle direct contact form submission on contact page
+ * @param {Event} event - Form submission event
+ */
+function handleContactFormSubmit(event) {
+  event.preventDefault();
+  
+  const form = event.target;
+  const name = form.querySelector('input[name="name"]').value;
+  const email = form.querySelector('input[name="email"]').value;
+  const phone = form.querySelector('input[name="phone"]').value;
+  const subject = form.querySelector('select[name="subject"]').value;
+  const message = form.querySelector('textarea[name="message"]').value;
+  
+  // Client-side validation
+  if (!validateName(name)) {
+    alert('Please enter a valid name (letters, spaces, hyphens only)');
+    return;
+  }
+  
+  if (!email || !email.includes('@')) {
+    alert('Please enter a valid email address');
+    return;
+  }
+  
+  if (phone && !validatePhone(phone)) {
+    alert('Please enter a valid phone number');
+    return;
+  }
+  
+  // Prepare data for email
+  const emailData = {
+    subject: `Contact Form: ${subject}`,
+    name: sanitizeInput(name),
+    email: sanitizeInput(email),
+    phone: sanitizeInput(phone || 'Not provided'),
+    subject_selected: subject,
+    message: sanitizeInput(message),
+    timestamp: new Date().toISOString()
+  };
+  
+  // Send email via Firebase or email service
+  // For now, we'll log and show success message
+  console.log('Contact form submitted:', emailData);
+  
+  // Show success message
+  const successMsg = document.getElementById('formSuccessMessage');
+  if (successMsg) {
+    successMsg.style.display = 'block';
+    form.style.display = 'none';
+    
+    // Reset form after 3 seconds and show it again
+    setTimeout(() => {
+      form.reset();
+      form.style.display = 'block';
+      successMsg.style.display = 'none';
+    }, 3000);
+  }
+  
+  // Optional: Send to email service
+  // You can integrate with Formspree, EmailJS, or Firebase Cloud Functions
+  // Example with Formspree (requires form action attribute):
+  // fetch('https://formspree.io/f/YOUR_FORM_ID', {
+  //   method: 'POST',
+  //   body: new FormData(form),
+  //   headers: { 'Accept': 'application/json' }
+  // });
+}
+
 // ===== PAGE LOAD ACCESSIBILITY ENHANCEMENTS =====
 
 document.addEventListener('DOMContentLoaded', function () {

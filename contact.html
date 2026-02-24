@@ -785,10 +785,18 @@
             <nav class="nav-menu">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="index.html#about" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
+                <div class="services-dropdown">
+                    <button class="services-dropdown-btn nav-link" onclick="toggleServicesDropdown(this)">Services</button>
+                    <div class="dropdown-menu">
+                        <a href="services.html" class="dropdown-item">📋 All Services Overview</a>
+                        <a href="personal-vehicles.html" class="dropdown-item">🚗 Personal Vehicles</a>
+                        <a href="marine-services.html" class="dropdown-item">🛥️ Yacht & RV</a>
+                        <a href="fleet-services.html" class="dropdown-item">🚛 Fleet & Commercial</a>
+                        <a href="motorcycle-services.html" class="dropdown-item">🏍️ Motorcycle</a>
+                        <a href="aircraft-services.html" class="dropdown-item">✈️ Aircraft</a>
+                    </div>
+                </div>
                 <a href="membership.html" class="nav-link">Membership</a>
-                <a href="services.html#packages" class="nav-link">Packages</a>
-                <a href="services.html#how-it-works" class="nav-link">Process</a>
                 <a href="quote.html" class="nav-link">Quote</a>
                 <a href="reviews.html" class="nav-link">Reviews</a>
                 <a href="https://medium.com/@handsdetailshop" target="_blank" class="nav-link">Blog</a>
@@ -798,7 +806,7 @@
                 <span class="hours-header">🕒 Mon-Sat 8AM-6PM</span>
                 <a href="tel:4127528684" class="btn-call">📞 Call</a>
                 <a href="sms:4127528684" class="btn-text">💬 Text</a>
-                <a href="#" onclick="openBookingModal(); return false;" class="cta-header">Book Now</a>
+                <a href="booking.html" class="cta-header">Book Now</a>
             </div>
 
             <div class="mobile-menu-toggle" id="mobileToggle">
@@ -811,10 +819,13 @@
         <nav class="mobile-nav" id="mobileNav">
             <a href="index.html">Home</a>
             <a href="index.html#about">About Nazir</a>
-            <a href="services.html">Services</a>
+            <a href="services.html">All Services Overview</a>
+            <a href="personal-vehicles.html">🚗 Personal Vehicles</a>
+            <a href="marine-services.html">🛥️ Yacht & RV</a>
+            <a href="fleet-services.html">🚛 Fleet & Commercial</a>
+            <a href="motorcycle-services.html">🏍️ Motorcycle</a>
+            <a href="aircraft-services.html">✈️ Aircraft</a>
             <a href="membership.html">Membership</a>
-            <a href="services.html#packages">Packages</a>
-            <a href="services.html#how-it-works">Process</a>
             <a href="quote.html">Get Quote</a>
             <a href="reviews.html">Reviews</a>
             <a href="https://medium.com/@handsdetailshop" target="_blank">Blog</a>
@@ -931,8 +942,62 @@
                 </div>
             </div>
 
+            <!-- Contact Form Section -->
+            <div style="margin-top: 80px;">
+                <h3 style="color: #d4d4d4; font-size: 2.2rem; margin-bottom: 10px; text-align: center;">Send us a Message</h3>
+                <p style="color: #b0b0b0; font-size: 1.1rem; text-align: center; margin-bottom: 40px;">Have a question or special request? Fill out the form below and we'll get back to you within 24 hours.</p>
+                
+                <div style="max-width: 700px; margin: 0 auto; background: rgba(40,40,40,0.5); padding: 40px; border-radius: 15px; border: 1px solid rgba(160,160,160,0.2);">
+                    <form id="directContactForm" onsubmit="handleContactFormSubmit(event)">
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; color: #c8c8c8; font-weight: 600; margin-bottom: 8px;">Name *</label>
+                            <input type="text" name="name" required placeholder="Your full name" style="width: 100%; padding: 12px 15px; background: rgba(20,20,20,0.8); border: 1px solid rgba(100,100,100,0.3); border-radius: 8px; color: #d0d0d0; font-size: 1rem; font-family: inherit;">
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; color: #c8c8c8; font-weight: 600; margin-bottom: 8px;">Email *</label>
+                            <input type="email" name="email" required placeholder="your@email.com" style="width: 100%; padding: 12px 15px; background: rgba(20,20,20,0.8); border: 1px solid rgba(100,100,100,0.3); border-radius: 8px; color: #d0d0d0; font-size: 1rem; font-family: inherit;">
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; color: #c8c8c8; font-weight: 600; margin-bottom: 8px;">Phone (Optional)</label>
+                            <input type="tel" name="phone" placeholder="(412) 555-0000" style="width: 100%; padding: 12px 15px; background: rgba(20,20,20,0.8); border: 1px solid rgba(100,100,100,0.3); border-radius: 8px; color: #d0d0d0; font-size: 1rem; font-family: inherit;">
+                        </div>
+
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; color: #c8c8c8; font-weight: 600; margin-bottom: 8px;">Subject *</label>
+                            <select name="subject" required style="width: 100%; padding: 12px 15px; background: rgba(20,20,20,0.8); border: 1px solid rgba(100,100,100,0.3); border-radius: 8px; color: #d0d0d0; font-size: 1rem; font-family: inherit;">
+                                <option value="">Select a subject...</option>
+                                <option value="general_inquiry">General Inquiry</option>
+                                <option value="booking_question">Booking Question</option>
+                                <option value="pricing_question">Pricing Question</option>
+                                <option value="service_question">Service Question</option>
+                                <option value="fleet_inquiry">Fleet/Commercial Inquiry</option>
+                                <option value="special_request">Special Request</option>
+                                <option value="feedback">Feedback/Complaint</option>
+                            </select>
+                        </div>
+
+                        <div style="margin-bottom: 25px;">
+                            <label style="display: block; color: #c8c8c8; font-weight: 600; margin-bottom: 8px;">Message *</label>
+                            <textarea name="message" required rows="5" placeholder="Tell us how we can help..." style="width: 100%; padding: 12px 15px; background: rgba(20,20,20,0.8); border: 1px solid rgba(100,100,100,0.3); border-radius: 8px; color: #d0d0d0; font-size: 1rem; font-family: inherit; resize: vertical;"></textarea>
+                        </div>
+
+                        <button type="submit" style="width: 100%; background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5); color: white; padding: 15px; border: 1px solid rgba(160,160,160,0.3); border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 15px rgba(66, 165, 245, 0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                            Send Message
+                        </button>
+
+                        <p style="color: #909090; font-size: 0.85rem; text-align: center; margin-top: 15px;">All fields marked with * are required</p>
+                    </form>
+
+                    <div id="formSuccessMessage" style="display: none; background: rgba(30, 150, 80, 0.3); border: 1px solid rgba(100, 200, 100, 0.5); color: #90d090; padding: 20px; border-radius: 8px; text-align: center; margin-top: 20px;">
+                        <strong>Thank you!</strong> Your message has been sent. We'll get back to you within 24 hours.
+                    </div>
+                </div>
+            </div>
+
             <!-- Service Area -->
-            <div style="background: linear-gradient(135deg, #0d47a1, #1565c0); border-radius: 20px; padding: 40px; border: 1px solid rgba(160,160,160,0.3); text-align: center;">
+            <div style="background: linear-gradient(135deg, #0d47a1, #1565c0); border-radius: 20px; padding: 40px; border: 1px solid rgba(160,160,160,0.3); text-align: center; margin-top: 80px;">
                 <h3 style="color: #d4d4d4; font-size: 1.8rem; margin-bottom: 20px;">Service Area</h3>
                 <p style="color: #b0b0b0; font-size: 1.1rem; line-height: 1.8;">
                     Proudly serving the Greater Pittsburgh area including Fox Chapel, Sewickley Heights, Upper St. Clair, and surrounding communities in Pennsylvania, Ohio, and West Virginia with our mobile detailing service.
@@ -954,7 +1019,7 @@
                 <div class="social-links">
                     <a href="https://www.facebook.com/share/1FQft2edbP/" target="_blank" class="social-link">f</a>
                     <a href="https://www.instagram.com/handsdetailshop" target="_blank" class="social-link">📷</a>
-                    <a href="https://medium.com/@handsdetailshop" target="_blank" class="social-link">M</a>
+                    <a href="https://handsdetailshop.medium.com" target="_blank" class="social-link">M</a>
                 </div>
             </div>
 
@@ -1052,9 +1117,9 @@
                             <option>Seasonal Prep ($125-155)</option>
                         </optgroup>
                         <optgroup label="Monthly Plans">
-                            <option>Single Car Monthly ($80/mo)</option>
-                            <option>Two Car Monthly ($140/mo)</option>
-                            <option>Three+ Cars Monthly</option>
+                            <option>Single Car Monthly ($75/mo)</option>
+                            <option>Two Car Monthly ($130/mo)</option>
+                            <option>Three+ Cars Monthly ($180/mo)</option>
                         </optgroup>
                         <optgroup label="Specialty">
                             <option>Yacht/Boat Detail</option>

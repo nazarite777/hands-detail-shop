@@ -93,20 +93,28 @@
             <nav class="nav-menu">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="index.html#about" class="nav-link">About</a>
-                <a href="services.html" class="nav-link">Services</a>
+                <div class="services-dropdown">
+                    <button class="services-dropdown-btn nav-link" onclick="toggleServicesDropdown(this)">Services</button>
+                    <div class="dropdown-menu">
+                        <a href="services.html" class="dropdown-item">📋 All Services Overview</a>
+                        <a href="personal-vehicles.html" class="dropdown-item">🚗 Personal Vehicles</a>
+                        <a href="marine-services.html" class="dropdown-item">🛥️ Yacht & RV</a>
+                        <a href="fleet-services.html" class="dropdown-item">🚛 Fleet & Commercial</a>
+                        <a href="motorcycle-services.html" class="dropdown-item">🏍️ Motorcycle</a>
+                        <a href="aircraft-services.html" class="dropdown-item">✈️ Aircraft</a>
+                    </div>
+                </div>
                 <a href="membership.html" class="nav-link">Membership</a>
-                <a href="services.html#packages" class="nav-link">Packages</a>
-                <a href="services.html#how-it-works" class="nav-link">Process</a>
                 <a href="quote.html" class="nav-link">Quote</a>
                 <a href="reviews.html" class="nav-link">Reviews</a>
-                <a href="https://medium.com/@handsdetailshop" target="_blank" class="nav-link">Blog</a>
+                <a href="https://handsdetailshop.medium.com" target="_blank" class="nav-link">Blog</a>
                 <a href="contact.html" class="nav-link">Contact</a>
             <a href="careers.html" class="nav-link">Careers</a>
             <div class="contact-header">
                 <span class="hours-header">🕒 Mon-Sat 8AM-6PM</span>
                 <a href="tel:4127528684" class="btn-call">📞 Call</a>
                 <a href="sms:4127528684" class="btn-text">💬 Text</a>
-                <a href="#" onclick="openBookingModal(); return false;" class="cta-header">Book Now</a>
+                <a href="booking.html" class="cta-header">Book Now</a>
             </div>
 
             <div class="mobile-menu-toggle" id="mobileToggle">
@@ -119,10 +127,13 @@
         <nav class="mobile-nav" id="mobileNav">
             <a href="index.html">Home</a>
             <a href="index.html#about">About Nazir</a>
-            <a href="services.html">Services</a>
+            <a href="services.html">All Services Overview</a>
+            <a href="personal-vehicles.html">🚗 Personal Vehicles</a>
+            <a href="marine-services.html">🛥️ Yacht & RV</a>
+            <a href="fleet-services.html">🚛 Fleet & Commercial</a>
+            <a href="motorcycle-services.html">🏍️ Motorcycle</a>
+            <a href="aircraft-services.html">✈️ Aircraft</a>
             <a href="membership.html">Membership</a>
-            <a href="services.html#packages">Packages</a>
-            <a href="services.html#how-it-works">Process</a>
             <a href="quote.html">Get Quote</a>
             <a href="reviews.html">Reviews</a>
             <a href="https://medium.com/@handsdetailshop" target="_blank">Blog</a>
@@ -721,9 +732,9 @@
                             <option>Seasonal Prep ($125-155)</option>
                         </optgroup>
                         <optgroup label="Monthly Plans">
-                            <option>Single Car Monthly ($80/mo)</option>
-                            <option>Two Car Monthly ($140/mo)</option>
-                            <option>Three+ Cars Monthly</option>
+                            <option>Single Car Monthly ($75/mo)</option>
+                            <option>Two Car Monthly ($130/mo)</option>
+                            <option>Three+ Cars Monthly ($180/mo)</option>
                         </optgroup>
                         <optgroup label="Specialty">
                             <option>Yacht/Boat Detail</option>
