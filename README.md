@@ -366,7 +366,7 @@ npx csso styles.css -o styles.min.css
 
 ## 📝 License
 
-Copyright © 2025 Hands Detail Shop. All rights reserved.
+Copyright © 2026 Hands Detail Shop. All rights reserved.
 
 **Owner**: Nazir El
 **Business**: Hands Detail Shop
