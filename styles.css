@@ -2486,6 +2486,24 @@ footer {
   }
 }
 
+/* Portrait Mode - Mobile Menu Fix */
+@media (orientation: portrait) and (max-width: 1024px) {
+  .nav-menu,
+  .contact-header .btn-call,
+  .contact-header .btn-text,
+  .contact-header .hours-header {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .services-dropdown {
+    display: none;
+  }
+}
+
 /* ===== GALLERY PAGE STYLES ===== */
 
 .gallery-filters {
