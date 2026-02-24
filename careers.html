@@ -877,6 +877,26 @@
 
 <script src="main.js"></script>
 
+<!-- Audio Configuration -->
+<script>
+window.AUDIO_CONFIG = {
+  "songs": [
+    {
+      "title": "HANDS DETAIL SHOP - THEME SONG",
+      "artist": "Hands Detail Shop",
+      "file": "HANDS DETAIL SHOP - THEME SONG.mp3",
+      "firebaseUrl": "https://firebasestorage.googleapis.com/v0/b/hands-detail.appspot.com/o/audio%2FHANDS%20DETAIL%20SHOP%20-%20THEME%20SONG.mp3?alt=media"
+    },
+    {
+      "title": "Sixteen Years",
+      "artist": "Hands Detail Shop",
+      "file": "Sixteen years... (Remastered).mp3",
+      "firebaseUrl": "https://firebasestorage.googleapis.com/v0/b/hands-detail.appspot.com/o/audio%2FSixteen%20years...%20%28Remastered%29.mp3?alt=media"
+    }
+  ]
+};
+</script>
+
 <script>
 function handleSubmit(e) {
     e.preventDefault();
@@ -906,6 +926,25 @@ function handleSubmit(e) {
     document.getElementById('success-message').classList.add('show');
 }
 </script>
+
+<!-- Jukebox Player -->
+<div id="jukebox" class="jukebox">
+    <div class="jukebox-header">
+        <span class="jukebox-title">🎵 Music Player</span>
+        <button class="jukebox-minimize" title="Minimize">−</button>
+    </div>
+    <div class="jukebox-content">
+        <div class="jukebox-display">
+            <div class="track-name">⏳ Loading music...</div>
+        </div>
+        <div class="jukebox-controls">
+            <button class="btn-prev" title="Previous">⏮</button>
+            <button class="btn-play" title="Play">▶ Play</button>
+            <button class="btn-next" title="Next">⏭</button>
+        </div>
+        <div class="jukebox-playlist"></div>
+    </div>
+</div>
 
 </body>
 </html>
