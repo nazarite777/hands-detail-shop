@@ -69,6 +69,23 @@ function clearFieldError(field) {
   }
 }
 
+// ===== SERVICES DROPDOWN TOGGLE =====
+
+/**
+ * Toggle services dropdown menu
+ * @param {HTMLElement} button - Services dropdown button element
+ */
+function toggleServicesDropdown(button) {
+  const dropdown = button.closest('.services-dropdown');
+  if (dropdown) {
+    const menu = dropdown.querySelector('.dropdown-menu');
+    if (menu) {
+      menu.classList.toggle('active');
+      button.classList.toggle('active');
+    }
+  }
+}
+
 // ===== HEADER SCROLL EFFECT =====
 
 window.addEventListener('scroll', function () {
@@ -1106,6 +1123,21 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!closeBtn.getAttribute('aria-label')) {
       closeBtn.setAttribute('aria-label', 'Close modal');
     }
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+    const dropdowns = document.querySelectorAll('.services-dropdown');
+    dropdowns.forEach(dropdown => {
+      const button = dropdown.querySelector('.services-dropdown-btn');
+      if (!dropdown.contains(e.target)) {
+        const menu = dropdown.querySelector('.dropdown-menu');
+        if (menu) {
+          menu.classList.remove('active');
+          if (button) button.classList.remove('active');
+        }
+      }
+    });
   });
 
   // ===== JUKEBOX PLAYER =====
