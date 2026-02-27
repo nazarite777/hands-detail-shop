@@ -2505,9 +2505,26 @@ footer {
   }
 }
 
-/* Landscape Mode - Mobile Menu Fix (Mobile Phones Only) */
+/* Landscape Mode - Show Header Navigation (Mobile Phones Only) */
 @media (orientation: landscape) and (max-height: 600px) and (max-width: 1000px) {
-  .nav-menu,
+  .nav-menu {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-link {
+    font-size: 0.75rem;
+    padding: 6px 8px;
+    white-space: nowrap;
+  }
+
+  .contact-header {
+    display: none;
+  }
+
   .contact-header .btn-call,
   .contact-header .btn-text,
   .contact-header .hours-header {
@@ -2515,10 +2532,14 @@ footer {
   }
 
   .mobile-menu-toggle {
-    display: flex;
+    display: none !important;
   }
 
   .services-dropdown {
+    display: none;
+  }
+
+  .cta-header {
     display: none;
   }
 }
