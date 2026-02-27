@@ -58,8 +58,7 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Google Analytics 4 - TODO: Replace G-XXXXXXXXXX with your actual GA4 Measurement ID from analytics.google.com -->
-    <!-- Steps: 1) Go to analytics.google.com 2) Create property for handsdetailshop.com 3) Get Measurement ID (starts with G-) 4) Replace below -->
+    <!-- Google Analytics 4 - TODO: Replace G-XXXXXXXXXX with your actual GA4 Measurement ID -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -223,6 +222,522 @@
       "numberOfEmployees": "1-5"
     }
     </script>
+
+    <!-- Homepage-Specific Styles -->
+    <style>
+        /* ===== BEFORE/AFTER GALLERY ===== */
+        .hp-gallery {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #0d1b2a, #1a2942);
+            border-top: 1px solid rgba(66, 165, 245, 0.2);
+        }
+        .hp-gallery-heading {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .hp-gallery-heading h2 {
+            font-size: 2.2rem;
+            color: #e0e0e0;
+            font-weight: 800;
+        }
+        .hp-gallery-sub {
+            text-align: center;
+            color: #90caf9;
+            font-size: 1.05rem;
+            margin-bottom: 45px;
+        }
+        .hp-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .hp-gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            aspect-ratio: 16 / 10;
+            background: rgba(30, 40, 60, 0.6);
+            border: 1px solid rgba(66, 165, 245, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .hp-gallery-item:hover {
+            border-color: rgba(66, 165, 245, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(21, 101, 192, 0.2);
+        }
+        .hp-gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hp-gallery-placeholder {
+            text-align: center;
+            padding: 30px;
+        }
+        .hp-gallery-placeholder .placeholder-icon {
+            font-size: 3rem;
+            margin-bottom: 12px;
+            opacity: 0.6;
+        }
+        .hp-gallery-placeholder p {
+            color: #64b5f6;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .hp-gallery-placeholder span {
+            color: #607d8b;
+            font-size: 0.8rem;
+            display: block;
+            margin-top: 5px;
+        }
+        .hp-gallery-cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .hp-gallery-cta a {
+            color: #64b5f6;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-bottom: 2px solid rgba(100, 181, 246, 0.3);
+            padding-bottom: 3px;
+            transition: all 0.3s ease;
+        }
+        .hp-gallery-cta a:hover {
+            color: white;
+            border-bottom-color: white;
+        }
+
+        /* ===== WHY CHOOSE US ===== */
+        .hp-why {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #0f2035, #162d4a);
+            border-top: 1px solid rgba(66, 165, 245, 0.15);
+        }
+        .hp-why-heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .hp-why-heading h2 {
+            font-size: 2.2rem;
+            color: #e0e0e0;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .hp-why-heading p {
+            color: #90caf9;
+            font-size: 1.05rem;
+        }
+        .hp-why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .hp-why-card {
+            background: rgba(21, 101, 192, 0.08);
+            border: 1px solid rgba(66, 165, 245, 0.15);
+            border-radius: 12px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .hp-why-card:hover {
+            border-color: rgba(66, 165, 245, 0.4);
+            background: rgba(21, 101, 192, 0.15);
+            transform: translateY(-4px);
+        }
+        .hp-why-card .why-icon {
+            font-size: 2.8rem;
+            margin-bottom: 18px;
+            display: block;
+        }
+        .hp-why-card h3 {
+            color: #e0e0e0;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .hp-why-card p {
+            color: #90a4ae;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* ===== POPULAR PACKAGES ===== */
+        .hp-packages {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #0d1b2a, #1a2942);
+            border-top: 1px solid rgba(66, 165, 245, 0.15);
+        }
+        .hp-packages-heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .hp-packages-heading h2 {
+            font-size: 2.2rem;
+            color: #e0e0e0;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .hp-packages-heading p {
+            color: #90caf9;
+            font-size: 1.05rem;
+        }
+        .hp-packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .hp-pkg {
+            background: rgba(30, 40, 60, 0.5);
+            border: 1px solid rgba(66, 165, 245, 0.15);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .hp-pkg:hover {
+            border-color: rgba(66, 165, 245, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(21, 101, 192, 0.15);
+        }
+        .hp-pkg-popular {
+            border-color: rgba(66, 165, 245, 0.4);
+        }
+        .hp-pkg-header {
+            padding: 30px 25px 20px;
+            text-align: center;
+        }
+        .hp-pkg-popular .hp-pkg-header {
+            background: linear-gradient(135deg, rgba(21, 101, 192, 0.3), rgba(30, 136, 229, 0.2));
+        }
+        .hp-pkg-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #1565c0, #42a5f5);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 5px 16px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+        .hp-pkg-header h3 {
+            color: #e0e0e0;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .hp-pkg-price {
+            color: #64b5f6;
+            font-size: 2rem;
+            font-weight: 800;
+        }
+        .hp-pkg-price span {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #90caf9;
+        }
+        .hp-pkg-tier {
+            color: #78909c;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+        .hp-pkg-body {
+            padding: 20px 25px 30px;
+        }
+        .hp-pkg-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+        }
+        .hp-pkg-body li {
+            color: #b0bec5;
+            font-size: 0.9rem;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(66, 165, 245, 0.06);
+        }
+        .hp-pkg-body li:last-child {
+            border-bottom: none;
+        }
+        .hp-pkg-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background: rgba(21, 101, 192, 0.2);
+            color: #64b5f6;
+            border: 1px solid rgba(66, 165, 245, 0.3);
+        }
+        .hp-pkg-btn:hover {
+            background: linear-gradient(135deg, #1565c0, #1e88e5);
+            color: white;
+            transform: translateY(-2px);
+        }
+        .hp-pkg-popular .hp-pkg-btn {
+            background: linear-gradient(135deg, #1565c0, #1e88e5);
+            color: white;
+            border: none;
+        }
+        .hp-pkg-popular .hp-pkg-btn:hover {
+            background: linear-gradient(135deg, #1e88e5, #42a5f5);
+        }
+        .hp-packages-more {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .hp-packages-more a {
+            color: #64b5f6;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-bottom: 2px solid rgba(100, 181, 246, 0.3);
+            padding-bottom: 3px;
+            transition: all 0.3s ease;
+        }
+        .hp-packages-more a:hover {
+            color: white;
+            border-bottom-color: white;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .hp-testimonials {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #0f2035, #162d4a);
+            border-top: 1px solid rgba(66, 165, 245, 0.15);
+        }
+        .hp-testimonials-heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .hp-testimonials-heading h2 {
+            font-size: 2.2rem;
+            color: #e0e0e0;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .hp-testimonials-heading p {
+            color: #90caf9;
+            font-size: 1.05rem;
+        }
+        .hp-testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .hp-testimonial {
+            background: rgba(21, 101, 192, 0.06);
+            border: 1px solid rgba(66, 165, 245, 0.12);
+            border-radius: 14px;
+            padding: 30px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .hp-testimonial:hover {
+            border-color: rgba(66, 165, 245, 0.35);
+            transform: translateY(-3px);
+        }
+        .hp-testimonial-stars {
+            color: #ffc107;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+        .hp-testimonial-text {
+            color: #b0bec5;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .hp-testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .hp-testimonial-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1565c0, #42a5f5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .hp-testimonial-name {
+            color: #e0e0e0;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .hp-testimonial-loc {
+            color: #78909c;
+            font-size: 0.8rem;
+        }
+        .hp-testimonials-more {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .hp-testimonials-more a {
+            color: #64b5f6;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(100, 181, 246, 0.3);
+            padding-bottom: 3px;
+            transition: all 0.3s ease;
+        }
+        .hp-testimonials-more a:hover {
+            color: white;
+            border-bottom-color: white;
+        }
+
+        /* ===== MECHANICAL CROSS-SELL ===== */
+        .hp-mechanical {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #0d1b2a, #1a2942);
+            border-top: 1px solid rgba(66, 165, 245, 0.15);
+        }
+        .hp-mechanical-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(102, 187, 106, 0.08));
+            border: 2px solid rgba(102, 187, 106, 0.25);
+            border-radius: 16px;
+            padding: 45px 40px;
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+        .hp-mechanical-icon {
+            font-size: 4rem;
+            flex-shrink: 0;
+        }
+        .hp-mechanical-content h3 {
+            color: #81c784;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .hp-mechanical-content p {
+            color: #a5d6a7;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .hp-mechanical-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #66bb6a, #4caf50);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+        .hp-mechanical-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.3);
+        }
+        @media (max-width: 650px) {
+            .hp-mechanical-inner {
+                flex-direction: column;
+                text-align: center;
+                padding: 35px 25px;
+            }
+        }
+
+        /* ===== FINAL CTA ===== */
+        .hp-cta {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #1565c0 0%, #1e88e5 50%, #1565c0 100%);
+            text-align: center;
+        }
+        .hp-cta h2 {
+            font-size: 2.5rem;
+            color: white;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+        .hp-cta p {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 35px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hp-cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .hp-cta-primary {
+            background: white;
+            color: #1565c0;
+            padding: 18px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .hp-cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .hp-cta-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 18px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+        }
+        .hp-cta-secondary:hover {
+            background: rgba(255,255,255,0.35);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hp-gallery-heading h2,
+            .hp-why-heading h2,
+            .hp-packages-heading h2,
+            .hp-testimonials-heading h2 {
+                font-size: 1.7rem;
+            }
+            .hp-cta h2 {
+                font-size: 1.8rem;
+            }
+            .hp-pkg-price {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header Navigation -->
@@ -296,7 +811,7 @@
         🎊 PRE-SPRING DETAIL: Prepare Your Vehicle for Warmer Weather | 15% OFF First-Time Customers | 💎 FREE Tire Shine with Any Package | 💳 $30 Deposit Secures Your Appointment | 📞 (412) 752-8684
     </div>
 
-    <!-- Welcome Hero Section -->
+    <!-- ===================== HERO SECTION ===================== -->
     <section class="welcome-hero" id="home">
         <div class="welcome-content">
             <img src="20200723_030424~2.png" alt="Hands Detail Shop Logo" class="hero-logo" onerror="this.src='https://i.postimg.cc/qqTWZqLC/hands-logo.png';">
@@ -310,7 +825,7 @@
             <!-- Service Area Coverage Badge -->
             <div class="service-area-badge">
                 <span class="service-area-icon">📍</span>
-                <span class="service-area-text"><strong>Pittsburgh & 2-Hour Radius:</strong> PA • OH • WV • MD</span>
+                <span class="service-area-text"><strong>Pittsburgh & 2-Hour Radius:</strong> PA &bull; OH &bull; WV &bull; MD</span>
                 <span class="service-area-subtitle">See our verified reviews from across 4 states!</span>
             </div>
 
@@ -319,15 +834,9 @@
 
             <!-- Trust Badges -->
             <div class="trust-badges">
-                <span class="trust-badge">
-                    👨‍👩‍👧‍👦 Family Owned & Operated
-                </span>
-                <span class="trust-badge">
-                    🛡️ Licensed & Insured
-                </span>
-                <span class="trust-badge">
-                    ✨ FREE ESTIMATES
-                </span>
+                <span class="trust-badge">👨‍👩‍👧‍👦 Family Owned & Operated</span>
+                <span class="trust-badge">🛡️ Licensed & Insured</span>
+                <span class="trust-badge">✨ FREE ESTIMATES</span>
             </div>
 
             <!-- Service Counter -->
@@ -340,28 +849,268 @@
         </div>
     </section>
 
+    <!-- ===================== BEFORE / AFTER GALLERY ===================== -->
+    <!-- INSTRUCTIONS: Replace each placeholder div with an <img> tag pointing to your photos.
+         Example: <img src="gallery/exterior-before-after.jpg" alt="SUV exterior detail before and after"> -->
+    <section class="hp-gallery">
+        <div class="hp-gallery-heading">
+            <h2>See The Difference</h2>
+        </div>
+        <p class="hp-gallery-sub">Real results from real customers across Pittsburgh and beyond</p>
 
+        <div class="hp-gallery-grid">
+            <!-- SLOT 1: Replace with your best exterior before/after -->
+            <div class="hp-gallery-item">
+                <div class="hp-gallery-placeholder">
+                    <div class="placeholder-icon">🚗</div>
+                    <p>Exterior Detail</p>
+                    <span>Replace with before/after photo</span>
+                </div>
+                <!-- <img src="gallery/exterior-detail.jpg" alt="Exterior detail before and after - Hands Detail Shop Pittsburgh"> -->
+            </div>
 
-    <!-- Contact CTA Section -->
-    <section class="contact-section">
-        <h3 class="contact-title">Ready to Experience Professional Detailing?</h3>
-        <div class="contact-buttons">
-            <a href="services.html" class="contact-btn">
-                <span>🚗</span>
-                <span>Explore Our Services</span>
-            </a>
-            <a href="quote.html" class="contact-btn">
-                <span>💰</span>
-                <span>Get a Quick Quote</span>
-            </a>
-            <a href="contact.html" class="contact-btn">
-                <span>📞</span>
-                <span>Contact Us</span>
-            </a>
+            <!-- SLOT 2: Replace with your best interior before/after -->
+            <div class="hp-gallery-item">
+                <div class="hp-gallery-placeholder">
+                    <div class="placeholder-icon">✨</div>
+                    <p>Interior Restoration</p>
+                    <span>Replace with before/after photo</span>
+                </div>
+                <!-- <img src="gallery/interior-detail.jpg" alt="Interior detail before and after - Hands Detail Shop Pittsburgh"> -->
+            </div>
+
+            <!-- SLOT 3: Replace with paint correction / ceramic coating shot -->
+            <div class="hp-gallery-item">
+                <div class="hp-gallery-placeholder">
+                    <div class="placeholder-icon">💎</div>
+                    <p>Paint Correction</p>
+                    <span>Replace with before/after photo</span>
+                </div>
+                <!-- <img src="gallery/paint-correction.jpg" alt="Paint correction ceramic coating - Hands Detail Shop Pittsburgh"> -->
+            </div>
+
+            <!-- SLOT 4: Replace with engine bay / under the hood shot -->
+            <div class="hp-gallery-item">
+                <div class="hp-gallery-placeholder">
+                    <div class="placeholder-icon">⚙️</div>
+                    <p>Engine Bay Detail</p>
+                    <span>Replace with before/after photo</span>
+                </div>
+                <!-- <img src="gallery/engine-bay.jpg" alt="Engine bay detail - Hands Detail Shop Pittsburgh"> -->
+            </div>
+
+            <!-- SLOT 5: Replace with fleet / commercial work -->
+            <div class="hp-gallery-item">
+                <div class="hp-gallery-placeholder">
+                    <div class="placeholder-icon">🚛</div>
+                    <p>Fleet Service</p>
+                    <span>Replace with before/after photo</span>
+                </div>
+                <!-- <img src="gallery/fleet-detail.jpg" alt="Commercial fleet detailing - Hands Detail Shop Pittsburgh"> -->
+            </div>
+
+            <!-- SLOT 6: Replace with motorcycle / specialty vehicle -->
+            <div class="hp-gallery-item">
+                <div class="hp-gallery-placeholder">
+                    <div class="placeholder-icon">🏍️</div>
+                    <p>Specialty Vehicles</p>
+                    <span>Replace with before/after photo</span>
+                </div>
+                <!-- <img src="gallery/specialty-vehicle.jpg" alt="Motorcycle detail - Hands Detail Shop Pittsburgh"> -->
+            </div>
+        </div>
+
+        <div class="hp-gallery-cta">
+            <a href="https://www.instagram.com/handsdetailshop" target="_blank">See more of our work on Instagram →</a>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ===================== WHY CHOOSE US ===================== -->
+    <section class="hp-why">
+        <div class="hp-why-heading">
+            <h2>Why Pittsburgh Trusts Hands Detail</h2>
+            <p>16 years of earning it, one vehicle at a time</p>
+        </div>
+
+        <div class="hp-why-grid">
+            <div class="hp-why-card">
+                <span class="why-icon">✈️</span>
+                <h3>Air Force Trained</h3>
+                <p>U.S. Air Force diesel & jet engine mechanic. The same precision that maintained military aircraft now protects your vehicle.</p>
+            </div>
+            <div class="hp-why-card">
+                <span class="why-icon">📍</span>
+                <h3>We Come To You</h3>
+                <p>Fully mobile service — your driveway, your office, your location. No drop-off hassle. Serving a 2-hour radius from Pittsburgh.</p>
+            </div>
+            <div class="hp-why-card">
+                <span class="why-icon">🛡️</span>
+                <h3>Licensed & Insured</h3>
+                <p>Family owned and operated for 16 years. Fully licensed, fully insured, fully accountable for every job we touch.</p>
+            </div>
+            <div class="hp-why-card">
+                <span class="why-icon">⚙️</span>
+                <h3>Detail + Mechanical</h3>
+                <p>We don't just make your vehicle look good — we keep it running right. Detailing and mechanical services under one roof.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== POPULAR PACKAGES ===================== -->
+    <section class="hp-packages">
+        <div class="hp-packages-heading">
+            <h2>Most Popular Packages</h2>
+            <p>Transparent pricing — no hidden fees, no surprises</p>
+        </div>
+
+        <div class="hp-packages-grid">
+            <!-- ESSENTIAL -->
+            <div class="hp-pkg">
+                <div class="hp-pkg-header">
+                    <h3>Essential</h3>
+                    <div class="hp-pkg-price">$65 <span>– $85</span></div>
+                    <div class="hp-pkg-tier">Great starting point</div>
+                </div>
+                <div class="hp-pkg-body">
+                    <ul>
+                        <li>✓ Full exterior hand wash</li>
+                        <li>✓ Interior vacuum & wipe-down</li>
+                        <li>✓ Window cleaning inside & out</li>
+                        <li>✓ Tire shine & dressing</li>
+                        <li>✓ Air freshener</li>
+                    </ul>
+                    <a href="quote.html" class="hp-pkg-btn">Get A Quote</a>
+                </div>
+            </div>
+
+            <!-- EXECUTIVE (POPULAR) -->
+            <div class="hp-pkg hp-pkg-popular">
+                <div class="hp-pkg-header">
+                    <div class="hp-pkg-badge">Most Popular</div>
+                    <h3>Executive</h3>
+                    <div class="hp-pkg-price">$145 <span>– $185</span></div>
+                    <div class="hp-pkg-tier">Full interior & exterior</div>
+                </div>
+                <div class="hp-pkg-body">
+                    <ul>
+                        <li>✓ Everything in Essential</li>
+                        <li>✓ Deep interior cleaning</li>
+                        <li>✓ Leather conditioning</li>
+                        <li>✓ Clay bar treatment</li>
+                        <li>✓ Hand wax & polish</li>
+                        <li>✓ Engine bay wipe-down</li>
+                    </ul>
+                    <a href="quote.html" class="hp-pkg-btn">Get A Quote</a>
+                </div>
+            </div>
+
+            <!-- SIGNATURE -->
+            <div class="hp-pkg">
+                <div class="hp-pkg-header">
+                    <h3>Signature</h3>
+                    <div class="hp-pkg-price">$285 <span>– $365</span></div>
+                    <div class="hp-pkg-tier">Paint enhancement included</div>
+                </div>
+                <div class="hp-pkg-body">
+                    <ul>
+                        <li>✓ Everything in Executive</li>
+                        <li>✓ Single-stage paint correction</li>
+                        <li>✓ Sealant application</li>
+                        <li>✓ Trim & chrome restoration</li>
+                        <li>✓ Headlight restoration</li>
+                        <li>✓ 30-day follow-up</li>
+                    </ul>
+                    <a href="quote.html" class="hp-pkg-btn">Get A Quote</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hp-packages-more">
+            <a href="personal-vehicles.html">See all packages including Presidential & Ultimate Armor →</a>
+        </div>
+    </section>
+
+    <!-- ===================== TESTIMONIALS ===================== -->
+    <!-- INSTRUCTIONS: Replace these with your actual Google/Yelp/Facebook reviews.
+         Use real names and locations for maximum trust. -->
+    <section class="hp-testimonials">
+        <div class="hp-testimonials-heading">
+            <h2>What Our Customers Say</h2>
+            <p>Verified reviews from across 4 states</p>
+        </div>
+
+        <div class="hp-testimonials-grid">
+            <!-- Review 1 -->
+            <div class="hp-testimonial">
+                <div class="hp-testimonial-stars">★★★★★</div>
+                <p class="hp-testimonial-text">"Nazir came right to my house, did an incredible job on both our cars, and the pricing was completely fair. You can tell he actually cares about the work. Already signed up for the monthly plan."</p>
+                <div class="hp-testimonial-author">
+                    <div class="hp-testimonial-avatar">M</div>
+                    <div>
+                        <div class="hp-testimonial-name">Satisfied Customer</div>
+                        <div class="hp-testimonial-loc">Pittsburgh, PA</div>
+                        <!-- Replace with: <div class="hp-testimonial-name">Mike R.</div> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="hp-testimonial">
+                <div class="hp-testimonial-stars">★★★★★</div>
+                <p class="hp-testimonial-text">"Best detailing service I've ever used. The attention to detail is on another level — every corner of the interior was spotless. And the fact that he comes to you makes it so easy to schedule."</p>
+                <div class="hp-testimonial-author">
+                    <div class="hp-testimonial-avatar">T</div>
+                    <div>
+                        <div class="hp-testimonial-name">Satisfied Customer</div>
+                        <div class="hp-testimonial-loc">Fox Chapel, PA</div>
+                        <!-- Replace with real reviewer name -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="hp-testimonial">
+                <div class="hp-testimonial-stars">★★★★★</div>
+                <p class="hp-testimonial-text">"Had our fleet of 6 work trucks detailed and they all looked brand new. Professional, on time, great communication throughout. Hands Detail is our go-to from here on out."</p>
+                <div class="hp-testimonial-author">
+                    <div class="hp-testimonial-avatar">J</div>
+                    <div>
+                        <div class="hp-testimonial-name">Satisfied Customer</div>
+                        <div class="hp-testimonial-loc">Youngstown, OH</div>
+                        <!-- Replace with real reviewer name -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hp-testimonials-more">
+            <a href="reviews.html">Read all verified reviews →</a>
+        </div>
+    </section>
+
+    <!-- ===================== MECHANICAL SERVICES CROSS-SELL ===================== -->
+    <section class="hp-mechanical">
+        <div class="hp-mechanical-inner">
+            <div class="hp-mechanical-icon">⚙️</div>
+            <div class="hp-mechanical-content">
+                <h3>NEW: Under The Hood — Mechanical Services</h3>
+                <p>We don't just detail vehicles — we fix them. Professional diagnostics starting at $50, transparent $75/hr labor rate, and no work starts without your approval. Brakes, engine, transmission, electrical, and more.</p>
+                <a href="under-the-hood.html" class="hp-mechanical-btn">Explore Mechanical Services →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FINAL CTA ===================== -->
+    <section class="hp-cta">
+        <h2>Ready to Experience the Difference?</h2>
+        <p>Free estimates. $30 deposit holds your spot. We come to you.</p>
+        <div class="hp-cta-buttons">
+            <a href="quote.html" class="hp-cta-primary">💰 Get Your Free Quote</a>
+            <a href="tel:4127528684" class="hp-cta-secondary">📞 (412) 752-8684</a>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -388,6 +1137,7 @@
                     <li><a href="marine-services.html">RV & Motorhome Services</a></li>
                     <li><a href="aircraft-services.html">Aircraft Detailing</a></li>
                     <li><a href="motorcycle-services.html">Motorcycle Detailing</a></li>
+                    <li><a href="under-the-hood.html" style="color: #81c784; font-weight: 600;">⚙️ Mechanical Services</a></li>
                 </ul>
             </div>
 
@@ -493,6 +1243,11 @@
                             <option>Yacht/Boat Detail</option>
                             <option>RV/Motorhome Detail</option>
                             <option>Fleet Services</option>
+                        </optgroup>
+                        <optgroup label="Mechanical Services">
+                            <option>Basic Diagnostic ($50)</option>
+                            <option>Advanced Diagnostic ($100)</option>
+                            <option>Mechanical Repair - Need Consultation</option>
                         </optgroup>
                         <option>Not Sure - Need Consultation</option>
                     </select>
