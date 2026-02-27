@@ -2486,24 +2486,6 @@ footer {
   }
 }
 
-/* Portrait Mode - Mobile Menu Fix */
-@media (orientation: portrait) and (max-width: 1024px) {
-  .nav-menu,
-  .contact-header .btn-call,
-  .contact-header .btn-text,
-  .contact-header .hours-header {
-    display: none;
-  }
-
-  .mobile-menu-toggle {
-    display: flex;
-  }
-
-  .services-dropdown {
-    display: none;
-  }
-}
-
 /* Landscape Mode - Mobile Menu Fix (Mobile Phones Only) */
 @media (orientation: landscape) and (max-height: 600px) and (max-width: 1000px) {
   .nav-menu,
