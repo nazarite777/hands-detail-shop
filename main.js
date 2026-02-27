@@ -752,6 +752,34 @@ function handleOriginalBooking(form) {
 }
 
 
+// ===== SERVICES DROPDOWN TOGGLE =====
+
+function toggleServicesDropdown(button) {
+  const dropdown = button.closest('.services-dropdown');
+  if (dropdown) {
+    const menu = dropdown.querySelector('.dropdown-menu');
+    if (menu) {
+      menu.classList.toggle('active');
+      button.classList.toggle('active');
+    }
+  }
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  const dropdowns = document.querySelectorAll('.services-dropdown');
+  dropdowns.forEach(dropdown => {
+    const button = dropdown.querySelector('.services-dropdown-btn');
+    if (!dropdown.contains(e.target)) {
+      const menu = dropdown.querySelector('.dropdown-menu');
+      if (menu) {
+        menu.classList.remove('active');
+        if (button) button.classList.remove('active');
+      }
+    }
+  });
+});
+
 // ===== MODAL CLICK OUTSIDE TO CLOSE =====
 
 const bookingModal = document.getElementById('bookingModal');
