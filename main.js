@@ -1081,5 +1081,8 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // ===== JUKEBOX PLAYER =====
-  initializeJukebox();
+  const jukeboxEl = document.getElementById('jukebox');
+  if (jukeboxEl) {
+    initializeJukebox();
+  }
 });
