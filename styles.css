@@ -477,7 +477,13 @@ header.scrolled {
   gap: 4px;
   cursor: pointer;
   z-index: 1001;
-  padding: 5px;
+  padding: 8px;
+  background: transparent;
+  border: none;
+  min-width: 44px;
+  min-height: 44px;
+  justify-content: center;
+  align-items: center;
 }
 
 .mobile-menu-toggle span {
@@ -485,6 +491,7 @@ header.scrolled {
   height: 3px;
   background: #c0c0c0;
   transition: all 0.3s ease;
+  display: block;
 }
 
 .mobile-menu-toggle.active span:nth-child(1) {
@@ -2460,6 +2467,8 @@ footer {
 
   .mobile-menu-toggle {
     display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   .mobile-badge {
@@ -2485,6 +2494,14 @@ footer {
 
   .service-card.featured {
     transform: scale(1);
+  }
+}
+
+/* Extra small devices - ensure mobile menu shows */
+@media (max-width: 480px) {
+  .mobile-menu-toggle {
+    display: flex !important;
+    visibility: visible !important;
   }
 }
 
