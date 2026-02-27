@@ -224,7 +224,8 @@ header.scrolled {
 }
 
 .services-dropdown:hover .dropdown-menu,
-.services-dropdown-btn.active + .dropdown-menu {
+.services-dropdown-btn.active + .dropdown-menu,
+.dropdown-menu.active {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
