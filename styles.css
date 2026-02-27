@@ -2506,7 +2506,7 @@ footer {
 }
 
 /* Landscape Mode - Show Header Navigation (Mobile Phones Only) */
-@media (orientation: landscape) and (max-height: 600px) and (max-width: 1000px) {
+@media (orientation: landscape) and (max-height: 850px) and (max-width: 1200px) {
   .nav-menu {
     display: flex !important;
     flex-wrap: wrap;
