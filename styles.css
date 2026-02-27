@@ -476,6 +476,8 @@ header.scrolled {
   flex-direction: column;
   gap: 4px;
   cursor: pointer;
+  z-index: 1001;
+  padding: 5px;
 }
 
 .mobile-menu-toggle span {
@@ -2453,11 +2455,11 @@ footer {
   .contact-header .btn-call,
   .contact-header .btn-text,
   .contact-header .hours-header {
-    display: none;
+    display: none !important;
   }
 
   .mobile-menu-toggle {
-    display: flex;
+    display: flex !important;
   }
 
   .mobile-badge {
