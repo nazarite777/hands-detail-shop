@@ -3,14 +3,14 @@
     {
       "title": "HANDS DETAIL SHOP - THEME SONG",
       "artist": "Hands Detail Shop",
-      "file": "hands-detail-shop.mp3.mp3",
-      "firebaseUrl": "https://firebasestorage.googleapis.com/v0/b/hands-detail.firebasestorage.app/o/hands-detail-shop.mp3.mp3?alt=media"
+      "file": "HANDS DETAIL SHOP - THEME SONG.mp3",
+      "firebaseUrl": "/audio/HANDS DETAIL SHOP - THEME SONG.mp3"
     },
     {
       "title": "Sixteen Years",
       "artist": "Hands Detail Shop",
-      "file": "sixteen-years.mp3.mp3",
-      "firebaseUrl": "https://firebasestorage.googleapis.com/v0/b/hands-detail.firebasestorage.app/o/sixteen-years.mp3.mp3?alt=media"
+      "file": "Sixteen years... (Remastered).mp3",
+      "firebaseUrl": "/audio/Sixteen years... (Remastered).mp3"
     }
   ]
 }
