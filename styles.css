@@ -2516,19 +2516,32 @@ footer {
   }
 
   .nav-link {
+    display: flex !important;
     font-size: 0.75rem;
     padding: 6px 8px;
     white-space: nowrap;
+    visibility: visible !important;
+  }
+
+  .services-dropdown {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
   }
 
   .services-dropdown-btn {
     display: flex !important;
     font-size: 0.75rem;
     padding: 6px 8px;
+    background: none;
+    border: none;
+    color: #c0c0c0;
+    cursor: pointer;
+    white-space: nowrap;
   }
 
   .dropdown-menu {
-    display: none;
+    display: none !important;
   }
 
   .contact-header {
