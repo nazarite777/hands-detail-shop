@@ -239,7 +239,7 @@
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="our-story.html" class="nav-link">Our Story</a>
                 <div class="services-dropdown">
-                    <button class="services-dropdown-btn nav-link" onclick="toggleServicesDropdown(this)">Services</button>
+                    <button class="services-dropdown-btn nav-link" onclick="(function(btn){const d=btn.closest('.services-dropdown');if(d){const m=d.querySelector('.dropdown-menu');if(m){m.classList.toggle('active');btn.classList.toggle('active');}}})(this)">Services</button>
                     <div class="dropdown-menu">
                         <a href="services.html" class="dropdown-item">📋 All Services Overview</a>
                         <a href="personal-vehicles.html" class="dropdown-item">🚗 Personal Vehicles</a>
