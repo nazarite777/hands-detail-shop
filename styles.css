@@ -2504,6 +2504,24 @@ footer {
   }
 }
 
+/* Landscape Mode - Mobile Menu Fix */
+@media (orientation: landscape) and (max-height: 600px) {
+  .nav-menu,
+  .contact-header .btn-call,
+  .contact-header .btn-text,
+  .contact-header .hours-header {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .services-dropdown {
+    display: none;
+  }
+}
+
 /* ===== GALLERY PAGE STYLES ===== */
 
 .gallery-filters {
