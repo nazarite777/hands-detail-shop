@@ -1,5 +1,5 @@
-const CACHE_NAME = 'hands-detail-shop-v1';
-const RUNTIME_CACHE = 'hands-detail-runtime-v1';
+const CACHE_NAME = 'hands-detail-shop-v2';
+const RUNTIME_CACHE = 'hands-detail-runtime-v2';
 
 // Assets to cache on install
 const PRECACHE_URLS = [
