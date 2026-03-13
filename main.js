@@ -1276,32 +1276,43 @@ document.addEventListener('DOMContentLoaded', function () {
       try {
         console.log('Submitting review:', reviewData);
         
-        // Save to local storage as backup
+        // Save to local storage as primary storage for admin panel
         try {
-          let savedReviews = JSON.parse(localStorage.getItem('pendingReviews')) || [];
-          savedReviews.push(reviewData);
-          localStorage.setItem('pendingReviews', JSON.stringify(savedReviews));
-          console.log('Review saved to local storage as backup');
+          let pendingReviews = JSON.parse(localStorage.getItem('pendingReviews')) || [];
+          pendingReviews.push(reviewData);
+          localStorage.setItem('pendingReviews', JSON.stringify(pendingReviews));
+          console.log('Review saved to localStorage for admin approval');
         } catch (storageError) {
-          console.error('Could not save to local storage:', storageError);
+          console.error('Could not save to localStorage:', storageError);
         }
 
-        // Send email notification
+        // Send email notification with approval instructions
         const emailBody = `
-New 5-Star Review Submitted
+🌟 NEW REVIEW SUBMISSION - AWAITING YOUR APPROVAL 🌟
 
 Customer Name: ${reviewData.name}
 Rating: ${'⭐'.repeat(reviewData.rating)}
-Email: ${reviewData.email || 'Not provided'}
+Customer Email: ${reviewData.email || 'Not provided'}
 
-Review:
-${reviewData.comment}
+Review Text:
+"${reviewData.comment}"
 
 Submitted: ${new Date(reviewData.createdAt).toLocaleString()}
-Status: ${reviewData.status}
 
----
-This review was submitted via the contact form and is awaiting your approval.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 MANAGE THIS REVIEW:
+   Visit your Admin Panel: hands-detail.web.app/admin-pending-reviews.html
+   
+   ✅ APPROVE: Click "Approve & Publish" to add to live reviews
+   ❌ REJECT: Click "Reject" to remove without publishing
+
+📧 To Contact Customer:
+   - Reply to this email or contact: ${reviewData.email || 'Email not provided'}
+   - Thank them for their business!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This email was sent to handsdetailshop@gmail.com
         `.trim();
 
         // Send email using callback-based API
@@ -1351,7 +1362,8 @@ This review was submitted via the contact form and is awaiting your approval.
       '<h4 style="color: #90caf9; margin-bottom: 10px; font-size: 1.3rem;">Thank you, ' +
       reviewData.name +
       '!</h4>' +
-      '<p style="color: #a0a0a0; line-height: 1.6;">Your review has been submitted and is pending approval. We appreciate your feedback!</p>';
+      '<p style="color: #a0a0a0; line-height: 1.6; margin-bottom: 15px;">Your ' + reviewData.rating + '-star review has been submitted successfully!</p>' +
+      '<p style="color: #90caf9; font-size: 0.95rem;">✓ Review pending approval - You\'ll receive an email once it\'s published</p>';
 
     formElement.replaceWith(successDiv);
   }
@@ -1386,5 +1398,63 @@ This review was submitted via the contact form and is awaiting your approval.
     
     // Also scroll to the error message
     errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // Load and display approved reviews from localStorage
+  function loadApprovedReviews() {
+    const reviewsContainer = document.getElementById('reviews-grid');
+    if (!reviewsContainer) return;
+
+    const approvedReviews = JSON.parse(localStorage.getItem('approvedReviews')) || [];
+
+    approvedReviews.forEach((review) => {
+      const reviewCard = document.createElement('div');
+      reviewCard.className = 'review-card';
+      reviewCard.style.cssText = `
+        background: linear-gradient(135deg, rgba(66, 165, 245, 0.1), rgba(30, 136, 229, 0.1));
+        border: 1px solid rgba(66, 165, 245, 0.3);
+        border-radius: 10px;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+      `;
+
+      const stars = '⭐'.repeat(review.rating);
+      const reviewDate = new Date(review.createdAt).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+
+      const badgeStyle = `
+        display: inline-block;
+        background: linear-gradient(135deg, #4caf50, #66bb6a);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        width: fit-content;
+      `;
+
+      reviewCard.innerHTML = `
+        <div style="${badgeStyle}">✓ Verified Review</div>
+        <h3 style="color: #90caf9; margin: 0 0 8px 0; font-size: 1.2rem;">${review.name}</h3>
+        <div style="color: #ffc107; margin-bottom: 10px; font-size: 1.1rem;">${stars}</div>
+        <p style="color: #e8f1f8; font-style: italic; line-height: 1.6; margin: 15px 0; flex-grow: 1;">"${review.comment}"</p>
+        <div style="color: #a0a0a0; font-size: 0.85rem; margin-top: 15px;">
+          📅 ${reviewDate}
+          ${review.email ? `<br>👤 ${review.email}` : ''}
+        </div>
+      `;
+
+      reviewsContainer.appendChild(reviewCard);
+    });
+  }
+
+  // Load approved reviews when page loads
+  if (document.querySelector('#reviews-grid')) {
+    loadApprovedReviews();
   }
 });
