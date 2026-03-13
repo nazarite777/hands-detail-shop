@@ -1145,4 +1145,124 @@ document.addEventListener('DOMContentLoaded', function () {
   if (jukeboxEl) {
     initializeJukebox();
   }
+
+  // ===== REVIEW FORM =====
+  const reviewForm = document.getElementById('reviewForm');
+  if (reviewForm) {
+    // Star rating click handlers
+    const stars = reviewForm.querySelectorAll('.star-rating');
+    const ratingInput = document.getElementById('ratingValue');
+
+    stars.forEach(function (star) {
+      star.addEventListener('click', function () {
+        const selected = parseInt(this.getAttribute('data-rating'));
+        ratingInput.value = selected;
+        stars.forEach(function (s) {
+          s.style.color = parseInt(s.getAttribute('data-rating')) <= selected ? '#ffc107' : '#606060';
+        });
+      });
+
+      // Hover preview
+      star.addEventListener('mouseenter', function () {
+        const hovered = parseInt(this.getAttribute('data-rating'));
+        stars.forEach(function (s) {
+          s.style.color = parseInt(s.getAttribute('data-rating')) <= hovered ? '#ffc107' : '#606060';
+        });
+      });
+    });
+
+    // Restore actual selection on mouse leave
+    reviewForm.querySelector('.star-rating').parentElement.addEventListener('mouseleave', function () {
+      const current = parseInt(ratingInput.value) || 0;
+      stars.forEach(function (s) {
+        s.style.color = parseInt(s.getAttribute('data-rating')) <= current ? '#ffc107' : '#606060';
+      });
+    });
+
+    // Form submission
+    reviewForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const nameField = reviewForm.querySelector('input[name="reviewName"]');
+      const textField = reviewForm.querySelector('textarea[name="reviewText"]');
+      const emailField = reviewForm.querySelector('input[name="reviewEmail"]');
+      const submitBtn = reviewForm.querySelector('button[type="submit"]');
+
+      // Validate
+      let isValid = true;
+
+      if (!nameField.value.trim()) {
+        showFieldError(nameField, 'Please enter your name');
+        isValid = false;
+      } else if (!validateName(nameField.value)) {
+        showFieldError(nameField, 'Please enter a valid name (letters only)');
+        isValid = false;
+      } else {
+        clearFieldError(nameField);
+      }
+
+      if (!ratingInput.value) {
+        const ratingContainer = ratingInput.previousElementSibling;
+        const existingError = ratingContainer.parentElement.querySelector('.field-error');
+        if (!existingError) {
+          const err = document.createElement('span');
+          err.className = 'field-error';
+          err.style.cssText = 'color: #ff5252; font-size: 0.875rem; margin-top: 4px; display: block;';
+          err.textContent = 'Please select a star rating';
+          ratingContainer.insertAdjacentElement('afterend', err);
+        }
+        isValid = false;
+      } else {
+        const existingError = ratingInput.parentElement.querySelector('.field-error');
+        if (existingError) existingError.remove();
+      }
+
+      if (!textField.value.trim()) {
+        showFieldError(textField, 'Please write your review');
+        isValid = false;
+      } else {
+        clearFieldError(textField);
+      }
+
+      if (!isValid) return;
+
+      // Disable button while saving
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+
+      const reviewData = {
+        name: sanitizeInput(nameField.value.trim()),
+        rating: parseInt(ratingInput.value),
+        comment: sanitizeInput(textField.value.trim()),
+        email: emailField.value.trim() ? sanitizeInput(emailField.value.trim()) : '',
+        createdAt: new Date().toISOString(),
+        status: 'pending'
+      };
+
+      try {
+        const response = await fetch('https://hands-detail-default-rtdb.firebaseio.com/reviews.json', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(reviewData)
+        });
+
+        if (!response.ok) {
+          throw new Error('Server error: ' + response.status);
+        }
+
+        // Show success
+        reviewForm.innerHTML = '<div style="text-align: center; padding: 30px;">' +
+          '<p style="font-size: 2rem; margin-bottom: 10px;">⭐</p>' +
+          '<h4 style="color: #d4d4d4; margin-bottom: 10px;">Thank you, ' + reviewData.name + '!</h4>' +
+          '<p style="color: #a0a0a0;">Your review has been submitted and is pending approval.</p>' +
+          '</div>';
+
+      } catch (error) {
+        console.error('Review submission error:', error);
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Review';
+        alert('Error submitting review. Please try again or reach us at (412) 752-8684.');
+      }
+    });
+  }
 });
