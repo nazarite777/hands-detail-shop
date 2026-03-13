@@ -2,7 +2,6 @@
   "name": "hands-detail-shop-functions",
   "description": "Firebase Cloud Functions for Hands Detail Shop",
   "version": "1.0.0",
-  "type": "module",
   "engines": {
     "node": "20"
   },
