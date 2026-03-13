@@ -1173,36 +1173,39 @@ document.addEventListener('DOMContentLoaded', function () {
     const stars = reviewForm.querySelectorAll('.star-rating');
     const ratingInput = document.getElementById('ratingValue');
 
-    stars.forEach(function (star) {
-      star.addEventListener('click', function () {
-        const selected = parseInt(this.getAttribute('data-rating'));
-        ratingInput.value = selected;
-        stars.forEach(function (s) {
-          s.style.color =
-            parseInt(s.getAttribute('data-rating')) <= selected ? '#ffc107' : '#606060';
+    if (stars.length > 0 && ratingInput) {
+      stars.forEach(function (star) {
+        star.addEventListener('click', function () {
+          const selected = parseInt(this.getAttribute('data-rating'));
+          ratingInput.value = selected;
+          stars.forEach(function (s) {
+            s.style.color =
+              parseInt(s.getAttribute('data-rating')) <= selected ? '#ffc107' : '#606060';
+          });
+        });
+
+        // Hover preview
+        star.addEventListener('mouseenter', function () {
+          const hovered = parseInt(this.getAttribute('data-rating'));
+          stars.forEach(function (s) {
+            s.style.color =
+              parseInt(s.getAttribute('data-rating')) <= hovered ? '#ffc107' : '#606060';
+          });
         });
       });
 
-      // Hover preview
-      star.addEventListener('mouseenter', function () {
-        const hovered = parseInt(this.getAttribute('data-rating'));
-        stars.forEach(function (s) {
-          s.style.color =
-            parseInt(s.getAttribute('data-rating')) <= hovered ? '#ffc107' : '#606060';
+      // Restore actual selection on mouse leave
+      const starsContainer = stars[0].parentElement;
+      if (starsContainer) {
+        starsContainer.addEventListener('mouseleave', function () {
+          const current = parseInt(ratingInput.value) || 0;
+          stars.forEach(function (s) {
+            s.style.color =
+              parseInt(s.getAttribute('data-rating')) <= current ? '#ffc107' : '#606060';
+          });
         });
-      });
-    });
-
-    // Restore actual selection on mouse leave
-    reviewForm
-      .querySelector('.star-rating')
-      .parentElement.addEventListener('mouseleave', function () {
-        const current = parseInt(ratingInput.value) || 0;
-        stars.forEach(function (s) {
-          s.style.color =
-            parseInt(s.getAttribute('data-rating')) <= current ? '#ffc107' : '#606060';
-        });
-      });
+      }
+    }
 
     // Form submission
     reviewForm.addEventListener('submit', async function (e) {
@@ -1227,15 +1230,14 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       if (!ratingInput.value) {
-        const ratingContainer = ratingInput.previousElementSibling;
-        const existingError = ratingContainer.parentElement.querySelector('.field-error');
+        const existingError = ratingInput.parentElement.querySelector('.field-error');
         if (!existingError) {
           const err = document.createElement('span');
           err.className = 'field-error';
           err.style.cssText =
-            'color: #ff5252; font-size: 0.875rem; margin-top: 4px; display: block;';
+            'color: #ff5252; font-size: 0.875rem; margin-top: 8px; display: block;';
           err.textContent = 'Please select a star rating';
-          ratingContainer.insertAdjacentElement('afterend', err);
+          ratingInput.parentElement.appendChild(err);
         }
         isValid = false;
       } else {
@@ -1280,23 +1282,37 @@ document.addEventListener('DOMContentLoaded', function () {
         );
 
         if (!response.ok) {
-          throw new Error('Server error: ' + response.status);
+          throw new Error(`Server error: ${response.status} ${response.statusText}`);
         }
 
-        // Show success
-        reviewForm.innerHTML =
-          '<div style="text-align: center; padding: 30px;">' +
-          '<p style="font-size: 2rem; margin-bottom: 10px;">⭐</p>' +
-          '<h4 style="color: #d4d4d4; margin-bottom: 10px;">Thank you, ' +
+        const data = await response.json();
+        console.log('Review submitted successfully:', data);
+
+        // Show success message
+        const successDiv = document.createElement('div');
+        successDiv.style.cssText =
+          'text-align: center; padding: 40px 20px; background: rgba(66, 165, 245, 0.1); border-radius: 15px; border: 1px solid rgba(66, 165, 245, 0.3);';
+        successDiv.innerHTML =
+          '<p style="font-size: 2.5rem; margin-bottom: 15px;">⭐</p>' +
+          '<h4 style="color: #90caf9; margin-bottom: 10px; font-size: 1.3rem;">Thank you, ' +
           reviewData.name +
           '!</h4>' +
-          '<p style="color: #a0a0a0;">Your review has been submitted and is pending approval.</p>' +
-          '</div>';
+          '<p style="color: #a0a0a0; line-height: 1.6;">Your review has been submitted and is pending approval. We appreciate your feedback!</p>';
+
+        reviewForm.replaceWith(successDiv);
       } catch (error) {
         console.error('Review submission error:', error);
         submitBtn.disabled = false;
         submitBtn.textContent = 'Submit Review';
-        alert('Error submitting review. Please try again or reach us at (412) 752-8684.');
+        
+        // Show user-friendly error message
+        const errorDiv = document.createElement('div');
+        errorDiv.style.cssText =
+          'background: rgba(255, 82, 82, 0.1); border: 1px solid rgba(255, 82, 82, 0.3); border-radius: 10px; padding: 15px; margin-bottom: 20px;';
+        errorDiv.style.color = '#ff9999';
+        errorDiv.textContent =
+          '⚠️ Error submitting review. Please try again or call us at (412) 752-8684';
+        reviewForm.parentElement.insertBefore(errorDiv, reviewForm);
       }
     });
   }
