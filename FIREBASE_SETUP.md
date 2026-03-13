@@ -1,4 +1,5 @@
 # Firebase Setup Guide
+
 ## Hands Detail Shop - Pittsburgh Auto Detailing
 
 Complete guide to setting up and configuring Firebase for the Hands Detail Shop website.
@@ -6,6 +7,7 @@ Complete guide to setting up and configuring Firebase for the Hands Detail Shop 
 ---
 
 ## Table of Contents
+
 1. [Prerequisites](#prerequisites)
 2. [Step-by-Step Setup](#step-by-step-setup)
 3. [Firestore Database Schema](#firestore-database-schema)
@@ -225,32 +227,32 @@ Replace the security rules in Firebase Console with:
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    
+
     // Allow users to read/write their own profile
     match /users/{userId} {
       allow read, write: if request.auth.uid == userId;
       allow read: if request.auth.uid != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
     }
-    
+
     // Allow authenticated users to create bookings
     match /bookings/{bookingId} {
       allow create: if request.auth.uid != null;
-      allow read, update: if request.auth.uid == resource.data.userId || 
+      allow read, update: if request.auth.uid == resource.data.userId ||
                             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
       allow delete: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
     }
-    
+
     // Allow anyone to read services
     match /services/{serviceId} {
       allow read: if true;
       allow write: if get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
     }
-    
+
     // Allow users to write reviews for their bookings
     match /reviews/{reviewId} {
       allow create: if request.auth.uid != null;
       allow read: if true;
-      allow write: if request.auth.uid == resource.data.userId || 
+      allow write: if request.auth.uid == resource.data.userId ||
                      get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
     }
   }
@@ -293,13 +295,13 @@ Copy your Firebase configuration from the Firebase Console (Step 2 above) and up
 
 ```javascript
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
-  measurementId: "YOUR_MEASUREMENT_ID"
+  apiKey: 'YOUR_API_KEY',
+  authDomain: 'YOUR_AUTH_DOMAIN',
+  projectId: 'YOUR_PROJECT_ID',
+  storageBucket: 'YOUR_STORAGE_BUCKET',
+  messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
+  appId: 'YOUR_APP_ID',
+  measurementId: 'YOUR_MEASUREMENT_ID',
 };
 ```
 
@@ -331,7 +333,7 @@ const firebaseConfig = {
   storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.FIREBASE_APP_ID,
-  measurementId: process.env.FIREBASE_MEASUREMENT_ID
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID,
 };
 ```
 
@@ -380,18 +382,18 @@ The admin dashboard provides:
 
 ## Troubleshooting
 
-| Issue | Cause | Solution |
-|-------|-------|----------|
-| **"Firebase not defined"** | Firebase SDK not loaded | Add Firebase SDK scripts to HTML before config.js |
-| **"Access denied" error** | Security rules not configured | Apply security rules from this guide |
-| **Bookings not appearing** | No data in database | Create test bookings or check collection names |
-| **Auth state not persisting** | Persistence not enabled | Ensure `setPersistence(LOCAL)` in firebase-auth.js |
-| **CORS errors** | Domain not authorized | Add your domain to Firebase Console → Settings → Authorized domains |
-| **Real-time updates not working** | Listener not set up | Verify `listenToBookings()` is called and subscribed |
-| **Firestore offline persistence error** | IndexedDB not available | Check browser privacy settings or use incognito mode |
-| **Admin can't access dashboard** | User not marked as admin | Check Firestore `users` collection, verify `role: "admin"` |
-| **CSV export fails** | Admin role not verified | Confirm user has `role: "admin"` in Firestore |
-| **Email verification not sending** | SMTP not configured | Configure email in Firebase Console → Settings → Email templates |
+| Issue                                   | Cause                         | Solution                                                            |
+| --------------------------------------- | ----------------------------- | ------------------------------------------------------------------- |
+| **"Firebase not defined"**              | Firebase SDK not loaded       | Add Firebase SDK scripts to HTML before config.js                   |
+| **"Access denied" error**               | Security rules not configured | Apply security rules from this guide                                |
+| **Bookings not appearing**              | No data in database           | Create test bookings or check collection names                      |
+| **Auth state not persisting**           | Persistence not enabled       | Ensure `setPersistence(LOCAL)` in firebase-auth.js                  |
+| **CORS errors**                         | Domain not authorized         | Add your domain to Firebase Console → Settings → Authorized domains |
+| **Real-time updates not working**       | Listener not set up           | Verify `listenToBookings()` is called and subscribed                |
+| **Firestore offline persistence error** | IndexedDB not available       | Check browser privacy settings or use incognito mode                |
+| **Admin can't access dashboard**        | User not marked as admin      | Check Firestore `users` collection, verify `role: "admin"`          |
+| **CSV export fails**                    | Admin role not verified       | Confirm user has `role: "admin"` in Firestore                       |
+| **Email verification not sending**      | SMTP not configured           | Configure email in Firebase Console → Settings → Email templates    |
 
 ---
 

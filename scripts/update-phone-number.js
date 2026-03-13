@@ -32,12 +32,12 @@ const filesToUpdate = [
   '__tests__/main.test.js',
   'README.md',
   'CONTRIBUTING.md',
-  'NEW_FEATURES.md'
+  'NEW_FEATURES.md',
 ];
 
 let totalReplacements = 0;
 
-filesToUpdate.forEach(file => {
+filesToUpdate.forEach((file) => {
   const filePath = path.join(rootDir, file);
 
   if (!fs.existsSync(filePath)) {
@@ -65,6 +65,8 @@ filesToUpdate.forEach(file => {
   }
 });
 
-console.log(`\n🎉 Complete! Updated phone number in ${totalReplacements} locations across ${filesToUpdate.length} files.`);
+console.log(
+  `\n🎉 Complete! Updated phone number in ${totalReplacements} locations across ${filesToUpdate.length} files.`
+);
 console.log('Old number: (412) 752-8684');
 console.log('New number: (412) 752-8684');

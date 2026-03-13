@@ -8,7 +8,7 @@ const path = require('path');
 // This will work if you're logged in via Firebase CLI
 try {
   admin.initializeApp({
-    storageBucket: 'hands-detail.appspot.com'
+    storageBucket: 'hands-detail.appspot.com',
   });
 } catch (error) {
   console.log('Firebase already initialized or credentials issue. Trying to use config...');
@@ -24,9 +24,11 @@ async function uploadAudioFiles() {
       process.exit(1);
     }
 
-    const audioFiles = fs.readdirSync(audioDir).filter(file =>
-      ['.mp3', '.wav', '.m4a', '.ogg'].includes(path.extname(file).toLowerCase())
-    );
+    const audioFiles = fs
+      .readdirSync(audioDir)
+      .filter((file) =>
+        ['.mp3', '.wav', '.m4a', '.ogg'].includes(path.extname(file).toLowerCase())
+      );
 
     console.log(`Found ${audioFiles.length} audio files to upload\n`);
 
@@ -37,25 +39,25 @@ async function uploadAudioFiles() {
       const fileSize = fs.statSync(filePath).size;
       const fileSizeMB = (fileSize / 1024 / 1024).toFixed(2);
       const fileName = `audio/${file}`;
-      
+
       console.log(`\n⏳ Uploading: ${file} (${fileSizeMB} MB)`);
-      
+
       try {
         await bucket.upload(filePath, {
           destination: fileName,
           metadata: {
             cacheControl: 'public, max-age=31536000',
-            contentType: 'audio/mpeg'
-          }
+            contentType: 'audio/mpeg',
+          },
         });
 
         // Generate the download URL
         const url = `https://firebasestorage.googleapis.com/v0/b/hands-detail.appspot.com/o/audio%2F${encodeURIComponent(file)}?alt=media`;
-        
+
         uploadedFiles.push({
           fileName: file,
           firebaseUrl: url,
-          uploadedAt: new Date().toISOString()
+          uploadedAt: new Date().toISOString(),
         });
 
         console.log(`✓ Upload successful`);
@@ -73,24 +75,25 @@ async function uploadAudioFiles() {
 
       // Display summary
       console.log('=== Upload Summary ===');
-      uploadedFiles.forEach(file => {
+      uploadedFiles.forEach((file) => {
         console.log(`\n${file.fileName}`);
         console.log(`${file.firebaseUrl}`);
       });
     } else {
       console.log('\n⚠ No files were successfully uploaded');
     }
-
   } catch (error) {
     console.error('Error during upload:', error.message);
     process.exit(1);
   }
 }
 
-uploadAudioFiles().then(() => {
-  console.log('\n✓ All operations completed');
-  process.exit(0);
-}).catch(err => {
-  console.error('Fatal error:', err);
-  process.exit(1);
-});
+uploadAudioFiles()
+  .then(() => {
+    console.log('\n✓ All operations completed');
+    process.exit(0);
+  })
+  .catch((err) => {
+    console.error('Fatal error:', err);
+    process.exit(1);
+  });

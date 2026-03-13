@@ -12,6 +12,9 @@ export default [
       globals: {
         ...globals.browser,
         Tawk_API: 'readonly',
+        firebase: 'readonly',
+        emailjs: 'readonly',
+        gtag: 'readonly',
       },
     },
     rules: {
@@ -22,6 +25,23 @@ export default [
       eqeqeq: ['error', 'always'],
       curly: ['error', 'all'],
       'no-alert': 'warn',
+    },
+  },
+  {
+    files: ['email-integration.js', 'upload-audio.js', 'scripts/**/*.js'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+  {
+    files: ['__tests__/**/*.js'],
+    languageOptions: {
+      globals: {
+        ...globals.jest,
+        ...globals.node,
+      },
     },
   },
   {

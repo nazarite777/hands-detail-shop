@@ -13,9 +13,11 @@ Firebase Hosting provides a fast, secure, and reliable way to deploy your web ap
 ## Installation: Firebase CLI Setup
 
 ### Step 1: Install Node.js (if not already installed)
+
 Download and install from [nodejs.org](https://nodejs.org/) (LTS version recommended)
 
 ### Step 2: Install Firebase CLI
+
 Open your terminal/command prompt and run:
 
 ```bash
@@ -23,6 +25,7 @@ npm install -g firebase-tools
 ```
 
 Verify the installation:
+
 ```bash
 firebase --version
 ```
@@ -34,6 +37,7 @@ You should see a version number displayed (e.g., `firebase-tools/13.0.0` or high
 ## Login: Authenticate with Firebase
 
 ### Step 1: Connect to Your Firebase Account
+
 ```bash
 firebase login
 ```
@@ -41,6 +45,7 @@ firebase login
 This will open your browser to Google's authentication page. Sign in with the Google account that owns your Firebase project (hands-detail).
 
 ### Step 2: Verify Login
+
 ```bash
 firebase list
 ```
@@ -56,17 +61,21 @@ This command will display all projects associated with your account. You should 
 **When to use:** Testing, small updates, one-off deployments
 
 #### Step 1: Deploy from your project directory
+
 ```bash
 firebase deploy
 ```
 
 #### Step 2: Watch the deployment
+
 The CLI will show you:
+
 - Files being uploaded
 - Deployment progress
 - Your hosting URL when complete
 
 #### Step 3: Visit your site
+
 ```
 https://hands-detail.web.app
 ```
@@ -76,12 +85,14 @@ https://hands-detail.web.app
 **When to use:** Professional workflow, automatic updates on every code push
 
 #### Prerequisites:
+
 - GitHub account with your repository
 - All code committed to GitHub
 
 #### Setup Steps:
 
 1. **Connect GitHub to Firebase (One-time setup)**
+
    ```bash
    firebase init hosting
    ```
@@ -106,6 +117,7 @@ https://hands-detail.web.app
    - You'll see deployment status checks on every PR
 
 **Benefits:**
+
 - No manual deployment needed
 - Automatic backups before each deployment
 - Rollback capability with one click
@@ -128,20 +140,25 @@ This creates a temporary URL valid for 7 days (perfect for client reviews!)
 Your `firebase.json` file controls how Firebase Hosting serves your site:
 
 ### Public Directory
+
 ```json
 "public": "."
 ```
+
 - Points to the root of your project as the serving directory
 
 ### Ignore Patterns
+
 ```json
 "ignore": [...]
 ```
+
 - Files matching these patterns are NOT uploaded to Firebase
 - Reduces deployment size and improves speed
 - Includes: `firebase.json`, `.git`, `node_modules`, `__tests__`, `scripts`, markdown files
 
 ### Redirects
+
 ```json
 "redirects": [
   {
@@ -151,10 +168,12 @@ Your `firebase.json` file controls how Firebase Hosting serves your site:
   }
 ]
 ```
+
 - Permanently redirects `/admin` to `/admin-dashboard.html`
 - HTTP 301 (permanent) preserves SEO value
 
 ### Rewrites for SPA Routing
+
 ```json
 "rewrites": [
   {
@@ -163,20 +182,25 @@ Your `firebase.json` file controls how Firebase Hosting serves your site:
   }
 ]
 ```
+
 - All requests route to `index.html` (single-page app behavior)
 - Allows client-side JavaScript routing using your `main.js` router
 
 ### Caching Headers
+
 ```json
 "headers": [...]
 ```
+
 - **HTML files:** 5-minute cache (content updates quickly)
 - **JS & CSS:** 1-year immutable cache (versioned filenames allow this)
 - **Images & Fonts:** 1-year cache
 - **Service Worker:** 0-second cache (always fresh)
 
 ### Security Headers
+
 All responses include:
+
 - **X-Frame-Options:** Prevents clickjacking attacks
 - **X-XSS-Protection:** Enables browser XSS filtering
 - **Referrer-Policy:** Controls referrer information
@@ -187,25 +211,30 @@ All responses include:
 ## Performance Features & Benefits
 
 ### Global CDN Distribution
+
 - Your content is cached on servers worldwide
 - Users download from the nearest location
 - Typical page load: < 1 second for most users
 
 ### Automatic HTTPS
+
 - Free SSL certificate (Let's Encrypt)
 - All traffic encrypted
 - Automatic redirects from HTTP to HTTPS
 
 ### HTTP/2 and Modern Compression
+
 - Firebase uses latest web standards
 - Automatic gzip compression
 - Multiplexed requests for faster loading
 
 ### Image Optimization
+
 - Serves next-gen formats (WebP) when supported
 - Automatic responsive image delivery
 
 ### Instant Rollback
+
 - Every deployment creates a snapshot
 - Rollback to previous version in seconds
 - No downtime during rollback
@@ -217,11 +246,13 @@ All responses include:
 Once deployed, your site is available at:
 
 **Primary URL:**
+
 ```
 https://hands-detail.web.app
 ```
 
 **Alternative URL:**
+
 ```
 https://hands-detail.firebaseapp.com
 ```
@@ -259,6 +290,7 @@ Before each deployment, verify:
 ## Useful Firebase Hosting Commands
 
 ### Deployment
+
 ```bash
 # Standard deployment
 firebase deploy
@@ -274,6 +306,7 @@ firebase hosting:channel:deploy preview-branch --expires 7d
 ```
 
 ### Management
+
 ```bash
 # List all deployments
 firebase hosting:list
@@ -290,6 +323,7 @@ firebase hosting:log
 ```
 
 ### Testing Locally
+
 ```bash
 # Start local development server
 firebase serve
@@ -299,6 +333,7 @@ firebase serve
 ```
 
 ### Cleanup
+
 ```bash
 # Delete a preview channel
 firebase hosting:channel:delete preview-v1
@@ -311,16 +346,19 @@ firebase hosting:channel:delete preview-v1
 Your deployment automatically integrates with:
 
 ### Firebase Realtime Database
+
 - Store bookings, customer data, and reviews
 - Syncs across all users in real-time
 - Security rules protect sensitive data
 
 ### Google Analytics
+
 - Track visitor behavior and conversion metrics
 - Already configured in your JavaScript files
 - View reports in Firebase Console
 
 ### Firestore (if using)
+
 - Modern serverless database
 - Better for complex queries
 - Scales automatically with traffic
@@ -330,18 +368,22 @@ Your deployment automatically integrates with:
 ## Security Notes
 
 ### Security Headers Applied
+
 All responses include headers that:
+
 - Prevent clickjacking attacks (X-Frame-Options)
 - Block XSS attacks (X-XSS-Protection)
 - Enforce HTTPS (via automatic redirects)
 - Control which features scripts can access (Permissions-Policy)
 
 ### Caching Strategy
+
 - **Short cache (5 min) for HTML:** Allows quick content updates
 - **Long cache (1 year) for assets:** Requires fingerprinting in build process
   - Example: `main.a1b2c3d4.js` ensures cache busting
 
 ### Best Practices
+
 1. **Never commit secrets** - Use environment variables or Cloud Functions
 2. **Use HTTPS everywhere** - Firebase enforces this automatically
 3. **Keep dependencies updated** - Run `npm audit fix` regularly
@@ -355,27 +397,33 @@ All responses include headers that:
 ### For First-Time Deployment:
 
 1. **Open terminal in your project directory**
+
    ```bash
    cd C:\Users\cbevv\hands-detail-shop
    ```
 
 2. **Install Firebase CLI**
+
    ```bash
    npm install -g firebase-tools
    ```
 
 3. **Login to Firebase**
+
    ```bash
    firebase login
    ```
 
 4. **Test deployment locally**
+
    ```bash
    firebase serve
    ```
+
    Visit `http://localhost:5000` to preview your site
 
 5. **Deploy to production**
+
    ```bash
    firebase deploy
    ```
@@ -390,6 +438,7 @@ All responses include headers that:
 1. **Complete steps 1-3 above**
 
 2. **Initialize hosting with GitHub integration**
+
    ```bash
    firebase init hosting
    ```
@@ -404,18 +453,18 @@ All responses include headers that:
 
 ### Common Issues and Solutions
 
-| Issue | Cause | Solution |
-|-------|-------|----------|
-| "Cannot find firebase.json" | File not in project root | Verify `firebase.json` is in `C:\Users\cbevv\hands-detail-shop\` |
-| "Project not found" | Firebase project not set | Run `firebase use hands-detail` or check `.firebaserc` |
-| "Permission denied" | Not logged in or wrong account | Run `firebase login` and select correct Google account |
-| "Deployment failed: size too large" | node_modules or large files uploaded | Check `ignore` patterns in `firebase.json` |
-| "404 errors after deployment" | Assets not found | Verify `public` directory and file paths are correct |
-| "Service worker not updating" | Browser caching | Service worker refreshes on next page reload |
-| "Site shows wrong content" | Rollback needed | Run `firebase hosting:rollback` |
-| "CSS/JS not loading" | Cache issue in browser | Hard refresh: `Ctrl+Shift+R` (Windows) or `Cmd+Shift+R` (Mac) |
-| "Preview channel won't delete" | Channel still active | Wait a few minutes or specify exact channel name |
-| "GitHub integration not working" | Authorization failed | Re-run `firebase init hosting` and re-authorize |
+| Issue                               | Cause                                | Solution                                                         |
+| ----------------------------------- | ------------------------------------ | ---------------------------------------------------------------- |
+| "Cannot find firebase.json"         | File not in project root             | Verify `firebase.json` is in `C:\Users\cbevv\hands-detail-shop\` |
+| "Project not found"                 | Firebase project not set             | Run `firebase use hands-detail` or check `.firebaserc`           |
+| "Permission denied"                 | Not logged in or wrong account       | Run `firebase login` and select correct Google account           |
+| "Deployment failed: size too large" | node_modules or large files uploaded | Check `ignore` patterns in `firebase.json`                       |
+| "404 errors after deployment"       | Assets not found                     | Verify `public` directory and file paths are correct             |
+| "Service worker not updating"       | Browser caching                      | Service worker refreshes on next page reload                     |
+| "Site shows wrong content"          | Rollback needed                      | Run `firebase hosting:rollback`                                  |
+| "CSS/JS not loading"                | Cache issue in browser               | Hard refresh: `Ctrl+Shift+R` (Windows) or `Cmd+Shift+R` (Mac)    |
+| "Preview channel won't delete"      | Channel still active                 | Wait a few minutes or specify exact channel name                 |
+| "GitHub integration not working"    | Authorization failed                 | Re-run `firebase init hosting` and re-authorize                  |
 
 ### Getting Help
 
@@ -430,6 +479,7 @@ All responses include headers that:
    - [CLI Reference](https://firebase.google.com/docs/cli)
 
 3. **Check Deployment Logs:**
+
    ```bash
    firebase hosting:log
    ```
@@ -445,20 +495,24 @@ All responses include headers that:
 ## Performance Optimization Tips
 
 ### Reduce Bundle Size
+
 - Remove unused CSS
 - Optimize images (use WebP format)
 - Minify JavaScript and CSS
 - Use async/defer for script loading
 
 ### Improve Cache Hit Ratio
+
 - Use content hashing in filenames (`main.a1b2c3d4.js`)
 - Separate frequently-changed content (HTML) from static assets
 - Leverage browser caching with long TTLs
 
 ### Monitor Performance
+
 ```bash
 # Check your site's performance in Firebase Console
 ```
+
 - View Core Web Vitals
 - Monitor loading times by location
 - Track error rates
@@ -588,11 +642,11 @@ You're now ready to deploy Hands Detail Shop! With Firebase Hosting, you have a 
 ✅ **Secure** - Free HTTPS, security headers, DDoS protection  
 ✅ **Reliable** - 99.95% uptime SLA  
 ✅ **Simple** - Deploy with a single command  
-✅ **Scalable** - Handles traffic spikes automatically  
+✅ **Scalable** - Handles traffic spikes automatically
 
 **Good luck with your deployment! Your customers are waiting.** 🚀
 
 ---
 
-*Last Updated: February 18, 2026*  
-*For Hands Detail Shop - Professional Auto Detailing Service*
+_Last Updated: February 18, 2026_  
+_For Hands Detail Shop - Professional Auto Detailing Service_

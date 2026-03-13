@@ -1,1127 +1,1769 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
     <title>Mechanical Services & Auto Repair | Under The Hood | Pittsburgh</title>
-    <meta name="title" content="Mechanical Services & Auto Repair | Under The Hood | Hands Detail Shop">
-    <meta name="description" content="Professional mechanical and automotive repair services in Pittsburgh. Diagnostics, electrical, fluid maintenance, drivetrain work. Transparent pricing, upfront deposits, mobile service available.">
-    <meta name="keywords" content="auto repair Pittsburgh, mechanical services, automotive diagnostics, car repair, transmission repair, electrical services, fluid services, auto mechanic">
-    <meta name="author" content="Nazir El - Hands Detail Shop">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
-    <meta name="revisit-after" content="7 days">
+    <meta
+      name="title"
+      content="Mechanical Services & Auto Repair | Under The Hood | Hands Detail Shop"
+    />
+    <meta
+      name="description"
+      content="Professional mechanical and automotive repair services in Pittsburgh. Diagnostics, electrical, fluid maintenance, drivetrain work. Transparent pricing, upfront deposits, mobile service available."
+    />
+    <meta
+      name="keywords"
+      content="auto repair Pittsburgh, mechanical services, automotive diagnostics, car repair, transmission repair, electrical services, fluid services, auto mechanic"
+    />
+    <meta name="author" content="Nazir El - Hands Detail Shop" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://handsdetailshop.com/under-the-hood.html">
+    <link rel="canonical" href="https://handsdetailshop.com/under-the-hood.html" />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://handsdetailshop.com/under-the-hood.html">
-    <meta property="og:title" content="Professional Mechanical Services & Auto Repair | Hands Detail Shop">
-    <meta property="og:description" content="Expert automotive diagnostics, electrical work, fluid maintenance, and drivetrain services with transparent pricing in Pittsburgh.">
-    <meta property="og:image" content="https://handsdetailshop.com/20200723_030424~2.png">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:site_name" content="Hands Detail Shop">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://handsdetailshop.com/under-the-hood.html" />
+    <meta
+      property="og:title"
+      content="Professional Mechanical Services & Auto Repair | Hands Detail Shop"
+    />
+    <meta
+      property="og:description"
+      content="Expert automotive diagnostics, electrical work, fluid maintenance, and drivetrain services with transparent pricing in Pittsburgh."
+    />
+    <meta property="og:image" content="https://handsdetailshop.com/20200723_030424~2.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content="Hands Detail Shop" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://handsdetailshop.com/under-the-hood.html">
-    <meta property="twitter:title" content="Professional Mechanical Services | Hands Detail Shop">
-    <meta property="twitter:description" content="Expert auto repair, diagnostics, and maintenance in Pittsburgh area.">
-    <meta property="twitter:image" content="https://handsdetailshop.com/20200723_030424~2.png">
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://handsdetailshop.com/under-the-hood.html" />
+    <meta property="twitter:title" content="Professional Mechanical Services | Hands Detail Shop" />
+    <meta
+      property="twitter:description"
+      content="Expert auto repair, diagnostics, and maintenance in Pittsburgh area."
+    />
+    <meta property="twitter:image" content="https://handsdetailshop.com/20200723_030424~2.png" />
 
     <!-- Business Contact Info -->
-    <meta name="geo.region" content="US-PA">
-    <meta name="geo.placename" content="Pittsburgh, Pennsylvania">
+    <meta name="geo.region" content="US-PA" />
+    <meta name="geo.placename" content="Pittsburgh, Pennsylvania" />
 
     <!-- Theme Color -->
-    <meta name="theme-color" content="#1565c0">
-    <meta name="msapplication-TileColor" content="#1565c0">
+    <meta name="theme-color" content="#1565c0" />
+    <meta name="msapplication-TileColor" content="#1565c0" />
     <!-- PWA Meta Tags -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Hands Detail">
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Hands Detail" />
 
     <!-- PWA Icons -->
-    <link rel="apple-touch-icon" href="/20200723_030424~2.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/20200723_030424~2.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/20200723_030424~2.png">
+    <link rel="apple-touch-icon" href="/20200723_030424~2.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/20200723_030424~2.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/20200723_030424~2.png" />
 
     <!-- Web App Manifest -->
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="/manifest.json" />
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
 
     <style>
-        /* Under The Hood Page Styles */
+      /* Under The Hood Page Styles */
+      .uth-service-nav {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 12px;
+        margin-bottom: 50px;
+        border: 1px solid rgba(66, 165, 245, 0.2);
+      }
+      .uth-service-nav a {
+        color: #90caf9;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        background: rgba(21, 101, 192, 0.15);
+        border: 1px solid rgba(66, 165, 245, 0.2);
+        transition: all 0.3s ease;
+        white-space: nowrap;
+      }
+      .uth-service-nav a:hover {
+        background: rgba(21, 101, 192, 0.4);
+        border-color: rgba(66, 165, 245, 0.5);
+        color: white;
+        transform: translateY(-2px);
+      }
+      .uth-category-header {
+        font-size: 2rem;
+        color: #64b5f6;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        scroll-margin-top: 100px;
+      }
+      .uth-category-header span {
+        font-size: 2.5rem;
+      }
+      .uth-labor-note {
+        color: #b0b0b0;
+        margin-bottom: 25px;
+        font-size: 0.95rem;
+        font-style: italic;
+      }
+      .uth-price-primary {
+        color: #64b5f6;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .uth-price-parts {
+        color: #90caf9;
+        margin-bottom: 15px;
+        font-size: 0.85rem;
+      }
+      .uth-how-it-works {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 25px;
+      }
+      .uth-how-it-works p:first-child {
+        color: #90caf9;
+        font-weight: bold;
+      }
+      .uth-how-it-works p:last-child {
+        color: #b3d9ff;
+        font-size: 0.9rem;
+        margin-top: 5px;
+      }
+      .uth-faq-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+      }
+      .uth-faq-card {
+        background: rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        border-radius: 8px;
+      }
+      .uth-faq-card p:first-child {
+        color: #64b5f6;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .uth-faq-card p:last-child {
+        color: #b0b0b0;
+        font-size: 0.9rem;
+      }
+      .uth-payment-card {
+        background: rgba(40, 40, 45, 0.6);
+        border: 1px solid rgba(66, 165, 245, 0.3);
+        border-radius: 15px;
+        padding: 30px;
+      }
+      .uth-payment-card h3 {
+        color: #64b5f6;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .uth-payment-card h3 span {
+        font-size: 1.8rem;
+      }
+      .uth-payment-card ul {
+        color: #a0a0a0;
+        line-height: 1.8;
+      }
+      .uth-payment-highlight {
+        background: rgba(21, 101, 192, 0.2);
+        border: 2px solid rgba(66, 165, 245, 0.5);
+      }
+      .uth-checkbox-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .uth-checkbox-group label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        color: #b3d9ff;
+      }
+      .uth-checkbox-group input[type='checkbox'] {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+      }
+      .uth-checkbox-heading {
+        grid-column: 1 / -1;
+        color: #64b5f6;
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: 8px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid rgba(66, 165, 245, 0.2);
+      }
+      @media (max-width: 600px) {
+        .uth-checkbox-group {
+          grid-template-columns: 1fr;
+        }
         .uth-service-nav {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 20px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 12px;
-            margin-bottom: 50px;
-            border: 1px solid rgba(66, 165, 245, 0.2);
+          gap: 8px;
         }
         .uth-service-nav a {
-            color: #90caf9;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            background: rgba(21, 101, 192, 0.15);
-            border: 1px solid rgba(66, 165, 245, 0.2);
-            transition: all 0.3s ease;
-            white-space: nowrap;
+          padding: 8px 14px;
+          font-size: 0.8rem;
         }
-        .uth-service-nav a:hover {
-            background: rgba(21, 101, 192, 0.4);
-            border-color: rgba(66, 165, 245, 0.5);
-            color: white;
-            transform: translateY(-2px);
-        }
-        .uth-category-header {
-            font-size: 2rem;
-            color: #64b5f6;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            scroll-margin-top: 100px;
-        }
-        .uth-category-header span {
-            font-size: 2.5rem;
-        }
-        .uth-labor-note {
-            color: #b0b0b0;
-            margin-bottom: 25px;
-            font-size: 0.95rem;
-            font-style: italic;
-        }
-        .uth-price-primary {
-            color: #64b5f6;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .uth-price-parts {
-            color: #90caf9;
-            margin-bottom: 15px;
-            font-size: 0.85rem;
-        }
-        .uth-how-it-works {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-        }
-        .uth-how-it-works p:first-child {
-            color: #90caf9;
-            font-weight: bold;
-        }
-        .uth-how-it-works p:last-child {
-            color: #b3d9ff;
-            font-size: 0.9rem;
-            margin-top: 5px;
-        }
-        .uth-faq-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        .uth-faq-card {
-            background: rgba(0,0,0,0.2);
-            padding: 20px;
-            border-radius: 8px;
-        }
-        .uth-faq-card p:first-child {
-            color: #64b5f6;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .uth-faq-card p:last-child {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-        }
-        .uth-payment-card {
-            background: rgba(40, 40, 45, 0.6);
-            border: 1px solid rgba(66, 165, 245, 0.3);
-            border-radius: 15px;
-            padding: 30px;
-        }
-        .uth-payment-card h3 {
-            color: #64b5f6;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .uth-payment-card h3 span {
-            font-size: 1.8rem;
-        }
-        .uth-payment-card ul {
-            color: #a0a0a0;
-            line-height: 1.8;
-        }
-        .uth-payment-highlight {
-            background: rgba(21, 101, 192, 0.2);
-            border: 2px solid rgba(66, 165, 245, 0.5);
-        }
-        .uth-checkbox-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-        .uth-checkbox-group label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            color: #b3d9ff;
-        }
-        .uth-checkbox-group input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-        }
-        .uth-checkbox-heading {
-            grid-column: 1 / -1;
-            color: #64b5f6;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 8px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid rgba(66, 165, 245, 0.2);
-        }
-        @media (max-width: 600px) {
-            .uth-checkbox-group {
-                grid-template-columns: 1fr;
-            }
-            .uth-service-nav {
-                gap: 8px;
-            }
-            .uth-service-nav a {
-                padding: 8px 14px;
-                font-size: 0.8rem;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header Navigation -->
     <header id="header">
-        <div class="nav-container">
-            <div class="logo-section">
-                <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="20200723_030424~2.png" alt="Hands Detail Shop Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div style="display: none; font-size: 1.5rem; font-weight: 800; color: #c0c0c0; font-style: italic;">HANDS DETAIL</div>
-                </a>
+      <div class="nav-container">
+        <div class="logo-section">
+          <a href="index.html" style="display: flex; align-items: center; text-decoration: none">
+            <img
+              src="20200723_030424~2.png"
+              alt="Hands Detail Shop Logo"
+              class="logo-img"
+              onerror="
+                this.style.display = 'none';
+                this.nextElementSibling.style.display = 'block';
+              "
+            />
+            <div
+              style="
+                display: none;
+                font-size: 1.5rem;
+                font-weight: 800;
+                color: #c0c0c0;
+                font-style: italic;
+              "
+            >
+              HANDS DETAIL
             </div>
-
-            <nav class="nav-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="our-story.html" class="nav-link">Our Story</a>
-                <div class="services-dropdown">
-                    <button class="services-dropdown-btn nav-link" onclick="toggleServicesDropdown(this)">Services</button>
-                    <div class="dropdown-menu">
-                        <a href="services.html" class="dropdown-item">📋 All Services Overview</a>
-                        <a href="personal-vehicles.html" class="dropdown-item">🚗 Personal Vehicles</a>
-                        <a href="marine-services.html" class="dropdown-item">🛥️ Yacht & RV</a>
-                        <a href="fleet-services.html" class="dropdown-item">🚛 Fleet & Commercial</a>
-                        <a href="motorcycle-services.html" class="dropdown-item">🏍️ Motorcycle</a>
-                        <a href="aircraft-services.html" class="dropdown-item">✈️ Aircraft</a>
-                        <a href="under-the-hood.html" class="dropdown-item">⚙️ Mechanical Services</a>
-                    </div>
-                </div>
-                <a href="membership.html" class="nav-link">Membership</a>
-                <a href="quote.html" class="nav-link">Quote</a>
-                <a href="reviews.html" class="nav-link">Reviews</a>
-                <a href="https://handsdetailshop.medium.com" target="_blank" class="nav-link">Blog</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <a href="careers.html" class="nav-link">Careers</a>
-            </nav>
-
-            <div class="contact-header">
-                <span class="hours-header">🕒 Mon-Sat 8AM-6PM</span>
-                <a href="tel:4127528684" class="btn-call">📞 Call</a>
-                <a href="sms:4127528684" class="btn-text">💬 Text</a>
-                <a href="#" onclick="openBookingModal(); return false;" class="cta-header">Book Now</a>
-            </div>
-
-            <div class="mobile-menu-toggle" id="mobileToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+          </a>
         </div>
 
-        <nav class="mobile-nav" id="mobileNav">
-            <a href="index.html">Home</a>
-            <a href="our-story.html">Our Story</a>
-            <a href="services.html">All Services Overview</a>
-            <a href="personal-vehicles.html">🚗 Personal Vehicles</a>
-            <a href="marine-services.html">🛥️ Yacht & RV</a>
-            <a href="fleet-services.html">🚛 Fleet & Commercial</a>
-            <a href="motorcycle-services.html">🏍️ Motorcycle</a>
-            <a href="aircraft-services.html">✈️ Aircraft</a>
-            <a href="under-the-hood.html">⚙️ Mechanical Services</a>
-            <a href="membership.html">Membership</a>
-            <a href="quote.html">Get Quote</a>
-            <a href="reviews.html">Reviews</a>
-            <a href="https://medium.com/@handsdetailshop" target="_blank">Blog</a>
-            <a href="contact.html">Contact</a>
-            <a href="tel:4127528684" style="background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">📞 Call Now</a>
-            <a href="sms:4127528684" style="background: rgba(50,50,50,0.5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">💬 Text Now</a>
+        <nav class="nav-menu">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="our-story.html" class="nav-link">Our Story</a>
+          <div class="services-dropdown">
+            <button class="services-dropdown-btn nav-link" onclick="toggleServicesDropdown(this)">
+              Services
+            </button>
+            <div class="dropdown-menu">
+              <a href="services.html" class="dropdown-item">📋 All Services Overview</a>
+              <a href="personal-vehicles.html" class="dropdown-item">🚗 Personal Vehicles</a>
+              <a href="marine-services.html" class="dropdown-item">🛥️ Yacht & RV</a>
+              <a href="fleet-services.html" class="dropdown-item">🚛 Fleet & Commercial</a>
+              <a href="motorcycle-services.html" class="dropdown-item">🏍️ Motorcycle</a>
+              <a href="aircraft-services.html" class="dropdown-item">✈️ Aircraft</a>
+              <a href="under-the-hood.html" class="dropdown-item">⚙️ Mechanical Services</a>
+            </div>
+          </div>
+          <a href="membership.html" class="nav-link">Membership</a>
+          <a href="quote.html" class="nav-link">Quote</a>
+          <a href="reviews.html" class="nav-link">Reviews</a>
+          <a href="https://handsdetailshop.medium.com" target="_blank" class="nav-link">Blog</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="careers.html" class="nav-link">Careers</a>
         </nav>
+
+        <div class="contact-header">
+          <span class="hours-header">🕒 Mon-Sat 8AM-6PM</span>
+          <a href="tel:4127528684" class="btn-call">📞 Call</a>
+          <a href="sms:4127528684" class="btn-text">💬 Text</a>
+          <a
+            href="#"
+            onclick="
+              openBookingModal();
+              return false;
+            "
+            class="cta-header"
+            >Book Now</a
+          >
+        </div>
+
+        <div class="mobile-menu-toggle" id="mobileToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <nav class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="our-story.html">Our Story</a>
+        <a href="services.html">All Services Overview</a>
+        <a href="personal-vehicles.html">🚗 Personal Vehicles</a>
+        <a href="marine-services.html">🛥️ Yacht & RV</a>
+        <a href="fleet-services.html">🚛 Fleet & Commercial</a>
+        <a href="motorcycle-services.html">🏍️ Motorcycle</a>
+        <a href="aircraft-services.html">✈️ Aircraft</a>
+        <a href="under-the-hood.html">⚙️ Mechanical Services</a>
+        <a href="membership.html">Membership</a>
+        <a href="quote.html">Get Quote</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="https://medium.com/@handsdetailshop" target="_blank">Blog</a>
+        <a href="contact.html">Contact</a>
+        <a
+          href="tel:4127528684"
+          style="
+            background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5);
+            text-align: center;
+            margin-top: 10px;
+            border: 1px solid rgba(160, 160, 160, 0.3);
+          "
+          >📞 Call Now</a
+        >
+        <a
+          href="sms:4127528684"
+          style="
+            background: rgba(50, 50, 50, 0.5);
+            text-align: center;
+            margin-top: 10px;
+            border: 1px solid rgba(160, 160, 160, 0.3);
+          "
+          >💬 Text Now</a
+        >
+      </nav>
     </header>
 
     <!-- Promotional Banner -->
-    <div class="promo-banner" style="margin-top: 70px;">
-        🎊 MECHANICAL SERVICES NOW AVAILABLE | Free Consultation With Every Diagnostic | 50% Deposit Secures Parts | 📞 (412) 752-8684
+    <div class="promo-banner" style="margin-top: 70px">
+      🎊 MECHANICAL SERVICES NOW AVAILABLE | Free Consultation With Every Diagnostic | 50% Deposit
+      Secures Parts | 📞 (412) 752-8684
     </div>
 
     <!-- Hero Section -->
-    <section style="padding-top: 180px; padding-bottom: 80px; background: linear-gradient(135deg, #0d1b2a 0%, #1a2942 50%, #0d1b2a 100%); position: relative; overflow: hidden; text-align: center;">
-        <div class="section-container" style="z-index: 2; position: relative;">
-            <h1 style="font-size: 3.5rem; color: #e0e0e0; margin-bottom: 15px; font-weight: 900; letter-spacing: -1px;">
-                ⚙️ Under The Hood
-            </h1>
-            <p style="font-size: 1.3rem; color: #b3d9ff; margin-bottom: 10px;">
-                Professional Mechanical Services &bull; Transparent Pricing &bull; No Surprises
-            </p>
-            <p style="font-size: 1rem; color: #90caf9; margin-bottom: 30px; max-width: 650px; margin-left: auto; margin-right: auto;">
-                Air Force diesel &amp; jet mechanic background. 16 years hands-on experience. We diagnose first, explain everything, and you decide what gets fixed.
-            </p>
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="#" onclick="openBookingModal(); return false;" class="cta-button" style="font-size: 1.1rem;">📅 Schedule Service</a>
-                <a href="tel:4127528684" class="cta-button" style="background: rgba(66, 165, 245, 0.2); border: 2px solid #42a5f5; font-size: 1.1rem;">📞 (412) 752-8684</a>
-            </div>
+    <section
+      style="
+        padding-top: 180px;
+        padding-bottom: 80px;
+        background: linear-gradient(135deg, #0d1b2a 0%, #1a2942 50%, #0d1b2a 100%);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      "
+    >
+      <div class="section-container" style="z-index: 2; position: relative">
+        <h1
+          style="
+            font-size: 3.5rem;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+            font-weight: 900;
+            letter-spacing: -1px;
+          "
+        >
+          ⚙️ Under The Hood
+        </h1>
+        <p style="font-size: 1.3rem; color: #b3d9ff; margin-bottom: 10px">
+          Professional Mechanical Services &bull; Transparent Pricing &bull; No Surprises
+        </p>
+        <p
+          style="
+            font-size: 1rem;
+            color: #90caf9;
+            margin-bottom: 30px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        >
+          Air Force diesel &amp; jet mechanic background. 16 years hands-on experience. We diagnose
+          first, explain everything, and you decide what gets fixed.
+        </p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap">
+          <a
+            href="#"
+            onclick="
+              openBookingModal();
+              return false;
+            "
+            class="cta-button"
+            style="font-size: 1.1rem"
+            >📅 Schedule Service</a
+          >
+          <a
+            href="tel:4127528684"
+            class="cta-button"
+            style="
+              background: rgba(66, 165, 245, 0.2);
+              border: 2px solid #42a5f5;
+              font-size: 1.1rem;
+            "
+            >📞 (412) 752-8684</a
+          >
         </div>
-        <div style="position: absolute; top: -50px; right: -50px; font-size: 25rem; opacity: 0.03; z-index: 1;">⚙️</div>
+      </div>
+      <div
+        style="
+          position: absolute;
+          top: -50px;
+          right: -50px;
+          font-size: 25rem;
+          opacity: 0.03;
+          z-index: 1;
+        "
+      >
+        ⚙️
+      </div>
     </section>
 
     <!-- Main Services Section -->
-    <section class="detail-section" id="service-tiers" style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border-top: 1px solid rgba(66, 165, 245, 0.3);">
-        <div class="section-container">
-
-            <!-- Quick Jump Nav -->
-            <div class="uth-service-nav">
-                <a href="#diagnostics">🔍 Diagnostics</a>
-                <a href="#electrical">⚡ Electrical</a>
-                <a href="#fluids">🛢️ Fluids</a>
-                <a href="#engine">🔧 Engine</a>
-                <a href="#drivetrain">⚙️ Drivetrain</a>
-                <a href="#brakes">🛑 Brakes &amp; Suspension</a>
-            </div>
-
-            <!-- HOW PRICING WORKS -->
-            <div style="background: rgba(66, 165, 245, 0.08); border-left: 4px solid #42a5f5; padding: 30px; margin-bottom: 60px; border-radius: 8px;">
-                <h4 style="color: #64b5f6; font-size: 1.3rem; margin-bottom: 20px;">💡 How Our Pricing Works — No Surprises, Ever</h4>
-                <div class="uth-how-it-works">
-                    <div>
-                        <p>1️⃣ Diagnosis First</p>
-                        <p>Pay the diagnostic fee upfront. We tell you exactly what's wrong — in plain language.</p>
-                    </div>
-                    <div>
-                        <p>2️⃣ You See The Quote</p>
-                        <p>Labor hours × <strong>$75/hr</strong> + parts cost. Everything itemized. No mystery fees.</p>
-                    </div>
-                    <div>
-                        <p>3️⃣ You Approve</p>
-                        <p>We don't order a single part or turn a single wrench until you say go.</p>
-                    </div>
-                    <div>
-                        <p>4️⃣ We Fix It Right</p>
-                        <p>Work completed, verified, road-tested. You pay the balance when it's done.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== DIAGNOSTICS ===== -->
-            <div id="diagnostics" style="margin-bottom: 70px;">
-                <div style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(102, 187, 106, 0.2)); border: 2px solid #66bb6a; border-radius: 12px; padding: 40px; text-align: center;">
-                    <h3 style="font-size: 1.8rem; color: #81c784; margin-bottom: 15px; scroll-margin-top: 100px;">🔍 Step 1: Professional Diagnosis</h3>
-                    <p style="font-size: 1.05rem; color: #c8e6c9; margin-bottom: 30px;">Not sure what's wrong? Start here. We scan, inspect, and explain everything. Then you decide.</p>
-
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px;">
-                        <div style="background: rgba(0,0,0,0.3); padding: 25px; border-radius: 8px;">
-                            <div style="font-size: 2rem; margin-bottom: 10px;">🚗</div>
-                            <strong style="color: white; font-size: 1.1rem;">Basic Diagnostic</strong>
-                            <p style="color: #66bb6a; margin-top: 10px; font-size: 1.2rem; font-weight: 700;">$50</p>
-                            <p style="color: #ccc; font-size: 0.85rem; margin-top: 8px;">OBD-II scan, error code readout, visual inspection, verbal consultation. ~45 minutes.</p>
-                        </div>
-                        <div style="background: rgba(0,0,0,0.3); padding: 25px; border-radius: 8px; border: 2px solid #66bb6a;">
-                            <div style="font-size: 2rem; margin-bottom: 10px;">✨</div>
-                            <strong style="color: #81c784; font-size: 1.1rem;">Advanced Diagnostic</strong>
-                            <p style="color: #66bb6a; margin-top: 10px; font-size: 1.2rem; font-weight: 700;">$100</p>
-                            <p style="color: #ccc; font-size: 0.85rem; margin-top: 8px;">Multi-system scan, full written report with photos, parts & labor estimate, 24-hour follow-up consultation. ~1.5–2 hours.</p>
-                        </div>
-                    </div>
-
-                    <button onclick="openBookingModal('Diagnostic Service')" class="package-btn" style="background: linear-gradient(135deg, #66bb6a, #4caf50); font-size: 1.1rem; padding: 15px 40px;">📅 Book Your Diagnostic</button>
-                </div>
-            </div>
-
-            <!-- ===== ELECTRICAL & SENSORS ===== -->
-            <div id="electrical" style="margin-bottom: 70px;">
-                <h3 class="uth-category-header"><span>⚡</span> Electrical &amp; Sensor Services</h3>
-                <p class="uth-labor-note">Labor: $75/hour. Parts quoted after diagnosis & ordered with your approval.</p>
-                <div class="package-grid">
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3 class="package-title">Spark Plugs & Coils</h3>
-                            <div class="package-price">$95 – $150</div>
-                            <p class="package-tier">Labor + Parts</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Spark plug removal & install</li>
-                                <li>✓ Coil pack inspection & replacement</li>
-                                <li>✓ Performance verification</li>
-                                <li>✓ 60-day parts warranty</li>
-                            </ul>
-                            <button onclick="openBookingModal('Spark Plugs & Coils')" class="package-btn">Schedule Service</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3 class="package-title">Solenoid Replacement</h3>
-                            <div class="package-price">$150 – $250</div>
-                            <p class="package-tier">Labor + Parts</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Diagnostic scan included</li>
-                                <li>✓ Solenoid removal & replacement</li>
-                                <li>✓ System testing & verification</li>
-                                <li>✓ 30-day labor warranty</li>
-                            </ul>
-                            <button onclick="openBookingModal('Solenoid Replacement')" class="package-btn">Schedule Service</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3 class="package-title">Sensor Diagnosis & Repair</h3>
-                            <div class="package-price">$80 – $200</div>
-                            <p class="package-tier">Labor + Parts</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ O2, temp, MAF, fuel sensors</li>
-                                <li>✓ Diagnosis & removal</li>
-                                <li>✓ Replacement & system retest</li>
-                                <li>✓ 30-day parts warranty</li>
-                            </ul>
-                            <button onclick="openBookingModal('Sensor Repair')" class="package-btn">Schedule Service</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== FLUIDS & MAINTENANCE ===== -->
-            <div id="fluids" style="margin-bottom: 70px;">
-                <h3 class="uth-category-header"><span>🛢️</span> Fluids &amp; Maintenance</h3>
-                <p class="uth-labor-note">Preventive maintenance keeps your vehicle running right. These services pay for themselves.</p>
-                <div class="package-grid">
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3 class="package-title">Oil Change</h3>
-                            <div class="package-price">$45 – $75</div>
-                            <p class="package-tier">Conventional or Synthetic</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Drain & refill</li>
-                                <li>✓ Filter replacement</li>
-                                <li>✓ Fluid level check</li>
-                                <li>✓ Service documentation</li>
-                            </ul>
-                            <button onclick="openBookingModal('Oil Change')" class="package-btn">Schedule Service</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header executive">
-                            <div class="package-badge">RECOMMENDED</div>
-                            <h3 class="package-title">Full Fluid Service</h3>
-                            <div class="package-price">$175 – $300</div>
-                            <p class="package-tier">Complete Fluid Exchange</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Transmission fluid exchange</li>
-                                <li>✓ Coolant flush & refill</li>
-                                <li>✓ Brake fluid service</li>
-                                <li>✓ Power steering flush</li>
-                                <li>✓ Performance verification</li>
-                            </ul>
-                            <button onclick="openBookingModal('Full Fluid Service')" class="package-btn executive">Schedule Service</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3 class="package-title">Belt & Hose Service</h3>
-                            <div class="package-price">$95 – $200</div>
-                            <p class="package-tier">Inspection + Replacement</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Visual & pressure inspection</li>
-                                <li>✓ Wear assessment report</li>
-                                <li>✓ Replacement if needed</li>
-                                <li>✓ Tension adjustment</li>
-                            </ul>
-                            <button onclick="openBookingModal('Belt & Hose Service')" class="package-btn">Schedule Service</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== ENGINE REPAIR ===== -->
-            <div id="engine" style="margin-bottom: 70px;">
-                <h3 class="uth-category-header"><span>🔧</span> Engine Repair &amp; Components</h3>
-                <p class="uth-labor-note">Engine work is diagnostic-first. We identify the issue, quote it, and fix it right — with your approval at every step.</p>
-                <div class="package-grid">
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3 class="package-title">Valve Cover Gasket</h3>
-                            <div class="package-price">$165 – $250</div>
-                            <p class="package-tier">Labor + Parts</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Gasket removal & replacement</li>
-                                <li>✓ RTV sealant application</li>
-                                <li>✓ Plug & cap inspection</li>
-                                <li>✓ Leak test verification</li>
-                                <li>✓ 30-day labor warranty</li>
-                            </ul>
-                            <button onclick="openBookingModal('Valve Cover Gasket')" class="package-btn">Schedule Service</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3 class="package-title">Water Pump Replacement</h3>
-                            <div class="package-price">$200 – $400</div>
-                            <p class="package-tier">Labor + Parts</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Pump removal & replacement</li>
-                                <li>✓ Gasket & seal replacement</li>
-                                <li>✓ Coolant system bleed</li>
-                                <li>✓ Temperature test check</li>
-                                <li>✓ 60-day labor warranty</li>
-                            </ul>
-                            <button onclick="openBookingModal('Water Pump Replacement')" class="package-btn">Schedule Service</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3 class="package-title">Serpentine Belt</h3>
-                            <div class="package-price">$125 – $225</div>
-                            <p class="package-tier">Labor + Parts</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Belt removal & replacement</li>
-                                <li>✓ Tensioner inspection</li>
-                                <li>✓ Pulley alignment check</li>
-                                <li>✓ Belt tension verification</li>
-                            </ul>
-                            <button onclick="openBookingModal('Serpentine Belt')" class="package-btn">Schedule Service</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3 class="package-title">Engine Mount Replacement</h3>
-                            <div class="package-price">$300 – $550</div>
-                            <p class="package-tier">Labor + Parts</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Old mount removal</li>
-                                <li>✓ Engine support & alignment</li>
-                                <li>✓ New mount installation</li>
-                                <li>✓ Vibration test & verification</li>
-                            </ul>
-                            <button onclick="openBookingModal('Engine Mount Replacement')" class="package-btn">Schedule Service</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header executive">
-                            <div class="package-badge">COMPLEX</div>
-                            <h3 class="package-title">Timing Chain Replacement</h3>
-                            <div class="package-price">$600 – $1,100</div>
-                            <p class="package-tier">Labor + Parts</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Timing cover removal</li>
-                                <li>✓ Chain & guide replacement</li>
-                                <li>✓ Tensioner service</li>
-                                <li>✓ Full system timing reset</li>
-                                <li>✓ Leak test & verification</li>
-                            </ul>
-                            <button onclick="openBookingModal('Timing Chain Replacement')" class="package-btn executive">Schedule Service</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header signature">
-                            <h3 class="package-title">Head Gasket Service</h3>
-                            <div class="package-price">$800 – $1,400</div>
-                            <p class="package-tier">Labor + Parts</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Cylinder head removal & cleaning</li>
-                                <li>✓ Head inspection & resurfacing</li>
-                                <li>✓ New gasket installation</li>
-                                <li>✓ Torque-spec bolt pattern</li>
-                                <li>✓ Pressure test included</li>
-                            </ul>
-                            <button onclick="openBookingModal('Head Gasket Service')" class="package-btn signature">Schedule Service</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3 class="package-title">General Engine Repair</h3>
-                            <div class="package-price">Varies</div>
-                            <p class="package-tier">Diagnosis + Quote</p>
-                        </div>
-                        <div class="package-body">
-                            <p style="color: #90caf9; margin-bottom: 15px; font-size: 0.9rem;">Every engine is different. We diagnose, explain, and quote before any work begins.</p>
-                            <ul class="package-features">
-                                <li>✓ Computer diagnostic scan</li>
-                                <li>✓ Visual inspection</li>
-                                <li>✓ Detailed labor & parts estimate</li>
-                                <li>✓ No obligation to repair</li>
-                            </ul>
-                            <button onclick="openBookingModal('General Engine Repair')" class="package-btn">Book Diagnostic</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== DRIVETRAIN & TRANSMISSION ===== -->
-            <div id="drivetrain" style="margin-bottom: 70px;">
-                <h3 class="uth-category-header"><span>⚙️</span> Drivetrain &amp; Transmission</h3>
-                <p class="uth-labor-note">Transmission problems? Don't guess. Start with a diagnostic — we'll show you exactly what's happening.</p>
-                <div class="package-grid">
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3 class="package-title">Transmission Service</h3>
-                            <div class="package-price">$175 – $300</div>
-                            <p class="package-tier">Fluid + Filter + Labor</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Fluid exchange or flush</li>
-                                <li>✓ Filter replacement</li>
-                                <li>✓ Pan cleaning & inspection</li>
-                                <li>✓ Full system refill</li>
-                                <li>✓ Performance verification</li>
-                            </ul>
-                            <button onclick="openBookingModal('Transmission Service')" class="package-btn">Schedule Service</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header executive">
-                            <h3 class="package-title">Transmission Diagnostic</h3>
-                            <div class="package-price">$100</div>
-                            <p class="package-tier">Diagnostic Fee</p>
-                        </div>
-                        <div class="package-body">
-                            <p style="color: #90caf9; margin-bottom: 10px; font-size: 0.9rem;">Slipping, hard shifts, warning lights? We'll find the exact issue.</p>
-                            <ul class="package-features">
-                                <li>✓ Full system computer scan</li>
-                                <li>✓ Shift quality assessment</li>
-                                <li>✓ Fluid condition & level check</li>
-                                <li>✓ Written report with options</li>
-                                <li>✓ No obligation repair quote</li>
-                            </ul>
-                            <button onclick="openBookingModal('Transmission Diagnostic')" class="package-btn executive">Book Diagnostic</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3 class="package-title">Differential & Axle Service</h3>
-                            <div class="package-price">$150 – $300</div>
-                            <p class="package-tier">Labor + Parts</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Differential fluid service</li>
-                                <li>✓ Seal inspection & replacement</li>
-                                <li>✓ Bearing diagnostics</li>
-                                <li>✓ Road test verification</li>
-                            </ul>
-                            <button onclick="openBookingModal('Differential & Axle Service')" class="package-btn">Schedule Service</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== BRAKES & SUSPENSION ===== -->
-            <div id="brakes" style="margin-bottom: 70px;">
-                <h3 class="uth-category-header"><span>🛑</span> Brakes &amp; Suspension</h3>
-                <p class="uth-labor-note">Safety-critical systems done right. We diagnose first, then show you exactly what needs attention.</p>
-                <div class="package-grid">
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3 class="package-title">Brake Pad Replacement</h3>
-                            <div class="package-price">$120 – $200</div>
-                            <p class="package-tier">Per Axle · Labor + Parts</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Multi-point brake inspection</li>
-                                <li>✓ Rotor condition check</li>
-                                <li>✓ Pad replacement & bedding</li>
-                                <li>✓ Brake fluid top-off</li>
-                                <li>✓ Test drive verification</li>
-                            </ul>
-                            <button onclick="openBookingModal('Brake Pad Replacement')" class="package-btn">Schedule Service</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header executive">
-                            <div class="package-badge">COMMON</div>
-                            <h3 class="package-title">Brake Rotor Service</h3>
-                            <div class="package-price">$175 – $350</div>
-                            <p class="package-tier">Per Axle · Labor + Parts</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Rotor inspection & measurement</li>
-                                <li>✓ Resurfacing or replacement</li>
-                                <li>✓ Caliper bracket service</li>
-                                <li>✓ Brake bleed & test drive</li>
-                            </ul>
-                            <button onclick="openBookingModal('Brake Rotor Service')" class="package-btn executive">Schedule Service</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3 class="package-title">Strut Replacement</h3>
-                            <div class="package-price">$300 – $500</div>
-                            <p class="package-tier">Per Pair · Labor + Parts</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Old strut removal</li>
-                                <li>✓ Spring & bearing inspection</li>
-                                <li>✓ New strut installation</li>
-                                <li>✓ Alignment check & test drive</li>
-                            </ul>
-                            <button onclick="openBookingModal('Strut Replacement')" class="package-btn">Schedule Service</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3 class="package-title">Shock Absorber Replacement</h3>
-                            <div class="package-price">$175 – $300</div>
-                            <p class="package-tier">Per Pair · Labor + Parts</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Old shock removal</li>
-                                <li>✓ Mount inspection</li>
-                                <li>✓ New shock installation</li>
-                                <li>✓ Ride height verification</li>
-                            </ul>
-                            <button onclick="openBookingModal('Shock Replacement')" class="package-btn">Schedule Service</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3 class="package-title">Control Arm Replacement</h3>
-                            <div class="package-price">$250 – $450</div>
-                            <p class="package-tier">Per Arm · Labor + Parts</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Old arm removal</li>
-                                <li>✓ Ball joint inspection</li>
-                                <li>✓ New arm installation</li>
-                                <li>✓ Alignment & road test</li>
-                            </ul>
-                            <button onclick="openBookingModal('Control Arm Replacement')" class="package-btn">Schedule Service</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3 class="package-title">Wheel Alignment</h3>
-                            <div class="package-price">$80 – $150</div>
-                            <p class="package-tier">2-Wheel or 4-Wheel</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Digital alignment measurement</li>
-                                <li>✓ Toe & camber adjustment</li>
-                                <li>✓ Before/after printout</li>
-                                <li>✓ 60-day alignment guarantee</li>
-                            </ul>
-                            <button onclick="openBookingModal('Wheel Alignment')" class="package-btn">Schedule Service</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header signature">
-                            <h3 class="package-title">Master Cylinder Replacement</h3>
-                            <div class="package-price">$350 – $650</div>
-                            <p class="package-tier">Labor + Parts</p>
-                        </div>
-                        <div class="package-body">
-                            <ul class="package-features">
-                                <li>✓ Brake line disconnection</li>
-                                <li>✓ Cylinder removal & replacement</li>
-                                <li>✓ Full brake system bleed</li>
-                                <li>✓ Brake failure test</li>
-                            </ul>
-                            <button onclick="openBookingModal('Master Cylinder Replacement')" class="package-btn signature">Schedule Service</button>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3 class="package-title">Suspension Diagnostic</h3>
-                            <div class="package-price">$75</div>
-                            <p class="package-tier">Diagnostic Fee</p>
-                        </div>
-                        <div class="package-body">
-                            <p style="color: #90caf9; margin-bottom: 10px; font-size: 0.9rem;">Noises, pulling, or rough ride? We'll identify the worn components.</p>
-                            <ul class="package-features">
-                                <li>✓ Visual suspension inspection</li>
-                                <li>✓ Road test assessment</li>
-                                <li>✓ Wear documentation</li>
-                                <li>✓ Written repair estimate</li>
-                            </ul>
-                            <button onclick="openBookingModal('Suspension Diagnostic')" class="package-btn">Book Diagnostic</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== COMMON QUESTIONS ===== -->
-            <div style="margin-bottom: 60px;">
-                <h3 style="font-size: 1.8rem; color: #64b5f6; margin-bottom: 30px; text-align: center;">❓ Common Questions</h3>
-                <div class="uth-faq-grid">
-                    <div class="uth-faq-card">
-                        <p>Why $75/hour?</p>
-                        <p>Our rate covers specialized diagnostic tools, ASE-level knowledge, and warranty on labor. Most shops in the Pittsburgh area charge $90–$130/hr. You're getting military-trained precision at an honest rate.</p>
-                    </div>
-                    <div class="uth-faq-card">
-                        <p>Can I approve parts before you order?</p>
-                        <p>Always. After diagnosis, you see the full breakdown — labor hours, parts list, costs. Nothing happens until you say go.</p>
-                    </div>
-                    <div class="uth-faq-card">
-                        <p>What if I only want the diagnostic?</p>
-                        <p>That's perfectly fine. Pay for the diagnostic, get a full report, and decide later. Zero obligation to repair with us.</p>
-                    </div>
-                    <div class="uth-faq-card">
-                        <p>Do you offer warranties?</p>
-                        <p>Yes — 30 days on labor, 30–60 days on parts depending on the component. Everything documented.</p>
-                    </div>
-                    <div class="uth-faq-card">
-                        <p>OEM or aftermarket parts?</p>
-                        <p>Both available. We recommend OEM for warranty and fit, but aftermarket saves money. Your call.</p>
-                    </div>
-                    <div class="uth-faq-card">
-                        <p>How long will repairs take?</p>
-                        <p>Simple repairs: same day or next day. Complex jobs: 2–5 days depending on parts availability. We give you a timeline upfront.</p>
-                    </div>
-                </div>
-            </div>
-
+    <section
+      class="detail-section"
+      id="service-tiers"
+      style="
+        background: linear-gradient(135deg, #0d1b2a, #1a2942);
+        border-top: 1px solid rgba(66, 165, 245, 0.3);
+      "
+    >
+      <div class="section-container">
+        <!-- Quick Jump Nav -->
+        <div class="uth-service-nav">
+          <a href="#diagnostics">🔍 Diagnostics</a>
+          <a href="#electrical">⚡ Electrical</a>
+          <a href="#fluids">🛢️ Fluids</a>
+          <a href="#engine">🔧 Engine</a>
+          <a href="#drivetrain">⚙️ Drivetrain</a>
+          <a href="#brakes">🛑 Brakes &amp; Suspension</a>
         </div>
+
+        <!-- HOW PRICING WORKS -->
+        <div
+          style="
+            background: rgba(66, 165, 245, 0.08);
+            border-left: 4px solid #42a5f5;
+            padding: 30px;
+            margin-bottom: 60px;
+            border-radius: 8px;
+          "
+        >
+          <h4 style="color: #64b5f6; font-size: 1.3rem; margin-bottom: 20px">
+            💡 How Our Pricing Works — No Surprises, Ever
+          </h4>
+          <div class="uth-how-it-works">
+            <div>
+              <p>1️⃣ Diagnosis First</p>
+              <p>
+                Pay the diagnostic fee upfront. We tell you exactly what's wrong — in plain
+                language.
+              </p>
+            </div>
+            <div>
+              <p>2️⃣ You See The Quote</p>
+              <p>
+                Labor hours × <strong>$75/hr</strong> + parts cost. Everything itemized. No mystery
+                fees.
+              </p>
+            </div>
+            <div>
+              <p>3️⃣ You Approve</p>
+              <p>We don't order a single part or turn a single wrench until you say go.</p>
+            </div>
+            <div>
+              <p>4️⃣ We Fix It Right</p>
+              <p>Work completed, verified, road-tested. You pay the balance when it's done.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== DIAGNOSTICS ===== -->
+        <div id="diagnostics" style="margin-bottom: 70px">
+          <div
+            style="
+              background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(102, 187, 106, 0.2));
+              border: 2px solid #66bb6a;
+              border-radius: 12px;
+              padding: 40px;
+              text-align: center;
+            "
+          >
+            <h3
+              style="
+                font-size: 1.8rem;
+                color: #81c784;
+                margin-bottom: 15px;
+                scroll-margin-top: 100px;
+              "
+            >
+              🔍 Step 1: Professional Diagnosis
+            </h3>
+            <p style="font-size: 1.05rem; color: #c8e6c9; margin-bottom: 30px">
+              Not sure what's wrong? Start here. We scan, inspect, and explain everything. Then you
+              decide.
+            </p>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+                margin-bottom: 30px;
+              "
+            >
+              <div style="background: rgba(0, 0, 0, 0.3); padding: 25px; border-radius: 8px">
+                <div style="font-size: 2rem; margin-bottom: 10px">🚗</div>
+                <strong style="color: white; font-size: 1.1rem">Basic Diagnostic</strong>
+                <p style="color: #66bb6a; margin-top: 10px; font-size: 1.2rem; font-weight: 700">
+                  $50
+                </p>
+                <p style="color: #ccc; font-size: 0.85rem; margin-top: 8px">
+                  OBD-II scan, error code readout, visual inspection, verbal consultation. ~45
+                  minutes.
+                </p>
+              </div>
+              <div
+                style="
+                  background: rgba(0, 0, 0, 0.3);
+                  padding: 25px;
+                  border-radius: 8px;
+                  border: 2px solid #66bb6a;
+                "
+              >
+                <div style="font-size: 2rem; margin-bottom: 10px">✨</div>
+                <strong style="color: #81c784; font-size: 1.1rem">Advanced Diagnostic</strong>
+                <p style="color: #66bb6a; margin-top: 10px; font-size: 1.2rem; font-weight: 700">
+                  $100
+                </p>
+                <p style="color: #ccc; font-size: 0.85rem; margin-top: 8px">
+                  Multi-system scan, full written report with photos, parts & labor estimate,
+                  24-hour follow-up consultation. ~1.5–2 hours.
+                </p>
+              </div>
+            </div>
+
+            <button
+              onclick="openBookingModal('Diagnostic Service')"
+              class="package-btn"
+              style="
+                background: linear-gradient(135deg, #66bb6a, #4caf50);
+                font-size: 1.1rem;
+                padding: 15px 40px;
+              "
+            >
+              📅 Book Your Diagnostic
+            </button>
+          </div>
+        </div>
+
+        <!-- ===== ELECTRICAL & SENSORS ===== -->
+        <div id="electrical" style="margin-bottom: 70px">
+          <h3 class="uth-category-header"><span>⚡</span> Electrical &amp; Sensor Services</h3>
+          <p class="uth-labor-note">
+            Labor: $75/hour. Parts quoted after diagnosis & ordered with your approval.
+          </p>
+          <div class="package-grid">
+            <div class="package-card">
+              <div class="package-header">
+                <h3 class="package-title">Spark Plugs & Coils</h3>
+                <div class="package-price">$95 – $150</div>
+                <p class="package-tier">Labor + Parts</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Spark plug removal & install</li>
+                  <li>✓ Coil pack inspection & replacement</li>
+                  <li>✓ Performance verification</li>
+                  <li>✓ 60-day parts warranty</li>
+                </ul>
+                <button onclick="openBookingModal('Spark Plugs & Coils')" class="package-btn">
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header">
+                <h3 class="package-title">Solenoid Replacement</h3>
+                <div class="package-price">$150 – $250</div>
+                <p class="package-tier">Labor + Parts</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Diagnostic scan included</li>
+                  <li>✓ Solenoid removal & replacement</li>
+                  <li>✓ System testing & verification</li>
+                  <li>✓ 30-day labor warranty</li>
+                </ul>
+                <button onclick="openBookingModal('Solenoid Replacement')" class="package-btn">
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header">
+                <h3 class="package-title">Sensor Diagnosis & Repair</h3>
+                <div class="package-price">$80 – $200</div>
+                <p class="package-tier">Labor + Parts</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ O2, temp, MAF, fuel sensors</li>
+                  <li>✓ Diagnosis & removal</li>
+                  <li>✓ Replacement & system retest</li>
+                  <li>✓ 30-day parts warranty</li>
+                </ul>
+                <button onclick="openBookingModal('Sensor Repair')" class="package-btn">
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== FLUIDS & MAINTENANCE ===== -->
+        <div id="fluids" style="margin-bottom: 70px">
+          <h3 class="uth-category-header"><span>🛢️</span> Fluids &amp; Maintenance</h3>
+          <p class="uth-labor-note">
+            Preventive maintenance keeps your vehicle running right. These services pay for
+            themselves.
+          </p>
+          <div class="package-grid">
+            <div class="package-card">
+              <div class="package-header">
+                <h3 class="package-title">Oil Change</h3>
+                <div class="package-price">$45 – $75</div>
+                <p class="package-tier">Conventional or Synthetic</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Drain & refill</li>
+                  <li>✓ Filter replacement</li>
+                  <li>✓ Fluid level check</li>
+                  <li>✓ Service documentation</li>
+                </ul>
+                <button onclick="openBookingModal('Oil Change')" class="package-btn">
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header executive">
+                <div class="package-badge">RECOMMENDED</div>
+                <h3 class="package-title">Full Fluid Service</h3>
+                <div class="package-price">$175 – $300</div>
+                <p class="package-tier">Complete Fluid Exchange</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Transmission fluid exchange</li>
+                  <li>✓ Coolant flush & refill</li>
+                  <li>✓ Brake fluid service</li>
+                  <li>✓ Power steering flush</li>
+                  <li>✓ Performance verification</li>
+                </ul>
+                <button
+                  onclick="openBookingModal('Full Fluid Service')"
+                  class="package-btn executive"
+                >
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header">
+                <h3 class="package-title">Belt & Hose Service</h3>
+                <div class="package-price">$95 – $200</div>
+                <p class="package-tier">Inspection + Replacement</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Visual & pressure inspection</li>
+                  <li>✓ Wear assessment report</li>
+                  <li>✓ Replacement if needed</li>
+                  <li>✓ Tension adjustment</li>
+                </ul>
+                <button onclick="openBookingModal('Belt & Hose Service')" class="package-btn">
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== ENGINE REPAIR ===== -->
+        <div id="engine" style="margin-bottom: 70px">
+          <h3 class="uth-category-header"><span>🔧</span> Engine Repair &amp; Components</h3>
+          <p class="uth-labor-note">
+            Engine work is diagnostic-first. We identify the issue, quote it, and fix it right —
+            with your approval at every step.
+          </p>
+          <div class="package-grid">
+            <div class="package-card">
+              <div class="package-header">
+                <h3 class="package-title">Valve Cover Gasket</h3>
+                <div class="package-price">$165 – $250</div>
+                <p class="package-tier">Labor + Parts</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Gasket removal & replacement</li>
+                  <li>✓ RTV sealant application</li>
+                  <li>✓ Plug & cap inspection</li>
+                  <li>✓ Leak test verification</li>
+                  <li>✓ 30-day labor warranty</li>
+                </ul>
+                <button onclick="openBookingModal('Valve Cover Gasket')" class="package-btn">
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header">
+                <h3 class="package-title">Water Pump Replacement</h3>
+                <div class="package-price">$200 – $400</div>
+                <p class="package-tier">Labor + Parts</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Pump removal & replacement</li>
+                  <li>✓ Gasket & seal replacement</li>
+                  <li>✓ Coolant system bleed</li>
+                  <li>✓ Temperature test check</li>
+                  <li>✓ 60-day labor warranty</li>
+                </ul>
+                <button onclick="openBookingModal('Water Pump Replacement')" class="package-btn">
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header">
+                <h3 class="package-title">Serpentine Belt</h3>
+                <div class="package-price">$125 – $225</div>
+                <p class="package-tier">Labor + Parts</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Belt removal & replacement</li>
+                  <li>✓ Tensioner inspection</li>
+                  <li>✓ Pulley alignment check</li>
+                  <li>✓ Belt tension verification</li>
+                </ul>
+                <button onclick="openBookingModal('Serpentine Belt')" class="package-btn">
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header">
+                <h3 class="package-title">Engine Mount Replacement</h3>
+                <div class="package-price">$300 – $550</div>
+                <p class="package-tier">Labor + Parts</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Old mount removal</li>
+                  <li>✓ Engine support & alignment</li>
+                  <li>✓ New mount installation</li>
+                  <li>✓ Vibration test & verification</li>
+                </ul>
+                <button onclick="openBookingModal('Engine Mount Replacement')" class="package-btn">
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header executive">
+                <div class="package-badge">COMPLEX</div>
+                <h3 class="package-title">Timing Chain Replacement</h3>
+                <div class="package-price">$600 – $1,100</div>
+                <p class="package-tier">Labor + Parts</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Timing cover removal</li>
+                  <li>✓ Chain & guide replacement</li>
+                  <li>✓ Tensioner service</li>
+                  <li>✓ Full system timing reset</li>
+                  <li>✓ Leak test & verification</li>
+                </ul>
+                <button
+                  onclick="openBookingModal('Timing Chain Replacement')"
+                  class="package-btn executive"
+                >
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header signature">
+                <h3 class="package-title">Head Gasket Service</h3>
+                <div class="package-price">$800 – $1,400</div>
+                <p class="package-tier">Labor + Parts</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Cylinder head removal & cleaning</li>
+                  <li>✓ Head inspection & resurfacing</li>
+                  <li>✓ New gasket installation</li>
+                  <li>✓ Torque-spec bolt pattern</li>
+                  <li>✓ Pressure test included</li>
+                </ul>
+                <button
+                  onclick="openBookingModal('Head Gasket Service')"
+                  class="package-btn signature"
+                >
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header">
+                <h3 class="package-title">General Engine Repair</h3>
+                <div class="package-price">Varies</div>
+                <p class="package-tier">Diagnosis + Quote</p>
+              </div>
+              <div class="package-body">
+                <p style="color: #90caf9; margin-bottom: 15px; font-size: 0.9rem">
+                  Every engine is different. We diagnose, explain, and quote before any work begins.
+                </p>
+                <ul class="package-features">
+                  <li>✓ Computer diagnostic scan</li>
+                  <li>✓ Visual inspection</li>
+                  <li>✓ Detailed labor & parts estimate</li>
+                  <li>✓ No obligation to repair</li>
+                </ul>
+                <button onclick="openBookingModal('General Engine Repair')" class="package-btn">
+                  Book Diagnostic
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== DRIVETRAIN & TRANSMISSION ===== -->
+        <div id="drivetrain" style="margin-bottom: 70px">
+          <h3 class="uth-category-header"><span>⚙️</span> Drivetrain &amp; Transmission</h3>
+          <p class="uth-labor-note">
+            Transmission problems? Don't guess. Start with a diagnostic — we'll show you exactly
+            what's happening.
+          </p>
+          <div class="package-grid">
+            <div class="package-card">
+              <div class="package-header">
+                <h3 class="package-title">Transmission Service</h3>
+                <div class="package-price">$175 – $300</div>
+                <p class="package-tier">Fluid + Filter + Labor</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Fluid exchange or flush</li>
+                  <li>✓ Filter replacement</li>
+                  <li>✓ Pan cleaning & inspection</li>
+                  <li>✓ Full system refill</li>
+                  <li>✓ Performance verification</li>
+                </ul>
+                <button onclick="openBookingModal('Transmission Service')" class="package-btn">
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header executive">
+                <h3 class="package-title">Transmission Diagnostic</h3>
+                <div class="package-price">$100</div>
+                <p class="package-tier">Diagnostic Fee</p>
+              </div>
+              <div class="package-body">
+                <p style="color: #90caf9; margin-bottom: 10px; font-size: 0.9rem">
+                  Slipping, hard shifts, warning lights? We'll find the exact issue.
+                </p>
+                <ul class="package-features">
+                  <li>✓ Full system computer scan</li>
+                  <li>✓ Shift quality assessment</li>
+                  <li>✓ Fluid condition & level check</li>
+                  <li>✓ Written report with options</li>
+                  <li>✓ No obligation repair quote</li>
+                </ul>
+                <button
+                  onclick="openBookingModal('Transmission Diagnostic')"
+                  class="package-btn executive"
+                >
+                  Book Diagnostic
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header">
+                <h3 class="package-title">Differential & Axle Service</h3>
+                <div class="package-price">$150 – $300</div>
+                <p class="package-tier">Labor + Parts</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Differential fluid service</li>
+                  <li>✓ Seal inspection & replacement</li>
+                  <li>✓ Bearing diagnostics</li>
+                  <li>✓ Road test verification</li>
+                </ul>
+                <button
+                  onclick="openBookingModal('Differential & Axle Service')"
+                  class="package-btn"
+                >
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== BRAKES & SUSPENSION ===== -->
+        <div id="brakes" style="margin-bottom: 70px">
+          <h3 class="uth-category-header"><span>🛑</span> Brakes &amp; Suspension</h3>
+          <p class="uth-labor-note">
+            Safety-critical systems done right. We diagnose first, then show you exactly what needs
+            attention.
+          </p>
+          <div class="package-grid">
+            <div class="package-card">
+              <div class="package-header">
+                <h3 class="package-title">Brake Pad Replacement</h3>
+                <div class="package-price">$120 – $200</div>
+                <p class="package-tier">Per Axle · Labor + Parts</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Multi-point brake inspection</li>
+                  <li>✓ Rotor condition check</li>
+                  <li>✓ Pad replacement & bedding</li>
+                  <li>✓ Brake fluid top-off</li>
+                  <li>✓ Test drive verification</li>
+                </ul>
+                <button onclick="openBookingModal('Brake Pad Replacement')" class="package-btn">
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header executive">
+                <div class="package-badge">COMMON</div>
+                <h3 class="package-title">Brake Rotor Service</h3>
+                <div class="package-price">$175 – $350</div>
+                <p class="package-tier">Per Axle · Labor + Parts</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Rotor inspection & measurement</li>
+                  <li>✓ Resurfacing or replacement</li>
+                  <li>✓ Caliper bracket service</li>
+                  <li>✓ Brake bleed & test drive</li>
+                </ul>
+                <button
+                  onclick="openBookingModal('Brake Rotor Service')"
+                  class="package-btn executive"
+                >
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header">
+                <h3 class="package-title">Strut Replacement</h3>
+                <div class="package-price">$300 – $500</div>
+                <p class="package-tier">Per Pair · Labor + Parts</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Old strut removal</li>
+                  <li>✓ Spring & bearing inspection</li>
+                  <li>✓ New strut installation</li>
+                  <li>✓ Alignment check & test drive</li>
+                </ul>
+                <button onclick="openBookingModal('Strut Replacement')" class="package-btn">
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header">
+                <h3 class="package-title">Shock Absorber Replacement</h3>
+                <div class="package-price">$175 – $300</div>
+                <p class="package-tier">Per Pair · Labor + Parts</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Old shock removal</li>
+                  <li>✓ Mount inspection</li>
+                  <li>✓ New shock installation</li>
+                  <li>✓ Ride height verification</li>
+                </ul>
+                <button onclick="openBookingModal('Shock Replacement')" class="package-btn">
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header">
+                <h3 class="package-title">Control Arm Replacement</h3>
+                <div class="package-price">$250 – $450</div>
+                <p class="package-tier">Per Arm · Labor + Parts</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Old arm removal</li>
+                  <li>✓ Ball joint inspection</li>
+                  <li>✓ New arm installation</li>
+                  <li>✓ Alignment & road test</li>
+                </ul>
+                <button onclick="openBookingModal('Control Arm Replacement')" class="package-btn">
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header">
+                <h3 class="package-title">Wheel Alignment</h3>
+                <div class="package-price">$80 – $150</div>
+                <p class="package-tier">2-Wheel or 4-Wheel</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Digital alignment measurement</li>
+                  <li>✓ Toe & camber adjustment</li>
+                  <li>✓ Before/after printout</li>
+                  <li>✓ 60-day alignment guarantee</li>
+                </ul>
+                <button onclick="openBookingModal('Wheel Alignment')" class="package-btn">
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header signature">
+                <h3 class="package-title">Master Cylinder Replacement</h3>
+                <div class="package-price">$350 – $650</div>
+                <p class="package-tier">Labor + Parts</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features">
+                  <li>✓ Brake line disconnection</li>
+                  <li>✓ Cylinder removal & replacement</li>
+                  <li>✓ Full brake system bleed</li>
+                  <li>✓ Brake failure test</li>
+                </ul>
+                <button
+                  onclick="openBookingModal('Master Cylinder Replacement')"
+                  class="package-btn signature"
+                >
+                  Schedule Service
+                </button>
+              </div>
+            </div>
+
+            <div class="package-card">
+              <div class="package-header">
+                <h3 class="package-title">Suspension Diagnostic</h3>
+                <div class="package-price">$75</div>
+                <p class="package-tier">Diagnostic Fee</p>
+              </div>
+              <div class="package-body">
+                <p style="color: #90caf9; margin-bottom: 10px; font-size: 0.9rem">
+                  Noises, pulling, or rough ride? We'll identify the worn components.
+                </p>
+                <ul class="package-features">
+                  <li>✓ Visual suspension inspection</li>
+                  <li>✓ Road test assessment</li>
+                  <li>✓ Wear documentation</li>
+                  <li>✓ Written repair estimate</li>
+                </ul>
+                <button onclick="openBookingModal('Suspension Diagnostic')" class="package-btn">
+                  Book Diagnostic
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== COMMON QUESTIONS ===== -->
+        <div style="margin-bottom: 60px">
+          <h3 style="font-size: 1.8rem; color: #64b5f6; margin-bottom: 30px; text-align: center">
+            ❓ Common Questions
+          </h3>
+          <div class="uth-faq-grid">
+            <div class="uth-faq-card">
+              <p>Why $75/hour?</p>
+              <p>
+                Our rate covers specialized diagnostic tools, ASE-level knowledge, and warranty on
+                labor. Most shops in the Pittsburgh area charge $90–$130/hr. You're getting
+                military-trained precision at an honest rate.
+              </p>
+            </div>
+            <div class="uth-faq-card">
+              <p>Can I approve parts before you order?</p>
+              <p>
+                Always. After diagnosis, you see the full breakdown — labor hours, parts list,
+                costs. Nothing happens until you say go.
+              </p>
+            </div>
+            <div class="uth-faq-card">
+              <p>What if I only want the diagnostic?</p>
+              <p>
+                That's perfectly fine. Pay for the diagnostic, get a full report, and decide later.
+                Zero obligation to repair with us.
+              </p>
+            </div>
+            <div class="uth-faq-card">
+              <p>Do you offer warranties?</p>
+              <p>
+                Yes — 30 days on labor, 30–60 days on parts depending on the component. Everything
+                documented.
+              </p>
+            </div>
+            <div class="uth-faq-card">
+              <p>OEM or aftermarket parts?</p>
+              <p>
+                Both available. We recommend OEM for warranty and fit, but aftermarket saves money.
+                Your call.
+              </p>
+            </div>
+            <div class="uth-faq-card">
+              <p>How long will repairs take?</p>
+              <p>
+                Simple repairs: same day or next day. Complex jobs: 2–5 days depending on parts
+                availability. We give you a timeline upfront.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Payment & Deposit Policy Section -->
-    <section class="detail-section" id="deposit-policy" style="background: linear-gradient(135deg, rgba(21, 101, 192, 0.1), rgba(30, 136, 229, 0.1)); border-top: 1px solid rgba(66, 165, 245, 0.3); border-bottom: 1px solid rgba(66, 165, 245, 0.3);">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">💳 Payment Policy — Clear &amp; Fair</h2>
-                <p class="section-subtitle">We protect both sides with simple, transparent terms.</p>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
-                <div class="uth-payment-card">
-                    <h3><span>🔍</span> Diagnostic Only</h3>
-                    <p style="color: #b0b0b0; margin-bottom: 15px;">For diagnostic-only services:</p>
-                    <ul>
-                        <li>✓ 100% payment due at time of service</li>
-                        <li>✓ Cash, card, or digital payment</li>
-                        <li>✓ Full report provided same day</li>
-                        <li>✓ 24-hour consultation included</li>
-                    </ul>
-                </div>
-
-                <div class="uth-payment-card uth-payment-highlight">
-                    <h3 style="color: #90caf9;"><span>⚙️</span> Repair Work</h3>
-                    <p style="color: #b0b0b0; margin-bottom: 15px; font-weight: 600;">Most common — here's how it works:</p>
-                    <ul>
-                        <li>✓ <strong style="color: #d0d0d0;">50% Deposit</strong> before parts are ordered</li>
-                        <li>✓ <strong style="color: #d0d0d0;">Non-refundable</strong> once parts are sourced</li>
-                        <li>✓ <strong style="color: #d0d0d0;">Remaining 50%</strong> due when work is complete</li>
-                        <li>✓ Final inspection before payment</li>
-                        <li>✓ Itemized digital invoice</li>
-                    </ul>
-                </div>
-
-                <div class="uth-payment-card">
-                    <h3><span>🚨</span> Emergency Service</h3>
-                    <p style="color: #b0b0b0; margin-bottom: 15px;">For urgent roadside situations:</p>
-                    <ul>
-                        <li>✓ Full payment or deposit at scene</li>
-                        <li>✓ Same-day or overnight service</li>
-                        <li>✓ Priority scheduling</li>
-                        <li>✓ Emergency fee may apply</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div style="background: rgba(40, 40, 45, 0.5); border-left: 4px solid #1565c0; padding: 25px; border-radius: 10px; margin-top: 40px;">
-                <h3 style="color: #d4d4d4; margin-bottom: 15px;">Why the 50% deposit?</h3>
-                <p style="color: #a0a0a0;">
-                    When someone cancels after we've already ordered parts — transmission fluid, solenoids, sensors — we eat the cost. The deposit ensures we can confidently source exactly what your vehicle needs. The remaining balance is due when the work is verified and done right. Fair for both sides.
-                </p>
-            </div>
+    <section
+      class="detail-section"
+      id="deposit-policy"
+      style="
+        background: linear-gradient(135deg, rgba(21, 101, 192, 0.1), rgba(30, 136, 229, 0.1));
+        border-top: 1px solid rgba(66, 165, 245, 0.3);
+        border-bottom: 1px solid rgba(66, 165, 245, 0.3);
+      "
+    >
+      <div class="section-container">
+        <div class="section-header">
+          <h2 class="section-title">💳 Payment Policy — Clear &amp; Fair</h2>
+          <p class="section-subtitle">We protect both sides with simple, transparent terms.</p>
         </div>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+          "
+        >
+          <div class="uth-payment-card">
+            <h3><span>🔍</span> Diagnostic Only</h3>
+            <p style="color: #b0b0b0; margin-bottom: 15px">For diagnostic-only services:</p>
+            <ul>
+              <li>✓ 100% payment due at time of service</li>
+              <li>✓ Cash, card, or digital payment</li>
+              <li>✓ Full report provided same day</li>
+              <li>✓ 24-hour consultation included</li>
+            </ul>
+          </div>
+
+          <div class="uth-payment-card uth-payment-highlight">
+            <h3 style="color: #90caf9"><span>⚙️</span> Repair Work</h3>
+            <p style="color: #b0b0b0; margin-bottom: 15px; font-weight: 600">
+              Most common — here's how it works:
+            </p>
+            <ul>
+              <li>
+                ✓ <strong style="color: #d0d0d0">50% Deposit</strong> before parts are ordered
+              </li>
+              <li>
+                ✓ <strong style="color: #d0d0d0">Non-refundable</strong> once parts are sourced
+              </li>
+              <li>
+                ✓ <strong style="color: #d0d0d0">Remaining 50%</strong> due when work is complete
+              </li>
+              <li>✓ Final inspection before payment</li>
+              <li>✓ Itemized digital invoice</li>
+            </ul>
+          </div>
+
+          <div class="uth-payment-card">
+            <h3><span>🚨</span> Emergency Service</h3>
+            <p style="color: #b0b0b0; margin-bottom: 15px">For urgent roadside situations:</p>
+            <ul>
+              <li>✓ Full payment or deposit at scene</li>
+              <li>✓ Same-day or overnight service</li>
+              <li>✓ Priority scheduling</li>
+              <li>✓ Emergency fee may apply</li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          style="
+            background: rgba(40, 40, 45, 0.5);
+            border-left: 4px solid #1565c0;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 40px;
+          "
+        >
+          <h3 style="color: #d4d4d4; margin-bottom: 15px">Why the 50% deposit?</h3>
+          <p style="color: #a0a0a0">
+            When someone cancels after we've already ordered parts — transmission fluid, solenoids,
+            sensors — we eat the cost. The deposit ensures we can confidently source exactly what
+            your vehicle needs. The remaining balance is due when the work is verified and done
+            right. Fair for both sides.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- Air Force Credibility + Final CTA -->
-    <section style="background: linear-gradient(135deg, #0d1b2a, #1a2942); padding: 60px 20px; border-bottom: 1px solid rgba(66, 165, 245, 0.3);">
-        <div class="section-container">
-            <div style="background: rgba(21, 101, 192, 0.2); border: 2px solid rgba(66, 165, 245, 0.4); border-radius: 15px; padding: 35px; text-align: center;">
-                <h3 style="color: #d4d4d4; font-size: 1.5rem; margin-bottom: 15px;">✈️ Air Force Diesel & Jet Engine Mechanic</h3>
-                <p style="color: #b0b0b0; font-size: 1.05rem; line-height: 1.8; max-width: 700px; margin: 0 auto;">
-                    Before bringing these skills to the shop, I maintained diesel and jet engines for the U.S. Air Force — some of the most complex, precision-critical systems on the planet. When you trust me with your vehicle, you get that same military-grade attention to detail.
-                </p>
-            </div>
+    <section
+      style="
+        background: linear-gradient(135deg, #0d1b2a, #1a2942);
+        padding: 60px 20px;
+        border-bottom: 1px solid rgba(66, 165, 245, 0.3);
+      "
+    >
+      <div class="section-container">
+        <div
+          style="
+            background: rgba(21, 101, 192, 0.2);
+            border: 2px solid rgba(66, 165, 245, 0.4);
+            border-radius: 15px;
+            padding: 35px;
+            text-align: center;
+          "
+        >
+          <h3 style="color: #d4d4d4; font-size: 1.5rem; margin-bottom: 15px">
+            ✈️ Air Force Diesel & Jet Engine Mechanic
+          </h3>
+          <p
+            style="
+              color: #b0b0b0;
+              font-size: 1.05rem;
+              line-height: 1.8;
+              max-width: 700px;
+              margin: 0 auto;
+            "
+          >
+            Before bringing these skills to the shop, I maintained diesel and jet engines for the
+            U.S. Air Force — some of the most complex, precision-critical systems on the planet.
+            When you trust me with your vehicle, you get that same military-grade attention to
+            detail.
+          </p>
         </div>
+      </div>
     </section>
 
     <!-- Final CTA Section -->
-    <section style="background: linear-gradient(135deg, #1565c0 0%, #1e88e5 50%, #1565c0 100%); padding: 80px 20px; text-align: center;">
-        <div class="section-container">
-            <h2 style="font-size: 2.5rem; color: white; margin-bottom: 20px;">Ready to Get Your Vehicle Right?</h2>
-            <p style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">
-                Start with a $50 diagnostic. We'll tell you exactly what's going on — no guessing, no pressure, no hidden fees.
-            </p>
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="#" onclick="openBookingModal(); return false;" style="background: white; color: #1565c0; padding: 18px 50px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                    📅 Book Your Service
-                </a>
-                <a href="tel:4127528684" style="background: rgba(255, 255, 255, 0.2); color: white; padding: 18px 50px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 1.1rem; border: 2px solid white;">
-                    📞 (412) 752-8684
-                </a>
-            </div>
+    <section
+      style="
+        background: linear-gradient(135deg, #1565c0 0%, #1e88e5 50%, #1565c0 100%);
+        padding: 80px 20px;
+        text-align: center;
+      "
+    >
+      <div class="section-container">
+        <h2 style="font-size: 2.5rem; color: white; margin-bottom: 20px">
+          Ready to Get Your Vehicle Right?
+        </h2>
+        <p
+          style="
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        >
+          Start with a $50 diagnostic. We'll tell you exactly what's going on — no guessing, no
+          pressure, no hidden fees.
+        </p>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap">
+          <a
+            href="#"
+            onclick="
+              openBookingModal();
+              return false;
+            "
+            style="
+              background: white;
+              color: #1565c0;
+              padding: 18px 50px;
+              border-radius: 50px;
+              text-decoration: none;
+              font-weight: 800;
+              font-size: 1.1rem;
+              cursor: pointer;
+              transition: all 0.3s ease;
+            "
+            onmouseover="
+              this.style.transform = 'translateY(-3px)';
+              this.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
+            "
+            onmouseout="
+              this.style.transform = 'translateY(0)';
+              this.style.boxShadow = 'none';
+            "
+          >
+            📅 Book Your Service
+          </a>
+          <a
+            href="tel:4127528684"
+            style="
+              background: rgba(255, 255, 255, 0.2);
+              color: white;
+              padding: 18px 50px;
+              border-radius: 50px;
+              text-decoration: none;
+              font-weight: 800;
+              font-size: 1.1rem;
+              border: 2px solid white;
+            "
+          >
+            📞 (412) 752-8684
+          </a>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
-    <footer id="footer" style="background: #0a0f1a; border-top: 1px solid rgba(66, 165, 245, 0.3); padding: 60px 20px 20px; text-align: center;">
-        <div class="section-container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; text-align: left;">
-                <div>
-                    <h4 style="color: #90caf9; font-size: 1rem; margin-bottom: 15px; font-weight: 700; text-transform: uppercase;">Services</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li><a href="personal-vehicles.html" style="color: #a0a0a0; text-decoration: none;">Personal Vehicles</a></li>
-                        <li><a href="marine-services.html" style="color: #a0a0a0; text-decoration: none;">Yacht & RV</a></li>
-                        <li><a href="fleet-services.html" style="color: #a0a0a0; text-decoration: none;">Fleet Services</a></li>
-                        <li><a href="motorcycle-services.html" style="color: #a0a0a0; text-decoration: none;">Motorcycle</a></li>
-                        <li><a href="aircraft-services.html" style="color: #a0a0a0; text-decoration: none;">Aircraft</a></li>
-                        <li><a href="under-the-hood.html" style="color: #64b5f6; text-decoration: none; font-weight: 600;">Mechanical Services</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="color: #90caf9; font-size: 1rem; margin-bottom: 15px; font-weight: 700; text-transform: uppercase;">Company</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li><a href="index.html" style="color: #a0a0a0; text-decoration: none;">Home</a></li>
-                        <li><a href="our-story.html" style="color: #a0a0a0; text-decoration: none;">Our Story</a></li>
-                        <li><a href="reviews.html" style="color: #a0a0a0; text-decoration: none;">Reviews</a></li>
-                        <li><a href="membership.html" style="color: #a0a0a0; text-decoration: none;">Membership</a></li>
-                        <li><a href="careers.html" style="color: #a0a0a0; text-decoration: none;">Careers</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="color: #90caf9; font-size: 1rem; margin-bottom: 15px; font-weight: 700; text-transform: uppercase;">Contact</h4>
-                    <ul style="list-style: none; padding: 0;">
-                        <li><a href="tel:4127528684" style="color: #a0a0a0; text-decoration: none;">📞 (412) 752-8684</a></li>
-                        <li><a href="sms:4127528684" style="color: #a0a0a0; text-decoration: none;">💬 Text Message</a></li>
-                        <li><a href="contact.html" style="color: #a0a0a0; text-decoration: none;">📧 Contact Form</a></li>
-                        <li><a href="#" onclick="openBookingModal(); return false;" style="color: #64b5f6; text-decoration: none; font-weight: 600;">📅 Book Service</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div style="border-top: 1px solid rgba(100, 100, 100, 0.3); padding-top: 20px; text-align: center;">
-                <p style="color: #707070; margin: 10px 0;"><strong>📍</strong> Pittsburgh, Pennsylvania &bull; <strong>📞</strong> (412) 752-8684 &bull; <strong>🕒</strong> Mon–Sat 8AM–6PM</p>
-                <p style="color: #606060; margin-top: 15px;">&copy; 2026 Hands Detail Shop | All Rights Reserved</p>
-            </div>
+    <footer
+      id="footer"
+      style="
+        background: #0a0f1a;
+        border-top: 1px solid rgba(66, 165, 245, 0.3);
+        padding: 60px 20px 20px;
+        text-align: center;
+      "
+    >
+      <div class="section-container">
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            text-align: left;
+          "
+        >
+          <div>
+            <h4
+              style="
+                color: #90caf9;
+                font-size: 1rem;
+                margin-bottom: 15px;
+                font-weight: 700;
+                text-transform: uppercase;
+              "
+            >
+              Services
+            </h4>
+            <ul style="list-style: none; padding: 0">
+              <li>
+                <a href="personal-vehicles.html" style="color: #a0a0a0; text-decoration: none"
+                  >Personal Vehicles</a
+                >
+              </li>
+              <li>
+                <a href="marine-services.html" style="color: #a0a0a0; text-decoration: none"
+                  >Yacht & RV</a
+                >
+              </li>
+              <li>
+                <a href="fleet-services.html" style="color: #a0a0a0; text-decoration: none"
+                  >Fleet Services</a
+                >
+              </li>
+              <li>
+                <a href="motorcycle-services.html" style="color: #a0a0a0; text-decoration: none"
+                  >Motorcycle</a
+                >
+              </li>
+              <li>
+                <a href="aircraft-services.html" style="color: #a0a0a0; text-decoration: none"
+                  >Aircraft</a
+                >
+              </li>
+              <li>
+                <a
+                  href="under-the-hood.html"
+                  style="color: #64b5f6; text-decoration: none; font-weight: 600"
+                  >Mechanical Services</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4
+              style="
+                color: #90caf9;
+                font-size: 1rem;
+                margin-bottom: 15px;
+                font-weight: 700;
+                text-transform: uppercase;
+              "
+            >
+              Company
+            </h4>
+            <ul style="list-style: none; padding: 0">
+              <li><a href="index.html" style="color: #a0a0a0; text-decoration: none">Home</a></li>
+              <li>
+                <a href="our-story.html" style="color: #a0a0a0; text-decoration: none">Our Story</a>
+              </li>
+              <li>
+                <a href="reviews.html" style="color: #a0a0a0; text-decoration: none">Reviews</a>
+              </li>
+              <li>
+                <a href="membership.html" style="color: #a0a0a0; text-decoration: none"
+                  >Membership</a
+                >
+              </li>
+              <li>
+                <a href="careers.html" style="color: #a0a0a0; text-decoration: none">Careers</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4
+              style="
+                color: #90caf9;
+                font-size: 1rem;
+                margin-bottom: 15px;
+                font-weight: 700;
+                text-transform: uppercase;
+              "
+            >
+              Contact
+            </h4>
+            <ul style="list-style: none; padding: 0">
+              <li>
+                <a href="tel:4127528684" style="color: #a0a0a0; text-decoration: none"
+                  >📞 (412) 752-8684</a
+                >
+              </li>
+              <li>
+                <a href="sms:4127528684" style="color: #a0a0a0; text-decoration: none"
+                  >💬 Text Message</a
+                >
+              </li>
+              <li>
+                <a href="contact.html" style="color: #a0a0a0; text-decoration: none"
+                  >📧 Contact Form</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  onclick="
+                    openBookingModal();
+                    return false;
+                  "
+                  style="color: #64b5f6; text-decoration: none; font-weight: 600"
+                  >📅 Book Service</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <div
+          style="
+            border-top: 1px solid rgba(100, 100, 100, 0.3);
+            padding-top: 20px;
+            text-align: center;
+          "
+        >
+          <p style="color: #707070; margin: 10px 0">
+            <strong>📍</strong> Pittsburgh, Pennsylvania &bull; <strong>📞</strong> (412) 752-8684
+            &bull; <strong>🕒</strong> Mon–Sat 8AM–6PM
+          </p>
+          <p style="color: #606060; margin-top: 15px">
+            &copy; 2026 Hands Detail Shop | All Rights Reserved
+          </p>
+        </div>
+      </div>
     </footer>
 
     <!-- Booking Modal -->
     <div class="modal" id="bookingModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button class="modal-close" onclick="closeBookingModal()">&times;</button>
-                <h2 style="margin: 0;">Schedule Your Mechanical Service</h2>
-                <p style="margin-top: 10px; opacity: 0.9;">We'll follow up with a Square invoice for payment</p>
-            </div>
-            <form style="padding: 30px;" id="bookingForm">
-                <!-- Personal Information -->
-                <div style="background: rgba(21, 101, 192, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 25px; border: 1px solid rgba(66, 165, 245, 0.2);">
-                    <h3 style="color: #90caf9; margin-top: 0; margin-bottom: 15px; font-size: 1rem;">📋 Your Information</h3>
-                    <div class="form-group">
-                        <label>Full Name *</label>
-                        <input type="text" name="name" required placeholder="John Doe">
-                    </div>
-                    <div class="form-group">
-                        <label>Phone Number *</label>
-                        <input type="tel" name="phone" required placeholder="(412) 555-0000">
-                    </div>
-                    <div class="form-group">
-                        <label>Email Address *</label>
-                        <input type="email" name="email" required placeholder="your@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label>Street Address *</label>
-                        <input type="text" name="address" required placeholder="123 Main St, Pittsburgh, PA 15201">
-                    </div>
-                </div>
-
-                <!-- Vehicle Information -->
-                <div style="background: rgba(21, 101, 192, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 25px; border: 1px solid rgba(66, 165, 245, 0.2);">
-                    <h3 style="color: #90caf9; margin-top: 0; margin-bottom: 15px; font-size: 1rem;">🚗 Vehicle Information</h3>
-                    <div class="form-group">
-                        <label>Year, Make & Model *</label>
-                        <input type="text" name="vehicle" required placeholder="2020 Honda Accord">
-                    </div>
-                    <div class="form-group">
-                        <label>Mileage (Optional)</label>
-                        <input type="text" name="mileage" placeholder="65,000">
-                    </div>
-                </div>
-
-                <!-- Service Selection -->
-                <div style="background: rgba(21, 101, 192, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 25px; border: 1px solid rgba(66, 165, 245, 0.2);">
-                    <h3 style="color: #90caf9; margin-top: 0; margin-bottom: 15px; font-size: 1rem;">🔧 Services Needed (Select all that apply)</h3>
-
-                    <div class="uth-checkbox-group">
-                        <!-- Diagnostics -->
-                        <div class="uth-checkbox-heading">Diagnostics</div>
-                        <label><input type="checkbox" name="services" value="Basic Diagnostic ($50)"> Basic Diagnostic</label>
-                        <label><input type="checkbox" name="services" value="Advanced Diagnostic ($100)"> Advanced Diagnostic</label>
-                        <label><input type="checkbox" name="services" value="Transmission Diagnostic ($100)"> Transmission Diagnostic</label>
-                        <label><input type="checkbox" name="services" value="Suspension Diagnostic ($75)"> Suspension Diagnostic</label>
-
-                        <!-- Electrical -->
-                        <div class="uth-checkbox-heading">Electrical & Sensors</div>
-                        <label><input type="checkbox" name="services" value="Spark Plugs & Coils"> Spark Plugs & Coils</label>
-                        <label><input type="checkbox" name="services" value="Solenoid Replacement"> Solenoid Replacement</label>
-                        <label><input type="checkbox" name="services" value="Sensor Repair"> Sensor Repair</label>
-
-                        <!-- Fluids -->
-                        <div class="uth-checkbox-heading">Fluids & Maintenance</div>
-                        <label><input type="checkbox" name="services" value="Oil Change"> Oil Change</label>
-                        <label><input type="checkbox" name="services" value="Full Fluid Service"> Full Fluid Service</label>
-                        <label><input type="checkbox" name="services" value="Belt & Hose Service"> Belt & Hose</label>
-
-                        <!-- Engine -->
-                        <div class="uth-checkbox-heading">Engine</div>
-                        <label><input type="checkbox" name="services" value="Valve Cover Gasket"> Valve Cover Gasket</label>
-                        <label><input type="checkbox" name="services" value="Water Pump"> Water Pump</label>
-                        <label><input type="checkbox" name="services" value="Serpentine Belt"> Serpentine Belt</label>
-                        <label><input type="checkbox" name="services" value="Engine Mount"> Engine Mount</label>
-                        <label><input type="checkbox" name="services" value="Timing Chain"> Timing Chain</label>
-                        <label><input type="checkbox" name="services" value="Head Gasket"> Head Gasket</label>
-                        <label><input type="checkbox" name="services" value="General Engine Repair"> General Engine Repair</label>
-
-                        <!-- Drivetrain -->
-                        <div class="uth-checkbox-heading">Drivetrain</div>
-                        <label><input type="checkbox" name="services" value="Transmission Service"> Transmission Service</label>
-                        <label><input type="checkbox" name="services" value="Differential & Axle"> Differential & Axle</label>
-
-                        <!-- Brakes & Suspension -->
-                        <div class="uth-checkbox-heading">Brakes & Suspension</div>
-                        <label><input type="checkbox" name="services" value="Brake Pads"> Brake Pads</label>
-                        <label><input type="checkbox" name="services" value="Brake Rotors"> Brake Rotors</label>
-                        <label><input type="checkbox" name="services" value="Strut Replacement"> Struts</label>
-                        <label><input type="checkbox" name="services" value="Shock Replacement"> Shocks</label>
-                        <label><input type="checkbox" name="services" value="Control Arm"> Control Arms</label>
-                        <label><input type="checkbox" name="services" value="Master Cylinder"> Master Cylinder</label>
-                        <label><input type="checkbox" name="services" value="Wheel Alignment"> Wheel Alignment</label>
-                    </div>
-                </div>
-
-                <!-- Additional Notes -->
-                <div class="form-group">
-                    <label>Describe What's Going On (Optional)</label>
-                    <textarea name="notes" rows="3" placeholder="Strange noise when braking, check engine light on, car pulling to the left, etc."></textarea>
-                </div>
-
-                <button type="submit" class="form-submit">Submit Booking Request</button>
-                <p style="text-align: center; margin-top: 15px; color: #909090; font-size: 0.9rem;">
-                    We'll review and send you a Square invoice for payment within 24 hours.
-                </p>
-            </form>
+      <div class="modal-content">
+        <div class="modal-header">
+          <button class="modal-close" onclick="closeBookingModal()">&times;</button>
+          <h2 style="margin: 0">Schedule Your Mechanical Service</h2>
+          <p style="margin-top: 10px; opacity: 0.9">
+            We'll follow up with a Square invoice for payment
+          </p>
         </div>
+        <form style="padding: 30px" id="bookingForm">
+          <!-- Personal Information -->
+          <div
+            style="
+              background: rgba(21, 101, 192, 0.1);
+              padding: 20px;
+              border-radius: 10px;
+              margin-bottom: 25px;
+              border: 1px solid rgba(66, 165, 245, 0.2);
+            "
+          >
+            <h3 style="color: #90caf9; margin-top: 0; margin-bottom: 15px; font-size: 1rem">
+              📋 Your Information
+            </h3>
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" name="name" required placeholder="John Doe" />
+            </div>
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" name="phone" required placeholder="(412) 555-0000" />
+            </div>
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" name="email" required placeholder="your@email.com" />
+            </div>
+            <div class="form-group">
+              <label>Street Address *</label>
+              <input
+                type="text"
+                name="address"
+                required
+                placeholder="123 Main St, Pittsburgh, PA 15201"
+              />
+            </div>
+          </div>
+
+          <!-- Vehicle Information -->
+          <div
+            style="
+              background: rgba(21, 101, 192, 0.1);
+              padding: 20px;
+              border-radius: 10px;
+              margin-bottom: 25px;
+              border: 1px solid rgba(66, 165, 245, 0.2);
+            "
+          >
+            <h3 style="color: #90caf9; margin-top: 0; margin-bottom: 15px; font-size: 1rem">
+              🚗 Vehicle Information
+            </h3>
+            <div class="form-group">
+              <label>Year, Make & Model *</label>
+              <input type="text" name="vehicle" required placeholder="2020 Honda Accord" />
+            </div>
+            <div class="form-group">
+              <label>Mileage (Optional)</label>
+              <input type="text" name="mileage" placeholder="65,000" />
+            </div>
+          </div>
+
+          <!-- Service Selection -->
+          <div
+            style="
+              background: rgba(21, 101, 192, 0.1);
+              padding: 20px;
+              border-radius: 10px;
+              margin-bottom: 25px;
+              border: 1px solid rgba(66, 165, 245, 0.2);
+            "
+          >
+            <h3 style="color: #90caf9; margin-top: 0; margin-bottom: 15px; font-size: 1rem">
+              🔧 Services Needed (Select all that apply)
+            </h3>
+
+            <div class="uth-checkbox-group">
+              <!-- Diagnostics -->
+              <div class="uth-checkbox-heading">Diagnostics</div>
+              <label
+                ><input type="checkbox" name="services" value="Basic Diagnostic ($50)" /> Basic
+                Diagnostic</label
+              >
+              <label
+                ><input type="checkbox" name="services" value="Advanced Diagnostic ($100)" />
+                Advanced Diagnostic</label
+              >
+              <label
+                ><input type="checkbox" name="services" value="Transmission Diagnostic ($100)" />
+                Transmission Diagnostic</label
+              >
+              <label
+                ><input type="checkbox" name="services" value="Suspension Diagnostic ($75)" />
+                Suspension Diagnostic</label
+              >
+
+              <!-- Electrical -->
+              <div class="uth-checkbox-heading">Electrical & Sensors</div>
+              <label
+                ><input type="checkbox" name="services" value="Spark Plugs & Coils" /> Spark Plugs &
+                Coils</label
+              >
+              <label
+                ><input type="checkbox" name="services" value="Solenoid Replacement" /> Solenoid
+                Replacement</label
+              >
+              <label
+                ><input type="checkbox" name="services" value="Sensor Repair" /> Sensor
+                Repair</label
+              >
+
+              <!-- Fluids -->
+              <div class="uth-checkbox-heading">Fluids & Maintenance</div>
+              <label><input type="checkbox" name="services" value="Oil Change" /> Oil Change</label>
+              <label
+                ><input type="checkbox" name="services" value="Full Fluid Service" /> Full Fluid
+                Service</label
+              >
+              <label
+                ><input type="checkbox" name="services" value="Belt & Hose Service" /> Belt &
+                Hose</label
+              >
+
+              <!-- Engine -->
+              <div class="uth-checkbox-heading">Engine</div>
+              <label
+                ><input type="checkbox" name="services" value="Valve Cover Gasket" /> Valve Cover
+                Gasket</label
+              >
+              <label><input type="checkbox" name="services" value="Water Pump" /> Water Pump</label>
+              <label
+                ><input type="checkbox" name="services" value="Serpentine Belt" /> Serpentine
+                Belt</label
+              >
+              <label
+                ><input type="checkbox" name="services" value="Engine Mount" /> Engine Mount</label
+              >
+              <label
+                ><input type="checkbox" name="services" value="Timing Chain" /> Timing Chain</label
+              >
+              <label
+                ><input type="checkbox" name="services" value="Head Gasket" /> Head Gasket</label
+              >
+              <label
+                ><input type="checkbox" name="services" value="General Engine Repair" /> General
+                Engine Repair</label
+              >
+
+              <!-- Drivetrain -->
+              <div class="uth-checkbox-heading">Drivetrain</div>
+              <label
+                ><input type="checkbox" name="services" value="Transmission Service" /> Transmission
+                Service</label
+              >
+              <label
+                ><input type="checkbox" name="services" value="Differential & Axle" /> Differential
+                & Axle</label
+              >
+
+              <!-- Brakes & Suspension -->
+              <div class="uth-checkbox-heading">Brakes & Suspension</div>
+              <label><input type="checkbox" name="services" value="Brake Pads" /> Brake Pads</label>
+              <label
+                ><input type="checkbox" name="services" value="Brake Rotors" /> Brake Rotors</label
+              >
+              <label
+                ><input type="checkbox" name="services" value="Strut Replacement" /> Struts</label
+              >
+              <label
+                ><input type="checkbox" name="services" value="Shock Replacement" /> Shocks</label
+              >
+              <label
+                ><input type="checkbox" name="services" value="Control Arm" /> Control Arms</label
+              >
+              <label
+                ><input type="checkbox" name="services" value="Master Cylinder" /> Master
+                Cylinder</label
+              >
+              <label
+                ><input type="checkbox" name="services" value="Wheel Alignment" /> Wheel
+                Alignment</label
+              >
+            </div>
+          </div>
+
+          <!-- Additional Notes -->
+          <div class="form-group">
+            <label>Describe What's Going On (Optional)</label>
+            <textarea
+              name="notes"
+              rows="3"
+              placeholder="Strange noise when braking, check engine light on, car pulling to the left, etc."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Submit Booking Request</button>
+          <p style="text-align: center; margin-top: 15px; color: #909090; font-size: 0.9rem">
+            We'll review and send you a Square invoice for payment within 24 hours.
+          </p>
+        </form>
+      </div>
     </div>
 
     <!-- Booking Modal Script — Pre-selects service from button clicks -->
     <script>
-    (function() {
+      (function () {
         const _originalOpen = window.openBookingModal;
-        window.openBookingModal = function(serviceName) {
-            if (typeof _originalOpen === 'function') {
-                _originalOpen(serviceName);
-            } else {
-                const modal = document.getElementById('bookingModal');
-                if (modal) modal.style.display = 'flex';
-            }
-            // Pre-select the matching checkbox
-            if (serviceName) {
-                const checkboxes = document.querySelectorAll('#bookingForm input[type="checkbox"]');
-                checkboxes.forEach(function(cb) {
-                    if (cb.value.toLowerCase().includes(serviceName.toLowerCase()) ||
-                        serviceName.toLowerCase().includes(cb.value.toLowerCase())) {
-                        cb.checked = true;
-                    }
-                });
-            }
-        };
-        window.closeBookingModal = function() {
+        window.openBookingModal = function (serviceName) {
+          if (typeof _originalOpen === 'function') {
+            _originalOpen(serviceName);
+          } else {
             const modal = document.getElementById('bookingModal');
-            if (modal) modal.style.display = 'none';
+            if (modal) modal.style.display = 'flex';
+          }
+          // Pre-select the matching checkbox
+          if (serviceName) {
+            const checkboxes = document.querySelectorAll('#bookingForm input[type="checkbox"]');
+            checkboxes.forEach(function (cb) {
+              if (
+                cb.value.toLowerCase().includes(serviceName.toLowerCase()) ||
+                serviceName.toLowerCase().includes(cb.value.toLowerCase())
+              ) {
+                cb.checked = true;
+              }
+            });
+          }
         };
-    })();
+        window.closeBookingModal = function () {
+          const modal = document.getElementById('bookingModal');
+          if (modal) modal.style.display = 'none';
+        };
+      })();
     </script>
 
     <script src="main.js"></script>
@@ -1129,16 +1771,18 @@
 
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/68e2fac9bf465d19518ec75b/1j6ra78mi';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
+      var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date();
+      (function () {
+        var s1 = document.createElement('script'),
+          s0 = document.getElementsByTagName('script')[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/68e2fac9bf465d19518ec75b/1j6ra78mi';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+      })();
     </script>
     <!--End of Tawk.to Script-->
-</body>
+  </body>
 </html>

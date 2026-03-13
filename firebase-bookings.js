@@ -1,7 +1,7 @@
 /**
  * Firebase Bookings Module
  * Hands Detail Shop - Pittsburgh Auto Detailing
- * 
+ *
  * Handles all booking-related Firestore operations:
  * - Create new bookings
  * - Read booking details
@@ -21,11 +21,11 @@ import { db, auth, analytics } from './firebase-config.js';
 export async function saveBookingToFirebase(bookingData) {
   try {
     const user = auth.currentUser;
-    
+
     if (!user) {
       throw new Error('User must be authenticated to create a booking');
     }
-    
+
     // Validate required fields
     const requiredFields = ['service', 'date', 'time', 'vehicle'];
     for (const field of requiredFields) {
@@ -33,7 +33,7 @@ export async function saveBookingToFirebase(bookingData) {
         throw new Error(`Missing required field: ${field}`);
       }
     }
-    
+
     // Prepare booking document
     const booking = {
       userId: user.uid,
@@ -48,7 +48,7 @@ export async function saveBookingToFirebase(bookingData) {
         make: bookingData.vehicle.make || '',
         model: bookingData.vehicle.model || '',
         year: bookingData.vehicle.year || '',
-        color: bookingData.vehicle.color || ''
+        color: bookingData.vehicle.color || '',
       },
       price: parseFloat(bookingData.price) || 0,
       status: 'pending', // pending, confirmed, completed, cancelled
@@ -57,22 +57,21 @@ export async function saveBookingToFirebase(bookingData) {
       createdAt: new Date(),
       updatedAt: new Date(),
       paymentStatus: 'pending', // pending, paid, refunded
-      paymentMethod: bookingData.paymentMethod || ''
+      paymentMethod: bookingData.paymentMethod || '',
     };
-    
+
     // Add to Firestore
     const docRef = await db.collection('bookings').add(booking);
-    
+
     // Log event
     trackEvent('booking_created', {
       bookingId: docRef.id,
       service: booking.service,
-      price: booking.price
+      price: booking.price,
     });
-    
+
     console.log('Booking saved successfully:', docRef.id);
     return docRef.id;
-    
   } catch (error) {
     console.error('Error saving booking:', error.message);
     throw new Error(`Failed to save booking: ${error.message}`);
@@ -89,15 +88,14 @@ export async function getBookingDetails(bookingId) {
     if (!bookingId) {
       throw new Error('Booking ID is required');
     }
-    
+
     const doc = await db.collection('bookings').doc(bookingId).get();
-    
+
     if (!doc.exists) {
       throw new Error('Booking not found');
     }
-    
+
     return { id: doc.id, ...doc.data() };
-    
   } catch (error) {
     console.error('Error fetching booking details:', error.message);
     throw error;
@@ -115,42 +113,41 @@ export async function updateBookingStatus(bookingId, updates) {
     if (!bookingId) {
       throw new Error('Booking ID is required');
     }
-    
+
     const user = auth.currentUser;
     if (!user) {
       throw new Error('User must be authenticated');
     }
-    
+
     // Fetch the booking to verify ownership or admin access
     const bookingRef = db.collection('bookings').doc(bookingId);
     const bookingDoc = await bookingRef.get();
-    
+
     if (!bookingDoc.exists) {
       throw new Error('Booking not found');
     }
-    
+
     const booking = bookingDoc.data();
     const isAdmin = user.email && user.email === 'admin@handsdetailshop.com'; // Or check custom claims
-    
+
     // Only allow user to update their own bookings, or allow admins to update any
     if (booking.userId !== user.uid && !isAdmin) {
       throw new Error('Unauthorized: You can only update your own bookings');
     }
-    
+
     // Update the booking
     await bookingRef.update({
       ...updates,
-      updatedAt: new Date()
+      updatedAt: new Date(),
     });
-    
+
     // Log event
     trackEvent('booking_updated', {
       bookingId: bookingId,
-      status: updates.status || booking.status
+      status: updates.status || booking.status,
     });
-    
+
     console.log('Booking updated successfully:', bookingId);
-    
   } catch (error) {
     console.error('Error updating booking:', error.message);
     throw error;
@@ -166,19 +163,19 @@ export async function updateBookingStatus(bookingId, updates) {
 export function listenToBookings(onUpdate, filters = {}) {
   try {
     let query = db.collection('bookings');
-    
+
     // Apply filters if provided
     if (filters.userId) {
       query = query.where('userId', '==', filters.userId);
     }
-    
+
     if (filters.status) {
       query = query.where('status', '==', filters.status);
     }
-    
+
     // Order by date descending (most recent first)
     query = query.orderBy('date', 'desc');
-    
+
     // Set up real-time listener
     const unsubscribe = query.onSnapshot(
       (snapshot) => {
@@ -193,9 +190,8 @@ export function listenToBookings(onUpdate, filters = {}) {
         onUpdate([], error);
       }
     );
-    
+
     return unsubscribe;
-    
   } catch (error) {
     console.error('Error setting up booking listener:', error.message);
     throw error;
@@ -209,19 +205,19 @@ export function listenToBookings(onUpdate, filters = {}) {
 export async function getBookingStats() {
   try {
     const user = auth.currentUser;
-    
+
     if (!user) {
       throw new Error('User must be authenticated');
     }
-    
+
     // Check if user is admin
     const userDoc = await db.collection('users').doc(user.uid).get();
     const isAdmin = userDoc.data()?.role === 'admin';
-    
+
     if (!isAdmin) {
       throw new Error('Unauthorized: Admin access required');
     }
-    
+
     // Query all bookings for statistics
     const allBookingsSnapshot = await db.collection('bookings').get();
     const allBookings = [];
@@ -230,24 +226,24 @@ export async function getBookingStats() {
       pending: 0,
       confirmed: 0,
       completed: 0,
-      cancelled: 0
+      cancelled: 0,
     };
-    
+
     allBookingsSnapshot.forEach((doc) => {
       const booking = doc.data();
       allBookings.push({ id: doc.id, ...booking });
-      
+
       // Count by status
-      if (statusCounts.hasOwnProperty(booking.status)) {
+      if (Object.prototype.hasOwnProperty.call(statusCounts, booking.status)) {
         statusCounts[booking.status]++;
       }
-      
+
       // Calculate revenue from completed bookings
       if (booking.status === 'completed') {
         totalRevenue += booking.price || 0;
       }
     });
-    
+
     const stats = {
       totalBookings: allBookings.length,
       pendingBookings: statusCounts.pending,
@@ -255,18 +251,17 @@ export async function getBookingStats() {
       completedBookings: statusCounts.completed,
       cancelledBookings: statusCounts.cancelled,
       totalRevenue: totalRevenue,
-      conversionRate: allBookings.length > 0 
-        ? ((statusCounts.completed / allBookings.length) * 100).toFixed(2)
-        : '0',
-      averageBookingValue: allBookings.length > 0
-        ? (totalRevenue / allBookings.length).toFixed(2)
-        : '0'
+      conversionRate:
+        allBookings.length > 0
+          ? ((statusCounts.completed / allBookings.length) * 100).toFixed(2)
+          : '0',
+      averageBookingValue:
+        allBookings.length > 0 ? (totalRevenue / allBookings.length).toFixed(2) : '0',
     };
-    
+
     trackEvent('stats_viewed', stats);
-    
+
     return stats;
-    
   } catch (error) {
     console.error('Error fetching booking stats:', error.message);
     throw error;
@@ -283,7 +278,7 @@ export function trackEvent(eventName, eventData = {}) {
     if (typeof firebase !== 'undefined' && firebase.analytics) {
       firebase.analytics().logEvent(eventName, {
         ...eventData,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
     }
   } catch (error) {
@@ -298,23 +293,23 @@ export function trackEvent(eventName, eventData = {}) {
 export async function getUserBookings() {
   try {
     const user = auth.currentUser;
-    
+
     if (!user) {
       throw new Error('User must be authenticated');
     }
-    
-    const snapshot = await db.collection('bookings')
+
+    const snapshot = await db
+      .collection('bookings')
       .where('userId', '==', user.uid)
       .orderBy('date', 'desc')
       .get();
-    
+
     const bookings = [];
     snapshot.forEach((doc) => {
       bookings.push({ id: doc.id, ...doc.data() });
     });
-    
+
     return bookings;
-    
   } catch (error) {
     console.error('Error fetching user bookings:', error.message);
     throw error;
@@ -332,14 +327,13 @@ export async function cancelBooking(bookingId, reason = '') {
     await updateBookingStatus(bookingId, {
       status: 'cancelled',
       cancellationReason: reason,
-      cancelledAt: new Date()
+      cancelledAt: new Date(),
     });
-    
+
     trackEvent('booking_cancelled', {
       bookingId: bookingId,
-      reason: reason
+      reason: reason,
     });
-    
   } catch (error) {
     console.error('Error cancelling booking:', error.message);
     throw error;
@@ -353,24 +347,24 @@ export async function cancelBooking(bookingId, reason = '') {
 export async function exportBookingsToCSV() {
   try {
     const user = auth.currentUser;
-    
+
     if (!user) {
       throw new Error('User must be authenticated');
     }
-    
+
     const userDoc = await db.collection('users').doc(user.uid).get();
     const isAdmin = userDoc.data()?.role === 'admin';
-    
+
     if (!isAdmin) {
       throw new Error('Unauthorized: Admin access required');
     }
-    
+
     const snapshot = await db.collection('bookings').get();
-    
+
     if (snapshot.empty) {
       return ''; // No bookings to export
     }
-    
+
     // Create CSV header
     const headers = [
       'Booking ID',
@@ -384,16 +378,16 @@ export async function exportBookingsToCSV() {
       'Price',
       'Status',
       'Notes',
-      'Created'
+      'Created',
     ];
-    
+
     // Create CSV rows
     const rows = [];
     snapshot.forEach((doc) => {
       const booking = doc.data();
       const vehicle = `${booking.vehicle.year} ${booking.vehicle.make} ${booking.vehicle.model}`;
       const date = booking.date?.toDate?.() || booking.date;
-      
+
       rows.push([
         doc.id,
         booking.userName,
@@ -406,22 +400,18 @@ export async function exportBookingsToCSV() {
         booking.price.toFixed(2),
         booking.status,
         `"${booking.notes}"`,
-        booking.createdAt?.toDate?.()?.toLocaleString() || ''
+        booking.createdAt?.toDate?.()?.toLocaleString() || '',
       ]);
     });
-    
+
     // Combine headers and rows
-    const csv = [
-      headers.join(','),
-      ...rows.map(row => row.join(','))
-    ].join('\n');
-    
+    const csv = [headers.join(','), ...rows.map((row) => row.join(','))].join('\n');
+
     trackEvent('bookings_exported', {
-      bookingCount: rows.length
+      bookingCount: rows.length,
     });
-    
+
     return csv;
-    
   } catch (error) {
     console.error('Error exporting bookings:', error.message);
     throw error;

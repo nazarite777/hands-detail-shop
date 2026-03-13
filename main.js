@@ -17,7 +17,7 @@ function sanitizeInput(str) {
  * @returns {boolean} - True if valid
  */
 function validatePhone(phone) {
-  const phoneRegex = /^[\d\s\-\(\)]+$/;
+  const phoneRegex = /^[\d\s\-()]+$/;
   const digitsOnly = phone.replace(/\D/g, '');
   return phoneRegex.test(phone) && digitsOnly.length >= 10;
 }
@@ -155,23 +155,23 @@ async function initializeJukebox() {
 
     // Use embedded audio config first, then try to fetch
     let audioConfig = window.AUDIO_CONFIG;
-    
+
     if (!audioConfig) {
       console.log('🎵 Jukebox: No embedded config, attempting to fetch');
-      
+
       // Fetch with timeout
       let response;
-      let filePath = '/audio-urls.json';
-      
+      const filePath = '/audio-urls.json';
+
       console.log('🎵 Jukebox: Attempting to fetch from', filePath);
-      
+
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
-      
+
       try {
         response = await fetch(filePath, { signal: controller.signal });
         clearTimeout(timeoutId);
-        
+
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}`);
         }
@@ -179,14 +179,14 @@ async function initializeJukebox() {
         clearTimeout(timeoutId);
         throw new Error('Could not load audio configuration from file');
       }
-      
+
       if (!response.ok) {
         throw new Error(`Failed to load audio-urls.json: HTTP ${response.status}`);
       }
-      
+
       audioConfig = await response.json();
     }
-    
+
     playlist = audioConfig.songs || [];
 
     console.log('🎵 Jukebox: Loaded', playlist.length, 'songs');
@@ -194,12 +194,15 @@ async function initializeJukebox() {
     if (playlist.length === 0) {
       console.warn('🎵 Jukebox: No songs in playlist');
       const displayName = jukebox.querySelector('.track-name');
-      if (displayName) displayName.textContent = '❌ No songs available';
+      if (displayName) {
+        displayName.textContent = '❌ No songs available';
+      }
       return;
     }
 
     // Set up jukebox elements
-    const displayName = jukebox.querySelector('.jukebox-display .track-name') || createDisplayElement(jukebox);
+    const displayName =
+      jukebox.querySelector('.jukebox-display .track-name') || createDisplayElement(jukebox);
     const playBtn = jukebox.querySelector('.btn-play');
     const nextBtn = jukebox.querySelector('.btn-next');
     const prevBtn = jukebox.querySelector('.btn-prev');
@@ -249,11 +252,10 @@ async function initializeJukebox() {
     });
 
     console.log('🎵 Jukebox: Initialized successfully');
-
   } catch (error) {
     console.error('🎵 Jukebox: Error initializing jukebox:', error.message);
     console.error('Error stack:', error.stack);
-    
+
     // Show error in UI
     const jukebox = document.getElementById('jukebox');
     if (jukebox) {
@@ -289,11 +291,13 @@ function createDisplayElement(jukebox) {
 }
 
 function loadTrack(index, displayElement, audioElement) {
-  if (index < 0 || index >= playlist.length) return;
-  
+  if (index < 0 || index >= playlist.length) {
+    return;
+  }
+
   currentTrackIndex = index;
   const track = playlist[index];
-  
+
   audioElement.src = track.firebaseUrl;
   displayElement.textContent = `🎵 ${track.title} - ${track.artist}`;
 }
@@ -358,7 +362,9 @@ function updatePlaylistUI(container) {
  */
 function openBookingModal(preSelectedService = '') {
   const modal = document.getElementById('bookingModal');
-  if (!modal) return;
+  if (!modal) {
+    return;
+  }
 
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -388,7 +394,9 @@ function openBookingModal(preSelectedService = '') {
  */
 function closeBookingModal() {
   const modal = document.getElementById('bookingModal');
-  if (!modal) return;
+  if (!modal) {
+    return;
+  }
 
   modal.classList.remove('active');
   document.body.style.overflow = 'auto';
@@ -477,12 +485,22 @@ if (bookingForm) {
  * Handle mechanical services booking submission
  */
 async function handleMechanicalBooking(form) {
-  const nameField = form.querySelector('input[type="text"][placeholder*="John"]') || form.querySelector('input[type="text"]');
+  const nameField =
+    form.querySelector('input[type="text"][placeholder*="John"]') ||
+    form.querySelector('input[type="text"]');
   const phoneField = form.querySelector('input[type="tel"]');
   const emailField = form.querySelector('input[type="email"]');
-  const addressField = form.querySelector('input[type="text"][placeholder*="St,"]') || Array.from(form.querySelectorAll('input[type="text"]')).find(f => f.placeholder.includes('Pittsburgh'));
-  const makeField = Array.from(form.querySelectorAll('input[type="text"]')).find(f => f.placeholder.includes('Honda'));
-  const modelField = Array.from(form.querySelectorAll('input[type="text"]')).find(f => f.placeholder.includes('Accord'));
+  const addressField =
+    form.querySelector('input[type="text"][placeholder*="St,"]') ||
+    Array.from(form.querySelectorAll('input[type="text"]')).find((f) =>
+      f.placeholder.includes('Pittsburgh')
+    );
+  const makeField = Array.from(form.querySelectorAll('input[type="text"]')).find((f) =>
+    f.placeholder.includes('Honda')
+  );
+  const modelField = Array.from(form.querySelectorAll('input[type="text"]')).find((f) =>
+    f.placeholder.includes('Accord')
+  );
   const yearField = form.querySelector('input[type="number"][placeholder="2020"]');
   const mileageField = form.querySelector('input[type="number"][placeholder="65000"]');
   const notesField = form.querySelector('textarea');
@@ -556,7 +574,7 @@ async function handleMechanicalBooking(form) {
   }
 
   // Collect selected services
-  const selectedServices = Array.from(serviceCheckboxes).map(cb => cb.value);
+  const selectedServices = Array.from(serviceCheckboxes).map((cb) => cb.value);
 
   // Create booking object
   const bookingData = {
@@ -569,23 +587,26 @@ async function handleMechanicalBooking(form) {
       make: sanitizeInput(makeField.value.trim()),
       model: sanitizeInput(modelField.value.trim()),
       year: yearField.value.trim(),
-      mileage: mileageField?.value || 'Not provided'
+      mileage: mileageField?.value || 'Not provided',
     },
     services: selectedServices,
     notes: notesField?.value ? sanitizeInput(notesField.value.trim()) : '',
     status: 'pending',
-    paymentStatus: 'awaiting_invoice'
+    paymentStatus: 'awaiting_invoice',
   };
 
   try {
     // Send to Firebase
-    const response = await fetch('https://hands-detail-default-rtdb.firebaseio.com/mechanical-bookings.json', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(bookingData)
-    });
+    const response = await fetch(
+      'https://hands-detail-default-rtdb.firebaseio.com/mechanical-bookings.json',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(bookingData),
+      }
+    );
 
     if (!response.ok) {
       throw new Error('Failed to save booking');
@@ -605,7 +626,6 @@ async function handleMechanicalBooking(form) {
     setTimeout(() => {
       window.location.href = 'booking-confirmation.html';
     }, 2000);
-
   } catch (error) {
     console.error('Booking error:', error);
     alert('Error submitting booking. Please call us at (412) 752-8684 to book your service.');
@@ -633,7 +653,7 @@ Vehicle Information:
 - Mileage: ${bookingData.vehicle.mileage}
 
 Services Requested:
-${bookingData.services.map(s => `- ${s}`).join('\n')}
+${bookingData.services.map((s) => `- ${s}`).join('\n')}
 
 Additional Notes:
 ${bookingData.notes || 'None'}
@@ -645,7 +665,11 @@ Submitted: ${new Date(bookingData.timestamp).toLocaleString()}
 
     // Using email-integration.js if available, otherwise log for manual handling
     if (window.sendEmailViaEmailIntegration) {
-      await window.sendEmailViaEmailIntegration('handsdetailshop@gmail.com', `New Mechanical Booking: ${bookingData.name}`, emailBody);
+      await window.sendEmailViaEmailIntegration(
+        'handsdetailshop@gmail.com',
+        `New Mechanical Booking: ${bookingData.name}`,
+        emailBody
+      );
     } else {
       console.log('Email would be sent:', emailBody);
       // Email notification can be set up via Firebase Cloud Functions
@@ -661,7 +685,7 @@ Submitted: ${new Date(bookingData.timestamp).toLocaleString()}
 function showBookingSuccess(bookingData) {
   const modal = document.getElementById('bookingModal');
   const content = modal.querySelector('.modal-content');
-  
+
   const successHTML = `
     <div style="padding: 40px; text-align: center;">
       <div style="font-size: 3rem; margin-bottom: 20px;">✅</div>
@@ -756,7 +780,7 @@ function handleOriginalBooking(form) {
     // Close modal and reset form
     closeBookingModal();
     form.reset();
-    
+
     // Redirect to booking confirmation page with "While You Wait" music experience
     setTimeout(() => {
       window.location.href = 'booking-confirmation.html';
@@ -768,30 +792,18 @@ function handleOriginalBooking(form) {
   }
 }
 
-
-// ===== SERVICES DROPDOWN TOGGLE =====
-
-function toggleServicesDropdown(button) {
-  const dropdown = button.closest('.services-dropdown');
-  if (dropdown) {
-    const menu = dropdown.querySelector('.dropdown-menu');
-    if (menu) {
-      menu.classList.toggle('active');
-      button.classList.toggle('active');
-    }
-  }
-}
-
 // Close dropdown when clicking outside
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
   const dropdowns = document.querySelectorAll('.services-dropdown');
-  dropdowns.forEach(dropdown => {
+  dropdowns.forEach((dropdown) => {
     const button = dropdown.querySelector('.services-dropdown-btn');
     if (!dropdown.contains(e.target)) {
       const menu = dropdown.querySelector('.dropdown-menu');
       if (menu) {
         menu.classList.remove('active');
-        if (button) button.classList.remove('active');
+        if (button) {
+          button.classList.remove('active');
+        }
       }
     }
   });
@@ -817,7 +829,7 @@ if (bookingModal) {
  */
 function selectVehicle(element, vehicleType) {
   // Remove active class from all options
-  document.querySelectorAll('.quote-option').forEach(opt => {
+  document.querySelectorAll('.quote-option').forEach((opt) => {
     opt.style.borderColor = 'rgba(66, 165, 245, 0.3)';
     opt.style.background = 'linear-gradient(135deg, #0d1b2a, #1a2942)';
   });
@@ -832,132 +844,132 @@ function selectVehicle(element, vehicleType) {
     compact: {
       essential: '$65',
       executive: '$145',
-      ceramic: '$585'
+      ceramic: '$585',
     },
     midsize: {
       essential: '$75',
       executive: '$165',
-      ceramic: '$685'
+      ceramic: '$685',
     },
     suv: {
       essential: '$85',
       executive: '$185',
-      ceramic: '$785'
+      ceramic: '$785',
     },
     luxury: {
       essential: '$85',
       executive: '$185',
-      ceramic: '$785'
+      ceramic: '$785',
     },
 
     // Motorcycles
     motorcycle: {
       essential: '$85',
       executive: '$145',
-      ceramic: '$245'
+      ceramic: '$245',
     },
 
     // Fleet Vehicles
     fleet: {
       essential: '$45',
       executive: '$75',
-      ceramic: 'N/A'
+      ceramic: 'N/A',
     },
     'fleet-premium': {
       essential: '$75',
       executive: '$95',
-      ceramic: 'N/A'
+      ceramic: 'N/A',
     },
     'box-truck': {
       essential: '$95',
       executive: '$145',
-      ceramic: 'N/A'
+      ceramic: 'N/A',
     },
 
     // Semi Tractors
     semi: {
       essential: '$125',
       executive: '$185',
-      ceramic: 'N/A'
+      ceramic: 'N/A',
     },
 
     // Buses
     'mini-bus': {
       essential: '$145',
       executive: '$225',
-      ceramic: 'N/A'
+      ceramic: 'N/A',
     },
     'full-bus': {
       essential: '$285',
       executive: '$385',
-      ceramic: 'N/A'
+      ceramic: 'N/A',
     },
     'coach-bus': {
       essential: '$485',
       executive: '$685',
-      ceramic: 'N/A'
+      ceramic: 'N/A',
     },
 
     // Yachts & Boats
     'small-yacht': {
       essential: '$285',
       executive: '$385',
-      ceramic: '+$200'
+      ceramic: '+$200',
     },
     'medium-yacht': {
       essential: '$485',
       executive: '$685',
-      ceramic: '+$300'
+      ceramic: '+$300',
     },
     'large-yacht': {
       essential: '$885',
       executive: '$1,485',
-      ceramic: '+$500'
+      ceramic: '+$500',
     },
     'super-yacht': {
       essential: 'Custom',
       executive: 'Quote',
-      ceramic: 'Quote'
+      ceramic: 'Quote',
     },
 
     // RVs
     'class-b-rv': {
       essential: '$285',
       executive: '$385',
-      ceramic: '+$200'
+      ceramic: '+$200',
     },
     'class-c-rv': {
       essential: '$485',
       executive: '$685',
-      ceramic: '+$300'
+      ceramic: '+$300',
     },
     'class-a-rv': {
       essential: '$885',
       executive: '$1,285',
-      ceramic: '+$400'
+      ceramic: '+$400',
     },
     'luxury-rv': {
       essential: '$1,485',
       executive: '$2,485',
-      ceramic: '+$600'
+      ceramic: '+$600',
     },
 
     // Seasonal & Special
     winter: {
       essential: '$385',
       executive: '$485',
-      ceramic: '$585'
+      ceramic: '$585',
     },
     'interior-ceramic': {
       essential: '$285',
       executive: '$385',
-      ceramic: '$485'
+      ceramic: '$485',
     },
     'exterior-ceramic': {
       essential: '$585',
       executive: '$685',
-      ceramic: '$785'
-    }
+      ceramic: '$785',
+    },
   };
 
   // Update prices if elements exist
@@ -967,9 +979,15 @@ function selectVehicle(element, vehicleType) {
     const executiveEl = document.getElementById('executivePrice');
     const ceramicEl = document.getElementById('ceramicPrice');
 
-    if (essentialEl) essentialEl.textContent = prices.essential;
-    if (executiveEl) executiveEl.textContent = prices.executive;
-    if (ceramicEl) ceramicEl.textContent = prices.ceramic;
+    if (essentialEl) {
+      essentialEl.textContent = prices.essential;
+    }
+    if (executiveEl) {
+      executiveEl.textContent = prices.executive;
+    }
+    if (ceramicEl) {
+      ceramicEl.textContent = prices.ceramic;
+    }
   }
 
   // Show price display
@@ -991,19 +1009,19 @@ function selectVehicle(element, vehicleType) {
  */
 function playAudio(audioUrl) {
   let audioElement = document.getElementById('storyAudio');
-  
+
   if (!audioElement) {
     audioElement = document.createElement('audio');
     audioElement.id = 'storyAudio';
     document.body.appendChild(audioElement);
   }
-  
+
   if (audioUrl) {
     audioElement.src = audioUrl;
   }
-  
+
   if (audioElement.paused) {
-    audioElement.play().catch(error => {
+    audioElement.play().catch((error) => {
       console.log('Audio playback error:', error);
     });
   } else {
@@ -1031,30 +1049,30 @@ function stopAudio() {
  */
 function handleContactFormSubmit(event) {
   event.preventDefault();
-  
+
   const form = event.target;
   const name = form.querySelector('input[name="name"]').value;
   const email = form.querySelector('input[name="email"]').value;
   const phone = form.querySelector('input[name="phone"]').value;
   const subject = form.querySelector('select[name="subject"]').value;
   const message = form.querySelector('textarea[name="message"]').value;
-  
+
   // Client-side validation
   if (!validateName(name)) {
     alert('Please enter a valid name (letters, spaces, hyphens only)');
     return;
   }
-  
+
   if (!email || !email.includes('@')) {
     alert('Please enter a valid email address');
     return;
   }
-  
+
   if (phone && !validatePhone(phone)) {
     alert('Please enter a valid phone number');
     return;
   }
-  
+
   // Prepare data for email
   const emailData = {
     subject: `Contact Form: ${subject}`,
@@ -1063,19 +1081,19 @@ function handleContactFormSubmit(event) {
     phone: sanitizeInput(phone || 'Not provided'),
     subject_selected: subject,
     message: sanitizeInput(message),
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   };
-  
+
   // Send email via Firebase or email service
   // For now, we'll log and show success message
   console.log('Contact form submitted:', emailData);
-  
+
   // Show success message
   const successMsg = document.getElementById('formSuccessMessage');
   if (successMsg) {
     successMsg.style.display = 'block';
     form.style.display = 'none';
-    
+
     // Reset form after 3 seconds and show it again
     setTimeout(() => {
       form.reset();
@@ -1083,7 +1101,7 @@ function handleContactFormSubmit(event) {
       successMsg.style.display = 'none';
     }, 3000);
   }
-  
+
   // Optional: Send to email service
   // You can integrate with Formspree, EmailJS, or Firebase Cloud Functions
   // Example with Formspree (requires form action attribute):
@@ -1126,15 +1144,17 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Close dropdown when clicking outside
-  document.addEventListener('click', function(e) {
+  document.addEventListener('click', function (e) {
     const dropdowns = document.querySelectorAll('.services-dropdown');
-    dropdowns.forEach(dropdown => {
+    dropdowns.forEach((dropdown) => {
       const button = dropdown.querySelector('.services-dropdown-btn');
       if (!dropdown.contains(e.target)) {
         const menu = dropdown.querySelector('.dropdown-menu');
         if (menu) {
           menu.classList.remove('active');
-          if (button) button.classList.remove('active');
+          if (button) {
+            button.classList.remove('active');
+          }
         }
       }
     });
@@ -1158,7 +1178,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const selected = parseInt(this.getAttribute('data-rating'));
         ratingInput.value = selected;
         stars.forEach(function (s) {
-          s.style.color = parseInt(s.getAttribute('data-rating')) <= selected ? '#ffc107' : '#606060';
+          s.style.color =
+            parseInt(s.getAttribute('data-rating')) <= selected ? '#ffc107' : '#606060';
         });
       });
 
@@ -1166,18 +1187,22 @@ document.addEventListener('DOMContentLoaded', function () {
       star.addEventListener('mouseenter', function () {
         const hovered = parseInt(this.getAttribute('data-rating'));
         stars.forEach(function (s) {
-          s.style.color = parseInt(s.getAttribute('data-rating')) <= hovered ? '#ffc107' : '#606060';
+          s.style.color =
+            parseInt(s.getAttribute('data-rating')) <= hovered ? '#ffc107' : '#606060';
         });
       });
     });
 
     // Restore actual selection on mouse leave
-    reviewForm.querySelector('.star-rating').parentElement.addEventListener('mouseleave', function () {
-      const current = parseInt(ratingInput.value) || 0;
-      stars.forEach(function (s) {
-        s.style.color = parseInt(s.getAttribute('data-rating')) <= current ? '#ffc107' : '#606060';
+    reviewForm
+      .querySelector('.star-rating')
+      .parentElement.addEventListener('mouseleave', function () {
+        const current = parseInt(ratingInput.value) || 0;
+        stars.forEach(function (s) {
+          s.style.color =
+            parseInt(s.getAttribute('data-rating')) <= current ? '#ffc107' : '#606060';
+        });
       });
-    });
 
     // Form submission
     reviewForm.addEventListener('submit', async function (e) {
@@ -1207,14 +1232,17 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!existingError) {
           const err = document.createElement('span');
           err.className = 'field-error';
-          err.style.cssText = 'color: #ff5252; font-size: 0.875rem; margin-top: 4px; display: block;';
+          err.style.cssText =
+            'color: #ff5252; font-size: 0.875rem; margin-top: 4px; display: block;';
           err.textContent = 'Please select a star rating';
           ratingContainer.insertAdjacentElement('afterend', err);
         }
         isValid = false;
       } else {
         const existingError = ratingInput.parentElement.querySelector('.field-error');
-        if (existingError) existingError.remove();
+        if (existingError) {
+          existingError.remove();
+        }
       }
 
       if (!textField.value.trim()) {
@@ -1224,7 +1252,9 @@ document.addEventListener('DOMContentLoaded', function () {
         clearFieldError(textField);
       }
 
-      if (!isValid) return;
+      if (!isValid) {
+        return;
+      }
 
       // Disable button while saving
       submitBtn.disabled = true;
@@ -1236,27 +1266,32 @@ document.addEventListener('DOMContentLoaded', function () {
         comment: sanitizeInput(textField.value.trim()),
         email: emailField.value.trim() ? sanitizeInput(emailField.value.trim()) : '',
         createdAt: new Date().toISOString(),
-        status: 'pending'
+        status: 'pending',
       };
 
       try {
-        const response = await fetch('https://hands-detail-default-rtdb.firebaseio.com/reviews.json', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(reviewData)
-        });
+        const response = await fetch(
+          'https://hands-detail-default-rtdb.firebaseio.com/reviews.json',
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(reviewData),
+          }
+        );
 
         if (!response.ok) {
           throw new Error('Server error: ' + response.status);
         }
 
         // Show success
-        reviewForm.innerHTML = '<div style="text-align: center; padding: 30px;">' +
+        reviewForm.innerHTML =
+          '<div style="text-align: center; padding: 30px;">' +
           '<p style="font-size: 2rem; margin-bottom: 10px;">⭐</p>' +
-          '<h4 style="color: #d4d4d4; margin-bottom: 10px;">Thank you, ' + reviewData.name + '!</h4>' +
+          '<h4 style="color: #d4d4d4; margin-bottom: 10px;">Thank you, ' +
+          reviewData.name +
+          '!</h4>' +
           '<p style="color: #a0a0a0;">Your review has been submitted and is pending approval.</p>' +
           '</div>';
-
       } catch (error) {
         console.error('Review submission error:', error);
         submitBtn.disabled = false;

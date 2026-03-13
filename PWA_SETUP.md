@@ -1,11 +1,13 @@
 # PWA Setup Documentation
 
 ## Overview
+
 Hands Detail Shop has been converted into a Progressive Web App (PWA), enabling users to install the website on their devices and access it offline.
 
 ## Features Added
 
 ### 1. Web App Manifest (`manifest.json`)
+
 - **Location**: `/manifest.json`
 - **Purpose**: Provides metadata about the application for installation
 - **Features**:
@@ -20,6 +22,7 @@ Hands Detail Shop has been converted into a Progressive Web App (PWA), enabling 
     - Contact Us
 
 ### 2. Service Worker (`service-worker.js`)
+
 - **Location**: `/service-worker.js`
 - **Purpose**: Enables offline functionality and caching
 - **Caching Strategy**:
@@ -31,6 +34,7 @@ Hands Detail Shop has been converted into a Progressive Web App (PWA), enabling 
 - **Cache Management**: Automatically cleans up old caches
 
 ### 3. PWA Installer (`pwa-installer.js`)
+
 - **Location**: `/pwa-installer.js`
 - **Purpose**: Handles installation prompts and online/offline status
 - **Features**:
@@ -41,7 +45,9 @@ Hands Detail Shop has been converted into a Progressive Web App (PWA), enabling 
   - Standalone mode detection
 
 ### 4. HTML Updates
+
 All HTML pages have been updated with:
+
 - PWA meta tags for mobile and iOS devices
 - Apple touch icons
 - Web app manifest link
@@ -50,6 +56,7 @@ All HTML pages have been updated with:
 ## How It Works
 
 ### Installation Process
+
 1. **Desktop (Chrome/Edge)**:
    - Visit the website
    - Look for install icon in address bar
@@ -69,6 +76,7 @@ All HTML pages have been updated with:
    - App icon appears on home screen
 
 ### Offline Functionality
+
 - Once installed, the app caches essential pages
 - Users can view cached pages even without internet
 - Offline banner appears when connection is lost
@@ -77,6 +85,7 @@ All HTML pages have been updated with:
 ## Benefits
 
 ### For Users
+
 - **Quick Access**: Install on home screen for instant access
 - **Offline Access**: View cached pages without internet
 - **App-Like Experience**: Full-screen, no browser UI
@@ -84,6 +93,7 @@ All HTML pages have been updated with:
 - **Quick Actions**: Jump directly to booking, quotes, etc.
 
 ### For Business
+
 - **Increased Engagement**: Installed apps get 2-3x more engagement
 - **Better Retention**: Users return more frequently
 - **Mobile-First**: Optimized for mobile devices
@@ -93,7 +103,9 @@ All HTML pages have been updated with:
 ## Testing
 
 ### Test PWA Features
+
 1. **Lighthouse Audit**:
+
    ```bash
    npm install -g lighthouse
    lighthouse https://handsdetailshop.com --view
@@ -116,6 +128,7 @@ All HTML pages have been updated with:
    - ✅ Cross-browser compatible
 
 ### Browser Support
+
 - ✅ Chrome/Edge (Desktop & Mobile)
 - ✅ Firefox (Desktop & Mobile)
 - ✅ Safari (iOS - limited PWA features)
@@ -125,7 +138,9 @@ All HTML pages have been updated with:
 ## Maintenance
 
 ### Updating Cached Content
+
 When you update the website:
+
 1. Increment cache version in `service-worker.js`:
    ```javascript
    const CACHE_NAME = 'hands-detail-shop-v2'; // Update version number
@@ -134,29 +149,34 @@ When you update the website:
 3. Service worker will auto-update on user's next visit
 
 ### Adding New Pages to Cache
+
 Edit `service-worker.js` and add to `PRECACHE_URLS`:
+
 ```javascript
 const PRECACHE_URLS = [
   // ... existing pages
-  '/new-page.html'
+  '/new-page.html',
 ];
 ```
 
 ## Troubleshooting
 
 ### Install Banner Not Showing
+
 - Ensure HTTPS is enabled
 - Check browser console for errors
 - Verify manifest.json is accessible
 - Clear browser cache and reload
 
 ### Offline Mode Not Working
+
 - Check Service Worker registration in DevTools
 - Verify pages are in PRECACHE_URLS
 - Check browser console for cache errors
 - Unregister and re-register service worker
 
 ### Updates Not Appearing
+
 - Clear browser cache
 - Unregister service worker in DevTools
 - Hard reload (Ctrl+Shift+R)
@@ -165,12 +185,14 @@ const PRECACHE_URLS = [
 ## Analytics
 
 Track PWA metrics:
+
 - Installation events (tracked in pwa-installer.js)
 - Service worker lifecycle events
 - Offline usage patterns
 - Performance metrics
 
 ## Resources
+
 - [PWA Checklist](https://web.dev/pwa-checklist/)
 - [Service Worker API](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API)
 - [Web App Manifest](https://developer.mozilla.org/en-US/docs/Web/Manifest)

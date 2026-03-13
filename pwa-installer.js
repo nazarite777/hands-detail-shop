@@ -5,7 +5,8 @@ let installButton;
 // Register service worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
+    navigator.serviceWorker
+      .register('/service-worker.js')
       .then((registration) => {
         console.log('ServiceWorker registration successful:', registration.scope);
 
@@ -186,7 +187,7 @@ window.addEventListener('appinstalled', () => {
   if (typeof gtag !== 'undefined') {
     gtag('event', 'pwa_install', {
       event_category: 'engagement',
-      event_label: 'PWA Installed'
+      event_label: 'PWA Installed',
     });
   }
 });
@@ -235,8 +236,9 @@ function updateOnlineStatus(isOnline) {
 
 // Check if app is running in standalone mode
 function isStandalone() {
-  return window.matchMedia('(display-mode: standalone)').matches ||
-         window.navigator.standalone === true;
+  return (
+    window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true
+  );
 }
 
 // Log if running as PWA

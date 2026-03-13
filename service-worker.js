@@ -21,13 +21,14 @@ const PRECACHE_URLS = [
   '/20200723_030424~2.png',
   '/autopic.jpg',
   '/IMG_20250919_124905970_HDR_AE_optimized.jpg',
-  '/manifest.json'
+  '/manifest.json',
 ];
 
 // Install event - cache core assets
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
+    caches
+      .open(CACHE_NAME)
       .then((cache) => {
         console.log('Opened cache');
         return cache.addAll(PRECACHE_URLS);
@@ -40,13 +41,19 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   const currentCaches = [CACHE_NAME, RUNTIME_CACHE];
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return cacheNames.filter((cacheName) => !currentCaches.includes(cacheName));
-    }).then((cachesToDelete) => {
-      return Promise.all(cachesToDelete.map((cacheToDelete) => {
-        return caches.delete(cacheToDelete);
-      }));
-    }).then(() => self.clients.claim())
+    caches
+      .keys()
+      .then((cacheNames) => {
+        return cacheNames.filter((cacheName) => !currentCaches.includes(cacheName));
+      })
+      .then((cachesToDelete) => {
+        return Promise.all(
+          cachesToDelete.map((cacheToDelete) => {
+            return caches.delete(cacheToDelete);
+          })
+        );
+      })
+      .then(() => self.clients.claim())
   );
 });
 
@@ -60,32 +67,30 @@ self.addEventListener('fetch', (event) => {
   // For navigation requests, use network first, fallback to cache
   if (event.request.mode === 'navigate') {
     event.respondWith(
-      fetch(event.request)
-        .catch(() => {
-          return caches.match(event.request);
-        })
+      fetch(event.request).catch(() => {
+        return caches.match(event.request);
+      })
     );
     return;
   }
 
   // For other requests, use cache first, fallback to network
   event.respondWith(
-    caches.match(event.request)
-      .then((cachedResponse) => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
+    caches.match(event.request).then((cachedResponse) => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
 
-        return caches.open(RUNTIME_CACHE).then((cache) => {
-          return fetch(event.request).then((response) => {
-            // Only cache successful responses
-            if (response && response.status === 200) {
-              cache.put(event.request, response.clone());
-            }
-            return response;
-          });
+      return caches.open(RUNTIME_CACHE).then((cache) => {
+        return fetch(event.request).then((response) => {
+          // Only cache successful responses
+          if (response && response.status === 200) {
+            cache.put(event.request, response.clone());
+          }
+          return response;
         });
-      })
+      });
+    })
   );
 });
 

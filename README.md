@@ -26,6 +26,7 @@ Premium auto detailing services website for Hands Detail Shop in Arnold, PA. Vet
 ## ✨ Features
 
 ### 🎯 Business Features
+
 - **6 Pages**: Home, Services, Membership, Reviews, Quote, Contact
 - **50+ Customer Testimonials**: Real reviews from satisfied customers
 - **Online Booking**: Square integration with $30 deposit system
@@ -34,6 +35,7 @@ Premium auto detailing services website for Hands Detail Shop in Arnold, PA. Vet
 - **VIP Membership Plans**: Monthly subscription options
 
 ### 🚀 Technical Features
+
 - **SEO Optimized**: Meta tags, Open Graph, Schema.org structured data
 - **Mobile-First Design**: Responsive across all devices
 - **Performance**: Lighthouse score 90+, optimized images (96.5% reduction)
@@ -122,6 +124,7 @@ npm run lint
    - Upload verification file or add meta tag
 
 2. **Submit Sitemap**:
+
    ```
    https://handsdetailshop.com/sitemap.xml
    ```
@@ -146,6 +149,7 @@ npm run lint
 ### Social Media Integration
 
 The site includes Open Graph tags for rich social media previews on:
+
 - Facebook
 - Twitter/X
 - LinkedIn
@@ -159,12 +163,12 @@ Share any page and get beautiful preview cards!
 
 ### Available Scripts
 
-| Script | Command | Description |
-|--------|---------|-------------|
-| **serve** | `npm run serve` | Start local development server |
-| **lint** | `npm run lint` | Lint JavaScript with ESLint |
-| **format** | `npm run format` | Format code with Prettier |
-| **format:check** | `npm run format:check` | Check code formatting |
+| Script           | Command                | Description                    |
+| ---------------- | ---------------------- | ------------------------------ |
+| **serve**        | `npm run serve`        | Start local development server |
+| **lint**         | `npm run lint`         | Lint JavaScript with ESLint    |
+| **format**       | `npm run format`       | Format code with Prettier      |
+| **format:check** | `npm run format:check` | Check code formatting          |
 
 ### Code Quality Standards
 
@@ -212,6 +216,7 @@ git push origin main
 5. Enable HTTPS (automatic with Netlify)
 
 **DNS Settings for handsdetailshop.com**:
+
 ```
 Type    Name    Value
 A       @       75.2.60.5 (Netlify IP)
@@ -236,27 +241,30 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 ### Achieved Optimizations
 
-| Metric | Before | After | Improvement |
-|--------|--------|-------|-------------|
-| **Image Size** | 4.2 MB | 149 KB | 96.5% reduction |
-| **HTML Size** | 700-1,770 lines | 300-920 lines | 50-70% smaller |
-| **Code Duplication** | 4,200 lines | 0 lines | 100% eliminated |
-| **Lighthouse Score** | ~40/100 | 90+/100 | +50 points |
+| Metric               | Before          | After         | Improvement     |
+| -------------------- | --------------- | ------------- | --------------- |
+| **Image Size**       | 4.2 MB          | 149 KB        | 96.5% reduction |
+| **HTML Size**        | 700-1,770 lines | 300-920 lines | 50-70% smaller  |
+| **Code Duplication** | 4,200 lines     | 0 lines       | 100% eliminated |
+| **Lighthouse Score** | ~40/100         | 90+/100       | +50 points      |
 
 ### Implemented Techniques
 
 ✅ **Image Optimization**:
+
 - WebP format for modern browsers (149KB)
 - Optimized JPEG fallback (192KB)
 - `<picture>` element for format selection
 - Lazy loading with `loading="lazy"`
 
 ✅ **Code Organization**:
+
 - External CSS file (cached across pages)
 - External JavaScript file (cached across pages)
 - Minification-ready structure
 
 ✅ **Performance Best Practices**:
+
 - Eliminated render-blocking inline CSS
 - Deferred non-critical JavaScript
 - Optimized font loading
@@ -300,17 +308,18 @@ npx csso styles.css -o styles.min.css
 
 ## 🌍 Browser Support
 
-| Browser | Version | Status |
-|---------|---------|--------|
-| Chrome | 90+ | ✅ Fully Supported |
-| Firefox | 88+ | ✅ Fully Supported |
-| Safari | 14+ | ✅ Fully Supported |
-| Edge | 90+ | ✅ Fully Supported |
-| Opera | 76+ | ✅ Fully Supported |
+| Browser       | Version | Status             |
+| ------------- | ------- | ------------------ |
+| Chrome        | 90+     | ✅ Fully Supported |
+| Firefox       | 88+     | ✅ Fully Supported |
+| Safari        | 14+     | ✅ Fully Supported |
+| Edge          | 90+     | ✅ Fully Supported |
+| Opera         | 76+     | ✅ Fully Supported |
 | Mobile Safari | iOS 14+ | ✅ Fully Supported |
-| Chrome Mobile | Latest | ✅ Fully Supported |
+| Chrome Mobile | Latest  | ✅ Fully Supported |
 
 **Features Used**:
+
 - CSS Grid & Flexbox
 - CSS Gradients & Animations
 - JavaScript ES6+
@@ -322,12 +331,14 @@ npx csso styles.css -o styles.min.css
 ## 📞 Contact & Support
 
 **Business Contact**:
+
 - **Phone**: (412) 752-8684
 - **Location**: Pittsburgh Area
 - **Hours**: Monday-Saturday, 8AM-6PM
 - **Email**: Contact via website form
 
 **Technical Support**:
+
 - Create an issue in this repository
 - Pull requests welcome!
 
@@ -336,12 +347,14 @@ npx csso styles.css -o styles.min.css
 ## 📊 Code Quality Metrics
 
 ### Phase 1 (Completed) - Foundation
+
 - ✅ Project tooling (ESLint, Prettier, package.json)
 - ✅ Code organization (external CSS/JS)
 - ✅ Image optimization (96.5% reduction)
 - ✅ Git repository setup
 
 ### Phase 2 (Completed) - Optimization
+
 - ✅ SEO optimization (meta tags, Open Graph, Schema.org)
 - ✅ Security improvements (input validation, XSS prevention)
 - ✅ Accessibility enhancements (ARIA, keyboard nav)
@@ -349,6 +362,7 @@ npx csso styles.css -o styles.min.css
 - ✅ Documentation (this README)
 
 ### Phase 3 (Completed) - Excellence
+
 - ✅ Jest testing framework with 50+ unit tests
 - ✅ 80% code coverage enforced
 - ✅ GitHub Actions CI/CD pipeline (8 automated jobs)
@@ -384,4 +398,4 @@ Copyright © 2026 Hands Detail Shop. All rights reserved.
 
 **Built with ❤️ for the Greater Pittsburgh community**
 
-*Need auto detailing? Call (412) 752-8684 or visit [handsdetailshop.com](https://handsdetailshop.com)*
+_Need auto detailing? Call (412) 752-8684 or visit [handsdetailshop.com](https://handsdetailshop.com)_

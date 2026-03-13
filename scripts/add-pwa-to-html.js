@@ -23,12 +23,13 @@ const PWA_SCRIPT = '    <script src="pwa-installer.js"></script>\n';
 
 // Get all HTML files in the root directory
 const rootDir = path.join(__dirname, '..');
-const htmlFiles = fs.readdirSync(rootDir)
-  .filter(file => file.endsWith('.html') && file !== 'index.html'); // Skip index.html as it's already updated
+const htmlFiles = fs
+  .readdirSync(rootDir)
+  .filter((file) => file.endsWith('.html') && file !== 'index.html'); // Skip index.html as it's already updated
 
 console.log(`Found ${htmlFiles.length} HTML files to update (excluding index.html)`);
 
-htmlFiles.forEach(file => {
+htmlFiles.forEach((file) => {
   const filePath = path.join(rootDir, file);
   let content = fs.readFileSync(filePath, 'utf8');
   let modified = false;
@@ -37,10 +38,7 @@ htmlFiles.forEach(file => {
   if (!content.includes('<!-- PWA Meta Tags -->')) {
     const themeColorPattern = /(<meta name="msapplication-TileColor" content="#1565c0">)/;
     if (themeColorPattern.test(content)) {
-      content = content.replace(
-        themeColorPattern,
-        `$1${PWA_META_TAGS}`
-      );
+      content = content.replace(themeColorPattern, `$1${PWA_META_TAGS}`);
       modified = true;
       console.log(`✓ Added PWA meta tags to ${file}`);
     } else {
@@ -53,20 +51,14 @@ htmlFiles.forEach(file => {
     // Look for main.js script tag
     const mainJsPattern = /(<script src="main\.js"><\/script>)/;
     if (mainJsPattern.test(content)) {
-      content = content.replace(
-        mainJsPattern,
-        `$1\n${PWA_SCRIPT}`
-      );
+      content = content.replace(mainJsPattern, `$1\n${PWA_SCRIPT}`);
       modified = true;
       console.log(`✓ Added PWA installer script to ${file}`);
     } else {
       // If main.js not found, add before closing body tag
-      const bodyPattern = /(    <\/body>)/;
+      const bodyPattern = /( {4}<\/body>)/;
       if (bodyPattern.test(content)) {
-        content = content.replace(
-          bodyPattern,
-          `${PWA_SCRIPT}\n$1`
-        );
+        content = content.replace(bodyPattern, `${PWA_SCRIPT}\n$1`);
         modified = true;
         console.log(`✓ Added PWA installer script before </body> in ${file}`);
       } else {

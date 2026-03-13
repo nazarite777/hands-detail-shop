@@ -1,4 +1,5 @@
 # Hands Detail Shop — SEO Action Plan
+
 ## Push handsdetailshop.com to the Front of Google
 
 ---
@@ -6,6 +7,7 @@
 ## PHASE 1: IMMEDIATE (Do This Today)
 
 ### 1. Google Search Console Setup
+
 This is the #1 priority. Without this, Google doesn't know to prioritize crawling your site.
 
 1. Go to **https://search.google.com/search-console**
@@ -20,6 +22,7 @@ This is the #1 priority. Without this, Google doesn't know to prioritize crawlin
 8. Google will now crawl and index all your pages
 
 ### 2. Google Analytics 4 Setup
+
 You need real analytics to track visitors and see what's working.
 
 1. Go to **https://analytics.google.com**
@@ -33,6 +36,7 @@ You need real analytics to track visitors and see what's working.
 9. Add the same GA code to ALL your other HTML pages too (currently only index.html has it)
 
 ### 3. Google Business Profile (CRITICAL for Local SEO)
+
 This is what gets you in the **Google Map Pack** — the top 3 map results that appear for local searches.
 
 1. Go to **https://business.google.com**
@@ -56,9 +60,11 @@ This is what gets you in the **Google Map Pack** — the top 3 map results that 
 ## PHASE 2: THIS WEEK
 
 ### 4. Get Listed on Business Directories (Backlinks)
+
 Each listing creates a "backlink" that tells Google your business is legitimate.
 
 Submit to these FREE directories:
+
 - **Yelp** - https://biz.yelp.com (create business listing)
 - **Facebook Business Page** - You have one, make sure website link is current
 - **Apple Maps** - https://mapsconnect.apple.com
@@ -70,12 +76,14 @@ Submit to these FREE directories:
 - **Angi (formerly Angie's List)** - https://www.angi.com
 
 **CRITICAL:** Make sure your NAP (Name, Address, Phone) is IDENTICAL across all listings:
+
 - Name: **Hands Detail Shop**
 - Phone: **(412) 752-8684**
 - Website: **https://handsdetailshop.com**
 - Area: **Arnold, PA / Greater Pittsburgh Area**
 
 ### 5. Ask for Google Reviews
+
 Google Reviews are one of the biggest local ranking factors.
 
 - Ask every satisfied customer to leave a Google Review
@@ -88,6 +96,7 @@ Google Reviews are one of the biggest local ranking factors.
 ## PHASE 3: ONGOING
 
 ### 6. Content Strategy — Add More Blog Pages
+
 Each blog page is a new opportunity to rank for different keywords. Create pages targeting:
 
 - "How to Protect Your Car from Pittsburgh Road Salt" (winter keyword)
@@ -98,15 +107,19 @@ Each blog page is a new opportunity to rank for different keywords. Create pages
 - "Veteran-Owned Businesses in Pittsburgh" (community keyword)
 
 ### 7. Social Media Links to Website
+
 Every social post should drive traffic back to handsdetailshop.com:
+
 - Share before/after photos with a link to your gallery page
 - Share blog articles on Facebook and Instagram
 - Post customer reviews with a link to your reviews page
 
 ### 8. Page Speed Optimization
+
 Google uses page speed as a ranking signal. The 4.2MB image file (IMG_20250919_124905970_HDR_AE.jpg) is slowing things down.
 
 Action items:
+
 - Remove or replace the 4.2MB original image — you already have the optimized 193KB version
 - Test your site speed at https://pagespeed.web.dev/
 - Aim for 90+ score on mobile
@@ -115,14 +128,14 @@ Action items:
 
 ## WHAT WAS FIXED IN THIS UPDATE
 
-| Fix | Description |
-|-----|-------------|
-| Promo Banner | Updated "NEW YEAR SPECIAL" to "SPRING SPECIAL" across all pages |
-| Google Analytics | Replaced broken `GA_MEASUREMENT_ID` placeholder with proper format |
-| Sitemap | Updated all dates to 2026-02-13, added 6 missing pages (booking, gallery, faq, gift-certificates, rewards, portal, blog) |
-| Blog Page | Converted markdown blog article to full SEO-optimized HTML with Article schema markup, breadcrumbs, author box, and CTAs |
-| Facebook Link | Updated structured data from placeholder to actual Facebook URL |
-| llms.txt | Updated experience to "16+ years" |
+| Fix              | Description                                                                                                              |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Promo Banner     | Updated "NEW YEAR SPECIAL" to "SPRING SPECIAL" across all pages                                                          |
+| Google Analytics | Replaced broken `GA_MEASUREMENT_ID` placeholder with proper format                                                       |
+| Sitemap          | Updated all dates to 2026-02-13, added 6 missing pages (booking, gallery, faq, gift-certificates, rewards, portal, blog) |
+| Blog Page        | Converted markdown blog article to full SEO-optimized HTML with Article schema markup, breadcrumbs, author box, and CTAs |
+| Facebook Link    | Updated structured data from placeholder to actual Facebook URL                                                          |
+| llms.txt         | Updated experience to "16+ years"                                                                                        |
 
 ---
 
@@ -143,6 +156,7 @@ GitHub Pages will automatically deploy the changes.
 ## TRACKING PROGRESS
 
 After completing Phase 1, check these weekly:
+
 1. **Google Search Console** → Performance tab shows your impressions and clicks
 2. **Google Analytics** → Shows real-time and daily visitors
 3. **Search your keywords** → "auto detailing Arnold PA", "mobile detailing Pittsburgh"

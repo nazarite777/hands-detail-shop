@@ -35,14 +35,15 @@ function startServer() {
         }
 
         const ext = path.extname(filePath);
-        const contentType = {
-          '.html': 'text/html',
-          '.css': 'text/css',
-          '.js': 'application/javascript',
-          '.png': 'image/png',
-          '.jpg': 'image/jpeg',
-          '.webp': 'image/webp',
-        }[ext] || 'text/plain';
+        const contentType =
+          {
+            '.html': 'text/html',
+            '.css': 'text/css',
+            '.js': 'application/javascript',
+            '.png': 'image/png',
+            '.jpg': 'image/jpeg',
+            '.webp': 'image/webp',
+          }[ext] || 'text/plain';
 
         res.writeHead(200, { 'Content-Type': contentType });
         res.end(data);

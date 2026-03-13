@@ -32,7 +32,7 @@ button:focus,
 input:focus,
 select:focus,
 textarea:focus,
-[role="button"]:focus {
+[role='button']:focus {
   outline: 3px solid #42a5f5;
   outline-offset: 2px;
 }
@@ -51,7 +51,7 @@ textarea:focus,
 
 /* Improve contrast for better readability */
 .service-check-label {
-  color: #d4d4d4;  /* Improved contrast from #c0c0c0 */
+  color: #d4d4d4; /* Improved contrast from #c0c0c0 */
 }
 
 /* Ensure minimum touch target size for mobile (48x48px minimum) */
@@ -73,7 +73,14 @@ body {
   line-height: 1.6;
   color: #e8f1f8;
   overflow-x: hidden;
-  background: linear-gradient(135deg, rgba(10, 25, 41, 0.85) 0%, rgba(13, 27, 42, 0.85) 50%, rgba(0, 18, 25, 0.85) 100%), url('autopic.jpg');
+  background:
+    linear-gradient(
+      135deg,
+      rgba(10, 25, 41, 0.85) 0%,
+      rgba(13, 27, 42, 0.85) 50%,
+      rgba(0, 18, 25, 0.85) 100%
+    ),
+    url('autopic.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -542,7 +549,8 @@ header.scrolled {
 .welcome-hero {
   min-height: 100vh;
   padding-top: 80px;
-  background: linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(13, 27, 42, 0.95)),
+  background:
+    linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(13, 27, 42, 0.95)),
     repeating-linear-gradient(
       45deg,
       transparent,
@@ -592,7 +600,9 @@ header.scrolled {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: gradientShift 4s ease infinite, fadeInUp 1s ease-out 0.2s both;
+  animation:
+    gradientShift 4s ease infinite,
+    fadeInUp 1s ease-out 0.2s both;
   letter-spacing: 1px;
 }
 
@@ -1407,7 +1417,8 @@ footer {
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1) rotate(-3deg);
   }
   50% {
@@ -1464,7 +1475,7 @@ footer {
   position: absolute;
   top: 15px;
   right: 15px;
-  background: linear-gradient(135deg, #FFD700, #FFA500);
+  background: linear-gradient(135deg, #ffd700, #ffa500);
   padding: 8px 15px;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -1687,15 +1698,15 @@ footer {
   transform: translateY(-2px);
 }
 
-.service-checkbox-item input[type="checkbox"] {
+.service-checkbox-item input[type='checkbox'] {
   display: none;
 }
 
-.service-checkbox-item input[type="checkbox"]:checked + .service-check-label {
+.service-checkbox-item input[type='checkbox']:checked + .service-check-label {
   color: #42a5f5;
 }
 
-.service-checkbox-item input[type="checkbox"]:checked + .service-check-label::before {
+.service-checkbox-item input[type='checkbox']:checked + .service-check-label::before {
   content: '✓ ';
   color: #4caf50;
   font-weight: bold;
@@ -1835,7 +1846,7 @@ footer {
   margin-top: 10px;
 }
 
-.discount-toggle input[type="checkbox"] {
+.discount-toggle input[type='checkbox'] {
   cursor: pointer;
   width: 16px;
   height: 16px;
@@ -1893,7 +1904,7 @@ footer {
 
 /* Responsive Design for Package Builder */
 @media (max-width: 1024px) {
-  .package-builder-section > div[style*="grid-template-columns"] {
+  .package-builder-section > div[style*='grid-template-columns'] {
     grid-template-columns: 1fr !important;
   }
 
@@ -2745,7 +2756,9 @@ footer {
 .faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
+  transition:
+    max-height 0.4s ease,
+    padding 0.4s ease;
   padding: 0 25px;
   color: #c0c0c0;
   line-height: 1.7;
@@ -3383,7 +3396,9 @@ footer {
   width: 300px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 15px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 20px rgba(102, 126, 234, 0.3);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(102, 126, 234, 0.3);
   z-index: 10000 !important;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   overflow: hidden;
@@ -3497,7 +3512,8 @@ footer {
   transform: scale(0.95);
 }
 
-.btn-prev, .btn-next {
+.btn-prev,
+.btn-next {
   flex: 0 0 auto;
 }
 
