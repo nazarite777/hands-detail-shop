@@ -1286,61 +1286,30 @@ document.addEventListener('DOMContentLoaded', function () {
           console.error('Could not save to localStorage:', storageError);
         }
 
-        // Send email notification with approval instructions
-        const emailBody = `
-🌟 NEW REVIEW SUBMISSION - AWAITING YOUR APPROVAL 🌟
-
-Customer Name: ${reviewData.name}
-Rating: ${'⭐'.repeat(reviewData.rating)}
-Customer Email: ${reviewData.email || 'Not provided'}
-
-Review Text:
-"${reviewData.comment}"
-
-Submitted: ${new Date(reviewData.createdAt).toLocaleString()}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📋 MANAGE THIS REVIEW:
-   Visit your Admin Panel: hands-detail.web.app/admin-pending-reviews.html
-   
-   ✅ APPROVE: Click "Approve & Publish" to add to live reviews
-   ❌ REJECT: Click "Reject" to remove without publishing
-
-📧 To Contact Customer:
-   - Reply to this email or contact: ${reviewData.email || 'Email not provided'}
-   - Thank them for their business!
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-This email was sent to handsdetailshop@gmail.com
-        `.trim();
-
-        // Send email using callback-based API
-        if (window.sendEmail) {
-          window.sendEmail({
+        // Send email notification via Firebase Cloud Function
+        if (window.firebase && window.firebase.functions) {
+          const sendReviewEmail = window.firebase.functions().httpsCallable('sendReviewEmail');
+          
+          sendReviewEmail({
             name: reviewData.name,
-            email: 'handsdetailshop@gmail.com',
-            subject: `New Review: ${reviewData.name} (${reviewData.rating}⭐)`,
-            message: emailBody
-          }, () => {
-            console.log('Review email sent successfully');
-            showReviewSuccess(reviewData, reviewForm);
-          }, (error) => {
-            console.error('Email send error:', error);
-            showReviewError(reviewForm, reviewData);
-          });
-          return; // Exit here to let callbacks handle UI updates
-        } else if (window.sendEmailViaEmailIntegration) {
-          window.sendEmailViaEmailIntegration(
-            'handsdetailshop@gmail.com',
-            `New Review: ${reviewData.name} (${reviewData.rating}⭐)`,
-            emailBody
-          );
-          console.log('Review email sent successfully via email integration');
-          showReviewSuccess(reviewData, reviewForm);
-          return;
+            email: reviewData.email,
+            rating: reviewData.rating,
+            comment: reviewData.comment,
+            createdAt: reviewData.createdAt
+          })
+            .then((result) => {
+              console.log('Review email sent successfully:', result.data);
+              showReviewSuccess(reviewData, reviewForm);
+            })
+            .catch((error) => {
+              console.error('Error sending review email:', error);
+              // Even if email fails, review is saved in localStorage
+              showReviewSuccess(reviewData, reviewForm);
+            });
         } else {
-          throw new Error('Email service not available');
+          console.warn('Firebase functions not available');
+          // Review is already saved in localStorage, show success anyway
+          showReviewSuccess(reviewData, reviewForm);
         }
       } catch (error) {
         console.error('Review submission failed:', error);

@@ -170,6 +170,11 @@ export function getFirestore() {
   return db;
 }
 
+// Export config to window for client-side initialization in reviews.html
+window.firebaseConfig = firebaseConfig;
+  return db;
+}
+
 /**
  * Utility function to access Auth
  */
