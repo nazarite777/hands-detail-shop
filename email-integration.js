@@ -155,8 +155,11 @@ if (typeof document !== 'undefined') {
   document.addEventListener('DOMContentLoaded', function () {
     initEmailJS();
 
-    // Attach to all forms with class 'contact-form' or id 'contactForm'
-    const forms = document.querySelectorAll('.contact-form, #contactForm, #bookingForm');
+    // Expose sendEmail to window for external use
+    window.sendEmail = sendEmail;
+
+    // Attach to all forms with class 'contact-form' or id 'contactForm', 'bookingForm', 'reviewForm'
+    const forms = document.querySelectorAll('.contact-form, #contactForm, #bookingForm, #reviewForm');
     forms.forEach((form) => {
       form.addEventListener('submit', handleContactForm);
     });

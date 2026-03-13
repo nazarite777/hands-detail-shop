@@ -1276,40 +1276,7 @@ document.addEventListener('DOMContentLoaded', function () {
       try {
         console.log('Submitting review:', reviewData);
         
-        const response = await fetch(
-          'https://hands-detail-default-rtdb.firebaseio.com/reviews.json',
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(reviewData),
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-        }
-
-        const data = await response.json();
-        console.log('Review submitted successfully:', data);
-
-        // Show success message
-        const successDiv = document.createElement('div');
-        successDiv.style.cssText =
-          'text-align: center; padding: 40px 20px; background: rgba(66, 165, 245, 0.1); border-radius: 15px; border: 1px solid rgba(66, 165, 245, 0.3);';
-        successDiv.innerHTML =
-          '<p style="font-size: 2.5rem; margin-bottom: 15px;">⭐</p>' +
-          '<h4 style="color: #90caf9; margin-bottom: 10px; font-size: 1.3rem;">Thank you, ' +
-          reviewData.name +
-          '!</h4>' +
-          '<p style="color: #a0a0a0; line-height: 1.6;">Your review has been submitted and is pending approval. We appreciate your feedback!</p>';
-
-        reviewForm.replaceWith(successDiv);
-      } catch (error) {
-        console.error('Review submission failed:', error);
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit Review';
-        
-        // Save locally as fallback
+        // Save to local storage as backup
         try {
           let savedReviews = JSON.parse(localStorage.getItem('pendingReviews')) || [];
           savedReviews.push(reviewData);
@@ -1318,67 +1285,106 @@ document.addEventListener('DOMContentLoaded', function () {
         } catch (storageError) {
           console.error('Could not save to local storage:', storageError);
         }
-        
-        // Attempt to send email notification as fallback
-        try {
-          const emailBody = `
-New Review Submission (Offline Backup):
 
-Name: ${reviewData.name}
-Rating: ${reviewData.rating}/5 stars
+        // Send email notification
+        const emailBody = `
+New 5-Star Review Submitted
+
+Customer Name: ${reviewData.name}
+Rating: ${'⭐'.repeat(reviewData.rating)}
 Email: ${reviewData.email || 'Not provided'}
-Review: ${reviewData.comment}
+
+Review:
+${reviewData.comment}
 
 Submitted: ${new Date(reviewData.createdAt).toLocaleString()}
 Status: ${reviewData.status}
 
 ---
-This review was submitted via the offline fallback mechanism.
-          `.trim();
+This review was submitted via the contact form and is awaiting your approval.
+        `.trim();
 
-          // Try to send via email if available
-          if (window.sendEmailViaEmailIntegration) {
-            await window.sendEmailViaEmailIntegration(
-              'handsdetailshop@gmail.com',
-              `New Review: ${reviewData.name} (${reviewData.rating}⭐)`,
-              emailBody
-            );
-            console.log('Email fallback sent successfully');
-          }
-        } catch (emailError) {
-          console.error('Email fallback also failed:', emailError);
+        // Send email using callback-based API
+        if (window.sendEmail) {
+          window.sendEmail({
+            name: reviewData.name,
+            email: 'handsdetailshop@gmail.com',
+            subject: `New Review: ${reviewData.name} (${reviewData.rating}⭐)`,
+            message: emailBody
+          }, () => {
+            console.log('Review email sent successfully');
+            showReviewSuccess(reviewData, reviewForm);
+          }, (error) => {
+            console.error('Email send error:', error);
+            showReviewError(reviewForm, reviewData);
+          });
+          return; // Exit here to let callbacks handle UI updates
+        } else if (window.sendEmailViaEmailIntegration) {
+          window.sendEmailViaEmailIntegration(
+            'handsdetailshop@gmail.com',
+            `New Review: ${reviewData.name} (${reviewData.rating}⭐)`,
+            emailBody
+          );
+          console.log('Review email sent successfully via email integration');
+          showReviewSuccess(reviewData, reviewForm);
+          return;
+        } else {
+          throw new Error('Email service not available');
         }
+      } catch (error) {
+        console.error('Review submission failed:', error);
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Review';
         
-        // Show prominent error message with call to action
-        const errorDiv = document.createElement('div');
-        errorDiv.style.cssText =
-          'background: rgba(255, 82, 82, 0.15); border: 3px solid #ff5252; border-radius: 10px; padding: 25px; margin-bottom: 20px; text-align: center;';
-        errorDiv.innerHTML =
-          '<p style="color: #ff5252; margin: 0 0 8px 0; font-weight: 700; font-size: 1.2rem;">⚠️ Unable to Submit Review Online</p>' +
-          '<p style="color: #ff7070; margin: 0 0 15px 0; font-size: 1rem;">No worries! You have two options:</p>' +
-          '<div style="background: rgba(255, 82, 82, 0.2); padding: 15px; border-radius: 8px; margin: 15px 0;">' +
-          '<p style="color: #ff3333; text-decoration: none; font-weight: 700; font-size: 1.1rem; margin: 0 0 5px 0;">📞 CALL US</p>' +
-          '<a href="tel:4127528684" style="color: #ff3333; text-decoration: none; font-weight: 700; font-size: 1.4rem; display: block; margin: 5px 0;">(412) 752-8684</a>' +
-          '<p style="color: #ff7070; margin: 5px 0 0 0; font-size: 0.9rem;">Tell us your rating and review</p>' +
-          '</div>' +
-          '<p style="color: #ff7070; margin: 15px 0 8px 0; font-size: 0.95rem;">or</p>' +
-          '<div style="background: rgba(255, 82, 82, 0.2); padding: 15px; border-radius: 8px; margin: 15px 0;">' +
-          '<p style="color: #ff3333; font-weight: 700; font-size: 1.1rem; margin: 0 0 8px 0;">✉️ EMAIL US</p>' +
-          '<a href="mailto:handsdetailshop@gmail.com?subject=5-Star Review from Customer" style="color: #ff3333; text-decoration: none; font-weight: 700; font-size: 1.05rem;">handsdetailshop@gmail.com</a>' +
-          '<p style="color: #ff7070; margin: 8px 0 0 0; font-size: 0.9rem;">Include your review in the message</p>' +
-          '</div>';
-        
-        // Remove any existing error messages
-        const existingError = reviewForm.parentElement.querySelector('div[style*="background: rgba(255, 82, 82"]');
-        if (existingError) {
-          existingError.remove();
-        }
-        
-        reviewForm.parentElement.insertBefore(errorDiv, reviewForm);
-        
-        // Also scroll to the error message
-        errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        showReviewError(reviewForm, reviewData);
       }
     });
+  }
+
+  // Helper function to show success message
+  function showReviewSuccess(reviewData, formElement) {
+    const successDiv = document.createElement('div');
+    successDiv.style.cssText =
+      'text-align: center; padding: 40px 20px; background: rgba(66, 165, 245, 0.1); border-radius: 15px; border: 1px solid rgba(66, 165, 245, 0.3);';
+    successDiv.innerHTML =
+      '<p style="font-size: 2.5rem; margin-bottom: 15px;">⭐</p>' +
+      '<h4 style="color: #90caf9; margin-bottom: 10px; font-size: 1.3rem;">Thank you, ' +
+      reviewData.name +
+      '!</h4>' +
+      '<p style="color: #a0a0a0; line-height: 1.6;">Your review has been submitted and is pending approval. We appreciate your feedback!</p>';
+
+    formElement.replaceWith(successDiv);
+  }
+
+  // Helper function to show error message
+  function showReviewError(formElement, reviewData) {
+    const errorDiv = document.createElement('div');
+    errorDiv.style.cssText =
+      'background: rgba(255, 82, 82, 0.15); border: 3px solid #ff5252; border-radius: 10px; padding: 25px; margin-bottom: 20px; text-align: center;';
+    errorDiv.innerHTML =
+      '<p style="color: #ff5252; margin: 0 0 8px 0; font-weight: 700; font-size: 1.2rem;">⚠️ Unable to Submit Review Online</p>' +
+      '<p style="color: #ff7070; margin: 0 0 15px 0; font-size: 1rem;">No worries! You have two options:</p>' +
+      '<div style="background: rgba(255, 82, 82, 0.2); padding: 15px; border-radius: 8px; margin: 15px 0;">' +
+      '<p style="color: #ff3333; text-decoration: none; font-weight: 700; font-size: 1.1rem; margin: 0 0 5px 0;">📞 CALL US</p>' +
+      '<a href="tel:4127528684" style="color: #ff3333; text-decoration: none; font-weight: 700; font-size: 1.4rem; display: block; margin: 5px 0;">(412) 752-8684</a>' +
+      '<p style="color: #ff7070; margin: 5px 0 0 0; font-size: 0.9rem;">Tell us your rating and review</p>' +
+      '</div>' +
+      '<p style="color: #ff7070; margin: 15px 0 8px 0; font-size: 0.95rem;">or</p>' +
+      '<div style="background: rgba(255, 82, 82, 0.2); padding: 15px; border-radius: 8px; margin: 15px 0;">' +
+      '<p style="color: #ff3333; font-weight: 700; font-size: 1.1rem; margin: 0 0 8px 0;">✉️ EMAIL US</p>' +
+      '<a href="mailto:handsdetailshop@gmail.com?subject=5-Star Review from Customer" style="color: #ff3333; text-decoration: none; font-weight: 700; font-size: 1.05rem;">handsdetailshop@gmail.com</a>' +
+      '<p style="color: #ff7070; margin: 8px 0 0 0; font-size: 0.9rem;">Include your review in the message</p>' +
+      '</div>';
+    
+    // Remove any existing error messages
+    const existingError = formElement.parentElement.querySelector('div[style*="background: rgba(255, 82, 82"]');
+    if (existingError) {
+      existingError.remove();
+    }
+    
+    formElement.parentElement.insertBefore(errorDiv, formElement);
+    
+    // Also scroll to the error message
+    errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 });
