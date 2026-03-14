@@ -1277,34 +1277,40 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Submitting review:', reviewData);
         
         // Save to local storage as primary storage for admin panel
-        try {
-          let pendingReviews = JSON.parse(localStorage.getItem('pendingReviews')) || [];
-          pendingReviews.push(reviewData);
-          localStorage.setItem('pendingReviews', JSON.stringify(pendingReviews));
-          console.log('Review saved to localStorage for admin approval');
-        } catch (storageError) {
-          console.error('Could not save to localStorage:', storageError);
-        }
-
-        // Send email notification via Firebase Cloud Function
+        // Submit review with server-side timestamp via Firebase Cloud Function
         if (window.firebase && window.firebase.functions) {
-          const sendReviewEmail = window.firebase.functions().httpsCallable('sendReviewEmail');
+          const submitReviewWithServerTime = window.firebase.functions().httpsCallable('submitReviewWithServerTime');
           
-          sendReviewEmail({
+          submitReviewWithServerTime({
             name: reviewData.name,
             email: reviewData.email,
             rating: reviewData.rating,
-            comment: reviewData.comment,
-            createdAt: reviewData.createdAt
+            comment: reviewData.comment
           })
             .then((result) => {
-              console.log('Review email sent successfully:', result.data);
+              console.log('Review submitted with server timestamp:', result.data);
+              // Also save to localStorage for offline support
+              try {
+                let pendingReviews = JSON.parse(localStorage.getItem('pendingReviews')) || [];
+                pendingReviews.push({ ...reviewData, serverSubmitted: true });
+                localStorage.setItem('pendingReviews', JSON.stringify(pendingReviews));
+              } catch (storageError) {
+                console.error('Could not save to localStorage:', storageError);
+              }
               showReviewSuccess(reviewData, reviewForm);
             })
             .catch((error) => {
-              console.error('Error sending review email:', error);
-              // Even if email fails, review is saved in localStorage
-              showReviewSuccess(reviewData, reviewForm);
+              console.error('Error submitting review:', error);
+              // Fallback: Save to localStorage for admin approval
+              try {
+                let pendingReviews = JSON.parse(localStorage.getItem('pendingReviews')) || [];
+                pendingReviews.push(reviewData);
+                localStorage.setItem('pendingReviews', JSON.stringify(pendingReviews));
+                console.log('Review saved to localStorage for admin approval');
+                showReviewSuccess(reviewData, reviewForm);
+              } catch (storageError) {
+                console.error('Could not save to localStorage:', storageError);
+              }
             });
         } else {
           console.warn('Firebase functions not available');
