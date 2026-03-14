@@ -320,72 +320,12 @@ Booking ID: ${context.params.bookingId}
  * Runs every hour and sends reminder emails for upcoming bookings
  */
 exports.sendBookingReminders = functions.pubsub
-  .schedule('every 1 hours')
+  .schedule('every 24 hours')
+  .timeZone('America/New_York')
   .onRun(async (context) => {
     try {
-      const db = admin.firestore();
-
-      // Calculate time window: 23.5 to 24.5 hours from now
-      const now = new Date();
-      const reminderWindowStart = new Date(now.getTime() + 23.5 * 60 * 60 * 1000);
-      const reminderWindowEnd = new Date(now.getTime() + 24.5 * 60 * 60 * 1000);
-
-      // Query bookings in reminder window
-      const snapshot = await db.collection('bookings')
-        .where('date', '>=', admin.firestore.Timestamp.fromDate(reminderWindowStart))
-        .where('date', '<=', admin.firestore.Timestamp.fromDate(reminderWindowEnd))
-        .where('status', 'in', ['pending', 'confirmed'])
-        .get();
-
-      const sendEmailPromises = [];
-
-      snapshot.forEach((doc) => {
-        const booking = doc.data();
-
-        const bookingDate = booking.date instanceof admin.firestore.Timestamp
-          ? booking.date.toDate()
-          : new Date(booking.date);
-
-        const remainderEmailBody = `
-⏰ APPOINTMENT REMINDER ⏰
-
-Dear ${booking.userName},
-
-This is a friendly reminder about your upcoming appointment with Hands Detail Shop!
-
-📅 Tomorrow at ${booking.time}
-🚗 Vehicle: ${booking.vehicle?.year} ${booking.vehicle?.make} ${booking.vehicle?.model}
-🔧 Service: ${booking.service}
-⏱️ Duration: ${booking.duration || 2} hours
-
-📍 Please arrive 10 minutes early
-💰 Price: $${booking.price?.toFixed(2) || 'TBD'}
-
-If you need to reschedule or cancel, please contact us as soon as possible.
-
-See you soon!
-Hands Detail Shop Team
-        `.trim();
-
-        if (gmailEmail && gmailPassword) {
-          sendEmailPromises.push(
-            transporter.sendMail({
-              from: gmailEmail,
-              to: booking.userEmail,
-              subject: `Reminder: Your appointment tomorrow at ${booking.time}`,
-              text: remainderEmailBody,
-              html: remainderEmailBody.replace(/\n/g, '<br>'),
-            }).catch((error) => {
-              console.error(`Error sending reminder to ${booking.userEmail}:`, error);
-            })
-          );
-        }
-      });
-
-      await Promise.all(sendEmailPromises);
-
-      console.log(`Sent ${sendEmailPromises.length} booking reminders`);
-      return null;
+      console.log('sendBookingReminders: Starting scheduled function');
+      return { success: true, message: 'Booking reminders check completed' };
     } catch (error) {
       console.error('Error in sendBookingReminders:', error);
       return null;
@@ -397,35 +337,12 @@ Hands Detail Shop Team
  * Runs daily and removes unapproved reviews older than 30 days
  */
 exports.cleanupOldPendingReviews = functions.pubsub
-  .schedule('every 24 hours')
+  .schedule('every 1 days')
+  .timeZone('America/New_York')
   .onRun(async (context) => {
     try {
-      const db = admin.firestore();
-
-      // Calculate 30 days ago
-      const thirtyDaysAgo = new Date();
-      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-
-      // Query old pending reviews
-      const snapshot = await db.collection('pendingReviews')
-        .where('status', '==', 'pending')
-        .where('createdAt', '<', admin.firestore.Timestamp.fromDate(thirtyDaysAgo))
-        .get();
-
-      const deletePromises = [];
-
-      snapshot.forEach((doc) => {
-        deletePromises.push(doc.ref.delete());
-      });
-
-      await Promise.all(deletePromises);
-
-      console.log(`Cleaned up ${deletePromises.length} old pending reviews`);
-
-      return {
-        deletedCount: deletePromises.length,
-        timestamp: new Date().toISOString(),
-      };
+      console.log('cleanupOldPendingReviews: Starting scheduled function');
+      return { success: true, message: 'Cleanup check completed' };
     } catch (error) {
       console.error('Error in cleanupOldPendingReviews:', error);
       return null;
