@@ -18,9 +18,9 @@
     <meta name="apple-mobile-web-app-title" content="Hands Detail" />
 
     <!-- PWA Icons -->
-    <link rel="apple-touch-icon" href="/20200723_030424~2.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/20200723_030424~2.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/20200723_030424~2.png" />
+    <link rel="apple-touch-icon" href="/logo.jpg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/logo.jpg" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/logo.jpg" />
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/manifest.json" />
@@ -42,7 +42,7 @@
       <div class="nav-container">
         <div class="logo-section">
           <a href="index.html" style="display: flex; align-items: center; text-decoration: none">
-            <img src="20200723_030424~2.png" alt="Hands Detail Shop Logo" class="logo-img" />
+            <img src="logo.jpg" alt="Hands Detail Shop Logo" class="logo-img" />
           </a>
         </div>
         <nav class="nav-menu">
@@ -235,7 +235,7 @@
       <div id="step2" class="booking-section" style="display: none">
         <div class="calendar-grid">
           <div class="calendar-header">
-            <h2 class="calendar-month">January 2025</h2>
+            <h2 class="calendar-month" id="currentMonth">Loading...</h2>
             <div class="calendar-nav">
               <button>← Previous</button>
               <button>Next →</button>
@@ -619,6 +619,17 @@
           'In production, this would redirect to Square payment for $30 deposit.\n\nFor now, please call (412) 752-8684 to complete your booking!'
         );
       }
+
+      // Auto-update calendar to current month/year
+      document.addEventListener('DOMContentLoaded', function() {
+        const now = new Date();
+        const months = ['January','February','March','April','May','June',
+                        'July','August','September','October','November','December'];
+        const monthDisplay = document.getElementById('currentMonth');
+        if (monthDisplay) {
+          monthDisplay.textContent = months[now.getMonth()] + ' ' + now.getFullYear();
+        }
+      });
 
       // Service option hover effects
       document.querySelectorAll('.service-option').forEach((option) => {
