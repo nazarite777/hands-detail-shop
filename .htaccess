@@ -35,8 +35,8 @@
     Header always set Permissions-Policy "geolocation=(self), microphone=(), camera=()"
 
     # Content Security Policy (CSP)
-    # Allows Tawk.to chat widget and Square payment integration
-    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://embed.tawk.to https://square.link; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://embed.tawk.to wss://embed.tawk.to https://square.link; frame-src https://square.link https://tawk.to; object-src 'none'; base-uri 'self'; form-action 'self' https://square.link"
+    # Allows Claude AI chat widget and Square payment integration
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://square.link; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://square.link; frame-src https://square.link; object-src 'none'; base-uri 'self'; form-action 'self' https://square.link"
 
     # HSTS (HTTP Strict Transport Security) - 1 year
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"

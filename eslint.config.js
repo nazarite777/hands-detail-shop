@@ -7,15 +7,7 @@ export default [
   eslintConfigPrettier,
   {
     languageOptions: {
-      ecmaVersion: 2022,
-      sourceType: 'module',
-      globals: {
-        ...globals.browser,
-        Tawk_API: 'readonly',
-        firebase: 'readonly',
-        emailjs: 'readonly',
-        gtag: 'readonly',
-      },
+      ecmaVersion: 2022,\n      sourceType: 'module',\n      globals: {\n        ...globals.browser,\n        firebase: 'readonly',\n        emailjs: 'readonly',\n        gtag: 'readonly',\n      },
     },
     rules: {
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
