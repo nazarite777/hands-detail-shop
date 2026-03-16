@@ -94,7 +94,7 @@ Submitted: ${new Date(createdAt).toLocaleString()}
     // Send email to admin
     const mailOptions = {
       from: gmailEmail,
-      to: 'handsdetailshop@gmail.com',
+      to: gmailEmail,
       subject: `New Review: ${name} (${rating}⭐)`,
       text: emailBody,
       html: emailBody.replace(/\n/g, '<br>'),
@@ -255,7 +255,7 @@ Submitted: ${new Date().toLocaleString()}
 
         await transporter.sendMail({
           from: gmailEmail,
-          to: 'handsdetailshop@gmail.com',
+          to: gmailEmail,
           subject: `New Review: ${reviewData.name} (${reviewData.rating}⭐)`,
           text: emailBody,
           html: emailBody.replace(/\n/g, '<br>'),
