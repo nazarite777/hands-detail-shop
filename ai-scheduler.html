@@ -1,4 +1,4 @@
-﻿﻿<!doctype html>
+﻿<!doctype html>
 <html lang=✓en✓>
   <head>
     <meta charset=✓UTF-8✓ />
@@ -97,6 +97,15 @@
         font-family: inherit;
         font-size: 0.95rem;
         transition: border-color 0.3s;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: rgba(66, 165, 245, 0.8);
+        background: rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 10px rgba(66, 165, 245, 0.2);
       }
 
       .form-group input:focus,
@@ -345,22 +354,19 @@
           </a>
         </div>
 
-        <nav class=✓nav-menu✓>
-          <a href=✓index.html✓ class=✓nav-link✓>Home</a>
-          <a href=✓our-story.html✓ class=✓nav-link✓>Our Story</a>
-          <a href=✓services.html✓ class=✓nav-link✓>Services</a>
-          <a href=✓membership.html✓ class=✓nav-link✓>Membership</a>
-          <a href=✓quote.html✓ class=✓nav-link✓>Quote</a>
-          <a href=✓reviews.html✓ class=✓nav-link✓>Reviews</a>
-          <a href=✓https://handsdetailshop.medium.com✓ target=✓_blank✓ class=✓nav-link✓>Blog</a>
-          <a href=✓contact.html✓ class=✓nav-link✓>Contact</a>
-          <a href=✓careers.html✓ class=✓nav-link✓>Careers</a>
-          <div class=✓contact-header✓>
-            <span class=✓hours-header✓>&#128497; Mon-Sat 8AM-6PM</span>
-            <a href=✓tel:4127528684✓ class=✓btn-call✓>&#128222; Call</a>
-            <a href=✓sms:4127528684✓ class=✓btn-text✓>&#128172; Text</a>
-          </div>
+        <nav class="nav-menu">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="our-story.html" class="nav-link">Our Story</a>
+          <a href="services.html" class="nav-link">Services</a>
+          <a href="membership.html" class="nav-link">Membership</a>
+          <a href="gallery.html" class="nav-link">Gallery</a>
+          <a href="contact.html" class="nav-link">Contact</a>
         </nav>
+        <div class="contact-header">
+          <a href="tel:4127528684" class="btn-call">📞 Call</a>
+          <a href="ai-assistant.html" class="nav-link">💬 AI Chat</a>
+          <a href="booking.html" class="cta-header">Book Now</a>
+        </div>
 
         <div class=✓mobile-menu-toggle✓ id=✓mobileToggle✓>
           <span></span>
@@ -370,16 +376,19 @@
       </div>
     </header>
 
+    <!-- Promo Banner -->
+    <div class="promo-banner" style="margin-top: 70px">
+      📅 AI-Powered Scheduling | Get Instant Availability | Personalized Recommendations | 📞 (412) 752-8684
+    </div>
+
     <!-- Hero Section -->
-    <section style=✓padding-top: 180px; background: linear-gradient(135deg, #0d1b2a 0%, #1a2942 50%, #0d1b2a 100%); position: relative; overflow: hidden; text-align: center;✓>
-      <div class=✓section-container✓ style=✓z-index: 2; position: relative✓>
-        <h1 style=✓font-size: 3rem; color: #e0e0e0; margin-bottom: 15px; font-weight: 900;✓>
-          &#128161; Smart AI Appointment Scheduler
-        </h1>
-        <p style=✓font-size: 1.3rem; color: #b3d9ff; margin-bottom: 30px;✓>
-          Let our AI assistant help you find the perfect time for your detailing appointment
-        </p>
-      </div>
+    <section class="page-hero" style="margin-top: 20px; padding: 80px 20px 40px; text-align: center">
+      <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 20px; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        Smart AI Scheduling
+      </h1>
+      <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; color: #c0c0c0;">
+        Let our intelligent AI assistant find the perfect time for your detailing appointment
+      </p>
     </section>
 
     <!-- Scheduler Section -->
@@ -442,8 +451,8 @@
                 <div class=✓time-slots✓ id=✓timeSlotsList✓></div>
               </div>
 
-              <button type=✓button✓ class=✓submit-button✓ onclick=✓requestScheduleFromAI()✓>
-                &#128172; Chat with AI Scheduler
+              <button type="button" style="background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5); color: white; padding: 12px 30px; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; width: 100%; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(65, 165, 245, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='';" onclick="requestScheduleFromAI()">
+                💬 Chat with AI Scheduler
               </button>
             </form>
           </div>
@@ -456,14 +465,15 @@
                 Hey! &#128075; I'm here to help you schedule your detailing appointment. Tell me about your vehicle and when you'd like to bring it in!
               </div>
             </div>
-            <div class=✓chat-input-group✓>
+            <div class="chat-input-group" style="display: flex; gap: 10px; margin-top: 15px;">
               <input 
-                type=✓text✓ 
-                id=✓chatInput✓ 
-                placeholder=✓Ask me about available times...✓ 
-                onkeypress=✓if(event.key === 'Enter') sendChatMessage()✓
+                type="text" 
+                id="chatInput" 
+                placeholder="Ask me about available times..." 
+                style="flex: 1; padding: 12px; background: rgba(30, 30, 30, 0.8); border: 1px solid rgba(66, 165, 245, 0.3); color: #e0e0e0; border-radius: 6px; font-size: 0.95rem;"
+                onkeypress="if(event.key === 'Enter') sendChatMessage()"
               />
-              <button onclick=✓sendChatMessage()✓>Send</button>
+              <button onclick="sendChatMessage()" style="background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5); color: white; padding: 12px 25px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(65, 165, 245, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='';">Send</button>
             </div>
             <div class=✓confirmation-message✓ id=✓confirmationMessage✓>
               <h4>✅ Appointment Scheduled!</h4>
@@ -474,45 +484,49 @@
         </div>
 
         <!-- Schedule Info Card -->
-        <div class=✓schedule-info✓>
-          <h4>📅 Scheduling Information</h4>
-          <p><strong>Available Hours:</strong> Monday - Saturday, 8:00 AM - 6:00 PM</p>
-          <p><strong>Service Duration:</strong> 2-4 hours depending on package</strong></p>
-          <p><strong>Mobile Service:</strong> We come to you! Choose your preferred location in our service area.</p>
-          <p><strong>Confirmation:</strong> You'll receive confirmation via chat, email, and SMS immediately after booking.</p>
+        <div class="schedule-info" style="background: rgba(21, 101, 192, 0.1); border: 1px solid rgba(66, 165, 245, 0.3); border-radius: 12px; padding: 30px; margin-top: 40px;">
+          <h4 style="color: #42a5f5; margin-top: 0; margin-bottom: 20px; font-size: 1.2rem;">📅 Scheduling Information</h4>
+          <p style="color: #b3d9ff; margin: 10px 0;"><strong>Available Hours:</strong> Monday - Saturday, 8:00 AM - 6:00 PM</p>
+          <p style="color: #b3d9ff; margin: 10px 0;"><strong>Service Duration:</strong> 2-4 hours depending on package</p>
+          <p style="color: #b3d9ff; margin: 10px 0;"><strong>Mobile Service:</strong> We come to you! Choose your preferred location in our service area.</p>
+          <p style="color: #b3d9ff; margin: 10px 0;"><strong>Confirmation:</strong> You'll receive confirmation via chat, email, and SMS immediately after booking.</p>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer style=✓background: linear-gradient(180deg, #0d1b2a 0%, #1a2942 100%); border-top: 1px solid rgba(66, 165, 245, 0.2); margin-top: 100px; padding: 60px 20px 30px;✓>
-      <div class=✓section-container✓>
-        <div style=✓display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;✓>
-          <div class=✓footer-section✓>
-            <h3>Contact Info</h3>
-            <p>
-              <strong>&#128222; Phone:</strong><br />
-              <a href=✓tel:4127528684✓ style=✓color: #42a5f5; text-decoration: none✓>(412) 752-8684</a>
-            </p>
-            <p style=✓margin-top: 15px✓>
-              <strong>&#128172; Text Us:</strong><br />
-              <a href=✓sms:4127528684✓ style=✓color: #42a5f5; text-decoration: none✓>Send SMS</a>
+    <footer style="background: linear-gradient(180deg, #0d1b2a 0%, #1a2942 100%); border-top: 1px solid rgba(66, 165, 245, 0.2); margin-top: 100px; padding: 60px 20px 30px;">
+      <div class="section-container">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;">
+          <div class="footer-section">
+            <h3>Hands Detail Shop</h3>
+            <p>Professional mobile auto detailing services. We come to you!</p>
+            <p style="margin-top: 15px">
+              <strong>📞 Phone:</strong> <a href="tel:4127528684" style="color: #42a5f5; text-decoration: none;">(412) 752-8684</a><br />
+              <strong>✉️ Email:</strong> <a href="mailto:cbevvv@gmail.com" style="color: #42a5f5; text-decoration: none;">cbevvv@gmail.com</a>
             </p>
           </div>
 
-          <div class=✓footer-section✓>
-            <h3>Quick Links</h3>
-            <ul style=✓list-style: none✓>
-              <li><a href=✓index.html✓ style=✓color: #b3d9ff; text-decoration: none;✓>Home</a></li>
-              <li><a href=✓services.html✓ style=✓color: #b3d9ff; text-decoration: none;✓>Services</a></li>
-              <li><a href=✓quote.html✓ style=✓color: #b3d9ff; text-decoration: none;✓>Get Quote</a></li>
-              <li><a href=✓reviews.html✓ style=✓color: #b3d9ff; text-decoration: none;✓>Reviews</a></li>
+          <div class="footer-section">
+            <h3>Our Services</h3>
+            <ul style="list-style: none; color: #b3d9ff;">
+              <li><a href="services.html" style="color: #b3d9ff; text-decoration: none;">Personal Vehicle Detailing</a></li>
+              <li><a href="membership.html" style="color: #b3d9ff; text-decoration: none;">Monthly Plans</a></li>
+              <li><a href="booking.html" style="color: #b3d9ff; text-decoration: none;">Book Now</a></li>
+              <li><a href="reviews.html" style="color: #b3d9ff; text-decoration: none;">Reviews</a></li>
             </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Mobile Service</h3>
+            <p style="color: #b3d9ff;">We come directly to you! Serving Pittsburgh area and surrounding communities.</p>
+            <p style="color: #b3d9ff; font-size: 0.9rem;"><strong>Mon-Sat:</strong> 8AM-6PM<br /><strong>Sun:</strong> By Appointment</p>
           </div>
         </div>
 
-        <div class=✓footer-bottom✓>
+        <div class="footer-bottom">
           <p>&copy; 2025 Hands Detail Shop | Mobile Detailing Services | All Rights Reserved</p>
+          <p style="margin-top: 10px; font-size: 0.9rem;">Professional Auto Detailing Services | Pittsburgh Area | Licensed & Insured</p>
         </div>
       </div>
     </footer>
