@@ -262,8 +262,9 @@
           </div>
         </div>
 
-        <!-- Featured Reviews Grid -->
+        <!-- Featured Reviews Grid - Dynamically Loaded -->
         <div
+          id="reviews-grid"
           style="
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -271,19 +272,20 @@
             margin-bottom: 50px;
           "
         >
-          <div
-            style="
-              background: linear-gradient(135deg, #0d1b2a, #1a2942);
-              border-radius: 15px;
-              padding: 30px;
-              border-left: 4px solid #42a5f5;
-              border: 1px solid rgba(66, 165, 245, 0.3);
-              transition: all 0.3s ease;
-            "
-            onmouseover="
-              this.style.transform = 'translateY(-5px)';
-              this.style.boxShadow = '0 10px 30px rgba(66, 165, 245, 0.4)';
-            "
+          <!-- Reviews will be loaded here by main.js -->
+        </div>
+        <script>
+          // Clear any old hardcoded reviews and wait for dynamic loading
+          document.addEventListener('DOMContentLoaded', function() {
+            const grid = document.getElementById('reviews-grid');
+            if (grid) {
+              // Remove all children except the comment
+              while (grid.firstChild && grid.firstChild.nodeType !== 8) {
+                grid.removeChild(grid.firstChild);
+              }
+            }
+          });
+        </script>
             onmouseout="
               this.style.transform = '';
               this.style.boxShadow = '';

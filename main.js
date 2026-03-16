@@ -1375,57 +1375,121 @@ document.addEventListener('DOMContentLoaded', function () {
     errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
-  // Load and display approved reviews from localStorage
-  function loadApprovedReviews() {
+  // Load and display approved reviews from Firestore
+  async function loadApprovedReviews() {
     const reviewsContainer = document.getElementById('reviews-grid');
     if (!reviewsContainer) return;
 
-    const approvedReviews = JSON.parse(localStorage.getItem('approvedReviews')) || [];
+    try {
+      // Try to load from Firestore first
+      const approvedSnapshot = await firebase.firestore().collection('approvedReviews').get();
+      const approvedReviews = approvedSnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
 
-    approvedReviews.forEach((review) => {
-      const reviewCard = document.createElement('div');
-      reviewCard.className = 'review-card';
-      reviewCard.style.cssText = `
-        background: linear-gradient(135deg, rgba(66, 165, 245, 0.1), rgba(30, 136, 229, 0.1));
-        border: 1px solid rgba(66, 165, 245, 0.3);
-        border-radius: 10px;
-        padding: 25px;
-        display: flex;
-        flex-direction: column;
-      `;
+      // If no reviews in Firestore, fall back to localStorage for backward compatibility
+      let reviewsToDisplay = approvedReviews;
+      if (approvedReviews.length === 0) {
+        reviewsToDisplay = JSON.parse(localStorage.getItem('approvedReviews')) || [];
+      }
 
-      const stars = '⭐'.repeat(review.rating);
-      const reviewDate = new Date(review.createdAt).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
+      // Display each approved review
+      reviewsToDisplay.forEach((review) => {
+        const reviewCard = document.createElement('div');
+        reviewCard.className = 'review-card';
+        reviewCard.style.cssText = `
+          background: linear-gradient(135deg, rgba(66, 165, 245, 0.1), rgba(30, 136, 229, 0.1));
+          border: 1px solid rgba(66, 165, 245, 0.3);
+          border-radius: 10px;
+          padding: 25px;
+          display: flex;
+          flex-direction: column;
+        `;
+
+        const stars = '⭐'.repeat(review.rating);
+        const createdAt = review.createdAt?.toDate ? review.createdAt.toDate() : new Date(review.createdAt);
+        const reviewDate = createdAt.toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        });
+
+        const badgeStyle = `
+          display: inline-block;
+          background: linear-gradient(135deg, #4caf50, #66bb6a);
+          color: white;
+          padding: 4px 12px;
+          border-radius: 20px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          margin-bottom: 10px;
+          width: fit-content;
+        `;
+
+        reviewCard.innerHTML = `
+          <div style="${badgeStyle}">&#10003; Verified Review</div>
+          <h3 style="color: #90caf9; margin: 0 0 8px 0; font-size: 1.2rem;">${review.name}</h3>
+          <div style="color: #ffc107; margin-bottom: 10px; font-size: 1.1rem;">${stars}</div>
+          <p style="color: #e8f1f8; font-style: italic; line-height: 1.6; margin: 15px 0; flex-grow: 1;">"${review.comment}"</p>
+          <div style="color: #a0a0a0; font-size: 0.85rem; margin-top: 15px;">
+            &#128197; ${reviewDate}
+            ${review.email ? `<br>👤 ${review.email}` : ''}
+          </div>
+        `;
+
+        reviewsContainer.appendChild(reviewCard);
       });
+    } catch (error) {
+      console.warn('Could not load reviews from Firestore, falling back to localStorage:', error);
+      // Fall back to localStorage if Firestore fails
+      const approvedReviews = JSON.parse(localStorage.getItem('approvedReviews')) || [];
 
-      const badgeStyle = `
-        display: inline-block;
-        background: linear-gradient(135deg, #4caf50, #66bb6a);
-        color: white;
-        padding: 4px 12px;
-        border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        margin-bottom: 10px;
-        width: fit-content;
-      `;
+      approvedReviews.forEach((review) => {
+        const reviewCard = document.createElement('div');
+        reviewCard.className = 'review-card';
+        reviewCard.style.cssText = `
+          background: linear-gradient(135deg, rgba(66, 165, 245, 0.1), rgba(30, 136, 229, 0.1));
+          border: 1px solid rgba(66, 165, 245, 0.3);
+          border-radius: 10px;
+          padding: 25px;
+          display: flex;
+          flex-direction: column;
+        `;
 
-      reviewCard.innerHTML = `
-        <div style="${badgeStyle}">&#10003; Verified Review</div>
-        <h3 style="color: #90caf9; margin: 0 0 8px 0; font-size: 1.2rem;">${review.name}</h3>
-        <div style="color: #ffc107; margin-bottom: 10px; font-size: 1.1rem;">${stars}</div>
-        <p style="color: #e8f1f8; font-style: italic; line-height: 1.6; margin: 15px 0; flex-grow: 1;">"${review.comment}"</p>
-        <div style="color: #a0a0a0; font-size: 0.85rem; margin-top: 15px;">
-          &#128197; ${reviewDate}
-          ${review.email ? `<br>👤 ${review.email}` : ''}
-        </div>
-      `;
+        const stars = '⭐'.repeat(review.rating);
+        const reviewDate = new Date(review.createdAt).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        });
 
-      reviewsContainer.appendChild(reviewCard);
-    });
+        const badgeStyle = `
+          display: inline-block;
+          background: linear-gradient(135deg, #4caf50, #66bb6a);
+          color: white;
+          padding: 4px 12px;
+          border-radius: 20px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          margin-bottom: 10px;
+          width: fit-content;
+        `;
+
+        reviewCard.innerHTML = `
+          <div style="${badgeStyle}">&#10003; Verified Review</div>
+          <h3 style="color: #90caf9; margin: 0 0 8px 0; font-size: 1.2rem;">${review.name}</h3>
+          <div style="color: #ffc107; margin-bottom: 10px; font-size: 1.1rem;">${stars}</div>
+          <p style="color: #e8f1f8; font-style: italic; line-height: 1.6; margin: 15px 0; flex-grow: 1;">"${review.comment}"</p>
+          <div style="color: #a0a0a0; font-size: 0.85rem; margin-top: 15px;">
+            &#128197; ${reviewDate}
+            ${review.email ? `<br>👤 ${review.email}` : ''}
+          </div>
+        `;
+
+        reviewsContainer.appendChild(reviewCard);
+      });
+    }
   }
 
   // Load approved reviews when page loads

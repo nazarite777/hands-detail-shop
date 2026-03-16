@@ -252,56 +252,78 @@
       </div>
     </div>
 
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+
     <script>
-      // Review Management System
-      const STORAGE_KEYS = {
-        PENDING: 'pendingReviews',
-        APPROVED: 'approvedReviews',
-      };
+      // Initialize Firestore
+      const db = firebase.firestore();
 
       /**
-       * Load and display all pending reviews
+       * Load and display all pending reviews from Firestore
        */
-      function loadPendingReviews() {
+      async function loadPendingReviews() {
         const container = document.getElementById('reviewsContainer');
-        const pendingReviews = JSON.parse(localStorage.getItem(STORAGE_KEYS.PENDING)) || [];
-        const approvedReviews = JSON.parse(localStorage.getItem(STORAGE_KEYS.APPROVED)) || [];
+        
+        try {
+          // Load pending reviews from Firestore
+          const pendingSnapshot = await db.collection('pendingReviews').get();
+          const pendingReviews = pendingSnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
 
-        // Update counts
-        document.getElementById('pendingCount').textContent = pendingReviews.length;
-        document.getElementById('approvedCount').textContent = approvedReviews.length;
+          // Load approved reviews count from Firestore
+          const approvedSnapshot = await db.collection('approvedReviews').get();
+          const approvedCount = approvedSnapshot.size;
 
-        // Clear container
-        container.innerHTML = '';
+          // Update counts
+          document.getElementById('pendingCount').textContent = pendingReviews.length;
+          document.getElementById('approvedCount').textContent = approvedCount;
 
-        if (pendingReviews.length === 0) {
+          // Clear container
+          container.innerHTML = '';
+
+          if (pendingReviews.length === 0) {
+            container.innerHTML = `
+              <div class="empty-state">
+                <div class="empty-state-icon">✅</div>
+                <h3>All Caught Up!</h3>
+                <p>No pending reviews. All your reviews have been approved.</p>
+              </div>
+            `;
+            return;
+          }
+
+          // Display each pending review
+          pendingReviews.forEach((review) => {
+            const reviewCard = createReviewCard(review);
+            container.appendChild(reviewCard);
+          });
+        } catch (error) {
+          console.error('Error loading pending reviews:', error);
           container.innerHTML = `
             <div class="empty-state">
-              <div class="empty-state-icon">✅</div>
-              <h3>All Caught Up!</h3>
-              <p>No pending reviews. All your reviews have been approved.</p>
+              <div class="empty-state-icon">⚠️</div>
+              <h3>Error Loading Reviews</h3>
+              <p>${error.message}</p>
             </div>
           `;
-          return;
         }
-
-        // Display each pending review
-        pendingReviews.forEach((review, index) => {
-          const reviewCard = createReviewCard(review, index);
-          container.appendChild(reviewCard);
-        });
       }
 
       /**
        * Create a review card element
        */
-      function createReviewCard(review, index) {
+      function createReviewCard(review) {
         const card = document.createElement('div');
         card.className = 'review-card';
-        card.id = `review-${index}`;
+        card.id = `review-${review.id}`;
 
         const stars = '⭐'.repeat(review.rating);
-        const submittedDate = new Date(review.createdAt).toLocaleDateString();
+        const createdAt = review.createdAt.toDate ? review.createdAt.toDate() : new Date(review.createdAt);
+        const submittedDate = createdAt.toLocaleDateString();
 
         card.innerHTML = `
           <div class="review-header">
@@ -322,10 +344,10 @@
           </div>
 
           <div class="review-actions">
-            <button class="btn btn-approve" onclick="approveReview(${index})">
+            <button class="btn btn-approve" onclick="approveReview('${review.id}', '${review.name}')">
               ✓ Approve & Publish
             </button>
-            <button class="btn btn-reject" onclick="rejectReview(${index})">
+            <button class="btn btn-reject" onclick="rejectReview('${review.id}', '${review.name}')">
               ✕ Reject
             </button>
           </div>
@@ -335,39 +357,49 @@
       }
 
       /**
-       * Approve a review and move it to approved
+       * Approve a review and move it to approvedReviews collection
        */
-      function approveReview(index) {
-        const pendingReviews = JSON.parse(localStorage.getItem(STORAGE_KEYS.PENDING)) || [];
-        const approvedReviews = JSON.parse(localStorage.getItem(STORAGE_KEYS.APPROVED)) || [];
+      async function approveReview(reviewId, reviewName) {
+        try {
+          // Get the review from pendingReviews
+          const reviewDoc = await db.collection('pendingReviews').doc(reviewId).get();
+          if (!reviewDoc.exists) {
+            showMessage('Review not found', 'error');
+            return;
+          }
 
-        if (index >= 0 && index < pendingReviews.length) {
-          const review = pendingReviews[index];
-          approvedReviews.push(review);
-          pendingReviews.splice(index, 1);
+          const reviewData = reviewDoc.data();
 
-          localStorage.setItem(STORAGE_KEYS.PENDING, JSON.stringify(pendingReviews));
-          localStorage.setItem(STORAGE_KEYS.APPROVED, JSON.stringify(approvedReviews));
+          // Save to approvedReviews collection
+          await db.collection('approvedReviews').doc(reviewId).set({
+            ...reviewData,
+            approvedAt: firebase.firestore.FieldValue.serverTimestamp(),
+          });
 
-          showMessage(`✓ Review from ${review.name} has been approved!`, 'success');
+          // Delete from pendingReviews
+          await db.collection('pendingReviews').doc(reviewId).delete();
+
+          showMessage(`✓ Review from ${reviewName} has been approved!`, 'success');
           loadPendingReviews();
+        } catch (error) {
+          console.error('Error approving review:', error);
+          showMessage(`Error: ${error.message}`, 'error');
         }
       }
 
       /**
        * Reject a review and remove it
        */
-      function rejectReview(index) {
-        const pendingReviews = JSON.parse(localStorage.getItem(STORAGE_KEYS.PENDING)) || [];
+      async function rejectReview(reviewId, reviewName) {
+        try {
+          // Delete from pendingReviews
+          await db.collection('pendingReviews').doc(reviewId).delete();
 
-        if (index >= 0 && index < pendingReviews.length) {
-          const review = pendingReviews[index];
-          pendingReviews.splice(index, 1);
-
-          localStorage.setItem(STORAGE_KEYS.PENDING, JSON.stringify(pendingReviews));
-
-          showMessage(`✕ Review from ${review.name} has been rejected and removed.`, 'error');
+          showMessage(`✕ Review from ${reviewName} has been rejected and removed.`, 'error');
           loadPendingReviews();
+        } catch (error) {
+          console.error('Error rejecting review:', error);
+          showMessage(`Error: ${error.message}`, 'error');
         }
       }
 
