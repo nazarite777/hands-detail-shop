@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Firebase Authentication Module
  * Hands Detail Shop - Pittsburgh Auto Detailing
  *
@@ -480,3 +480,4 @@ function trackAuthEvent(eventName, eventData = {}) {
     console.warn('Error tracking auth event:', error.message);
   }
 }
+

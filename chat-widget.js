@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Hands Detail Shop - Floating Chat Widget
  * Embed on any page with: <script src="chat-widget.js"></script>
  * 
@@ -130,7 +130,7 @@
     // Create button
     const button = document.createElement('button');
     button.id = 'hands-chat-button';
-    button.innerHTML = '💬';
+    button.innerHTML = '&#128172;';
     button.title = 'Chat with our AI Assistant';
     
     // Create iframe
@@ -141,7 +141,7 @@
     // Add badge
     const badge = document.createElement('div');
     badge.className = 'hands-chat-badge';
-    badge.textContent = '✓';
+    badge.textContent = '&#10003;';
     badge.title = 'AI Assistant Ready';
     button.appendChild(badge);
     
@@ -189,3 +189,4 @@
     initChat();
   }
 })();
+

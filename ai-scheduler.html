@@ -1,0 +1,666 @@
+﻿﻿<!doctype html>
+<html lang=✓en✓>
+  <head>
+    <meta charset=✓UTF-8✓ />
+    <meta name=✓viewport✓ content=✓width=device-width, initial-scale=1.0✓ />
+    <title>AI Appointment Scheduler | Hands Detail Shop | Pittsburgh</title>
+    <meta name=✓title✓ content=✓Smart AI Appointment Scheduling | Hands Detail Shop✓ />
+    <meta name=✓description✓ content=✓Use our AI assistant to intelligently schedule your auto detailing appointment. Get instant availability suggestions and receive confirmation via chat, email, and SMS.✓ />
+    <meta name=✓keywords✓ content=✓appointment scheduling, auto detailing booking, AI scheduler, Pittsburgh detailing✓ />
+    <meta name=✓author✓ content=✓Nazir El - Hands Detail Shop✓ />
+
+    <!-- Open Graph / Facebook -->
+    <meta property=✓og:type✓ content=✓website✓ />
+    <meta property=✓og:url✓ content=✓https://handsdetailshop.com/ai-scheduler.html✓ />
+    <meta property=✓og:title✓ content=✓Smart AI Appointment Scheduler | Hands Detail Shop✓ />
+    <meta property=✓og:description✓ content=✓Let our AI assistant help you schedule your next auto detailing appointment with perfect timing.✓ />
+    <meta property=✓og:image✓ content=✓https://handsdetailshop.com/20200723_030424~2.png✓ />
+
+    <!-- Theme Color -->
+    <meta name=✓theme-color✓ content=✓#1565c0✓ />
+
+    <!-- PWA Meta Tags -->
+    <meta name=✓mobile-web-app-capable✓ content=✓yes✓ />
+    <meta name=✓apple-mobile-web-app-capable✓ content=✓yes✓ />
+    <meta name=✓apple-mobile-web-app-title✓ content=✓Hands Detail✓ />
+    <link rel=✓apple-touch-icon✓ href=✓/20200723_030424~2.png✓ />
+    <link rel=✓icon✓ type=✓image/png✓ sizes=✓192x192✓ href=✓/20200723_030424~2.png✓ />
+    <link rel=✓manifest✓ href=✓/manifest.json✓ />
+
+    <link rel=✓stylesheet✓ href=✓styles.css✓ />
+    <style>
+      .scheduler-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .scheduler-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .scheduler-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      @media (max-width: 768px) {
+        .scheduler-content {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .scheduler-form {
+        background: rgba(21, 101, 192, 0.1);
+        border: 1px solid rgba(66, 165, 245, 0.3);
+        border-radius: 12px;
+        padding: 30px;
+        transition: all 0.3s ease;
+      }
+
+      .scheduler-form:hover {
+        border-color: rgba(66, 165, 245, 0.6);
+        background: rgba(21, 101, 192, 0.15);
+      }
+
+      .scheduler-form h3 {
+        color: #42a5f5;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        color: #b3d9ff;
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 0.95rem;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(66, 165, 245, 0.3);
+        color: #e0e0e0;
+        border-radius: 6px;
+        font-family: inherit;
+        font-size: 0.95rem;
+        transition: border-color 0.3s;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #42a5f5;
+        box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.1);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+
+      .scheduler-ai-chat {
+        background: linear-gradient(135deg, rgba(21, 101, 192, 0.1), rgba(13, 27, 42, 0.5));
+        border: 1px solid rgba(66, 165, 245, 0.3);
+        border-radius: 12px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        min-height: 500px;
+      }
+
+      .scheduler-ai-chat h3 {
+        color: #42a5f5;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+      }
+
+      .chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        margin-bottom: 20px;
+        padding-right: 10px;
+        max-height: 350px;
+      }
+
+      .chat-message {
+        margin-bottom: 15px;
+        padding: 12px;
+        border-radius: 8px;
+        animation: slideIn 0.3s ease;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .chat-message.user {
+        background: rgba(66, 165, 245, 0.2);
+        border-left: 3px solid #42a5f5;
+        color: #e0e0e0;
+        margin-left: 20px;
+      }
+
+      .chat-message.assistant {
+        background: rgba(21, 101, 192, 0.15);
+        border-left: 3px solid #1565c0;
+        color: #b3d9ff;
+        margin-right: 20px;
+      }
+
+      .chat-message.system {
+        background: rgba(76, 175, 80, 0.15);
+        border-left: 3px solid #4caf50;
+        color: #a5d6a7;
+        text-align: center;
+        margin: 0 20px;
+      }
+
+      .chat-input-group {
+        display: flex;
+        gap: 10px;
+      }
+
+      .chat-input-group input {
+        flex: 1;
+        padding: 10px 12px;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(66, 165, 245, 0.3);
+        color: #e0e0e0;
+        border-radius: 6px;
+        font-family: inherit;
+        transition: border-color 0.3s;
+      }
+
+      .chat-input-group input:focus {
+        outline: none;
+        border-color: #42a5f5;
+      }
+
+      .chat-input-group button {
+        padding: 10px 20px;
+        background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .chat-input-group button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(66, 165, 245, 0.4);
+      }
+
+      .submit-button {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-top: 10px;
+      }
+
+      .submit-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(66, 165, 245, 0.4);
+      }
+
+      .submit-button:disabled {
+        background: rgba(66, 165, 245, 0.3);
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .schedule-info {
+        background: rgba(76, 175, 80, 0.1);
+        border-left: 4px solid #4caf50;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+
+      .schedule-info h4 {
+        color: #a5d6a7;
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+
+      .schedule-info p {
+        color: #81c784;
+        margin: 5px 0;
+        font-size: 0.9rem;
+      }
+
+      .available-slots {
+        background: rgba(66, 165, 245, 0.1);
+        border: 1px solid rgba(66, 165, 245, 0.3);
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+      }
+
+      .available-slots h4 {
+        color: #42a5f5;
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+
+      .time-slots {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 10px;
+      }
+
+      .time-slot {
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(66, 165, 245, 0.3);
+        border-radius: 6px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s;
+        color: #b3d9ff;
+      }
+
+      .time-slot:hover {
+        background: rgba(66, 165, 245, 0.2);
+        border-color: #42a5f5;
+      }
+
+      .time-slot.selected {
+        background: rgba(66, 165, 245, 0.4);
+        border-color: #42a5f5;
+        color: white;
+      }
+
+      .confirmation-message {
+        background: rgba(76, 175, 80, 0.15);
+        border: 2px solid #4caf50;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        margin-top: 20px;
+        display: none;
+      }
+
+      .confirmation-message.show {
+        display: block;
+        animation: slideIn 0.3s ease;
+      }
+
+      .confirmation-message h4 {
+        color: #a5d6a7;
+        margin-top: 0;
+      }
+
+      .confirmation-message p {
+        color: #81c784;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Navigation -->
+    <header id=✓header✓>
+      <div class=✓nav-container✓>
+        <div class=✓logo-section✓>
+          <a href=✓index.html✓ style=✓display: flex; align-items: center; text-decoration: none✓>
+            <img
+              src=✓20200723_030424~2.png✓
+              alt=✓Hands Detail Shop Logo✓
+              class=✓logo-img✓
+              onerror=✓this.style.display = 'none'; this.nextElementSibling.style.display = 'block';✓
+            />
+            <div style=✓display: none; font-size: 1.5rem; font-weight: 800; color: #c0c0c0; font-style: italic;✓>
+              HANDS DETAIL
+            </div>
+          </a>
+        </div>
+
+        <nav class=✓nav-menu✓>
+          <a href=✓index.html✓ class=✓nav-link✓>Home</a>
+          <a href=✓our-story.html✓ class=✓nav-link✓>Our Story</a>
+          <a href=✓services.html✓ class=✓nav-link✓>Services</a>
+          <a href=✓membership.html✓ class=✓nav-link✓>Membership</a>
+          <a href=✓quote.html✓ class=✓nav-link✓>Quote</a>
+          <a href=✓reviews.html✓ class=✓nav-link✓>Reviews</a>
+          <a href=✓https://handsdetailshop.medium.com✓ target=✓_blank✓ class=✓nav-link✓>Blog</a>
+          <a href=✓contact.html✓ class=✓nav-link✓>Contact</a>
+          <a href=✓careers.html✓ class=✓nav-link✓>Careers</a>
+          <div class=✓contact-header✓>
+            <span class=✓hours-header✓>&#128497; Mon-Sat 8AM-6PM</span>
+            <a href=✓tel:4127528684✓ class=✓btn-call✓>&#128222; Call</a>
+            <a href=✓sms:4127528684✓ class=✓btn-text✓>&#128172; Text</a>
+          </div>
+        </nav>
+
+        <div class=✓mobile-menu-toggle✓ id=✓mobileToggle✓>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section style=✓padding-top: 180px; background: linear-gradient(135deg, #0d1b2a 0%, #1a2942 50%, #0d1b2a 100%); position: relative; overflow: hidden; text-align: center;✓>
+      <div class=✓section-container✓ style=✓z-index: 2; position: relative✓>
+        <h1 style=✓font-size: 3rem; color: #e0e0e0; margin-bottom: 15px; font-weight: 900;✓>
+          &#128161; Smart AI Appointment Scheduler
+        </h1>
+        <p style=✓font-size: 1.3rem; color: #b3d9ff; margin-bottom: 30px;✓>
+          Let our AI assistant help you find the perfect time for your detailing appointment
+        </p>
+      </div>
+    </section>
+
+    <!-- Scheduler Section -->
+    <section class=✓detail-section✓>
+      <div class=✓scheduler-container✓>
+        <div class=✓scheduler-header✓>
+          <h2 class=✓section-title✓>Schedule Your Appointment with AI</h2>
+          <p class=✓section-subtitle✓>
+            Chat with our intelligent scheduler to book your perfect appointment time
+          </p>
+        </div>
+
+        <div class=✓scheduler-content✓>
+          <!-- Appointment Details Form -->
+          <div class=✓scheduler-form✓>
+            <h3>&#128203; Your Details</h3>
+            <form id=✓appointmentForm✓>
+              <div class=✓form-group✓>
+                <label for=✓customerName✓>Your Name *</label>
+                <input type=✓text✓ id=✓customerName✓ name=✓customerName✓ placeholder=✓John Doe✓ required />
+              </div>
+
+              <div class=✓form-group✓>
+                <label for=✓customerPhone✓>Phone Number *</label>
+                <input type=✓tel✓ id=✓customerPhone✓ name=✓customerPhone✓ placeholder=✓(412) 555-0000✓ required />
+              </div>
+
+              <div class=✓form-group✓>
+                <label for=✓customerEmail✓>Email Address</label>
+                <input type=✓email✓ id=✓customerEmail✓ name=✓customerEmail✓ placeholder=✓john@example.com✓ />
+              </div>
+
+              <div class=✓form-group✓>
+                <label for=✓vehicleInfo✓>Vehicle (Year, Make, Model) *</label>
+                <input type=✓text✓ id=✓vehicleInfo✓ name=✓vehicleInfo✓ placeholder=✓2020 Honda Civic✓ required />
+              </div>
+
+              <div class=✓form-group✓>
+                <label for=✓serviceType✓>Service Type *</label>
+                <select id=✓serviceType✓ name=✓serviceType✓ required>
+                  <option value=✓✓>Select a service...</option>
+                  <option value=✓essential✓>Essential Package ($65-$95)</option>
+                  <option value=✓executive✓>Executive Package ($145-$195)</option>
+                  <option value=✓premium✓>Premium Plus Package ($215-$285)</option>
+                  <option value=✓signature✓>Signature Package ($285-$365)</option>
+                  <option value=✓presidential✓>Presidential Package ($650-$850)</option>
+                  <option value=✓ultimate✓>Ultimate Armor ($1,400-$1,850)</option>
+                  <option value=✓interior-express✓>Interior Express ($85-$125)</option>
+                  <option value=✓interior-deep✓>Interior Deep Clean ($185-$265)</option>
+                </select>
+              </div>
+
+              <div class=✓form-group✓>
+                <label for=✓specialRequests✓>Special Requests or Notes</label>
+                <textarea id=✓specialRequests✓ name=✓specialRequests✓ placeholder=✓Tell us about your vehicle or any special requests...✓></textarea>
+              </div>
+
+              <div class=✓available-slots✓ id=✓availableSlots✓ style=✓display: none;✓>
+                <h4>&#128197; Suggested Available Times</h4>
+                <div class=✓time-slots✓ id=✓timeSlotsList✓></div>
+              </div>
+
+              <button type=✓button✓ class=✓submit-button✓ onclick=✓requestScheduleFromAI()✓>
+                &#128172; Chat with AI Scheduler
+              </button>
+            </form>
+          </div>
+
+          <!-- AI Chat Section -->
+          <div class=✓scheduler-ai-chat✓>
+            <h3>&#128680; AI Assistant</h3>
+            <div class=✓chat-messages✓ id=✓chatMessages✓>
+              <div class=✓chat-message assistant✓>
+                Hey! &#128075; I'm here to help you schedule your detailing appointment. Tell me about your vehicle and when you'd like to bring it in!
+              </div>
+            </div>
+            <div class=✓chat-input-group✓>
+              <input 
+                type=✓text✓ 
+                id=✓chatInput✓ 
+                placeholder=✓Ask me about available times...✓ 
+                onkeypress=✓if(event.key === 'Enter') sendChatMessage()✓
+              />
+              <button onclick=✓sendChatMessage()✓>Send</button>
+            </div>
+            <div class=✓confirmation-message✓ id=✓confirmationMessage✓>
+              <h4>✅ Appointment Scheduled!</h4>
+              <p>Your confirmation has been sent to your email and phone.</p>
+              <p id=✓appointmentDetails✓></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Schedule Info Card -->
+        <div class=✓schedule-info✓>
+          <h4>📅 Scheduling Information</h4>
+          <p><strong>Available Hours:</strong> Monday - Saturday, 8:00 AM - 6:00 PM</p>
+          <p><strong>Service Duration:</strong> 2-4 hours depending on package</strong></p>
+          <p><strong>Mobile Service:</strong> We come to you! Choose your preferred location in our service area.</p>
+          <p><strong>Confirmation:</strong> You'll receive confirmation via chat, email, and SMS immediately after booking.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style=✓background: linear-gradient(180deg, #0d1b2a 0%, #1a2942 100%); border-top: 1px solid rgba(66, 165, 245, 0.2); margin-top: 100px; padding: 60px 20px 30px;✓>
+      <div class=✓section-container✓>
+        <div style=✓display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;✓>
+          <div class=✓footer-section✓>
+            <h3>Contact Info</h3>
+            <p>
+              <strong>&#128222; Phone:</strong><br />
+              <a href=✓tel:4127528684✓ style=✓color: #42a5f5; text-decoration: none✓>(412) 752-8684</a>
+            </p>
+            <p style=✓margin-top: 15px✓>
+              <strong>&#128172; Text Us:</strong><br />
+              <a href=✓sms:4127528684✓ style=✓color: #42a5f5; text-decoration: none✓>Send SMS</a>
+            </p>
+          </div>
+
+          <div class=✓footer-section✓>
+            <h3>Quick Links</h3>
+            <ul style=✓list-style: none✓>
+              <li><a href=✓index.html✓ style=✓color: #b3d9ff; text-decoration: none;✓>Home</a></li>
+              <li><a href=✓services.html✓ style=✓color: #b3d9ff; text-decoration: none;✓>Services</a></li>
+              <li><a href=✓quote.html✓ style=✓color: #b3d9ff; text-decoration: none;✓>Get Quote</a></li>
+              <li><a href=✓reviews.html✓ style=✓color: #b3d9ff; text-decoration: none;✓>Reviews</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class=✓footer-bottom✓>
+          <p>&copy; 2025 Hands Detail Shop | Mobile Detailing Services | All Rights Reserved</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src=✓main.js✓></script>
+    <script src=✓pwa-installer.js✓></script>
+    <script src=✓/chat-widget.js✓></script>
+
+    <script>
+      // Initialize Firebase for scheduling
+      const firebaseConfig = {
+        apiKey: ✓AIzaSyB_T7RcVRxKr_rQmN-tFq7fDYyMoJjKkHE✓,
+        authDomain: ✓hands-detail.firebaseapp.com✓,
+        projectId: ✓hands-detail✓,
+        storageBucket: ✓hands-detail.appspot.com✓,
+        messagingSenderId: ✓686127847993✓,
+        appId: ✓1:686127847993:web:0f59c6c9da4df8b108c0fd✓,
+        measurementId: ✓G-CFGWQ8LFQM✓
+      };
+
+      if (firebase.apps.length === 0) {
+        firebase.initializeApp(firebaseConfig);
+      }
+      const functions = firebase.functions();
+
+      let conversationHistory = [];
+
+      function addChatMessage(text, sender = ✓assistant✓) {
+        const chatMessages = document.getElementById(✓chatMessages✓);
+        const messageDiv = document.createElement(✓div✓);
+        messageDiv.className = `chat-message ${sender}`;
+        messageDiv.textContent = text;
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      async function requestScheduleFromAI() {
+        const formData = {
+          customerName: document.getElementById(✓customerName✓).value,
+          customerPhone: document.getElementById(✓customerPhone✓).value,
+          customerEmail: document.getElementById(✓customerEmail✓).value,
+          vehicleInfo: document.getElementById(✓vehicleInfo✓).value,
+          serviceType: document.getElementById(✓serviceType✓).value,
+          specialRequests: document.getElementById(✓specialRequests✓).value
+        };
+
+        if (!formData.customerName || !formData.customerPhone || !formData.vehicleInfo || !formData.serviceType) {
+          alert(✓Please fill in all required fields.✓);
+          return;
+        }
+
+        // Add to conversation
+        const userMessage = `I'd like to schedule a ${formData.serviceType} service for my ${formData.vehicleInfo}. ${formData.specialRequests ? 'Additional details: ' + formData.specialRequests : ''}`;
+        addChatMessage(userMessage, ✓user✓);
+        conversationHistory.push({ role: ✓user✓, content: userMessage });
+
+        try {
+          const aiScheduleAppointment = firebase.functions().httpsCallable(✓aiScheduleAppointment✓);
+          const response = await aiScheduleAppointment({
+            customerInfo: formData,
+            conversationHistory: conversationHistory,
+            requestType: ✓initial✓
+          });
+
+          const aiResponse = response.data.message;
+          addChatMessage(aiResponse, ✓assistant✓);
+          conversationHistory.push({ role: ✓assistant✓, content: aiResponse });
+
+          if (response.data.suggestedTimes) {
+            displayAvailableSlots(response.data.suggestedTimes);
+          }
+        } catch (error) {
+          console.error(✓Error with AI scheduler:✓, error);
+          addChatMessage(✓Sorry, I'm having trouble connecting. Please call us at (412) 752-8684.✓, ✓assistant✓);
+        }
+      }
+
+      function displayAvailableSlots(times) {
+        const slotsDiv = document.getElementById(✓availableSlots✓);
+        const slotsList = document.getElementById(✓timeSlotsList✓);
+        slotsList.innerHTML = ✓✓;
+
+        times.forEach((time, index) => {
+          const slot = document.createElement(✓div✓);
+          slot.className = ✓time-slot✓;
+          slot.textContent = time;
+          slot.onclick = () => selectTimeSlot(time, index);
+          slotsList.appendChild(slot);
+        });
+
+        slotsDiv.style.display = ✓block✓;
+      }
+
+      function selectTimeSlot(time, index) {
+        document.querySelectorAll(✓.time-slot✓).forEach((slot, i) => {
+          slot.classList.toggle(✓selected✓, i === index);
+        });
+      }
+
+      async function sendChatMessage() {
+        const input = document.getElementById(✓chatInput✓);
+        const message = input.value.trim();
+
+        if (!message) return;
+
+        addChatMessage(message, ✓user✓);
+        conversationHistory.push({ role: ✓user✓, content: message });
+        input.value = ✓✓;
+
+        try {
+          const aiScheduleAppointment = firebase.functions().httpsCallable(✓aiScheduleAppointment✓);
+          const response = await aiScheduleAppointment({
+            customerInfo: {
+              customerName: document.getElementById(✓customerName✓).value,
+              customerPhone: document.getElementById(✓customerPhone✓).value,
+              customerEmail: document.getElementById(✓customerEmail✓).value,
+              vehicleInfo: document.getElementById(✓vehicleInfo✓).value,
+              serviceType: document.getElementById(✓serviceType✓).value
+            },
+            conversationHistory: conversationHistory,
+            requestType: ✓conversation✓
+          });
+
+          const aiResponse = response.data.message;
+          addChatMessage(aiResponse, ✓assistant✓);
+          conversationHistory.push({ role: ✓assistant✓, content: aiResponse });
+
+          // Check if appointment was confirmed
+          if (response.data.appointmentConfirmed) {
+            showConfirmation(response.data.appointmentDetails);
+          }
+
+          if (response.data.suggestedTimes) {
+            displayAvailableSlots(response.data.suggestedTimes);
+          }
+        } catch (error) {
+          console.error(✓Chat error:✓, error);
+          addChatMessage(✓I'm having trouble understanding. Could you try rephrasing?✓, ✓assistant✓);
+        }
+      }
+
+      function showConfirmation(details) {
+        const confirmDiv = document.getElementById(✓confirmationMessage✓);
+        const detailsDiv = document.getElementById(✓appointmentDetails✓);
+        detailsDiv.innerHTML = `<strong>${details.date}</strong> at <strong>${details.time}</strong><br>Service: <strong>${details.service}</strong>`;
+        confirmDiv.classList.add(✓show✓);
+      }
+    </script>
+  </body>
+</html>
+

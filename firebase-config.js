@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Firebase Configuration & Initialization
  * Hands Detail Shop - Pittsburgh Auto Detailing
  *
@@ -194,3 +194,4 @@ export function trackCustomEvent(eventName, eventData = {}) {
     console.warn('Error tracking event:', error.message);
   }
 }
+

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Gallery filtering and interaction functionality
  */
 
@@ -73,3 +73,4 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+

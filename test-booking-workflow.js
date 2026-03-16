@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Test script for end-to-end booking confirmation workflow
  * Tests: Booking creation → Firestore trigger → Email confirmation
  * 
@@ -51,17 +51,17 @@ async function testBookingWorkflow() {
     // Step 1: Create a test booking in Firestore
     console.log('\n[Step 1] Creating test booking in Firestore...');
     const bookingRef = await db.collection('bookings').add(testBooking);
-    console.log(`✅ Booking created with ID: ${bookingRef.id}`);
+    console.log(`&#9989; Booking created with ID: ${bookingRef.id}`);
     console.log(`   Firestore Path: bookings/${bookingRef.id}`);
 
     // Step 2: Verify booking was saved
     console.log('\n[Step 2] Verifying booking in Firestore...');
     const savedBooking = await bookingRef.get();
     if (savedBooking.exists) {
-      console.log('✅ Booking verified in Firestore');
+      console.log('&#9989; Booking verified in Firestore');
       console.log('   Booking Data:', JSON.stringify(savedBooking.data(), null, 2));
     } else {
-      console.error('❌ Booking not found in Firestore');
+      console.error('&#10060; Booking not found in Firestore');
       return;
     }
 
@@ -88,22 +88,22 @@ async function testBookingWorkflow() {
     await new Promise(resolve => setTimeout(resolve, 5000));
     
     await bookingRef.delete();
-    console.log(`✅ Test booking cleaned up (ID: ${bookingRef.id})`);
+    console.log(`&#9989; Test booking cleaned up (ID: ${bookingRef.id})`);
 
     // Step 5: Summary
-    console.log('\n✅ Booking Workflow Test Complete!');
+    console.log('\n&#9989; Booking Workflow Test Complete!');
     console.log('\nSummary:');
-    console.log('  ✅ Test booking created');
-    console.log('  ✅ Firestore stored correctly');
-    console.log('  ✅ Cloud Function triggered (check logs)');
-    console.log('  ✅ Test data cleaned up');
+    console.log('  &#9989; Test booking created');
+    console.log('  &#9989; Firestore stored correctly');
+    console.log('  &#9989; Cloud Function triggered (check logs)');
+    console.log('  &#9989; Test data cleaned up');
     console.log('\nNext Steps:');
     console.log('  1. Check Firebase Functions logs to verify email sending');
     console.log('  2. Test from UI: Create actual booking to verify full workflow');
     console.log('  3. Monitor Firestore for booking records');
 
   } catch (error) {
-    console.error('❌ Test failed with error:', error);
+    console.error('&#10060; Test failed with error:', error);
   } finally {
     process.exit(0);
   }
@@ -111,3 +111,4 @@ async function testBookingWorkflow() {
 
 // Run the test
 testBookingWorkflow();
+

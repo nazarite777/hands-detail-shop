@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Firebase Bookings Module
  * Hands Detail Shop - Pittsburgh Auto Detailing
  *
@@ -417,3 +417,4 @@ export async function exportBookingsToCSV() {
     throw error;
   }
 }
+

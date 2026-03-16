@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 
 const admin = require('firebase-admin');
 const fs = require('fs');
@@ -60,7 +60,7 @@ async function uploadAudioFiles() {
           uploadedAt: new Date().toISOString(),
         });
 
-        console.log(`✓ Upload successful`);
+        console.log(`&#10003; Upload successful`);
         console.log(`  Firebase URL: ${url}`);
       } catch (error) {
         console.error(`✗ Upload failed: ${error.message}`);
@@ -71,7 +71,7 @@ async function uploadAudioFiles() {
     if (uploadedFiles.length > 0) {
       const configFile = path.join(__dirname, 'audio-urls.json');
       fs.writeFileSync(configFile, JSON.stringify(uploadedFiles, null, 2));
-      console.log(`\n✓ Saved URLs to audio-urls.json\n`);
+      console.log(`\n&#10003; Saved URLs to audio-urls.json\n`);
 
       // Display summary
       console.log('=== Upload Summary ===');
@@ -90,10 +90,11 @@ async function uploadAudioFiles() {
 
 uploadAudioFiles()
   .then(() => {
-    console.log('\n✓ All operations completed');
+    console.log('\n&#10003; All operations completed');
     process.exit(0);
   })
   .catch((err) => {
     console.error('Fatal error:', err);
     process.exit(1);
   });
+

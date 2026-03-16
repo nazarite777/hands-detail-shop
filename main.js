@@ -1,4 +1,4 @@
-// ===== UTILITY FUNCTIONS =====
+﻿// ===== UTILITY FUNCTIONS =====
 
 /**
  * Sanitize user input to prevent XSS
@@ -195,7 +195,7 @@ async function initializeJukebox() {
       console.warn('🎵 Jukebox: No songs in playlist');
       const displayName = jukebox.querySelector('.track-name');
       if (displayName) {
-        displayName.textContent = '❌ No songs available';
+        displayName.textContent = '&#10060; No songs available';
       }
       return;
     }
@@ -261,7 +261,7 @@ async function initializeJukebox() {
     if (jukebox) {
       const displayName = jukebox.querySelector('.track-name');
       if (displayName) {
-        displayName.textContent = `❌ Error: ${error.message}`;
+        displayName.textContent = `&#10060; Error: ${error.message}`;
       }
     }
   }
@@ -688,7 +688,7 @@ function showBookingSuccess(bookingData) {
 
   const successHTML = `
     <div style="padding: 40px; text-align: center;">
-      <div style="font-size: 3rem; margin-bottom: 20px;">✅</div>
+      <div style="font-size: 3rem; margin-bottom: 20px;">&#9989;</div>
       <h2 style="color: #42a5f5; margin: 0 0 15px 0;">Booking Submitted!</h2>
       <p style="color: #b3d9ff; font-size: 1.05rem; margin: 0 0 20px 0;">
         Thank you, <strong>${bookingData.name}</strong>!
@@ -1338,7 +1338,7 @@ document.addEventListener('DOMContentLoaded', function () {
       reviewData.name +
       '!</h4>' +
       '<p style="color: #a0a0a0; line-height: 1.6; margin-bottom: 15px;">Your ' + reviewData.rating + '-star review has been submitted successfully!</p>' +
-      '<p style="color: #90caf9; font-size: 0.95rem;">✓ Review pending approval - You\'ll receive an email once it\'s published</p>';
+      '<p style="color: #90caf9; font-size: 0.95rem;">&#10003; Review pending approval - You\'ll receive an email once it\'s published</p>';
 
     formElement.replaceWith(successDiv);
   }
@@ -1352,7 +1352,7 @@ document.addEventListener('DOMContentLoaded', function () {
       '<p style="color: #ff5252; margin: 0 0 8px 0; font-weight: 700; font-size: 1.2rem;">⚠️ Unable to Submit Review Online</p>' +
       '<p style="color: #ff7070; margin: 0 0 15px 0; font-size: 1rem;">No worries! You have two options:</p>' +
       '<div style="background: rgba(255, 82, 82, 0.2); padding: 15px; border-radius: 8px; margin: 15px 0;">' +
-      '<p style="color: #ff3333; text-decoration: none; font-weight: 700; font-size: 1.1rem; margin: 0 0 5px 0;">📞 CALL US</p>' +
+      '<p style="color: #ff3333; text-decoration: none; font-weight: 700; font-size: 1.1rem; margin: 0 0 5px 0;">&#128222; CALL US</p>' +
       '<a href="tel:4127528684" style="color: #ff3333; text-decoration: none; font-weight: 700; font-size: 1.4rem; display: block; margin: 5px 0;">(412) 752-8684</a>' +
       '<p style="color: #ff7070; margin: 5px 0 0 0; font-size: 0.9rem;">Tell us your rating and review</p>' +
       '</div>' +
@@ -1414,12 +1414,12 @@ document.addEventListener('DOMContentLoaded', function () {
       `;
 
       reviewCard.innerHTML = `
-        <div style="${badgeStyle}">✓ Verified Review</div>
+        <div style="${badgeStyle}">&#10003; Verified Review</div>
         <h3 style="color: #90caf9; margin: 0 0 8px 0; font-size: 1.2rem;">${review.name}</h3>
         <div style="color: #ffc107; margin-bottom: 10px; font-size: 1.1rem;">${stars}</div>
         <p style="color: #e8f1f8; font-style: italic; line-height: 1.6; margin: 15px 0; flex-grow: 1;">"${review.comment}"</p>
         <div style="color: #a0a0a0; font-size: 0.85rem; margin-top: 15px;">
-          📅 ${reviewDate}
+          &#128197; ${reviewDate}
           ${review.email ? `<br>👤 ${review.email}` : ''}
         </div>
       `;
@@ -1433,3 +1433,4 @@ document.addEventListener('DOMContentLoaded', function () {
     loadApprovedReviews();
   }
 });
+

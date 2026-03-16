@@ -1,4 +1,4 @@
-exports.sendBookingConfirmation = functions.firestore
+﻿exports.sendBookingConfirmation = functions.firestore
   .document('bookings/{bookingId}')
   .onCreate(async (snap) => {
     const booking = snap.data();

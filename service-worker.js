@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hands-detail-shop-v3';
+﻿const CACHE_NAME = 'hands-detail-shop-v3';
 const RUNTIME_CACHE = 'hands-detail-runtime-v3';
 
 // Assets to cache on install
@@ -100,3 +100,4 @@ self.addEventListener('message', (event) => {
     self.skipWaiting();
   }
 });
+

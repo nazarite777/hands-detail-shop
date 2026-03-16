@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Test script for server-synced review submission
  * Tests: Review submission via Cloud Function → Server timestamp → Firestore storage
  * 
@@ -50,7 +50,7 @@ async function testReviewWorkflow() {
       approvedBy: null
     });
     
-    console.log(`✅ Review created with ID: ${reviewRef.id}`);
+    console.log(`&#9989; Review created with ID: ${reviewRef.id}`);
 
     // Step 2: Verify with server timestamp
     console.log('\n[Step 2] Verifying review with server timestamp...');
@@ -58,7 +58,7 @@ async function testReviewWorkflow() {
     
     if (savedReview.exists) {
       const reviewData = savedReview.data();
-      console.log('✅ Review verified in Firestore');
+      console.log('&#9989; Review verified in Firestore');
       console.log('   Review Data:', JSON.stringify({
         ...reviewData,
         createdAt: reviewData.createdAt.toDate().toISOString()
@@ -66,7 +66,7 @@ async function testReviewWorkflow() {
       
       // Verify server timestamp was used
       if (reviewData.createdAt instanceof admin.firestore.Timestamp) {
-        console.log('\n✅ Server timestamp confirmed:');
+        console.log('\n&#9989; Server timestamp confirmed:');
         console.log(`   Timestamp Type: admin.firestore.Timestamp`);
         console.log(`   ISO Format: ${reviewData.createdAt.toDate().toISOString()}`);
         console.log(`   Unix Milliseconds: ${reviewData.createdAt.toMillis()}`);
@@ -74,7 +74,7 @@ async function testReviewWorkflow() {
         console.warn('⚠️  Timestamp is not a Firestore Timestamp object');
       }
     } else {
-      console.error('❌ Review not found in Firestore');
+      console.error('&#10060; Review not found in Firestore');
       return;
     }
 
@@ -93,7 +93,7 @@ async function testReviewWorkflow() {
       .limit(5)
       .get();
     
-    console.log(`✅ Found ${pendingSnapshot.size} pending review(s)`);
+    console.log(`&#9989; Found ${pendingSnapshot.size} pending review(s)`);
     if (pendingSnapshot.size > 0) {
       const latestReview = pendingSnapshot.docs[0];
       console.log('   Latest pending review:');
@@ -106,15 +106,15 @@ async function testReviewWorkflow() {
     // Step 5: Clean up test review
     console.log('\n[Step 5] Cleaning up test review...');
     await reviewRef.delete();
-    console.log(`✅ Test review deleted (ID: ${reviewRef.id})`);
+    console.log(`&#9989; Test review deleted (ID: ${reviewRef.id})`);
 
     // Step 6: Summary
-    console.log('\n✅ Review Workflow Test Complete!');
+    console.log('\n&#9989; Review Workflow Test Complete!');
     console.log('\nSummary:');
-    console.log('  ✅ Review submitted with server timestamp');
-    console.log('  ✅ Stored in Firestore with pending status');
-    console.log('  ✅ Queryable by status and creation time');
-    console.log('  ✅ Ready for admin approval workflow');
+    console.log('  &#9989; Review submitted with server timestamp');
+    console.log('  &#9989; Stored in Firestore with pending status');
+    console.log('  &#9989; Queryable by status and creation time');
+    console.log('  &#9989; Ready for admin approval workflow');
     console.log('\nNext Steps:');
     console.log('  1. Admin approves review via admin dashboard');
     console.log('  2. Review moves to main collection');
@@ -122,7 +122,7 @@ async function testReviewWorkflow() {
     console.log('  4. Review appears on website');
 
   } catch (error) {
-    console.error('❌ Test failed with error:', error);
+    console.error('&#10060; Test failed with error:', error);
   } finally {
     process.exit(0);
   }
@@ -130,3 +130,4 @@ async function testReviewWorkflow() {
 
 // Run the test
 testReviewWorkflow();
+

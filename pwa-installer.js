@@ -1,4 +1,4 @@
-// PWA Installation and Service Worker Registration
+﻿// PWA Installation and Service Worker Registration
 let deferredPrompt;
 let installButton;
 
@@ -245,3 +245,4 @@ function isStandalone() {
 if (isStandalone()) {
   console.log('Running as installed PWA');
 }
+

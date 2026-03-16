@@ -1,4 +1,4 @@
-exports.sendBookingReminders = functions.pubsub
+﻿exports.sendBookingReminders = functions.pubsub
   .schedule('every 1 hours').onRun(async (context) => {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);

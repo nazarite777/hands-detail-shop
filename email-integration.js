@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Email service integration using EmailJS
  * Setup: Create account at emailjs.com and add your service/template IDs below
  */
@@ -124,7 +124,7 @@ function handleContactForm(event) {
       const successDiv = document.createElement('div');
       successDiv.style.cssText =
         'position: fixed; top: 100px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #4caf50, #66bb6a); color: white; padding: 20px 40px; border-radius: 15px; box-shadow: 0 8px 30px rgba(76, 175, 80, 0.4); z-index: 10000; font-size: 1.1rem; font-weight: 600;';
-      successDiv.textContent = '✓ Message sent successfully! We will contact you soon.';
+      successDiv.textContent = '&#10003; Message sent successfully! We will contact you soon.';
       document.body.appendChild(successDiv);
 
       // Reset form
@@ -165,3 +165,4 @@ if (typeof document !== 'undefined') {
     });
   });
 }
+
