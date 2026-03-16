@@ -224,6 +224,52 @@ exports.submitReviewWithServerTime = functions.https.onCall(async (data, context
 
     console.log('Review saved with server timestamp:', docRef.id);
 
+    // Send email notification to admin
+    try {
+      if (gmailEmail && gmailPassword) {
+        const emailBody = `
+🌟 NEW REVIEW SUBMISSION - AWAITING YOUR APPROVAL 🌟
+
+Customer Name: ${reviewData.name}
+Rating: ${'⭐'.repeat(reviewData.rating)}
+Customer Email: ${reviewData.email || 'Not provided'}
+
+Review Text:
+"${reviewData.comment}"
+
+Submitted: ${new Date().toLocaleString()}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📋 MANAGE THIS REVIEW:
+   Visit your Admin Panel: https://hands-detail.web.app/admin-pending-reviews.html
+   
+   ✅ APPROVE: Click "Approve & Publish" to add to live reviews
+   ❌ REJECT: Click "Reject" to remove without publishing
+
+📧 To Contact Customer:
+   - Reply to this email or contact: ${reviewData.email || 'Email not provided'}
+   - Thank them for their business!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        `.trim();
+
+        await transporter.sendMail({
+          from: gmailEmail,
+          to: 'handsdetailshop@gmail.com',
+          subject: `New Review: ${reviewData.name} (${reviewData.rating}⭐)`,
+          text: emailBody,
+          html: emailBody.replace(/\n/g, '<br>'),
+        });
+
+        console.log('Review email sent to admin');
+      } else {
+        console.warn('Gmail not configured - email not sent');
+      }
+    } catch (emailError) {
+      console.error('Error sending review email:', emailError);
+      // Don't fail the review submission if email fails
+    }
+
     return {
       success: true,
       reviewId: docRef.id,
