@@ -1216,6 +1216,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const nameField = reviewForm.querySelector('input[name="reviewName"]');
       const textField = reviewForm.querySelector('textarea[name="reviewText"]');
       const emailField = reviewForm.querySelector('input[name="reviewEmail"]');
+      const areaField = reviewForm.querySelector('input[name="reviewArea"]');
       const submitBtn = reviewForm.querySelector('button[type="submit"]');
 
       // Validate
@@ -1269,6 +1270,7 @@ document.addEventListener('DOMContentLoaded', function () {
         rating: parseInt(ratingInput.value),
         comment: sanitizeInput(textField.value.trim()),
         email: emailField.value.trim() ? sanitizeInput(emailField.value.trim()) : '',
+        area: areaField.value.trim() ? sanitizeInput(areaField.value.trim()) : '',
         createdAt: new Date().toISOString(),
         status: 'pending',
       };
@@ -1285,7 +1287,8 @@ document.addEventListener('DOMContentLoaded', function () {
             name: reviewData.name,
             email: reviewData.email,
             rating: reviewData.rating,
-            comment: reviewData.comment
+            comment: reviewData.comment,
+            area: reviewData.area
           })
             .then((result) => {
               console.log('Review submitted with server timestamp:', result.data);
@@ -1435,6 +1438,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <div style="color: #a0a0a0; font-size: 0.85rem; margin-top: 15px;">
             &#128197; ${reviewDate}
             ${review.email ? `<br>👤 ${review.email}` : ''}
+            ${review.area ? `<br>📍 ${review.area}` : ''}
           </div>
         `;
 
@@ -1484,6 +1488,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <div style="color: #a0a0a0; font-size: 0.85rem; margin-top: 15px;">
             &#128197; ${reviewDate}
             ${review.email ? `<br>👤 ${review.email}` : ''}
+            ${review.area ? `<br>📍 ${review.area}` : ''}
           </div>
         `;
 

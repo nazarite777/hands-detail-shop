@@ -333,6 +333,7 @@
               <div class="review-meta">
                 📧 ${review.email || 'No email provided'}
               </div>
+              ${review.area ? `<div class="review-meta">📍 ${review.area}</div>` : ''}
               <div class="review-meta">
                 📅 Submitted: ${submittedDate}
               </div>

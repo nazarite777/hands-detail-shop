@@ -240,7 +240,7 @@ ${message}
 exports.submitReviewWithServerTime = functions.https.onCall(async (data, context) => {
   try {
     initializeAdmin();
-    const { name, rating, comment, email } = data;
+    const { name, rating, comment, email, area } = data;
 
     // Validate input
     if (!name || !rating || !comment) {
@@ -259,6 +259,7 @@ exports.submitReviewWithServerTime = functions.https.onCall(async (data, context
       rating: parseInt(rating),
       comment: comment.trim(),
       email: email ? email.trim() : '',
+      area: area ? area.trim() : '',
       verified: false,
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
       approvedAt: null,
@@ -283,6 +284,7 @@ exports.submitReviewWithServerTime = functions.https.onCall(async (data, context
 Customer Name: ${reviewData.name}
 Rating: ${'⭐'.repeat(reviewData.rating)}
 Customer Email: ${reviewData.email || 'Not provided'}
+Service Area: ${reviewData.area || 'Not provided'}
 
 Review Text:
 "${reviewData.comment}"
