@@ -1,34 +1,71 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const nodemailer = require('nodemailer');
-const fetch = require('node-fetch');
 
-// Initialize Firebase Admin SDK
-admin.initializeApp();
-
-// Configuration - Load from Firebase Runtime Config
-const getConfig = () => {
+// Lazy-initialize Firebase Admin SDK
+let adminInitialized = false;
+const initializeAdmin = () => {
+  if (adminInitialized) return;
   try {
-    return functions.config();
+    admin.initializeApp();
+    adminInitialized = true;
   } catch (e) {
-    console.error('Error accessing Firebase config:', e);
-    return {};
+    console.warn('Firebase Admin already initialized:', e.message);
+    adminInitialized = true;
   }
 };
 
-const config = getConfig();
-const gmailEmail = config?.gmail?.email || process.env.GMAIL_EMAIL;
-const gmailPassword = config?.gmail?.password || process.env.GMAIL_PASSWORD;
-const anthropicApiKey = config?.anthropic?.api_key || process.env.ANTHROPIC_API_KEY;
+// Lazy-load configuration to avoid timeout on initialization
+let cachedConfig = null;
+let cachedTransporter = null;
+let transporterLoading = false;
 
-// Create Nodemailer transporter
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: gmailEmail,
-    pass: gmailPassword,
-  },
-});
+const getConfig = () => {
+  if (cachedConfig !== null) return cachedConfig;
+  
+  try {
+    cachedConfig = functions.config();
+  } catch (e) {
+    console.warn('Could not load Firebase config:', e.message);
+    cachedConfig = {};
+  }
+  return cachedConfig;
+};
+
+const getTransporter = async () => {
+  // Prevent concurrent initialization
+  if (cachedTransporter) return cachedTransporter;
+  if (transporterLoading) {
+    // Wait a bit for initialization
+    await new Promise(resolve => setTimeout(resolve, 100));
+    return cachedTransporter;
+  }
+  
+  transporterLoading = true;
+  
+  try {
+    const config = getConfig();
+    const gmailEmail = config?.gmail?.email || process.env.GMAIL_EMAIL;
+    const gmailPassword = config?.gmail?.password || process.env.GMAIL_PASSWORD;
+    
+    if (!gmailEmail || !gmailPassword) {
+      console.warn('Gmail credentials not configured');
+      return null;
+    }
+    
+    cachedTransporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: gmailEmail,
+        pass: gmailPassword,
+      },
+    });
+  } finally {
+    transporterLoading = false;
+  }
+  
+  return cachedTransporter;
+};
 
 /**
  * Cloud Function to send review submission email to admin
@@ -55,8 +92,12 @@ exports.sendReviewEmail = functions.https.onCall(async (data, context) => {
       );
     }
 
+    const transporter = await getTransporter();
+    const config = getConfig();
+    const gmailEmail = config?.gmail?.email || process.env.GMAIL_EMAIL;
+
     // Check if Gmail is configured
-    if (!gmailEmail || !gmailPassword) {
+    if (!gmailEmail || !transporter) {
       console.error('Gmail not configured in environment variables');
       throw new functions.https.HttpsError(
         'unavailable',
@@ -139,8 +180,12 @@ exports.sendContactEmail = functions.https.onCall(async (data, context) => {
       );
     }
 
+    const transporter = await getTransporter();
+    const config = getConfig();
+    const gmailEmail = config?.gmail?.email || process.env.GMAIL_EMAIL;
+
     // Check if Gmail is configured
-    if (!gmailEmail || !gmailPassword) {
+    if (!gmailEmail || !transporter) {
       throw new functions.https.HttpsError(
         'unavailable',
         'Email service not configured.'
@@ -194,6 +239,7 @@ ${message}
  */
 exports.submitReviewWithServerTime = functions.https.onCall(async (data, context) => {
   try {
+    initializeAdmin();
     const { name, rating, comment, email } = data;
 
     // Validate input
@@ -226,7 +272,11 @@ exports.submitReviewWithServerTime = functions.https.onCall(async (data, context
 
     // Send email notification to admin
     try {
-      if (gmailEmail && gmailPassword) {
+      const transporter = await getTransporter();
+      const config = getConfig();
+      const gmailEmail = config?.gmail?.email || process.env.GMAIL_EMAIL;
+      
+      if (gmailEmail && transporter) {
         const emailBody = `
 🌟 NEW REVIEW SUBMISSION - AWAITING YOUR APPROVAL 🌟
 
