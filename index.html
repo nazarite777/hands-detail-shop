@@ -766,6 +766,7 @@
                     </div>
                 </div>
                 <a href="membership.html" class="nav-link">Membership</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
                 <a href="quote.html" class="nav-link">Quote</a>
                 <a href="reviews.html" class="nav-link">Reviews</a>
                 <a href="https://handsdetailshop.medium.com" target="_blank" class="nav-link">Blog</a>
@@ -797,6 +798,7 @@
             <a href="aircraft-services.html">✈️ Aircraft</a>
             <a href="under-the-hood.html">⚙️ Mechanical Services</a>
             <a href="membership.html">Membership</a>
+            <a href="gallery.html">Gallery</a>
             <a href="quote.html">Get Quote</a>
             <a href="reviews.html">Reviews</a>
             <a href="https://medium.com/@handsdetailshop" target="_blank">Blog</a>
@@ -1158,6 +1160,10 @@
         </div>
     </footer>
 
+    <!-- Claude AI Chat Widget -->
+    <div id="claude-chat-widget"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@anthropic-ai/chat-widget@latest"></script>
+
     <!-- Booking Modal -->
     <div class="modal" id="bookingModal">
         <div class="modal-content">
@@ -1244,19 +1250,43 @@
     <script src="main.js"></script>
     <script src="pwa-installer.js"></script>
 
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/68e2fac9bf465d19518ec75b/1j6ra78mi';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
+    <!-- Claude AI Chat Widget -->
+    <div id="claude-chat-widget"></div>
+    <script>
+    // Claude AI Chat Widget
+    window.addEventListener('load', function() {
+        const chatWidget = document.getElementById('claude-chat-widget');
+        if (chatWidget) {
+            chatWidget.innerHTML = `
+                <style>
+                    .claude-chat-btn {
+                        position: fixed;
+                        bottom: 20px;
+                        right: 20px;
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 50%;
+                        background: linear-gradient(135deg, #1565c0, #42a5f5);
+                        border: none;
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 28px;
+                        box-shadow: 0 4px 12px rgba(21, 101, 192, 0.3);
+                        z-index: 999;
+                        transition: all 0.3s ease;
+                    }
+                    .claude-chat-btn:hover {
+                        transform: scale(1.1);
+                        box-shadow: 0 6px 16px rgba(21, 101, 192, 0.4);
+                    }
+                </style>
+                <button class="claude-chat-btn" title="Chat with Claude AI" onclick="alert('Claude AI Chat - Coming Soon!\\n\\nFor now, call us: (412) 752-8684')">💬</button>
+            `;
+        }
+    });
     </script>
-    <!--End of Tawk.to Script-->
 
 </body>
 </html>
