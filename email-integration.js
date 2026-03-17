@@ -1,13 +1,13 @@
-﻿/**
+/**
  * Email service integration using EmailJS
  * Setup: Create account at emailjs.com and add your service/template IDs below
  */
 
 // EmailJS Configuration (update with your actual IDs)
 const EMAIL_CONFIG = {
-  serviceId: 'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+  serviceId: 'YOUR_SERVICE_ID',  // Replace with your EmailJS service ID
   templateId: 'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
-  publicKey: 'YOUR_PUBLIC_KEY', // Replace with your EmailJS public key
+  publicKey: 'YOUR_PUBLIC_KEY'    // Replace with your EmailJS public key
 };
 
 /**
@@ -34,24 +34,17 @@ function sendEmail(formData, onSuccess, onError) {
     // Fallback: Show success message and mailto link
     if (onSuccess) {
       onSuccess({
-        text: 'EmailJS not configured in production. Opening default email client...',
+        text: 'EmailJS not configured in production. Opening default email client...'
       });
     }
 
     // Open mailto as fallback
     const subject = encodeURIComponent(formData.subject || 'Contact Form Submission');
     const body = encodeURIComponent(
-      'Name: ' +
-        formData.name +
-        '\n' +
-        'Email: ' +
-        formData.email +
-        '\n' +
-        'Phone: ' +
-        (formData.phone || 'Not provided') +
-        '\n' +
-        'Message: ' +
-        formData.message
+      'Name: ' + formData.name + '\n' +
+      'Email: ' + formData.email + '\n' +
+      'Phone: ' + (formData.phone || 'Not provided') + '\n' +
+      'Message: ' + formData.message
     );
 
     window.location.href = 'mailto:handsdetailshop@gmail.com?subject=' + subject + '&body=' + body;
@@ -59,20 +52,14 @@ function sendEmail(formData, onSuccess, onError) {
   }
 
   // Send via EmailJS
-  emailjs.send(EMAIL_CONFIG.serviceId, EMAIL_CONFIG.templateId, formData).then(
-    function (response) {
+  emailjs.send(EMAIL_CONFIG.serviceId, EMAIL_CONFIG.templateId, formData)
+    .then(function(response) {
       console.log('Email sent successfully:', response);
-      if (onSuccess) {
-        onSuccess(response);
-      }
-    },
-    function (error) {
+      if (onSuccess) onSuccess(response);
+    }, function(error) {
       console.error('Email sending failed:', error);
-      if (onError) {
-        onError(error);
-      }
-    }
-  );
+      if (onError) onError(error);
+    });
 }
 
 /**
@@ -91,20 +78,14 @@ function handleContactForm(event) {
 
   // Collect form data
   const formData = {
-    name:
-      form.querySelector('input[name="name"]')?.value ||
-      form.querySelector('input[placeholder*="name"]')?.value,
-    email:
-      form.querySelector('input[name="email"]')?.value ||
-      form.querySelector('input[type="email"]')?.value,
-    phone:
-      form.querySelector('input[name="phone"]')?.value ||
-      form.querySelector('input[type="tel"]')?.value,
+    name: form.querySelector('input[name="name"]')?.value || form.querySelector('input[placeholder*="name"]')?.value,
+    email: form.querySelector('input[name="email"]')?.value || form.querySelector('input[type="email"]')?.value,
+    phone: form.querySelector('input[name="phone"]')?.value || form.querySelector('input[type="tel"]')?.value,
     subject: form.querySelector('input[name="subject"]')?.value || 'Contact Form Submission',
     message: form.querySelector('textarea')?.value,
     vehicle: form.querySelector('input[name="vehicle"]')?.value || '',
     service: form.querySelector('select[name="service"]')?.value || '',
-    date: form.querySelector('input[type="date"]')?.value || '',
+    date: form.querySelector('input[type="date"]')?.value || ''
   };
 
   // Validate required fields
@@ -119,12 +100,11 @@ function handleContactForm(event) {
   sendEmail(
     formData,
     // Success callback
-    function (response) {
+    function(response) {
       // Show success message
       const successDiv = document.createElement('div');
-      successDiv.style.cssText =
-        'position: fixed; top: 100px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #4caf50, #66bb6a); color: white; padding: 20px 40px; border-radius: 15px; box-shadow: 0 8px 30px rgba(76, 175, 80, 0.4); z-index: 10000; font-size: 1.1rem; font-weight: 600;';
-      successDiv.textContent = '&#10003; Message sent successfully! We will contact you soon.';
+      successDiv.style.cssText = 'position: fixed; top: 100px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #4caf50, #66bb6a); color: white; padding: 20px 40px; border-radius: 15px; box-shadow: 0 8px 30px rgba(76, 175, 80, 0.4); z-index: 10000; font-size: 1.1rem; font-weight: 600;';
+      successDiv.textContent = '✓ Message sent successfully! We will contact you soon.';
       document.body.appendChild(successDiv);
 
       // Reset form
@@ -142,7 +122,7 @@ function handleContactForm(event) {
       submitButton.textContent = originalButtonText;
     },
     // Error callback
-    function (error) {
+    function(error) {
       alert('Failed to send message. Please call us at (412) 752-8684 or try again later.');
       submitButton.disabled = false;
       submitButton.textContent = originalButtonText;
@@ -152,17 +132,13 @@ function handleContactForm(event) {
 
 // Initialize on page load
 if (typeof document !== 'undefined') {
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', function() {
     initEmailJS();
 
-    // Expose sendEmail to window for external use
-    window.sendEmail = sendEmail;
-
-    // Attach to all forms with class 'contact-form' or id 'contactForm', 'bookingForm', 'reviewForm'
-    const forms = document.querySelectorAll('.contact-form, #contactForm, #bookingForm, #reviewForm');
-    forms.forEach((form) => {
+    // Attach to all forms with class 'contact-form' or id 'contactForm'
+    const forms = document.querySelectorAll('.contact-form, #contactForm, #bookingForm');
+    forms.forEach(form => {
       form.addEventListener('submit', handleContactForm);
     });
   });
 }
-

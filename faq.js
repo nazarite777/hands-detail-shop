@@ -1,4 +1,4 @@
-﻿/**
+/**
  * FAQ Accordion functionality
  */
 
@@ -42,4 +42,3 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 });
-

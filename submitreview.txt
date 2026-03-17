@@ -1,9 +1,0 @@
-// In functions/index.js
-exports.submitReviewWithServerTime = functions.https.onCall(async (data, context) => {
-  const reviewData = {
-    ...data,
-    createdAt: admin.database.ServerValue.TIMESTAMP,  // Server-synced time
-    submittedAt: new Date().toISOString()
-  };
-  // Save review
-});

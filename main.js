@@ -1,4 +1,4 @@
-﻿// ===== UTILITY FUNCTIONS =====
+// ===== UTILITY FUNCTIONS =====
 
 /**
  * Sanitize user input to prevent XSS
@@ -17,7 +17,7 @@ function sanitizeInput(str) {
  * @returns {boolean} - True if valid
  */
 function validatePhone(phone) {
-  const phoneRegex = /^[\d\s\-()]+$/;
+  const phoneRegex = /^[\d\s\-\(\)]+$/;
   const digitsOnly = phone.replace(/\D/g, '');
   return phoneRegex.test(phone) && digitsOnly.length >= 10;
 }
@@ -155,23 +155,23 @@ async function initializeJukebox() {
 
     // Use embedded audio config first, then try to fetch
     let audioConfig = window.AUDIO_CONFIG;
-
+    
     if (!audioConfig) {
       console.log('🎵 Jukebox: No embedded config, attempting to fetch');
-
+      
       // Fetch with timeout
       let response;
-      const filePath = '/audio-urls.json';
-
+      let filePath = '/audio-urls.json';
+      
       console.log('🎵 Jukebox: Attempting to fetch from', filePath);
-
+      
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
-
+      
       try {
         response = await fetch(filePath, { signal: controller.signal });
         clearTimeout(timeoutId);
-
+        
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}`);
         }
@@ -179,14 +179,14 @@ async function initializeJukebox() {
         clearTimeout(timeoutId);
         throw new Error('Could not load audio configuration from file');
       }
-
+      
       if (!response.ok) {
         throw new Error(`Failed to load audio-urls.json: HTTP ${response.status}`);
       }
-
+      
       audioConfig = await response.json();
     }
-
+    
     playlist = audioConfig.songs || [];
 
     console.log('🎵 Jukebox: Loaded', playlist.length, 'songs');
@@ -194,15 +194,12 @@ async function initializeJukebox() {
     if (playlist.length === 0) {
       console.warn('🎵 Jukebox: No songs in playlist');
       const displayName = jukebox.querySelector('.track-name');
-      if (displayName) {
-        displayName.textContent = '&#10060; No songs available';
-      }
+      if (displayName) displayName.textContent = '❌ No songs available';
       return;
     }
 
     // Set up jukebox elements
-    const displayName =
-      jukebox.querySelector('.jukebox-display .track-name') || createDisplayElement(jukebox);
+    const displayName = jukebox.querySelector('.jukebox-display .track-name') || createDisplayElement(jukebox);
     const playBtn = jukebox.querySelector('.btn-play');
     const nextBtn = jukebox.querySelector('.btn-next');
     const prevBtn = jukebox.querySelector('.btn-prev');
@@ -252,16 +249,17 @@ async function initializeJukebox() {
     });
 
     console.log('🎵 Jukebox: Initialized successfully');
+
   } catch (error) {
     console.error('🎵 Jukebox: Error initializing jukebox:', error.message);
     console.error('Error stack:', error.stack);
-
+    
     // Show error in UI
     const jukebox = document.getElementById('jukebox');
     if (jukebox) {
       const displayName = jukebox.querySelector('.track-name');
       if (displayName) {
-        displayName.textContent = `&#10060; Error: ${error.message}`;
+        displayName.textContent = `❌ Error: ${error.message}`;
       }
     }
   }
@@ -291,13 +289,11 @@ function createDisplayElement(jukebox) {
 }
 
 function loadTrack(index, displayElement, audioElement) {
-  if (index < 0 || index >= playlist.length) {
-    return;
-  }
-
+  if (index < 0 || index >= playlist.length) return;
+  
   currentTrackIndex = index;
   const track = playlist[index];
-
+  
   audioElement.src = track.firebaseUrl;
   displayElement.textContent = `🎵 ${track.title} - ${track.artist}`;
 }
@@ -362,9 +358,7 @@ function updatePlaylistUI(container) {
  */
 function openBookingModal(preSelectedService = '') {
   const modal = document.getElementById('bookingModal');
-  if (!modal) {
-    return;
-  }
+  if (!modal) return;
 
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -394,9 +388,7 @@ function openBookingModal(preSelectedService = '') {
  */
 function closeBookingModal() {
   const modal = document.getElementById('bookingModal');
-  if (!modal) {
-    return;
-  }
+  if (!modal) return;
 
   modal.classList.remove('active');
   document.body.style.overflow = 'auto';
@@ -485,22 +477,12 @@ if (bookingForm) {
  * Handle mechanical services booking submission
  */
 async function handleMechanicalBooking(form) {
-  const nameField =
-    form.querySelector('input[type="text"][placeholder*="John"]') ||
-    form.querySelector('input[type="text"]');
+  const nameField = form.querySelector('input[type="text"][placeholder*="John"]') || form.querySelector('input[type="text"]');
   const phoneField = form.querySelector('input[type="tel"]');
   const emailField = form.querySelector('input[type="email"]');
-  const addressField =
-    form.querySelector('input[type="text"][placeholder*="St,"]') ||
-    Array.from(form.querySelectorAll('input[type="text"]')).find((f) =>
-      f.placeholder.includes('Pittsburgh')
-    );
-  const makeField = Array.from(form.querySelectorAll('input[type="text"]')).find((f) =>
-    f.placeholder.includes('Honda')
-  );
-  const modelField = Array.from(form.querySelectorAll('input[type="text"]')).find((f) =>
-    f.placeholder.includes('Accord')
-  );
+  const addressField = form.querySelector('input[type="text"][placeholder*="St,"]') || Array.from(form.querySelectorAll('input[type="text"]')).find(f => f.placeholder.includes('Pittsburgh'));
+  const makeField = Array.from(form.querySelectorAll('input[type="text"]')).find(f => f.placeholder.includes('Honda'));
+  const modelField = Array.from(form.querySelectorAll('input[type="text"]')).find(f => f.placeholder.includes('Accord'));
   const yearField = form.querySelector('input[type="number"][placeholder="2020"]');
   const mileageField = form.querySelector('input[type="number"][placeholder="65000"]');
   const notesField = form.querySelector('textarea');
@@ -574,7 +556,7 @@ async function handleMechanicalBooking(form) {
   }
 
   // Collect selected services
-  const selectedServices = Array.from(serviceCheckboxes).map((cb) => cb.value);
+  const selectedServices = Array.from(serviceCheckboxes).map(cb => cb.value);
 
   // Create booking object
   const bookingData = {
@@ -587,26 +569,23 @@ async function handleMechanicalBooking(form) {
       make: sanitizeInput(makeField.value.trim()),
       model: sanitizeInput(modelField.value.trim()),
       year: yearField.value.trim(),
-      mileage: mileageField?.value || 'Not provided',
+      mileage: mileageField?.value || 'Not provided'
     },
     services: selectedServices,
     notes: notesField?.value ? sanitizeInput(notesField.value.trim()) : '',
     status: 'pending',
-    paymentStatus: 'awaiting_invoice',
+    paymentStatus: 'awaiting_invoice'
   };
 
   try {
     // Send to Firebase
-    const response = await fetch(
-      'https://hands-detail-default-rtdb.firebaseio.com/mechanical-bookings.json',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(bookingData),
-      }
-    );
+    const response = await fetch('https://hands-detail-default-rtdb.firebaseio.com/mechanical-bookings.json', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(bookingData)
+    });
 
     if (!response.ok) {
       throw new Error('Failed to save booking');
@@ -626,6 +605,7 @@ async function handleMechanicalBooking(form) {
     setTimeout(() => {
       window.location.href = 'booking-confirmation.html';
     }, 2000);
+
   } catch (error) {
     console.error('Booking error:', error);
     alert('Error submitting booking. Please call us at (412) 752-8684 to book your service.');
@@ -653,7 +633,7 @@ Vehicle Information:
 - Mileage: ${bookingData.vehicle.mileage}
 
 Services Requested:
-${bookingData.services.map((s) => `- ${s}`).join('\n')}
+${bookingData.services.map(s => `- ${s}`).join('\n')}
 
 Additional Notes:
 ${bookingData.notes || 'None'}
@@ -665,11 +645,7 @@ Submitted: ${new Date(bookingData.timestamp).toLocaleString()}
 
     // Using email-integration.js if available, otherwise log for manual handling
     if (window.sendEmailViaEmailIntegration) {
-      await window.sendEmailViaEmailIntegration(
-        'handsdetailshop@gmail.com',
-        `New Mechanical Booking: ${bookingData.name}`,
-        emailBody
-      );
+      await window.sendEmailViaEmailIntegration('handsdetailshop@gmail.com', `New Mechanical Booking: ${bookingData.name}`, emailBody);
     } else {
       console.log('Email would be sent:', emailBody);
       // Email notification can be set up via Firebase Cloud Functions
@@ -685,10 +661,10 @@ Submitted: ${new Date(bookingData.timestamp).toLocaleString()}
 function showBookingSuccess(bookingData) {
   const modal = document.getElementById('bookingModal');
   const content = modal.querySelector('.modal-content');
-
+  
   const successHTML = `
     <div style="padding: 40px; text-align: center;">
-      <div style="font-size: 3rem; margin-bottom: 20px;">&#9989;</div>
+      <div style="font-size: 3rem; margin-bottom: 20px;">✅</div>
       <h2 style="color: #42a5f5; margin: 0 0 15px 0;">Booking Submitted!</h2>
       <p style="color: #b3d9ff; font-size: 1.05rem; margin: 0 0 20px 0;">
         Thank you, <strong>${bookingData.name}</strong>!
@@ -780,7 +756,7 @@ function handleOriginalBooking(form) {
     // Close modal and reset form
     closeBookingModal();
     form.reset();
-
+    
     // Redirect to booking confirmation page with "While You Wait" music experience
     setTimeout(() => {
       window.location.href = 'booking-confirmation.html';
@@ -792,18 +768,30 @@ function handleOriginalBooking(form) {
   }
 }
 
+
+// ===== SERVICES DROPDOWN TOGGLE =====
+
+function toggleServicesDropdown(button) {
+  const dropdown = button.closest('.services-dropdown');
+  if (dropdown) {
+    const menu = dropdown.querySelector('.dropdown-menu');
+    if (menu) {
+      menu.classList.toggle('active');
+      button.classList.toggle('active');
+    }
+  }
+}
+
 // Close dropdown when clicking outside
-document.addEventListener('click', function (e) {
+document.addEventListener('click', function(e) {
   const dropdowns = document.querySelectorAll('.services-dropdown');
-  dropdowns.forEach((dropdown) => {
+  dropdowns.forEach(dropdown => {
     const button = dropdown.querySelector('.services-dropdown-btn');
     if (!dropdown.contains(e.target)) {
       const menu = dropdown.querySelector('.dropdown-menu');
       if (menu) {
         menu.classList.remove('active');
-        if (button) {
-          button.classList.remove('active');
-        }
+        if (button) button.classList.remove('active');
       }
     }
   });
@@ -829,7 +817,7 @@ if (bookingModal) {
  */
 function selectVehicle(element, vehicleType) {
   // Remove active class from all options
-  document.querySelectorAll('.quote-option').forEach((opt) => {
+  document.querySelectorAll('.quote-option').forEach(opt => {
     opt.style.borderColor = 'rgba(66, 165, 245, 0.3)';
     opt.style.background = 'linear-gradient(135deg, #0d1b2a, #1a2942)';
   });
@@ -844,132 +832,132 @@ function selectVehicle(element, vehicleType) {
     compact: {
       essential: '$65',
       executive: '$145',
-      ceramic: '$585',
+      ceramic: '$585'
     },
     midsize: {
       essential: '$75',
       executive: '$165',
-      ceramic: '$685',
+      ceramic: '$685'
     },
     suv: {
       essential: '$85',
       executive: '$185',
-      ceramic: '$785',
+      ceramic: '$785'
     },
     luxury: {
       essential: '$85',
       executive: '$185',
-      ceramic: '$785',
+      ceramic: '$785'
     },
 
     // Motorcycles
     motorcycle: {
       essential: '$85',
       executive: '$145',
-      ceramic: '$245',
+      ceramic: '$245'
     },
 
     // Fleet Vehicles
     fleet: {
       essential: '$45',
       executive: '$75',
-      ceramic: 'N/A',
+      ceramic: 'N/A'
     },
     'fleet-premium': {
       essential: '$75',
       executive: '$95',
-      ceramic: 'N/A',
+      ceramic: 'N/A'
     },
     'box-truck': {
       essential: '$95',
       executive: '$145',
-      ceramic: 'N/A',
+      ceramic: 'N/A'
     },
 
     // Semi Tractors
     semi: {
       essential: '$125',
       executive: '$185',
-      ceramic: 'N/A',
+      ceramic: 'N/A'
     },
 
     // Buses
     'mini-bus': {
       essential: '$145',
       executive: '$225',
-      ceramic: 'N/A',
+      ceramic: 'N/A'
     },
     'full-bus': {
       essential: '$285',
       executive: '$385',
-      ceramic: 'N/A',
+      ceramic: 'N/A'
     },
     'coach-bus': {
       essential: '$485',
       executive: '$685',
-      ceramic: 'N/A',
+      ceramic: 'N/A'
     },
 
     // Yachts & Boats
     'small-yacht': {
       essential: '$285',
       executive: '$385',
-      ceramic: '+$200',
+      ceramic: '+$200'
     },
     'medium-yacht': {
       essential: '$485',
       executive: '$685',
-      ceramic: '+$300',
+      ceramic: '+$300'
     },
     'large-yacht': {
       essential: '$885',
       executive: '$1,485',
-      ceramic: '+$500',
+      ceramic: '+$500'
     },
     'super-yacht': {
       essential: 'Custom',
       executive: 'Quote',
-      ceramic: 'Quote',
+      ceramic: 'Quote'
     },
 
     // RVs
     'class-b-rv': {
       essential: '$285',
       executive: '$385',
-      ceramic: '+$200',
+      ceramic: '+$200'
     },
     'class-c-rv': {
       essential: '$485',
       executive: '$685',
-      ceramic: '+$300',
+      ceramic: '+$300'
     },
     'class-a-rv': {
       essential: '$885',
       executive: '$1,285',
-      ceramic: '+$400',
+      ceramic: '+$400'
     },
     'luxury-rv': {
       essential: '$1,485',
       executive: '$2,485',
-      ceramic: '+$600',
+      ceramic: '+$600'
     },
 
     // Seasonal & Special
     winter: {
       essential: '$385',
       executive: '$485',
-      ceramic: '$585',
+      ceramic: '$585'
     },
     'interior-ceramic': {
       essential: '$285',
       executive: '$385',
-      ceramic: '$485',
+      ceramic: '$485'
     },
     'exterior-ceramic': {
       essential: '$585',
       executive: '$685',
-      ceramic: '$785',
-    },
+      ceramic: '$785'
+    }
   };
 
   // Update prices if elements exist
@@ -979,15 +967,9 @@ function selectVehicle(element, vehicleType) {
     const executiveEl = document.getElementById('executivePrice');
     const ceramicEl = document.getElementById('ceramicPrice');
 
-    if (essentialEl) {
-      essentialEl.textContent = prices.essential;
-    }
-    if (executiveEl) {
-      executiveEl.textContent = prices.executive;
-    }
-    if (ceramicEl) {
-      ceramicEl.textContent = prices.ceramic;
-    }
+    if (essentialEl) essentialEl.textContent = prices.essential;
+    if (executiveEl) executiveEl.textContent = prices.executive;
+    if (ceramicEl) ceramicEl.textContent = prices.ceramic;
   }
 
   // Show price display
@@ -1009,19 +991,19 @@ function selectVehicle(element, vehicleType) {
  */
 function playAudio(audioUrl) {
   let audioElement = document.getElementById('storyAudio');
-
+  
   if (!audioElement) {
     audioElement = document.createElement('audio');
     audioElement.id = 'storyAudio';
     document.body.appendChild(audioElement);
   }
-
+  
   if (audioUrl) {
     audioElement.src = audioUrl;
   }
-
+  
   if (audioElement.paused) {
-    audioElement.play().catch((error) => {
+    audioElement.play().catch(error => {
       console.log('Audio playback error:', error);
     });
   } else {
@@ -1049,30 +1031,30 @@ function stopAudio() {
  */
 function handleContactFormSubmit(event) {
   event.preventDefault();
-
+  
   const form = event.target;
   const name = form.querySelector('input[name="name"]').value;
   const email = form.querySelector('input[name="email"]').value;
   const phone = form.querySelector('input[name="phone"]').value;
   const subject = form.querySelector('select[name="subject"]').value;
   const message = form.querySelector('textarea[name="message"]').value;
-
+  
   // Client-side validation
   if (!validateName(name)) {
     alert('Please enter a valid name (letters, spaces, hyphens only)');
     return;
   }
-
+  
   if (!email || !email.includes('@')) {
     alert('Please enter a valid email address');
     return;
   }
-
+  
   if (phone && !validatePhone(phone)) {
     alert('Please enter a valid phone number');
     return;
   }
-
+  
   // Prepare data for email
   const emailData = {
     subject: `Contact Form: ${subject}`,
@@ -1081,19 +1063,19 @@ function handleContactFormSubmit(event) {
     phone: sanitizeInput(phone || 'Not provided'),
     subject_selected: subject,
     message: sanitizeInput(message),
-    timestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString()
   };
-
+  
   // Send email via Firebase or email service
   // For now, we'll log and show success message
   console.log('Contact form submitted:', emailData);
-
+  
   // Show success message
   const successMsg = document.getElementById('formSuccessMessage');
   if (successMsg) {
     successMsg.style.display = 'block';
     form.style.display = 'none';
-
+    
     // Reset form after 3 seconds and show it again
     setTimeout(() => {
       form.reset();
@@ -1101,7 +1083,7 @@ function handleContactFormSubmit(event) {
       successMsg.style.display = 'none';
     }, 3000);
   }
-
+  
   // Optional: Send to email service
   // You can integrate with Formspree, EmailJS, or Firebase Cloud Functions
   // Example with Formspree (requires form action attribute):
@@ -1144,17 +1126,15 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Close dropdown when clicking outside
-  document.addEventListener('click', function (e) {
+  document.addEventListener('click', function(e) {
     const dropdowns = document.querySelectorAll('.services-dropdown');
-    dropdowns.forEach((dropdown) => {
+    dropdowns.forEach(dropdown => {
       const button = dropdown.querySelector('.services-dropdown-btn');
       if (!dropdown.contains(e.target)) {
         const menu = dropdown.querySelector('.dropdown-menu');
         if (menu) {
           menu.classList.remove('active');
-          if (button) {
-            button.classList.remove('active');
-          }
+          if (button) button.classList.remove('active');
         }
       }
     });
@@ -1165,341 +1145,4 @@ document.addEventListener('DOMContentLoaded', function () {
   if (jukeboxEl) {
     initializeJukebox();
   }
-
-  // ===== REVIEW FORM =====
-  const reviewForm = document.getElementById('reviewForm');
-  if (reviewForm) {
-    console.log('Review form found and initializing...');
-    
-    // Star rating click handlers
-    const stars = reviewForm.querySelectorAll('.star-rating');
-    const ratingInput = document.getElementById('ratingValue');
-
-    if (stars.length > 0 && ratingInput) {
-      stars.forEach(function (star) {
-        star.addEventListener('click', function () {
-          const selected = parseInt(this.getAttribute('data-rating'));
-          ratingInput.value = selected;
-          stars.forEach(function (s) {
-            s.style.color =
-              parseInt(s.getAttribute('data-rating')) <= selected ? '#ffc107' : '#606060';
-          });
-        });
-
-        // Hover preview
-        star.addEventListener('mouseenter', function () {
-          const hovered = parseInt(this.getAttribute('data-rating'));
-          stars.forEach(function (s) {
-            s.style.color =
-              parseInt(s.getAttribute('data-rating')) <= hovered ? '#ffc107' : '#606060';
-          });
-        });
-      });
-
-      // Restore actual selection on mouse leave
-      const starsContainer = stars[0].parentElement;
-      if (starsContainer) {
-        starsContainer.addEventListener('mouseleave', function () {
-          const current = parseInt(ratingInput.value) || 0;
-          stars.forEach(function (s) {
-            s.style.color =
-              parseInt(s.getAttribute('data-rating')) <= current ? '#ffc107' : '#606060';
-          });
-        });
-      }
-    }
-
-    // Form submission
-    reviewForm.addEventListener('submit', async function (e) {
-      e.preventDefault();
-
-      const nameField = reviewForm.querySelector('input[name="reviewName"]');
-      const textField = reviewForm.querySelector('textarea[name="reviewText"]');
-      const emailField = reviewForm.querySelector('input[name="reviewEmail"]');
-      const areaField = reviewForm.querySelector('input[name="reviewArea"]');
-      const submitBtn = reviewForm.querySelector('button[type="submit"]');
-
-      // Validate
-      let isValid = true;
-
-      if (!nameField.value.trim()) {
-        showFieldError(nameField, 'Please enter your name');
-        isValid = false;
-      } else if (!validateName(nameField.value)) {
-        showFieldError(nameField, 'Please enter a valid name (letters only)');
-        isValid = false;
-      } else {
-        clearFieldError(nameField);
-      }
-
-      if (!ratingInput.value) {
-        const existingError = ratingInput.parentElement.querySelector('.field-error');
-        if (!existingError) {
-          const err = document.createElement('span');
-          err.className = 'field-error';
-          err.style.cssText =
-            'color: #ff5252; font-size: 0.875rem; margin-top: 8px; display: block;';
-          err.textContent = 'Please select a star rating';
-          ratingInput.parentElement.appendChild(err);
-        }
-        isValid = false;
-      } else {
-        const existingError = ratingInput.parentElement.querySelector('.field-error');
-        if (existingError) {
-          existingError.remove();
-        }
-      }
-
-      if (!textField.value.trim()) {
-        showFieldError(textField, 'Please write your review');
-        isValid = false;
-      } else {
-        clearFieldError(textField);
-      }
-
-      if (!isValid) {
-        return;
-      }
-
-      // Disable button while saving
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting...';
-
-      const reviewData = {
-        name: sanitizeInput(nameField.value.trim()),
-        rating: parseInt(ratingInput.value),
-        comment: sanitizeInput(textField.value.trim()),
-        email: emailField.value.trim() ? sanitizeInput(emailField.value.trim()) : '',
-        area: areaField.value.trim() ? sanitizeInput(areaField.value.trim()) : '',
-        createdAt: new Date().toISOString(),
-        status: 'pending',
-      };
-
-      try {
-        console.log('Submitting review:', reviewData);
-        
-        // Save to local storage as primary storage for admin panel
-        // Submit review with server-side timestamp via Firebase Cloud Function
-        if (window.firebase && window.firebase.functions) {
-          const submitReviewWithServerTime = window.firebase.functions().httpsCallable('submitReviewWithServerTime');
-          
-          submitReviewWithServerTime({
-            name: reviewData.name,
-            email: reviewData.email,
-            rating: reviewData.rating,
-            comment: reviewData.comment,
-            area: reviewData.area
-          })
-            .then((result) => {
-              console.log('Review submitted with server timestamp:', result.data);
-              // Also save to localStorage for offline support
-              try {
-                let pendingReviews = JSON.parse(localStorage.getItem('pendingReviews')) || [];
-                pendingReviews.push({ ...reviewData, serverSubmitted: true });
-                localStorage.setItem('pendingReviews', JSON.stringify(pendingReviews));
-              } catch (storageError) {
-                console.error('Could not save to localStorage:', storageError);
-              }
-              showReviewSuccess(reviewData, reviewForm);
-            })
-            .catch((error) => {
-              console.error('Error submitting review:', error);
-              // Fallback: Save to localStorage for admin approval
-              try {
-                let pendingReviews = JSON.parse(localStorage.getItem('pendingReviews')) || [];
-                pendingReviews.push(reviewData);
-                localStorage.setItem('pendingReviews', JSON.stringify(pendingReviews));
-                console.log('Review saved to localStorage for admin approval');
-                showReviewSuccess(reviewData, reviewForm);
-              } catch (storageError) {
-                console.error('Could not save to localStorage:', storageError);
-              }
-            });
-        } else {
-          console.warn('Firebase functions not available');
-          // Review is already saved in localStorage, show success anyway
-          showReviewSuccess(reviewData, reviewForm);
-        }
-      } catch (error) {
-        console.error('Review submission failed:', error);
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit Review';
-        
-        showReviewError(reviewForm, reviewData);
-      }
-    });
-  }
-
-  // Helper function to show success message
-  function showReviewSuccess(reviewData, formElement) {
-    const successDiv = document.createElement('div');
-    successDiv.style.cssText =
-      'text-align: center; padding: 40px 20px; background: rgba(66, 165, 245, 0.1); border-radius: 15px; border: 1px solid rgba(66, 165, 245, 0.3);';
-    successDiv.innerHTML =
-      '<p style="font-size: 2.5rem; margin-bottom: 15px;">⭐</p>' +
-      '<h4 style="color: #90caf9; margin-bottom: 10px; font-size: 1.3rem;">Thank you, ' +
-      reviewData.name +
-      '!</h4>' +
-      '<p style="color: #a0a0a0; line-height: 1.6; margin-bottom: 15px;">Your ' + reviewData.rating + '-star review has been submitted successfully!</p>' +
-      '<p style="color: #90caf9; font-size: 0.95rem;">&#10003; Review pending approval - You\'ll receive an email once it\'s published</p>';
-
-    formElement.replaceWith(successDiv);
-  }
-
-  // Helper function to show error message
-  function showReviewError(formElement, reviewData) {
-    const errorDiv = document.createElement('div');
-    errorDiv.style.cssText =
-      'background: rgba(255, 82, 82, 0.15); border: 3px solid #ff5252; border-radius: 10px; padding: 25px; margin-bottom: 20px; text-align: center;';
-    errorDiv.innerHTML =
-      '<p style="color: #ff5252; margin: 0 0 8px 0; font-weight: 700; font-size: 1.2rem;">⚠️ Unable to Submit Review Online</p>' +
-      '<p style="color: #ff7070; margin: 0 0 15px 0; font-size: 1rem;">No worries! You have two options:</p>' +
-      '<div style="background: rgba(255, 82, 82, 0.2); padding: 15px; border-radius: 8px; margin: 15px 0;">' +
-      '<p style="color: #ff3333; text-decoration: none; font-weight: 700; font-size: 1.1rem; margin: 0 0 5px 0;">&#128222; CALL US</p>' +
-      '<a href="tel:4127528684" style="color: #ff3333; text-decoration: none; font-weight: 700; font-size: 1.4rem; display: block; margin: 5px 0;">(412) 752-8684</a>' +
-      '<p style="color: #ff7070; margin: 5px 0 0 0; font-size: 0.9rem;">Tell us your rating and review</p>' +
-      '</div>' +
-      '<p style="color: #ff7070; margin: 15px 0 8px 0; font-size: 0.95rem;">or</p>' +
-      '<div style="background: rgba(255, 82, 82, 0.2); padding: 15px; border-radius: 8px; margin: 15px 0;">' +
-      '<p style="color: #ff3333; font-weight: 700; font-size: 1.1rem; margin: 0 0 8px 0;">✉️ EMAIL US</p>' +
-      '<a href="mailto:handsdetailshop@gmail.com?subject=5-Star Review from Customer" style="color: #ff3333; text-decoration: none; font-weight: 700; font-size: 1.05rem;">handsdetailshop@gmail.com</a>' +
-      '<p style="color: #ff7070; margin: 8px 0 0 0; font-size: 0.9rem;">Include your review in the message</p>' +
-      '</div>';
-    
-    // Remove any existing error messages
-    const existingError = formElement.parentElement.querySelector('div[style*="background: rgba(255, 82, 82"]');
-    if (existingError) {
-      existingError.remove();
-    }
-    
-    formElement.parentElement.insertBefore(errorDiv, formElement);
-    
-    // Also scroll to the error message
-    errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-
-  // Load and display approved reviews from Firestore
-  async function loadApprovedReviews() {
-    const reviewsContainer = document.getElementById('reviews-grid');
-    if (!reviewsContainer) return;
-
-    try {
-      // Try to load from Firestore first
-      const approvedSnapshot = await firebase.firestore().collection('approvedReviews').get();
-      const approvedReviews = approvedSnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-
-      // If no reviews in Firestore, fall back to localStorage for backward compatibility
-      let reviewsToDisplay = approvedReviews;
-      if (approvedReviews.length === 0) {
-        reviewsToDisplay = JSON.parse(localStorage.getItem('approvedReviews')) || [];
-      }
-
-      // Display each approved review
-      reviewsToDisplay.forEach((review) => {
-        const reviewCard = document.createElement('div');
-        reviewCard.className = 'review-card';
-        reviewCard.style.cssText = `
-          background: linear-gradient(135deg, rgba(66, 165, 245, 0.1), rgba(30, 136, 229, 0.1));
-          border: 1px solid rgba(66, 165, 245, 0.3);
-          border-radius: 10px;
-          padding: 25px;
-          display: flex;
-          flex-direction: column;
-        `;
-
-        const stars = '⭐'.repeat(review.rating);
-        const createdAt = review.createdAt?.toDate ? review.createdAt.toDate() : new Date(review.createdAt);
-        const reviewDate = createdAt.toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        });
-
-        const badgeStyle = `
-          display: inline-block;
-          background: linear-gradient(135deg, #4caf50, #66bb6a);
-          color: white;
-          padding: 4px 12px;
-          border-radius: 20px;
-          font-size: 0.75rem;
-          font-weight: 600;
-          margin-bottom: 10px;
-          width: fit-content;
-        `;
-
-        reviewCard.innerHTML = `
-          <div style="${badgeStyle}">&#10003; Verified Review</div>
-          <h3 style="color: #90caf9; margin: 0 0 8px 0; font-size: 1.2rem;">${review.name}</h3>
-          <div style="color: #ffc107; margin-bottom: 10px; font-size: 1.1rem;">${stars}</div>
-          <p style="color: #e8f1f8; font-style: italic; line-height: 1.6; margin: 15px 0; flex-grow: 1;">"${review.comment}"</p>
-          <div style="color: #a0a0a0; font-size: 0.85rem; margin-top: 15px;">
-            &#128197; ${reviewDate}
-            ${review.email ? `<br>👤 ${review.email}` : ''}
-            ${review.area ? `<br>📍 ${review.area}` : ''}
-          </div>
-        `;
-
-        reviewsContainer.appendChild(reviewCard);
-      });
-    } catch (error) {
-      console.warn('Could not load reviews from Firestore, falling back to localStorage:', error);
-      // Fall back to localStorage if Firestore fails
-      const approvedReviews = JSON.parse(localStorage.getItem('approvedReviews')) || [];
-
-      approvedReviews.forEach((review) => {
-        const reviewCard = document.createElement('div');
-        reviewCard.className = 'review-card';
-        reviewCard.style.cssText = `
-          background: linear-gradient(135deg, rgba(66, 165, 245, 0.1), rgba(30, 136, 229, 0.1));
-          border: 1px solid rgba(66, 165, 245, 0.3);
-          border-radius: 10px;
-          padding: 25px;
-          display: flex;
-          flex-direction: column;
-        `;
-
-        const stars = '⭐'.repeat(review.rating);
-        const reviewDate = new Date(review.createdAt).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        });
-
-        const badgeStyle = `
-          display: inline-block;
-          background: linear-gradient(135deg, #4caf50, #66bb6a);
-          color: white;
-          padding: 4px 12px;
-          border-radius: 20px;
-          font-size: 0.75rem;
-          font-weight: 600;
-          margin-bottom: 10px;
-          width: fit-content;
-        `;
-
-        reviewCard.innerHTML = `
-          <div style="${badgeStyle}">&#10003; Verified Review</div>
-          <h3 style="color: #90caf9; margin: 0 0 8px 0; font-size: 1.2rem;">${review.name}</h3>
-          <div style="color: #ffc107; margin-bottom: 10px; font-size: 1.1rem;">${stars}</div>
-          <p style="color: #e8f1f8; font-style: italic; line-height: 1.6; margin: 15px 0; flex-grow: 1;">"${review.comment}"</p>
-          <div style="color: #a0a0a0; font-size: 0.85rem; margin-top: 15px;">
-            &#128197; ${reviewDate}
-            ${review.email ? `<br>👤 ${review.email}` : ''}
-            ${review.area ? `<br>📍 ${review.area}` : ''}
-          </div>
-        `;
-
-        reviewsContainer.appendChild(reviewCard);
-      });
-    }
-  }
-
-  // Load approved reviews when page loads
-  if (document.querySelector('#reviews-grid')) {
-    loadApprovedReviews();
-  }
 });
-

@@ -10,7 +10,7 @@ describe('Input Validation Functions', () => {
   describe('validatePhone', () => {
     // Define the function inline for testing (same logic as main.js)
     function validatePhone(phone) {
-      const phoneRegex = /^[\d\s\-()]+$/;
+      const phoneRegex = /^[\d\s\-\(\)]+$/;
       const digitsOnly = phone.replace(/\D/g, '');
       return phoneRegex.test(phone) && digitsOnly.length >= 10;
     }
@@ -134,9 +134,8 @@ describe('Input Validation Functions', () => {
         const sanitized = sanitizeInput(attempt);
         expect(sanitized).not.toContain('<script');
         expect(sanitized).not.toContain('<iframe');
-        // HTML-encoding converts < > to &lt; &gt;, so raw tags are neutralized
-        expect(sanitized).not.toContain('<img');
-        expect(sanitized).not.toContain('<svg');
+        expect(sanitized).not.toContain('onerror=');
+        expect(sanitized).not.toContain('onload=');
       });
     });
   });
@@ -248,7 +247,8 @@ describe('URL Encoding and Security', () => {
     const encoded = encodeURIComponent(details);
 
     expect(encoded).not.toContain('&');
-    // Note: encodeURIComponent does NOT encode ( ) per RFC 3986 — they are safe chars
+    expect(encoded).not.toContain('(');
+    expect(encoded).not.toContain(')');
     expect(encoded).not.toContain('$');
 
     // Should be decodable back
@@ -268,10 +268,8 @@ describe('URL Encoding and Security', () => {
 describe('Edge Cases and Error Handling', () => {
   test('should handle null and undefined inputs gracefully', () => {
     function validatePhone(phone) {
-      if (!phone) {
-        return false;
-      }
-      const phoneRegex = /^[\d\s\-()]+$/;
+      if (!phone) return false;
+      const phoneRegex = /^[\d\s\-\(\)]+$/;
       const digitsOnly = phone.replace(/\D/g, '');
       return phoneRegex.test(phone) && digitsOnly.length >= 10;
     }
@@ -282,9 +280,7 @@ describe('Edge Cases and Error Handling', () => {
 
   test('should handle very long inputs', () => {
     function validateName(name) {
-      if (!name) {
-        return false;
-      }
+      if (!name) return false;
       const nameRegex = /^[a-zA-Z\s\-']+$/;
       return nameRegex.test(name) && name.trim().length >= 2;
     }
@@ -298,9 +294,7 @@ describe('Edge Cases and Error Handling', () => {
 
   test('should handle international characters in names', () => {
     function validateName(name) {
-      if (!name) {
-        return false;
-      }
+      if (!name) return false;
       const nameRegex = /^[a-zA-Z\s\-']+$/;
       return nameRegex.test(name) && name.trim().length >= 2;
     }
@@ -320,18 +314,14 @@ describe('Edge Cases and Error Handling', () => {
 describe('Integration Tests', () => {
   test('complete booking form validation flow', () => {
     function validatePhone(phone) {
-      if (!phone) {
-        return false;
-      }
-      const phoneRegex = /^[\d\s\-()]+$/;
+      if (!phone) return false;
+      const phoneRegex = /^[\d\s\-\(\)]+$/;
       const digitsOnly = phone.replace(/\D/g, '');
       return phoneRegex.test(phone) && digitsOnly.length >= 10;
     }
 
     function validateName(name) {
-      if (!name) {
-        return false;
-      }
+      if (!name) return false;
       const nameRegex = /^[a-zA-Z\s\-']+$/;
       return nameRegex.test(name) && name.trim().length >= 2;
     }
@@ -366,23 +356,19 @@ describe('Integration Tests', () => {
     const url = `https://square.link/u/vScfV4jK?note=${encodeURIComponent(details)}`;
 
     expect(url).toContain('John%20Doe');
-    expect(url).toContain('(412)'); // Parentheses are not encoded by encodeURIComponent
+    expect(url).toContain('%28412%29'); // Encoded parenthesis
   });
 
   test('should reject invalid form data', () => {
     function validatePhone(phone) {
-      if (!phone) {
-        return false;
-      }
-      const phoneRegex = /^[\d\s\-()]+$/;
+      if (!phone) return false;
+      const phoneRegex = /^[\d\s\-\(\)]+$/;
       const digitsOnly = phone.replace(/\D/g, '');
       return phoneRegex.test(phone) && digitsOnly.length >= 10;
     }
 
     function validateName(name) {
-      if (!name) {
-        return false;
-      }
+      if (!name) return false;
       const nameRegex = /^[a-zA-Z\s\-']+$/;
       return nameRegex.test(name) && name.trim().length >= 2;
     }

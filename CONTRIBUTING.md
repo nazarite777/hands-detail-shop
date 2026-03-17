@@ -45,20 +45,17 @@ Thank you for your interest in contributing to the Hands Detail Shop website! Th
 1. **Fork the repository** on GitHub
 
 2. **Clone your fork**:
-
    ```bash
    git clone https://github.com/YOUR_USERNAME/hands-detail-shop.git
    cd hands-detail-shop
    ```
 
 3. **Add upstream remote**:
-
    ```bash
    git remote add upstream https://github.com/nazarite777/hands-detail-shop.git
    ```
 
 4. **Install dependencies**:
-
    ```bash
    npm install
    ```
@@ -76,7 +73,6 @@ Thank you for your interest in contributing to the Hands Detail Shop website! Th
 ### Before Starting Work
 
 1. **Sync with upstream**:
-
    ```bash
    git fetch upstream
    git checkout main
@@ -120,7 +116,6 @@ Thank you for your interest in contributing to the Hands Detail Shop website! Th
 - **JSDoc comments** for functions
 
 **Example**:
-
 ```javascript
 /**
  * Validate phone number format
@@ -173,7 +168,6 @@ All new JavaScript functions **must** have unit tests.
 **Location**: `__tests__/main.test.js`
 
 **Example**:
-
 ```javascript
 describe('validatePhone', () => {
   test('should accept valid 10-digit phone number', () => {
@@ -214,13 +208,11 @@ npm run test:ci
 ### Before Submitting
 
 1. **Run all validations**:
-
    ```bash
    npm run validate:all
    ```
 
 2. **Ensure tests pass**:
-
    ```bash
    npm test
    ```
@@ -232,7 +224,6 @@ npm run test:ci
 ### Creating PR
 
 1. **Push your branch**:
-
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -243,14 +234,11 @@ npm run test:ci
    - Link related issues
 
 3. **PR Template**:
-
    ```markdown
    ## Description
-
    Brief description of changes
 
    ## Type of Change
-
    - [ ] Bug fix
    - [ ] New feature
    - [ ] Documentation update
@@ -258,17 +246,14 @@ npm run test:ci
    - [ ] Refactoring
 
    ## Testing
-
    - [ ] All tests pass
    - [ ] Added new tests
    - [ ] Manual testing completed
 
    ## Screenshots (if applicable)
-
    Add screenshots for UI changes
 
    ## Checklist
-
    - [ ] Code follows style guidelines
    - [ ] Self-review completed
    - [ ] Comments added for complex code
@@ -311,7 +296,6 @@ Fixes #issue_number
 ### Examples
 
 **Good**:
-
 ```
 feat(forms): add real-time phone validation
 
@@ -322,7 +306,6 @@ Fixes #42
 ```
 
 **Good**:
-
 ```
 fix(mobile): correct menu z-index on iOS
 
@@ -333,13 +316,11 @@ Fixes #38
 ```
 
 **Bad**:
-
 ```
 updated stuff
 ```
 
 **Bad**:
-
 ```
 fix bug
 ```
@@ -383,7 +364,6 @@ Clear description of the bug
 
 **To Reproduce**
 Steps to reproduce:
-
 1. Go to '...'
 2. Click on '...'
 3. See error
@@ -395,7 +375,6 @@ What should happen
 If applicable
 
 **Environment:**
-
 - Browser: [e.g., Chrome 120]
 - OS: [e.g., Windows 11]
 - Device: [e.g., iPhone 14]
@@ -433,7 +412,6 @@ Screenshots, mockups, examples
 Instead, email: [contact form on website]
 
 Include:
-
 - Description of vulnerability
 - Steps to reproduce
 - Potential impact
