@@ -1,11 +1,11 @@
 /**
  * Claude AI Integration for Hands Detail Shop
  * Provides chat widget + support bot across all pages
+ * Uses Firebase Cloud Function for secure API proxying
  */
 
-const CLAUDE_API_KEY = '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';
-const CLAUDE_MODEL = 'claude-3-5-sonnet-20241022';
-const API_ENDPOINT = 'https://api.anthropic.com/v1/messages';
+// Cloud Function endpoint - API key stays secure on server
+const API_ENDPOINT = 'https://us-central1-hands-detail.cloudfunctions.net/claudeAI';
 
 /**
  * System prompt for Claude - trains it on your business context
@@ -585,37 +585,29 @@ async function sendMessage() {
             return;
         }
         
-        console.log('📤 Calling Claude API...');
+        console.log('📤 Calling Cloud Function...');
         
-        // Otherwise call Claude API
+        // Call Cloud Function (API key stays secure on server)
         const response = await fetch(API_ENDPOINT, {
             method: 'POST',
             headers: {
-                'x-api-key': CLAUDE_API_KEY,
-                'anthropic-version': '2023-06-01',
                 'content-type': 'application/json',
             },
             body: JSON.stringify({
-                model: CLAUDE_MODEL,
-                max_tokens: 1024,
-                system: SYSTEM_PROMPT,
-                messages: [{
-                    role: 'user',
-                    content: message
-                }]
+                message: message
             })
         });
         
-        console.log('📥 API Response Status:', response.status);
+        console.log('📥 Cloud Function Response Status:', response.status);
         
         if (!response.ok) {
             const errorData = await response.json().catch(() => ({}));
-            console.error('❌ API Error:', response.status, errorData);
-            throw new Error(`API error: ${response.status} - ${errorData.error?.message || 'Unknown error'}`);
+            console.error('❌ Cloud Function Error:', response.status, errorData);
+            throw new Error(`API error: ${response.status} - ${errorData.error?.details || 'Unknown error'}`);
         }
         
         const data = await response.json();
-        const assistantMessage = data.content[0].text;
+        const assistantMessage = data.reply;
         
         console.log('✅ Claude response received');
         loadingEl.remove();
