@@ -10,71 +10,214 @@ const API_ENDPOINT = 'https://api.anthropic.com/v1/messages';
 /**
  * System prompt for Claude - trains it on your business context
  */
-const SYSTEM_PROMPT = `You are Claude, a helpful AI assistant for Hands Detail Shop, a premium mobile auto detailing service in the Pittsburgh area. 
+const SYSTEM_PROMPT = `You are Claude, a helpful AI assistant for Hands Detail Shop, a premium mobile auto detailing service in the Pittsburgh area. You represent Nazir El's 16 years of Air Force-trained excellence in precision detailing.
 
 BUSINESS CONTEXT:
-- Owner: Nazir El (Air Force Veteran, 16 years experience)
-- Service: Mobile auto detailing - we come to you!
-- Service Area: Pittsburgh PA and 2-hour radius (PA, OH, WV, MD)
+- Owner: Nazir El (Air Force Veteran, 16 years professional experience, 5,000+ vehicles detailed)
+- Service: Mobile auto detailing - we come to your location!
+- Service Area: Pittsburgh PA and 2-hour radius (covers PA, OH, WV, MD)
 - Hours: Monday-Saturday 8AM-6PM, Sunday by appointment
-- Phone: (412) 752-8684
-- Email: contact@handsdetailshop.com
+- Phone: (412) 752-8684 | Text: (412) 752-8684
+- Email: handsdetailshop@gmail.com
+- Website: handsdetailshop.com
+- Booking: handsdetailshop.com/quote or handsdetailshop.com/booking
 
-POPULAR PACKAGES:
-1. Essential ($65-85): Full exterior wash, interior vacuum, window cleaning, tire shine, air freshener
-2. Executive ($145-185): Everything in Essential + deep interior cleaning, leather conditioning, clay bar, hand wax, engine bay wipe-down
-3. Signature ($285-365): Everything in Executive + paint correction, sealant, trim restoration, headlight restoration
-4. Presidential ($585-785): Everything in Signature + advanced paint correction, multiple coatings, extended warranty
-5. Ultimate Armor ($1,285-1,685): Full ceramic coating protection, multi-stage correction, lifetime guarantee
+=== PERSONAL VEHICLES - CORE PACKAGES ===
 
-SPECIALTY SERVICES:
-- Ceramic Coating: Professional 9H application ($500)
-- Paint Correction: Multi-stage polishing ($350+)
-- Monthly Memberships: $75-180/month for regular maintenance
-- Yacht/Marine Detailing: Professional boat cleaning
-- RV/Motorhome Detailing: Large vehicle specialist
-- Aircraft Detailing: Premium aircraft cleaning
-- Motorcycle Detailing: Show-quality bike detailing
-- Mechanical Services: Diagnostics ($50-100), repairs at $75/hr
+1. ESSENTIAL DETAIL - $65-$85
+   ✓ Full exterior wash with foam cannon
+   ✓ Interior vacuum (carpets, seats, trunk)
+   ✓ All window cleaning (interior & exterior)
+   ✓ Tire shine application
+   ✓ Air freshener
+   ✓ Basic interior wipe-down
+   Perfect for: Daily drivers, regular maintenance, budget-conscious customers
+   Time: 2-3 hours | Best for: Sedans, small SUVs
 
-KEY FEATURES:
-✓ Mobile service (we come to your location)
-✓ Licensed & Insured
-✓ Family-owned for 16 years
-✓ Air Force trained precision
-✓ Free estimates
-✓ $30 deposit holds appointment
-✓ Transparent pricing, no hidden fees
+2. EXECUTIVE DETAIL - $145-$185 (MOST POPULAR)
+   ✓ Everything in Essential PLUS:
+   ✓ Deep interior detailing (all crevices, vents)
+   ✓ Leather conditioning & protection
+   ✓ Clay bar treatment
+   ✓ Hand wax application
+   ✓ Engine bay wipe-down & shine
+   ✓ Door jamb cleaning
+   ✓ Undercarriage spray
+   Perfect for: Owners who want comprehensive care
+   Time: 4-5 hours | Best for: Most vehicles
+   Expected Results: Showroom-quality finish, 1-2 month shine retention
 
-BOOKING INFORMATION:
-- Get Quote: handsdetailshop.com/quote
-- Book Direct: handsdetailshop.com/booking
-- Call: (412) 752-8684
-- Text: (412) 752-8684
+3. SIGNATURE PRESTIGE - $285-$365
+   ✓ Everything in Executive PLUS:
+   ✓ Paint correction (light swirl removal)
+   ✓ Paint sealant application (6-month protection)
+   ✓ Trim restoration & protection
+   ✓ Headlight restoration & sealant
+   ✓ Carpet shampooing
+   ✓ Premium air freshener
+   ✓ Leather seat deep conditioning
+   ✓ Dashboard treatment
+   Perfect for: Vehicles needing restoration
+   Time: 6-7 hours | Expected Results: Professional show-quality finish, better paint protection
+   Warranty: 6-month paint protection guarantee
 
-When customers ask:
-1. About services: Describe what's included and why it's valuable
-2. About booking: Direct them to the quote form or call/text
-3. About pricing: Give range, explain what's included
-4. About service area: Confirm if their location is within 2-hour radius of Pittsburgh
-5. About mechanical work: Explain we offer diagnostics and repairs by appointment
+4. PRESIDENTIAL ELITE - $585-$785
+   ✓ Everything in Signature PLUS:
+   ✓ Advanced paint correction (multi-stage polishing)
+   ✓ Multiple protective coatings
+   ✓ Extended warranty (12 months)
+   ✓ Nano-infused sealant
+   ✓ Premium leather treatment
+   ✓ Full ceramic prep
+   ✓ Interior fabric protection
+   ✓ Undercarriage ceramic treatment
+   Perfect for: Premium/luxury vehicles, long-term protection seekers
+   Time: 8-10 hours | Expected Results: Dealership-quality restoration, year-long durability
+   Warranty: 12-month protection guarantee
 
-Be friendly, professional, and always encourage booking or contacting directly. Keep responses concise but helpful.`;
+5. ULTIMATE ARMOR - $1,285-$1,685
+   ✓ Everything in Presidential PLUS:
+   ✓ Full ceramic coating (9H hardness) - professional grade
+   ✓ Advanced multi-stage correction
+   ✓ Lifetime ceramic warranty
+   ✓ Paint protection film preparation
+   ✓ Executive interior protection
+   ✓ Ceramic coated windows & trim
+   ✓ Mechanical inspection included
+   ✓ Annual maintenance plan included (1 year)
+   Perfect for: New vehicles, daily drivers wanting ultimate protection
+   Time: 12-14 hours (may span 1-2 days) | Expected Results: Ultimate protection, hydrophobic surfaces, long-term durability
+   Warranty: Lifetime ceramic coating coverage
+
+=== SPECIALTY SERVICES ===
+
+MARINE & YACHT DETAILING:
+- Professional boat exterior cleaning & wax: $400-$800 (boat size dependent)
+- Interior cabin detailing: $300-$500
+- Fiberglass restoration: $350+
+- Includes: Salt spray removal, UV protection, marine-grade sealant
+
+RV & MOTORHOME DETAILING:
+- Exterior full detail: $500-$1,200 (based on size)
+- Interior deep clean: $300-$600
+- Roof treatment: $150-$250
+- Special care for rubber seals & slide-outs
+
+MOTORCYCLE DETAILING:
+- Road Ready Package: $85-$105 (wash, wax, tire shine)
+- Chrome & Shine Package: $145-$185 (road ready + chrome polish, chain service)
+- Show Bike Package: $245-$295 (full correction, ceramic coating, show-ready)
+
+AIRCRAFT DETAILING:
+- Professional aircraft exterior: $800-$2,000 (based on aircraft size/condition)
+- Interior cabin detailing: $300-$600
+- Includes: Oxidation removal, high-altitude protection, specialized sealants
+
+VEHICLE-SPECIFIC SERVICES:
+- Ceramic Coating Only: $400-$600 (professional 9H application)
+- Paint Correction Only: $350-$500 (single stage correction)
+- Leather Restoration: $150-$300
+- Interior Shampooing: $150-$250
+- Engine Bay Detail: $75-$150
+- Headlight Restoration: $75-$150
+
+MECHANICAL SERVICES (NEW):
+- Basic Diagnostics: $50
+- Advanced Diagnostics: $100
+- Labor Rate: $75/hour (flat rate for all mechanical work)
+- Common Services: Oil changes, filter replacements, fluid top-offs, battery service
+- Available by appointment | No work proceeds without customer approval
+
+=== MEMBERSHIP PLANS ===
+
+MONTHLY MEMBERSHIPS:
+- Bronze Tier: $75/month - Essential detail quarterly
+- Silver Tier: $120/month - Executive detail every 2 months
+- Gold Tier: $180/month - Signature detail monthly
+- Benefits: Priority scheduling, discounted add-ons, free check-ups
+
+=== PRICING NOTES ===
+- All prices include mobile service (we come to you!)
+- $30 deposit holds appointment
+- Free estimates provided (no obligation)
+- Flexible scheduling: Same-day available in some cases
+- Weather-dependent: Rain reduces effectiveness of some services
+- Vehicle size may affect pricing within listed ranges
+- First-time customers: 15% discount on packages over $150
+
+=== CUSTOMER VALUE PROPOSITIONS ===
+✓ Air Force trained precision - military-grade attention to detail
+✓ 16 years of professional experience - 5,000+ vehicles detailed
+✓ Licensed & insured - professional credibility
+✓ Transparent pricing - no hidden fees or surprise charges
+✓ Mobile service - we come to your home, office, or preferred location
+✓ Free estimates - zero pressure, no obligation
+✓ Satisfaction guaranteed - we stand behind our work
+✓ Flexible scheduling - we work with your schedule
+✓ Quality products - professional-grade chemicals & equipment
+
+=== COMMUNICATION GUIDELINES ===
+1. ABOUT SERVICES: Provide detailed descriptions of what's included, expected results, and time required
+2. ABOUT PRICING: Quote ranges based on vehicle type, explain what factors affect pricing
+3. ABOUT BOOKING: Direct customers to handsdetailshop.com/quote, call (412) 752-8684, or text
+4. ABOUT SERVICE AREA: Confirm if location is within 2-hour Pittsburgh radius; offer distance quote
+5. ABOUT SPECIALTY SERVICES: Explain we can adapt any service for specific vehicle types
+6. ABOUT MECHANICAL WORK: State diagnostics rates, labor rates, and emphasis on customer approval
+7. ABOUT GUARANTEES: Mention warranties associated with packages selected
+
+TONE: Friendly, professional, knowledgeable, confident. Show genuine care about the customer's vehicle. Always encourage booking or direct contact for detailed quotes. Be conversational and helpful - this is Nazir's 16 years of excellence speaking through you.`;
 
 /**
- * FAQ Database for quick responses
+ * FAQ Database for quick responses - comprehensive detailing knowledge base
  */
 const SERVICE_FAQ = {
-    'what services do you offer': 'We offer comprehensive mobile auto detailing including Essential, Executive, Signature, and Presidential packages. We also provide ceramic coating, paint correction, monthly memberships, and specialty services for yachts, RVs, aircraft, and motorcycles. Plus mechanical diagnostics and repairs!',
-    'how much does detailing cost': 'Pricing ranges from $65 (Essential) to $1,685 (Ultimate Armor). Most popular is the Executive package at $145-185. We provide free estimates!',
-    'do you come to my location': 'Yes! We\'re a fully mobile service. We come directly to your home, office, or preferred location within our 2-hour service radius from Pittsburgh.',
-    'where do you serve': 'We serve Pittsburgh PA and a 2-hour radius including parts of Ohio, West Virginia, and Maryland. Call (412) 752-8684 to confirm your location.',
-    'how do i book': 'You can get a free quote at handsdetailshop.com/quote, call us at (412) 752-8684, or text to schedule. We require a $30 deposit to hold your appointment.',
-    'what is your experience': 'We have 16 years of professional experience! Owner Nazir El is an Air Force Veteran trained in precision mechanics. We\'re family-owned, licensed, and insured.',
-    'do you offer mechanical services': 'Yes! We now offer mechanical diagnostics starting at $50, advanced diagnostics at $100, and labor at $75/hr. No work begins without your approval.',
-    'what about motorcycle detailing': 'We specialize in show-quality motorcycle detailing with packages like Road Ready ($85-105), Chrome & Shine ($145-185), and Show Bike ($245-295).',
-    'how much is ceramic coating': 'Professional 9H ceramic coating is $500 and provides long-term paint protection. It\'s a great investment for your vehicle\'s longevity.',
-    'do you offer payment plans': 'We accept cash, credit cards, debit cards, and Square. Contact us to discuss flexible payment options for larger packages.',
+    'what services do you offer': 'We specialize in comprehensive mobile auto detailing with 5 personal vehicle packages (Essential $65-85 to Ultimate Armor $1,285-1,685), plus specialty services for yachts ($400-$800), RVs ($500-$1,200), motorcycles ($85-$295), and aircraft ($800-$2,000). We also offer ceramic coating ($400-$600), paint correction ($350-$500), and new mechanical diagnostics ($50-$100) with labor at $75/hr. All services come to your location!',
+    
+    'what\'s included in the executive package': 'The Executive Detail ($145-$185, 4-5 hours) includes: exterior wash, interior vacuum, window cleaning, tire shine, engine bay detail, clay bar (removes contaminants), hand wax (1-2 month shine), leather conditioning, door jamb cleaning, undercarriage spray, and air freshener. It\'s our most popular package - perfect for owners wanting comprehensive care with showroom-quality results!',
+    
+    'what\'s the difference between packages': 'Essential ($65-85) = basic wash & vacuum. Executive ($145-185) = adds deep cleaning, wax & leather. Signature ($285-365) = adds paint correction & 6-month warranty. Presidential ($585-785) = adds advanced correction & 12-month warranty. Ultimate Armor ($1,285-1,685) = full ceramic coating with lifetime warranty. Each level builds on the previous with more protection and durability.',
+    
+    'how much does detailing cost': 'Pricing ranges from $65 (Essential) to $1,685 (Ultimate Armor with ceramic coating & lifetime warranty). Most popular: Executive at $145-185. Mid-range: Signature at $285-365. For specialty vehicles like yachts/RVs, pricing is $400-$1,200+. All include mobile service to your location. We provide FREE estimates - no obligation!',
+    
+    'what is ceramic coating': 'Ceramic coating is a professional-grade protective layer that bonds to your paint. Our 9H ceramic ($400-$600) creates a hydrophobic surface that repels water, dirt, and UV damage. It lasts 2-5 years, dramatically reduces washing, and is included in our Ultimate Armor package ($1,285-$1,685). Best investment for long-term vehicle protection.',
+    
+    'do you come to my location': 'Yes! We\'re 100% mobile service. We come to your home, office, driveway, or anywhere in Pittsburgh and our 2-hour service radius. No need to drop off your vehicle - we detail it where it sits. This is one of our biggest advantages!',
+    
+    'where do you serve': 'We serve Pittsburgh PA and a 2-hour radius covering parts of Ohio, West Virginia, and Maryland. Call (412) 752-8684 to confirm your specific location is in our service area. We can also discuss pricing for locations at the edge of our radius.',
+    
+    'how do i book an appointment': 'Three easy ways: (1) Online quote form at handsdetailshop.com/quote, (2) Call us at (412) 752-8684, or (3) Text (412) 752-8684. A $30 deposit holds your appointment. We offer Monday-Saturday 8AM-6PM, plus Sunday by appointment. Same-day scheduling sometimes available!',
+    
+    'what is your experience': 'Nazir El, owner, has 16 years of professional detailing experience with 5,000+ vehicles detailed. He\'s an Air Force Veteran trained in precision mechanics. We\'re family-owned, licensed, insured, and built on military-grade attention to detail. Every vehicle gets treated like it\'s his own.',
+    
+    'do you offer mechanical services': 'Yes! New mechanical offerings: Basic diagnostics ($50), advanced diagnostics ($100), and labor at $75/hr. Services include oil changes, filter replacements, fluid top-offs, battery service. All work requires customer approval before proceeding. Available by appointment.',
+    
+    'what about motorcycle detailing': 'We specialize in show-quality motorcycle detailing! Road Ready ($85-105) = wash & shine. Chrome & Shine ($145-185) = road ready + chrome polish + chain service. Show Bike ($245-295) = full correction + ceramic coating + show-ready results. Perfect for riders who take pride in their bikes.',
+    
+    'do you service yachts and boats': 'Absolutely! Marine detailing is one of our specialties. We offer boat exterior cleaning & wax ($400-$800 depending on size), interior cabin detailing ($300-$500), and fiberglass restoration ($350+). All services include salt spray removal, UV protection, and marine-grade sealants. Perfect for keeping your vessel immaculate.',
+    
+    'how much is rv and motorhome detailing': 'RV detailing ranges from $500-$1,200 for full exterior detail (depends on size), interior deep clean ($300-$600), and roof treatment ($150-$250). We give special care to rubber seals and slide-outs. Perfect before road trips or storage. Call for size-specific quote.',
+    
+    'how much is aircraft detailing': 'Professional aircraft detailing ranges from $800-$2,000 for exterior (depends on aircraft size), plus $300-$600 for interior cabin. Services include oxidation removal, high-altitude protection, and specialized sealants designed for aircraft needs. Contact us for specific aircraft quote.',
+    
+    'do you offer payment plans': 'We accept cash, credit cards, debit cards, and Square for maximum flexibility. Contact us at (412) 752-8684 to discuss payment options for larger packages like Ultimate Armor ($1,285+). We\'re happy to work with you on terms.',
+    
+    'what\'s your warranty or guarantee': 'Absolutely! Our warranties vary: Signature Detail includes 6-month paint protection warranty. Presidential Elite includes 12-month protection. Ultimate Armor includes LIFETIME ceramic coating warranty. We stand behind our work 100%.',
+    
+    'how long does detailing take': 'Time varies by package: Essential = 2-3 hours. Executive = 4-5 hours. Signature = 6-7 hours. Presidential = 8-10 hours. Ultimate Armor = 12-14 hours (may require 2 days). All times depend on vehicle condition and size. We\'ll give you precise timing during your free estimate.',
+    
+    'what\'s the difference between essential and executive': 'Essential ($65-85, 2-3 hrs) = wash, vacuum, windows, tire shine. Executive ($145-185, 4-5 hrs) = everything in Essential PLUS deep interior cleaning, leather conditioning, clay bar treatment, hand wax, engine bay detail, door jamb cleaning. Executive is worth it for better protection and longer-lasting shine (1-2 months vs no wax protection).',
+    
+    'are you insured and licensed': 'Yes! We\'re fully licensed and insured. Nazir El is an Air Force Veteran with 16 years professional experience. Every detail is performed to professional standards with quality products and meticulous attention.',
+    
+    'do you offer first-time customer discounts': 'Yes! First-time customers get 15% off any package over $150. That means Executive ($145-185) becomes around $123-157, or Signature ($285-365) becomes around $242-310. Perfect time to experience the Hands Detail difference!',
+    
+    'what happens if i\'m not satisfied': 'Customer satisfaction is our #1 priority. If you\'re not happy with any detail, contact us immediately. We\'ll discuss your concerns and make it right. Our reputation is built on 16 years of satisfied customers. You\'ll love your vehicle.',
+    
+    'can i get a free quote': 'Absolutely! Free estimates are always available with zero obligation. Visit handsdetailshop.com/quote, call (412) 752-8684, or text us. We\'ll assess your vehicle and provide exact pricing for your needs. No pressure, no surprises.',
+    
+    'how often should i detail my vehicle': 'For protection: Executive detail every 3-4 months maintains shine and protection. For luxury/preserve value: Executive monthly or Signature quarterly. For maximum protection: Ultimate Armor yearly maintenance after initial application. We offer monthly membership plans ($75-$180) if you detail regularly.',
+    
+    'what is paint correction': 'Paint correction removes swirls, scratches, and oxidation through multi-stage polishing. Signature Detail ($285-365) includes light correction. Presidential ($585-785) includes advanced multi-stage correction. Standalone paint correction is $350-$500. Results: Professional show-quality finish that looks new again.',
 };
 
 /**
@@ -93,21 +236,21 @@ function initializeClaudeWidget() {
                 width: 70px;
                 height: 70px;
                 border-radius: 50%;
-                background: linear-gradient(135deg, #1565c0, #42a5f5);
+                background: linear-gradient(135deg, #c9a84c, #e8cc80);
                 border: 3px solid #0d1b2a;
                 cursor: pointer;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 font-size: 32px;
-                box-shadow: 0 6px 20px rgba(21, 101, 192, 0.4);
+                box-shadow: 0 6px 20px rgba(201, 168, 76, 0.4);
                 z-index: 9999;
                 transition: all 0.3s ease;
                 user-select: none;
             }
             #claude-chat-button:hover {
                 transform: scale(1.12);
-                box-shadow: 0 8px 28px rgba(21, 101, 192, 0.5);
+                box-shadow: 0 8px 28px rgba(201, 168, 76, 0.5);
             }
             #claude-chat-button:active {
                 transform: scale(0.95);
@@ -119,9 +262,9 @@ function initializeClaudeWidget() {
                 width: 420px;
                 height: 600px;
                 background: linear-gradient(135deg, #0d1b2a, #1a2942);
-                border: 2px solid rgba(66, 165, 245, 0.3);
+                border: 2px solid rgba(201, 168, 76, 0.3);
                 border-radius: 16px;
-                box-shadow: 0 10px 40px rgba(21, 101, 192, 0.3);
+                box-shadow: 0 10px 40px rgba(201, 168, 76, 0.3);
                 display: none;
                 flex-direction: column;
                 z-index: 9998;
@@ -142,18 +285,18 @@ function initializeClaudeWidget() {
             }
             .claude-popup-header {
                 padding: 20px;
-                border-bottom: 2px solid rgba(66, 165, 245, 0.2);
-                background: linear-gradient(135deg, rgba(21, 101, 192, 0.2), rgba(30, 136, 229, 0.1));
+                border-bottom: 2px solid rgba(201, 168, 76, 0.2);
+                background: linear-gradient(135deg, rgba(201, 168, 76, 0.1), rgba(232, 204, 128, 0.05));
             }
             .claude-popup-header h3 {
                 margin: 0 0 5px 0;
-                color: #e0e0e0;
+                color: #e8cc80;
                 font-size: 1.1rem;
                 font-weight: 700;
             }
             .claude-popup-header p {
                 margin: 0;
-                color: #90caf9;
+                color: #c9a84c;
                 font-size: 0.85rem;
             }
             .claude-popup-close {
@@ -162,7 +305,7 @@ function initializeClaudeWidget() {
                 right: 12px;
                 background: none;
                 border: none;
-                color: #64b5f6;
+                color: #e8cc80;
                 font-size: 1.5rem;
                 cursor: pointer;
                 transition: all 0.2s ease;
@@ -200,25 +343,25 @@ function initializeClaudeWidget() {
                 line-height: 1.5;
             }
             .claude-message.assistant .claude-message-content {
-                background: rgba(21, 101, 192, 0.15);
-                border-left: 3px solid #42a5f5;
+                background: rgba(201, 168, 76, 0.1);
+                border-left: 3px solid #e8cc80;
                 color: #b0bec5;
             }
             .claude-message.user .claude-message-content {
-                background: linear-gradient(135deg, #1565c0, #1e88e5);
+                background: linear-gradient(135deg, #c9a84c, #d4b860);
                 color: white;
                 border-radius: 12px 2px 12px 12px;
             }
             .claude-popup-footer {
                 padding: 15px;
-                border-top: 2px solid rgba(66, 165, 245, 0.2);
+                border-top: 2px solid rgba(201, 168, 76, 0.2);
                 display: flex;
                 gap: 10px;
             }
             #claude-input {
                 flex: 1;
                 background: rgba(30, 40, 60, 0.8);
-                border: 1px solid rgba(66, 165, 245, 0.25);
+                border: 1px solid rgba(201, 168, 76, 0.25);
                 color: #e0e0e0;
                 padding: 12px 16px;
                 border-radius: 8px;
@@ -228,15 +371,15 @@ function initializeClaudeWidget() {
             }
             #claude-input:focus {
                 outline: none;
-                border-color: rgba(66, 165, 245, 0.6);
+                border-color: rgba(201, 168, 76, 0.6);
                 background: rgba(30, 40, 60, 0.95);
-                box-shadow: 0 0 8px rgba(66, 165, 245, 0.2);
+                box-shadow: 0 0 8px rgba(201, 168, 76, 0.2);
             }
             #claude-input::placeholder {
                 color: #757575;
             }
             .claude-send-btn {
-                background: linear-gradient(135deg, #1565c0, #1e88e5);
+                background: linear-gradient(135deg, #c9a84c, #d4b860);
                 border: none;
                 color: white;
                 padding: 12px 20px;
@@ -248,7 +391,7 @@ function initializeClaudeWidget() {
             }
             .claude-send-btn:hover {
                 transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(21, 101, 192, 0.3);
+                box-shadow: 0 4px 12px rgba(201, 168, 76, 0.3);
             }
             .claude-send-btn:active {
                 transform: translateY(0);
@@ -266,7 +409,7 @@ function initializeClaudeWidget() {
                 width: 8px;
                 height: 8px;
                 border-radius: 50%;
-                background: #64b5f6;
+                background: #e8cc80;
                 animation: pulse 1.4s infinite;
             }
             .claude-loading span:nth-child(2) {
