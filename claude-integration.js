@@ -224,6 +224,9 @@ const SERVICE_FAQ = {
  * Initialize Claude Chat Widget
  */
 function initializeClaudeWidget() {
+    // Debug: Log that widget is initializing
+    console.log('🤖 Claude AI Widget Initializing...');
+    
     // Create container
     const container = document.createElement('div');
     container.id = 'claude-widget-container';
@@ -400,6 +403,27 @@ function initializeClaudeWidget() {
                 opacity: 0.5;
                 cursor: not-allowed;
             }
+            .claude-prompt-btn {
+                background: rgba(201, 168, 76, 0.2);
+                border: 1px solid rgba(201, 168, 76, 0.4);
+                color: #e8cc80;
+                padding: 8px 14px;
+                border-radius: 20px;
+                cursor: pointer;
+                font-size: 0.85rem;
+                font-weight: 600;
+                transition: all 0.2s ease;
+                display: inline-block;
+                white-space: nowrap;
+            }
+            .claude-prompt-btn:hover {
+                background: rgba(201, 168, 76, 0.35);
+                border-color: rgba(232, 204, 128, 0.7);
+                color: #f0f0f0;
+            }
+            .claude-prompt-btn:active {
+                transform: scale(0.97);
+            }
             .claude-loading {
                 display: inline-flex;
                 gap: 4px;
@@ -437,6 +461,14 @@ function initializeClaudeWidget() {
                 <p>Ask about our services, pricing, or book an appointment</p>
             </div>
             <div id="claude-messages"></div>
+            <div id="claude-suggested-prompts" style="padding: 15px; border-top: 1px solid rgba(201, 168, 76, 0.1); display: none; flex-wrap: wrap; gap: 8px; justify-content: center;">
+                <button class="claude-prompt-btn" onclick="sendPrompt('What packages do you offer?')">📋 Packages</button>
+                <button class="claude-prompt-btn" onclick="sendPrompt('How much does detailing cost?')">💰 Pricing</button>
+                <button class="claude-prompt-btn" onclick="sendPrompt('How do I book an appointment?')">📅 Book</button>
+                <button class="claude-prompt-btn" onclick="sendPrompt('Do you service my area?')">📍 Service Area</button>
+                <button class="claude-prompt-btn" onclick="sendPrompt('Tell me about ceramic coating')">🛡️ Ceramic</button>
+                <button class="claude-prompt-btn" onclick="sendPrompt('Do you offer specialty services?')">🏎️ Specialty</button>
+            </div>
             <div class="claude-popup-footer">
                 <input type="text" id="claude-input" placeholder="Type your question..." />
                 <button class="claude-send-btn" id="claude-send-btn">Send</button>
@@ -453,6 +485,8 @@ function initializeClaudeWidget() {
     document.getElementById('claude-input').addEventListener('keypress', (e) => {
         if (e.key === 'Enter') sendMessage();
     });
+    
+    console.log('✅ Claude AI Widget Ready! (button in bottom-right corner)');
 }
 
 /**
@@ -463,11 +497,22 @@ function toggleChatPopup() {
     popup.classList.toggle('active');
     if (popup.classList.contains('active')) {
         document.getElementById('claude-input').focus();
-        // Add welcome message if first time
+        // Add welcome message and show prompts if first time
         if (document.getElementById('claude-messages').children.length === 0) {
-            addMessage('Welcome to Hands Detail Shop! 👋 I\'m Claude, your AI assistant. How can I help you today? You can ask about our services, pricing, booking, or anything else!', 'assistant');
+            addMessage('Welcome to Hands Detail Shop! 👋 I\'m Claude, your AI assistant. How can I help you today? Click any prompt below or type your question!', 'assistant');
+            document.getElementById('claude-suggested-prompts').style.display = 'flex';
         }
     }
+}
+
+/**
+ * Send a prompt button click
+ */
+function sendPrompt(prompt) {
+    document.getElementById('claude-input').value = prompt;
+    // Hide prompts after user clicks one
+    document.getElementById('claude-suggested-prompts').style.display = 'none';
+    sendMessage();
 }
 
 /**
@@ -532,12 +577,15 @@ async function sendMessage() {
         // Check if it matches FAQ first for instant response
         const faqMatch = matchFAQ(message);
         if (faqMatch) {
+            console.log('✅ FAQ match found');
             loadingEl.remove();
             addMessage(faqMatch, 'assistant');
             input.disabled = false;
             document.getElementById('claude-send-btn').disabled = false;
             return;
         }
+        
+        console.log('📤 Calling Claude API...');
         
         // Otherwise call Claude API
         const response = await fetch(API_ENDPOINT, {
@@ -558,18 +606,24 @@ async function sendMessage() {
             })
         });
         
+        console.log('📥 API Response Status:', response.status);
+        
         if (!response.ok) {
-            throw new Error(`API error: ${response.status}`);
+            const errorData = await response.json().catch(() => ({}));
+            console.error('❌ API Error:', response.status, errorData);
+            throw new Error(`API error: ${response.status} - ${errorData.error?.message || 'Unknown error'}`);
         }
         
         const data = await response.json();
         const assistantMessage = data.content[0].text;
         
+        console.log('✅ Claude response received');
         loadingEl.remove();
         addMessage(assistantMessage, 'assistant');
     } catch (error) {
+        console.error('❌ Error:', error);
         loadingEl.remove();
-        addMessage(`Sorry, I encountered an error: ${error.message}. Please try again or call us at (412) 752-8684.`, 'assistant');
+        addMessage(`Sorry, I encountered an error: ${error.message}. Please call us at (412) 752-8684 for immediate assistance.`, 'assistant');
     }
     
     input.disabled = false;
