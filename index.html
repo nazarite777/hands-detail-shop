@@ -1208,10 +1208,6 @@
         </div>
     </footer>
 
-    <!-- Claude AI Chat Widget -->
-    <div id="claude-chat-widget"></div>
-    <script src="https://cdn.jsdelivr.net/npm/@anthropic-ai/chat-widget@latest"></script>
-
     <!-- Booking Modal -->
     <div class="modal" id="bookingModal">
         <div class="modal-content">
@@ -1297,44 +1293,6 @@
 
     <script src="main.js"></script>
     <script src="pwa-installer.js"></script>
-
-    <!-- Claude AI Chat Widget -->
-    <div id="claude-chat-widget"></div>
-    <script>
-    // Claude AI Chat Widget
-    window.addEventListener('load', function() {
-        const chatWidget = document.getElementById('claude-chat-widget');
-        if (chatWidget) {
-            chatWidget.innerHTML = `
-                <style>
-                    .claude-chat-btn {
-                        position: fixed;
-                        bottom: 20px;
-                        right: 20px;
-                        width: 60px;
-                        height: 60px;
-                        border-radius: 50%;
-                        background: linear-gradient(135deg, #1565c0, #42a5f5);
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        font-size: 28px;
-                        box-shadow: 0 4px 12px rgba(21, 101, 192, 0.3);
-                        z-index: 999;
-                        transition: all 0.3s ease;
-                    }
-                    .claude-chat-btn:hover {
-                        transform: scale(1.1);
-                        box-shadow: 0 6px 16px rgba(21, 101, 192, 0.4);
-                    }
-                </style>
-                <button class="claude-chat-btn" title="Chat with Claude AI" onclick="alert('Claude AI Chat - Coming Soon!\\n\\nFor now, call us: (412) 752-8684')">💬</button>
-            `;
-        }
-    });
-    </script>
-
+    <script src="claude-integration.js"></script>
 </body>
 </html>
