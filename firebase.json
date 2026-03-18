@@ -36,6 +36,10 @@
                                          "destination":  "/audio-urls.json"
                                      },
                                      {
+                                         "source":  "/photos/**",
+                                         "destination":  "/photos/**"
+                                     },
+                                     {
                                          "source":  "**",
                                          "destination":  "/index.html"
                                      }
