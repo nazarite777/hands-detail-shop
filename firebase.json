@@ -17,7 +17,6 @@
                                    "eslint.config.js",
                                    "llms.txt",
                                    ".env*",
-                                   "audio/**",
                                    "*.zip",
                                    "node_modules/**",
                                    "coverage/**",
