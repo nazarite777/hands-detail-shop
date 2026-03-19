@@ -433,26 +433,20 @@
         }
     }
     
-    // Audio playlist tracks
-    const playlistTracks = [
+    // Audio playlist tracks for story page
+    const storyPlaylistTracks = [
         '/audio/Sixteen years... (Remastered).mp3',
         '/audio/HANDS DETAIL SHOP - THEME SONG.mp3'
     ];
-    const trackNames = [
-        'Sixteen Years (Remastered)',
-        'Theme Song'
-    ];
-    let currentTrackIndex = 0;
     
-    function playTrack(index) {
+    function storyPlayTrack(index) {
         const audio = document.getElementById('storyAudio');
         const trackInfo = document.getElementById('trackInfo');
-        const buttons = document.querySelectorAll('[onclick^="playTrack"]');
+        const buttons = document.querySelectorAll('[onclick^="storyPlayTrack"]');
         
-        if (index >= 0 && index < playlistTracks.length) {
-            currentTrackIndex = index;
-            audio.src = playlistTracks[index];
-            trackInfo.textContent = 'Track ' + (index + 1) + ' of ' + playlistTracks.length;
+        if (index >= 0 && index < storyPlaylistTracks.length) {
+            audio.src = storyPlaylistTracks[index];
+            trackInfo.textContent = 'Track ' + (index + 1) + ' of ' + storyPlaylistTracks.length;
             
             // Update button styles
             buttons.forEach((btn, i) => {
@@ -482,8 +476,8 @@
         const audio = document.getElementById('storyAudio');
         if (audio) {
             audio.addEventListener('ended', function() {
-                const nextIndex = (currentTrackIndex + 1) % playlistTracks.length;
-                playTrack(nextIndex);
+                const nextIndex = 0; // Loop back to first track
+                storyPlayTrack(nextIndex);
             });
         }
     });
@@ -702,12 +696,12 @@
                 <h3>Hands Detail Shop</h3>
                 <p>Professional mobile auto detailing services. We come to you!</p>
                 <p style="margin-top: 15px;">
-                    <strong>ðŸ“ž Phone:</strong> (412) 752-8684<br>
-                    <strong>âœ‰ï¸ Email:</strong> <a href="mailto:handsdetailshop@gmail.com">handsdetailshop@gmail.com</a>
+                    <strong>📞 Phone:</strong> (412) 752-8684<br>
+                    <strong>✉️ Email:</strong> <a href="mailto:handsdetailshop@gmail.com">handsdetailshop@gmail.com</a>
                 </p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/share/1FQft2edbP/" target="_blank" class="social-link">f</a>
-                    <a href="https://www.instagram.com/handsdetailshop" target="_blank" class="social-link">ðŸ“·</a>
+                    <a href="https://www.instagram.com/handsdetailshop" target="_blank" class="social-link">📷</a>
                     <a href="https://handsdetailshop.medium.com" target="_blank" class="social-link">M</a>
                 </div>
             </div>
@@ -739,12 +733,12 @@
             <div class="footer-section">
                 <h3>Service Hours</h3>
                 <p>
-                    <strong>ðŸ“± Mobile Service:</strong><br>
+                    <strong>📱 Mobile Service:</strong><br>
                     We come to you!<br>
                     Pittsburgh Area
                 </p>
                 <p style="margin-top: 15px;">
-                    <strong>ðŸ•’ Hours:</strong><br>
+                    <strong>🕐 Hours:</strong><br>
                     Monday - Saturday: 8AM - 6PM<br>
                     Sunday: By Appointment
                 </p>
