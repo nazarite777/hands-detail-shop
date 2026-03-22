@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -48,6 +48,14 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8SM7PSKYGM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8SM7PSKYGM');
+    </script>
 
     <script>
     window.AUDIO_CONFIG = {
@@ -67,6 +75,9 @@
     </script>
 </head>
 <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#galleryGrid" class="skip-link">Skip to main content</a>
+
     <!-- Header Navigation -->
     <header id="header">
         <div class="nav-container">
@@ -80,20 +91,31 @@
             <nav class="nav-menu">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="our-story.html" class="nav-link">Our Story</a>
-                <a href="services.html" class="nav-link">Services</a>
+                <div class="services-dropdown">
+                    <button class="services-dropdown-btn nav-link" onclick="toggleServicesDropdown(this)">Services</button>
+                    <div class="dropdown-menu">
+                        <a href="services.html" class="dropdown-item">📋 All Services Overview</a>
+                        <a href="personal-vehicles.html" class="dropdown-item">🚗 Personal Vehicles</a>
+                        <a href="marine-services.html" class="dropdown-item">🛥️ Yacht & RV</a>
+                        <a href="fleet-services.html" class="dropdown-item">🚛 Fleet & Commercial</a>
+                        <a href="motorcycle-services.html" class="dropdown-item">🏍️ Motorcycle</a>
+                        <a href="aircraft-services.html" class="dropdown-item">✈️ Aircraft</a>
+                        <a href="under-the-hood.html" class="dropdown-item">⚙️ Mechanical Services</a>
+                    </div>
+                </div>
                 <a href="membership.html" class="nav-link">Membership</a>
                 <a href="gallery.html" class="nav-link active">Gallery</a>
                 <a href="quote.html" class="nav-link">Quote</a>
                 <a href="reviews.html" class="nav-link">Reviews</a>
-                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="https://handsdetailshop.medium.com" target="_blank" class="nav-link">Blog</a>
                 <a href="contact.html" class="nav-link">Contact</a>
-            </nav>
-
-            <div class="contact-header">
-                <span class="hours-header">🕒 Mon-Sat 8AM-6PM</span>
-                <a href="tel:4127528684" class="btn-call">📞 Call</a>
-                <a href="booking.html" class="btn-book">Book Now</a>
-            </div>
+                <a href="careers.html" class="nav-link">Careers</a>
+                <div class="contact-header">
+                    <span class="hours-header">🕒 Mon-Sat 8AM-6PM</span>
+                    <a href="tel:4127528684" class="btn-call">📞 Call</a>
+                    <a href="sms:4127528684" class="btn-text">💬 Text</a>
+                    <a href="booking.html" class="cta-header">Book Now</a>
+                </div>
 
             <div class="mobile-menu-toggle" id="mobileToggle">
                 <span></span>
@@ -105,20 +127,27 @@
         <nav class="mobile-nav" id="mobileNav">
             <a href="index.html">Home</a>
             <a href="our-story.html">Our Story</a>
-            <a href="services.html">Services</a>
+            <a href="services.html">All Services Overview</a>
+            <a href="personal-vehicles.html">🚗 Personal Vehicles</a>
+            <a href="marine-services.html">🛥️ Yacht & RV</a>
+            <a href="fleet-services.html">🚛 Fleet & Commercial</a>
+            <a href="motorcycle-services.html">🏍️ Motorcycle</a>
+            <a href="aircraft-services.html">✈️ Aircraft</a>
+            <a href="under-the-hood.html">⚙️ Mechanical Services</a>
             <a href="membership.html">Membership</a>
             <a href="gallery.html" class="active">Gallery</a>
             <a href="quote.html">Get Quote</a>
             <a href="reviews.html">Reviews</a>
-            <a href="faq.html">FAQ</a>
+            <a href="https://medium.com/@handsdetailshop" target="_blank">Blog</a>
             <a href="contact.html">Contact</a>
-            <a href="tel:4127528684" style="background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5); text-align: center; margin-top: 10px;">📞 Call Now</a>
+            <a href="tel:4127528684" style="background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">📞 Call Now</a>
+            <a href="sms:4127528684" style="background: rgba(50,50,50,0.5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">💬 Text Now</a>
         </nav>
     </header>
 
     <!-- Promotional Banner -->
     <div class="promo-banner" style="margin-top: 70px;">
-        🎊 PRE-SPRING DETAIL: Prepare Your Vehicle for Warmer Weather | 15% OFF First-Time Customers | 💎 FREE Tire Shine with Any Package | 📞 (412) 752-8684
+        🎊 PRE-SPRING DETAIL: Prepare Your Vehicle for Warmer Weather | 15% OFF First-Time Customers | 💎 FREE Tire Shine with Any Package | 💳 $30 Deposit Secures Your Appointment | 📞 (412) 752-8684
     </div>
 
     <!-- Gallery Hero Section -->
@@ -155,10 +184,10 @@
             <div class="gallery-item" data-category="cars all">
                 <div class="comparison-slider">
                     <div class="before-after-container">
-                        <div class="before-image" style="background: url('https://raw.githubusercontent.com/nazarite777/hands-detail-shop/main/Dirtycar.jpg') center/cover; height: 300px; position: relative;">
+                        <div class="before-image" style="background: url('/photos/IMG_0306.JPG') center / cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,80,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">BEFORE</div>
                         </div>
-                        <div class="after-image" style="background: url('https://raw.githubusercontent.com/nazarite777/hands-detail-shop/main/Cleancar.jpg') center/cover; height: 300px; position: relative;">
+                        <div class="after-image" style="background: url('/photos/IMG_0312.JPG') center / cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; right: 10px; background: rgba(76,175,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">AFTER</div>
                         </div>
                     </div>
@@ -166,7 +195,7 @@
                 <div class="gallery-info">
                     <h3>Car Exterior Transformation</h3>
                     <p>Complete exterior wash, wax & polish</p>
-                    <span class="gallery-tags">🚗 Exterior | ✨ Detail</span>
+                    <span class="gallery-tags">ðŸš— Exterior | âœ¨ Detail</span>
                 </div>
             </div>
 
@@ -174,10 +203,10 @@
             <div class="gallery-item" data-category="interior cars all">
                 <div class="comparison-slider">
                     <div class="before-after-container">
-                        <div class="before-image" style="background: url('https://raw.githubusercontent.com/nazarite777/hands-detail-shop/main/Dirtyinteriorcar.jpg') center/cover; height: 300px; position: relative;">
+                        <div class="before-image" style="background: url('/photos/20260203_154657.jpg') center / cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,80,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">BEFORE</div>
                         </div>
-                        <div class="after-image" style="background: url('https://raw.githubusercontent.com/nazarite777/hands-detail-shop/main/Cleancarinterior.jpg') center/cover; height: 300px; position: relative;">
+                        <div class="after-image" style="background: url('/photos/20260203_174108.jpg') center / cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; right: 10px; background: rgba(76,175,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">AFTER</div>
                         </div>
                     </div>
@@ -185,7 +214,7 @@
                 <div class="gallery-info">
                     <h3>Car Interior Deep Clean</h3>
                     <p>Vacuum, steam clean, & fabric conditioning</p>
-                    <span class="gallery-tags">🪑 Interior | 🧼 Deep Clean</span>
+                    <span class="gallery-tags">ðŸª‘ Interior | ðŸ§¼ Deep Clean</span>
                 </div>
             </div>
 
@@ -193,10 +222,10 @@
             <div class="gallery-item" data-category="rvs all">
                 <div class="comparison-slider">
                     <div class="before-after-container">
-                        <div class="before-image" style="background: url('https://raw.githubusercontent.com/nazarite777/hands-detail-shop/main/Dirtyrv.jpg') center/cover; height: 300px; position: relative;">
+                        <div class="before-image" style="background: url('/photos/20241005_110843.jpg') center / cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,80,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">BEFORE</div>
                         </div>
-                        <div class="after-image" style="background: url('https://raw.githubusercontent.com/nazarite777/hands-detail-shop/main/Cleanrv.jpg') center/cover; height: 300px; position: relative;">
+                        <div class="after-image" style="background: url('/photos/20241005_140911.jpg') center / cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; right: 10px; background: rgba(76,175,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">AFTER</div>
                         </div>
                     </div>
@@ -204,7 +233,7 @@
                 <div class="gallery-info">
                     <h3>RV Exterior Restoration</h3>
                     <p>Full RV wash & protective coating</p>
-                    <span class="gallery-tags">🚌 RV | 🧼 Exterior</span>
+                    <span class="gallery-tags">ðŸšŒ RV | ðŸ§¼ Exterior</span>
                 </div>
             </div>
 
@@ -212,10 +241,10 @@
             <div class="gallery-item" data-category="rvs all">
                 <div class="comparison-slider">
                     <div class="before-after-container">
-                        <div class="before-image" style="background: url('https://raw.githubusercontent.com/nazarite777/hands-detail-shop/main/Dirtyrvside.jpg') center/cover; height: 300px; position: relative;">
+                        <div class="before-image" style="background: url('/photos/20241005_110909.jpg') center / cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,80,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">BEFORE</div>
                         </div>
-                        <div class="after-image" style="background: url('https://raw.githubusercontent.com/nazarite777/hands-detail-shop/main/Cleanrvsideview.jpg') center/cover; height: 300px; position: relative;">
+                        <div class="after-image" style="background: url('/photos/20241005_141038.jpg') center / cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; right: 10px; background: rgba(76,175,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">AFTER</div>
                         </div>
                     </div>
@@ -223,128 +252,98 @@
                 <div class="gallery-info">
                     <h3>RV Side Detail</h3>
                     <p>Professional side panel & trim restoration</p>
-                    <span class="gallery-tags">🚌 RV | ✨ Detail</span>
+                    <span class="gallery-tags">ðŸšŒ RV | âœ¨ Detail</span>
                 </div>
             </div>
 
-            <!-- Marine & Yacht Detail -->
-            <div class="gallery-item" data-category="boats all">
-                <div class="comparison-slider">
-                    <div class="before-after-container">
-                        <div class="before-image" style="background: url('https://raw.githubusercontent.com/nazarite777/hands-detail-shop/main/Mechanicpic3.jpg') center/cover; height: 300px; position: relative;">
+                        <div class="before-image" style="background: url('/photos/20260220_154201.jpg') center/cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,80,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">BEFORE</div>
                         </div>
-                        <div class="after-image" style="background: linear-gradient(135deg, rgba(100,100,100,0.3), rgba(80,80,80,0.2)); display: flex; align-items: center; justify-content: center; height: 300px; position: relative;">
+                        <div class="after-image" style="background: url('/photos/20260220_174659.jpg') center/cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; right: 10px; background: rgba(76,175,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">COMPLETED</div>
-                            <span style="color: rgba(255,255,255,0.7); font-size: 1rem;">✨ Service Complete</span>
                         </div>
                     </div>
                 </div>
                 <div class="gallery-info">
                     <h3>Yacht & Marine Services</h3>
                     <p>Professional marine-grade detailing & maintenance</p>
-                    <span class="gallery-tags">⛵ Marine | 🌊 Professional Service</span>
+                    <span class="gallery-tags">â›µ Marine | ðŸŒŠ Professional Service</span>
                 </div>
             </div>
 
-            <!-- Mechanical Work 1 -->
-            <div class="gallery-item" data-category="mechanical all">
-                <div class="comparison-slider">
-                    <div class="before-after-container">
-                        <div class="before-image" style="background: url('https://raw.githubusercontent.com/nazarite777/hands-detail-shop/main/Mechanicpic.jpg') center/cover; height: 300px; position: relative;">
+                        <div class="before-image" style="background: url('/photos/20260220_153724.jpg') center/cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,80,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">BEFORE</div>
                             <span style="color: rgba(255,255,255,0.7); font-size: 0.9rem; position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.5); padding: 5px 10px; border-radius: 5px;">Engine Work</span>
                         </div>
-                        <div class="after-image" style="background: linear-gradient(135deg, rgba(100,100,100,0.3), rgba(80,80,80,0.2)); display: flex; align-items: center; justify-content: center; height: 300px; position: relative;">
+                        <div class="after-image" style="background: url('/photos/20260220_174716.jpg') center/cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; right: 10px; background: rgba(76,175,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">COMPLETED</div>
-                            <span style="color: rgba(255,255,255,0.7); font-size: 1rem;">🔧 Service Complete</span>
                         </div>
                     </div>
                 </div>
                 <div class="gallery-info">
                     <h3>Mechanical Service</h3>
                     <p>Engine detailing & mechanical work</p>
-                    <span class="gallery-tags">🔧 Mechanical | ⚙️ Engine</span>
+                    <span class="gallery-tags">ðŸ”§ Mechanical | âš™ï¸ Engine</span>
                 </div>
             </div>
 
-            <!-- Mechanical Work 2 -->
-            <div class="gallery-item" data-category="mechanical all">
-                <div class="comparison-slider">
-                    <div class="before-after-container">
-                        <div class="before-image" style="background: url('https://raw.githubusercontent.com/nazarite777/hands-detail-shop/main/Mechanicpic2.jpg') center/cover; height: 300px; position: relative;">
+                        <div class="before-image" style="background: url('/photos/20260220_153900.jpg') center/cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,80,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">BEFORE</div>
                         </div>
-                        <div class="after-image" style="background: linear-gradient(135deg, rgba(100,100,100,0.3), rgba(80,80,80,0.2)); display: flex; align-items: center; justify-content: center; height: 300px; position: relative;">
+                        <div class="after-image" style="background: url('/photos/20260220_174652.jpg') center/cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; right: 10px; background: rgba(76,175,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">COMPLETED</div>
-                            <span style="color: rgba(255,255,255,0.7); font-size: 1rem;">🔧 Service Complete</span>
                         </div>
                     </div>
                 </div>
                 <div class="gallery-info">
                     <h3>Mechanical Repair</h3>
                     <p>Professional mechanical service</p>
-                    <span class="gallery-tags">🔧 Mechanical | ⚙️ Repair</span>
+                    <span class="gallery-tags">ðŸ”§ Mechanical | âš™ï¸ Repair</span>
                 </div>
             </div>
 
-            <!-- Mechanical Work 3 -->
-            <div class="gallery-item" data-category="mechanical all">
-                <div class="comparison-slider">
-                    <div class="before-after-container">
-                        <div class="before-image" style="background: url('https://raw.githubusercontent.com/nazarite777/hands-detail-shop/main/Mechanicpic3.jpg') center/cover; height: 300px; position: relative;">
+                        <div class="before-image" style="background: url('/photos/20260220_154154.jpg') center/cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,80,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">BEFORE</div>
                         </div>
-                        <div class="after-image" style="background: linear-gradient(135deg, rgba(100,100,100,0.3), rgba(80,80,80,0.2)); display: flex; align-items: center; justify-content: center; height: 300px; position: relative;">
+                        <div class="after-image" style="background: url('/photos/20260220_174716.jpg') center/cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; right: 10px; background: rgba(76,175,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">COMPLETED</div>
-                            <span style="color: rgba(255,255,255,0.7); font-size: 1rem;">🔧 Service Complete</span>
                         </div>
                     </div>
                 </div>
                 <div class="gallery-info">
                     <h3>Mechanical Inspection</h3>
                     <p>Detailed mechanical assessment</p>
-                    <span class="gallery-tags">🔧 Mechanical | 📋 Inspection</span>
+                    <span class="gallery-tags">ðŸ”§ Mechanical | ðŸ“‹ Inspection</span>
                 </div>
             </div>
 
-            <!-- Mechanical Work 4 -->
-            <div class="gallery-item" data-category="mechanical all">
-                <div class="comparison-slider">
-                    <div class="before-after-container">
-                        <div class="before-image" style="background: url('https://raw.githubusercontent.com/nazarite777/hands-detail-shop/main/Mechanicpic4.jpg') center/cover; height: 300px; position: relative;">
+                        <div class="before-image" style="background: url('/photos/20260203_154740.jpg') center/cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,80,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">BEFORE</div>
                         </div>
-                        <div class="after-image" style="background: linear-gradient(135deg, rgba(100,100,100,0.3), rgba(80,80,80,0.2)); display: flex; align-items: center; justify-content: center; height: 300px; position: relative;">
+                        <div class="after-image" style="background: url('/photos/20260203_174108.jpg') center/cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; right: 10px; background: rgba(76,175,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">COMPLETED</div>
-                            <span style="color: rgba(255,255,255,0.7); font-size: 1rem;">🔧 Service Complete</span>
                         </div>
                     </div>
                 </div>
                 <div class="gallery-info">
                     <h3>Mechanical Work</h3>
                     <p>Expert mechanical service</p>
-                    <span class="gallery-tags">🔧 Mechanical | 🔩 Work</span>
+                    <span class="gallery-tags">ðŸ”§ Mechanical | ðŸ”© Work</span>
                 </div>
             </div>
 
-            <!-- Mechanical Work 5 -->
-            <div class="gallery-item" data-category="mechanical all">
-                <div class="comparison-slider">
-                    <div class="before-after-container">
-                        <div class="before-image" style="background: url('https://raw.githubusercontent.com/nazarite777/hands-detail-shop/main/Mechanicpic5.jpg') center/cover; height: 300px; position: relative;">
+                        <div class="before-image" style="background: url('/photos/20250226_125342.jpg') center/cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,80,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">BEFORE</div>
                         </div>
-                        <div class="after-image" style="background: linear-gradient(135deg, rgba(100,100,100,0.3), rgba(80,80,80,0.2)); display: flex; align-items: center; justify-content: center; height: 300px; position: relative;">
+                        <div class="after-image" style="background: url('/photos/20250226_144635.jpg') center/cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; right: 10px; background: rgba(76,175,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">COMPLETED</div>
-                            <span style="color: rgba(255,255,255,0.7); font-size: 1rem;">🔧 Service Complete</span>
                         </div>
                     </div>
                 </div>
                 <div class="gallery-info">
                     <h3>Mechanical Service</h3>
                     <p>Professional mechanical work</p>
-                    <span class="gallery-tags">🔧 Mechanical | ✨ Quality</span>
+                    <span class="gallery-tags">ðŸ”§ Mechanical | âœ¨ Quality</span>
                 </div>
             </div>
 
@@ -363,7 +362,7 @@
                 <div class="gallery-info">
                     <h3>Professional Detailing Service</h3>
                     <p>Complete exterior and interior restoration</p>
-                    <span class="gallery-tags">🚗 Exterior | ✨ Detail</span>
+                    <span class="gallery-tags">ðŸš— Exterior | âœ¨ Detail</span>
                 </div>
             </div>
 
@@ -374,16 +373,16 @@
                         <div class="before-image" style="background: url('/photos/IMG_0316.JPG') center/cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; left: 10px; background: rgba(255,80,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">BEFORE</div>
                         </div>
-                        <div class="after-image" style="background: linear-gradient(135deg, rgba(100,100,100,0.3), rgba(80,80,80,0.2)); display: flex; align-items: center; justify-content: center; height: 300px; position: relative;">
+                        <div class="after-image" style="background: url('/photos/IMG_0330.HEIC') center/cover; height: 300px; position: relative;">
                             <div style="position: absolute; top: 10px; right: 10px; background: rgba(76,175,80,0.9); color: white; padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: 700;">COMPLETED</div>
-                            <span style="color: rgba(255,255,255,0.7); font-size: 1rem;">✨ Transformation</span>
+                            <span style="color: rgba(255,255,255,0.7); font-size: 1rem;">âœ¨ Transformation</span>
                         </div>
                     </div>
                 </div>
                 <div class="gallery-info">
                     <h3>Vehicle Transformation</h3>
                     <p>Expert detailing and restoration service</p>
-                    <span class="gallery-tags">🚗 Cars | 🎯 Premium</span>
+                    <span class="gallery-tags">ðŸš— Cars | ðŸŽ¯ Premium</span>
                 </div>
             </div>
 
@@ -402,7 +401,7 @@
                 <div class="gallery-info">
                     <h3>Interior Deep Clean</h3>
                     <p>Professional vacuum and steam cleaning</p>
-                    <span class="gallery-tags">🪑 Interior | 🧼 Deep Clean</span>
+                    <span class="gallery-tags">ðŸª‘ Interior | ðŸ§¼ Deep Clean</span>
                 </div>
             </div>
 
@@ -421,7 +420,7 @@
                 <div class="gallery-info">
                     <h3>Engine Bay Detailing</h3>
                     <p>Professional engine cleaning and detailing</p>
-                    <span class="gallery-tags">🔧 Mechanical | ⚙️ Engine</span>
+                    <span class="gallery-tags">ðŸ”§ Mechanical | âš™ï¸ Engine</span>
                 </div>
             </div>
 
@@ -440,7 +439,7 @@
                 <div class="gallery-info">
                     <h3>RV and Large Vehicle Detail</h3>
                     <p>Complete mobile detailing service for RVs and motor homes</p>
-                    <span class="gallery-tags">🚌 RV | 🧼 Full Service</span>
+                    <span class="gallery-tags">ðŸšŒ RV | ðŸ§¼ Full Service</span>
                 </div>
             </div>
 
@@ -448,7 +447,7 @@
 
         <!-- Empty State (shown when filter returns no results) -->
         <div id="emptyState" style="display: none; text-align: center; padding: 60px 20px;">
-            <div style="font-size: 3rem; margin-bottom: 20px;">📷</div>
+            <div style="font-size: 3rem; margin-bottom: 20px;">ðŸ“·</div>
             <h3 style="color: #c0c0c0; margin-bottom: 10px;">No results found</h3>
             <p style="color: #909090;">Try selecting a different category</p>
         </div>
@@ -462,15 +461,15 @@
         </p>
         <div class="contact-buttons">
             <a href="booking.html" class="contact-btn">
-                <span>📅</span>
+                <span>ðŸ“…</span>
                 <span>Book Appointment</span>
             </a>
             <a href="services.html" class="contact-btn">
-                <span>🚗</span>
+                <span>ðŸš—</span>
                 <span>View Services</span>
             </a>
             <a href="quote.html" class="contact-btn">
-                <span>💰</span>
+                <span>ðŸ’°</span>
                 <span>Get a Quote</span>
             </a>
         </div>
@@ -483,12 +482,12 @@
                 <h3>Hands Detail Shop</h3>
                 <p>Professional mobile auto detailing services. We come to you!</p>
                 <p style="margin-top: 15px;">
-                    <strong>📞 Phone:</strong> (412) 752-8684<br>
-                    <strong>✉️ Email:</strong> <a href="mailto:handsdetailshop@gmail.com">handsdetailshop@gmail.com</a>
+                    <strong>ðŸ“ž Phone:</strong> (412) 752-8684<br>
+                    <strong>âœ‰ï¸ Email:</strong> <a href="mailto:handsdetailshop@gmail.com">handsdetailshop@gmail.com</a>
                 </p>
                 <div class="social-links">
                     <a href="https://www.facebook.com/share/1FQft2edbP/" target="_blank" class="social-link">f</a>
-                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">ðŸ“·</a>
                     <a href="#" class="social-link">in</a>
                 </div>
             </div>
@@ -509,7 +508,7 @@
                 <h3>Mobile Service</h3>
                 <p>
                     We come to you! Serving Pittsburgh area and surrounding communities.<br>
-                    <strong>Available:</strong> Monday – Saturday: 8AM – 6PM<br>
+                    <strong>Available:</strong> Monday â€“ Saturday: 8AM â€“ 6PM<br>
                     Sunday: By Appointment
                 </p>
             </div>
@@ -531,7 +530,173 @@
     <script src="pwa-installer.js"></script>
 
     <script src="gallery.js"></script>
-    <script src="claude-integration.js"></script>
+
+<!-- ============================================================
+     HANDS DETAIL SHOP — CLAUDE AI CHAT WIDGET
+     Powered by Claude API via Firebase Cloud Function
+     ============================================================ -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap');
+#hds-chat-widget{position:fixed;bottom:24px;right:24px;z-index:99999;font-family:'Barlow',sans-serif}
+#hds-launcher{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#c8a951 0%,#e8c96a 50%,#a8891f 100%);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(200,169,81,.45),0 2px 8px rgba(0,0,0,.4);transition:transform .2s ease,box-shadow .2s ease;position:relative}
+#hds-launcher:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(200,169,81,.6),0 2px 12px rgba(0,0,0,.5)}
+#hds-launcher svg{width:28px;height:28px}
+.hds-badge{position:absolute;top:-4px;right:-4px;width:20px;height:20px;background:#e74c3c;border-radius:50%;font-size:11px;font-weight:700;color:#fff;display:none;align-items:center;justify-content:center;border:2px solid #0f0f0f}
+#hds-panel{position:absolute;bottom:78px;right:0;width:370px;max-height:580px;background:#141414;border:1px solid rgba(200,169,81,.25);border-radius:16px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.7),0 0 0 1px rgba(200,169,81,.1);opacity:0;transform:translateY(12px) scale(.97);pointer-events:none;transition:opacity .22s ease,transform .22s ease}
+#hds-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:all}
+#hds-header{background:linear-gradient(135deg,#1a1a1a,#1e1b10);border-bottom:1px solid rgba(200,169,81,.2);padding:14px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0}
+.hds-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#c8a951,#e8c96a);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:17px;color:#0f0f0f;flex-shrink:0;box-shadow:0 0 0 2px rgba(200,169,81,.3)}
+.hds-header-info{flex:1;min-width:0}
+.hds-header-name{font-family:'Bebas Neue',sans-serif;font-size:16px;color:#c8a951;letter-spacing:.5px;line-height:1;margin-bottom:2px}
+.hds-header-sub{font-size:11px;color:rgba(255,255,255,.45);font-weight:400}
+.hds-online-dot{width:8px;height:8px;background:#2ecc71;border-radius:50%;flex-shrink:0;box-shadow:0 0 6px #2ecc71}
+#hds-close{background:none;border:none;color:rgba(255,255,255,.35);cursor:pointer;padding:4px;border-radius:6px;transition:color .15s;font-size:18px;line-height:1}
+#hds-close:hover{color:rgba(255,255,255,.8)}
+#hds-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+#hds-messages::-webkit-scrollbar{width:4px}
+#hds-messages::-webkit-scrollbar-thumb{background:rgba(200,169,81,.25);border-radius:4px}
+.hds-msg{display:flex;gap:8px;align-items:flex-end;animation:hdsMsgIn .2s ease}
+@keyframes hdsMsgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.hds-msg.user{flex-direction:row-reverse}
+.hds-msg-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#c8a951,#e8c96a);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:12px;color:#0f0f0f;flex-shrink:0}
+.hds-msg.user .hds-msg-avatar{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);font-size:11px;font-family:'Barlow',sans-serif;font-weight:600}
+.hds-bubble{max-width:78%;padding:10px 13px;border-radius:14px;font-size:13.5px;line-height:1.5;word-wrap:break-word}
+.hds-msg.bot .hds-bubble{background:rgba(255,255,255,.06);color:rgba(255,255,255,.88);border-bottom-left-radius:4px;border:1px solid rgba(255,255,255,.07)}
+.hds-msg.user .hds-bubble{background:linear-gradient(135deg,#c8a951,#b8991f);color:#0f0f0f;font-weight:600;border-bottom-right-radius:4px}
+.hds-quick-replies{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 4px;flex-shrink:0}
+.hds-qr{background:rgba(200,169,81,.1);border:1px solid rgba(200,169,81,.3);color:#c8a951;font-family:'Barlow',sans-serif;font-size:12px;font-weight:600;padding:5px 10px;border-radius:20px;cursor:pointer;transition:all .15s;white-space:nowrap}
+.hds-qr:hover{background:rgba(200,169,81,.2);border-color:#c8a951}
+.hds-typing{display:flex;gap:4px;align-items:center;padding:10px 13px;background:rgba(255,255,255,.06);border-radius:14px;border-bottom-left-radius:4px;border:1px solid rgba(255,255,255,.07);width:fit-content}
+.hds-dot{width:6px;height:6px;background:rgba(200,169,81,.6);border-radius:50%;animation:hdsBounce 1.2s ease infinite}
+.hds-dot:nth-child(2){animation-delay:.2s}
+.hds-dot:nth-child(3){animation-delay:.4s}
+@keyframes hdsBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+#hds-input-area{display:flex;gap:8px;padding:12px 14px;border-top:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);flex-shrink:0}
+#hds-input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:9px 12px;color:rgba(255,255,255,.88);font-family:'Barlow',sans-serif;font-size:13.5px;outline:none;resize:none;min-height:38px;max-height:100px;line-height:1.4;transition:border-color .15s}
+#hds-input::placeholder{color:rgba(255,255,255,.3)}
+#hds-input:focus{border-color:rgba(200,169,81,.4)}
+#hds-send{width:38px;height:38px;background:linear-gradient(135deg,#c8a951,#b8991f);border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .15s,box-shadow .15s;align-self:flex-end}
+#hds-send:hover{transform:scale(1.05);box-shadow:0 4px 12px rgba(200,169,81,.4)}
+#hds-send svg{width:16px;height:16px}
+#hds-footer{text-align:center;padding:6px 14px 10px;font-size:10px;color:rgba(255,255,255,.2);flex-shrink:0}
+@media(max-width:480px){#hds-panel{width:calc(100vw - 24px);right:0;max-height:70vh}#hds-chat-widget{bottom:16px;right:12px}}
+</style>
+
+<div id="hds-chat-widget">
+  <button id="hds-launcher" aria-label="Chat with Hands Detail Shop">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span class="hds-badge" id="hds-badge">1</span>
+  </button>
+  <div id="hds-panel" role="dialog" aria-label="Hands Detail Shop Chat">
+    <div id="hds-header">
+      <div class="hds-avatar">HD</div>
+      <div class="hds-header-info">
+        <div class="hds-header-name">Hands Detail AI</div>
+        <div class="hds-header-sub">Powered by Claude · Replies instantly</div>
+      </div>
+      <div class="hds-online-dot"></div>
+      <button id="hds-close" aria-label="Close chat">✕</button>
+    </div>
+    <div id="hds-messages" role="log" aria-live="polite"></div>
+    <div class="hds-quick-replies" id="hds-quick-replies"></div>
+    <div id="hds-input-area">
+      <textarea id="hds-input" placeholder="Ask about packages, pricing, gift cards…" rows="1" aria-label="Chat message"></textarea>
+      <button id="hds-send" aria-label="Send message">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+    <div id="hds-footer">Hands Detail Shop · (412) 752-8684 · handsdetailshop.com</div>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+const CONFIG={PROXY_URL:'https://us-central1-hands-detail.cloudfunctions.net/claudeChat',MODEL:'claude-sonnet-4-20250514',MAX_TOKENS:400};
+const SYSTEM=`You are the AI assistant for Hands Detail Shop, a veteran-owned premium mobile auto detailing business based in Arnold, PA, operated by Nazir El. 16+ years of excellence, Air Force trained, serving PA, OH, WV, MD within a 2-hour radius of Pittsburgh.
+
+YOUR ROLE: Help customers choose services, explain packages, quote prices, promote memberships, sell gift certificates, and guide them to book. Be warm, professional, and direct. Never make up prices or services not listed here.
+
+CONTACT: Phone/Text (412) 752-8684 | handsdetailshop.com | Mon–Sat 8AM–6PM, Sun by appt | $30 deposit secures every appointment | PROMO: 15% OFF first-time customers + FREE Tire Shine with any package
+
+━━━ PERSONAL VEHICLE PACKAGES ━━━
+ESSENTIAL — $65–$95: Hand wash & dry, wheel & tire cleaning, tire shine, windows in/out, door jambs, quick interior vacuum, trim inspection.
+EXECUTIVE — $145–$195 (Most Popular): + clay bar, one-step polish, premium wax, full interior vacuum/wipe, leather conditioning, air freshener, 1-month guarantee.
+PREMIUM PLUS — $215–$285: + advanced paint correction (minor), engine bay light detail, carpet/upholstery shampooing, headlight cleaning, trim restoration, interior protection, 3-month guarantee.
+SIGNATURE — $325–$425: + multi-stage paint correction, full engine bay detail, carpet extraction, headlight restoration & coating, complete trim restoration, 6-month sealant, warranty.
+PRESIDENTIAL — $650–$850: + advanced paint correction, premium ceramic coating, complete leather treatment, odor elimination, chrome polish, 2-year warranty, maintenance plan.
+ULTIMATE ARMOR — $1,400–$1,850: + 9H ceramic coating (5-yr warranty), PPF on high-risk areas, wheel ceramic, interior ceramic, undercarriage detail, 5-year comprehensive warranty, annual maintenance.
+
+━━━ INTERIOR-ONLY ━━━
+INTERIOR EXPRESS — $85–$125: Full vacuum, dash/console wipe, door panels, cup holders, windows (inside), air freshener, mats.
+INTERIOR DEEP CLEAN — $185–$265: + shampooing, leather clean/condition, stain treatment, vent detailing, pet hair, headliner, steam cleaning.
+INTERIOR PREMIUM — $365–$485: + odor elimination, leather restoration, trim restoration, fabric protection, seat extraction, UV protection.
+INTERIOR CERAMIC PROTECTION — $585–$785: + interior ceramic coating, fabric/leather protection (3-yr), UV/stain resistance, anti-bacterial, 3-year warranty.
+
+━━━ MEMBERSHIP PLANS (Biweekly Service) ━━━
+Requires one-time restoration detail first: Compact $285 | Mid-Size $365 | SUV/Truck $445 | Luxury $525
+SINGLE CAR: Essential Maintain $75/mo | Premium Maintain $110/mo | Ultimate Maintain $145/mo
+TWO-CAR HOUSEHOLD: Essential $130/mo | Premium $190/mo | Ultimate $250/mo (save $20–$40/mo)
+THREE-CAR HOUSEHOLD: Essential $180/mo | Premium $265/mo | Ultimate $350/mo (save $45–$85/mo)
+CERAMIC UPGRADE: +$500 one-time → -$25/mo forever + 5-year paint protection.
+
+━━━ MOTORCYCLE ━━━
+Road Ready $85–$105 | Chrome & Shine $145–$185 | Show Bike $245–$295 | Seasonal Prep $125–$155
+
+━━━ YACHT / RV / MARINE ━━━
+Custom quotes based on size/condition. Call for free consultation.
+
+━━━ FLEET & COMMERCIAL ━━━
+Custom plans for 2+ vehicles. Volume discounts. Call for fleet proposal.
+
+━━━ AIRCRAFT ━━━
+Custom quotes. Call for consultation.
+
+━━━ MECHANICAL SERVICES (UNDER THE HOOD) ━━━
+Air Force diesel/jet mechanic background. Diagnosis first, you approve before any work. Labor: $75/hr.
+Basic Diagnostic: $50 | Advanced Diagnostic: $100
+Spark Plugs/Coils: $95–$150 | Solenoid: $150–$250 | Sensors: $80–$200
+Oil Change: $45–$75 | Full Fluid Service: $175–$300 | Belt/Hose: $95–$200
+Valve Cover Gasket: $165–$250 | Water Pump: $200–$400 | Serpentine Belt: $125–$225
+Engine Mounts: $300–$550 | Timing Chain: $600–$1,100 | Head Gasket: $800–$1,400
+Brake Pads: $120–$200/axle | Transmission Service: $175–$300 | Transmission Diagnostic: $100
+50% deposit secures parts.
+
+━━━ GIFT CERTIFICATES ━━━
+Perfect for holidays, birthdays, Father's Day, graduation. Any dollar amount or specific package. Call/text (412) 752-8684 to purchase. Payment via Square, cash, or Zelle. Digital or physical certificate provided.
+
+━━━ UPSELL RULES ━━━
+- After Signature/Presidential/Ultimate Armor → ALWAYS mention membership ("Since you're investing in top-tier care, our Monthly Maintain plan keeps it looking this good for just $75–$145/mo")
+- After Executive/Premium Plus → suggest upgrading to Signature for long-term protection
+- Multiple cars mentioned → immediately pitch multi-car household plans and savings
+- First-time customer → remind them of 15% off
+- Mechanical service customer → offer to bundle detail at same time
+- Always mention gift certificates before ending any conversation
+
+━━━ STYLE ━━━
+Keep responses under 4 sentences unless more detail is asked for. Warm, direct, professional. Always end with a clear next step. If unsure of anything, say "Text Nazir at (412) 752-8684 for a custom quote."`;
+const state={open:false,messages:[],typing:false,greeted:false};
+const launcher=document.getElementById('hds-launcher');
+const panel=document.getElementById('hds-panel');
+const closeBtn=document.getElementById('hds-close');
+const msgEl=document.getElementById('hds-messages');
+const inputEl=document.getElementById('hds-input');
+const sendBtn=document.getElementById('hds-send');
+const badge=document.getElementById('hds-badge');
+const qrArea=document.getElementById('hds-quick-replies');
+const INIT_QR=['💰 Pricing & Packages','🎁 Gift Certificates','💎 Memberships','⚙️ Mechanical','📅 Book Now'];
+function setQR(items){qrArea.innerHTML='';items.forEach(l=>{const b=document.createElement('button');b.className='hds-qr';b.textContent=l;b.onclick=()=>{sendMsg(l);setQR([]);};qrArea.appendChild(b);});}
+function appendMsg(r,c){const w=document.createElement('div');w.className=`hds-msg ${r==='user'?'user':'bot'}`;const a=document.createElement('div');a.className='hds-msg-avatar';a.textContent=r==='user'?'You':'HD';const b=document.createElement('div');b.className='hds-bubble';b.innerHTML=c.replace(/\n/g,'<br>');w.appendChild(a);w.appendChild(b);msgEl.appendChild(w);msgEl.scrollTop=msgEl.scrollHeight;}
+function showTyping(){const w=document.createElement('div');w.className='hds-msg bot';w.id='hds-typing';const a=document.createElement('div');a.className='hds-msg-avatar';a.textContent='HD';const d=document.createElement('div');d.className='hds-typing';for(let i=0;i<3;i++){const x=document.createElement('div');x.className='hds-dot';d.appendChild(x);}w.appendChild(a);w.appendChild(d);msgEl.appendChild(w);msgEl.scrollTop=msgEl.scrollHeight;}
+function removeTyping(){const e=document.getElementById('hds-typing');if(e)e.remove();}
+async function callClaude(m){state.messages.push({role:'user',content:m});showTyping();state.typing=true;try{const res=await fetch(CONFIG.PROXY_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:CONFIG.MODEL,max_tokens:CONFIG.MAX_TOKENS,system:SYSTEM,messages:state.messages})});if(!res.ok)throw new Error('HTTP '+res.status);const data=await res.json();const reply=data?.content?.[0]?.text||"I'm having trouble. Call (412) 752-8684!";state.messages.push({role:'assistant',content:reply});removeTyping();appendMsg('assistant',reply);if(state.messages.length<=3)setQR(['🎁 Gift Cards','💎 Membership','📅 Book','📞 (412) 752-8684']);}catch(e){removeTyping();appendMsg('assistant',"I'm having trouble connecting. Call or text **(412) 752-8684** — Nazir or the team will help!");console.error('[HDS]',e);}state.typing=false;}
+function sendMsg(t){const m=(t||inputEl.value).trim();if(!m||state.typing)return;inputEl.value='';inputEl.style.height='auto';setQR([]);appendMsg('user',m);callClaude(m);}
+function openPanel(){state.open=true;panel.classList.add('open');badge.style.display='none';inputEl.focus();if(!state.greeted){state.greeted=true;setTimeout(()=>{appendMsg('assistant',"Hey! 👋 Welcome to Hands Detail Shop — Pittsburgh's premier mobile detailing.\n\nI'm your AI assistant. Ask me about packages, pricing, memberships, gift certificates, or booking. What can I help you with?");setQR(INIT_QR);},300);}}
+function closePanel(){state.open=false;panel.classList.remove('open');}
+launcher.onclick=()=>state.open?closePanel():openPanel();closeBtn.onclick=closePanel;sendBtn.onclick=()=>sendMsg();inputEl.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}});inputEl.addEventListener('input',()=>{inputEl.style.height='auto';inputEl.style.height=Math.min(inputEl.scrollHeight,100)+'px';});setTimeout(()=>{if(!state.open){badge.style.display='flex';}},4000);document.addEventListener('click',e=>{if(state.open&&!document.getElementById('hds-chat-widget').contains(e.target))closePanel();});
+})();
+</script>
 
 </body>
 </html>
+
