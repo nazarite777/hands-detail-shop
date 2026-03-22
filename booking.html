@@ -33,6 +33,12 @@
     </script>
 </head>
 <body>
+    <!-- Loading Indicator -->
+    <div class="loading-indicator" id="loadingIndicator">
+        <div class="spinner"></div>
+        <div class="loading-text">Processing your booking...</div>
+    </div>
+
     <!-- Skip to main content link for accessibility -->
     <a href="#step1" class="skip-link">Skip to main content</a>
 
@@ -343,7 +349,21 @@
     }
 
     function confirmBooking() {
-        alert('In production, this would redirect to Square payment for $30 deposit.\n\nFor now, please call (412) 752-8684 to complete your booking!');
+        // Show loading indicator
+        const loader = document.getElementById('loadingIndicator');
+        if (loader) {
+            loader.classList.add('active');
+        }
+        
+        // Simulate payment processing (2 seconds)
+        setTimeout(function() {
+            // Hide loader
+            if (loader) {
+                loader.classList.remove('active');
+            }
+            
+            alert('In production, this would redirect to Square payment for $30 deposit.\n\nFor now, please call (412) 752-8684 to complete your booking!');
+        }, 2000);
     }
 
     // Service option hover effects

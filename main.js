@@ -1055,6 +1055,12 @@ function handleContactFormSubmit(event) {
     return;
   }
   
+  // Show loading indicator
+  const loader = document.getElementById('loadingIndicator');
+  if (loader) {
+    loader.classList.add('active');
+  }
+  
   // Prepare data for email
   const emailData = {
     subject: `Contact Form: ${subject}`,
@@ -1066,23 +1072,31 @@ function handleContactFormSubmit(event) {
     timestamp: new Date().toISOString()
   };
   
-  // Send email via Firebase or email service
-  // For now, we'll log and show success message
-  console.log('Contact form submitted:', emailData);
-  
-  // Show success message
-  const successMsg = document.getElementById('formSuccessMessage');
-  if (successMsg) {
-    successMsg.style.display = 'block';
-    form.style.display = 'none';
+  // Simulate email processing (1.5 seconds)
+  setTimeout(() => {
+    // Hide loader
+    if (loader) {
+      loader.classList.remove('active');
+    }
     
-    // Reset form after 3 seconds and show it again
-    setTimeout(() => {
-      form.reset();
-      form.style.display = 'block';
-      successMsg.style.display = 'none';
-    }, 3000);
-  }
+    // Send email via Firebase or email service
+    // For now, we'll log and show success message
+    console.log('Contact form submitted:', emailData);
+    
+    // Show success message
+    const successMsg = document.getElementById('formSuccessMessage');
+    if (successMsg) {
+      successMsg.style.display = 'block';
+      form.style.display = 'none';
+      
+      // Reset form after 3 seconds and show it again
+      setTimeout(() => {
+        form.reset();
+        form.style.display = 'block';
+        successMsg.style.display = 'none';
+      }, 3000);
+    }
+  }, 1500);
   
   // Optional: Send to email service
   // You can integrate with Formspree, EmailJS, or Firebase Cloud Functions
