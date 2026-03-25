@@ -299,7 +299,10 @@ exports.claudeAI = functions.https.onRequest((request, response) => {
       console.log('🤖 Claude request received:', message.substring(0, 50) + '...');
 
       // Get API key from environment
-      const apiKey = process.env.CLAUDE_API_KEY || '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';
+      const apiKey = process.env.CLAUDE_API_KEY;
+      if (!apiKey) {
+        return response.status(500).json({ error: 'API key not configured' });
+      }
 
       // Call Anthropic API
       const anthropicResponse = await fetch('https://api.anthropic.com/v1/messages', {
@@ -348,3 +351,208 @@ exports.claudeAI = functions.https.onRequest((request, response) => {
 });
 
 console.log('🚀 Claude AI Cloud Function loaded');
+
+/**
+ * Claude Chat - Chat endpoint for booking interface
+ */
+exports.claudeChat = functions.https.onRequest((request, response) => {
+  return corsHandler(request, response, async () => {
+    try {
+      if (request.method !== 'POST') {
+        return response.status(405).json({ error: 'Method not allowed' });
+      }
+
+      const { message, history } = request.body;
+      if (!message) {
+        return response.status(400).json({ error: 'Message required' });
+      }
+
+      const apiKey = process.env.CLAUDE_API_KEY;
+      if (!apiKey) {
+        return response.status(500).json({ error: 'API key not configured' });
+      }
+
+      const messages = history && Array.isArray(history) ? history : [];
+      messages.push({ role: 'user', content: message });
+
+      const anthropicResponse = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'x-api-key': apiKey,
+          'anthropic-version': '2023-06-01',
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: 'claude-3-5-sonnet-20241022',
+          max_tokens: 1024,
+          system: SYSTEM_PROMPT,
+          messages: messages
+        })
+      });
+
+      if (!anthropicResponse.ok) {
+        const errorData = await anthropicResponse.json();
+        return response.status(anthropicResponse.status).json({
+          error: 'API Error',
+          details: errorData.error?.message || 'Unknown error'
+        });
+      }
+
+      const data = await anthropicResponse.json();
+      const assistantMessage = data.content[0].text;
+
+      return response.status(200).json({
+        reply: assistantMessage,
+        message: assistantMessage
+      });
+
+    } catch (error) {
+      console.error('❌ Claude Chat error:', error);
+      return response.status(500).json({
+        error: 'Internal server error',
+        details: error.message
+      });
+    }
+  });
+});
+
+/**
+ * Process Booking - Handle Square payments and create bookings
+ */
+exports.processBooking = functions.https.onRequest((request, response) => {
+  return corsHandler(request, response, async () => {
+    try {
+      if (request.method !== 'POST') {
+        return response.status(405).json({ error: 'Method not allowed' });
+      }
+
+      const { sourceId, amount, customerEmail, customerName, serviceType, appointmentDate, appointmentTime } = request.body;
+
+      if (!sourceId || !amount || !customerEmail) {
+        return response.status(400).json({ error: 'Missing required fields' });
+      }
+
+      // Process payment with Square
+      const { Client, Environment } = require('square');
+      const squareClient = new Client({
+        accessToken: process.env.SQUARE_ACCESS_TOKEN,
+        environment: Environment.Production,
+      });
+
+      const paymentsApi = squareClient.paymentsApi;
+      const result = await paymentsApi.createPayment({
+        sourceId: sourceId,
+        amountMoney: {
+          amount: Math.round(amount * 100),
+          currency: 'USD'
+        },
+        customerId: customerEmail,
+        note: `Booking: ${serviceType} on ${appointmentDate} at ${appointmentTime}`,
+      });
+
+      if (!result.result.payment.id) {
+        throw new Error('Payment failed');
+      }
+
+      // Save booking to Firestore
+      const firestore = admin.firestore();
+      const bookingRef = firestore.collection('bookings').doc();
+      
+      await bookingRef.set({
+        id: bookingRef.id,
+        customerName: customerName,
+        customerEmail: customerEmail,
+        serviceType: serviceType,
+        appointmentDate: appointmentDate,
+        appointmentTime: appointmentTime,
+        paymentId: result.result.payment.id,
+        amount: amount,
+        status: 'confirmed',
+        createdAt: admin.firestore.FieldValue.serverTimestamp(),
+      });
+
+      // Also save public version (city only, no email)
+      await firestore.collection('public_schedule').add({
+        service: serviceType,
+        date: appointmentDate,
+        status: 'booked'
+      });
+
+      // Send confirmation email
+      const nodemailer = require('nodemailer');
+      const transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+          user: 'handsdetailshop@gmail.com',
+          pass: process.env.GMAIL_APP_PASSWORD,
+        }
+      });
+
+      await transporter.sendMail({
+        from: 'handsdetailshop@gmail.com',
+        to: customerEmail,
+        subject: `Booking Confirmation - ${serviceType} Service`,
+        html: `
+          <h2>Your Booking is Confirmed!</h2>
+          <p>Hi ${customerName},</p>
+          <p>Service: ${serviceType}</p>
+          <p>Date: ${appointmentDate}</p>
+          <p>Time: ${appointmentTime}</p>
+          <p>Amount Paid: $${amount}</p>
+          <p>Thank you for choosing Hands Detail Shop!</p>
+        `
+      });
+
+      // Add to Google Calendar if credentials available
+      if (process.env.GOOGLE_CALENDAR_ID && process.env.GOOGLE_SERVICE_ACCOUNT_KEY) {
+        try {
+          const { google } = require('googleapis');
+          const serviceAccountKey = JSON.parse(Buffer.from(process.env.GOOGLE_SERVICE_ACCOUNT_KEY, 'base64').toString());
+          
+          const auth = new google.auth.GoogleAuth({
+            credentials: serviceAccountKey,
+            scopes: ['https://www.googleapis.com/auth/calendar'],
+          });
+
+          const calendar = google.calendar({ version: 'v3', auth });
+          
+          const eventDate = new Date(`${appointmentDate}T${appointmentTime}:00`);
+          const endTime = new Date(eventDate.getTime() + 2 * 60 * 60 * 1000);
+
+          await calendar.events.insert({
+            calendarId: process.env.GOOGLE_CALENDAR_ID,
+            resource: {
+              summary: `${serviceType} - ${customerName}`,
+              description: `Booking ID: ${bookingRef.id}\nCustomer: ${customerName}\nEmail: ${customerEmail}`,
+              start: { dateTime: eventDate.toISOString() },
+              end: { dateTime: endTime.toISOString() },
+              reminders: {
+                useDefault: true,
+                overrides: [
+                  { method: 'email', minutes: 24 * 60 },
+                  { method: 'popup', minutes: 60 }
+                ]
+              }
+            }
+          });
+        } catch (calendarError) {
+          console.warn('Calendar sync failed:', calendarError.message);
+        }
+      }
+
+      return response.status(200).json({
+        success: true,
+        bookingId: bookingRef.id,
+        paymentId: result.result.payment.id,
+        message: 'Booking confirmed!'
+      });
+
+    } catch (error) {
+      console.error('❌ Booking error:', error);
+      return response.status(500).json({
+        error: 'Booking failed',
+        details: error.message
+      });
+    }
+  });
+});
