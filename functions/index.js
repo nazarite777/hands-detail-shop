@@ -504,37 +504,36 @@ exports.processBooking = functions.https.onRequest((request, response) => {
       });
 
       // Add to Google Calendar if credentials available
-      if (process.env.GOOGLE_CALENDAR_ID && process.env.GOOGLE_SERVICE_ACCOUNT_KEY) {
+      if (process.env.GOOGLE_CALENDAR_ID && process.env.GOOGLE_API_KEY) {
         try {
-          const { google } = require('googleapis');
-          const serviceAccountKey = JSON.parse(Buffer.from(process.env.GOOGLE_SERVICE_ACCOUNT_KEY, 'base64').toString());
-          
-          const auth = new google.auth.GoogleAuth({
-            credentials: serviceAccountKey,
-            scopes: ['https://www.googleapis.com/auth/calendar'],
-          });
-
-          const calendar = google.calendar({ version: 'v3', auth });
-          
           const eventDate = new Date(`${appointmentDate}T${appointmentTime}:00`);
           const endTime = new Date(eventDate.getTime() + 2 * 60 * 60 * 1000);
 
-          await calendar.events.insert({
-            calendarId: process.env.GOOGLE_CALENDAR_ID,
-            resource: {
-              summary: `${serviceType} - ${customerName}`,
-              description: `Booking ID: ${bookingRef.id}\nCustomer: ${customerName}\nEmail: ${customerEmail}`,
-              start: { dateTime: eventDate.toISOString() },
-              end: { dateTime: endTime.toISOString() },
-              reminders: {
-                useDefault: true,
-                overrides: [
-                  { method: 'email', minutes: 24 * 60 },
-                  { method: 'popup', minutes: 60 }
-                ]
-              }
+          const eventPayload = {
+            summary: `${serviceType} - ${customerName}`,
+            description: `Booking ID: ${bookingRef.id}\nCustomer: ${customerName}\nEmail: ${customerEmail}`,
+            start: { dateTime: eventDate.toISOString() },
+            end: { dateTime: endTime.toISOString() },
+            reminders: {
+              useDefault: true,
+              overrides: [
+                { method: 'email', minutes: 24 * 60 },
+                { method: 'popup', minutes: 60 }
+              ]
             }
+          };
+
+          const calendarResponse = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(process.env.GOOGLE_CALENDAR_ID)}/events?key=${process.env.GOOGLE_API_KEY}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(eventPayload)
           });
+
+          if (!calendarResponse.ok) {
+            console.warn('Calendar sync warning:', calendarResponse.status);
+          }
         } catch (calendarError) {
           console.warn('Calendar sync failed:', calendarError.message);
         }
