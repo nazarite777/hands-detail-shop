@@ -298,8 +298,8 @@ exports.claudeAI = functions.https.onRequest((request, response) => {
 
       console.log('🤖 Claude request received:', message.substring(0, 50) + '...');
 
-      // Get API key from environment
-      const apiKey = process.env.CLAUDE_API_KEY;
+      // Get API key from environment (Firebase stores as anthropic.api_key)
+      const apiKey = process.env.ANTHROPIC_API_KEY;
       if (!apiKey) {
         return response.status(500).json({ error: 'API key not configured' });
       }
@@ -367,7 +367,7 @@ exports.claudeChat = functions.https.onRequest((request, response) => {
         return response.status(400).json({ error: 'Message required' });
       }
 
-      const apiKey = process.env.CLAUDE_API_KEY;
+      const apiKey = process.env.ANTHROPIC_API_KEY;
       if (!apiKey) {
         return response.status(500).json({ error: 'API key not configured' });
       }
@@ -432,7 +432,6 @@ exports.processBooking = functions.https.onRequest((request, response) => {
         return response.status(400).json({ error: 'Missing required fields' });
       }
 
-      // Process payment with Square
       const { Client, Environment } = require('square');
       const squareClient = new Client({
         accessToken: process.env.SQUARE_ACCESS_TOKEN,
@@ -483,13 +482,13 @@ exports.processBooking = functions.https.onRequest((request, response) => {
       const transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-          user: 'handsdetailshop@gmail.com',
-          pass: process.env.GMAIL_APP_PASSWORD,
+          user: process.env.GMAIL_EMAIL || 'handsdetailshop@gmail.com',
+          pass: process.env.GMAIL_PASSWORD,
         }
       });
 
       await transporter.sendMail({
-        from: 'handsdetailshop@gmail.com',
+        from: process.env.GMAIL_EMAIL || 'handsdetailshop@gmail.com',
         to: customerEmail,
         subject: `Booking Confirmation - ${serviceType} Service`,
         html: `
