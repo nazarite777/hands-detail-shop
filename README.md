@@ -29,7 +29,7 @@ Premium auto detailing services website for Hands Detail Shop in Arnold, PA. Vet
 - **6 Pages**: Home, Services, Membership, Reviews, Quote, Contact
 - **50+ Customer Testimonials**: Real reviews from satisfied customers
 - **Online Booking**: Square integration with $30 deposit system
-- **Live Chat Support**: Tawk.to integration for instant customer support
+- **Claude AI Chat**: AI-powered booking assistant for customer support
 - **Mobile Detailing**: Service offerings for Greater Pittsburgh area
 - **VIP Membership Plans**: Monthly subscription options
 

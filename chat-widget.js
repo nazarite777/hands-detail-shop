@@ -1,6 +1,6 @@
 /**
  * Hands Detail Shop — AI Chat Widget
- * Replaces Tawk.to with a custom Claude-powered assistant.
+ * Custom Claude-powered AI assistant for customer support.
  *
  * Configuration (set before loading this script):
  *   window.HANDS_CHAT_API_KEY  — Anthropic API key (server-side proxy recommended for production)
