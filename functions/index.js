@@ -380,9 +380,20 @@ exports.claudeChat = functions.https.onRequest((request, response) => {
         return response.status(405).json({ error: 'Method not allowed' });
       }
 
-      const { message, history } = request.body;
-      if (!message) {
-        return response.status(400).json({ error: 'Message required' });
+      // Support both old format (message, history) and new format (model, messages, system, max_tokens)
+      let messages = request.body.messages;
+      let model = request.body.model || 'claude-opus-4-1';
+      let maxTokens = request.body.max_tokens || 400;
+      let system = request.body.system || SYSTEM_PROMPT;
+
+      // Fallback to old format if new format not provided
+      if (!messages && request.body.message) {
+        const history = request.body.history && Array.isArray(request.body.history) ? request.body.history : [];
+        messages = [...history, { role: 'user', content: request.body.message }];
+      }
+
+      if (!messages || !Array.isArray(messages) || messages.length === 0) {
+        return response.status(400).json({ error: 'Messages required' });
       }
 
       let apiKey;
@@ -408,9 +419,6 @@ exports.claudeChat = functions.https.onRequest((request, response) => {
 
       console.log('🔑 Using API key starting with:', apiKey.substring(0, 20) + '...');
 
-      const messages = history && Array.isArray(history) ? history : [];
-      messages.push({ role: 'user', content: message });
-
       const anthropicResponse = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
         headers: {
@@ -419,9 +427,9 @@ exports.claudeChat = functions.https.onRequest((request, response) => {
           'content-type': 'application/json',
         },
         body: JSON.stringify({
-          model: 'claude-opus-4-1',
-          max_tokens: 1024,
-          system: SYSTEM_PROMPT,
+          model: model,
+          max_tokens: maxTokens,
+          system: system,
           messages: messages
         })
       });
@@ -438,6 +446,7 @@ exports.claudeChat = functions.https.onRequest((request, response) => {
       const assistantMessage = data.content[0].text;
 
       return response.status(200).json({
+        content: [{ text: assistantMessage }],
         reply: assistantMessage,
         message: assistantMessage
       });
