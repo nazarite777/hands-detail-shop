@@ -1,59 +1,42 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Primary Meta Tags -->
-    <title>Motorcycle Detailing Services | Hands Detail Shop | Pittsburgh</title>
-    <meta name="title" content="Professional Motorcycle Detailing | Hands Detail Shop">
-    <meta name="description" content="Specialized motorcycle detailing services in Pittsburgh Area. Professional packages for cruisers, sport bikes, and touring bikes. Starting at $85. Rider-owned business.">
-    <meta name="keywords" content="motorcycle detailing Pittsburgh, bike detailing, cruiser detailing, sport bike detailing, motorcycle cleaning, chrome polishing">
-    <meta name="author" content="Nazir El - Hands Detail Shop">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
-    <meta name="revisit-after" content="7 days">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://handsdetailshop.com/motorcycle-services.html">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://handsdetailshop.com/motorcycle-services.html">
-    <meta property="og:title" content="Professional Motorcycle Detailing | Hands Detail Shop">
-    <meta property="og:description" content="Specialized motorcycle detailing for cruisers, sport bikes, and touring bikes. Rider-owned business serving Pittsburgh Area.">
-    <meta property="og:image" content="https://handsdetailshop.com/20200723_030424~2.png">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:site_name" content="Hands Detail Shop">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://handsdetailshop.com/motorcycle-services.html">
-    <meta property="twitter:title" content="Professional Motorcycle Detailing | Hands Detail Shop">
-    <meta property="twitter:description" content="Specialized motorcycle detailing starting at $85. Chrome polishing, ceramic coating, and seasonal prep packages.">
-    <meta property="twitter:image" content="https://handsdetailshop.com/20200723_030424~2.png">
-
-    <!-- Business Contact Info -->
-    <meta name="geo.region" content="US-PA">
-    <meta name="geo.placename" content="Pittsburgh, Pennsylvania">
-    <!-- Theme Color -->
-    <meta name="theme-color" content="#1565c0">
-    <meta name="msapplication-TileColor" content="#1565c0">
-    <!-- PWA Meta Tags -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Hands Detail">
-
-    <!-- PWA Icons -->
-    <link rel="apple-touch-icon" href="/20200723_030424~2.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/20200723_030424~2.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/20200723_030424~2.png">
-
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="/manifest.json">
-
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professional Motorcycle Detailing | Hands Detail Shop | Pittsburgh</title>
+    <meta name="title" content="Professional Motorcycle Detailing | Hands Detail Shop" />
+    <meta name="description" content="Specialized motorcycle detailing for cruisers, sport bikes, and touring bikes in Pittsburgh. Rider-owned business. Packages from $85–$295." />
+    <meta name="keywords" content="motorcycle detailing Pittsburgh, bike detailing, cruiser detailing, sport bike detailing, motorcycle cleaning" />
+    <meta name="author" content="Nazir El - Hands Detail Shop" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://handsdetailshop.com/motorcycle-services.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://handsdetailshop.com/motorcycle-services.html" />
+    <meta property="og:title" content="Professional Motorcycle Detailing | Hands Detail Shop" />
+    <meta property="og:description" content="Specialized motorcycle detailing for cruisers, sport bikes, and touring bikes." />
+    <meta property="og:image" content="https://handsdetailshop.com/20200723_030424~2.png" />
+    <meta name="geo.region" content="US-PA" />
+    <meta name="geo.placename" content="Pittsburgh, Pennsylvania" />
+    <meta name="theme-color" content="#1565c0" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        .pkg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px; }
+        .pkg-card { background: rgba(66, 165, 245, 0.08); border: 2px solid rgba(66, 165, 245, 0.25); border-radius: 14px; padding: 25px; transition: all 0.3s ease; }
+        .pkg-card:hover { transform: translateY(-8px); box-shadow: 0 12px 32px rgba(66, 165, 245, 0.2); border-color: rgba(66, 165, 245, 0.5); }
+        .pkg-badge { display: inline-block; background: rgba(251, 191, 36, 0.15); color: #fbbf24; padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 12px; }
+        .pkg-title { color: #64b5f6; font-size: 1.3rem; font-weight: 700; margin: 0 0 8px; }
+        .pkg-price { color: #42a5f5; font-size: 1.8rem; font-weight: 800; margin: 8px 0; }
+        .pkg-desc { color: #b3d9ff; font-size: 0.95rem; margin-bottom: 15px; line-height: 1.5; }
+        .pkg-features { list-style: none; padding: 0; margin: 15px 0; text-align: left; }
+        .pkg-features li { color: #a0a0a0; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
+        .addon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; margin: 30px 0; }
+        .addon-item { background: rgba(66, 165, 245, 0.1); border: 1px solid rgba(66, 165, 245, 0.2); border-radius: 10px; padding: 15px; }
+        .addon-item h4 { color: #42a5f5; margin: 0 0 5px; font-size: 0.95rem; }
+        .addon-item p { color: #b3d9ff; margin: 0; font-size: 0.85rem; }
+        @media (max-width: 600px) { .pkg-grid { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
     <!-- Header Navigation -->
@@ -72,13 +55,14 @@
                 <div class="services-dropdown">
                     <button class="services-dropdown-btn nav-link" onclick="toggleServicesDropdown(this)">Services</button>
                     <div class="dropdown-menu">
-                        <a href="services.html" class="dropdown-item">ðŸ“‹ All Services Overview</a>
+                        <a href="services.html" class="dropdown-item">📋 All Services</a>
                         <a href="personal-vehicles.html" class="dropdown-item">🚗 Personal Vehicles</a>
-                        <a href="marine-services.html" class="dropdown-item">🛥� Yacht & RV</a>
+                        <a href="marine-services.html" class="dropdown-item">⛵ Marine & Yachts</a>
+                        <a href="rv-services.html" class="dropdown-item">🚐 RV & Motorhomes</a>
                         <a href="fleet-services.html" class="dropdown-item">🚛 Fleet & Commercial</a>
                         <a href="motorcycle-services.html" class="dropdown-item">🏍 Motorcycle</a>
-                        <a href="aircraft-services.html" class="dropdown-item">âœˆï¸ Aircraft</a>
-                        <a href="under-the-hood.html" class="dropdown-item">âš™ï¸ Mechanical Services</a>
+                        <a href="aircraft-services.html" class="dropdown-item">✈️ Aircraft</a>
+                        <a href="under-the-hood.html" class="dropdown-item">⚙️ Mechanical Services</a>
                     </div>
                 </div>
                 <a href="membership.html" class="nav-link">Membership</a>
@@ -87,13 +71,13 @@
                 <a href="reviews.html" class="nav-link">Reviews</a>
                 <a href="https://handsdetailshop.medium.com" target="_blank" class="nav-link">Blog</a>
                 <a href="contact.html" class="nav-link">Contact</a>
-            <a href="careers.html" class="nav-link">Careers</a>
-            <div class="contact-header">
-                <span class="hours-header">🕒 Mon-Sat 8AM-6PM</span>
-                <a href="tel:4127528684" class="btn-call">📞 Call</a>
-                <a href="sms:4127528684" class="btn-text">💬 Text</a>
-                <a href="booking.html" class="cta-header">Book Now</a>
-            </div>
+                <a href="careers.html" class="nav-link">Careers</a>
+                <div class="contact-header">
+                    <span class="hours-header">🕒 Mon-Sat 8AM-6PM</span>
+                    <a href="tel:4127528684" class="btn-call">📞 Call</a>
+                    <a href="sms:4127528684" class="btn-text">💬 Text</a>
+                    <a href="#" onclick="openBookingModal(); return false;" class="cta-header">Book Now</a>
+                </div>
             </nav>
 
             <div class="mobile-menu-toggle" id="mobileToggle">
@@ -106,13 +90,14 @@
         <nav class="mobile-nav" id="mobileNav">
             <a href="index.html">Home</a>
             <a href="our-story.html">Our Story</a>
-            <a href="services.html">All Services Overview</a>
+            <a href="services.html">All Services</a>
             <a href="personal-vehicles.html">🚗 Personal Vehicles</a>
-            <a href="marine-services.html">🛥� Yacht & RV</a>
+            <a href="marine-services.html">⛵ Marine & Yachts</a>
+            <a href="rv-services.html">🚐 RV & Motorhomes</a>
             <a href="fleet-services.html">🚛 Fleet & Commercial</a>
             <a href="motorcycle-services.html">🏍 Motorcycle</a>
-            <a href="aircraft-services.html">âœˆï¸ Aircraft</a>
-            <a href="under-the-hood.html">âš™ï¸ Mechanical Services</a>
+            <a href="aircraft-services.html">✈️ Aircraft</a>
+            <a href="under-the-hood.html">⚙️ Mechanical Services</a>
             <a href="membership.html">Membership</a>
             <a href="quote.html">Get Quote</a>
             <a href="reviews.html">Reviews</a>
@@ -125,505 +110,320 @@
 
     <!-- Promotional Banner -->
     <div class="promo-banner" style="margin-top: 70px;">
-        🎊 PRE-SPRING DETAIL: Prepare Your Vehicle for Warmer Weather | 15% OFF First-Time Customers | 💎 FREE Tire Shine with Any Package | 💳 $30 Deposit Secures Your Appointment | 📞 (412) 752-8684
+        🏍 RIDER-OWNED MOTORCYCLE DETAILING | Chrome Polishing • Ceramic Coatings • Seasonal Prep | 📞 (412) 752-8684
     </div>
 
     <!-- Hero Section -->
     <section style="padding-top: 180px; background: linear-gradient(135deg, #0d1b2a 0%, #1a2942 50%, #0d1b2a 100%); position: relative; overflow: hidden; text-align: center;">
         <div class="section-container" style="z-index: 2; position: relative;">
             <h1 style="font-size: 3.5rem; color: #e0e0e0; margin-bottom: 15px; font-weight: 900; letter-spacing: -1px;">
-                🏍 Professional Motorcycle Detailing
+                🏍 Motorcycle Detailing
             </h1>
             <p style="font-size: 1.3rem; color: #b3d9ff; margin-bottom: 30px;">
-                Specialized detailing for cruisers, sport bikes, and touring bikes - Rider-owned, rider-approved
+                Specialized Detailing for Riders • Chrome Polishing • Ceramic Coatings • Rider-Approved
             </p>
             <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="#" onclick="openBookingModal(); return false;" class="cta-button" style="font-size: 1.1rem;">📅 Book Motorcycle Detail</a>
-                <a href="tel:4127528684" class="cta-button" style="background: rgba(66, 165, 245, 0.2); border: 2px solid #42a5f5; font-size: 1.1rem;">📞 Call: (412) 752-8684</a>
+                <a href="#" onclick="openBookingModal(); return false;" class="cta-button" style="font-size: 1.1rem;">📅 Book Detail</a>
+                <a href="tel:4127528684" class="cta-button" style="background: rgba(66, 165, 245, 0.2); border: 2px solid #42a5f5; font-size: 1.1rem;">📞 (412) 752-8684</a>
             </div>
         </div>
         <div style="position: absolute; top: -50px; right: -50px; font-size: 25rem; opacity: 0.03; z-index: 1;">🏍</div>
     </section>
 
-    <!-- Motorcycle Detailing Packages Section -->
-    <section class="detail-section" id="motorcycle-packages" style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border-top: 1px solid rgba(66, 165, 245, 0.3);">
+    <!-- Main Services Section -->
+    <section class="detail-section" style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border-top: 1px solid rgba(66, 165, 245, 0.3);">
         <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">Motorcycle Detailing Packages</h2>
-                <p class="section-subtitle">Specialized detailing for motorcycles, cruisers, sport bikes, and touring bikes</p>
-            </div>
 
-            <div class="package-grid">
-                <!-- Road Ready Package -->
-                <div class="package-card">
-                    <div class="package-header">
-                        <h3 class="package-title">Road Ready Detail</h3>
-                        <div class="package-price">$85 - $105</div>
-                        <p class="package-tier">Essential motorcycle maintenance</p>
-                    </div>
-                    <div class="package-body">
-                        <p class="package-description">Quick professional detail for regular riders</p>
-                        <ul class="package-features">
-                            <li>âœ“ Full hand wash & dry</li>
-                            <li>âœ“ Wheel & tire cleaning</li>
-                            <li>âœ“ Chrome polishing (basics)</li>
-                            <li>âœ“ Chain cleaning & lubrication</li>
-                            <li>âœ“ Window/windshield cleaning</li>
-                            <li>âœ“ Seat & leather conditioning</li>
-                            <li>âœ“ Bug & tar removal</li>
-                            <li>âœ“ Quick wax protection</li>
-                        </ul>
-                        <button onclick="openBookingModal('Road Ready Detail')" class="package-btn">Book Road Ready</button>
-                    </div>
+            <!-- MOTORCYCLE PACKAGES -->
+            <h2 style="font-size: 2rem; color: #64b5f6; margin-bottom: 10px; text-align: center;">⚙️ Motorcycle Detailing Packages</h2>
+            <p style="color: #b3d9ff; text-align: center; margin-bottom: 40px; font-size: 1rem;">Professional packages for cruisers, sport bikes, touring bikes, and custom builds</p>
+
+            <div class="pkg-grid">
+                <!-- Road Ready -->
+                <div class="pkg-card">
+                    <div class="pkg-badge">ENTRY LEVEL</div>
+                    <h3 class="pkg-title">Road Ready Detail</h3>
+                    <div class="pkg-price">$85–$105</div>
+                    <p class="pkg-desc">Quick professional detail for regular riders</p>
+                    <ul class="pkg-features">
+                        <li>✓ Full hand wash & dry</li>
+                        <li>✓ Wheel & tire cleaning</li>
+                        <li>✓ Chrome polishing (basics)</li>
+                        <li>✓ Chain cleaning & lubrication</li>
+                        <li>✓ Windows & windshield</li>
+                        <li>✓ Seat & leather conditioning</li>
+                        <li>✓ Bug & tar removal</li>
+                        <li>✓ Quick wax protection</li>
+                    </ul>
+                    <a href="#" onclick="openBookingModal(); return false;" class="cta-button" style="font-size: 0.9rem; display: inline-block; margin-top: 10px;">Book Now</a>
                 </div>
 
-                <!-- Chrome & Shine Package -->
-                <div class="package-card">
-                    <div class="package-header executive">
-                        <div class="package-badge">MOST POPULAR</div>
-                        <h3 class="package-title">Chrome & Shine Detail</h3>
-                        <div class="package-price">$145 - $185</div>
-                        <p class="package-tier">Complete detailing & protection</p>
-                    </div>
-                    <div class="package-body">
-                        <p class="package-description">Premium detail for cruisers & touring bikes</p>
-                        <ul class="package-features">
-                            <li>âœ“ Everything in Road Ready, plus:</li>
-                            <li>âœ“ Complete chrome polishing</li>
-                            <li>âœ“ Paint decontamination (clay bar)</li>
-                            <li>âœ“ Metal polish (all surfaces)</li>
-                            <li>âœ“ Leather & vinyl deep cleaning</li>
-                            <li>âœ“ Engine degreasing & detailing</li>
-                            <li>âœ“ Premium wax protection</li>
-                            <li>âœ“ Saddlebag interior cleaning</li>
-                            <li>âœ“ 3-month protection warranty</li>
-                        </ul>
-                        <button onclick="openBookingModal('Chrome & Shine Detail')" class="package-btn executive">Book Chrome & Shine</button>
-                    </div>
+                <!-- Chrome & Shine -->
+                <div class="pkg-card" style="border-color: #fbbf24; box-shadow: 0 0 15px rgba(251, 191, 36, 0.15);">
+                    <div class="pkg-badge">MOST POPULAR</div>
+                    <h3 class="pkg-title">Chrome & Shine Detail</h3>
+                    <div class="pkg-price">$145–$185</div>
+                    <p class="pkg-desc">Premium detail for cruisers & touring bikes</p>
+                    <ul class="pkg-features">
+                        <li>✓ Everything in Road Ready, plus:</li>
+                        <li>✓ Complete chrome polishing</li>
+                        <li>✓ Paint decontamination (clay bar)</li>
+                        <li>✓ Metal polish (all surfaces)</li>
+                        <li>✓ Leather deep cleaning</li>
+                        <li>✓ Engine degreasing & detail</li>
+                        <li>✓ Premium wax protection</li>
+                        <li>✓ Saddlebag interior clean</li>
+                        <li>✓ 3-month protection warranty</li>
+                    </ul>
+                    <a href="#" onclick="openBookingModal(); return false;" class="cta-button" style="font-size: 0.9rem; display: inline-block; margin-top: 10px;">Book Now</a>
                 </div>
 
-                <!-- Show Bike Package -->
-                <div class="package-card">
-                    <div class="package-header signature">
-                        <div class="package-badge">PREMIUM</div>
-                        <h3 class="package-title">Show Bike Detail</h3>
-                        <div class="package-price">$245 - $295</div>
-                        <p class="package-tier">Concours-level perfection</p>
-                    </div>
-                    <div class="package-body">
-                        <p class="package-description">Show-quality detailing for exhibitions & collectors</p>
-                        <ul class="package-features">
-                            <li>âœ“ Everything in Chrome & Shine, plus:</li>
-                            <li>âœ“ Multi-stage paint correction</li>
-                            <li>âœ“ Every chrome piece hand-polished</li>
-                            <li>âœ“ Engine compartment deep detail</li>
-                            <li>âœ“ Spoke & rim detailing (custom)</li>
-                            <li>âœ“ Leather restoration treatment</li>
-                            <li>âœ“ Premium ceramic coating (optional)</li>
-                            <li>âœ“ Custom detail brush work</li>
-                            <li>âœ“ 6-month protection warranty</li>
-                        </ul>
-                        <button onclick="openBookingModal('Show Bike Detail')" class="package-btn signature">Book Show Bike</button>
-                    </div>
+                <!-- Show Bike -->
+                <div class="pkg-card">
+                    <div class="pkg-badge">PREMIUM</div>
+                    <h3 class="pkg-title">Show Bike Detail</h3>
+                    <div class="pkg-price">$245–$295</div>
+                    <p class="pkg-desc">Concours-level perfection for exhibitions</p>
+                    <ul class="pkg-features">
+                        <li>✓ Everything in Chrome & Shine, plus:</li>
+                        <li>✓ Multi-stage paint correction</li>
+                        <li>✓ Every chrome piece hand-polished</li>
+                        <li>✓ Engine compartment detail</li>
+                        <li>✓ Spoke & rim detailing</li>
+                        <li>✓ Leather restoration treatment</li>
+                        <li>✓ Premium ceramic coating</li>
+                        <li>✓ Custom detail brush work</li>
+                        <li>✓ 6-month protection warranty</li>
+                    </ul>
+                    <a href="#" onclick="openBookingModal(); return false;" class="cta-button" style="font-size: 0.9rem; display: inline-block; margin-top: 10px;">Book Now</a>
                 </div>
 
-                <!-- Seasonal Prep Package -->
-                <div class="package-card">
-                    <div class="package-header presidential">
-                        <h3 class="package-title">Seasonal Prep Detail</h3>
-                        <div class="package-price">$125 - $155</div>
-                        <p class="package-tier">Winterization or spring awakening</p>
-                    </div>
-                    <div class="package-body">
-                        <p class="package-description">Prepare your bike for storage or riding season</p>
-                        <ul class="package-features">
-                            <li>âœ“ Complete wash & decontamination</li>
-                            <li>âœ“ Full chrome & metal protection</li>
-                            <li>âœ“ Chain deep clean & lubrication</li>
-                            <li>âœ“ Leather conditioning & protection</li>
-                            <li>âœ“ Tire dressing & protection</li>
-                            <li>âœ“ Battery terminal cleaning</li>
-                            <li>âœ“ Long-term wax protection</li>
-                            <li>âœ“ Storage recommendations included</li>
-                        </ul>
-                        <button onclick="openBookingModal('Seasonal Prep Detail')" class="package-btn presidential">Book Seasonal Prep</button>
-                    </div>
+                <!-- Seasonal Prep -->
+                <div class="pkg-card">
+                    <div class="pkg-badge">SEASONAL</div>
+                    <h3 class="pkg-title">Seasonal Prep Detail</h3>
+                    <div class="pkg-price">$125–$155</div>
+                    <p class="pkg-desc">Winterization or spring awakening</p>
+                    <ul class="pkg-features">
+                        <li>✓ Complete wash & decontamination</li>
+                        <li>✓ Full chrome protection</li>
+                        <li>✓ Chain deep clean & lube</li>
+                        <li>✓ Leather conditioning</li>
+                        <li>✓ Tire dressing & protection</li>
+                        <li>✓ Battery terminal cleaning</li>
+                        <li>✓ Long-term wax protection</li>
+                        <li>✓ Storage tips included</li>
+                    </ul>
+                    <a href="#" onclick="openBookingModal(); return false;" class="cta-button" style="font-size: 0.9rem; display: inline-block; margin-top: 10px;">Book Now</a>
                 </div>
             </div>
 
-            <!-- Motorcycle Detail Add-Ons -->
-            <div class="section-header" style="margin-top: 60px;">
-                <h3 class="section-title" style="font-size: 1.6rem;">âš¡ Motorcycle Detail Add-Ons</h3>
-                <p class="section-subtitle">Enhance any package with these specialized services</p>
-            </div>
+            <!-- ADD-ONS -->
+            <h2 style="font-size: 1.6rem; color: #64b5f6; margin-top: 60px; margin-bottom: 20px;">⚡ Motorcycle Add-On Services</h2>
+            <p style="color: #b3d9ff; margin-bottom: 25px; font-size: 0.95rem;">Enhance any package with these specialized services</p>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px;">
-                <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border: 1px solid rgba(66, 165, 245, 0.3); border-radius: 10px; padding: 25px;">
-                    <h4 style="color: #42a5f5; margin: 0 0 10px;">Ceramic Coating</h4>
-                    <p style="color: #c0c0c0; margin: 0 0 10px; font-size: 0.95rem;">Premium paint & chrome protection</p>
-                    <p style="color: white; font-size: 1.3rem; font-weight: bold; margin: 0;">+$185 - $285</p>
-                    <ul style="color: #a0a0a0; font-size: 0.9rem; margin-top: 15px; padding-left: 20px;">
-                        <li>2-year protection warranty</li>
-                        <li>Hydrophobic coating</li>
-                        <li>UV & weather resistance</li>
-                    </ul>
+            <div class="addon-grid">
+                <div class="addon-item">
+                    <h4>Ceramic Coating</h4>
+                    <p style="color: #42a5f5; font-weight: 600; margin-bottom: 5px;">+$185–$285</p>
+                    <p>2-year protection • Hydrophobic • UV & weather resistant</p>
                 </div>
-
-                <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border: 1px solid rgba(66, 165, 245, 0.3); border-radius: 10px; padding: 25px;">
-                    <h4 style="color: #42a5f5; margin: 0 0 10px;">Engine Deep Clean</h4>
-                    <p style="color: #c0c0c0; margin: 0 0 10px; font-size: 0.95rem;">Comprehensive engine detailing</p>
-                    <p style="color: white; font-size: 1.3rem; font-weight: bold; margin: 0;">+$45 - $65</p>
-                    <ul style="color: #a0a0a0; font-size: 0.9rem; margin-top: 15px; padding-left: 20px;">
-                        <li>Degreasing & cleaning</li>
-                        <li>Metal polishing</li>
-                        <li>Protective dressing</li>
-                    </ul>
+                <div class="addon-item">
+                    <h4>Engine Deep Clean</h4>
+                    <p style="color: #42a5f5; font-weight: 600; margin-bottom: 5px;">+$45–$65</p>
+                    <p>Degreasing • Metal polishing • Protective dressing</p>
                 </div>
-
-                <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border: 1px solid rgba(66, 165, 245, 0.3); border-radius: 10px; padding: 25px;">
-                    <h4 style="color: #42a5f5; margin: 0 0 10px;">Wheel Detailing</h4>
-                    <p style="color: #c0c0c0; margin: 0 0 10px; font-size: 0.95rem;">Custom wheel & spoke detail</p>
-                    <p style="color: white; font-size: 1.3rem; font-weight: bold; margin: 0;">+$35 - $55</p>
-                    <ul style="color: #a0a0a0; font-size: 0.9rem; margin-top: 15px; padding-left: 20px;">
-                        <li>Spoke-by-spoke cleaning</li>
-                        <li>Brake dust removal</li>
-                        <li>Rim polishing & protection</li>
-                    </ul>
+                <div class="addon-item">
+                    <h4>Wheel Detailing</h4>
+                    <p style="color: #42a5f5; font-weight: 600; margin-bottom: 5px;">+$35–$55</p>
+                    <p>Spoke-by-spoke • Brake dust removal • Rim polish</p>
                 </div>
-
-                <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border: 1px solid rgba(66, 165, 245, 0.3); border-radius: 10px; padding: 25px;">
-                    <h4 style="color: #42a5f5; margin: 0 0 10px;">Saddle & Leather Restoration</h4>
-                    <p style="color: #c0c0c0; margin: 0 0 10px; font-size: 0.95rem;">Deep conditioning & protection</p>
-                    <p style="color: white; font-size: 1.3rem; font-weight: bold; margin: 0;">+$45 - $75</p>
-                    <ul style="color: #a0a0a0; font-size: 0.9rem; margin-top: 15px; padding-left: 20px;">
-                        <li>Deep cleaning treatment</li>
-                        <li>Leather conditioning</li>
-                        <li>UV protection coating</li>
-                    </ul>
+                <div class="addon-item">
+                    <h4>Saddle & Leather Restoration</h4>
+                    <p style="color: #42a5f5; font-weight: 600; margin-bottom: 5px;">+$45–$75</p>
+                    <p>Deep cleaning • Conditioning • UV protection</p>
+                </div>
+                <div class="addon-item">
+                    <h4>Windshield Coating</h4>
+                    <p style="color: #42a5f5; font-weight: 600; margin-bottom: 5px;">+$35</p>
+                    <p>Water repellent • Improved visibility • UV protection</p>
+                </div>
+                <div class="addon-item">
+                    <h4>Custom Paint Protection Film</h4>
+                    <p style="color: #42a5f5; font-weight: 600; margin-bottom: 5px;">+$65–$125</p>
+                    <p>High-impact areas • Self-healing • 5-year protection</p>
                 </div>
             </div>
 
-            <!-- Motorcycle Services Note -->
-            <div class="cta-container">
-                <p class="cta-text" style="max-width: 900px; margin: 0 auto 20px;">
-                    🏍 <strong>Bike Enthusiast Owned:</strong> We're riders too! Your bike gets the same care and attention we give our own.
-                    ðŸ”§ <strong>Specialized Care:</strong> We understand the unique needs of different bike types - cruisers, sport bikes, touring, adventure, and custom builds.
-                    📅 <strong>Group Rides Welcome:</strong> Bring your riding club! Special group rates for 3+ bikes detailed together.
-                </p>
-                <a href="tel:4127528684" class="cta-button">📞 Schedule Motorcycle Detail: (412) 752-8684</a>
+            <!-- KEY BENEFITS -->
+            <div style="background: rgba(21, 101, 192, 0.08); border: 1px solid rgba(66, 165, 245, 0.2); border-radius: 12px; padding: 40px; margin-top: 60px; text-align: center;">
+                <h3 style="color: #64b5f6; font-size: 1.4rem; margin-top: 0;">🏍 Why Choose Hands Detail for Your Bike?</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 30px; text-align: left;">
+                    <div>
+                        <p style="color: #42a5f5; font-weight: 600; font-size: 1.1rem;">👨‍🔧 Rider-Owned</p>
+                        <p style="color: #b3d9ff; font-size: 0.9rem;">We're riders too. Your bike gets the same care we'd give our own.</p>
+                    </div>
+                    <div>
+                        <p style="color: #42a5f5; font-weight: 600; font-size: 1.1rem;">🎯 Specialized Expertise</p>
+                        <p style="color: #b3d9ff; font-size: 0.9rem;">We understand cruisers, sport bikes, touring, custom builds, and more.</p>
+                    </div>
+                    <div>
+                        <p style="color: #42a5f5; font-weight: 600; font-size: 1.1rem;">🛡️ Paint Protection</p>
+                        <p style="color: #b3d9ff; font-size: 0.9rem;">Premium waxes, ceramic coatings, and protective films available.</p>
+                    </div>
+                    <div>
+                        <p style="color: #42a5f5; font-weight: 600; font-size: 1.1rem;">✨ Chrome Perfection</p>
+                        <p style="color: #b3d9ff; font-size: 0.9rem;">Professional chrome polishing for that showroom shine.</p>
+                    </div>
+                    <div>
+                        <p style="color: #42a5f5; font-weight: 600; font-size: 1.1rem;">🤝 Flexible Scheduling</p>
+                        <p style="color: #b3d9ff; font-size: 0.9rem;">Evenings & weekends available for ride-ready service.</p>
+                    </div>
+                    <div>
+                        <p style="color: #42a5f5; font-weight: 600; font-size: 1.1rem;">👨‍💼 Group Rates</p>
+                        <p style="color: #b3d9ff; font-size: 0.9rem;">Special pricing for riding clubs (3+ bikes detailed together).</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h3>Hands Detail Shop</h3>
-                    <div class="partner-info">
-                        <h4>Professional Auto Detailing</h4>
-                        <p>
-                            Serving Pittsburgh and surrounding areas since 2009.<br>
-                            <strong style="color: #a0a0a0;">Military-Precision Detailing</strong>
-                        </p>
-                    </div>
-                    <p style="margin-top: 15px;">
-                        <strong>🕒 Hours:</strong><br>
-                        Monday - Saturday: 8AM - 6PM<br>
-                        Sunday: By Appointment
-                    </p>
-                </div>
+    <!-- Call to Action -->
+    <section style="background: linear-gradient(135deg, #0d1b2a 0%, #1a2942 50%, #0d1b2a 100%); padding: 60px 20px; text-align: center; border-top: 1px solid rgba(66, 165, 245, 0.2);">
+        <div class="section-container">
+            <h2 style="color: #e0e0e0; font-size: 2rem; margin-bottom: 20px;">Ready to Detail Your Bike?</h2>
+            <p style="color: #b3d9ff; font-size: 1.1rem; margin-bottom: 30px;">Get your motorcycle road-ready or show-ready today.</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="#" onclick="openBookingModal(); return false;" class="cta-button" style="font-size: 1rem;">📅 Book Now</a>
+                <a href="tel:4127528684" class="cta-button" style="background: rgba(66, 165, 245, 0.2); border: 2px solid #42a5f5; font-size: 1rem;">📞 (412) 752-8684</a>
+                <a href="quote.html" class="cta-button" style="background: rgba(76, 175, 80, 0.2); border: 2px solid #4caf50; font-size: 1rem;">✉️ Get Quote</a>
+            </div>
+            <p style="color: #7a7a7a; font-size: 0.9rem; margin-top: 30px;">Rider-owned & operated • Specialized expertise • Chrome perfection • Group rates available</p>
+        </div>
+    </section>
 
-                <div class="footer-section">
-                    <h3>Service Area</h3>
-                    <div class="partner-info">
-                        <h4>Mobile Service</h4>
-                        <p>
-                            We come directly to you!<br>
-                            <strong style="color: #a0a0a0;">Convenience at your location</strong>
-                        </p>
-                    </div>
-                    <p style="margin-top: 15px;">
-                        Proudly serving the Greater Pittsburgh area including Fox Chapel, Sewickley Heights, Upper St. Clair, Arnold, and surrounding communities.
-                    </p>
-                </div>
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>HANDS DETAIL SHOP</h3>
+                <p>Professional Motorcycle & Auto Detailing</p>
+                <p style="color: #888; font-size: 0.85rem;">Veteran-Owned & Operated<br>Pittsburgh, PA & 2-Hour Radius</p>
             </div>
 
-            <div class="footer-bottom">
-                <p>&copy; 2025 Hands Detail Shop | Mobile Detailing Services | All Rights Reserved</p>
-                <p style="margin-top: 10px; font-size: 0.9rem;">Professional Auto Detailing Services | Pittsburgh Area | Licensed & Insured</p>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="booking.html">Book Appointment</a>
+                <a href="quote.html">Get Quote</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="reviews.html">Reviews</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Services</h3>
+                <a href="personal-vehicles.html">Personal Vehicles</a>
+                <a href="marine-services.html">Marine & Yachts</a>
+                <a href="rv-services.html">RV & Motorhomes</a>
+                <a href="fleet-services.html">Fleet & Commercial</a>
+                <a href="motorcycle-services.html">Motorcycle</a>
+                <a href="aircraft-services.html">Aircraft</a>
+                <a href="under-the-hood.html">Mechanical</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p><strong>Phone:</strong> (412) 752-8684</p>
+                <p><strong>Email:</strong> handsdetailshop@gmail.com</p>
+                <p><strong>Hours:</strong> Mon-Sat 8AM-6PM</p>
+                <p style="color: #888; font-size: 0.85rem; margin-top: 15px;">© 2008–2026 Hands Detail Shop<br>A Division of Eden Consciousness Corporation</p>
             </div>
         </div>
     </footer>
 
     <script src="main.js"></script>
-    <script src="pwa-installer.js"></script>
-
-    <!-- Claude AI Chat Widget -->
-    <script>
-    window.addEventListener('load', function() {
-        const chatWidget = document.createElement('div');
-        chatWidget.innerHTML = `<button class="claude-chat-btn" style="position:fixed;bottom:20px;right:20px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#1565c0,#42a5f5);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 4px 12px rgba(21,101,192,0.3);z-index:999;transition:all 0.3s ease" title="Chat with Claude AI" onclick="alert('Claude AI Assistant - Motorcycle detailing questions')">💬</button>`;
-        document.body.appendChild(chatWidget);
-    });
-    </script>
-
-    <!-- Booking Modal -->
-    <div class="modal" id="bookingModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button class="modal-close" onclick="closeBookingModal()">&times;</button>
-                <h2 class="modal-title">Book Your Detail Service</h2>
-                <p class="modal-subtitle">Get a free quote or schedule your appointment</p>
-            </div>
-            <div style="background: rgba(66, 165, 245, 0.15); border: 1px solid #42a5f5; border-radius: 10px; padding: 12px 15px; margin: 0 20px 20px 20px; text-align: center;">
-                <p style="color: #42a5f5; font-weight: 600; margin: 0;">💳 $30 DEPOSIT SECURES YOUR APPOINTMENT</p>
-                <p style="color: #a0a0a0; font-size: 0.9rem; margin: 5px 0 0 0;">Applied toward your total service cost</p>
-            </div>
-            <form class="modal-form" id="bookingForm">
-                <div class="form-group">
-                    <label>Name *</label>
-                    <input type="text" required placeholder="Your full name">
-                </div>
-
-                <div class="form-group">
-                    <label>Phone *</label>
-                    <input type="tel" required placeholder="(412) 555-0000">
-                </div>
-
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" placeholder="your@email.com">
-                </div>
-
-                <div class="form-group">
-                    <label>Motorcycle Information *</label>
-                    <input type="text" required placeholder="Year, Make, Model, Type">
-                </div>
-
-                <div class="form-group">
-                    <label>Service Type *</label>
-                    <select required>
-                        <option value="">Select a service...</option>
-                        <option>Road Ready ($85-105)</option>
-                        <option>Chrome & Shine ($145-185)</option>
-                        <option>Show Bike ($245-295)</option>
-                        <option>Seasonal Prep ($125-155)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Preferred Date</label>
-                    <input type="date">
-                </div>
-
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea rows="3" placeholder="Tell us about your motorcycle or special requests..."></textarea>
-                </div>
-
-                <button type="submit" class="form-submit">Submit Booking Request</button>
-                <p class="form-footer-note">
-                    Or call us directly: <strong>(412) 752-8684</strong>
-                </p>
-            </form>
-        </div>
-    </div>
-
-    <!-- Vehicle Type Filter Script -->
     <script>
         function toggleServicesDropdown(button) {
             button.classList.toggle('active');
         }
-
-        function toggleVehicleType(type, button) {
-            // Update active button
-            document.querySelectorAll('.vehicle-type-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            button.classList.add('active');
-
-            // Show/hide prices based on selected type
-            document.querySelectorAll('.vehicle-price').forEach(priceElement => {
-                if (priceElement.getAttribute('data-vehicle') === type || 
-                    (type === 'all' && priceElement.getAttribute('data-vehicle') === 'all')) {
-                    priceElement.style.display = 'block';
-                } else {
-                    priceElement.style.display = 'none';
-                }
-            });
-        }
     </script>
 
+    <!-- CLAUDE AI CHAT WIDGET -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap');
+        #hds-chat-widget{position:fixed;bottom:24px;right:24px;z-index:99999;font-family:'Barlow',sans-serif}
+        #hds-launcher{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#c8a951 0%,#e8c96a 50%,#a8891f 100%);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(200,169,81,.45),0 2px 8px rgba(0,0,0,.4);transition:transform .2s ease,box-shadow .2s ease;position:relative}
+        #hds-launcher:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(200,169,81,.6),0 2px 12px rgba(0,0,0,.5)}
+        #hds-launcher svg{width:28px;height:28px}
+        .hds-badge{position:absolute;top:-4px;right:-4px;width:20px;height:20px;background:#e74c3c;border-radius:50%;font-size:11px;font-weight:700;color:#fff;display:none;align-items:center;justify-content:center;border:2px solid #0f0f0f}
+        #hds-panel{position:absolute;bottom:78px;right:0;width:370px;max-height:580px;background:#141414;border:1px solid rgba(200,169,81,.25);border-radius:16px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.7),0 0 0 1px rgba(200,169,81,.1);opacity:0;transform:translateY(12px) scale(.97);pointer-events:none;transition:opacity .22s ease,transform .22s ease}
+        #hds-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:all}
+        #hds-header{background:linear-gradient(135deg,#1a1a1a,#1e1b10);border-bottom:1px solid rgba(200,169,81,.2);padding:14px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0}
+        .hds-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#c8a951,#e8c96a);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:17px;color:#0f0f0f;flex-shrink:0;box-shadow:0 0 0 2px rgba(200,169,81,.3)}
+        .hds-header-info{flex:1;min-width:0}
+        .hds-header-name{font-family:'Bebas Neue',sans-serif;font-size:16px;color:#c8a951;letter-spacing:.5px;line-height:1;margin-bottom:2px}
+        .hds-header-sub{font-size:11px;color:rgba(255,255,255,.45);font-weight:400}
+        .hds-online-dot{width:8px;height:8px;background:#2ecc71;border-radius:50%;flex-shrink:0;box-shadow:0 0 6px #2ecc71}
+        #hds-close{background:none;border:none;color:rgba(255,255,255,.35);cursor:pointer;padding:4px;border-radius:6px;transition:color .15s;font-size:18px;line-height:1}
+        #hds-close:hover{color:rgba(255,255,255,.8)}
+        #hds-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+        #hds-messages::-webkit-scrollbar{width:4px}
+        #hds-messages::-webkit-scrollbar-thumb{background:rgba(200,169,81,.25);border-radius:4px}
+        .hds-msg{display:flex;gap:8px;align-items:flex-end;animation:hdsMsgIn .2s ease}
+        @keyframes hdsMsgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+        .hds-msg.user{flex-direction:row-reverse}
+        .hds-msg-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#c8a951,#e8c96a);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:12px;color:#0f0f0f;flex-shrink:0}
+        .hds-msg.user .hds-msg-avatar{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);font-size:11px;font-family:'Barlow',sans-serif;font-weight:600}
+        .hds-bubble{max-width:78%;padding:10px 13px;border-radius:14px;font-size:13.5px;line-height:1.5;word-wrap:break-word}
+        .hds-msg.bot .hds-bubble{background:rgba(255,255,255,.06);color:rgba(255,255,255,.88);border-bottom-left-radius:4px;border:1px solid rgba(255,255,255,.07)}
+        .hds-msg.user .hds-bubble{background:linear-gradient(135deg,#c8a951,#b8991f);color:#0f0f0f;font-weight:600;border-bottom-right-radius:4px}
+        .hds-quick-replies{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 4px;flex-shrink:0}
+        .hds-qr{background:rgba(200,169,81,.1);border:1px solid rgba(200,169,81,.3);color:#c8a951;font-family:'Barlow',sans-serif;font-size:12px;font-weight:600;padding:5px 10px;border-radius:20px;cursor:pointer;transition:all .15s;white-space:nowrap}
+        .hds-qr:hover{background:rgba(200,169,81,.2);border-color:#c8a951}
+        .hds-typing{display:flex;gap:4px;align-items:center;padding:10px 13px;background:rgba(255,255,255,.06);border-radius:14px;border-bottom-left-radius:4px;border:1px solid rgba(255,255,255,.07);width:fit-content}
+        .hds-dot{width:6px;height:6px;background:rgba(200,169,81,.6);border-radius:50%;animation:hdsBounce 1.2s ease infinite}
+        .hds-dot:nth-child(2){animation-delay:.2s}
+        .hds-dot:nth-child(3){animation-delay:.4s}
+        @keyframes hdsBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+        #hds-input-area{display:flex;gap:8px;padding:12px 14px;border-top:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);flex-shrink:0}
+        #hds-input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:9px 12px;color:rgba(255,255,255,.88);font-family:'Barlow',sans-serif;font-size:13.5px;outline:none;resize:none;min-height:38px;max-height:100px;line-height:1.4;transition:border-color .15s}
+        #hds-input::placeholder{color:rgba(255,255,255,.3)}
+        #hds-input:focus{border-color:rgba(200,169,81,.4)}
+        #hds-send{width:38px;height:38px;background:linear-gradient(135deg,#c8a951,#b8991f);border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .15s,box-shadow .15s;align-self:flex-end}
+        #hds-send:hover{transform:scale(1.05);box-shadow:0 4px 12px rgba(200,169,81,.4)}
+        #hds-send svg{width:16px;height:16px}
+        #hds-footer{text-align:center;padding:6px 14px 10px;font-size:10px;color:rgba(255,255,255,.2);flex-shrink:0}
+        @media(max-width:480px){#hds-panel{width:calc(100vw - 24px);right:0;max-height:70vh}#hds-chat-widget{bottom:16px;right:12px}}
+    </style>
 
-
-<!-- ============================================================
-     HANDS DETAIL SHOP — CLAUDE AI CHAT WIDGET
-     Powered by Claude API via Firebase Cloud Function
-     ============================================================ -->
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap');
-#hds-chat-widget{position:fixed;bottom:24px;right:24px;z-index:99999;font-family:'Barlow',sans-serif}
-#hds-launcher{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#c8a951 0%,#e8c96a 50%,#a8891f 100%);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(200,169,81,.45),0 2px 8px rgba(0,0,0,.4);transition:transform .2s ease,box-shadow .2s ease;position:relative}
-#hds-launcher:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(200,169,81,.6),0 2px 12px rgba(0,0,0,.5)}
-#hds-launcher svg{width:28px;height:28px}
-.hds-badge{position:absolute;top:-4px;right:-4px;width:20px;height:20px;background:#e74c3c;border-radius:50%;font-size:11px;font-weight:700;color:#fff;display:none;align-items:center;justify-content:center;border:2px solid #0f0f0f}
-#hds-panel{position:absolute;bottom:78px;right:0;width:370px;max-height:580px;background:#141414;border:1px solid rgba(200,169,81,.25);border-radius:16px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.7),0 0 0 1px rgba(200,169,81,.1);opacity:0;transform:translateY(12px) scale(.97);pointer-events:none;transition:opacity .22s ease,transform .22s ease}
-#hds-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:all}
-#hds-header{background:linear-gradient(135deg,#1a1a1a,#1e1b10);border-bottom:1px solid rgba(200,169,81,.2);padding:14px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0}
-.hds-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#c8a951,#e8c96a);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:17px;color:#0f0f0f;flex-shrink:0;box-shadow:0 0 0 2px rgba(200,169,81,.3)}
-.hds-header-info{flex:1;min-width:0}
-.hds-header-name{font-family:'Bebas Neue',sans-serif;font-size:16px;color:#c8a951;letter-spacing:.5px;line-height:1;margin-bottom:2px}
-.hds-header-sub{font-size:11px;color:rgba(255,255,255,.45);font-weight:400}
-.hds-online-dot{width:8px;height:8px;background:#2ecc71;border-radius:50%;flex-shrink:0;box-shadow:0 0 6px #2ecc71}
-#hds-close{background:none;border:none;color:rgba(255,255,255,.35);cursor:pointer;padding:4px;border-radius:6px;transition:color .15s;font-size:18px;line-height:1}
-#hds-close:hover{color:rgba(255,255,255,.8)}
-#hds-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
-#hds-messages::-webkit-scrollbar{width:4px}
-#hds-messages::-webkit-scrollbar-thumb{background:rgba(200,169,81,.25);border-radius:4px}
-.hds-msg{display:flex;gap:8px;align-items:flex-end;animation:hdsMsgIn .2s ease}
-@keyframes hdsMsgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.hds-msg.user{flex-direction:row-reverse}
-.hds-msg-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#c8a951,#e8c96a);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:12px;color:#0f0f0f;flex-shrink:0}
-.hds-msg.user .hds-msg-avatar{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);font-size:11px;font-family:'Barlow',sans-serif;font-weight:600}
-.hds-bubble{max-width:78%;padding:10px 13px;border-radius:14px;font-size:13.5px;line-height:1.5;word-wrap:break-word}
-.hds-msg.bot .hds-bubble{background:rgba(255,255,255,.06);color:rgba(255,255,255,.88);border-bottom-left-radius:4px;border:1px solid rgba(255,255,255,.07)}
-.hds-msg.user .hds-bubble{background:linear-gradient(135deg,#c8a951,#b8991f);color:#0f0f0f;font-weight:600;border-bottom-right-radius:4px}
-.hds-quick-replies{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 4px;flex-shrink:0}
-.hds-qr{background:rgba(200,169,81,.1);border:1px solid rgba(200,169,81,.3);color:#c8a951;font-family:'Barlow',sans-serif;font-size:12px;font-weight:600;padding:5px 10px;border-radius:20px;cursor:pointer;transition:all .15s;white-space:nowrap}
-.hds-qr:hover{background:rgba(200,169,81,.2);border-color:#c8a951}
-.hds-typing{display:flex;gap:4px;align-items:center;padding:10px 13px;background:rgba(255,255,255,.06);border-radius:14px;border-bottom-left-radius:4px;border:1px solid rgba(255,255,255,.07);width:fit-content}
-.hds-dot{width:6px;height:6px;background:rgba(200,169,81,.6);border-radius:50%;animation:hdsBounce 1.2s ease infinite}
-.hds-dot:nth-child(2){animation-delay:.2s}
-.hds-dot:nth-child(3){animation-delay:.4s}
-@keyframes hdsBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
-#hds-input-area{display:flex;gap:8px;padding:12px 14px;border-top:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);flex-shrink:0}
-#hds-input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:9px 12px;color:rgba(255,255,255,.88);font-family:'Barlow',sans-serif;font-size:13.5px;outline:none;resize:none;min-height:38px;max-height:100px;line-height:1.4;transition:border-color .15s}
-#hds-input::placeholder{color:rgba(255,255,255,.3)}
-#hds-input:focus{border-color:rgba(200,169,81,.4)}
-#hds-send{width:38px;height:38px;background:linear-gradient(135deg,#c8a951,#b8991f);border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .15s,box-shadow .15s;align-self:flex-end}
-#hds-send:hover{transform:scale(1.05);box-shadow:0 4px 12px rgba(200,169,81,.4)}
-#hds-send svg{width:16px;height:16px}
-#hds-footer{text-align:center;padding:6px 14px 10px;font-size:10px;color:rgba(255,255,255,.2);flex-shrink:0}
-@media(max-width:480px){#hds-panel{width:calc(100vw - 24px);right:0;max-height:70vh}#hds-chat-widget{bottom:16px;right:12px}}
-</style>
-
-<div id="hds-chat-widget">
-  <button id="hds-launcher" aria-label="Chat with Hands Detail Shop">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    <span class="hds-badge" id="hds-badge">1</span>
-  </button>
-  <div id="hds-panel" role="dialog" aria-label="Hands Detail Shop Chat">
-    <div id="hds-header">
-      <div class="hds-avatar">HD</div>
-      <div class="hds-header-info">
-        <div class="hds-header-name">Hands Detail AI</div>
-        <div class="hds-header-sub">Powered by Claude · Replies instantly</div>
-      </div>
-      <div class="hds-online-dot"></div>
-      <button id="hds-close" aria-label="Close chat">✕</button>
+    <div id="hds-chat-widget">
+        <button id="hds-launcher" aria-label="Chat with Hands Detail Shop">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span class="hds-badge" id="hds-badge">1</span>
+        </button>
+        <div id="hds-panel" role="dialog" aria-label="Hands Detail Shop Chat">
+            <div id="hds-header">
+                <div class="hds-avatar">HD</div>
+                <div class="hds-header-info">
+                    <div class="hds-header-name">Hands Detail AI</div>
+                    <div class="hds-header-sub">Powered by Claude · Replies instantly</div>
+                </div>
+                <div class="hds-online-dot"></div>
+                <button id="hds-close" aria-label="Close chat">✕</button>
+            </div>
+            <div id="hds-messages" role="log" aria-live="polite"></div>
+            <div class="hds-quick-replies" id="hds-quick-replies"></div>
+            <div id="hds-input-area">
+                <textarea id="hds-input" placeholder="Ask about motorcycle packages…" rows="1" aria-label="Chat message"></textarea>
+                <button id="hds-send" aria-label="Send message">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
+            </div>
+            <div id="hds-footer">Hands Detail Shop · (412) 752-8684 · handsdetailshop.com</div>
+        </div>
     </div>
-    <div id="hds-messages" role="log" aria-live="polite"></div>
-    <div class="hds-quick-replies" id="hds-quick-replies"></div>
-    <div id="hds-input-area">
-      <textarea id="hds-input" placeholder="Ask about packages, pricing, gift cards…" rows="1" aria-label="Chat message"></textarea>
-      <button id="hds-send" aria-label="Send message">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-      </button>
-    </div>
-    <div id="hds-footer">Hands Detail Shop · (412) 752-8684 · handsdetailshop.com</div>
-  </div>
-</div>
 
-<script>
-(function(){
-'use strict';
-const CONFIG={PROXY_URL:'https://us-central1-hands-detail.cloudfunctions.net/claudeChat',MODEL:'claude-sonnet-4-20250514',MAX_TOKENS:400};
-const SYSTEM=`You are the AI assistant for Hands Detail Shop, a veteran-owned premium mobile auto detailing business based in Arnold, PA, operated by Nazir El. 16+ years of excellence, Air Force trained, serving PA, OH, WV, MD within a 2-hour radius of Pittsburgh.
-
-YOUR ROLE: Help customers choose services, explain packages, quote prices, promote memberships, sell gift certificates, and guide them to book. Be warm, professional, and direct. Never make up prices or services not listed here.
-
-CONTACT: Phone/Text (412) 752-8684 | handsdetailshop.com | Mon–Sat 8AM–6PM, Sun by appt | $30 deposit secures every appointment | PROMO: 15% OFF first-time customers + FREE Tire Shine with any package
-
-━━━ PERSONAL VEHICLE PACKAGES ━━━
-ESSENTIAL — $65–$95: Hand wash & dry, wheel & tire cleaning, tire shine, windows in/out, door jambs, quick interior vacuum, trim inspection.
-EXECUTIVE — $145–$195 (Most Popular): + clay bar, one-step polish, premium wax, full interior vacuum/wipe, leather conditioning, air freshener, 1-month guarantee.
-PREMIUM PLUS — $215–$285: + advanced paint correction (minor), engine bay light detail, carpet/upholstery shampooing, headlight cleaning, trim restoration, interior protection, 3-month guarantee.
-SIGNATURE — $325–$425: + multi-stage paint correction, full engine bay detail, carpet extraction, headlight restoration & coating, complete trim restoration, 6-month sealant, warranty.
-PRESIDENTIAL — $650–$850: + advanced paint correction, premium ceramic coating, complete leather treatment, odor elimination, chrome polish, 2-year warranty, maintenance plan.
-ULTIMATE ARMOR — $1,400–$1,850: + 9H ceramic coating (5-yr warranty), PPF on high-risk areas, wheel ceramic, interior ceramic, undercarriage detail, 5-year comprehensive warranty, annual maintenance.
-
-━━━ INTERIOR-ONLY ━━━
-INTERIOR EXPRESS — $85–$125: Full vacuum, dash/console wipe, door panels, cup holders, windows (inside), air freshener, mats.
-INTERIOR DEEP CLEAN — $185–$265: + shampooing, leather clean/condition, stain treatment, vent detailing, pet hair, headliner, steam cleaning.
-INTERIOR PREMIUM — $365–$485: + odor elimination, leather restoration, trim restoration, fabric protection, seat extraction, UV protection.
-INTERIOR CERAMIC PROTECTION — $585–$785: + interior ceramic coating, fabric/leather protection (3-yr), UV/stain resistance, anti-bacterial, 3-year warranty.
-
-━━━ MEMBERSHIP PLANS (Biweekly Service) ━━━
-Requires one-time restoration detail first: Compact $285 | Mid-Size $365 | SUV/Truck $445 | Luxury $525
-SINGLE CAR: Essential Maintain $75/mo | Premium Maintain $110/mo | Ultimate Maintain $145/mo
-TWO-CAR HOUSEHOLD: Essential $130/mo | Premium $190/mo | Ultimate $250/mo (save $20–$40/mo)
-THREE-CAR HOUSEHOLD: Essential $180/mo | Premium $265/mo | Ultimate $350/mo (save $45–$85/mo)
-CERAMIC UPGRADE: +$500 one-time → -$25/mo forever + 5-year paint protection.
-
-━━━ MOTORCYCLE ━━━
-Road Ready $85–$105 | Chrome & Shine $145–$185 | Show Bike $245–$295 | Seasonal Prep $125–$155
-
-━━━ YACHT / RV / MARINE ━━━
-Custom quotes based on size/condition. Call for free consultation.
-
-━━━ FLEET & COMMERCIAL ━━━
-Custom plans for 2+ vehicles. Volume discounts. Call for fleet proposal.
-
-━━━ AIRCRAFT ━━━
-Custom quotes. Call for consultation.
-
-━━━ MECHANICAL SERVICES (UNDER THE HOOD) ━━━
-Air Force diesel/jet mechanic background. Diagnosis first, you approve before any work. Labor: $75/hr.
-Basic Diagnostic: $50 | Advanced Diagnostic: $100
-Spark Plugs/Coils: $95–$150 | Solenoid: $150–$250 | Sensors: $80–$200
-Oil Change: $45–$75 | Full Fluid Service: $175–$300 | Belt/Hose: $95–$200
-Valve Cover Gasket: $165–$250 | Water Pump: $200–$400 | Serpentine Belt: $125–$225
-Engine Mounts: $300–$550 | Timing Chain: $600–$1,100 | Head Gasket: $800–$1,400
-Brake Pads: $120–$200/axle | Transmission Service: $175–$300 | Transmission Diagnostic: $100
-50% deposit secures parts.
-
-━━━ GIFT CERTIFICATES ━━━
-Perfect for holidays, birthdays, Father's Day, graduation. Any dollar amount or specific package. Call/text (412) 752-8684 to purchase. Payment via Square, cash, or Zelle. Digital or physical certificate provided.
-
-━━━ UPSELL RULES ━━━
-- After Signature/Presidential/Ultimate Armor → ALWAYS mention membership ("Since you're investing in top-tier care, our Monthly Maintain plan keeps it looking this good for just $75–$145/mo")
-- After Executive/Premium Plus → suggest upgrading to Signature for long-term protection
-- Multiple cars mentioned → immediately pitch multi-car household plans and savings
-- First-time customer → remind them of 15% off
-- Mechanical service customer → offer to bundle detail at same time
-- Always mention gift certificates before ending any conversation
-
-━━━ STYLE ━━━
-Keep responses under 4 sentences unless more detail is asked for. Warm, direct, professional. Always end with a clear next step. If unsure of anything, say "Text Nazir at (412) 752-8684 for a custom quote."`;
-const state={open:false,messages:[],typing:false,greeted:false};
-const launcher=document.getElementById('hds-launcher');
-const panel=document.getElementById('hds-panel');
-const closeBtn=document.getElementById('hds-close');
-const msgEl=document.getElementById('hds-messages');
-const inputEl=document.getElementById('hds-input');
-const sendBtn=document.getElementById('hds-send');
-const badge=document.getElementById('hds-badge');
-const qrArea=document.getElementById('hds-quick-replies');
-const INIT_QR=['💰 Pricing & Packages','🎁 Gift Certificates','💎 Memberships','⚙️ Mechanical','📅 Book Now'];
-function setQR(items){qrArea.innerHTML='';items.forEach(l=>{const b=document.createElement('button');b.className='hds-qr';b.textContent=l;b.onclick=()=>{sendMsg(l);setQR([]);};qrArea.appendChild(b);});}
-function appendMsg(r,c){const w=document.createElement('div');w.className=`hds-msg ${r==='user'?'user':'bot'}`;const a=document.createElement('div');a.className='hds-msg-avatar';a.textContent=r==='user'?'You':'HD';const b=document.createElement('div');b.className='hds-bubble';b.innerHTML=c.replace(/\n/g,'<br>');w.appendChild(a);w.appendChild(b);msgEl.appendChild(w);msgEl.scrollTop=msgEl.scrollHeight;}
-function showTyping(){const w=document.createElement('div');w.className='hds-msg bot';w.id='hds-typing';const a=document.createElement('div');a.className='hds-msg-avatar';a.textContent='HD';const d=document.createElement('div');d.className='hds-typing';for(let i=0;i<3;i++){const x=document.createElement('div');x.className='hds-dot';d.appendChild(x);}w.appendChild(a);w.appendChild(d);msgEl.appendChild(w);msgEl.scrollTop=msgEl.scrollHeight;}
-function removeTyping(){const e=document.getElementById('hds-typing');if(e)e.remove();}
-async function callClaude(m){state.messages.push({role:'user',content:m});showTyping();state.typing=true;try{const res=await fetch(CONFIG.PROXY_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:CONFIG.MODEL,max_tokens:CONFIG.MAX_TOKENS,system:SYSTEM,messages:state.messages})});if(!res.ok)throw new Error('HTTP '+res.status);const data=await res.json();const reply=data?.content?.[0]?.text||"I'm having trouble. Call (412) 752-8684!";state.messages.push({role:'assistant',content:reply});removeTyping();appendMsg('assistant',reply);if(state.messages.length<=3)setQR(['🎁 Gift Cards','💎 Membership','📅 Book','📞 (412) 752-8684']);}catch(e){removeTyping();appendMsg('assistant',"I'm having trouble connecting. Call or text **(412) 752-8684** — Nazir or the team will help!");console.error('[HDS]',e);}state.typing=false;}
-function sendMsg(t){const m=(t||inputEl.value).trim();if(!m||state.typing)return;inputEl.value='';inputEl.style.height='auto';setQR([]);appendMsg('user',m);callClaude(m);}
-function openPanel(){state.open=true;panel.classList.add('open');badge.style.display='none';inputEl.focus();if(!state.greeted){state.greeted=true;setTimeout(()=>{appendMsg('assistant',"Hey! 👋 Welcome to Hands Detail Shop — Pittsburgh's premier mobile detailing.\n\nI'm your AI assistant. Ask me about packages, pricing, memberships, gift certificates, or booking. What can I help you with?");setQR(INIT_QR);},300);}}
-function closePanel(){state.open=false;panel.classList.remove('open');}
-launcher.onclick=()=>state.open?closePanel():openPanel();closeBtn.onclick=closePanel;sendBtn.onclick=()=>sendMsg();inputEl.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}});inputEl.addEventListener('input',()=>{inputEl.style.height='auto';inputEl.style.height=Math.min(inputEl.scrollHeight,100)+'px';});setTimeout(()=>{if(!state.open){badge.style.display='flex';}},4000);document.addEventListener('click',e=>{if(state.open&&!document.getElementById('hds-chat-widget').contains(e.target))closePanel();});
-})();
-</script>
-
+    <script src="claude-integration-enhanced.js"></script>
 </body>
 </html>
-

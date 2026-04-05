@@ -298,11 +298,29 @@ exports.claudeAI = functions.https.onRequest((request, response) => {
 
       console.log('🤖 Claude request received:', message.substring(0, 50) + '...');
 
-      // Get API key from environment (Firebase stores as anthropic.api_key)
-      const apiKey = process.env.ANTHROPIC_API_KEY;
+      // Get API key from Firebase config
+      let apiKey;
+      try {
+        apiKey = functions.config().anthropic.api_key;
+      } catch (e) {
+        apiKey = process.env.ANTHROPIC_API_KEY;
+      }
+      
+      // Try backup key if primary not available
       if (!apiKey) {
+        try {
+          apiKey = functions.config().anthropic.key;
+        } catch (e) {
+          // key not available
+        }
+      }
+      
+      if (!apiKey) {
+        console.error('❌ API key not configured');
         return response.status(500).json({ error: 'API key not configured' });
       }
+
+      console.log('🔑 Using API key starting with:', apiKey.substring(0, 20) + '...');
 
       // Call Anthropic API
       const anthropicResponse = await fetch('https://api.anthropic.com/v1/messages', {
@@ -313,7 +331,7 @@ exports.claudeAI = functions.https.onRequest((request, response) => {
           'content-type': 'application/json',
         },
         body: JSON.stringify({
-          model: 'claude-3-5-sonnet-20241022',
+          model: 'claude-opus-4-1',
           max_tokens: 1024,
           system: SYSTEM_PROMPT,
           messages: [{
@@ -362,18 +380,44 @@ exports.claudeChat = functions.https.onRequest((request, response) => {
         return response.status(405).json({ error: 'Method not allowed' });
       }
 
-      const { message, history } = request.body;
-      if (!message) {
-        return response.status(400).json({ error: 'Message required' });
+      // Support both old format (message, history) and new format (model, messages, system, max_tokens)
+      let messages = request.body.messages;
+      let model = request.body.model || 'claude-opus-4-1';
+      let maxTokens = request.body.max_tokens || 400;
+      let system = request.body.system || SYSTEM_PROMPT;
+
+      // Fallback to old format if new format not provided
+      if (!messages && request.body.message) {
+        const history = request.body.history && Array.isArray(request.body.history) ? request.body.history : [];
+        messages = [...history, { role: 'user', content: request.body.message }];
       }
 
-      const apiKey = process.env.ANTHROPIC_API_KEY;
+      if (!messages || !Array.isArray(messages) || messages.length === 0) {
+        return response.status(400).json({ error: 'Messages required' });
+      }
+
+      let apiKey;
+      try {
+        apiKey = functions.config().anthropic.api_key;
+      } catch (e) {
+        apiKey = process.env.ANTHROPIC_API_KEY;
+      }
+      
+      // Try backup key if primary not available
       if (!apiKey) {
+        try {
+          apiKey = functions.config().anthropic.key;
+        } catch (e) {
+          // key not available
+        }
+      }
+      
+      if (!apiKey) {
+        console.error('❌ API key not configured');
         return response.status(500).json({ error: 'API key not configured' });
       }
 
-      const messages = history && Array.isArray(history) ? history : [];
-      messages.push({ role: 'user', content: message });
+      console.log('🔑 Using API key starting with:', apiKey.substring(0, 20) + '...');
 
       const anthropicResponse = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
@@ -383,9 +427,9 @@ exports.claudeChat = functions.https.onRequest((request, response) => {
           'content-type': 'application/json',
         },
         body: JSON.stringify({
-          model: 'claude-3-5-sonnet-20241022',
-          max_tokens: 1024,
-          system: SYSTEM_PROMPT,
+          model: model,
+          max_tokens: maxTokens,
+          system: system,
           messages: messages
         })
       });
@@ -402,6 +446,7 @@ exports.claudeChat = functions.https.onRequest((request, response) => {
       const assistantMessage = data.content[0].text;
 
       return response.status(200).json({
+        content: [{ text: assistantMessage }],
         reply: assistantMessage,
         message: assistantMessage
       });
@@ -432,9 +477,21 @@ exports.processBooking = functions.https.onRequest((request, response) => {
         return response.status(400).json({ error: 'Missing required fields' });
       }
 
+      // Get Square access token
+      let squareAccessToken;
+      try {
+        squareAccessToken = functions.config().square.access_token;
+      } catch (e) {
+        squareAccessToken = process.env.SQUARE_ACCESS_TOKEN;
+      }
+      if (!squareAccessToken) {
+        return response.status(500).json({ error: 'Square not configured' });
+      }
+
+      // Process payment with Square
       const { Client, Environment } = require('square');
       const squareClient = new Client({
-        accessToken: process.env.SQUARE_ACCESS_TOKEN,
+        accessToken: squareAccessToken,
         environment: Environment.Production,
       });
 
@@ -478,17 +535,29 @@ exports.processBooking = functions.https.onRequest((request, response) => {
       });
 
       // Send confirmation email
+      let gmailEmail, gmailPassword;
+      try {
+        gmailEmail = functions.config().gmail.email;
+        gmailPassword = functions.config().gmail.password;
+      } catch (e) {
+        gmailEmail = process.env.GMAIL_EMAIL || 'handsdetailshop@gmail.com';
+        gmailPassword = process.env.GMAIL_PASSWORD;
+      }
+      if (!gmailPassword) {
+        gmailEmail = 'handsdetailshop@gmail.com';
+      }
+
       const nodemailer = require('nodemailer');
       const transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-          user: process.env.GMAIL_EMAIL || 'handsdetailshop@gmail.com',
-          pass: process.env.GMAIL_PASSWORD,
+          user: gmailEmail,
+          pass: gmailPassword,
         }
       });
 
       await transporter.sendMail({
-        from: process.env.GMAIL_EMAIL || 'handsdetailshop@gmail.com',
+        from: gmailEmail,
         to: customerEmail,
         subject: `Booking Confirmation - ${serviceType} Service`,
         html: `
@@ -503,7 +572,16 @@ exports.processBooking = functions.https.onRequest((request, response) => {
       });
 
       // Add to Google Calendar if credentials available
-      if (process.env.GOOGLE_CALENDAR_ID && process.env.GOOGLE_API_KEY) {
+      let googleCalendarId, googleApiKey;
+      try {
+        googleCalendarId = functions.config().google.calendar_id;
+        googleApiKey = functions.config().google.api_key;
+      } catch (e) {
+        googleCalendarId = process.env.GOOGLE_CALENDAR_ID;
+        googleApiKey = process.env.GOOGLE_API_KEY;
+      }
+
+      if (googleCalendarId && googleApiKey) {
         try {
           const eventDate = new Date(`${appointmentDate}T${appointmentTime}:00`);
           const endTime = new Date(eventDate.getTime() + 2 * 60 * 60 * 1000);
@@ -522,7 +600,7 @@ exports.processBooking = functions.https.onRequest((request, response) => {
             }
           };
 
-          const calendarResponse = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(process.env.GOOGLE_CALENDAR_ID)}/events?key=${process.env.GOOGLE_API_KEY}`, {
+          const calendarResponse = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(googleCalendarId)}/events?key=${googleApiKey}`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

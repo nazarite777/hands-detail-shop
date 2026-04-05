@@ -11,7 +11,7 @@ export default [
       sourceType: 'module',
       globals: {
         ...globals.browser,
-        Tawk_API: 'readonly',
+
       },
     },
     rules: {

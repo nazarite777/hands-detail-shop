@@ -265,7 +265,7 @@ All main pages have been updated with new navigation links:
 - [ ] Mobile responsive on all new pages
 - [ ] Email integration fallback works (mailto)
 - [ ] All internal links are correct
-- [ ] Tawk.to chat widget appears on all pages
+- [ ] Claude AI chat widget appears on all pages
 
 ---
 
