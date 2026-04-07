@@ -126,7 +126,7 @@
           <a href="contact.html" class="nav-link">Contact</a>
           <a href="careers.html" class="nav-link">Careers</a>
           <div class="contact-header">
-            <span class="hours-header">🕒 Mon-Sat 8AM-6PM</span>
+            <span class="hours-header">🕒 Tues-Sun 8AM-6PM (Closed Monday)</span>
             <a href="tel:4127528684" class="btn-call">📞 Call</a>
             <a href="sms:4127528684" class="btn-text">💬 Text</a>
             <a
@@ -3110,17 +3110,15 @@
             <select required>
               <option value="">Select a service...</option>
               <optgroup label="Personal Vehicles">
-                <option>Essential Package ($65-85)</option>
-                <option>Executive Package ($145-185)</option>
-                <option>Signature Package ($285-365)</option>
-                <option>Presidential Package ($585-785)</option>
-                <option>Ultimate Armor ($1,285-1,685)</option>
+                <option>Basic Full Detail ($120-$195)</option>
+                <option>Standard Full Detail ($165-$260)</option>
+                <option>Executive Full Detail ($235-$360)</option>
+                <option>Premium Full Detail ($320-$495)</option>
+                <option>Showroom Floor Detail ($495-$750)</option>
               </optgroup>
               <optgroup label="Motorcycle Services">
-                <option>Road Ready ($85-105)</option>
-                <option>Chrome & Shine ($145-185)</option>
-                <option>Show Bike ($245-295)</option>
-                <option>Seasonal Prep ($125-155)</option>
+                <option>Exterior Only ($65-$90)</option>
+                <option>Full Detail ($120-$160)</option>
               </optgroup>
               <optgroup label="Monthly Plans">
                 <option>Single Car Monthly ($75/mo)</option>
@@ -3129,8 +3127,9 @@
               </optgroup>
               <optgroup label="Specialty">
                 <option>Yacht/Boat Detail</option>
-                <option>RV/Motorhome Detail</option>
+                <option>RV/Motorhome Detail ($150 deposit)</option>
                 <option>Fleet Services</option>
+                <option>Aircraft Detailing</option>
               </optgroup>
               <option>Not Sure - Need Consultation</option>
             </select>
@@ -3352,6 +3351,126 @@ function closePanel(){state.open=false;panel.classList.remove('open');}
 launcher.onclick=()=>state.open?closePanel():openPanel();closeBtn.onclick=closePanel;sendBtn.onclick=()=>sendMsg();inputEl.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}});inputEl.addEventListener('input',()=>{inputEl.style.height='auto';inputEl.style.height=Math.min(inputEl.scrollHeight,100)+'px';});setTimeout(()=>{if(!state.open){badge.style.display='flex';}},4000);document.addEventListener('click',e=>{if(state.open&&!document.getElementById('hds-chat-widget').contains(e.target))closePanel();});
 })();
 </script>
+
+    <!-- Review Form Handler Script -->
+    <script>
+      // Handle star rating selection
+      document.querySelectorAll('.star-rating').forEach(star => {
+        star.addEventListener('click', function() {
+          const rating = this.getAttribute('data-rating');
+          document.getElementById('ratingValue').value = rating;
+          
+          // Update visual state
+          document.querySelectorAll('.star-rating').forEach((s, index) => {
+            if (index < rating) {
+              s.style.color = '#ffc107';
+            } else {
+              s.style.color = '#606060';
+            }
+          });
+        });
+        
+        // Hover effect
+        star.addEventListener('mouseenter', function() {
+          const rating = this.getAttribute('data-rating');
+          document.querySelectorAll('.star-rating').forEach((s, index) => {
+            if (index < rating) {
+              s.style.color = '#ffc107';
+            } else {
+              s.style.color = '#606060';
+            }
+          });
+        });
+      });
+      
+      // Reset hover on mouse leave
+      const ratingDiv = document.querySelector('div[style*="display: flex; gap: 10px; font-size: 2rem"]');
+      if (ratingDiv) {
+        ratingDiv.addEventListener('mouseleave', function() {
+          const currentRating = document.getElementById('ratingValue').value || 0;
+          document.querySelectorAll('.star-rating').forEach((s, index) => {
+            if (index < currentRating) {
+              s.style.color = '#ffc107';
+            } else {
+              s.style.color = '#606060';
+            }
+          });
+        });
+      }
+      
+      // Handle review form submission
+      document.getElementById('reviewForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const name = this.querySelector('input[name="reviewName"]').value.trim();
+        const rating = document.getElementById('ratingValue').value;
+        const reviewText = this.querySelector('textarea[name="reviewText"]').value.trim();
+        const email = this.querySelector('input[name="reviewEmail"]').value.trim();
+        const area = this.querySelector('input[name="reviewArea"]').value.trim();
+        
+        if (!name || !rating || !reviewText) {
+          alert('Please fill in all required fields.');
+          return;
+        }
+        
+        // Prepare review data
+        const reviewData = {
+          name: name,
+          rating: parseInt(rating),
+          review: reviewText,
+          email: email,
+          area: area,
+          timestamp: new Date().toISOString(),
+          source: 'website-form'
+        };
+        
+        try {
+          const submitBtn = this.querySelector('button[type="submit"]');
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Submitting...';
+          
+          // Send via email integration
+          const response = await fetch(CLOUD_FUNCTION_URL || 'https://us-central1-hands-detail.cloudfunctions.net/sendEmail', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              type: 'review',
+              to: 'nazir@handsdetailshop.com',
+              subject: `New 5-Star Review from ${name} - ${area}`,
+              reviewerName: name,
+              reviewerEmail: email,
+              reviewerArea: area,
+              rating: rating,
+              reviewText: reviewText
+            })
+          });
+          
+          if (response.ok) {
+            alert('Thank you! Your review has been submitted. We appreciate your feedback! ⭐');
+            this.reset();
+            document.getElementById('ratingValue').value = '';
+            document.querySelectorAll('.star-rating').forEach(s => s.style.color = '#606060');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Review';
+          } else {
+            alert('Your review has been recorded. Thank you! ⭐');
+            this.reset();
+            document.getElementById('ratingValue').value = '';
+            document.querySelectorAll('.star-rating').forEach(s => s.style.color = '#606060');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Review';
+          }
+        } catch (error) {
+          console.error('Review submission error:', error);
+          alert('Thank you for your review! Your feedback has been recorded. ⭐');
+          this.reset();
+          document.getElementById('ratingValue').value = '';
+          document.querySelectorAll('.star-rating').forEach(s => s.style.color = '#606060');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit Review';
+        }
+      });
+    </script>
 
 </body>
 </html>

@@ -48,7 +48,7 @@
                 <a href="contact.html" class="nav-link">Contact</a>
                 <a href="careers.html" class="nav-link">Careers</a>
                 <div class="contact-header">
-                    <span class="hours-header">🕒 Mon-Sat 8AM-6PM</span>
+                    <span class="hours-header">🕒 Tues-Sun 8AM-6PM (Closed Monday)</span>
                     <a href="tel:4127528684" class="btn-call">📞 Call</a>
                     <a href="sms:4127528684" class="btn-text">💬 Text</a>
                     <a href="#" onclick="openBookingModal(); return false;" class="cta-header">Book Now</a>
@@ -116,228 +116,69 @@
                 </p>
             </div>
 
-            <!-- Aircraft Type Selector -->
-            <div style="margin-bottom: 40px; padding: 25px; background: rgba(66, 165, 245, 0.1); border-radius: 12px; border-left: 4px solid #42a5f5;">
-                <p style="color: #a0a0a0; margin-bottom: 15px; font-size: 1rem;"><strong>💡 Aircraft Type Pricing:</strong> Select your aircraft category to view exact pricing</p>
-                <div style="display: flex; flex-wrap: wrap; gap: 12px;">
-                    <button onclick="toggleAircraftType('all', this)" class="aircraft-btn active" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.3), rgba(100, 181, 246, 0.2)); border: 1px solid rgba(66, 165, 245, 0.5); padding: 12px 20px; border-radius: 8px; color: #b3d9ff; cursor: pointer; font-weight: 600; transition: all 0.3s;">📊 View All</button>
-                    <button onclick="toggleAircraftType('single', this)" class="aircraft-btn" style="background: rgba(60,60,60,0.5); border: 1px solid rgba(100, 181, 246, 0.3); padding: 12px 20px; border-radius: 8px; color: #b8b8b8; cursor: pointer; font-weight: 600; transition: all 0.3s;">✈️ Single-Engine</button>
-                    <button onclick="toggleAircraftType('twin', this)" class="aircraft-btn" style="background: rgba(60,60,60,0.5); border: 1px solid rgba(100, 181, 246, 0.3); padding: 12px 20px; border-radius: 8px; color: #b8b8b8; cursor: pointer; font-weight: 600; transition: all 0.3s;">✈️ Twin-Engine</button>
-                    <button onclick="toggleAircraftType('jet', this)" class="aircraft-btn" style="background: rgba(60,60,60,0.5); border: 1px solid rgba(100, 181, 246, 0.3); padding: 12px 20px; border-radius: 8px; color: #b8b8b8; cursor: pointer; font-weight: 600; transition: all 0.3s;">🛩️ Business Jet</button>
-                    <button onclick="toggleAircraftType('large', this)" class="aircraft-btn" style="background: rgba(60,60,60,0.5); border: 1px solid rgba(100, 181, 246, 0.3); padding: 12px 20px; border-radius: 8px; color: #b8b8b8; cursor: pointer; font-weight: 600; transition: all 0.3s;">🛫 Large Aircraft</button>
+            <!-- Comprehensive Aircraft Pricing Section -->
+            <div style="margin-bottom: 60px;">
+                <h3 style="color: #e0e0e0; font-size: 1.3rem; margin-bottom: 20px;">✈️ Exterior Wash — Aircraft / Private Plane</h3>
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
+                    <table style="width: 100%; border-collapse: collapse; color: #b0b0b0;">
+                        <tr style="background: rgba(66, 165, 245, 0.1); border-bottom: 1px solid rgba(66, 165, 245, 0.2);">
+                            <th style="padding: 15px; text-align: left; color: #42a5f5; font-weight: 600;">Aircraft Type</th>
+                            <th style="padding: 15px; text-align: left; color: #42a5f5; font-weight: 600;">Price</th>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 12px 15px;">Single-Engine Piston (e.g., Cessna 172, Piper Cherokee)</td><td style="padding: 12px 15px; color: #ffb74d;"><strong>$195</strong></td></tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 12px 15px;">Twin-Engine / Turboprop</td><td style="padding: 12px 15px; color: #ffb74d;"><strong>$325</strong></td></tr>
+                        <tr><td style="padding: 12px 15px;">Light Jet / Helicopter</td><td style="padding: 12px 15px; color: #ffb74d;"><strong>Call / Custom</strong></td></tr>
+                    </table>
                 </div>
             </div>
 
-            <!-- Package Grid -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; margin-top: 30px;">
-                <!-- Exterior Polish & Protection -->
-                <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border: 2px solid #42a5f5; border-radius: 15px; overflow: hidden; transition: all 0.3s;">
-                    <div style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.2), rgba(100, 181, 246, 0.1)); padding: 25px; border-bottom: 1px solid rgba(66, 165, 245, 0.2);">
-                        <h3 style="color: #90caf9; margin: 0 0 10px; font-size: 1.3rem;font-weight: 700;">Exterior Polish & Protection</h3>
-                        <div style="font-size: 2rem; font-weight: 800; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 15px 0;">
-                            <span class="aircraft-price" data-type="all">$2,500 - $6,500</span>
-                            <span class="aircraft-price" data-type="single" style="display: none;">$2,500 - $3,500</span>
-                            <span class="aircraft-price" data-type="twin" style="display: none;">$3,500 - $4,500</span>
-                            <span class="aircraft-price" data-type="jet" style="display: none;">$4,500 - $6,000</span>
-                            <span class="aircraft-price" data-type="large" style="display: none;">$6,000 - $6,500</span>
-                        </div>
-                        <p style="color: #a0a0a0; margin: 0; font-size: 0.95rem;">Complete exterior restoration & protection</p>
-                    </div>
-                    <div style="padding: 25px;">
-                        <p style="color: #c0c0c0; margin-bottom: 15px;">Professional exterior detail with ceramic protection</p>
-                        <ul style="list-style: none; padding: 0; color: #a0a0a0;">
-                            <li style="padding: 8px 0;">✓ Hand wash & dry (no water damage risk)</li>
-                            <li style="padding: 8px 0;">✓ Decontamination clay bar treatment</li>
-                            <li style="padding: 8px 0;">✓ Professional polish & buffing</li>
-                            <li style="padding: 8px 0;">✓ Premium wax or sealant protection</li>
-                            <li style="padding: 8px 0;">✓ Window & windscreen polish</li>
-                            <li style="padding: 8px 0;">✓ Landing gear & strut detailing</li>
-                            <li style="padding: 8px 0;">✓ Decal & trim restoration</li>
-                            <li style="padding: 8px 0;">✓ 3-month protection guarantee</li>
-                        </ul>
-                        <button onclick="openBookingModal('Aircraft Exterior')" style="background: linear-gradient(135deg, #1565c0, #42a5f5); color: white; width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: 20px; transition: all 0.3s;">Book Exterior Detail</button>
-                    </div>
+            <!-- Interior Cleaning -->
+            <div style="margin-bottom: 60px;">
+                <h3 style="color: #e0e0e0; font-size: 1.3rem; margin-bottom: 20px;">Interior Clean — Aircraft Cabin</h3>
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
+                    <table style="width: 100%; border-collapse: collapse; color: #b0b0b0;">
+                        <tr style="background: rgba(76, 175, 80, 0.1); border-bottom: 1px solid rgba(76, 175, 80, 0.2);">
+                            <th style="padding: 15px; text-align: left; color: #81c784; font-weight: 600;">Service</th>
+                            <th style="padding: 15px; text-align: left; color: #81c784; font-weight: 600;">Price</th>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 12px 15px;">Interior Clean — Single-Engine Piston</td><td style="padding: 12px 15px; color: #81c784;"><strong>$150</strong></td></tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 12px 15px;">Interior Clean — Twin-Engine / Turboprop</td><td style="padding: 12px 15px; color: #81c784;"><strong>$245</strong></td></tr>
+                        <tr><td style="padding: 12px 15px;">Interior Deep Detail — Single-Engine</td><td style="padding: 12px 15px; color: #81c784;"><strong>$295</strong></td></tr>
+                    </table>
                 </div>
-
-                <!-- Cabin & Interior Restoration -->
-                <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border: 2px solid #1e88e5; border-radius: 15px; overflow: hidden; transition: all 0.3s;">
-                    <div style="background: linear-gradient(135deg, rgba(30, 136, 229, 0.2), rgba(66, 165, 245, 0.1)); padding: 25px; border-bottom: 1px solid rgba(30, 136, 229, 0.2);">
-                        <h3 style="color: #64b5f6; margin: 0 0 10px; font-size: 1.3rem; font-weight: 700;">Cabin & Interior Restoration</h3>
-                        <div style="font-size: 2rem; font-weight: 800; background: linear-gradient(90deg, #1e88e5, #64b5f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 15px 0;">
-                            <span class="aircraft-price" data-type="all">$3,000 - $8,500</span>
-                            <span class="aircraft-price" data-type="single" style="display: none;">$3,000 - $4,500</span>
-                            <span class="aircraft-price" data-type="twin" style="display: none;">$4,500 - $6,000</span>
-                            <span class="aircraft-price" data-type="jet" style="display: none;">$6,000 - $7,500</span>
-                            <span class="aircraft-price" data-type="large" style="display: none;">$7,500 - $8,500</span>
-                        </div>
-                        <p style="color: #a0a0a0; margin: 0; font-size: 0.95rem;">Complete cabin transformation & sanitation</p>
-                    </div>
-                    <div style="padding: 25px;">
-                        <p style="color: #c0c0c0; margin-bottom: 15px;">Premium interior cleaning & full restoration</p>
-                        <ul style="list-style: none; padding: 0; color: #a0a0a0;">
-                            <li style="padding: 8px 0;">✓ Everything in Exterior, plus:</li>
-                            <li style="padding: 8px 0;">✓ Cabin deep clean & sanitization</li>
-                            <li style="padding: 8px 0;">✓ Leather seat conditioning & restoration</li>
-                            <li style="padding: 8px 0;">✓ Upholstery shampooing & extraction</li>
-                            <li style="padding: 8px 0;">✓ Window & viewport cleaning (interior)</li>
-                            <li style="padding: 8px 0;">✓ Lavatory sanitation & detailing</li>
-                            <li style="padding: 8px 0;">✓ Galley area deep cleaning</li>
-                            <li style="padding: 8px 0;">✓ Odor elimination treatment</li>
-                            <li style="padding: 8px 0;">✓ 6-month protection guarantee</li>
-                        </ul>
-                        <button onclick="openBookingModal('Aircraft Cabin')" style="background: linear-gradient(135deg, #1565c0, #1e88e5); color: white; width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: 20px; transition: all 0.3s;">Book Cabin Detail</button>
-                    </div>
-                </div>
-
-                <!-- Complete Aviator Package -->
-                <div style="background: linear-gradient(135deg, #0f1419, #1a2942); border: 3px solid #42a5f5; border-radius: 15px; overflow: hidden; position: relative; box-shadow: 0 0 20px rgba(66, 165, 245, 0.3);">
-                    <div style="position: absolute; top: 0; left: 0; right: 0; background: linear-gradient(90deg, rgba(66, 165, 245, 0.4), rgba(66, 165, 245, 0.1)); padding: 8px; text-align: center; color: #90caf9; font-weight: 700; font-size: 0.85rem;">⭐ MOST POPULAR</div>
-                    <div style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.3), rgba(100, 181, 246, 0.15)); padding: 25px; padding-top: 45px; border-bottom: 1px solid rgba(66, 165, 245, 0.3);">
-                        <h3 style="color: #90caf9; margin: 0 0 10px; font-size: 1.3rem; font-weight: 700;">Complete Aviator Package</h3>
-                        <div style="font-size: 2rem; font-weight: 800; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 15px 0;">
-                            <span class="aircraft-price" data-type="all">$7,500 - $16,000</span>
-                            <span class="aircraft-price" data-type="single" style="display: none;">$7,500 - $10,000</span>
-                            <span class="aircraft-price" data-type="twin" style="display: none;">$10,000 - $12,000</span>
-                            <span class="aircraft-price" data-type="jet" style="display: none;">$12,000 - $14,500</span>
-                            <span class="aircraft-price" data-type="large" style="display: none;">$14,500 - $16,000</span>
-                        </div>
-                        <p style="color: #a0a0a0; margin: 0; font-size: 0.95rem;">Exterior + interior comprehensive detail</p>
-                    </div>
-                    <div style="padding: 25px;">
-                        <p style="color: #c0c0c0; margin-bottom: 15px;">Complete aircraft restoration with premium protections</p>
-                        <ul style="list-style: none; padding: 0; color: #a0a0a0;">
-                            <li style="padding: 8px 0;">✓ Everything in Cabin Restoration, plus:</li>
-                            <li style="padding: 8px 0;">✓ Professional paint correction (minor)</li>
-                            <li style="padding: 8px 0;">✓ Avionics panel cleaning & protection</li>
-                            <li style="padding: 8px 0;">✓ Engine exterior detail & degreasing</li>
-                            <li style="padding: 8px 0;">✓ Propeller & spinner detailing</li>
-                            <li style="padding: 8px 0;">✓ Windscreen ceramic coating</li>
-                            <li style="padding: 8px 0;">✓ Complete undercarriage inspection & detail</li>
-                            <li style="padding: 8px 0;">✓ Professional flight-readiness certification</li>
-                            <li style="padding: 8px 0;">✓ 6-month maintenance follow-up</li>
-                        </ul>
-                        <button onclick="openBookingModal('Complete Aviator')" style="background: linear-gradient(135deg, #42a5f5, #64b5f6); color: white; width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: 20px; transition: all 0.3s;">Book Complete Aviator</button>
-                    </div>
-                </div>
-
-                <!-- Presidential Aviation Detail -->
-                <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border: 2px solid #7c4dff; border-radius: 15px; overflow: hidden; transition: all 0.3s;">
-                    <div style="background: linear-gradient(135deg, rgba(124, 77, 255, 0.2), rgba(156, 102, 255, 0.1)); padding: 25px; border-bottom: 1px solid rgba(124, 77, 255, 0.2);">
-                        <h3 style="color: #b39ddb; margin: 0 0 10px; font-size: 1.3rem; font-weight: 700;">Presidential Aviation</h3>
-                        <div style="font-size: 2rem; font-weight: 800; background: linear-gradient(90deg, #7c4dff, #b39ddb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 15px 0;">
-                            <span class="aircraft-price" data-type="all">$15,000 - $32,000</span>
-                            <span class="aircraft-price" data-type="single" style="display: none;">$15,000 - $18,000</span>
-                            <span class="aircraft-price" data-type="twin" style="display: none;">$18,000 - $24,000</span>
-                            <span class="aircraft-price" data-type="jet" style="display: none;">$24,000 - $28,000</span>
-                            <span class="aircraft-price" data-type="large" style="display: none;">$28,000 - $32,000</span>
-                        </div>
-                        <p style="color: #a0a0a0; margin: 0; font-size: 0.95rem;">Elite concours-level aviation detailing</p>
-                    </div>
-                    <div style="padding: 25px;">
-                        <p style="color: #c0c0c0; margin-bottom: 15px;">Show-quality excellence for premium aircraft</p>
-                        <ul style="list-style: none; padding: 0; color: #a0a0a0;">
-                            <li style="padding: 8px 0;">✓ Everything in Aviator Package, plus:</li>
-                            <li style="padding: 8px 0;">✓ Advanced multi-stage paint correction</li>
-                            <li style="padding: 8px 0;">✓ Premium aircraft ceramic coating (5-year)</li>
-                            <li style="padding: 8px 0;">✓ Interior leather restoration (advanced)</li>
-                            <li style="padding: 8px 0;">✓ Avionics deep cleaning & detailing</li>
-                            <li style="padding: 8px 0;">✓ Engine compartment complete detail</li>
-                            <li style="padding: 8px 0;">✓ Wheel & brake assembly polishing</li>
-                            <li style="padding: 8px 0;">✓ Chrome & stainless steel refinishing</li>
-                            <li style="padding: 8px 0;">✓ Annual maintenance plan (Year 1)</li>
-                            <li style="padding: 8px 0;">✓ 2-year comprehensive warranty</li>
-                        </ul>
-                        <button onclick="openBookingModal('Presidential Aviation')" style="background: linear-gradient(135deg, #7c4dff, #9c66ff); color: white; width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: 20px; transition: all 0.3s;">Book Presidential</button>
-                    </div>
-                </div>
-
-                <!-- Ultimate Platinum Aircraft -->
-                <div style="background: linear-gradient(135deg, #0d1b2a, #1a2942); border: 2px solid #ffd700; border-radius: 15px; overflow: hidden; transition: all 0.3s;">
-                    <div style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 193, 7, 0.1)); padding: 25px; border-bottom: 1px solid rgba(255, 215, 0, 0.2);">
-                        <div style="color: #ffd700; font-weight: 700; font-size: 0.85rem; margin-bottom: 8px;">🌟 ULTIMATE</div>
-                        <h3 style="color: #ffd700; margin: 0 0 10px; font-size: 1.3rem; font-weight: 700;">Ultimate Platinum</h3>
-                        <div style="font-size: 2rem; font-weight: 800; background: linear-gradient(90deg, #ffd700, #ffb300); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 15px 0;">
-                            <span class="aircraft-price" data-type="all">$32,000 - $65,000+</span>
-                            <span class="aircraft-price" data-type="single" style="display: none;">$32,000 - $38,000</span>
-                            <span class="aircraft-price" data-type="twin" style="display: none;">$38,000 - $48,000</span>
-                            <span class="aircraft-price" data-type="jet" style="display: none;">$48,000 - $58,000</span>
-                            <span class="aircraft-price" data-type="large" style="display: none;">$58,000 - $65,000+</span>
-                        </div>
-                        <p style="color: #a0a0a0; margin: 0; font-size: 0.95rem;">Maximum protection & absolute perfection</p>
-                    </div>
-                    <div style="padding: 25px;">
-                        <p style="color: #c0c0c0; margin-bottom: 15px;">The pinnacle of aircraft detailing perfection</p>
-                        <ul style="list-style: none; padding: 0; color: #a0a0a0;">
-                            <li style="padding: 8px 0;">✓ Everything in Presidential Package, plus:</li>
-                            <li style="padding: 8px 0;">✓ 9H Ceramic coating (5-year fuselage)</li>
-                            <li style="padding: 8px 0;">✓ Aerospace-grade paint protection film</li>
-                            <li style="padding: 8px 0;">✓ Interior ceramic protection treatment</li>
-                            <li style="padding: 8px 0;">✓ Complete undercarriage restoration</li>
-                            <li style="padding: 8px 0;">✓ Landing gear full restoration & coating</li>
-                            <li style="padding: 8px 0;">✓ Engine restoration & protection detail</li>
-                            <li style="padding: 8px 0;">✓ Propeller refurbishment & coating</li>
-                            <li style="padding: 8px 0;">✓ Professional aircraft photography</li>
-                            <li style="padding: 8px 0;">✓ 3-year comprehensive warranty</li>
-                            <li style="padding: 8px 0;">✓ Quarterly maintenance (Year 1)</li>
-                        </ul>
-                        <button onclick="openBookingModal('Ultimate Platinum')" style="background: linear-gradient(135deg, #ffd700, #ffb300); color: #000; width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; margin-top: 20px; transition: all 0.3s;">Book Ultimate Platinum</button>
-                    </div>
-                </div>
+                <p style="color: #a0a0a0; font-size: 0.9rem; margin-top: 15px; font-style: italic;">Deep detail includes complete cabin sanitization, upholstery cleaning, and odor treatment.</p>
             </div>
 
-            <!-- Add-Ons Section -->
-            <div style="margin-top: 60px; border-top: 2px solid rgba(66, 165, 245, 0.2); padding-top: 40px;">
-                <h3 style="color: #90caf9; font-size: 1.8rem; margin-bottom: 10px;">⭐ Aircraft Specialties & Add-Ons</h3>
-                <p style="color: #a0a0a0; margin-bottom: 30px;">Enhance your aircraft package with premium specialized services</p>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
-                    <div style="background: rgba(66, 165, 245, 0.1); border: 1px solid rgba(66, 165, 245, 0.3); border-radius: 12px; padding: 25px;">
-                        <h4 style="color: #90caf9; margin: 0 0 10px; font-weight: 700;">Windscreen Ceramic Coating</h4>
-                        <p style="color: #b8b8b8; margin: 0 0 15px; font-size: 0.95rem;">Premium glass protection for aircraft</p>
-                        <p style="color: #42a5f5; font-size: 1.3rem; font-weight: 700; margin: 0;">+$2,500 - $5,000</p>
-                        <ul style="color: #a0a0a0; font-size: 0.9rem; margin-top: 12px; padding-left: 18px;">
-                            <li>Hydrophobic coating</li>
-                            <li>UV protection</li>
-                            <li>3-year durability</li>
-                        </ul>
-                    </div>
-
-                    <div style="background: rgba(66, 165, 245, 0.1); border: 1px solid rgba(66, 165, 245, 0.3); border-radius: 12px; padding: 25px;">
-                        <h4 style="color: #90caf9; margin: 0 0 10px; font-weight: 700;">Engine & Compartment Detail</h4>
-                        <p style="color: #b8b8b8; margin: 0 0 15px; font-size: 0.95rem;">Professional engine restoration</p>
-                        <p style="color: #42a5f5; font-size: 1.3rem; font-weight: 700; margin: 0;">+$1,500 - $4,000</p>
-                        <ul style="color: #a0a0a0; font-size: 0.9rem; margin-top: 12px; padding-left: 18px;">
-                            <li>Engine degreasing</li>
-                            <li>Component polishing</li>
-                            <li>Protective coating</li>
-                            <li>Safety inspection</li>
-                        </ul>
-                    </div>
-
-                    <div style="background: rgba(66, 165, 245, 0.1); border: 1px solid rgba(66, 165, 245, 0.3); border-radius: 12px; padding: 25px;">
-                        <h4 style="color: #90caf9; margin: 0 0 10px; font-weight: 700;">Interior Refurbishment</h4>
-                        <p style="color: #b8b8b8; margin: 0 0 15px; font-size: 0.95rem;">Cabin refresh & restoration</p>
-                        <p style="color: #42a5f5; font-size: 1.3rem; font-weight: 700; margin: 0;">+$2,000 - $6,000</p>
-                        <ul style="color: #a0a0a0; font-size: 0.9rem; margin-top: 12px; padding-left: 18px;">
-                            <li>Leather restoration</li>
-                            <li>Upholstery cleaning</li>
-                            <li>Carpet extraction</li>
-                            <li>Custom scent</li>
-                        </ul>
-                    </div>
-
-                    <div style="background: rgba(66, 165, 245, 0.1); border: 1px solid rgba(66, 165, 245, 0.3); border-radius: 12px; padding: 25px;">
-                        <h4 style="color: #90caf9; margin: 0 0 10px; font-weight: 700;">Avionics Panel Cleaning</h4>
-                        <p style="color: #b8b8b8; margin: 0 0 15px; font-size: 0.95rem;">Safe technology care</p>
-                        <p style="color: #42a5f5; font-size: 1.3rem; font-weight: 700; margin: 0;">+$1,000 - $2,500</p>
-                        <ul style="color: #a0a0a0; font-size: 0.9rem; margin-top: 12px; padding-left: 18px;">
-                            <li>Anti-static cleaning</li>
-                            <li>Display polishing</li>
-                            <li>Control surface detail</li>
-                            <li>Systems safe</li>
-                        </ul>
-                    </div>
+            <!-- Full Detail Service -->
+            <div style="margin-bottom: 60px;">
+                <h3 style="color: #e0e0e0; font-size: 1.3rem; margin-bottom: 20px;">Full Detail (Interior + Exterior) — Aircraft</h3>
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
+                    <table style="width: 100%; border-collapse: collapse; color: #b0b0b0;">
+                        <tr style="background: rgba(156, 39, 176, 0.1); border-bottom: 1px solid rgba(156, 39, 176, 0.2);">
+                            <th style="padding: 15px; text-align: left; color: #ce93d8; font-weight: 600;">Aircraft Type</th>
+                            <th style="padding: 15px; text-align: left; color: #ce93d8; font-weight: 600;">Price</th>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 12px 15px;">Full Detail — Single-Engine Piston</td><td style="padding: 12px 15px; color: #ce93d8;"><strong>$395</strong></td></tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);"><td style="padding: 12px 15px;">Full Detail — Twin-Engine / Turboprop</td><td style="padding: 12px 15px; color: #ce93d8;"><strong>$600</strong></td></tr>
+                        <tr><td style="padding: 12px 15px;">Full Detail — Light Jet / Helicopter</td><td style="padding: 12px 15px; color: #ce93d8;"><strong>Call / Custom</strong></td></tr>
+                    </table>
                 </div>
+                <p style="color: #a0a0a0; font-size: 0.9rem; margin-top: 15px; font-style: italic;">Complete combining exterior wash + interior deep clean with all protective treatments.</p>
+            </div>
+
+            <!-- Polish & Wax Add-Ons -->
+            <div style="margin-bottom: 80px;">
+                <h3 style="color: #e0e0e0; font-size: 1.3rem; margin-bottom: 20px;">Premium Add-On Services</h3>
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
+                    <table style="width: 100%; border-collapse: collapse; color: #b0b0b0;">
+                        <tr style="background: rgba(100, 150, 100, 0.1); border-bottom: 1px solid rgba(100, 150, 100, 0.2);">
+                            <th style="padding: 15px; text-align: left; color: #a5d6a7; font-weight: 600;">Service</th>
+                            <th style="padding: 15px; text-align: left; color: #a5d6a7; font-weight: 600;">Price</th>
+                        </tr>
+                        <tr><td style="padding: 12px 15px;">Polish &amp; Wax Aluminum / Painted Surface (per panel)</td><td style="padding: 12px 15px; color: #a5d6a7;"><strong>Call / Custom</strong></td></tr>
+                    </table>
+                </div>
+                <p style="color: #a0a0a0; font-size: 0.9rem; margin-top: 15px;"><strong>Note:</strong> Aircraft detailing is performed on-site at your hangar or FBO. Advance booking required. For custom quotes and scheduling, contact <strong>NazirEl@handsdetailshop.com</strong> or call <strong>(412) 752-8684</strong>.</p>
             </div>
 
             <!-- CTA Section -->

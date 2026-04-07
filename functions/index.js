@@ -8,6 +8,8 @@ admin.initializeApp();
 // Enable CORS
 const corsHandler = cors({ origin: true });
 
+// Config: Updated API key 2026-04-05 12:15 UTC - Fresh key deployed
+
 // System prompt for Claude
 const SYSTEM_PROMPT = `You are Claude, a helpful AI assistant for Hands Detail Shop, a premium mobile auto detailing service in the Pittsburgh area. You represent Nazir El's 16 years of Air Force-trained excellence in precision detailing.
 
