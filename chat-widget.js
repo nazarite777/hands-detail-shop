@@ -552,6 +552,26 @@ Never make up pricing or services not listed above. If asked something you're no
         isLoading = false;
         sendBtn.disabled = false;
         inputEl.focus();
+        // Ensure panel stays open after response
+        if (!panelOpen) {
+          panelOpen = true;
+          panel.classList.add('hds-open');
+        }
       });
+  }
+
+  // Prevent accidental panel closure - panel only closes on explicit user action
+  document.addEventListener('click', function(e) {
+    if (panel.classList.contains('hds-open') && 
+        !panel.contains(e.target) && 
+        !launcher.contains(e.target)) {
+      // User clicked outside - do nothing, keep panel open
+      // Panel will only close when user clicks X or launcher button
+    }
+  }, true);
+
+  // Clear any existing auto-close timeouts
+  if (window.chatWidgetCloseTimeout) {
+    clearTimeout(window.chatWidgetCloseTimeout);
   }
 })();

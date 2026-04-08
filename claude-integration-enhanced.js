@@ -288,20 +288,26 @@ function callClaudeAPI(message) {
     .then(res => res.json())
     .then(data => {
         const container = document.getElementById('messages-container');
+        const chatPopup = document.getElementById('chat-popup');
         const lastMessage = container.lastChild;
         if (lastMessage && lastMessage.textContent.includes('Thinking')) {
             lastMessage.remove();
         }
         addMessageToChat(data.reply || 'Sorry, I encountered an error. Please try again.', 'assistant');
+        // Ensure popup stays open after response
+        chatPopup.style.display = 'flex';
     })
     .catch(err => {
         console.error('Claude API Error:', err);
         const container = document.getElementById('messages-container');
+        const chatPopup = document.getElementById('chat-popup');
         const lastMessage = container.lastChild;
         if (lastMessage && lastMessage.textContent.includes('Thinking')) {
             lastMessage.remove();
         }
         addMessageToChat('Sorry, I\'m currently unavailable. Call (412) 752-8684 to speak with our team.', 'assistant');
+        // Ensure popup stays open even on error
+        chatPopup.style.display = 'flex';
     });
 }
 
@@ -310,4 +316,58 @@ function sendPrompt(promptText) {
     input.value = promptText;
     input.focus();
     sendMessage();
+}
+
+// CRITICAL: Prevent accidental popup closure
+document.addEventListener('DOMContentLoaded', () => {
+    const chatPopup = document.getElementById('chat-popup');
+    if (chatPopup) {
+        // Store original display style to restore if accidentally hidden
+        chatPopup.dataset.shouldBeVisible = 'false';
+        
+        // Intercept any potential auto-hide mechanisms
+        const originalSetTimeout = window.setTimeout;
+        window.setTimeout = function(...args) {
+            // Check if any timeout is trying to close the chat
+            if (args[0] && args[0].toString && args[0].toString().includes('close')) {
+                console.warn('❌ Blocked auto-close timeout on chat widget');
+                return; // Don't execute auto-close timeouts
+            }
+            return originalSetTimeout.apply(window, args);
+        };
+    }
+});
+
+// Prevent popup from being accidentally hidden by CSS or other means
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupChatProtection);
+} else {
+    setupChatProtection();
+}
+
+function setupChatProtection() {
+    const chatPopup = document.getElementById('chat-popup');
+    if (!chatPopup) return;
+    
+    // Watch for unwanted display:none changes
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                const chatButton = document.getElementById('chat-button');
+                // If popup is hidden but button wasn't clicked, restore it
+                if (chatPopup.style.display === 'none' && 
+                    chatButton && 
+                    document.activeElement !== chatButton) {
+                    // Only auto-restore if there are messages (conversation in progress)
+                    const messagesContainer = document.getElementById('messages-container');
+                    if (messagesContainer && messagesContainer.children.length > 2) {
+                        console.log('✅ Chat conversation in progress - keeping popup visible');
+                        chatPopup.style.display = 'flex';
+                    }
+                }
+            }
+        });
+    });
+    
+    observer.observe(chatPopup, { attributes: true, attributeFilter: ['style'] });
 }
