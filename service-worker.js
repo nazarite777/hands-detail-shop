@@ -18,7 +18,7 @@ const PRECACHE_URLS = [
   '/gift-certificates.html',
   '/styles.css',
   '/main.js',
-  '/20200723_030424~2.png',
+  '/logo.png',
   '/autopic.jpg',
   '/IMG_20250919_124905970_HDR_AE_optimized.jpg',
   '/manifest.json',

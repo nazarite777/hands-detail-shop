@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
 
 // PWA meta tags to insert after theme-color
@@ -10,9 +10,9 @@ const PWA_META_TAGS = `
     <meta name="apple-mobile-web-app-title" content="Hands Detail">
 
     <!-- PWA Icons -->
-    <link rel="apple-touch-icon" href="/20200723_030424~2.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/20200723_030424~2.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/20200723_030424~2.png">
+    <link rel="apple-touch-icon" href="/logo.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/logo.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/logo.png">
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/manifest.json">

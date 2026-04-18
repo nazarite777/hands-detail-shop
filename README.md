@@ -63,7 +63,7 @@ hands-detail-shop/
 ├── .prettierrc            # Prettier configuration
 ├── .gitignore             # Git ignore rules
 ├── README.md              # This file
-├── 20200723_030424~2.png  # Logo (15KB)
+├── logo.png  # Logo (15KB)
 ├── IMG_*_optimized.jpg    # Optimized photo (192KB, was 4.2MB)
 ├── IMG_*.webp             # WebP photo (149KB, modern format)
 └── Testimonials.docx.pdf  # Customer testimonials PDF
