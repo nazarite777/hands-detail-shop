@@ -665,3 +665,92 @@ exports.processBooking = functions.runWith({ secrets: ['SQUARE_ACCESS_TOKEN', 'G
     }
   });
 });
+
+/**
+ * Submit Review - Save customer review to Firestore pending_reviews collection
+ * Notifies business owner by email. Reviews require manual approval before display.
+ */
+exports.submitReview = functions.runWith({ secrets: ['GMAIL_PASSWORD'] }).https.onRequest((request, response) => {
+  return corsHandler(request, response, async () => {
+    try {
+      if (request.method !== 'POST') {
+        return response.status(405).json({ error: 'Method not allowed' });
+      }
+
+      const { name, rating, text, email, area } = request.body;
+
+      // Validate required fields
+      if (!name || typeof name !== 'string' || name.trim().length < 2) {
+        return response.status(400).json({ error: 'Valid name is required (min 2 characters)' });
+      }
+      if (!rating || typeof rating !== 'number' || rating < 1 || rating > 5) {
+        return response.status(400).json({ error: 'Rating must be 1–5' });
+      }
+      if (!text || typeof text !== 'string' || text.trim().length < 10) {
+        return response.status(400).json({ error: 'Review text must be at least 10 characters' });
+      }
+      // Input length guards
+      if (name.trim().length > 100) return response.status(400).json({ error: 'Name too long' });
+      if (text.trim().length > 2000) return response.status(400).json({ error: 'Review text too long (max 2000 chars)' });
+      if (email && email.length > 200) return response.status(400).json({ error: 'Email too long' });
+      if (area && area.length > 100) return response.status(400).json({ error: 'Area too long' });
+
+      // Save to Firestore pending_reviews (requires admin approval before display)
+      const firestore = admin.firestore();
+      const reviewRef = firestore.collection('pending_reviews').doc();
+      await reviewRef.set({
+        id: reviewRef.id,
+        name: name.trim(),
+        rating: rating,
+        text: text.trim(),
+        email: (email || '').trim(),
+        area: (area || '').trim(),
+        approved: false,
+        createdAt: admin.firestore.FieldValue.serverTimestamp(),
+      });
+
+      console.log('✅ Review saved:', reviewRef.id, 'from', name.trim());
+
+      // Notify business owner by email
+      const gmailEmail = process.env.GMAIL_EMAIL || 'handsdetailshop@gmail.com';
+      const gmailPassword = process.env.GMAIL_PASSWORD;
+      if (gmailPassword) {
+        try {
+          const nodemailer = require('nodemailer');
+          const transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: { user: gmailEmail, pass: gmailPassword },
+          });
+          const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+          await transporter.sendMail({
+            from: gmailEmail,
+            to: gmailEmail,
+            subject: `New Review Submitted: ${stars} from ${name.trim()}`,
+            html: `
+              <h2>New Customer Review — Pending Approval</h2>
+              <p><strong>Name:</strong> ${name.trim()}</p>
+              <p><strong>Rating:</strong> ${stars} (${rating}/5)</p>
+              <p><strong>Area:</strong> ${area || 'Not provided'}</p>
+              <p><strong>Email:</strong> ${email || 'Not provided'}</p>
+              <p><strong>Review:</strong></p>
+              <blockquote style="border-left:4px solid #1e88e5;padding-left:12px;color:#333;">${text.trim()}</blockquote>
+              <p><strong>Review ID:</strong> ${reviewRef.id}</p>
+              <p style="color:#888;font-size:0.9em;">Log in to Firebase Console to approve this review for public display.</p>
+            `,
+          });
+        } catch (emailErr) {
+          console.warn('Email notification failed (non-blocking):', emailErr.message);
+        }
+      }
+
+      return response.status(200).json({
+        success: true,
+        message: 'Review submitted successfully and is pending approval.',
+      });
+
+    } catch (error) {
+      console.error('❌ submitReview error:', error);
+      return response.status(500).json({ error: 'Internal server error', details: error.message });
+    }
+  });
+});
