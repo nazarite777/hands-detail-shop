@@ -4,13 +4,17 @@
                     "ignore":  [
                                    "firebase.json",
                                    ".firebaserc",
-                                   ".git",
+                                   ".git/**",
                                    ".gitignore",
                                    "node_modules/**",
+                                   "functions/**",
                                    ".DS_Store",
                                    ".*",
                                    "__tests__/**",
                                    "scripts/**",
+                                   "hands-detail-shop-seo-update/**",
+                                   "hands-detail-update/**",
+                                   "api key/**",
                                    "*.md",
                                    "package.json",
                                    "package-lock.json",
@@ -18,9 +22,17 @@
                                    "llms.txt",
                                    ".env*",
                                    "*.zip",
-                                   "node_modules/**",
                                    "coverage/**",
-                                   "*.log"
+                                   "*.log",
+                                   "*.py",
+                                   "*.ps1",
+                                   "fix-*.js",
+                                   "scan-*.js",
+                                   "find-*.js",
+                                   "check-*.js",
+                                   "update_*.py",
+                                   "final-push.txt",
+                                   "upload-audio.js"
                                ],
                     "redirects":  [
                                       {
@@ -33,14 +45,6 @@
                                      {
                                          "source":  "/audio-urls.json",
                                          "destination":  "/audio-urls.json"
-                                     },
-                                     {
-                                         "source":  "/photos/**",
-                                         "destination":  "/photos/**"
-                                     },
-                                     {
-                                         "source":  "**",
-                                         "destination":  "/index.html"
                                      }
                                  ],
                     "headers":  [
@@ -126,7 +130,7 @@
                 },
     "functions":  {
                       "source":  "functions",
-                      "runtime":  "nodejs20",
+                      "runtime":  "nodejs22",
                       "codebase":  "default"
                   }
 }

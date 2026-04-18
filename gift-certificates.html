@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -50,7 +50,7 @@
                 <a href="contact.html" class="nav-link">Contact</a>
             </nav>
             <div class="contact-header">
-                <a href="tel:4127528684" class="btn-call">📞 Call</a>
+                <a href="tel:4127528684" class="btn-call">?? Call</a>
                 <a href="booking.html" class="btn-book">Book Now</a>
             </div>
             <div class="mobile-menu-toggle" id="mobileToggle">
@@ -67,12 +67,12 @@
     </header>
 
     <div class="promo-banner" style="margin-top: 70px;">
-        ðŸŽ Perfect Gift for Car Enthusiasts | Never Expires | Digital & Physical Options | 📞 (412) 752-8684
+        🎁 Perfect Gift for Car Enthusiasts | Never Expires | Digital & Physical Options | ?? (412) 752-8684
     </div>
 
     <section class="page-hero" style="margin-top: 20px; padding: 80px 20px 60px; text-align: center;">
         <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 20px; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-            ðŸŽ Gift Certificates
+            🎁 Gift Certificates
         </h1>
         <p style="font-size: 1.3rem; max-width: 700px; margin: 0 auto 10px; color: #c0c0c0;">
             Give the gift of a pristine vehicle
@@ -147,11 +147,11 @@
         <h3 class="contact-title">Ready to Give the Perfect Gift?</h3>
         <div class="contact-buttons">
             <a href="contact.html?subject=Gift%20Certificate" class="contact-btn">
-                <span>ðŸŽ</span>
+                <span>🎁</span>
                 <span>Purchase Now</span>
             </a>
             <a href="tel:4127528684" class="contact-btn">
-                <span>📞</span>
+                <span>??</span>
                 <span>Call Us</span>
             </a>
         </div>
@@ -161,8 +161,8 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Hands Detail Shop</h3>
-                <p><strong>📞 Phone:</strong> (412) 752-8684<br>
-                <strong>âœ‰ï¸ Email:</strong> <a href="mailto:handsdetailshop@gmail.com">handsdetailshop@gmail.com</a></p>
+                <p><strong>?? Phone:</strong> (412) 752-8684<br>
+                <strong>✉️ Email:</strong> <a href="mailto:handsdetailshop@gmail.com">handsdetailshop@gmail.com</a></p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
@@ -182,172 +182,7 @@
     <script src="pwa-installer.js"></script>
 
 
-<!-- ============================================================
-     HANDS DETAIL SHOP — CLAUDE AI CHAT WIDGET
-     Powered by Claude API via Firebase Cloud Function
-     ============================================================ -->
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap');
-#hds-chat-widget{position:fixed;bottom:24px;right:24px;z-index:99999;font-family:'Barlow',sans-serif}
-#hds-launcher{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#c8a951 0%,#e8c96a 50%,#a8891f 100%);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(200,169,81,.45),0 2px 8px rgba(0,0,0,.4);transition:transform .2s ease,box-shadow .2s ease;position:relative}
-#hds-launcher:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(200,169,81,.6),0 2px 12px rgba(0,0,0,.5)}
-#hds-launcher svg{width:28px;height:28px}
-.hds-badge{position:absolute;top:-4px;right:-4px;width:20px;height:20px;background:#e74c3c;border-radius:50%;font-size:11px;font-weight:700;color:#fff;display:none;align-items:center;justify-content:center;border:2px solid #0f0f0f}
-#hds-panel{position:absolute;bottom:78px;right:0;width:370px;max-height:580px;background:#141414;border:1px solid rgba(200,169,81,.25);border-radius:16px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.7),0 0 0 1px rgba(200,169,81,.1);opacity:0;transform:translateY(12px) scale(.97);pointer-events:none;transition:opacity .22s ease,transform .22s ease}
-#hds-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:all}
-#hds-header{background:linear-gradient(135deg,#1a1a1a,#1e1b10);border-bottom:1px solid rgba(200,169,81,.2);padding:14px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0}
-.hds-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#c8a951,#e8c96a);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:17px;color:#0f0f0f;flex-shrink:0;box-shadow:0 0 0 2px rgba(200,169,81,.3)}
-.hds-header-info{flex:1;min-width:0}
-.hds-header-name{font-family:'Bebas Neue',sans-serif;font-size:16px;color:#c8a951;letter-spacing:.5px;line-height:1;margin-bottom:2px}
-.hds-header-sub{font-size:11px;color:rgba(255,255,255,.45);font-weight:400}
-.hds-online-dot{width:8px;height:8px;background:#2ecc71;border-radius:50%;flex-shrink:0;box-shadow:0 0 6px #2ecc71}
-#hds-close{background:none;border:none;color:rgba(255,255,255,.35);cursor:pointer;padding:4px;border-radius:6px;transition:color .15s;font-size:18px;line-height:1}
-#hds-close:hover{color:rgba(255,255,255,.8)}
-#hds-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
-#hds-messages::-webkit-scrollbar{width:4px}
-#hds-messages::-webkit-scrollbar-thumb{background:rgba(200,169,81,.25);border-radius:4px}
-.hds-msg{display:flex;gap:8px;align-items:flex-end;animation:hdsMsgIn .2s ease}
-@keyframes hdsMsgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.hds-msg.user{flex-direction:row-reverse}
-.hds-msg-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#c8a951,#e8c96a);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:12px;color:#0f0f0f;flex-shrink:0}
-.hds-msg.user .hds-msg-avatar{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);font-size:11px;font-family:'Barlow',sans-serif;font-weight:600}
-.hds-bubble{max-width:78%;padding:10px 13px;border-radius:14px;font-size:13.5px;line-height:1.5;word-wrap:break-word}
-.hds-msg.bot .hds-bubble{background:rgba(255,255,255,.06);color:rgba(255,255,255,.88);border-bottom-left-radius:4px;border:1px solid rgba(255,255,255,.07)}
-.hds-msg.user .hds-bubble{background:linear-gradient(135deg,#c8a951,#b8991f);color:#0f0f0f;font-weight:600;border-bottom-right-radius:4px}
-.hds-quick-replies{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 4px;flex-shrink:0}
-.hds-qr{background:rgba(200,169,81,.1);border:1px solid rgba(200,169,81,.3);color:#c8a951;font-family:'Barlow',sans-serif;font-size:12px;font-weight:600;padding:5px 10px;border-radius:20px;cursor:pointer;transition:all .15s;white-space:nowrap}
-.hds-qr:hover{background:rgba(200,169,81,.2);border-color:#c8a951}
-.hds-typing{display:flex;gap:4px;align-items:center;padding:10px 13px;background:rgba(255,255,255,.06);border-radius:14px;border-bottom-left-radius:4px;border:1px solid rgba(255,255,255,.07);width:fit-content}
-.hds-dot{width:6px;height:6px;background:rgba(200,169,81,.6);border-radius:50%;animation:hdsBounce 1.2s ease infinite}
-.hds-dot:nth-child(2){animation-delay:.2s}
-.hds-dot:nth-child(3){animation-delay:.4s}
-@keyframes hdsBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
-#hds-input-area{display:flex;gap:8px;padding:12px 14px;border-top:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);flex-shrink:0}
-#hds-input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:9px 12px;color:rgba(255,255,255,.88);font-family:'Barlow',sans-serif;font-size:13.5px;outline:none;resize:none;min-height:38px;max-height:100px;line-height:1.4;transition:border-color .15s}
-#hds-input::placeholder{color:rgba(255,255,255,.3)}
-#hds-input:focus{border-color:rgba(200,169,81,.4)}
-#hds-send{width:38px;height:38px;background:linear-gradient(135deg,#c8a951,#b8991f);border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .15s,box-shadow .15s;align-self:flex-end}
-#hds-send:hover{transform:scale(1.05);box-shadow:0 4px 12px rgba(200,169,81,.4)}
-#hds-send svg{width:16px;height:16px}
-#hds-footer{text-align:center;padding:6px 14px 10px;font-size:10px;color:rgba(255,255,255,.2);flex-shrink:0}
-@media(max-width:480px){#hds-panel{width:calc(100vw - 24px);right:0;max-height:70vh}#hds-chat-widget{bottom:16px;right:12px}}
-</style>
-
-<div id="hds-chat-widget">
-  <button id="hds-launcher" aria-label="Chat with Hands Detail Shop">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    <span class="hds-badge" id="hds-badge">1</span>
-  </button>
-  <div id="hds-panel" role="dialog" aria-label="Hands Detail Shop Chat">
-    <div id="hds-header">
-      <div class="hds-avatar">HD</div>
-      <div class="hds-header-info">
-        <div class="hds-header-name">Hands Detail AI</div>
-        <div class="hds-header-sub">Powered by Claude · Replies instantly</div>
-      </div>
-      <div class="hds-online-dot"></div>
-      <button id="hds-close" aria-label="Close chat">✕</button>
-    </div>
-    <div id="hds-messages" role="log" aria-live="polite"></div>
-    <div class="hds-quick-replies" id="hds-quick-replies"></div>
-    <div id="hds-input-area">
-      <textarea id="hds-input" placeholder="Ask about packages, pricing, gift cards…" rows="1" aria-label="Chat message"></textarea>
-      <button id="hds-send" aria-label="Send message">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-      </button>
-    </div>
-    <div id="hds-footer">Hands Detail Shop · (412) 752-8684 · handsdetailshop.com</div>
-  </div>
-</div>
-
-<script>
-(function(){
-'use strict';
-const CONFIG={PROXY_URL:'https://us-central1-hands-detail.cloudfunctions.net/claudeChat',MODEL:'claude-sonnet-4-20250514',MAX_TOKENS:400};
-const SYSTEM=`You are the AI assistant for Hands Detail Shop, a veteran-owned premium mobile auto detailing business based in Arnold, PA, operated by Nazir El. 16+ years of excellence, Air Force trained, serving PA, OH, WV, MD within a 2-hour radius of Pittsburgh.
-
-YOUR ROLE: Help customers choose services, explain packages, quote prices, promote memberships, sell gift certificates, and guide them to book. Be warm, professional, and direct. Never make up prices or services not listed here.
-
-CONTACT: Phone/Text (412) 752-8684 | handsdetailshop.com | Mon–Sat 8AM–6PM, Sun by appt | $30 deposit secures every appointment | PROMO: 15% OFF first-time customers + FREE Tire Shine with any package
-
-━━━ PERSONAL VEHICLE PACKAGES ━━━
-ESSENTIAL — $65–$95: Hand wash & dry, wheel & tire cleaning, tire shine, windows in/out, door jambs, quick interior vacuum, trim inspection.
-EXECUTIVE — $145–$195 (Most Popular): + clay bar, one-step polish, premium wax, full interior vacuum/wipe, leather conditioning, air freshener, 1-month guarantee.
-PREMIUM PLUS — $215–$285: + advanced paint correction (minor), engine bay light detail, carpet/upholstery shampooing, headlight cleaning, trim restoration, interior protection, 3-month guarantee.
-SIGNATURE — $325–$425: + multi-stage paint correction, full engine bay detail, carpet extraction, headlight restoration & coating, complete trim restoration, 6-month sealant, warranty.
-PRESIDENTIAL — $650–$850: + advanced paint correction, premium ceramic coating, complete leather treatment, odor elimination, chrome polish, 2-year warranty, maintenance plan.
-ULTIMATE ARMOR — $1,400–$1,850: + 9H ceramic coating (5-yr warranty), PPF on high-risk areas, wheel ceramic, interior ceramic, undercarriage detail, 5-year comprehensive warranty, annual maintenance.
-
-━━━ INTERIOR-ONLY ━━━
-INTERIOR EXPRESS — $85–$125: Full vacuum, dash/console wipe, door panels, cup holders, windows (inside), air freshener, mats.
-INTERIOR DEEP CLEAN — $185–$265: + shampooing, leather clean/condition, stain treatment, vent detailing, pet hair, headliner, steam cleaning.
-INTERIOR PREMIUM — $365–$485: + odor elimination, leather restoration, trim restoration, fabric protection, seat extraction, UV protection.
-INTERIOR CERAMIC PROTECTION — $585–$785: + interior ceramic coating, fabric/leather protection (3-yr), UV/stain resistance, anti-bacterial, 3-year warranty.
-
-━━━ MEMBERSHIP PLANS (Biweekly Service) ━━━
-Requires one-time restoration detail first: Compact $285 | Mid-Size $365 | SUV/Truck $445 | Luxury $525
-SINGLE CAR: Essential Maintain $75/mo | Premium Maintain $110/mo | Ultimate Maintain $145/mo
-TWO-CAR HOUSEHOLD: Essential $130/mo | Premium $190/mo | Ultimate $250/mo (save $20–$40/mo)
-THREE-CAR HOUSEHOLD: Essential $180/mo | Premium $265/mo | Ultimate $350/mo (save $45–$85/mo)
-CERAMIC UPGRADE: +$500 one-time → -$25/mo forever + 5-year paint protection.
-
-━━━ MOTORCYCLE ━━━
-Road Ready $85–$105 | Chrome & Shine $145–$185 | Show Bike $245–$295 | Seasonal Prep $125–$155
-
-━━━ YACHT / RV / MARINE ━━━
-Custom quotes based on size/condition. Call for free consultation.
-
-━━━ FLEET & COMMERCIAL ━━━
-Custom plans for 2+ vehicles. Volume discounts. Call for fleet proposal.
-
-━━━ AIRCRAFT ━━━
-Custom quotes. Call for consultation.
-
-━━━ MECHANICAL SERVICES (UNDER THE HOOD) ━━━
-Air Force diesel/jet mechanic background. Diagnosis first, you approve before any work. Labor: $75/hr.
-Basic Diagnostic: $50 | Advanced Diagnostic: $100
-Spark Plugs/Coils: $95–$150 | Solenoid: $150–$250 | Sensors: $80–$200
-Oil Change: $45–$75 | Full Fluid Service: $175–$300 | Belt/Hose: $95–$200
-Valve Cover Gasket: $165–$250 | Water Pump: $200–$400 | Serpentine Belt: $125–$225
-Engine Mounts: $300–$550 | Timing Chain: $600–$1,100 | Head Gasket: $800–$1,400
-Brake Pads: $120–$200/axle | Transmission Service: $175–$300 | Transmission Diagnostic: $100
-50% deposit secures parts.
-
-━━━ GIFT CERTIFICATES ━━━
-Perfect for holidays, birthdays, Father's Day, graduation. Any dollar amount or specific package. Call/text (412) 752-8684 to purchase. Payment via Square, cash, or Zelle. Digital or physical certificate provided.
-
-━━━ UPSELL RULES ━━━
-- After Signature/Presidential/Ultimate Armor → ALWAYS mention membership ("Since you're investing in top-tier care, our Monthly Maintain plan keeps it looking this good for just $75–$145/mo")
-- After Executive/Premium Plus → suggest upgrading to Signature for long-term protection
-- Multiple cars mentioned → immediately pitch multi-car household plans and savings
-- First-time customer → remind them of 15% off
-- Mechanical service customer → offer to bundle detail at same time
-- Always mention gift certificates before ending any conversation
-
-━━━ STYLE ━━━
-Keep responses under 4 sentences unless more detail is asked for. Warm, direct, professional. Always end with a clear next step. If unsure of anything, say "Text Nazir at (412) 752-8684 for a custom quote."`;
-const state={open:false,messages:[],typing:false,greeted:false};
-const launcher=document.getElementById('hds-launcher');
-const panel=document.getElementById('hds-panel');
-const closeBtn=document.getElementById('hds-close');
-const msgEl=document.getElementById('hds-messages');
-const inputEl=document.getElementById('hds-input');
-const sendBtn=document.getElementById('hds-send');
-const badge=document.getElementById('hds-badge');
-const qrArea=document.getElementById('hds-quick-replies');
-const INIT_QR=['💰 Pricing & Packages','🎁 Gift Certificates','💎 Memberships','⚙️ Mechanical','📅 Book Now'];
-function setQR(items){qrArea.innerHTML='';items.forEach(l=>{const b=document.createElement('button');b.className='hds-qr';b.textContent=l;b.onclick=()=>{sendMsg(l);setQR([]);};qrArea.appendChild(b);});}
-function appendMsg(r,c){const w=document.createElement('div');w.className=`hds-msg ${r==='user'?'user':'bot'}`;const a=document.createElement('div');a.className='hds-msg-avatar';a.textContent=r==='user'?'You':'HD';const b=document.createElement('div');b.className='hds-bubble';b.innerHTML=c.replace(/\n/g,'<br>');w.appendChild(a);w.appendChild(b);msgEl.appendChild(w);msgEl.scrollTop=msgEl.scrollHeight;}
-function showTyping(){const w=document.createElement('div');w.className='hds-msg bot';w.id='hds-typing';const a=document.createElement('div');a.className='hds-msg-avatar';a.textContent='HD';const d=document.createElement('div');d.className='hds-typing';for(let i=0;i<3;i++){const x=document.createElement('div');x.className='hds-dot';d.appendChild(x);}w.appendChild(a);w.appendChild(d);msgEl.appendChild(w);msgEl.scrollTop=msgEl.scrollHeight;}
-function removeTyping(){const e=document.getElementById('hds-typing');if(e)e.remove();}
-async function callClaude(m){state.messages.push({role:'user',content:m});showTyping();state.typing=true;try{const res=await fetch(CONFIG.PROXY_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:CONFIG.MODEL,max_tokens:CONFIG.MAX_TOKENS,system:SYSTEM,messages:state.messages})});if(!res.ok)throw new Error('HTTP '+res.status);const data=await res.json();const reply=data?.content?.[0]?.text||"I'm having trouble. Call (412) 752-8684!";state.messages.push({role:'assistant',content:reply});removeTyping();appendMsg('assistant',reply);if(state.messages.length<=3)setQR(['🎁 Gift Cards','💎 Membership','📅 Book','📞 (412) 752-8684']);}catch(e){removeTyping();appendMsg('assistant',"I'm having trouble connecting. Call or text **(412) 752-8684** — Nazir or the team will help!");console.error('[HDS]',e);}state.typing=false;}
-function sendMsg(t){const m=(t||inputEl.value).trim();if(!m||state.typing)return;inputEl.value='';inputEl.style.height='auto';setQR([]);appendMsg('user',m);callClaude(m);}
-function openPanel(){state.open=true;panel.classList.add('open');badge.style.display='none';inputEl.focus();if(!state.greeted){state.greeted=true;setTimeout(()=>{appendMsg('assistant',"Hey! 👋 Welcome to Hands Detail Shop — Pittsburgh's premier mobile detailing.\n\nI'm your AI assistant. Ask me about packages, pricing, memberships, gift certificates, or booking. What can I help you with?");setQR(INIT_QR);},300);}}
-function closePanel(){state.open=false;panel.classList.remove('open');}
-launcher.onclick=()=>state.open?closePanel():openPanel();closeBtn.onclick=closePanel;sendBtn.onclick=()=>sendMsg();inputEl.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}});inputEl.addEventListener('input',()=>{inputEl.style.height='auto';inputEl.style.height=Math.min(inputEl.scrollHeight,100)+'px';});setTimeout(()=>{if(!state.open){badge.style.display='flex';}},4000);document.addEventListener('click',e=>{if(state.open&&!document.getElementById('hds-chat-widget').contains(e.target))closePanel();});
-})();
-</script>
-
+<script src="/chat-widget.js"></script>
 </body>
 </html>
 

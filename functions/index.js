@@ -8,6 +8,8 @@ admin.initializeApp();
 // Enable CORS
 const corsHandler = cors({ origin: true });
 
+
+
 // System prompt for Claude
 const SYSTEM_PROMPT = `You are Claude, a helpful AI assistant for Hands Detail Shop, a premium mobile auto detailing service in the Pittsburgh area. You represent Nazir El's 16 years of Air Force-trained excellence in precision detailing.
 
@@ -282,7 +284,7 @@ TONE: Friendly, professional, knowledgeable, confident. Show genuine care about 
  * Claude AI REST API - Cloud Function
  * Handles AI requests from the frontend without exposing the API key
  */
-exports.claudeAI = functions.https.onRequest((request, response) => {
+exports.claudeAI = functions.runWith({ secrets: ['ANTHROPIC_API_KEY'] }).https.onRequest((request, response) => {
   return corsHandler(request, response, async () => {
     try {
       // Only allow POST requests
@@ -296,24 +298,14 @@ exports.claudeAI = functions.https.onRequest((request, response) => {
         return response.status(400).json({ error: 'Message is required' });
       }
 
+      // Input length validation to prevent abuse
+      if (message.length > 2000) {
+        return response.status(400).json({ error: 'Message too long (max 2000 characters)' });
+      }
+
       console.log('🤖 Claude request received:', message.substring(0, 50) + '...');
 
-      // Get API key from Firebase config
-      let apiKey;
-      try {
-        apiKey = functions.config().anthropic.api_key;
-      } catch (e) {
-        apiKey = process.env.ANTHROPIC_API_KEY;
-      }
-      
-      // Try backup key if primary not available
-      if (!apiKey) {
-        try {
-          apiKey = functions.config().anthropic.key;
-        } catch (e) {
-          // key not available
-        }
-      }
+      const apiKey = process.env.ANTHROPIC_API_KEY;
       
       if (!apiKey) {
         console.error('❌ API key not configured');
@@ -373,7 +365,7 @@ console.log('🚀 Claude AI Cloud Function loaded');
 /**
  * Claude Chat - Chat endpoint for booking interface
  */
-exports.claudeChat = functions.https.onRequest((request, response) => {
+exports.claudeChat = functions.runWith({ secrets: ['ANTHROPIC_API_KEY'] }).https.onRequest((request, response) => {
   return corsHandler(request, response, async () => {
     try {
       if (request.method !== 'POST') {
@@ -383,7 +375,7 @@ exports.claudeChat = functions.https.onRequest((request, response) => {
       // Support both old format (message, history) and new format (model, messages, system, max_tokens)
       let messages = request.body.messages;
       let model = request.body.model || 'claude-opus-4-1';
-      let maxTokens = request.body.max_tokens || 400;
+      let maxTokens = Math.min(request.body.max_tokens || 400, 1500);
       let system = request.body.system || SYSTEM_PROMPT;
 
       // Fallback to old format if new format not provided
@@ -396,21 +388,22 @@ exports.claudeChat = functions.https.onRequest((request, response) => {
         return response.status(400).json({ error: 'Messages required' });
       }
 
-      let apiKey;
-      try {
-        apiKey = functions.config().anthropic.api_key;
-      } catch (e) {
-        apiKey = process.env.ANTHROPIC_API_KEY;
+      // Limit conversation history to prevent abuse (keep last 20 messages)
+      if (messages.length > 20) {
+        messages = messages.slice(-20);
       }
-      
-      // Try backup key if primary not available
-      if (!apiKey) {
-        try {
-          apiKey = functions.config().anthropic.key;
-        } catch (e) {
-          // key not available
+
+      // Validate individual messages
+      for (const msg of messages) {
+        if (!msg.role || !msg.content || typeof msg.content !== 'string') {
+          return response.status(400).json({ error: 'Invalid message format' });
+        }
+        if (msg.content.length > 2000) {
+          return response.status(400).json({ error: 'Individual message too long (max 2000 characters)' });
         }
       }
+
+      const apiKey = process.env.ANTHROPIC_API_KEY;
       
       if (!apiKey) {
         console.error('❌ API key not configured');
@@ -464,26 +457,40 @@ exports.claudeChat = functions.https.onRequest((request, response) => {
 /**
  * Process Booking - Handle Square payments and create bookings
  */
-exports.processBooking = functions.https.onRequest((request, response) => {
+exports.processBooking = functions.runWith({ secrets: ['SQUARE_ACCESS_TOKEN', 'GMAIL_PASSWORD', 'GOOGLE_API_KEY'] }).https.onRequest((request, response) => {
   return corsHandler(request, response, async () => {
     try {
       if (request.method !== 'POST') {
         return response.status(405).json({ error: 'Method not allowed' });
       }
 
-      const { sourceId, amount, customerEmail, customerName, serviceType, appointmentDate, appointmentTime } = request.body;
+      // Support both flat and nested payload formats from the frontend
+      const body = request.body;
+      const sourceId = body.sourceId;
+      const amountCents = body.amountCents || (body.amount ? Math.round(body.amount * 100) : 3000);
+      const customerName = (body.customer && body.customer.name) || body.customerName || '';
+      const customerEmail = (body.customer && body.customer.email) || body.customerEmail || '';
+      const customerPhone = (body.customer && body.customer.phone) || body.customerPhone || '';
+      const customerVehicle = (body.customer && body.customer.vehicle) || body.customerVehicle || '';
+      const customerAddress = (body.customer && body.customer.address) || body.customerAddress || '';
+      const customerNotes = (body.customer && body.customer.notes) || body.customerNotes || '';
+      const serviceType = (body.booking && body.booking.service) || body.serviceType || '';
+      const servicePrice = (body.booking && body.booking.price) || body.servicePrice || '';
+      const appointmentDate = (body.booking && body.booking.date) || body.appointmentDate || '';
+      const appointmentTime = (body.booking && body.booking.time) || body.appointmentTime || '';
 
-      if (!sourceId || !amount || !customerEmail) {
-        return response.status(400).json({ error: 'Missing required fields' });
+      if (!sourceId) {
+        return response.status(400).json({ error: 'Payment source ID is required' });
+      }
+      if (!customerName || !customerPhone) {
+        return response.status(400).json({ error: 'Customer name and phone are required' });
+      }
+      if (!serviceType || !appointmentDate || !appointmentTime) {
+        return response.status(400).json({ error: 'Service, date, and time are required' });
       }
 
       // Get Square access token
-      let squareAccessToken;
-      try {
-        squareAccessToken = functions.config().square.access_token;
-      } catch (e) {
-        squareAccessToken = process.env.SQUARE_ACCESS_TOKEN;
-      }
+      const squareAccessToken = process.env.SQUARE_ACCESS_TOKEN;
       if (!squareAccessToken) {
         return response.status(500).json({ error: 'Square not configured' });
       }
@@ -499,11 +506,11 @@ exports.processBooking = functions.https.onRequest((request, response) => {
       const result = await paymentsApi.createPayment({
         sourceId: sourceId,
         amountMoney: {
-          amount: Math.round(amount * 100),
+          amount: BigInt(amountCents),
           currency: 'USD'
         },
-        customerId: customerEmail,
-        note: `Booking: ${serviceType} on ${appointmentDate} at ${appointmentTime}`,
+        idempotencyKey: require('crypto').randomUUID(),
+        note: `Hands Detail - ${serviceType} on ${appointmentDate} at ${appointmentTime} for ${customerName}`,
       });
 
       if (!result.result.payment.id) {
@@ -518,11 +525,16 @@ exports.processBooking = functions.https.onRequest((request, response) => {
         id: bookingRef.id,
         customerName: customerName,
         customerEmail: customerEmail,
+        customerPhone: customerPhone,
+        customerVehicle: customerVehicle,
+        customerAddress: customerAddress,
+        customerNotes: customerNotes,
         serviceType: serviceType,
+        servicePrice: servicePrice,
         appointmentDate: appointmentDate,
         appointmentTime: appointmentTime,
         paymentId: result.result.payment.id,
-        amount: amount,
+        amountCents: amountCents,
         status: 'confirmed',
         createdAt: admin.firestore.FieldValue.serverTimestamp(),
       });
@@ -534,52 +546,73 @@ exports.processBooking = functions.https.onRequest((request, response) => {
         status: 'booked'
       });
 
-      // Send confirmation email
-      let gmailEmail, gmailPassword;
-      try {
-        gmailEmail = functions.config().gmail.email;
-        gmailPassword = functions.config().gmail.password;
-      } catch (e) {
-        gmailEmail = process.env.GMAIL_EMAIL || 'handsdetailshop@gmail.com';
-        gmailPassword = process.env.GMAIL_PASSWORD;
-      }
-      if (!gmailPassword) {
-        gmailEmail = 'handsdetailshop@gmail.com';
-      }
+      // Send confirmation email (only if customer email provided and Gmail configured)
+      if (customerEmail) {
+        try {
+          const gmailEmail = process.env.GMAIL_EMAIL || 'handsdetailshop@gmail.com';
+          const gmailPassword = process.env.GMAIL_PASSWORD;
 
-      const nodemailer = require('nodemailer');
-      const transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-          user: gmailEmail,
-          pass: gmailPassword,
+          if (gmailPassword) {
+            const nodemailer = require('nodemailer');
+            const transporter = nodemailer.createTransport({
+              service: 'Gmail',
+              auth: {
+                user: gmailEmail,
+                pass: gmailPassword,
+              }
+            });
+
+            await transporter.sendMail({
+              from: gmailEmail,
+              to: customerEmail,
+              subject: `Booking Confirmation - ${serviceType} Service`,
+              html: `
+                <h2>Your Booking is Confirmed!</h2>
+                <p>Hi ${customerName},</p>
+                <p><strong>Service:</strong> ${serviceType} (${servicePrice})</p>
+                <p><strong>Date:</strong> ${appointmentDate}</p>
+                <p><strong>Time:</strong> ${appointmentTime}</p>
+                <p><strong>Location:</strong> ${customerAddress}</p>
+                <p><strong>Vehicle:</strong> ${customerVehicle}</p>
+                <p><strong>Deposit Paid:</strong> $${(amountCents / 100).toFixed(2)}</p>
+                <p>Nazir will reach out to confirm your appointment window.</p>
+                <p>Questions? Call or text <strong>(412) 752-8684</strong></p>
+                <p>Thank you for choosing Hands Detail Shop!</p>
+              `
+            });
+
+            // Also notify the business owner
+            await transporter.sendMail({
+              from: gmailEmail,
+              to: gmailEmail,
+              subject: `New Booking: ${serviceType} - ${customerName}`,
+              html: `
+                <h2>New Booking Received!</h2>
+                <p><strong>Customer:</strong> ${customerName}</p>
+                <p><strong>Phone:</strong> ${customerPhone}</p>
+                <p><strong>Email:</strong> ${customerEmail}</p>
+                <p><strong>Service:</strong> ${serviceType} (${servicePrice})</p>
+                <p><strong>Date:</strong> ${appointmentDate}</p>
+                <p><strong>Time:</strong> ${appointmentTime}</p>
+                <p><strong>Location:</strong> ${customerAddress}</p>
+                <p><strong>Vehicle:</strong> ${customerVehicle}</p>
+                <p><strong>Notes:</strong> ${customerNotes || 'None'}</p>
+                <p><strong>Deposit:</strong> $${(amountCents / 100).toFixed(2)}</p>
+                <p><strong>Payment ID:</strong> ${result.result.payment.id}</p>
+                <p><strong>Booking ID:</strong> ${bookingRef.id}</p>
+              `
+            });
+          } else {
+            console.warn('Gmail password not configured - skipping email');
+          }
+        } catch (emailError) {
+          console.warn('Email sending failed (non-blocking):', emailError.message);
         }
-      });
-
-      await transporter.sendMail({
-        from: gmailEmail,
-        to: customerEmail,
-        subject: `Booking Confirmation - ${serviceType} Service`,
-        html: `
-          <h2>Your Booking is Confirmed!</h2>
-          <p>Hi ${customerName},</p>
-          <p>Service: ${serviceType}</p>
-          <p>Date: ${appointmentDate}</p>
-          <p>Time: ${appointmentTime}</p>
-          <p>Amount Paid: $${amount}</p>
-          <p>Thank you for choosing Hands Detail Shop!</p>
-        `
-      });
+      }
 
       // Add to Google Calendar if credentials available
-      let googleCalendarId, googleApiKey;
-      try {
-        googleCalendarId = functions.config().google.calendar_id;
-        googleApiKey = functions.config().google.api_key;
-      } catch (e) {
-        googleCalendarId = process.env.GOOGLE_CALENDAR_ID;
-        googleApiKey = process.env.GOOGLE_API_KEY;
-      }
+      const googleCalendarId = process.env.GOOGLE_CALENDAR_ID;
+      const googleApiKey = process.env.GOOGLE_API_KEY;
 
       if (googleCalendarId && googleApiKey) {
         try {

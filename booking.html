@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -544,20 +544,20 @@
 
 <nav>
   <a href="/" class="nav-logo">Hands Detail Shop</a>
-  <a href="/" class="nav-back">← Back to site</a>
+  <a href="/" class="nav-back">? Back to site</a>
 </nav>
 
 <div class="hero">
   <h1>Book Your Detail</h1>
-  <p>Chat with Nazir's AI · Get instant answers · Pay & confirm</p>
+  <p>Chat with Nazir's AI � Get instant answers � Pay & confirm</p>
   <div class="deposit-badge">
-    ◆ &nbsp;$30 deposit secures your appointment &nbsp;·&nbsp; Applied to final balance
+    ? &nbsp;$30 deposit secures your appointment &nbsp;�&nbsp; Applied to final balance
   </div>
 </div>
 
 <!-- SUCCESS SCREEN -->
 <div id="success-screen">
-  <div class="success-icon">✓</div>
+  <div class="success-icon">?</div>
   <h2>You're Booked</h2>
   <p>Deposit received. A confirmation is on its way to your email.</p>
   <p>Nazir will reach out to confirm your exact appointment window.</p>
@@ -571,7 +571,7 @@
   <!-- LEFT: CLAUDE AI CHAT -->
   <div class="chat-panel">
     <div class="chat-header">
-      <span class="chat-title">Booking Assistant · Powered by Claude</span>
+      <span class="chat-title">Booking Assistant � Powered by Claude</span>
     </div>
     <div class="chat-messages" id="chat-messages">
       <div class="message assistant">
@@ -604,7 +604,7 @@
           <input type="email" id="customer-email" placeholder="For confirmation receipt">
         </div>
         <div class="field">
-          <label>Vehicle (Year · Make · Model) *</label>
+          <label>Vehicle (Year � Make � Model) *</label>
           <input type="text" id="customer-vehicle" placeholder="e.g. 2019 Toyota Camry" required>
         </div>
         <div class="field">
@@ -623,35 +623,35 @@
       <div class="panel-header"><span class="panel-title">Select Service</span></div>
       <div class="panel-body">
         <div class="service-grid" id="service-grid">
-          <label class="service-option" onclick="selectService(this, 'Essential Package', '$65–$85')">
+          <label class="service-option" onclick="selectService(this, 'Essential Package', '$65�$85')">
             <input type="radio" name="service" value="Essential">
             <div class="service-dot"></div>
             <span class="service-name">Essential Package</span>
-            <span class="service-price">$65–$85</span>
+            <span class="service-price">$65�$85</span>
           </label>
-          <label class="service-option" onclick="selectService(this, 'Executive Package', '$145–$185')">
+          <label class="service-option" onclick="selectService(this, 'Executive Package', '$145�$185')">
             <input type="radio" name="service" value="Executive">
             <div class="service-dot"></div>
             <span class="service-name">Executive Package</span>
-            <span class="service-price">$145–$185</span>
+            <span class="service-price">$145�$185</span>
           </label>
-          <label class="service-option" onclick="selectService(this, 'Signature Package', '$285–$365')">
+          <label class="service-option" onclick="selectService(this, 'Signature Package', '$285�$365')">
             <input type="radio" name="service" value="Signature">
             <div class="service-dot"></div>
             <span class="service-name">Signature Package</span>
-            <span class="service-price">$285–$365</span>
+            <span class="service-price">$285�$365</span>
           </label>
-          <label class="service-option" onclick="selectService(this, 'Presidential Package', '$585–$785')">
+          <label class="service-option" onclick="selectService(this, 'Presidential Package', '$585�$785')">
             <input type="radio" name="service" value="Presidential">
             <div class="service-dot"></div>
             <span class="service-name">Presidential Package</span>
-            <span class="service-price">$585–$785</span>
+            <span class="service-price">$585�$785</span>
           </label>
-          <label class="service-option" onclick="selectService(this, 'Ultimate Armor', '$1,285–$1,685')">
+          <label class="service-option" onclick="selectService(this, 'Ultimate Armor', '$1,285�$1,685')">
             <input type="radio" name="service" value="UltimateArmor">
             <div class="service-dot"></div>
             <span class="service-name">Ultimate Armor (Ceramic)</span>
-            <span class="service-price">$1,285–$1,685</span>
+            <span class="service-price">$1,285�$1,685</span>
           </label>
           <label class="service-option" onclick="selectService(this, 'Fleet / Commercial', 'Quote')">
             <input type="radio" name="service" value="Fleet">
@@ -659,11 +659,11 @@
             <span class="service-name">Fleet / Commercial</span>
             <span class="service-price">Quote</span>
           </label>
-          <label class="service-option" onclick="selectService(this, 'Motorcycle Detail', '$125–$295')">
+          <label class="service-option" onclick="selectService(this, 'Motorcycle Detail', '$125�$295')">
             <input type="radio" name="service" value="Motorcycle">
             <div class="service-dot"></div>
             <span class="service-name">Motorcycle Detail</span>
-            <span class="service-price">$125–$295</span>
+            <span class="service-price">$125�$295</span>
           </label>
           <label class="service-option" onclick="selectService(this, 'RV / Yacht / Marine', 'Quote')">
             <input type="radio" name="service" value="Marine">
@@ -705,20 +705,20 @@
 
     <!-- Payment Panel -->
     <div class="panel">
-      <div class="panel-header"><span class="panel-title">Secure Deposit — $30.00</span></div>
+      <div class="panel-header"><span class="panel-title">Secure Deposit � $30.00</span></div>
       <div class="panel-body">
         <div id="order-summary">
           <div class="summary-row">
             <span class="summary-label">Service</span>
-            <span class="summary-value" id="summary-service">— Select above —</span>
+            <span class="summary-value" id="summary-service">� Select above �</span>
           </div>
           <div class="summary-row">
             <span class="summary-label">Date</span>
-            <span class="summary-value" id="summary-date">—</span>
+            <span class="summary-value" id="summary-date">�</span>
           </div>
           <div class="summary-row">
             <span class="summary-label">Time</span>
-            <span class="summary-value" id="summary-time">—</span>
+            <span class="summary-value" id="summary-time">�</span>
           </div>
           <div class="total-row">
             <span class="total-label">Deposit Due Today</span>
@@ -740,9 +740,9 @@
         </button>
 
         <div class="trust-row">
-          <div class="trust-item">🔒<br>Secured by Square</div>
-          <div class="trust-item">💳<br>Deposit applied to final bill</div>
-          <div class="trust-item">📞<br>Nazir confirms personally</div>
+          <div class="trust-item">??<br>Secured by Square</div>
+          <div class="trust-item">??<br>Deposit applied to final bill</div>
+          <div class="trust-item">??<br>Nazir confirms personally</div>
         </div>
       </div>
     </div>
@@ -752,17 +752,17 @@
 </div>
 
 <div class="schedule-note">
-  ⬡ &nbsp;Hands Detail Shop · Mobile Auto Detailing · Pittsburgh Area · (412) 752-8684 · NazirEl@handsdetailshop.com
+  ? &nbsp;Hands Detail Shop � Mobile Auto Detailing � Pittsburgh Area � (412) 752-8684 � NazirEl@handsdetailshop.com
 </div>
 
 <script>
-// ─── CONFIG ──────────────────────────────────────────────────────────────────
+// --- CONFIG ------------------------------------------------------------------
 const SQUARE_APP_ID  = 'sq0idp-Vt6BFj70g87JgJmypo1hgg';
 const SQUARE_LOC_ID  = 'LNRB5GT2CFVJR';
 const CLOUD_FUNCTION_URL = 'https://us-central1-hands-detail.cloudfunctions.net/processBooking';
 const CHAT_API_URL = 'https://us-central1-hands-detail.cloudfunctions.net/claudeChat';
 
-// ─── STATE ────────────────────────────────────────────────────────────────────
+// --- STATE --------------------------------------------------------------------
 let card;
 let selectedService = '';
 let selectedPrice   = '';
@@ -771,7 +771,7 @@ let chatMessages = [
   { role: 'assistant', content: 'Hi! I\'m here to help you book your detail. What service are you interested in? We offer everything from Essential wash packages to Premium ceramic coating. What\'s your vehicle type?' }
 ];
 
-// ─── INIT SQUARE ─────────────────────────────────────────────────────────────
+// --- INIT SQUARE -------------------------------------------------------------
 async function initSquare() {
   if (!window.Square) { console.error('Square.js failed to load'); return; }
   const payments = window.Square.payments(SQUARE_APP_ID, SQUARE_LOC_ID);
@@ -789,7 +789,7 @@ async function initSquare() {
 
 initSquare();
 
-// ─── CHAT FUNCTIONS ──────────────────────────────────────────────────────────
+// --- CHAT FUNCTIONS ----------------------------------------------------------
 async function sendChatMessage() {
   const input = document.getElementById('chat-input');
   const message = input.value.trim();
@@ -842,29 +842,29 @@ function addChatMessage(role, text) {
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
-// ─── SERVICE SELECTION ────────────────────────────────────────────────────────
+// --- SERVICE SELECTION --------------------------------------------------------
 function selectService(el, name, price) {
   document.querySelectorAll('.service-option').forEach(o => o.classList.remove('selected'));
   el.classList.add('selected');
   selectedService = name;
   selectedPrice   = price;
-  document.getElementById('summary-service').textContent = name + ' · ' + price;
+  document.getElementById('summary-service').textContent = name + ' � ' + price;
 }
 
-// ─── LIVE SUMMARY UPDATE ──────────────────────────────────────────────────────
+// --- LIVE SUMMARY UPDATE ------------------------------------------------------
 document.getElementById('preferred-date').addEventListener('change', function() {
   const d = new Date(this.value + 'T12:00:00');
   document.getElementById('summary-date').textContent = d.toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'});
 });
 
 document.getElementById('preferred-time').addEventListener('change', function() {
-  document.getElementById('summary-time').textContent = this.value || '—';
+  document.getElementById('summary-time').textContent = this.value || '�';
 });
 
 document.getElementById('preferred-date').addEventListener('input', function() {
   const d = new Date(this.value + 'T12:00:00');
   if (d.getDay() === 1) {
-    showMsg('error', 'Mondays are our rest day — please select Tuesday through Sunday.');
+    showMsg('error', 'Mondays are our rest day � please select Tuesday through Sunday.');
     this.value = '';
   }
   const today = new Date(); today.setHours(0,0,0,0);
@@ -878,7 +878,7 @@ const tomorrow = new Date();
 tomorrow.setDate(tomorrow.getDate() + 1);
 document.getElementById('preferred-date').min = tomorrow.toISOString().split('T')[0];
 
-// ─── VALIDATION ───────────────────────────────────────────────────────────────
+// --- VALIDATION ---------------------------------------------------------------
 function validate() {
   const name    = document.getElementById('customer-name').value.trim();
   const phone   = document.getElementById('customer-phone').value.trim();
@@ -897,7 +897,7 @@ function validate() {
   return true;
 }
 
-// ─── PAYMENT HANDLER ─────────────────────────────────────────────────────────
+// --- PAYMENT HANDLER ---------------------------------------------------------
 async function handlePayment() {
   hideMsg();
   if (!validate()) return;
@@ -910,7 +910,7 @@ async function handlePayment() {
   try {
     const result = await card.tokenize();
     if (result.status !== 'OK') {
-      showMsg('error', result.errors ? result.errors[0].message : 'Card error — please check your details.');
+      showMsg('error', result.errors ? result.errors[0].message : 'Card error � please check your details.');
       btn.disabled = false;
       btn.classList.remove('loading');
       btn.textContent = 'Pay $30 Deposit & Confirm Booking';
@@ -948,7 +948,7 @@ async function handlePayment() {
     if (data.success) {
       showSuccessScreen(bookingData);
     } else {
-      showMsg('error', data.error || 'Payment failed — please try again or call (412) 752-8684.');
+      showMsg('error', data.error || 'Payment failed � please try again or call (412) 752-8684.');
       btn.disabled = false;
       btn.classList.remove('loading');
       btn.textContent = 'Pay $30 Deposit & Confirm Booking';
@@ -963,7 +963,7 @@ async function handlePayment() {
   }
 }
 
-// ─── SUCCESS SCREEN ───────────────────────────────────────────────────────────
+// --- SUCCESS SCREEN -----------------------------------------------------------
 function showSuccessScreen(data) {
   document.getElementById('booking-form').style.display = 'none';
   const screen = document.getElementById('success-screen');
@@ -978,13 +978,13 @@ function showSuccessScreen(data) {
     <div class="row"><span>Date</span><span>${dateStr}</span></div>
     <div class="row"><span>Time</span><span>${data.booking.time}</span></div>
     <div class="row"><span>Location</span><span>${data.customer.address}</span></div>
-    <div class="row"><span>Deposit Paid</span><span style="color:var(--green)">$30.00 ✓</span></div>
+    <div class="row"><span>Deposit Paid</span><span style="color:var(--green)">$30.00 ?</span></div>
   `;
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ─── HELPERS ──────────────────────────────────────────────────────────────────
+// --- HELPERS ------------------------------------------------------------------
 function showMsg(type, text) {
   const el = document.getElementById('msg-' + type);
   el.textContent = text;
@@ -1003,521 +1003,7 @@ document.getElementById('chat-input').addEventListener('keypress', function(e) {
   }
 });
 </script>
-
-</body>
-        <div class="spinner"></div>
-        <div class="loading-text">Processing your booking...</div>
-    </div>
-
-    <!-- Skip to main content link for accessibility -->
-    <a href="#step1" class="skip-link">Skip to main content</a>
-
-    <header id="header">
-        <div class="nav-container">
-            <div class="logo-section">
-                <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="20200723_030424~2.png" alt="Hands Detail Shop Logo" class="logo-img">
-                </a>
-            </div>
-            <nav class="nav-menu">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="our-story.html" class="nav-link">Our Story</a>
-                <div class="services-dropdown">
-                    <button class="services-dropdown-btn nav-link" onclick="toggleServicesDropdown(this)">Services</button>
-                    <div class="dropdown-menu">
-                        <a href="services.html" class="dropdown-item">📋 All Services Overview</a>
-                        <a href="personal-vehicles.html" class="dropdown-item">🚗 Personal Vehicles</a>
-                        <a href="marine-services.html" class="dropdown-item">🛥️ Yacht & RV</a>
-                        <a href="fleet-services.html" class="dropdown-item">🚛 Fleet & Commercial</a>
-                        <a href="motorcycle-services.html" class="dropdown-item">🏍️ Motorcycle</a>
-                        <a href="aircraft-services.html" class="dropdown-item">✈️ Aircraft</a>
-                        <a href="under-the-hood.html" class="dropdown-item">⚙️ Mechanical Services</a>
-                    </div>
-                </div>
-                <a href="membership.html" class="nav-link">Membership</a>
-                <a href="gallery.html" class="nav-link">Gallery</a>
-                <a href="quote.html" class="nav-link">Quote</a>
-                <a href="reviews.html" class="nav-link">Reviews</a>
-                <a href="https://handsdetailshop.medium.com" target="_blank" class="nav-link">Blog</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-                <a href="careers.html" class="nav-link">Careers</a>
-                <div class="contact-header">
-                    <span class="hours-header">🕒 Mon-Sat 8AM-6PM</span>
-                    <a href="tel:4127528684" class="btn-call">📞 Call</a>
-                    <a href="sms:4127528684" class="btn-text">💬 Text</a>
-                    <a href="booking.html" class="cta-header active">Book Now</a>
-                </div>
-            </nav>
-            <div class="mobile-menu-toggle" id="mobileToggle">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-        <nav class="mobile-nav" id="mobileNav">
-            <a href="index.html">Home</a>
-            <a href="our-story.html">Our Story</a>
-            <a href="services.html">All Services Overview</a>
-            <a href="personal-vehicles.html">🚗 Personal Vehicles</a>
-            <a href="marine-services.html">🛥️ Yacht & RV</a>
-            <a href="fleet-services.html">🚛 Fleet & Commercial</a>
-            <a href="motorcycle-services.html">🏍️ Motorcycle</a>
-            <a href="aircraft-services.html">✈️ Aircraft</a>
-            <a href="under-the-hood.html">⚙️ Mechanical Services</a>
-            <a href="membership.html">Membership</a>
-            <a href="gallery.html">Gallery</a>
-            <a href="quote.html">Get Quote</a>
-            <a href="reviews.html">Reviews</a>
-            <a href="https://medium.com/@handsdetailshop" target="_blank">Blog</a>
-            <a href="contact.html">Contact</a>
-            <a href="tel:4127528684" style="background: linear-gradient(135deg, #1565c0, #1e88e5, #42a5f5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">📞 Call Now</a>
-            <a href="sms:4127528684" style="background: rgba(50,50,50,0.5); text-align: center; margin-top: 10px; border: 1px solid rgba(160,160,160,0.3);">💬 Text Now</a>
-        </nav>
-    </header>
-
-    <div class="promo-banner" style="margin-top: 70px;">
-        ðŸ“… Real-Time Availability | $30 Deposit Secures Your Spot | Flexible Rescheduling | 📞 (412) 752-8684
-    </div>
-
-    <section class="page-hero" style="margin-top: 20px; padding: 80px 20px 40px; text-align: center;">
-        <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 20px; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-            Book Your Appointment
-        </h1>
-        <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; color: #c0c0c0;">
-            Select your preferred date and time from our live calendar
-        </p>
-    </section>
-
-    <div class="calendar-container">
-        <!-- Booking Progress Steps -->
-        <div class="booking-steps">
-            <div class="booking-step active">
-                <div class="step-circle">1</div>
-                <div class="step-label">Select Service</div>
-            </div>
-            <div class="booking-step">
-                <div class="step-circle">2</div>
-                <div class="step-label">Choose Date & Time</div>
-            </div>
-            <div class="booking-step">
-                <div class="step-circle">3</div>
-                <div class="step-label">Your Information</div>
-            </div>
-            <div class="booking-step">
-                <div class="step-circle">4</div>
-                <div class="step-label">Confirmation</div>
-            </div>
-        </div>
-
-        <!-- Step 1: Service Selection -->
-        <div id="step1" class="booking-section">
-            <div class="calendar-grid">
-                <h2 style="color: #e8f1f8; margin-bottom: 25px;">Select Your Service</h2>
-                <div style="display: grid; gap: 15px;">
-                    <label class="service-option" style="display: flex; align-items: center; padding: 20px; background: rgba(40, 40, 45, 0.5); border: 1px solid rgba(160, 160, 160, 0.2); border-radius: 10px; cursor: pointer; transition: all 0.3s ease;">
-                        <input type="radio" name="service" value="essential" style="margin-right: 15px;">
-                        <div>
-                            <div style="font-weight: 600; color: #e8f1f8; font-size: 1.1rem;">Essential Package - $65-85</div>
-                            <div style="color: #a0a0a0; font-size: 0.9rem;">Exterior wash, vacuum, tire shine (2-3 hours)</div>
-                        </div>
-                    </label>
-                    <label class="service-option" style="display: flex; align-items: center; padding: 20px; background: rgba(40, 40, 45, 0.5); border: 1px solid rgba(160, 160, 160, 0.2); border-radius: 10px; cursor: pointer; transition: all 0.3s ease;">
-                        <input type="radio" name="service" value="executive" style="margin-right: 15px;">
-                        <div>
-                            <div style="font-weight: 600; color: #e8f1f8; font-size: 1.1rem;">Executive Package - $145-185</div>
-                            <div style="color: #a0a0a0; font-size: 0.9rem;">Full detail with clay bar, wax, deep interior (4-5 hours)</div>
-                        </div>
-                    </label>
-                    <label class="service-option" style="display: flex; align-items: center; padding: 20px; background: rgba(40, 40, 45, 0.5); border: 1px solid rgba(160, 160, 160, 0.2); border-radius: 10px; cursor: pointer; transition: all 0.3s ease;">
-                        <input type="radio" name="service" value="signature" style="margin-right: 15px;">
-                        <div>
-                            <div style="font-weight: 600; color: #e8f1f8; font-size: 1.1rem;">Signature Package - $285-365</div>
-                            <div style="color: #a0a0a0; font-size: 0.9rem;">Premium detail with sealant, leather conditioning (6-8 hours)</div>
-                        </div>
-                    </label>
-                    <label class="service-option" style="display: flex; align-items: center; padding: 20px; background: rgba(40, 40, 45, 0.5); border: 1px solid rgba(160, 160, 160, 0.2); border-radius: 10px; cursor: pointer; transition: all 0.3s ease;">
-                        <input type="radio" name="service" value="other" style="margin-right: 15px;">
-                        <div>
-                            <div style="font-weight: 600; color: #e8f1f8; font-size: 1.1rem;">Other Service</div>
-                            <div style="color: #a0a0a0; font-size: 0.9rem;">VIP Membership, Motorcycle, RV, or Custom Package</div>
-                        </div>
-                    </label>
-                </div>
-                <button onclick="nextStep(2)" style="margin-top: 30px; padding: 15px 40px; background: linear-gradient(135deg, #1565c0, #1e88e5); color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
-                    Continue to Date Selection â†’
-                </button>
-            </div>
-        </div>
-
-        <!-- Step 2: Date & Time Selection (placeholder - would integrate with actual booking system) -->
-        <div id="step2" class="booking-section" style="display: none;">
-            <div class="calendar-grid">
-                <div class="calendar-header">
-                    <h2 class="calendar-month">January 2025</h2>
-                    <div class="calendar-nav">
-                        <button>â† Previous</button>
-                        <button>Next â†’</button>
-                    </div>
-                </div>
-                <p style="color: #a0a0a0; margin-bottom: 20px;">Select your preferred date (green = available)</p>
-                <div class="calendar-days">
-                    <!-- Sample calendar days - in production this would be generated dynamically -->
-                    <div class="calendar-day disabled">
-                        <div class="day-number">1</div>
-                        <div class="day-slots">Booked</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">2</div>
-                        <div class="day-slots">3 slots</div>
-                    </div>
-                    <div class="calendar-day">
-                        <div class="day-number">3</div>
-                        <div class="day-slots">5 slots</div>
-                    </div>
-                    <!-- More days would be added dynamically -->
-                </div>
-                <div id="timeSlots" style="display: none; margin-top: 30px;">
-                    <h3 style="color: #e8f1f8; margin-bottom: 20px;">Available Times</h3>
-                    <div class="time-slots">
-                        <div class="time-slot">8:00 AM</div>
-                        <div class="time-slot">10:00 AM</div>
-                        <div class="time-slot booked">12:00 PM</div>
-                        <div class="time-slot">2:00 PM</div>
-                        <div class="time-slot">4:00 PM</div>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 15px; margin-top: 30px;">
-                    <button onclick="nextStep(1)" style="padding: 15px 30px; background: rgba(40, 40, 45, 0.8); color: #e8f1f8; border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 10px; cursor: pointer;">
-                        â† Back
-                    </button>
-                    <button onclick="nextStep(3)" style="flex: 1; padding: 15px 40px; background: linear-gradient(135deg, #1565c0, #1e88e5); color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
-                        Continue to Contact Info â†’
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Step 3: Contact Information -->
-        <div id="step3" class="booking-section" style="display: none;">
-            <div class="calendar-grid">
-                <h2 style="color: #e8f1f8; margin-bottom: 25px;">Your Information</h2>
-                <form id="bookingForm">
-                    <div class="form-group" style="margin-bottom: 20px;">
-                        <label style="display: block; color: #c0c0c0; margin-bottom: 8px; font-weight: 600;">Full Name *</label>
-                        <input type="text" required style="width: 100%; padding: 12px; background: rgba(40, 40, 45, 0.8); border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 8px; color: #e8f1f8; font-size: 1rem;">
-                    </div>
-                    <div class="form-group" style="margin-bottom: 20px;">
-                        <label style="display: block; color: #c0c0c0; margin-bottom: 8px; font-weight: 600;">Phone Number *</label>
-                        <input type="tel" required style="width: 100%; padding: 12px; background: rgba(40, 40, 45, 0.8); border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 8px; color: #e8f1f8; font-size: 1rem;">
-                    </div>
-                    <div class="form-group" style="margin-bottom: 20px;">
-                        <label style="display: block; color: #c0c0c0; margin-bottom: 8px; font-weight: 600;">Email Address *</label>
-                        <input type="email" required style="width: 100%; padding: 12px; background: rgba(40, 40, 45, 0.8); border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 8px; color: #e8f1f8; font-size: 1rem;">
-                    </div>
-                    <div class="form-group" style="margin-bottom: 20px;">
-                        <label style="display: block; color: #c0c0c0; margin-bottom: 8px; font-weight: 600;">Service Address *</label>
-                        <input type="text" required placeholder="Street address where we'll meet you" style="width: 100%; padding: 12px; background: rgba(40, 40, 45, 0.8); border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 8px; color: #e8f1f8; font-size: 1rem;">
-                    </div>
-                    <div class="form-group" style="margin-bottom: 20px;">
-                        <label style="display: block; color: #c0c0c0; margin-bottom: 8px; font-weight: 600;">Vehicle Information *</label>
-                        <input type="text" required placeholder="Year, Make, Model (e.g., 2020 Honda Accord)" style="width: 100%; padding: 12px; background: rgba(40, 40, 45, 0.8); border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 8px; color: #e8f1f8; font-size: 1rem;">
-                    </div>
-                    <div class="form-group" style="margin-bottom: 20px;">
-                        <label style="display: block; color: #c0c0c0; margin-bottom: 8px; font-weight: 600;">Special Requests or Notes</label>
-                        <textarea rows="3" placeholder="Any special needs or requests..." style="width: 100%; padding: 12px; background: rgba(40, 40, 45, 0.8); border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 8px; color: #e8f1f8; font-size: 1rem;"></textarea>
-                    </div>
-                </form>
-                <div style="display: flex; gap: 15px; margin-top: 30px;">
-                    <button onclick="nextStep(2)" style="padding: 15px 30px; background: rgba(40, 40, 45, 0.8); color: #e8f1f8; border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 10px; cursor: pointer;">
-                        â† Back
-                    </button>
-                    <button onclick="nextStep(4)" style="flex: 1; padding: 15px 40px; background: linear-gradient(135deg, #1565c0, #1e88e5); color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
-                        Review & Confirm â†’
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Step 4: Confirmation -->
-        <div id="step4" class="booking-section" style="display: none;">
-            <div class="calendar-grid">
-                <div style="text-align: center; padding: 40px 20px;">
-                    <div style="font-size: 4rem; margin-bottom: 20px;">âœ…</div>
-                    <h2 style="color: #e8f1f8; font-size: 2rem; margin-bottom: 20px;">Review Your Booking</h2>
-                    <div style="background: rgba(40, 40, 45, 0.5); border: 1px solid rgba(160, 160, 160, 0.2); border-radius: 15px; padding: 30px; text-align: left; max-width: 500px; margin: 0 auto 30px;">
-                        <p style="color: #c0c0c0; margin-bottom: 12px;"><strong style="color: #42a5f5;">Service:</strong> Executive Package</p>
-                        <p style="color: #c0c0c0; margin-bottom: 12px;"><strong style="color: #42a5f5;">Date:</strong> January 15, 2025</p>
-                        <p style="color: #c0c0c0; margin-bottom: 12px;"><strong style="color: #42a5f5;">Time:</strong> 10:00 AM</p>
-                        <p style="color: #c0c0c0; margin-bottom: 12px;"><strong style="color: #42a5f5;">Location:</strong> Your address</p>
-                        <p style="color: #c0c0c0; margin-bottom: 12px;"><strong style="color: #42a5f5;">Vehicle:</strong> Your vehicle</p>
-                        <p style="color: #c0c0c0; margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(160, 160, 160, 0.2);"><strong style="color: #42a5f5;">Total:</strong> $145-185 (based on vehicle size)</p>
-                        <p style="color: #c0c0c0;"><strong style="color: #42a5f5;">Deposit Due:</strong> $30 (applied to total)</p>
-                    </div>
-                    <p style="color: #a0a0a0; margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto;">
-                        You'll receive a confirmation email and text reminder 24 hours before your appointment.
-                    </p>
-                    <div style="display: flex; gap: 15px; justify-content: center; max-width: 500px; margin: 0 auto;">
-                        <button onclick="nextStep(3)" style="padding: 15px 30px; background: rgba(40, 40, 45, 0.8); color: #e8f1f8; border: 1px solid rgba(160, 160, 160, 0.3); border-radius: 10px; cursor: pointer;">
-                            â† Back
-                        </button>
-                        <button onclick="confirmBooking()" style="flex: 1; padding: 15px 40px; background: linear-gradient(135deg, #1565c0, #1e88e5); color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer;">
-                            Pay $30 Deposit & Confirm
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <section style="max-width: 800px; margin: 60px auto 80px; padding: 30px 20px; text-align: center;">
-        <h3 style="color: #e8f1f8; margin-bottom: 20px;">Prefer to Book by Phone?</h3>
-        <p style="color: #a0a0a0; margin-bottom: 25px;">
-            Call or text us directly and we'll get you scheduled right away!
-        </p>
-        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-            <a href="tel:4127528684" class="contact-btn" style="text-decoration: none;">
-                <span>📞</span>
-                <span>Call (412) 752-8684</span>
-            </a>
-            <a href="sms:4127528684" class="contact-btn" style="text-decoration: none;">
-                <span>💬</span>
-                <span>Text (412) 752-8684</span>
-            </a>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Hands Detail Shop</h3>
-                <p><strong>📞 Phone:</strong> (412) 752-8684<br>
-                <strong>âœ‰ï¸ Email:</strong> <a href="mailto:handsdetailshop@gmail.com">handsdetailshop@gmail.com</a></p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Hands Detail Shop | All Rights Reserved</p>
-        </div>
-    </footer>
-
-    <script src="main.js"></script>
-    <script src="pwa-installer.js"></script>
-
-    <script>
-    function nextStep(step) {
-        // Hide all sections
-        document.querySelectorAll('.booking-section').forEach(s => s.style.display = 'none');
-        // Show selected section
-        document.getElementById('step' + step).style.display = 'block';
-        
-        // Update progress indicators
-        document.querySelectorAll('.booking-step').forEach((s, i) => {
-            s.classList.remove('active', 'completed');
-            if (i + 1 < step) s.classList.add('completed');
-            if (i + 1 === step) s.classList.add('active');
-        });
-        
-        // Scroll to top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function confirmBooking() {
-        // Show loading indicator
-        const loader = document.getElementById('loadingIndicator');
-        if (loader) {
-            loader.classList.add('active');
-        }
-        
-        // Simulate payment processing (2 seconds)
-        setTimeout(function() {
-            // Hide loader
-            if (loader) {
-                loader.classList.remove('active');
-            }
-            
-            alert('In production, this would redirect to Square payment for $30 deposit.\n\nFor now, please call (412) 752-8684 to complete your booking!');
-        }, 2000);
-    }
-
-    // Service option hover effects
-    document.querySelectorAll('.service-option').forEach(option => {
-        option.addEventListener('mouseenter', function() {
-            this.style.borderColor = 'rgba(66, 165, 245, 0.5)';
-            this.style.background = 'rgba(21, 101, 192, 0.2)';
-        });
-        option.addEventListener('mouseleave', function() {
-            if (!this.querySelector('input').checked) {
-                this.style.borderColor = 'rgba(160, 160, 160, 0.2)';
-                this.style.background = 'rgba(40, 40, 45, 0.5)';
-            }
-        });
-    });
-    </script>
-
-
-<!-- ============================================================
-     HANDS DETAIL SHOP — CLAUDE AI CHAT WIDGET
-     Powered by Claude API via Firebase Cloud Function
-     ============================================================ -->
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap');
-#hds-chat-widget{position:fixed;bottom:24px;right:24px;z-index:99999;font-family:'Barlow',sans-serif}
-#hds-launcher{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#c8a951 0%,#e8c96a 50%,#a8891f 100%);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(200,169,81,.45),0 2px 8px rgba(0,0,0,.4);transition:transform .2s ease,box-shadow .2s ease;position:relative}
-#hds-launcher:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(200,169,81,.6),0 2px 12px rgba(0,0,0,.5)}
-#hds-launcher svg{width:28px;height:28px}
-.hds-badge{position:absolute;top:-4px;right:-4px;width:20px;height:20px;background:#e74c3c;border-radius:50%;font-size:11px;font-weight:700;color:#fff;display:none;align-items:center;justify-content:center;border:2px solid #0f0f0f}
-#hds-panel{position:absolute;bottom:78px;right:0;width:370px;max-height:580px;background:#141414;border:1px solid rgba(200,169,81,.25);border-radius:16px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.7),0 0 0 1px rgba(200,169,81,.1);opacity:0;transform:translateY(12px) scale(.97);pointer-events:none;transition:opacity .22s ease,transform .22s ease}
-#hds-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:all}
-#hds-header{background:linear-gradient(135deg,#1a1a1a,#1e1b10);border-bottom:1px solid rgba(200,169,81,.2);padding:14px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0}
-.hds-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#c8a951,#e8c96a);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:17px;color:#0f0f0f;flex-shrink:0;box-shadow:0 0 0 2px rgba(200,169,81,.3)}
-.hds-header-info{flex:1;min-width:0}
-.hds-header-name{font-family:'Bebas Neue',sans-serif;font-size:16px;color:#c8a951;letter-spacing:.5px;line-height:1;margin-bottom:2px}
-.hds-header-sub{font-size:11px;color:rgba(255,255,255,.45);font-weight:400}
-.hds-online-dot{width:8px;height:8px;background:#2ecc71;border-radius:50%;flex-shrink:0;box-shadow:0 0 6px #2ecc71}
-#hds-close{background:none;border:none;color:rgba(255,255,255,.35);cursor:pointer;padding:4px;border-radius:6px;transition:color .15s;font-size:18px;line-height:1}
-#hds-close:hover{color:rgba(255,255,255,.8)}
-#hds-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
-#hds-messages::-webkit-scrollbar{width:4px}
-#hds-messages::-webkit-scrollbar-thumb{background:rgba(200,169,81,.25);border-radius:4px}
-.hds-msg{display:flex;gap:8px;align-items:flex-end;animation:hdsMsgIn .2s ease}
-@keyframes hdsMsgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.hds-msg.user{flex-direction:row-reverse}
-.hds-msg-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#c8a951,#e8c96a);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:12px;color:#0f0f0f;flex-shrink:0}
-.hds-msg.user .hds-msg-avatar{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);font-size:11px;font-family:'Barlow',sans-serif;font-weight:600}
-.hds-bubble{max-width:78%;padding:10px 13px;border-radius:14px;font-size:13.5px;line-height:1.5;word-wrap:break-word}
-.hds-msg.bot .hds-bubble{background:rgba(255,255,255,.06);color:rgba(255,255,255,.88);border-bottom-left-radius:4px;border:1px solid rgba(255,255,255,.07)}
-.hds-msg.user .hds-bubble{background:linear-gradient(135deg,#c8a951,#b8991f);color:#0f0f0f;font-weight:600;border-bottom-right-radius:4px}
-.hds-quick-replies{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 4px;flex-shrink:0}
-.hds-qr{background:rgba(200,169,81,.1);border:1px solid rgba(200,169,81,.3);color:#c8a951;font-family:'Barlow',sans-serif;font-size:12px;font-weight:600;padding:5px 10px;border-radius:20px;cursor:pointer;transition:all .15s;white-space:nowrap}
-.hds-qr:hover{background:rgba(200,169,81,.2);border-color:#c8a951}
-.hds-typing{display:flex;gap:4px;align-items:center;padding:10px 13px;background:rgba(255,255,255,.06);border-radius:14px;border-bottom-left-radius:4px;border:1px solid rgba(255,255,255,.07);width:fit-content}
-.hds-dot{width:6px;height:6px;background:rgba(200,169,81,.6);border-radius:50%;animation:hdsBounce 1.2s ease infinite}
-.hds-dot:nth-child(2){animation-delay:.2s}
-.hds-dot:nth-child(3){animation-delay:.4s}
-@keyframes hdsBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
-#hds-input-area{display:flex;gap:8px;padding:12px 14px;border-top:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);flex-shrink:0}
-#hds-input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:9px 12px;color:rgba(255,255,255,.88);font-family:'Barlow',sans-serif;font-size:13.5px;outline:none;resize:none;min-height:38px;max-height:100px;line-height:1.4;transition:border-color .15s}
-#hds-input::placeholder{color:rgba(255,255,255,.3)}
-#hds-input:focus{border-color:rgba(200,169,81,.4)}
-#hds-send{width:38px;height:38px;background:linear-gradient(135deg,#c8a951,#b8991f);border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .15s,box-shadow .15s;align-self:flex-end}
-#hds-send:hover{transform:scale(1.05);box-shadow:0 4px 12px rgba(200,169,81,.4)}
-#hds-send svg{width:16px;height:16px}
-#hds-footer{text-align:center;padding:6px 14px 10px;font-size:10px;color:rgba(255,255,255,.2);flex-shrink:0}
-@media(max-width:480px){#hds-panel{width:calc(100vw - 24px);right:0;max-height:70vh}#hds-chat-widget{bottom:16px;right:12px}}
-</style>
-
-<div id="hds-chat-widget">
-  <button id="hds-launcher" aria-label="Chat with Hands Detail Shop">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    <span class="hds-badge" id="hds-badge">1</span>
-  </button>
-  <div id="hds-panel" role="dialog" aria-label="Hands Detail Shop Chat">
-    <div id="hds-header">
-      <div class="hds-avatar">HD</div>
-      <div class="hds-header-info">
-        <div class="hds-header-name">Hands Detail AI</div>
-        <div class="hds-header-sub">Powered by Claude · Replies instantly</div>
-      </div>
-      <div class="hds-online-dot"></div>
-      <button id="hds-close" aria-label="Close chat">✕</button>
-    </div>
-    <div id="hds-messages" role="log" aria-live="polite"></div>
-    <div class="hds-quick-replies" id="hds-quick-replies"></div>
-    <div id="hds-input-area">
-      <textarea id="hds-input" placeholder="Ask about packages, pricing, gift cards…" rows="1" aria-label="Chat message"></textarea>
-      <button id="hds-send" aria-label="Send message">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-      </button>
-    </div>
-    <div id="hds-footer">Hands Detail Shop · (412) 752-8684 · handsdetailshop.com</div>
-  </div>
-</div>
-
-<script>
-(function(){
-'use strict';
-const CONFIG={PROXY_URL:'https://us-central1-hands-detail.cloudfunctions.net/claudeChat',MODEL:'claude-sonnet-4-20250514',MAX_TOKENS:400};
-const SYSTEM=`You are the AI assistant for Hands Detail Shop, a veteran-owned premium mobile auto detailing business based in Arnold, PA, operated by Nazir El. 16+ years of excellence, Air Force trained, serving PA, OH, WV, MD within a 2-hour radius of Pittsburgh.
-
-YOUR ROLE: Help customers choose services, explain packages, quote prices, promote memberships, sell gift certificates, and guide them to book. Be warm, professional, and direct. Never make up prices or services not listed here.
-
-CONTACT: Phone/Text (412) 752-8684 | handsdetailshop.com | Mon–Sat 8AM–6PM, Sun by appt | $30 deposit secures every appointment | PROMO: 15% OFF first-time customers + FREE Tire Shine with any package
-
-━━━ PERSONAL VEHICLE PACKAGES ━━━
-ESSENTIAL — $65–$95: Hand wash & dry, wheel & tire cleaning, tire shine, windows in/out, door jambs, quick interior vacuum, trim inspection.
-EXECUTIVE — $145–$195 (Most Popular): + clay bar, one-step polish, premium wax, full interior vacuum/wipe, leather conditioning, air freshener, 1-month guarantee.
-PREMIUM PLUS — $215–$285: + advanced paint correction (minor), engine bay light detail, carpet/upholstery shampooing, headlight cleaning, trim restoration, interior protection, 3-month guarantee.
-SIGNATURE — $325–$425: + multi-stage paint correction, full engine bay detail, carpet extraction, headlight restoration & coating, complete trim restoration, 6-month sealant, warranty.
-PRESIDENTIAL — $650–$850: + advanced paint correction, premium ceramic coating, complete leather treatment, odor elimination, chrome polish, 2-year warranty, maintenance plan.
-ULTIMATE ARMOR — $1,400–$1,850: + 9H ceramic coating (5-yr warranty), PPF on high-risk areas, wheel ceramic, interior ceramic, undercarriage detail, 5-year comprehensive warranty, annual maintenance.
-
-━━━ INTERIOR-ONLY ━━━
-INTERIOR EXPRESS — $85–$125: Full vacuum, dash/console wipe, door panels, cup holders, windows (inside), air freshener, mats.
-INTERIOR DEEP CLEAN — $185–$265: + shampooing, leather clean/condition, stain treatment, vent detailing, pet hair, headliner, steam cleaning.
-INTERIOR PREMIUM — $365–$485: + odor elimination, leather restoration, trim restoration, fabric protection, seat extraction, UV protection.
-INTERIOR CERAMIC PROTECTION — $585–$785: + interior ceramic coating, fabric/leather protection (3-yr), UV/stain resistance, anti-bacterial, 3-year warranty.
-
-━━━ MEMBERSHIP PLANS (Biweekly Service) ━━━
-Requires one-time restoration detail first: Compact $285 | Mid-Size $365 | SUV/Truck $445 | Luxury $525
-SINGLE CAR: Essential Maintain $75/mo | Premium Maintain $110/mo | Ultimate Maintain $145/mo
-TWO-CAR HOUSEHOLD: Essential $130/mo | Premium $190/mo | Ultimate $250/mo (save $20–$40/mo)
-THREE-CAR HOUSEHOLD: Essential $180/mo | Premium $265/mo | Ultimate $350/mo (save $45–$85/mo)
-CERAMIC UPGRADE: +$500 one-time → -$25/mo forever + 5-year paint protection.
-
-━━━ MOTORCYCLE ━━━
-Road Ready $85–$105 | Chrome & Shine $145–$185 | Show Bike $245–$295 | Seasonal Prep $125–$155
-
-━━━ YACHT / RV / MARINE ━━━
-Custom quotes based on size/condition. Call for free consultation.
-
-━━━ FLEET & COMMERCIAL ━━━
-Custom plans for 2+ vehicles. Volume discounts. Call for fleet proposal.
-
-━━━ AIRCRAFT ━━━
-Custom quotes. Call for consultation.
-
-━━━ MECHANICAL SERVICES (UNDER THE HOOD) ━━━
-Air Force diesel/jet mechanic background. Diagnosis first, you approve before any work. Labor: $75/hr.
-Basic Diagnostic: $50 | Advanced Diagnostic: $100
-Spark Plugs/Coils: $95–$150 | Solenoid: $150–$250 | Sensors: $80–$200
-Oil Change: $45–$75 | Full Fluid Service: $175–$300 | Belt/Hose: $95–$200
-Valve Cover Gasket: $165–$250 | Water Pump: $200–$400 | Serpentine Belt: $125–$225
-Engine Mounts: $300–$550 | Timing Chain: $600–$1,100 | Head Gasket: $800–$1,400
-Brake Pads: $120–$200/axle | Transmission Service: $175–$300 | Transmission Diagnostic: $100
-50% deposit secures parts.
-
-━━━ GIFT CERTIFICATES ━━━
-Perfect for holidays, birthdays, Father's Day, graduation. Any dollar amount or specific package. Call/text (412) 752-8684 to purchase. Payment via Square, cash, or Zelle. Digital or physical certificate provided.
-
-━━━ UPSELL RULES ━━━
-- After Signature/Presidential/Ultimate Armor → ALWAYS mention membership ("Since you're investing in top-tier care, our Monthly Maintain plan keeps it looking this good for just $75–$145/mo")
-- After Executive/Premium Plus → suggest upgrading to Signature for long-term protection
-- Multiple cars mentioned → immediately pitch multi-car household plans and savings
-- First-time customer → remind them of 15% off
-- Mechanical service customer → offer to bundle detail at same time
-- Always mention gift certificates before ending any conversation
-
-━━━ STYLE ━━━
-Keep responses under 4 sentences unless more detail is asked for. Warm, direct, professional. Always end with a clear next step. If unsure of anything, say "Text Nazir at (412) 752-8684 for a custom quote."`;
-const state={open:false,messages:[],typing:false,greeted:false};
-const launcher=document.getElementById('hds-launcher');
-const panel=document.getElementById('hds-panel');
-const closeBtn=document.getElementById('hds-close');
-const msgEl=document.getElementById('hds-messages');
-const inputEl=document.getElementById('hds-input');
-const sendBtn=document.getElementById('hds-send');
-const badge=document.getElementById('hds-badge');
-const qrArea=document.getElementById('hds-quick-replies');
-const INIT_QR=['💰 Pricing & Packages','🎁 Gift Certificates','💎 Memberships','⚙️ Mechanical','📅 Book Now'];
-function setQR(items){qrArea.innerHTML='';items.forEach(l=>{const b=document.createElement('button');b.className='hds-qr';b.textContent=l;b.onclick=()=>{sendMsg(l);setQR([]);};qrArea.appendChild(b);});}
-function appendMsg(r,c){const w=document.createElement('div');w.className=`hds-msg ${r==='user'?'user':'bot'}`;const a=document.createElement('div');a.className='hds-msg-avatar';a.textContent=r==='user'?'You':'HD';const b=document.createElement('div');b.className='hds-bubble';b.innerHTML=c.replace(/\n/g,'<br>');w.appendChild(a);w.appendChild(b);msgEl.appendChild(w);msgEl.scrollTop=msgEl.scrollHeight;}
-function showTyping(){const w=document.createElement('div');w.className='hds-msg bot';w.id='hds-typing';const a=document.createElement('div');a.className='hds-msg-avatar';a.textContent='HD';const d=document.createElement('div');d.className='hds-typing';for(let i=0;i<3;i++){const x=document.createElement('div');x.className='hds-dot';d.appendChild(x);}w.appendChild(a);w.appendChild(d);msgEl.appendChild(w);msgEl.scrollTop=msgEl.scrollHeight;}
-function removeTyping(){const e=document.getElementById('hds-typing');if(e)e.remove();}
-async function callClaude(m){state.messages.push({role:'user',content:m});showTyping();state.typing=true;try{const res=await fetch(CONFIG.PROXY_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:CONFIG.MODEL,max_tokens:CONFIG.MAX_TOKENS,system:SYSTEM,messages:state.messages})});if(!res.ok)throw new Error('HTTP '+res.status);const data=await res.json();const reply=data?.content?.[0]?.text||"I'm having trouble. Call (412) 752-8684!";state.messages.push({role:'assistant',content:reply});removeTyping();appendMsg('assistant',reply);if(state.messages.length<=3)setQR(['🎁 Gift Cards','💎 Membership','📅 Book','📞 (412) 752-8684']);}catch(e){removeTyping();appendMsg('assistant',"I'm having trouble connecting. Call or text **(412) 752-8684** — Nazir or the team will help!");console.error('[HDS]',e);}state.typing=false;}
-function sendMsg(t){const m=(t||inputEl.value).trim();if(!m||state.typing)return;inputEl.value='';inputEl.style.height='auto';setQR([]);appendMsg('user',m);callClaude(m);}
-function openPanel(){state.open=true;panel.classList.add('open');badge.style.display='none';inputEl.focus();if(!state.greeted){state.greeted=true;setTimeout(()=>{appendMsg('assistant',"Hey! 👋 Welcome to Hands Detail Shop — Pittsburgh's premier mobile detailing.\n\nI'm your AI assistant. Ask me about packages, pricing, memberships, gift certificates, or booking. What can I help you with?");setQR(INIT_QR);},300);}}
-function closePanel(){state.open=false;panel.classList.remove('open');}
-launcher.onclick=()=>state.open?closePanel():openPanel();closeBtn.onclick=closePanel;sendBtn.onclick=()=>sendMsg();inputEl.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}});inputEl.addEventListener('input',()=>{inputEl.style.height='auto';inputEl.style.height=Math.min(inputEl.scrollHeight,100)+'px';});setTimeout(()=>{if(!state.open){badge.style.display='flex';}},4000);document.addEventListener('click',e=>{if(state.open&&!document.getElementById('hds-chat-widget').contains(e.target))closePanel();});
-})();
-</script>
+<script src="/chat-widget.js"></script>
 
 </body>
 </html>
-

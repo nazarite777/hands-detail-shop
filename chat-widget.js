@@ -499,7 +499,7 @@ Never make up pricing or services not listed above. If asked something you're no
     if (isLoading) return;
 
     var text = inputEl.value.trim();
-    if (!text) return;
+    if (!text || text.length > 2000) return;
 
     inputEl.value = '';
     inputEl.style.height = 'auto';
@@ -512,30 +512,24 @@ Never make up pricing or services not listed above. If asked something you're no
     sendBtn.disabled = true;
     showTyping();
 
-    var endpoint = window.HANDS_CHAT_ENDPOINT || 'https://api.anthropic.com/v1/messages';
-    var apiKey = window.HANDS_CHAT_API_KEY || '';
-
-    var headers = { 'Content-Type': 'application/json' };
-    if (apiKey) {
-      headers['x-api-key'] = apiKey;
-      headers['anthropic-version'] = '2023-06-01';
-      headers['anthropic-dangerous-allow-browser'] = 'true';
-    }
+    // Always route through secure Cloud Function — never expose API key in browser
+    var endpoint = window.HANDS_CHAT_ENDPOINT || 'https://us-central1-hands-detail.cloudfunctions.net/claudeChat';
 
     fetch(endpoint, {
       method: 'POST',
-      headers: headers,
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
+        messages: history,
         system: SYSTEM_PROMPT,
-        messages: history
+        max_tokens: 1000
       })
     })
       .then(function (res) { return res.json(); })
       .then(function (data) {
         var reply =
           (data.content && data.content[0] && data.content[0].text) ||
+          data.reply ||
+          data.message ||
           "I'm having a moment — please call or text us at (412) 752-8684 and we'll help you right away!";
         removeTyping();
         addMessage('assistant', reply);
