@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -365,88 +365,68 @@
         </div>
     </footer>
 
-    <script src="main.js"></script>
-    <script>
-        function toggleServicesDropdown(button) {
-            button.classList.toggle('active');
-        }
-    </script>
-
-    <!-- CLAUDE AI CHAT WIDGET -->
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap');
-        #hds-chat-widget{position:fixed;bottom:24px;right:24px;z-index:99999;font-family:'Barlow',sans-serif}
-        #hds-launcher{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#c8a951 0%,#e8c96a 50%,#a8891f 100%);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(200,169,81,.45),0 2px 8px rgba(0,0,0,.4);transition:transform .2s ease,box-shadow .2s ease;position:relative}
-        #hds-launcher:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(200,169,81,.6),0 2px 12px rgba(0,0,0,.5)}
-        #hds-launcher svg{width:28px;height:28px}
-        .hds-badge{position:absolute;top:-4px;right:-4px;width:20px;height:20px;background:#e74c3c;border-radius:50%;font-size:11px;font-weight:700;color:#fff;display:none;align-items:center;justify-content:center;border:2px solid #0f0f0f}
-        #hds-panel{position:absolute;bottom:78px;right:0;width:370px;max-height:580px;background:#141414;border:1px solid rgba(200,169,81,.25);border-radius:16px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.7),0 0 0 1px rgba(200,169,81,.1);opacity:0;transform:translateY(12px) scale(.97);pointer-events:none;transition:opacity .22s ease,transform .22s ease}
-        #hds-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:all}
-        #hds-header{background:linear-gradient(135deg,#1a1a1a,#1e1b10);border-bottom:1px solid rgba(200,169,81,.2);padding:14px 16px;display:flex;align-items:center;gap:12px;flex-shrink:0}
-        .hds-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#c8a951,#e8c96a);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:17px;color:#0f0f0f;flex-shrink:0;box-shadow:0 0 0 2px rgba(200,169,81,.3)}
-        .hds-header-info{flex:1;min-width:0}
-        .hds-header-name{font-family:'Bebas Neue',sans-serif;font-size:16px;color:#c8a951;letter-spacing:.5px;line-height:1;margin-bottom:2px}
-        .hds-header-sub{font-size:11px;color:rgba(255,255,255,.45);font-weight:400}
-        .hds-online-dot{width:8px;height:8px;background:#2ecc71;border-radius:50%;flex-shrink:0;box-shadow:0 0 6px #2ecc71}
-        #hds-close{background:none;border:none;color:rgba(255,255,255,.35);cursor:pointer;padding:4px;border-radius:6px;transition:color .15s;font-size:18px;line-height:1}
-        #hds-close:hover{color:rgba(255,255,255,.8)}
-        #hds-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
-        #hds-messages::-webkit-scrollbar{width:4px}
-        #hds-messages::-webkit-scrollbar-thumb{background:rgba(200,169,81,.25);border-radius:4px}
-        .hds-msg{display:flex;gap:8px;align-items:flex-end;animation:hdsMsgIn .2s ease}
-        @keyframes hdsMsgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-        .hds-msg.user{flex-direction:row-reverse}
-        .hds-msg-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#c8a951,#e8c96a);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:12px;color:#0f0f0f;flex-shrink:0}
-        .hds-msg.user .hds-msg-avatar{background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);font-size:11px;font-family:'Barlow',sans-serif;font-weight:600}
-        .hds-bubble{max-width:78%;padding:10px 13px;border-radius:14px;font-size:13.5px;line-height:1.5;word-wrap:break-word}
-        .hds-msg.bot .hds-bubble{background:rgba(255,255,255,.06);color:rgba(255,255,255,.88);border-bottom-left-radius:4px;border:1px solid rgba(255,255,255,.07)}
-        .hds-msg.user .hds-bubble{background:linear-gradient(135deg,#c8a951,#b8991f);color:#0f0f0f;font-weight:600;border-bottom-right-radius:4px}
-        .hds-quick-replies{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 4px;flex-shrink:0}
-        .hds-qr{background:rgba(200,169,81,.1);border:1px solid rgba(200,169,81,.3);color:#c8a951;font-family:'Barlow',sans-serif;font-size:12px;font-weight:600;padding:5px 10px;border-radius:20px;cursor:pointer;transition:all .15s;white-space:nowrap}
-        .hds-qr:hover{background:rgba(200,169,81,.2);border-color:#c8a951}
-        .hds-typing{display:flex;gap:4px;align-items:center;padding:10px 13px;background:rgba(255,255,255,.06);border-radius:14px;border-bottom-left-radius:4px;border:1px solid rgba(255,255,255,.07);width:fit-content}
-        .hds-dot{width:6px;height:6px;background:rgba(200,169,81,.6);border-radius:50%;animation:hdsBounce 1.2s ease infinite}
-        .hds-dot:nth-child(2){animation-delay:.2s}
-        .hds-dot:nth-child(3){animation-delay:.4s}
-        @keyframes hdsBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
-        #hds-input-area{display:flex;gap:8px;padding:12px 14px;border-top:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02);flex-shrink:0}
-        #hds-input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:9px 12px;color:rgba(255,255,255,.88);font-family:'Barlow',sans-serif;font-size:13.5px;outline:none;resize:none;min-height:38px;max-height:100px;line-height:1.4;transition:border-color .15s}
-        #hds-input::placeholder{color:rgba(255,255,255,.3)}
-        #hds-input:focus{border-color:rgba(200,169,81,.4)}
-        #hds-send{width:38px;height:38px;background:linear-gradient(135deg,#c8a951,#b8991f);border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .15s,box-shadow .15s;align-self:flex-end}
-        #hds-send:hover{transform:scale(1.05);box-shadow:0 4px 12px rgba(200,169,81,.4)}
-        #hds-send svg{width:16px;height:16px}
-        #hds-footer{text-align:center;padding:6px 14px 10px;font-size:10px;color:rgba(255,255,255,.2);flex-shrink:0}
-        @media(max-width:480px){#hds-panel{width:calc(100vw - 24px);right:0;max-height:70vh}#hds-chat-widget{bottom:16px;right:12px}}
-    </style>
-
-    <div id="hds-chat-widget">
-        <button id="hds-launcher" aria-label="Chat with Hands Detail Shop">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            <span class="hds-badge" id="hds-badge">1</span>
-        </button>
-        <div id="hds-panel" role="dialog" aria-label="Hands Detail Shop Chat">
-            <div id="hds-header">
-                <div class="hds-avatar">HD</div>
-                <div class="hds-header-info">
-                    <div class="hds-header-name">Hands Detail AI</div>
-                    <div class="hds-header-sub">Powered by Claude · Replies instantly</div>
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeBookingModal()">&times;</button>
+                <h2 class="modal-title">Book Fleet Detail Service</h2>
+                <p class="modal-subtitle">Get a free quote or schedule your fleet appointment</p>
+            </div>
+            <div style="background: rgba(66, 165, 245, 0.15); border: 1px solid #42a5f5; border-radius: 10px; padding: 12px 15px; margin: 0 20px 20px 20px; text-align: center;">
+                <p style="color: #42a5f5; font-weight: 600; margin: 0;">💳 $30 DEPOSIT SECURES YOUR APPOINTMENT</p>
+                <p style="color: #a0a0a0; font-size: 0.9rem; margin: 5px 0 0 0;">Applied toward your total service cost</p>
+            </div>
+            <form class="modal-form" id="bookingForm">
+                <div class="form-group">
+                    <label>Company / Contact Name *</label>
+                    <input type="text" required placeholder="Your name or business name">
                 </div>
-                <div class="hds-online-dot"></div>
-                <button id="hds-close" aria-label="Close chat">✕</button>
-            </div>
-            <div id="hds-messages" role="log" aria-live="polite"></div>
-            <div class="hds-quick-replies" id="hds-quick-replies"></div>
-            <div id="hds-input-area">
-                <textarea id="hds-input" placeholder="Ask about your fleet detailing needs…" rows="1" aria-label="Chat message"></textarea>
-                <button id="hds-send" aria-label="Send message">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                </button>
-            </div>
-            <div id="hds-footer">Hands Detail Shop · (412) 752-8684 · handsdetailshop.com</div>
+                <div class="form-group">
+                    <label>Phone *</label>
+                    <input type="tel" required placeholder="(412) 555-0000">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Fleet Size *</label>
+                    <select required>
+                        <option value="">Select fleet size...</option>
+                        <option>2–5 Vehicles</option>
+                        <option>6–15 Vehicles</option>
+                        <option>16+ Vehicles</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Service Type *</label>
+                    <select required>
+                        <option value="">Select a service...</option>
+                        <option>Full Fleet Detail</option>
+                        <option>Exterior Wash & Polish</option>
+                        <option>Interior Deep Clean</option>
+                        <option>Monthly Maintenance Program</option>
+                        <option>One-Time Fleet Clean</option>
+                        <option>Custom / Quote Needed</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Preferred Date</label>
+                    <input type="date">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="3" placeholder="Tell us about your fleet vehicles or any special requirements..."></textarea>
+                </div>
+                <button type="submit" class="form-submit">Submit Booking Request</button>
+                <p class="form-footer-note">Or call us directly: <strong>(412) 752-8684</strong></p>
+            </form>
         </div>
     </div>
 
+    <script src="main.js"></script>
+    <script src="pwa-installer.js"></script>
     <script src="/chat-widget.js"></script>
 </body>
 </html>
