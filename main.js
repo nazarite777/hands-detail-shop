@@ -1057,55 +1057,41 @@ function handleContactFormSubmit(event) {
   
   // Show loading indicator
   const loader = document.getElementById('loadingIndicator');
-  if (loader) {
-    loader.classList.add('active');
-  }
-  
-  // Prepare data for email
-  const emailData = {
-    subject: `Contact Form: ${subject}`,
-    name: sanitizeInput(name),
-    email: sanitizeInput(email),
-    phone: sanitizeInput(phone || 'Not provided'),
-    subject_selected: subject,
-    message: sanitizeInput(message),
-    timestamp: new Date().toISOString()
-  };
-  
-  // Simulate email processing (1.5 seconds)
-  setTimeout(() => {
-    // Hide loader
-    if (loader) {
-      loader.classList.remove('active');
-    }
-    
-    // Send email via Firebase or email service
-    // For now, we'll log and show success message
-    console.log('Contact form submitted:', emailData);
-    
-    // Show success message
-    const successMsg = document.getElementById('formSuccessMessage');
-    if (successMsg) {
-      successMsg.style.display = 'block';
-      form.style.display = 'none';
-      
-      // Reset form after 3 seconds and show it again
-      setTimeout(() => {
-        form.reset();
-        form.style.display = 'block';
-        successMsg.style.display = 'none';
-      }, 3000);
-    }
-  }, 1500);
-  
-  // Optional: Send to email service
-  // You can integrate with Formspree, EmailJS, or Firebase Cloud Functions
-  // Example with Formspree (requires form action attribute):
-  // fetch('https://formspree.io/f/YOUR_FORM_ID', {
-  //   method: 'POST',
-  //   body: new FormData(form),
-  //   headers: { 'Accept': 'application/json' }
-  // });
+  if (loader) loader.classList.add('active');
+
+  fetch('https://us-central1-hands-detail.cloudfunctions.net/submitContact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: sanitizeInput(name),
+      email: sanitizeInput(email),
+      phone: sanitizeInput(phone || ''),
+      subject: subject,
+      message: sanitizeInput(message),
+    }),
+  })
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      if (loader) loader.classList.remove('active');
+      if (data.success) {
+        const successMsg = document.getElementById('formSuccessMessage');
+        if (successMsg) {
+          successMsg.style.display = 'block';
+          form.style.display = 'none';
+          setTimeout(function () {
+            form.reset();
+            form.style.display = 'block';
+            successMsg.style.display = 'none';
+          }, 4000);
+        }
+      } else {
+        alert(data.error || 'Something went wrong. Please try again or call us directly.');
+      }
+    })
+    .catch(function () {
+      if (loader) loader.classList.remove('active');
+      alert('Unable to send message. Please call us at (412) 752-8684 or try again later.');
+    });
 }
 
 // ===== PAGE LOAD ACCESSIBILITY ENHANCEMENTS =====

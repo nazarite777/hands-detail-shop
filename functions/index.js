@@ -754,3 +754,90 @@ exports.submitReview = functions.runWith({ secrets: ['GMAIL_PASSWORD'] }).https.
     }
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// submitContact — saves contact form to Firestore and emails the business
+// ─────────────────────────────────────────────────────────────────────────────
+exports.submitContact = functions.runWith({ secrets: ['GMAIL_PASSWORD'] }).https.onRequest((request, response) => {
+  return corsHandler(request, response, async () => {
+    try {
+      if (request.method !== 'POST') {
+        return response.status(405).json({ error: 'Method not allowed' });
+      }
+
+      const { name, email, phone, subject, message } = request.body;
+
+      // Validate required fields
+      if (!name || typeof name !== 'string' || name.trim().length < 2) {
+        return response.status(400).json({ error: 'Valid name is required (min 2 characters)' });
+      }
+      if (!email || typeof email !== 'string' || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim())) {
+        return response.status(400).json({ error: 'Valid email address is required' });
+      }
+      if (!message || typeof message !== 'string' || message.trim().length < 5) {
+        return response.status(400).json({ error: 'Message must be at least 5 characters' });
+      }
+      // Input length guards
+      if (name.trim().length > 100)    return response.status(400).json({ error: 'Name too long' });
+      if (email.trim().length > 200)   return response.status(400).json({ error: 'Email too long' });
+      if (phone && phone.length > 30)  return response.status(400).json({ error: 'Phone too long' });
+      if (subject && subject.length > 200) return response.status(400).json({ error: 'Subject too long' });
+      if (message.trim().length > 5000) return response.status(400).json({ error: 'Message too long (max 5000 chars)' });
+
+      // Save to Firestore
+      const firestore = admin.firestore();
+      const docRef = firestore.collection('contact_submissions').doc();
+      await docRef.set({
+        id: docRef.id,
+        name: name.trim(),
+        email: email.trim(),
+        phone: (phone || '').trim(),
+        subject: (subject || '').trim(),
+        message: message.trim(),
+        createdAt: admin.firestore.FieldValue.serverTimestamp(),
+      });
+
+      console.log('✅ Contact form saved:', docRef.id, 'from', name.trim());
+
+      // Email business owner
+      const gmailEmail = process.env.GMAIL_EMAIL || 'handsdetailshop@gmail.com';
+      const gmailPassword = process.env.GMAIL_PASSWORD;
+      if (gmailPassword) {
+        try {
+          const nodemailer = require('nodemailer');
+          const transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: { user: gmailEmail, pass: gmailPassword },
+          });
+          await transporter.sendMail({
+            from: gmailEmail,
+            to: gmailEmail,
+            replyTo: email.trim(),
+            subject: `New Contact Form: ${(subject || 'General Inquiry').trim()} — from ${name.trim()}`,
+            html: `
+              <h2>New Contact Form Submission</h2>
+              <p><strong>Name:</strong> ${name.trim()}</p>
+              <p><strong>Email:</strong> <a href="mailto:${email.trim()}">${email.trim()}</a></p>
+              <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+              <p><strong>Subject:</strong> ${subject || 'General Inquiry'}</p>
+              <p><strong>Message:</strong></p>
+              <blockquote style="border-left:4px solid #1e88e5;padding-left:12px;color:#333;white-space:pre-wrap;">${message.trim()}</blockquote>
+              <p style="color:#888;font-size:0.9em;">Submission ID: ${docRef.id}</p>
+            `,
+          });
+        } catch (emailErr) {
+          console.warn('Email notification failed (non-blocking):', emailErr.message);
+        }
+      }
+
+      return response.status(200).json({
+        success: true,
+        message: 'Message sent successfully! We will get back to you shortly.',
+      });
+
+    } catch (error) {
+      console.error('❌ submitContact error:', error);
+      return response.status(500).json({ error: 'Internal server error', details: error.message });
+    }
+  });
+});
