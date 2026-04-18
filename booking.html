@@ -623,35 +623,35 @@
       <div class="panel-header"><span class="panel-title">Select Service</span></div>
       <div class="panel-body">
         <div class="service-grid" id="service-grid">
-          <label class="service-option" onclick="selectService(this, 'Essential Package', '$65–$85')">
+          <label class="service-option" onclick="selectService(this, 'Essential Package', '$65â€“$85')">
             <input type="radio" name="service" value="Essential">
             <div class="service-dot"></div>
             <span class="service-name">Essential Package</span>
-            <span class="service-price">$65–$85</span>
+            <span class="service-price">$65â€“$85</span>
           </label>
-          <label class="service-option" onclick="selectService(this, 'Executive Package', '$145–$185')">
+          <label class="service-option" onclick="selectService(this, 'Executive Package', '$145â€“$185')">
             <input type="radio" name="service" value="Executive">
             <div class="service-dot"></div>
             <span class="service-name">Executive Package</span>
-            <span class="service-price">$145–$185</span>
+            <span class="service-price">$145â€“$185</span>
           </label>
-          <label class="service-option" onclick="selectService(this, 'Signature Package', '$285–$365')">
+          <label class="service-option" onclick="selectService(this, 'Signature Package', '$285â€“$365')">
             <input type="radio" name="service" value="Signature">
             <div class="service-dot"></div>
             <span class="service-name">Signature Package</span>
-            <span class="service-price">$285–$365</span>
+            <span class="service-price">$285â€“$365</span>
           </label>
-          <label class="service-option" onclick="selectService(this, 'Presidential Package', '$585–$785')">
+          <label class="service-option" onclick="selectService(this, 'Presidential Package', '$585â€“$785')">
             <input type="radio" name="service" value="Presidential">
             <div class="service-dot"></div>
             <span class="service-name">Presidential Package</span>
-            <span class="service-price">$585–$785</span>
+            <span class="service-price">$585â€“$785</span>
           </label>
-          <label class="service-option" onclick="selectService(this, 'Ultimate Armor', '$1,285–$1,685')">
+          <label class="service-option" onclick="selectService(this, 'Ultimate Armor', '$1,285â€“$1,685')">
             <input type="radio" name="service" value="UltimateArmor">
             <div class="service-dot"></div>
             <span class="service-name">Ultimate Armor (Ceramic)</span>
-            <span class="service-price">$1,285–$1,685</span>
+            <span class="service-price">$1,285â€“$1,685</span>
           </label>
           <label class="service-option" onclick="selectService(this, 'Fleet / Commercial', 'Quote')">
             <input type="radio" name="service" value="Fleet">
@@ -659,11 +659,11 @@
             <span class="service-name">Fleet / Commercial</span>
             <span class="service-price">Quote</span>
           </label>
-          <label class="service-option" onclick="selectService(this, 'Motorcycle Detail', '$125–$295')">
+          <label class="service-option" onclick="selectService(this, 'Motorcycle Detail', '$125â€“$295')">
             <input type="radio" name="service" value="Motorcycle">
             <div class="service-dot"></div>
             <span class="service-name">Motorcycle Detail</span>
-            <span class="service-price">$125–$295</span>
+            <span class="service-price">$125â€“$295</span>
           </label>
           <label class="service-option" onclick="selectService(this, 'RV / Yacht / Marine', 'Quote')">
             <input type="radio" name="service" value="Marine">
@@ -705,20 +705,20 @@
 
     <!-- Payment Panel -->
     <div class="panel">
-      <div class="panel-header"><span class="panel-title">Secure Deposit — $30.00</span></div>
+      <div class="panel-header"><span class="panel-title">Secure Deposit â€” $30.00</span></div>
       <div class="panel-body">
         <div id="order-summary">
           <div class="summary-row">
             <span class="summary-label">Service</span>
-            <span class="summary-value" id="summary-service">— Select above —</span>
+            <span class="summary-value" id="summary-service">â€” Select above â€”</span>
           </div>
           <div class="summary-row">
             <span class="summary-label">Date</span>
-            <span class="summary-value" id="summary-date">—</span>
+            <span class="summary-value" id="summary-date">â€”</span>
           </div>
           <div class="summary-row">
             <span class="summary-label">Time</span>
-            <span class="summary-value" id="summary-time">—</span>
+            <span class="summary-value" id="summary-time">â€”</span>
           </div>
           <div class="total-row">
             <span class="total-label">Deposit Due Today</span>
@@ -858,13 +858,13 @@ document.getElementById('preferred-date').addEventListener('change', function() 
 });
 
 document.getElementById('preferred-time').addEventListener('change', function() {
-  document.getElementById('summary-time').textContent = this.value || '—';
+  document.getElementById('summary-time').textContent = this.value || 'â€”';
 });
 
 document.getElementById('preferred-date').addEventListener('input', function() {
   const d = new Date(this.value + 'T12:00:00');
   if (d.getDay() === 1) {
-    showMsg('error', 'Mondays are our rest day — please select Tuesday through Sunday.');
+    showMsg('error', 'Mondays are our rest day â€” please select Tuesday through Sunday.');
     this.value = '';
   }
   const today = new Date(); today.setHours(0,0,0,0);
@@ -910,7 +910,7 @@ async function handlePayment() {
   try {
     const result = await card.tokenize();
     if (result.status !== 'OK') {
-      showMsg('error', result.errors ? result.errors[0].message : 'Card error — please check your details.');
+      showMsg('error', result.errors ? result.errors[0].message : 'Card error â€” please check your details.');
       btn.disabled = false;
       btn.classList.remove('loading');
       btn.textContent = 'Pay $30 Deposit & Confirm Booking';
@@ -948,7 +948,7 @@ async function handlePayment() {
     if (data.success) {
       showSuccessScreen(bookingData);
     } else {
-      showMsg('error', data.error || 'Payment failed — please try again or call (412) 752-8684.');
+      showMsg('error', data.error || 'Payment failed â€” please try again or call (412) 752-8684.');
       btn.disabled = false;
       btn.classList.remove('loading');
       btn.textContent = 'Pay $30 Deposit & Confirm Booking';
