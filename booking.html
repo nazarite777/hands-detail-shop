@@ -575,7 +575,7 @@
     </div>
     <div class="chat-messages" id="chat-messages">
       <div class="message assistant">
-        Hi! I'm here to help you book your detail. What service are you interested in? We offer everything from Essential wash packages to Premium ceramic coating. What's your vehicle type?
+        Hi! I'm here to help you book your detail. What service are you interested in? We offer everything from Basic Full Detail to Showroom Floor Detail. What's your vehicle type?
       </div>
     </div>
     <div class="chat-input-area">
@@ -623,35 +623,35 @@
       <div class="panel-header"><span class="panel-title">Select Service</span></div>
       <div class="panel-body">
         <div class="service-grid" id="service-grid">
-          <label class="service-option" onclick="selectService(this, 'Essential Package', '$65–$85')">
-            <input type="radio" name="service" value="Essential">
+          <label class="service-option" onclick="selectService(this, 'Basic Full Detail', '$120–$195')">
+            <input type="radio" name="service" value="BasicFullDetail">
             <div class="service-dot"></div>
-            <span class="service-name">Essential Package</span>
-            <span class="service-price">$65–$85</span>
+            <span class="service-name">Basic Full Detail</span>
+            <span class="service-price">$120–$195</span>
           </label>
-          <label class="service-option" onclick="selectService(this, 'Executive Package', '$145–$185')">
-            <input type="radio" name="service" value="Executive">
+          <label class="service-option" onclick="selectService(this, 'Standard Full Detail', '$165–$260')">
+            <input type="radio" name="service" value="StandardFullDetail">
             <div class="service-dot"></div>
-            <span class="service-name">Executive Package</span>
-            <span class="service-price">$145–$185</span>
+            <span class="service-name">Standard Full Detail</span>
+            <span class="service-price">$165–$260</span>
           </label>
-          <label class="service-option" onclick="selectService(this, 'Signature Package', '$285–$365')">
-            <input type="radio" name="service" value="Signature">
+          <label class="service-option" onclick="selectService(this, 'Executive Full Detail', '$235–$360')">
+            <input type="radio" name="service" value="ExecutiveFullDetail">
             <div class="service-dot"></div>
-            <span class="service-name">Signature Package</span>
-            <span class="service-price">$285–$365</span>
+            <span class="service-name">Executive Full Detail</span>
+            <span class="service-price">$235–$360</span>
           </label>
-          <label class="service-option" onclick="selectService(this, 'Presidential Package', '$585–$785')">
-            <input type="radio" name="service" value="Presidential">
+          <label class="service-option" onclick="selectService(this, 'Premium Full Detail', '$320–$495')">
+            <input type="radio" name="service" value="PremiumFullDetail">
             <div class="service-dot"></div>
-            <span class="service-name">Presidential Package</span>
-            <span class="service-price">$585–$785</span>
+            <span class="service-name">Premium Full Detail</span>
+            <span class="service-price">$320–$495</span>
           </label>
-          <label class="service-option" onclick="selectService(this, 'Ultimate Armor', '$1,285–$1,685')">
-            <input type="radio" name="service" value="UltimateArmor">
+          <label class="service-option" onclick="selectService(this, 'Showroom Floor Detail', '$495–$750')">
+            <input type="radio" name="service" value="ShowroomFloorDetail">
             <div class="service-dot"></div>
-            <span class="service-name">Ultimate Armor (Ceramic)</span>
-            <span class="service-price">$1,285–$1,685</span>
+            <span class="service-name">Showroom Floor Detail</span>
+            <span class="service-price">$495–$750</span>
           </label>
           <label class="service-option" onclick="selectService(this, 'Fleet / Commercial', 'Quote')">
             <input type="radio" name="service" value="Fleet">
@@ -768,7 +768,7 @@ let selectedService = '';
 let selectedPrice   = '';
 let chatMessages = [
   { role: 'user', content: 'Hi, I want to book a detail.' },
-  { role: 'assistant', content: 'Hi! I\'m here to help you book your detail. What service are you interested in? We offer everything from Essential wash packages to Premium ceramic coating. What\'s your vehicle type?' }
+  { role: 'assistant', content: 'Hi! I\'m here to help you book your detail. What service are you interested in? We offer everything from Basic Full Detail to Showroom Floor Detail. What\'s your vehicle type?' }
 ];
 
 // --- INIT SQUARE -------------------------------------------------------------
@@ -812,7 +812,7 @@ async function sendChatMessage() {
 When customers mention:
 - Services: Recommend based on vehicle type and budget
 - Dates: Mention we're open Tue-Sun, 8AM-6PM (closed Mondays)
-- Pricing: Use pricing from the form (Essential $65-85, Executive $145-185, etc)
+- Pricing: Use pricing from the form (Basic Full Detail $120–$195, Standard Full Detail $165–$260, Executive Full Detail $235–$360, Premium Full Detail $320–$495, Showroom Floor Detail $495–$750)
 - Filling form: Guide them to click "Select Service" and fill in their info on the right side
 
 Be friendly, concise, and encouraging. Keep responses under 2-3 sentences.`

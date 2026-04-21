@@ -269,10 +269,10 @@
             onclick="selectVehicleQuote(this, 'compact')"
             role="button"
             tabindex="0"
-            aria-label="Select compact car pricing - Honda Civic, Toyota Corolla"
+            aria-label="Select sedan pricing - Honda Civic, Toyota Corolla"
             onkeypress="if (event.key === 'Enter') selectVehicleQuote(this, 'compact');"
           >
-            <div class="option-title">Compact Car</div>
+            <div class="option-title">Sedan (S)</div>
             <div class="option-price">Honda Civic, Corolla</div>
           </div>
 
@@ -281,11 +281,11 @@
             onclick="selectVehicleQuote(this, 'midsize')"
             role="button"
             tabindex="0"
-            aria-label="Select mid-size car pricing - Honda Accord, Toyota Camry"
+            aria-label="Select mid-size crossover pricing - Honda CR-V, Toyota RAV4"
             onkeypress="if (event.key === 'Enter') selectVehicleQuote(this, 'midsize');"
           >
-            <div class="option-title">Mid-Size Car</div>
-            <div class="option-price">Accord, Camry</div>
+            <div class="option-title">Mid-Size (M)</div>
+            <div class="option-price">CR-V, RAV4</div>
           </div>
 
           <div
@@ -293,10 +293,10 @@
             onclick="selectVehicleQuote(this, 'suv')"
             role="button"
             tabindex="0"
-            aria-label="Select SUV or truck pricing - Ford Explorer, F-150"
+            aria-label="Select large SUV or truck pricing - Ford Explorer, F-150"
             onkeypress="if (event.key === 'Enter') selectVehicleQuote(this, 'suv');"
           >
-            <div class="option-title">SUV/Truck</div>
+            <div class="option-title">Large (L)</div>
             <div class="option-price">Explorer, F-150</div>
           </div>
 
@@ -305,11 +305,11 @@
             onclick="selectVehicleQuote(this, 'luxury')"
             role="button"
             tabindex="0"
-            aria-label="Select luxury or exotic car pricing - BMW, Mercedes, Porsche"
+            aria-label="Select oversized vehicle pricing - Suburban, Sprinter, large van"
             onkeypress="if (event.key === 'Enter') selectVehicleQuote(this, 'luxury');"
           >
-            <div class="option-title">Luxury/Exotic</div>
-            <div class="option-price">BMW, Mercedes, Porsche</div>
+            <div class="option-title">XL / Oversized</div>
+            <div class="option-price">Suburban, Sprinter</div>
           </div>
 
           <div class="quote-option" onclick="selectVehicleQuote(this, 'motorcycle')">
@@ -846,20 +846,59 @@
           </div>
 
           <div class="package-grid">
-            <!-- Package 1: Essential -->
-            <div class="package-card">
+            <!-- Package 1: Basic Full Detail -->
+            <div class="package-card" id="packageCard1">
               <div class="package-header">
-                <h3 class="package-title" id="package1Label">Essential Package</h3>
-                <div class="package-price" id="essentialPrice">$65</div>
-                <p class="package-tier">Perfect for regular maintenance</p>
+                <h3 class="package-title" id="package1Label">Basic Full Detail</h3>
+                <div class="package-price" id="package1Price">$120</div>
+                <p class="package-tier" id="package1Tier">Perfect for regular maintenance</p>
               </div>
               <div class="package-body">
                 <ul class="package-features" id="package1Details">
-                  <li>✓ Exterior hand wash & dry</li>
-                  <li>✓ Wheel & tire cleaning</li>
-                  <li>✓ Interior vacuum</li>
-                  <li>✓ Dashboard & console wipe</li>
-                  <li>✓ Window cleaning (interior & exterior)</li>
+                  <li>✓ Full exterior wash with foam cannon</li>
+                  <li>✓ Interior vacuum (carpets, seats, trunk)</li>
+                  <li>✓ All window cleaning</li>
+                  <li>✓ Tire shine application</li>
+                  <li>✓ Air freshener</li>
+                  <li>✓ Basic interior wipe-down</li>
+                </ul>
+                <p
+                  style="
+                    text-align: center;
+                    color: #90caf9;
+                    font-size: 0.85rem;
+                    margin: 15px 0 10px;
+                    opacity: 0.9;
+                  "
+                >
+                  $30 deposit required to book
+                </p>
+                <button
+                  id="package1Btn"
+                  onclick="openBookingModal('Basic Full Detail')"
+                  class="package-btn"
+                  aria-label="Book Basic Full Detail - Starting at $120"
+                  role="button"
+                >
+                  Book Basic Full Detail →
+                </button>
+              </div>
+            </div>
+
+            <!-- Package 2: Executive Full Detail -->
+            <div class="package-card" id="packageCard2">
+              <div class="package-header">
+                <h3 class="package-title" id="package2Label">Executive Full Detail</h3>
+                <div class="package-price" id="package2Price">$235</div>
+                <p class="package-tier" id="package2Tier">Most popular choice!</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features" id="package2Details">
+                  <li>✓ Everything in Standard Full Detail</li>
+                  <li>✓ Clay bar treatment</li>
+                  <li>✓ Hand wax application</li>
+                  <li>✓ Carpet shampooing</li>
+                  <li>✓ Leather or vinyl conditioning</li>
                   <li>✓ Door jamb cleaning</li>
                 </ul>
                 <p
@@ -874,72 +913,32 @@
                   $30 deposit required to book
                 </p>
                 <button
-                  onclick="openBookingModal('essential')"
+                  id="package2Btn"
+                  onclick="openBookingModal('Executive Full Detail')"
                   class="package-btn"
-                  aria-label="Book Essential Package - Starting at $65"
+                  aria-label="Book Executive Full Detail - Starting at $235, Most Popular"
                   role="button"
                 >
-                  Book Essential Package →
+                  Book Executive Full Detail →
                 </button>
               </div>
             </div>
 
-            <!-- Package 2: Executive -->
-            <div class="package-card popular">
-              <div class="package-header executive">
-                <div class="package-badge">POPULAR</div>
-                <h3 class="package-title" id="package2Label">Executive Package</h3>
-                <div class="package-price" id="executivePrice">$145</div>
-                <p class="package-tier">Most popular choice!</p>
-              </div>
-              <div class="package-body">
-                <ul class="package-features" id="package2Details">
-                  <li>✓ Everything in Essential, PLUS:</li>
-                  <li>✓ Clay bar treatment</li>
-                  <li>✓ Paint sealant application</li>
-                  <li>✓ Deep interior shampooing</li>
-                  <li>✓ Leather conditioning</li>
-                  <li>✓ Engine bay cleaning</li>
-                  <li>✓ Headlight restoration</li>
-                </ul>
-                <p
-                  style="
-                    text-align: center;
-                    color: #90caf9;
-                    font-size: 0.85rem;
-                    margin: 15px 0 10px;
-                    opacity: 0.9;
-                  "
-                >
-                  $30 deposit required to book
-                </p>
-                <button
-                  onclick="openBookingModal('executive')"
-                  class="package-btn executive"
-                  aria-label="Book Executive Package - Starting at $145, Most Popular"
-                  role="button"
-                >
-                  Book Executive Package →
-                </button>
-              </div>
-            </div>
-
-            <!-- Package 3: Presidential/Ceramic -->
-            <div class="package-card">
-              <div class="package-header presidential">
-                <h3 class="package-title" id="package3Label">Presidential (Ceramic)</h3>
-                <div class="package-price" id="ceramicPrice">$585</div>
-                <p class="package-tier">Ultimate protection & shine</p>
+            <!-- Package 3: Showroom Floor Detail -->
+            <div class="package-card" id="packageCard3">
+              <div class="package-header">
+                <h3 class="package-title" id="package3Label">Showroom Floor Detail</h3>
+                <div class="package-price" id="package3Price">$495</div>
+                <p class="package-tier" id="package3Tier">Show-quality finish</p>
               </div>
               <div class="package-body">
                 <ul class="package-features" id="package3Details">
-                  <li>✓ Everything in Executive, PLUS:</li>
-                  <li>✓ Professional ceramic coating</li>
-                  <li>✓ Paint correction (1-step)</li>
-                  <li>✓ 2-year protection warranty</li>
-                  <li>✓ Hydrophobic glass coating</li>
-                  <li>✓ Wheel & caliper coating</li>
-                  <li>✓ Complete UV protection</li>
+                  <li>✓ Everything in Premium Full Detail</li>
+                  <li>✓ Paint correction (light swirls)</li>
+                  <li>✓ Paint sealant applied</li>
+                  <li>✓ Professional show-quality finish</li>
+                  <li>✓ Odor treatment</li>
+                  <li>✓ Engine bay wipe</li>
                 </ul>
                 <p
                   style="
@@ -953,12 +952,77 @@
                   $30 deposit required to book
                 </p>
                 <button
-                  onclick="openBookingModal('ceramic')"
-                  class="package-btn presidential"
-                  aria-label="Book Presidential Ceramic Package - Starting at $585, Ultimate Protection"
+                  id="package3Btn"
+                  onclick="openBookingModal('Showroom Floor Detail')"
+                  class="package-btn"
+                  aria-label="Book Showroom Floor Detail - Starting at $495"
                   role="button"
                 >
-                  Book Presidential Package →
+                  Book Showroom Floor Detail →
+                </button>
+              </div>
+            </div>
+
+            <!-- Package 4: Premium Full Detail -->
+            <div class="package-card" id="packageCard4" style="display: none">
+              <div class="package-header">
+                <h3 class="package-title" id="package4Label">Premium Full Detail</h3>
+                <div class="package-price" id="package4Price">$320</div>
+                <p class="package-tier" id="package4Tier">Advanced full detail</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features" id="package4Details"></ul>
+                <p
+                  style="
+                    text-align: center;
+                    color: #90caf9;
+                    font-size: 0.85rem;
+                    margin: 15px 0 10px;
+                    opacity: 0.9;
+                  "
+                >
+                  $30 deposit required to book
+                </p>
+                <button
+                  id="package4Btn"
+                  onclick="openBookingModal('Premium Full Detail')"
+                  class="package-btn"
+                  aria-label="Book Premium Full Detail - Starting at $320"
+                  role="button"
+                >
+                  Book Premium Full Detail →
+                </button>
+              </div>
+            </div>
+
+            <!-- Package 5: Standard Full Detail -->
+            <div class="package-card" id="packageCard5" style="display: none">
+              <div class="package-header">
+                <h3 class="package-title" id="package5Label">Standard Full Detail</h3>
+                <div class="package-price" id="package5Price">$165</div>
+                <p class="package-tier" id="package5Tier">Balanced full detail</p>
+              </div>
+              <div class="package-body">
+                <ul class="package-features" id="package5Details"></ul>
+                <p
+                  style="
+                    text-align: center;
+                    color: #90caf9;
+                    font-size: 0.85rem;
+                    margin: 15px 0 10px;
+                    opacity: 0.9;
+                  "
+                >
+                  $30 deposit required to book
+                </p>
+                <button
+                  id="package5Btn"
+                  onclick="openBookingModal('Standard Full Detail')"
+                  class="package-btn"
+                  aria-label="Book Standard Full Detail - Starting at $165"
+                  role="button"
+                >
+                  Book Standard Full Detail →
                 </button>
               </div>
             </div>
@@ -1003,7 +1067,7 @@
           <p style="margin-top: 15px">
             <strong>📞 Phone:</strong> (412) 752-8684<br />
             <strong>✉️ Email:</strong>
-            <a href="mailto:handsdetailshop@gmail.com">handsdetailshop@gmail.com</a>
+            <a href="mailto:NazirEl@handsdetailshop.com">NazirEl@handsdetailshop.com</a>
           </p>
           <div class="social-links">
             <a href="https://www.facebook.com/share/1FQft2edbP/" target="_blank" class="social-link"
@@ -1152,17 +1216,17 @@
             >
               <option value="">Select a service...</option>
               <optgroup label="Personal Vehicles">
-                <option>Essential Package ($65-85)</option>
-                <option>Executive Package ($145-185)</option>
-                <option>Signature Package ($285-365)</option>
-                <option>Presidential Package ($585-785)</option>
-                <option>Ultimate Armor ($1,285-1,685)</option>
+                <option>Basic Full Detail ($120–$195)</option>
+                <option>Standard Full Detail ($165–$260)</option>
+                <option>Executive Full Detail ($235–$360)</option>
+                <option>Premium Full Detail ($320–$495)</option>
+                <option>Showroom Floor Detail ($495–$750)</option>
               </optgroup>
               <optgroup label="Motorcycle Services">
-                <option>Road Ready ($85-105)</option>
-                <option>Chrome & Shine ($145-185)</option>
-                <option>Show Bike ($245-295)</option>
-                <option>Seasonal Prep ($125-155)</option>
+                <option>Road Ready ($85–$105)</option>
+                <option>Chrome & Shine ($145–$185)</option>
+                <option>Show Bike ($245–$295)</option>
+                <option>Seasonal Prep ($125–$155)</option>
               </optgroup>
               <optgroup label="Monthly Plans">
                 <option>Single Car Monthly ($75/mo)</option>
@@ -1292,130 +1356,366 @@
       // Comprehensive Pricing Database
       const quotePricing = {
         compact: {
-          name: 'Compact Car',
-          essential: { price: '$65', label: 'Essential Package' },
-          executive: { price: '$145', label: 'Executive Package' },
-          ceramic: { price: '$585', label: 'Ceramic Coating Package' },
+          name: 'Sedan (S)',
+          fullPackages: [
+            {
+              label: 'Basic Full Detail',
+              price: '$120',
+              tier: 'Great starting point',
+              features: [
+                'Full exterior wash with foam cannon',
+                'Interior vacuum (carpets, seats, trunk)',
+                'All window cleaning',
+                'Tire shine application',
+                'Air freshener',
+                'Basic interior wipe-down',
+              ],
+            },
+            {
+              label: 'Standard Full Detail',
+              price: '$165',
+              tier: 'Balanced full detail',
+              features: [
+                'Everything in Basic Full Detail',
+                'Tire dressing & shine',
+                'Leather or vinyl conditioning',
+                'Door jamb cleaning',
+              ],
+            },
+            {
+              label: 'Executive Full Detail',
+              price: '$235',
+              tier: 'Most popular choice',
+              features: [
+                'Everything in Standard Full Detail',
+                'Clay bar treatment',
+                'Hand wax application',
+                'Carpet shampooing',
+              ],
+            },
+            {
+              label: 'Premium Full Detail',
+              price: '$320',
+              tier: 'Advanced protection package',
+              features: [
+                'Everything in Executive Full Detail',
+                'Paint sealant application',
+                'Odor treatment',
+                'Engine bay wipe',
+              ],
+            },
+            {
+              label: 'Showroom Floor Detail',
+              price: '$495',
+              tier: 'Show-quality finish',
+              features: [
+                'Everything in Premium Full Detail',
+                'Paint correction (light swirls)',
+                'Paint sealant applied',
+                'Professional show-quality finish',
+              ],
+            },
+          ],
+          essential: { price: '$120', label: 'Basic Full Detail' },
+          executive: { price: '$235', label: 'Executive Full Detail' },
+          ceramic: { price: '$495', label: 'Showroom Floor Detail' },
           features: {
             essential: [
-              'Hand wash & dry',
-              'Wheel & tire cleaning',
-              'Interior vacuum',
-              'Dashboard wipe',
-              'Window cleaning',
-              'Door jambs',
+              'Full exterior wash with foam cannon',
+              'Interior vacuum (carpets, seats, trunk)',
+              'All window cleaning',
+              'Tire shine application',
+              'Air freshener',
+              'Basic interior wipe-down',
             ],
             executive: [
-              'Everything in Essential',
+              'Everything in Standard Full Detail',
               'Clay bar treatment',
-              'Paint sealant',
-              'Deep shampooing',
-              'Leather conditioning',
-              'Engine bay cleaning',
+              'Hand wax application',
+              'Carpet shampooing',
+              'Leather or vinyl conditioning',
+              'Door jamb cleaning',
             ],
             ceramic: [
-              'Everything in Executive',
-              'Professional ceramic coating',
-              'Paint correction',
-              '2-year warranty',
-              'Hydrophobic glass',
-              'Wheel coating',
+              'Everything in Premium Full Detail',
+              'Paint correction (light swirls)',
+              'Paint sealant applied',
+              'Professional show-quality finish',
+              'Odor treatment',
+              'Engine bay wipe',
             ],
           },
         },
         midsize: {
-          name: 'Mid-Size Car',
-          essential: { price: '$75', label: 'Essential Package' },
-          executive: { price: '$165', label: 'Executive Package' },
-          ceramic: { price: '$685', label: 'Ceramic Coating Package' },
+          name: 'Mid-Size (M)',
+          fullPackages: [
+            {
+              label: 'Basic Full Detail',
+              price: '$145',
+              tier: 'Great starting point',
+              features: [
+                'Full exterior wash with foam cannon',
+                'Interior vacuum (carpets, seats, trunk)',
+                'All window cleaning',
+                'Tire shine application',
+                'Air freshener',
+                'Basic interior wipe-down',
+              ],
+            },
+            {
+              label: 'Standard Full Detail',
+              price: '$195',
+              tier: 'Balanced full detail',
+              features: [
+                'Everything in Basic Full Detail',
+                'Tire dressing & shine',
+                'Leather or vinyl conditioning',
+                'Door jamb cleaning',
+              ],
+            },
+            {
+              label: 'Executive Full Detail',
+              price: '$275',
+              tier: 'Most popular choice',
+              features: [
+                'Everything in Standard Full Detail',
+                'Clay bar treatment',
+                'Hand wax application',
+                'Carpet shampooing',
+              ],
+            },
+            {
+              label: 'Premium Full Detail',
+              price: '$375',
+              tier: 'Advanced protection package',
+              features: [
+                'Everything in Executive Full Detail',
+                'Paint sealant application',
+                'Odor treatment',
+                'Engine bay wipe',
+              ],
+            },
+            {
+              label: 'Showroom Floor Detail',
+              price: '$575',
+              tier: 'Show-quality finish',
+              features: [
+                'Everything in Premium Full Detail',
+                'Paint correction (light swirls)',
+                'Paint sealant applied',
+                'Professional show-quality finish',
+              ],
+            },
+          ],
+          essential: { price: '$145', label: 'Basic Full Detail' },
+          executive: { price: '$275', label: 'Executive Full Detail' },
+          ceramic: { price: '$575', label: 'Showroom Floor Detail' },
           features: {
             essential: [
-              'Hand wash & dry',
-              'Wheel & tire cleaning',
-              'Interior vacuum',
-              'Dashboard wipe',
-              'Window cleaning',
-              'Door jambs',
+              'Full exterior wash with foam cannon',
+              'Interior vacuum (carpets, seats, trunk)',
+              'All window cleaning',
+              'Tire shine application',
+              'Air freshener',
+              'Basic interior wipe-down',
             ],
             executive: [
-              'Everything in Essential',
+              'Everything in Standard Full Detail',
               'Clay bar treatment',
-              'Paint sealant',
-              'Deep shampooing',
-              'Leather conditioning',
-              'Engine bay cleaning',
+              'Hand wax application',
+              'Carpet shampooing',
+              'Leather or vinyl conditioning',
+              'Door jamb cleaning',
             ],
             ceramic: [
-              'Everything in Executive',
-              'Professional ceramic coating',
-              'Paint correction',
-              '2-year warranty',
-              'Hydrophobic glass',
-              'Wheel coating',
+              'Everything in Premium Full Detail',
+              'Paint correction (light swirls)',
+              'Paint sealant applied',
+              'Professional show-quality finish',
+              'Odor treatment',
+              'Engine bay wipe',
             ],
           },
         },
         suv: {
-          name: 'SUV/Truck',
-          essential: { price: '$85', label: 'Essential Package' },
-          executive: { price: '$185', label: 'Executive Package' },
-          ceramic: { price: '$785', label: 'Ceramic Coating Package' },
+          name: 'Large (L)',
+          fullPackages: [
+            {
+              label: 'Basic Full Detail',
+              price: '$170',
+              tier: 'Great starting point',
+              features: [
+                'Full exterior wash with foam cannon',
+                'Interior vacuum (carpets, seats, trunk)',
+                'All window cleaning',
+                'Tire shine application',
+                'Air freshener',
+                'Basic interior wipe-down',
+              ],
+            },
+            {
+              label: 'Standard Full Detail',
+              price: '$225',
+              tier: 'Balanced full detail',
+              features: [
+                'Everything in Basic Full Detail',
+                'Tire dressing & shine',
+                'Leather or vinyl conditioning',
+                'Door jamb cleaning',
+              ],
+            },
+            {
+              label: 'Executive Full Detail',
+              price: '$315',
+              tier: 'Most popular choice',
+              features: [
+                'Everything in Standard Full Detail',
+                'Clay bar treatment',
+                'Hand wax application',
+                'Carpet shampooing',
+              ],
+            },
+            {
+              label: 'Premium Full Detail',
+              price: '$430',
+              tier: 'Advanced protection package',
+              features: [
+                'Everything in Executive Full Detail',
+                'Paint sealant application',
+                'Odor treatment',
+                'Engine bay wipe',
+              ],
+            },
+            {
+              label: 'Showroom Floor Detail',
+              price: '$660',
+              tier: 'Show-quality finish',
+              features: [
+                'Everything in Premium Full Detail',
+                'Paint correction (light swirls)',
+                'Paint sealant applied',
+                'Professional show-quality finish',
+              ],
+            },
+          ],
+          essential: { price: '$170', label: 'Basic Full Detail' },
+          executive: { price: '$315', label: 'Executive Full Detail' },
+          ceramic: { price: '$660', label: 'Showroom Floor Detail' },
           features: {
             essential: [
-              'Hand wash & dry',
-              'Wheel & tire cleaning',
-              'Interior vacuum',
-              'Dashboard wipe',
-              'Window cleaning',
-              'Door jambs',
+              'Full exterior wash with foam cannon',
+              'Interior vacuum (carpets, seats, trunk)',
+              'All window cleaning',
+              'Tire shine application',
+              'Air freshener',
+              'Basic interior wipe-down',
             ],
             executive: [
-              'Everything in Essential',
+              'Everything in Standard Full Detail',
               'Clay bar treatment',
-              'Paint sealant',
-              'Deep shampooing',
-              'Leather conditioning',
-              'Engine bay cleaning',
+              'Hand wax application',
+              'Carpet shampooing',
+              'Leather or vinyl conditioning',
+              'Door jamb cleaning',
             ],
             ceramic: [
-              'Everything in Executive',
-              'Professional ceramic coating',
-              'Paint correction',
-              '2-year warranty',
-              'Hydrophobic glass',
-              'Wheel coating',
+              'Everything in Premium Full Detail',
+              'Paint correction (light swirls)',
+              'Paint sealant applied',
+              'Professional show-quality finish',
+              'Odor treatment',
+              'Engine bay wipe',
             ],
           },
         },
         luxury: {
-          name: 'Luxury/Exotic',
-          essential: { price: '$85', label: 'Essential Package' },
-          executive: { price: '$185', label: 'Executive Package' },
-          ceramic: { price: '$785', label: 'Ceramic Coating Package' },
+          name: 'XL / Oversized',
+          fullPackages: [
+            {
+              label: 'Basic Full Detail',
+              price: '$195',
+              tier: 'Great starting point',
+              features: [
+                'Full exterior wash with foam cannon',
+                'Interior vacuum (carpets, seats, trunk)',
+                'All window cleaning',
+                'Tire shine application',
+                'Air freshener',
+                'Basic interior wipe-down',
+              ],
+            },
+            {
+              label: 'Standard Full Detail',
+              price: '$260',
+              tier: 'Balanced full detail',
+              features: [
+                'Everything in Basic Full Detail',
+                'Tire dressing & shine',
+                'Leather or vinyl conditioning',
+                'Door jamb cleaning',
+              ],
+            },
+            {
+              label: 'Executive Full Detail',
+              price: '$360',
+              tier: 'Most popular choice',
+              features: [
+                'Everything in Standard Full Detail',
+                'Clay bar treatment',
+                'Hand wax application',
+                'Carpet shampooing',
+              ],
+            },
+            {
+              label: 'Premium Full Detail',
+              price: '$495',
+              tier: 'Advanced protection package',
+              features: [
+                'Everything in Executive Full Detail',
+                'Paint sealant application',
+                'Odor treatment',
+                'Engine bay wipe',
+              ],
+            },
+            {
+              label: 'Showroom Floor Detail',
+              price: '$750',
+              tier: 'Show-quality finish',
+              features: [
+                'Everything in Premium Full Detail',
+                'Paint correction (light swirls)',
+                'Paint sealant applied',
+                'Professional show-quality finish',
+              ],
+            },
+          ],
+          essential: { price: '$195', label: 'Basic Full Detail' },
+          executive: { price: '$360', label: 'Executive Full Detail' },
+          ceramic: { price: '$750', label: 'Showroom Floor Detail' },
           features: {
             essential: [
-              'Hand wash & dry',
-              'Wheel & tire cleaning',
-              'Interior vacuum',
-              'Dashboard wipe',
-              'Window cleaning',
-              'Door jambs',
+              'Full exterior wash with foam cannon',
+              'Interior vacuum (carpets, seats, trunk)',
+              'All window cleaning',
+              'Tire shine application',
+              'Air freshener',
+              'Basic interior wipe-down',
             ],
             executive: [
-              'Everything in Essential',
+              'Everything in Standard Full Detail',
               'Clay bar treatment',
-              'Paint sealant',
-              'Deep shampooing',
-              'Leather conditioning',
-              'Engine bay cleaning',
+              'Hand wax application',
+              'Carpet shampooing',
+              'Leather or vinyl conditioning',
+              'Door jamb cleaning',
             ],
             ceramic: [
-              'Everything in Executive',
-              'Professional ceramic coating',
-              'Paint correction',
-              '2-year warranty',
-              'Hydrophobic glass',
-              'Wheel coating',
+              'Everything in Premium Full Detail',
+              'Paint correction (light swirls)',
+              'Paint sealant applied',
+              'Professional show-quality finish',
+              'Odor treatment',
+              'Engine bay wipe',
             ],
           },
         },
@@ -1778,19 +2078,31 @@
         // Update pricing display
         const pricing = quotePricing[vehicleType];
         if (pricing) {
-          document.getElementById('essentialPrice').textContent = pricing.essential.price;
-          document.getElementById('executivePrice').textContent = pricing.executive.price;
-          document.getElementById('ceramicPrice').textContent = pricing.ceramic.price;
-
-          document.getElementById('package1Label').textContent = pricing.essential.label;
-          document.getElementById('package2Label').textContent = pricing.executive.label;
-          document.getElementById('package3Label').textContent = pricing.ceramic.label;
-
-          // Update features
-          if (pricing.features) {
-            updateFeatures('package1Details', pricing.features.essential);
-            updateFeatures('package2Details', pricing.features.executive);
-            updateFeatures('package3Details', pricing.features.ceramic);
+          // Personal vehicle categories show all five full-detail packages.
+          if (pricing.fullPackages) {
+            renderPackageCards(pricing.fullPackages);
+          } else {
+            const legacyPackages = [
+              {
+                label: pricing.essential.label,
+                price: pricing.essential.price,
+                tier: 'Recommended option',
+                features: pricing.features ? pricing.features.essential : [],
+              },
+              {
+                label: pricing.executive.label,
+                price: pricing.executive.price,
+                tier: 'Most popular choice',
+                features: pricing.features ? pricing.features.executive : [],
+              },
+              {
+                label: pricing.ceramic.label,
+                price: pricing.ceramic.price,
+                tier: 'Premium package',
+                features: pricing.features ? pricing.features.ceramic : [],
+              },
+            ];
+            renderPackageCards(legacyPackages);
           }
 
           // Show price display
@@ -1798,6 +2110,31 @@
           document
             .getElementById('priceDisplay')
             .scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      function renderPackageCards(packages) {
+        for (let i = 1; i <= 5; i++) {
+          const card = document.getElementById(`packageCard${i}`);
+          if (!card) continue;
+
+          if (i <= packages.length) {
+            const pkg = packages[i - 1];
+            card.style.display = 'flex';
+
+            document.getElementById(`package${i}Label`).textContent = pkg.label;
+            document.getElementById(`package${i}Price`).textContent = pkg.price;
+            document.getElementById(`package${i}Tier`).textContent =
+              pkg.tier || 'Professional detailing package';
+            updateFeatures(`package${i}Details`, pkg.features || []);
+
+            const bookBtn = document.getElementById(`package${i}Btn`);
+            bookBtn.textContent = `Book ${pkg.label} →`;
+            bookBtn.setAttribute('aria-label', `Book ${pkg.label} - Starting at ${pkg.price}`);
+            bookBtn.setAttribute('onclick', `openBookingModal('${pkg.label}')`);
+          } else {
+            card.style.display = 'none';
+          }
         }
       }
 
@@ -1811,6 +2148,7 @@
       // Initialize weather on page load
       document.addEventListener('DOMContentLoaded', function () {
         fetchWeather();
+        renderPackageCards(quotePricing.compact.fullPackages);
         // Refresh weather every 30 minutes
         setInterval(fetchWeather, 1800000);
       });

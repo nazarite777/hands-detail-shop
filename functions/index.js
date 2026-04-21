@@ -19,7 +19,7 @@ BUSINESS CONTEXT:
 - Service Area: Pittsburgh PA and 2-hour radius (covers PA, OH, WV, MD)
 - Hours: Monday-Saturday 8AM-6PM, Sunday by appointment
 - Phone: (412) 752-8684 | Text: (412) 752-8684
-- Email: handsdetailshop@gmail.com
+- Email: NazirEl@handsdetailshop.com
 - Website: handsdetailshop.com
 - Booking: handsdetailshop.com/quote or handsdetailshop.com/booking
 
@@ -549,7 +549,7 @@ exports.processBooking = functions.runWith({ secrets: ['SQUARE_ACCESS_TOKEN', 'G
       // Send confirmation email (only if customer email provided and Gmail configured)
       if (customerEmail) {
         try {
-          const gmailEmail = process.env.GMAIL_EMAIL || 'handsdetailshop@gmail.com';
+          const gmailEmail = process.env.GMAIL_EMAIL || 'NazirEl@handsdetailshop.com';
           const gmailPassword = process.env.GMAIL_PASSWORD;
 
           if (gmailPassword) {
@@ -712,7 +712,7 @@ exports.submitReview = functions.runWith({ secrets: ['GMAIL_PASSWORD'] }).https.
       console.log('✅ Review saved:', reviewRef.id, 'from', name.trim());
 
       // Notify business owner by email
-      const gmailEmail = process.env.GMAIL_EMAIL || 'handsdetailshop@gmail.com';
+      const gmailEmail = process.env.GMAIL_EMAIL || 'NazirEl@handsdetailshop.com';
       const gmailPassword = process.env.GMAIL_PASSWORD;
       if (gmailPassword) {
         try {
@@ -800,7 +800,7 @@ exports.submitContact = functions.runWith({ secrets: ['GMAIL_PASSWORD'] }).https
       console.log('✅ Contact form saved:', docRef.id, 'from', name.trim());
 
       // Email business owner
-      const gmailEmail = process.env.GMAIL_EMAIL || 'handsdetailshop@gmail.com';
+      const gmailEmail = process.env.GMAIL_EMAIL || 'NazirEl@handsdetailshop.com';
       const gmailPassword = process.env.GMAIL_PASSWORD;
       if (gmailPassword) {
         try {

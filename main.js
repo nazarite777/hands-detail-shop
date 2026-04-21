@@ -645,7 +645,7 @@ Submitted: ${new Date(bookingData.timestamp).toLocaleString()}
 
     // Using email-integration.js if available, otherwise log for manual handling
     if (window.sendEmailViaEmailIntegration) {
-      await window.sendEmailViaEmailIntegration('handsdetailshop@gmail.com', `New Mechanical Booking: ${bookingData.name}`, emailBody);
+      await window.sendEmailViaEmailIntegration('NazirEl@handsdetailshop.com', `New Mechanical Booking: ${bookingData.name}`, emailBody);
     } else {
       console.log('Email would be sent:', emailBody);
       // Email notification can be set up via Firebase Cloud Functions
