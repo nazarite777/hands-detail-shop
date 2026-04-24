@@ -508,6 +508,15 @@
         let allBookings = [];
         let db;
 
+        function buildBookingKey(booking) {
+            return [
+                booking.date || '',
+                booking.time || '09:00',
+                booking.service || '',
+                booking.customerAddress || ''
+            ].join('|');
+        }
+
         function initFirebase() {
             try {
                 // Firebase is initialized by /__/firebase/init.js
@@ -535,12 +544,21 @@
 
                 const data = await response.json();
                 
-                // Transform and filter bookings for safe public display
+                // Transform and filter bookings for safe public display.
+                // The backing data can contain repeated test entries, so collapse
+                // identical date/time/service/location bookings for the public view.
                 allBookings = [];
+                const seenBookings = new Set();
                 if (data.bookings && Array.isArray(data.bookings)) {
                     data.bookings.forEach(booking => {
                         // Only include future bookings
                         if (booking.date >= todayStr && booking.status === 'confirmed') {
+                            const bookingKey = buildBookingKey(booking);
+                            if (seenBookings.has(bookingKey)) {
+                                return;
+                            }
+
+                            seenBookings.add(bookingKey);
                             allBookings.push({
                                 id: booking.id,
                                 date: booking.date,
@@ -557,7 +575,7 @@
                     });
                 }
 
-                console.log('✅ Loaded', allBookings.length, 'bookings');
+                console.log('✅ Loaded', allBookings.length, 'unique bookings');
                 renderCalendar();
                 renderBookingsList();
             } catch (error) {
