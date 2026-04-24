@@ -688,15 +688,15 @@
             <label>Time *</label>
             <select id="preferred-time" required>
               <option value="">Select time...</option>
-              <option value="8:00 AM">8:00 AM</option>
-              <option value="9:00 AM">9:00 AM</option>
-              <option value="10:00 AM">10:00 AM</option>
-              <option value="11:00 AM">11:00 AM</option>
-              <option value="12:00 PM">12:00 PM</option>
-              <option value="1:00 PM">1:00 PM</option>
-              <option value="2:00 PM">2:00 PM</option>
-              <option value="3:00 PM">3:00 PM</option>
-              <option value="4:00 PM">4:00 PM</option>
+              <option value="08:00">8:00 AM</option>
+              <option value="09:00">9:00 AM</option>
+              <option value="10:00">10:00 AM</option>
+              <option value="11:00">11:00 AM</option>
+              <option value="12:00">12:00 PM</option>
+              <option value="13:00">1:00 PM</option>
+              <option value="14:00">2:00 PM</option>
+              <option value="15:00">3:00 PM</option>
+              <option value="16:00">4:00 PM</option>
             </select>
           </div>
         </div>
@@ -770,6 +770,24 @@ let chatMessages = [
   { role: 'user', content: 'Hi, I want to book a detail.' },
   { role: 'assistant', content: 'Hi! I\'m here to help you book your detail. What service are you interested in? We offer everything from Basic Full Detail to Showroom Floor Detail. What\'s your vehicle type?' }
 ];
+
+function formatDisplayTime(timeValue) {
+  if (!timeValue) return '—';
+
+  if (/am|pm/i.test(timeValue)) {
+    return timeValue.toUpperCase();
+  }
+
+  const [hours, minutes = '00'] = timeValue.split(':');
+  const parsedHours = parseInt(hours, 10);
+  if (Number.isNaN(parsedHours)) {
+    return timeValue;
+  }
+
+  const period = parsedHours >= 12 ? 'PM' : 'AM';
+  const displayHours = parsedHours % 12 || 12;
+  return `${displayHours}:${minutes} ${period}`;
+}
 
 // --- INIT SQUARE -------------------------------------------------------------
 async function initSquare() {
@@ -858,7 +876,7 @@ document.getElementById('preferred-date').addEventListener('change', function() 
 });
 
 document.getElementById('preferred-time').addEventListener('change', function() {
-  document.getElementById('summary-time').textContent = this.value || '—';
+  document.getElementById('summary-time').textContent = formatDisplayTime(this.value);
 });
 
 document.getElementById('preferred-date').addEventListener('input', function() {
@@ -976,7 +994,7 @@ function showSuccessScreen(data) {
     <div class="row"><span>Name</span><span>${data.customer.name}</span></div>
     <div class="row"><span>Service</span><span>${data.booking.service}</span></div>
     <div class="row"><span>Date</span><span>${dateStr}</span></div>
-    <div class="row"><span>Time</span><span>${data.booking.time}</span></div>
+    <div class="row"><span>Time</span><span>${formatDisplayTime(data.booking.time)}</span></div>
     <div class="row"><span>Location</span><span>${data.customer.address}</span></div>
     <div class="row"><span>Deposit Paid</span><span style="color:var(--green)">$30.00 ?</span></div>
   `;

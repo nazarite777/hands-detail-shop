@@ -480,6 +480,40 @@ exports.claudeChat = functions.runWith({ secrets: ['ANTHROPIC_API_KEY'] }).https
 exports.processBooking = functions.runWith({ secrets: ['SQUARE_ACCESS_TOKEN', 'GMAIL_PASSWORD', 'GOOGLE_API_KEY'] }).https.onRequest((request, response) => {
   return corsHandler(request, response, async () => {
     try {
+      const normalizeAppointmentTime = (timeValue) => {
+        if (!timeValue) return '';
+
+        const trimmed = String(timeValue).trim();
+        if (/^\d{2}:\d{2}$/.test(trimmed)) {
+          return trimmed;
+        }
+
+        const match = trimmed.match(/^(\d{1,2}):(\d{2})\s*([AP]M)$/i);
+        if (!match) {
+          return trimmed;
+        }
+
+        let hours = parseInt(match[1], 10);
+        const minutes = match[2];
+        const meridiem = match[3].toUpperCase();
+
+        if (meridiem === 'PM' && hours !== 12) hours += 12;
+        if (meridiem === 'AM' && hours === 12) hours = 0;
+
+        return `${String(hours).padStart(2, '0')}:${minutes}`;
+      };
+
+      const formatDisplayTime = (timeValue) => {
+        const normalized = normalizeAppointmentTime(timeValue);
+        if (!normalized) return 'TBD';
+
+        const [hours, minutes] = normalized.split(':');
+        const parsedHours = parseInt(hours, 10);
+        const displayHours = parsedHours % 12 || 12;
+        const meridiem = parsedHours >= 12 ? 'PM' : 'AM';
+        return `${displayHours}:${minutes} ${meridiem}`;
+      };
+
       if (request.method !== 'POST') {
         return response.status(405).json({ error: 'Method not allowed' });
       }
@@ -497,7 +531,9 @@ exports.processBooking = functions.runWith({ secrets: ['SQUARE_ACCESS_TOKEN', 'G
       const serviceType = (body.booking && body.booking.service) || body.serviceType || '';
       const servicePrice = (body.booking && body.booking.price) || body.servicePrice || '';
       const appointmentDate = (body.booking && body.booking.date) || body.appointmentDate || '';
-      const appointmentTime = (body.booking && body.booking.time) || body.appointmentTime || '';
+      const appointmentTimeRaw = (body.booking && body.booking.time) || body.appointmentTime || '';
+      const appointmentTime = normalizeAppointmentTime(appointmentTimeRaw);
+      const appointmentTimeDisplay = formatDisplayTime(appointmentTime);
 
       if (!sourceId) {
         return response.status(400).json({ error: 'Payment source ID is required' });
@@ -530,7 +566,7 @@ exports.processBooking = functions.runWith({ secrets: ['SQUARE_ACCESS_TOKEN', 'G
           currency: 'USD'
         },
         idempotencyKey: require('crypto').randomUUID(),
-        note: `Hands Detail - ${serviceType} on ${appointmentDate} at ${appointmentTime} for ${customerName}`,
+        note: `Hands Detail - ${serviceType} on ${appointmentDate} at ${appointmentTimeDisplay} for ${customerName}`,
       });
 
       if (!result.result.payment.id) {
@@ -607,7 +643,7 @@ exports.processBooking = functions.runWith({ secrets: ['SQUARE_ACCESS_TOKEN', 'G
                 <p>Hi ${customerName},</p>
                 <p><strong>Service:</strong> ${serviceType} (${servicePrice})</p>
                 <p><strong>Date:</strong> ${appointmentDate}</p>
-                <p><strong>Time:</strong> ${appointmentTime}</p>
+                <p><strong>Time:</strong> ${appointmentTimeDisplay}</p>
                 <p><strong>Location:</strong> ${customerAddress}</p>
                 <p><strong>Vehicle:</strong> ${customerVehicle}</p>
                 <p><strong>Deposit Paid:</strong> $${(amountCents / 100).toFixed(2)}</p>
@@ -629,7 +665,7 @@ exports.processBooking = functions.runWith({ secrets: ['SQUARE_ACCESS_TOKEN', 'G
                 <p><strong>Email:</strong> ${customerEmail}</p>
                 <p><strong>Service:</strong> ${serviceType} (${servicePrice})</p>
                 <p><strong>Date:</strong> ${appointmentDate}</p>
-                <p><strong>Time:</strong> ${appointmentTime}</p>
+                <p><strong>Time:</strong> ${appointmentTimeDisplay}</p>
                 <p><strong>Location:</strong> ${customerAddress}</p>
                 <p><strong>Vehicle:</strong> ${customerVehicle}</p>
                 <p><strong>Notes:</strong> ${customerNotes || 'None'}</p>

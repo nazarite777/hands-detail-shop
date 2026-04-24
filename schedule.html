@@ -508,10 +508,33 @@
         let allBookings = [];
         let db;
 
+        function normalizeBookingTime(timeValue) {
+            if (!timeValue) return '09:00';
+
+            const trimmed = String(timeValue).trim();
+            if (/^\d{2}:\d{2}$/.test(trimmed)) {
+                return trimmed;
+            }
+
+            const match = trimmed.match(/^(\d{1,2}):(\d{2})\s*([AP]M)$/i);
+            if (!match) {
+                return trimmed;
+            }
+
+            let hours = parseInt(match[1], 10);
+            const minutes = match[2];
+            const meridiem = match[3].toUpperCase();
+
+            if (meridiem === 'PM' && hours !== 12) hours += 12;
+            if (meridiem === 'AM' && hours === 12) hours = 0;
+
+            return `${String(hours).padStart(2, '0')}:${minutes}`;
+        }
+
         function buildBookingKey(booking) {
             return [
                 booking.date || '',
-                booking.time || '09:00',
+                normalizeBookingTime(booking.time),
                 booking.service || '',
                 booking.customerAddress || ''
             ].join('|');
@@ -562,7 +585,7 @@
                             allBookings.push({
                                 id: booking.id,
                                 date: booking.date,
-                                time: booking.time || '09:00',
+                                time: normalizeBookingTime(booking.time),
                                 service: booking.service,
                                 // Extract city from customerAddress (last 2 parts after comma)
                                 city: booking.customerAddress 
@@ -632,8 +655,10 @@
 
         function formatTime(time24) {
             if (!time24) return 'TBD';
-            const [h, m] = time24.split(':');
+            const normalized = normalizeBookingTime(time24);
+            const [h, m] = normalized.split(':');
             const hr = parseInt(h);
+            if (Number.isNaN(hr)) return time24;
             const ampm = hr >= 12 ? 'PM' : 'AM';
             const hr12 = hr % 12 || 12;
             return `${hr12}:${m || '00'} ${ampm}`;
@@ -654,7 +679,7 @@
 
             const sorted = [...allBookings].sort((a, b) => {
                 if (a.date !== b.date) return a.date.localeCompare(b.date);
-                return (a.time || '').localeCompare(b.time || '');
+                return normalizeBookingTime(a.time).localeCompare(normalizeBookingTime(b.time));
             });
 
             container.innerHTML = sorted.map(booking => {
