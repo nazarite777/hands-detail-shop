@@ -230,7 +230,8 @@ Options:
 
 === PRICING & PAYMENT GUIDELINES ===
 ✓ All prices include mobile service (we come to you!)
-✓ $30 deposit secures appointment (applied to final invoice)
+✓ $30 deposit secures appointment for most services (applied to final invoice)
+✓ $150 deposit for Showroom Floor Detail, Fleet/Commercial, and RV/Yacht/Marine (applied to final invoice)
 ✓ Payment methods: Cash, Venmo, PayPal, Square, Apple Pay
 ✓ Free estimates provided (no obligation, phone or email)
 ✓ Flexible scheduling: Same-day available in some cases
@@ -267,7 +268,7 @@ When customer decides to book:
 1. Confirm vehicle type & preferred package
 2. Collect: Name, phone, email, address, vehicle info
 3. Ask: "Preferred date/time?" and provide availability
-4. Inform: "$30 deposit secures your appointment (applied to final invoice)"
+4. Inform: "A deposit secures your appointment (applied to final invoice) — $30 for most services, $150 for Showroom Floor Detail, Fleet/Commercial, and RV/Yacht/Marine jobs"
 5. Payment options: "We take Venmo, PayPal, Square, or cash at service"
 6. Confirmation: Send summary with date/time/address/amount
 

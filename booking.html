@@ -551,7 +551,7 @@
   <h1>Book Your Detail</h1>
   <p>Chat with Nazir's AI � Get instant answers � Pay & confirm</p>
   <div class="deposit-badge">
-    ? &nbsp;$30 deposit secures your appointment &nbsp;�&nbsp; Applied to final balance
+    ? &nbsp;Deposit secures your appointment &nbsp;·&nbsp; Applied to final balance
   </div>
 </div>
 
@@ -766,6 +766,17 @@ const CHAT_API_URL = 'https://us-central1-hands-detail.cloudfunctions.net/claude
 let card;
 let selectedService = '';
 let selectedPrice   = '';
+let depositAmountCents = 3000; // $30 default
+
+const BIG_JOB_SERVICES = ['Showroom Floor Detail', 'Fleet / Commercial', 'RV / Yacht / Marine'];
+
+function getDepositCents(serviceName) {
+  return BIG_JOB_SERVICES.includes(serviceName) ? 15000 : 3000;
+}
+
+function depositLabel(cents) {
+  return cents === 15000 ? '$150' : '$30';
+}
 let chatMessages = [
   { role: 'user', content: 'Hi, I want to book a detail.' },
   { role: 'assistant', content: 'Hi! I\'m here to help you book your detail. What service are you interested in? We offer everything from Basic Full Detail to Showroom Floor Detail. What\'s your vehicle type?' }
@@ -830,7 +841,8 @@ async function sendChatMessage() {
 When customers mention:
 - Services: Recommend based on vehicle type and budget
 - Dates: Mention we're open Tue-Sun, 8AM-6PM (closed Mondays)
-- Pricing: Use pricing from the form (Basic Full Detail $120–$195, Standard Full Detail $165–$260, Executive Full Detail $235–$360, Premium Full Detail $320–$495, Showroom Floor Detail $495–$750)
+- Pricing: Use pricing from the form (Basic Full Detail $120–$195, Standard Full Detail $165–$260, Executive Full Detail $235–$360, Premium Full Detail $320–$495, Showroom Floor Detail $495–$750, Motorcycle $125–$295, Fleet/RV/Marine quoted on-site)
+- Deposits: $30 deposit for Basic, Standard, Executive, Premium, and Motorcycle. $150 deposit for Showroom Floor Detail, Fleet/Commercial, and RV/Yacht/Marine jobs.
 - Filling form: Guide them to click "Select Service" and fill in their info on the right side
 
 Be friendly, concise, and encouraging. Keep responses under 2-3 sentences.`
@@ -866,7 +878,15 @@ function selectService(el, name, price) {
   el.classList.add('selected');
   selectedService = name;
   selectedPrice   = price;
-  document.getElementById('summary-service').textContent = name + ' � ' + price;
+  document.getElementById('summary-service').textContent = name + ' · ' + price;
+
+  // Update deposit amount
+  depositAmountCents = getDepositCents(name);
+  const label = depositLabel(depositAmountCents);
+  document.querySelector('.panel-header .panel-title').textContent = `Secure Deposit — ${label}.00`;
+  document.querySelector('.total-value').textContent = `${label}.00`;
+  const payBtn = document.getElementById('pay-btn');
+  payBtn.childNodes[0].textContent = `Pay ${label} Deposit & Confirm Booking`;
 }
 
 // --- LIVE SUMMARY UPDATE ------------------------------------------------------
@@ -923,7 +943,7 @@ async function handlePayment() {
   const btn = document.getElementById('pay-btn');
   btn.disabled = true;
   btn.classList.add('loading');
-  btn.textContent = 'Processing...';
+  btn.childNodes[0].textContent = 'Processing...';
 
   try {
     const result = await card.tokenize();
@@ -931,13 +951,13 @@ async function handlePayment() {
       showMsg('error', result.errors ? result.errors[0].message : 'Card error — please check your details.');
       btn.disabled = false;
       btn.classList.remove('loading');
-      btn.textContent = 'Pay $30 Deposit & Confirm Booking';
+      btn.childNodes[0].textContent = `Pay ${depositLabel(depositAmountCents)} Deposit & Confirm Booking`;
       return;
     }
 
     const bookingData = {
       sourceId:    result.token,
-      amountCents: 3000,
+      amountCents: depositAmountCents,
       currency:    'USD',
       customer: {
         name:    document.getElementById('customer-name').value.trim(),
@@ -969,7 +989,7 @@ async function handlePayment() {
       showMsg('error', data.error || 'Payment failed — please try again or call (412) 752-8684.');
       btn.disabled = false;
       btn.classList.remove('loading');
-      btn.textContent = 'Pay $30 Deposit & Confirm Booking';
+      btn.childNodes[0].textContent = `Pay ${depositLabel(depositAmountCents)} Deposit & Confirm Booking`;
     }
 
   } catch (err) {
@@ -977,7 +997,7 @@ async function handlePayment() {
     showMsg('error', 'Something went wrong. Please call (412) 752-8684 to book directly.');
     btn.disabled = false;
     btn.classList.remove('loading');
-    btn.textContent = 'Pay $30 Deposit & Confirm Booking';
+    btn.childNodes[0].textContent = `Pay ${depositLabel(depositAmountCents)} Deposit & Confirm Booking`;
   }
 }
 
@@ -996,7 +1016,7 @@ function showSuccessScreen(data) {
     <div class="row"><span>Date</span><span>${dateStr}</span></div>
     <div class="row"><span>Time</span><span>${formatDisplayTime(data.booking.time)}</span></div>
     <div class="row"><span>Location</span><span>${data.customer.address}</span></div>
-    <div class="row"><span>Deposit Paid</span><span style="color:var(--green)">$30.00 ?</span></div>
+    <div class="row"><span>Deposit Paid</span><span style="color:var(--green)">${depositLabel(data.amountCents)}.00 ✓</span></div>
   `;
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
