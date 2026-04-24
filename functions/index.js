@@ -861,3 +861,286 @@ exports.submitContact = functions.runWith({ secrets: ['GMAIL_PASSWORD'] }).https
     }
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// processGiftCertificate — charge card and issue gift certificate
+// ─────────────────────────────────────────────────────────────────────────────
+exports.processGiftCertificate = functions.runWith({ secrets: ['SQUARE_ACCESS_TOKEN', 'GMAIL_PASSWORD'] }).https.onRequest((request, response) => {
+  return corsHandler(request, response, async () => {
+    try {
+      if (request.method !== 'POST') {
+        return response.status(405).json({ error: 'Method not allowed' });
+      }
+
+      const { sourceId, amountCents, purchaserName, purchaserEmail, recipientName, recipientEmail, giftMessage } = request.body;
+
+      // Validate required fields
+      if (!sourceId) return response.status(400).json({ error: 'Payment source required' });
+      if (!amountCents || typeof amountCents !== 'number' || amountCents < 2500) {
+        return response.status(400).json({ error: 'Minimum gift certificate amount is $25' });
+      }
+      if (!purchaserName || typeof purchaserName !== 'string' || purchaserName.trim().length < 2) {
+        return response.status(400).json({ error: 'Your name is required' });
+      }
+      if (!purchaserEmail || typeof purchaserEmail !== 'string' || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(purchaserEmail.trim())) {
+        return response.status(400).json({ error: 'Valid email is required to receive the certificate' });
+      }
+      if (!recipientName || typeof recipientName !== 'string' || recipientName.trim().length < 2) {
+        return response.status(400).json({ error: 'Recipient name is required' });
+      }
+      // Length guards
+      if (purchaserName.trim().length > 100) return response.status(400).json({ error: 'Name too long' });
+      if (purchaserEmail.trim().length > 200) return response.status(400).json({ error: 'Email too long' });
+      if (recipientName.trim().length > 100) return response.status(400).json({ error: 'Recipient name too long' });
+      if (recipientEmail && recipientEmail.length > 200) return response.status(400).json({ error: 'Recipient email too long' });
+      if (giftMessage && giftMessage.length > 500) return response.status(400).json({ error: 'Message too long (max 500 chars)' });
+
+      const squareAccessToken = process.env.SQUARE_ACCESS_TOKEN;
+      if (!squareAccessToken) return response.status(500).json({ error: 'Payment not configured' });
+
+      const { Client, Environment } = require('square');
+      const squareClient = new Client({ accessToken: squareAccessToken, environment: Environment.Production });
+
+      const payResult = await squareClient.paymentsApi.createPayment({
+        sourceId,
+        amountMoney: { amount: BigInt(amountCents), currency: 'USD' },
+        idempotencyKey: require('crypto').randomUUID(),
+        note: `Gift Cert $${(amountCents / 100).toFixed(2)} — for ${recipientName.trim()} from ${purchaserName.trim()}`,
+      });
+
+      if (!payResult.result.payment || !payResult.result.payment.id) {
+        throw new Error('Payment failed');
+      }
+
+      // Generate unique certificate code
+      const certCode = 'HDS-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substr(2, 4).toUpperCase();
+
+      // Save to Firestore
+      const firestore = admin.firestore();
+      const certRef = firestore.collection('gift_certificates').doc();
+      await certRef.set({
+        id: certRef.id,
+        code: certCode,
+        amountCents,
+        purchaserName: purchaserName.trim(),
+        purchaserEmail: purchaserEmail.trim(),
+        recipientName: recipientName.trim(),
+        recipientEmail: (recipientEmail || '').trim(),
+        giftMessage: (giftMessage || '').trim(),
+        paymentId: payResult.result.payment.id,
+        redeemed: false,
+        createdAt: admin.firestore.FieldValue.serverTimestamp(),
+      });
+
+      console.log('✅ Gift certificate issued:', certCode, 'for', recipientName.trim());
+
+      // Send emails
+      const gmailEmail = process.env.GMAIL_EMAIL || 'NazirEl@handsdetailshop.com';
+      const gmailPassword = process.env.GMAIL_PASSWORD;
+      if (gmailPassword) {
+        try {
+          const nodemailer = require('nodemailer');
+          const transporter = nodemailer.createTransport({ service: 'Gmail', auth: { user: gmailEmail, pass: gmailPassword } });
+
+          const certHtml = `
+            <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;">
+              <div style="background:#0A0A08;padding:30px;text-align:center;border-radius:12px 12px 0 0;">
+                <h1 style="color:#C9A84C;margin:0;font-size:1.8rem;">🎁 Gift Certificate</h1>
+                <h2 style="color:#E8E0CC;margin:8px 0 0;font-size:1.2rem;letter-spacing:0.1em;">HANDS DETAIL SHOP</h2>
+              </div>
+              <div style="background:#111110;padding:35px;text-align:center;border:2px solid #C9A84C;">
+                <div style="font-size:3.5rem;font-weight:800;color:#C9A84C;">$${(amountCents / 100).toFixed(2)}</div>
+                <div style="color:#a0a0a0;margin:8px 0;">Certificate Code</div>
+                <div style="background:#1A1A18;border:1px solid #C9A84C;padding:12px 24px;border-radius:8px;display:inline-block;margin:10px 0;">
+                  <span style="font-family:monospace;font-size:1.4rem;font-weight:700;color:#C9A84C;letter-spacing:0.15em;">${certCode}</span>
+                </div>
+                <div style="color:#E8E0CC;margin-top:15px;font-size:1.1rem;">For: <strong>${recipientName.trim()}</strong></div>
+                ${giftMessage ? `<div style="color:#c0c0c0;font-style:italic;margin:20px 0;padding:15px;border-left:3px solid #C9A84C;text-align:left;">"${giftMessage.trim()}"</div>` : ''}
+                <div style="color:#5A5A52;margin-top:25px;font-size:0.85rem;line-height:1.6;">
+                  Valid for any Hands Detail Shop service. Never expires.<br>
+                  To redeem, mention this code when booking:<br>
+                  <a href="https://handsdetailshop.com/booking.html" style="color:#C9A84C;">handsdetailshop.com/booking</a>
+                </div>
+              </div>
+              <div style="background:#0A0A08;padding:15px;text-align:center;border-radius:0 0 12px 12px;color:#5A5A52;font-size:0.8rem;">
+                Hands Detail Shop &nbsp;|&nbsp; (412) 752-8684 &nbsp;|&nbsp; NazirEl@handsdetailshop.com
+              </div>
+            </div>`;
+
+          // Email to purchaser
+          await transporter.sendMail({
+            from: gmailEmail,
+            to: purchaserEmail.trim(),
+            subject: `🎁 Your Gift Certificate for ${recipientName.trim()} — Hands Detail Shop`,
+            html: certHtml,
+          });
+
+          // Email to recipient if provided
+          if (recipientEmail && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(recipientEmail.trim())) {
+            await transporter.sendMail({
+              from: gmailEmail,
+              to: recipientEmail.trim(),
+              subject: `You received a gift from ${purchaserName.trim()}! 🎁 Hands Detail Shop`,
+              html: certHtml,
+            });
+          }
+
+          // Notify business owner
+          await transporter.sendMail({
+            from: gmailEmail,
+            to: gmailEmail,
+            subject: `New Gift Certificate Sold: $${(amountCents / 100).toFixed(2)} — ${purchaserName.trim()}`,
+            html: `
+              <h2>New Gift Certificate Purchase</h2>
+              <p><strong>Purchaser:</strong> ${purchaserName.trim()} (${purchaserEmail.trim()})</p>
+              <p><strong>Recipient:</strong> ${recipientName.trim()} (${recipientEmail || 'no email'})</p>
+              <p><strong>Amount:</strong> $${(amountCents / 100).toFixed(2)}</p>
+              <p><strong>Certificate Code:</strong> <strong style="color:#c9a84c;">${certCode}</strong></p>
+              <p><strong>Payment ID:</strong> ${payResult.result.payment.id}</p>
+              ${giftMessage ? `<p><strong>Message:</strong> "${giftMessage.trim()}"</p>` : ''}`,
+          });
+        } catch (emailErr) {
+          console.warn('Gift cert email failed (non-blocking):', emailErr.message);
+        }
+      }
+
+      return response.status(200).json({
+        success: true,
+        certCode,
+        message: 'Gift certificate purchased successfully!',
+      });
+
+    } catch (error) {
+      console.error('❌ processGiftCertificate error:', error);
+      return response.status(500).json({ error: 'Purchase failed', details: error.message });
+    }
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// processMembership — charge initial membership payment (restoration + first month)
+// ─────────────────────────────────────────────────────────────────────────────
+exports.processMembership = functions.runWith({ secrets: ['SQUARE_ACCESS_TOKEN', 'GMAIL_PASSWORD'] }).https.onRequest((request, response) => {
+  return corsHandler(request, response, async () => {
+    try {
+      if (request.method !== 'POST') {
+        return response.status(405).json({ error: 'Method not allowed' });
+      }
+
+      const { sourceId, amountCents, customerName, customerEmail, customerPhone, vehicleType, membershipTier, hasCeramic, monthlyAmountCents, serviceAddress } = request.body;
+
+      // Validate required fields
+      if (!sourceId) return response.status(400).json({ error: 'Payment source required' });
+      if (!amountCents || typeof amountCents !== 'number' || amountCents < 7500) {
+        return response.status(400).json({ error: 'Invalid payment amount' });
+      }
+      if (!customerName || typeof customerName !== 'string' || customerName.trim().length < 2) {
+        return response.status(400).json({ error: 'Name is required' });
+      }
+      if (!customerPhone || typeof customerPhone !== 'string' || customerPhone.trim().length < 7) {
+        return response.status(400).json({ error: 'Phone number is required' });
+      }
+      if (!vehicleType) return response.status(400).json({ error: 'Vehicle type is required' });
+      if (!membershipTier) return response.status(400).json({ error: 'Membership tier is required' });
+      // Length guards
+      if (customerName.trim().length > 100) return response.status(400).json({ error: 'Name too long' });
+      if (customerEmail && customerEmail.length > 200) return response.status(400).json({ error: 'Email too long' });
+      if (customerPhone.trim().length > 30) return response.status(400).json({ error: 'Phone too long' });
+      if (serviceAddress && serviceAddress.length > 300) return response.status(400).json({ error: 'Address too long' });
+
+      const squareAccessToken = process.env.SQUARE_ACCESS_TOKEN;
+      if (!squareAccessToken) return response.status(500).json({ error: 'Payment not configured' });
+
+      const { Client, Environment } = require('square');
+      const squareClient = new Client({ accessToken: squareAccessToken, environment: Environment.Production });
+
+      const payResult = await squareClient.paymentsApi.createPayment({
+        sourceId,
+        amountMoney: { amount: BigInt(amountCents), currency: 'USD' },
+        idempotencyKey: require('crypto').randomUUID(),
+        note: `Membership: ${membershipTier} | ${vehicleType}${hasCeramic ? ' + Ceramic' : ''} | ${customerName.trim()}`,
+      });
+
+      if (!payResult.result.payment || !payResult.result.payment.id) {
+        throw new Error('Payment failed');
+      }
+
+      // Save to Firestore
+      const firestore = admin.firestore();
+      const memberRef = firestore.collection('memberships').doc();
+      await memberRef.set({
+        id: memberRef.id,
+        customerName: customerName.trim(),
+        customerEmail: (customerEmail || '').trim(),
+        customerPhone: customerPhone.trim(),
+        serviceAddress: (serviceAddress || '').trim(),
+        vehicleType,
+        membershipTier,
+        hasCeramic: !!hasCeramic,
+        amountCents,
+        monthlyAmountCents: monthlyAmountCents || 0,
+        paymentId: payResult.result.payment.id,
+        status: 'active',
+        createdAt: admin.firestore.FieldValue.serverTimestamp(),
+      });
+
+      console.log('✅ Membership enrolled:', memberRef.id, 'for', customerName.trim());
+
+      // Send emails
+      const gmailEmail = process.env.GMAIL_EMAIL || 'NazirEl@handsdetailshop.com';
+      const gmailPassword = process.env.GMAIL_PASSWORD;
+      if (gmailPassword) {
+        try {
+          const nodemailer = require('nodemailer');
+          const transporter = nodemailer.createTransport({ service: 'Gmail', auth: { user: gmailEmail, pass: gmailPassword } });
+
+          if (customerEmail && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(customerEmail.trim())) {
+            await transporter.sendMail({
+              from: gmailEmail,
+              to: customerEmail.trim(),
+              subject: `Welcome to Hands Detail Shop — ${membershipTier} Membership Activated!`,
+              html: `
+                <h2>Welcome to the Hands Detail Shop Family, ${customerName.trim()}!</h2>
+                <p>Your <strong>${membershipTier}</strong> membership is now active.</p>
+                <p><strong>Vehicle Type:</strong> ${vehicleType}${hasCeramic ? ' with Ceramic Coating' : ''}</p>
+                <p><strong>Monthly Rate:</strong> $${(monthlyAmountCents / 100).toFixed(2)}/month (biweekly service)</p>
+                <p><strong>Initial Payment:</strong> $${(amountCents / 100).toFixed(2)}</p>
+                <p>Nazir will reach out within 24 hours to schedule your first detail and assign your biweekly service day.</p>
+                <p>Questions? Call or text <strong>(412) 752-8684</strong></p>
+                <p>Thank you for joining — we'll keep your vehicle looking its best!</p>`,
+            });
+          }
+
+          // Notify business owner
+          await transporter.sendMail({
+            from: gmailEmail,
+            to: gmailEmail,
+            subject: `New Membership Enrollment: ${membershipTier} — ${customerName.trim()}`,
+            html: `
+              <h2>New Membership Enrollment</h2>
+              <p><strong>Customer:</strong> ${customerName.trim()}</p>
+              <p><strong>Phone:</strong> ${customerPhone.trim()}</p>
+              <p><strong>Email:</strong> ${customerEmail || 'not provided'}</p>
+              <p><strong>Address:</strong> ${serviceAddress || 'not provided'}</p>
+              <p><strong>Tier:</strong> ${membershipTier} @ $${(monthlyAmountCents / 100).toFixed(2)}/mo</p>
+              <p><strong>Vehicle:</strong> ${vehicleType}${hasCeramic ? ' + Ceramic Coating' : ''}</p>
+              <p><strong>Initial Payment:</strong> $${(amountCents / 100).toFixed(2)}</p>
+              <p><strong>Payment ID:</strong> ${payResult.result.payment.id}</p>`,
+          });
+        } catch (emailErr) {
+          console.warn('Membership email failed (non-blocking):', emailErr.message);
+        }
+      }
+
+      return response.status(200).json({
+        success: true,
+        memberId: memberRef.id,
+        message: 'Membership activated!',
+      });
+
+    } catch (error) {
+      console.error('❌ processMembership error:', error);
+      return response.status(500).json({ error: 'Enrollment failed', details: error.message });
+    }
+  });
+});
