@@ -526,27 +526,36 @@
                 today.setHours(0, 0, 0, 0);
                 const todayStr = today.toISOString().split('T')[0];
 
-                // Query public_schedule collection (no personal info stored here)
-                const snapshot = await db.collection('public_schedule')
-                    .where('status', '==', 'booked')
-                    .orderBy('date', 'asc')
-                    .get();
+                // Call getBookings Cloud Function (safe public endpoint)
+                const response = await fetch('https://us-central1-hands-detail.cloudfunctions.net/getBookings');
+                
+                if (!response.ok) {
+                    throw new Error('Failed to fetch bookings: ' + response.status);
+                }
 
+                const data = await response.json();
+                
+                // Transform and filter bookings for safe public display
                 allBookings = [];
-                snapshot.forEach(doc => {
-                    const data = doc.data();
-                    if (data.date >= todayStr) {
-                        allBookings.push({
-                            id: doc.id,
-                            date: data.date,
-                            time: data.time || '09:00',
-                            service: data.service,
-                            city: data.city || 'Pittsburgh, PA',
-                            duration: data.duration || 4,
-                            status: data.status
-                        });
-                    }
-                });
+                if (data.bookings && Array.isArray(data.bookings)) {
+                    data.bookings.forEach(booking => {
+                        // Only include future bookings
+                        if (booking.date >= todayStr && booking.status === 'confirmed') {
+                            allBookings.push({
+                                id: booking.id,
+                                date: booking.date,
+                                time: booking.time || '09:00',
+                                service: booking.service,
+                                // Extract city from customerAddress (last 2 parts after comma)
+                                city: booking.customerAddress 
+                                    ? booking.customerAddress.split(',').slice(-2).join(',').trim()
+                                    : 'Pittsburgh, PA',
+                                duration: booking.duration || 4,
+                                status: booking.status
+                            });
+                        }
+                    });
+                }
 
                 console.log('✅ Loaded', allBookings.length, 'bookings');
                 renderCalendar();
