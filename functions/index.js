@@ -541,6 +541,16 @@ exports.processBooking = functions.runWith({ secrets: ['SQUARE_ACCESS_TOKEN', 'G
       const firestore = admin.firestore();
       const bookingRef = firestore.collection('bookings').doc();
       
+      // Calculate service duration based on service type
+      const serviceDurations = {
+        'ESSENTIAL DETAIL': 2.5,
+        'EXECUTIVE DETAIL': 4.5,
+        'SIGNATURE PRESTIGE': 6.5,
+        'PRESIDENTIAL ELITE': 9,
+        'ULTIMATE ARMOR': 13,
+      };
+      const duration = serviceDurations[serviceType] || 4;
+      
       await bookingRef.set({
         id: bookingRef.id,
         customerName: customerName,
@@ -553,6 +563,7 @@ exports.processBooking = functions.runWith({ secrets: ['SQUARE_ACCESS_TOKEN', 'G
         servicePrice: servicePrice,
         appointmentDate: appointmentDate,
         appointmentTime: appointmentTime,
+        duration: duration,
         paymentId: result.result.payment.id,
         amountCents: amountCents,
         status: 'confirmed',
@@ -1185,6 +1196,7 @@ exports.getBookings = functions.https.onRequest((request, response) => {
             date: booking.appointmentDate,
             time: booking.appointmentTime,
             service: booking.serviceType,
+            duration: booking.duration || 4, // Default to 4 hours if not specified
             customerName: booking.customerName,
             customerPhone: booking.customerPhone,
             customerEmail: booking.customerEmail,

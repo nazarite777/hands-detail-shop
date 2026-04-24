@@ -600,13 +600,17 @@
             container.innerHTML = sorted.map(booking => {
                 const bookingDate = new Date(booking.date + 'T' + booking.time);
                 const dateStr = bookingDate.toLocaleString('default', { weekday: 'long', month: 'long', day: 'numeric' });
+                const duration = booking.duration ? `${Math.round(booking.duration * 2) / 2}h` : '~4h';
 
                 return `
                     <div class="booking-card">
                         <div class="booking-time">${booking.time}</div>
                         <div>
                             <div class="booking-service">${booking.service}</div>
-                            <div style="color: var(--muted); font-size: 0.9rem;">${dateStr}</div>
+                            <div style="color: var(--muted); font-size: 0.9rem;">
+                                📍 ${booking.customerAddress}<br>
+                                ⏱️ ~${duration} | ${dateStr}
+                            </div>
                         </div>
                         <div class="booking-customer">
                             <strong>${booking.customerName}</strong><br>
