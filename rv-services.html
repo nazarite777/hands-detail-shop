@@ -135,148 +135,224 @@
                 </div>
             </div>
 
-            <!-- Service Packages -->
+            <!-- Detailed Service Pricing Tables -->
             <div style="margin-bottom: 80px;">
-                <h3 style="font-size: 2rem; color: #d4d4d4; margin-bottom: 50px; text-align: center;">Service Packages</h3>
+                <h3 style="font-size: 2rem; color: #d4d4d4; margin-bottom: 50px; text-align: center;">Service Packages & Pricing</h3>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px;">
-                    <!-- CLASS B -->
-                    <div style="background: rgba(50,50,50,0.5); border: 1px solid rgba(100,100,100,0.3); border-radius: 15px; padding: 30px; transition: transform 0.3s ease, border-color 0.3s ease;">
-                        <div style="margin-bottom: 15px;">
-                            <h3 style="color: #d4d4d4; font-size: 1.4rem; margin-bottom: 5px;">Class B / Small</h3>
-                            <p style="color: #a0a0a0; font-size: 0.9rem;">Compact RVs & travel trailers</p>
-                        </div>
-                        <div style="font-size: 2.2rem; font-weight: 800; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px;">$285–$385</div>
-                        <ul style="list-style: none; padding: 0; margin-bottom: 25px; color: #b8b8b8;">
-                            <li style="padding: 8px 0;">✓ Full exterior wash & wax</li>
-                            <li style="padding: 8px 0;">✓ Roof cleaning & treatment</li>
-                            <li style="padding: 8px 0;">✓ Awning cleaning</li>
-                            <li style="padding: 8px 0;">✓ Wheel & tire cleaning</li>
-                            <li style="padding: 8px 0;">✓ Window & glass cleaning</li>
-                            <li style="padding: 8px 0;">✓ Interior vacuuming & wipe</li>
-                            <li style="padding: 8px 0;">✓ Oxidation removal</li>
-                            <li style="padding: 8px 0;">✓ Rubber seal conditioning</li>
-                        </ul>
-                        <button onclick="openBookingModal('Class B RV Detail')" style="background: linear-gradient(135deg, #1976d2, #2196f3, #64b5f6); color: white; padding: 12px 30px; border: 1px solid rgba(180,180,180,0.4); border-radius: 50px; font-weight: 700; cursor: pointer; width: 100%; transition: all 0.3s ease;">Book Detail</button>
+                <!-- Exterior Wash & Dry -->
+                <div style="margin-bottom: 50px;">
+                    <h4 style="color: #90caf9; font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid rgba(66,165,245,0.3); padding-bottom: 10px;">🚐 Exterior Wash & Dry</h4>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; background: rgba(50,50,50,0.5); border: 1px solid rgba(100,100,100,0.3); border-radius: 10px;">
+                            <thead>
+                                <tr style="background: rgba(21, 101, 192, 0.2);">
+                                    <th style="color: #d4d4d4; padding: 15px; text-align: left; border-bottom: 1px solid rgba(100,100,100,0.3);">RV Size</th>
+                                    <th style="color: #d4d4d4; padding: 15px; text-align: right; border-bottom: 1px solid rgba(100,100,100,0.3);">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">Class C / Travel Trailer — up to 25ft</td>
+                                    <td style="color: #90caf9; padding: 12px 15px; text-align: right; font-weight: 700;">$295</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">Class A / Class B — 26–32ft</td>
+                                    <td style="color: #90caf9; padding: 12px 15px; text-align: right; font-weight: 700;">$385</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">Large Class A / Fifth Wheel — 33–40ft</td>
+                                    <td style="color: #90caf9; padding: 12px 15px; text-align: right; font-weight: 700;">$475</td>
+                                </tr>
+                                <tr>
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">40ft+</td>
+                                    <td style="color: #e8c96a; padding: 12px 15px; text-align: right; font-weight: 700;">Call</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+                    <p style="color: #a0a0a0; margin-top: 12px; font-size: 0.9rem;">💡 <strong>Add-on:</strong> Roof Cleaning (add-on) <span style="color: #90caf9; font-weight: 700;">+$75–$125</span></p>
+                </div>
 
-                    <!-- CLASS C (Most Popular) -->
-                    <div style="background: rgba(66,165,245,0.1); border: 2px solid #42a5f5; border-radius: 15px; padding: 30px; position: relative; transition: transform 0.3s ease; transform: scale(1.02);">
-                        <div style="position: absolute; top: 20px; right: 20px; background: linear-gradient(135deg, #1976d2, #2196f3); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700;">MOST POPULAR</div>
-                        <div style="margin-bottom: 15px; margin-top: 10px;">
-                            <h3 style="color: #d4d4d4; font-size: 1.4rem; margin-bottom: 5px;">Class C</h3>
-                            <p style="color: #a0a0a0; font-size: 0.9rem;">Motorhomes & medium trailers</p>
-                        </div>
-                        <div style="font-size: 2.2rem; font-weight: 800; background: linear-gradient(90deg, #42a5f5, #90caf9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px;">$485–$685</div>
-                        <ul style="list-style: none; padding: 0; margin-bottom: 25px; color: #b8b8b8;">
-                            <li style="padding: 8px 0;">✓ Multi-stage paint correction</li>
-                            <li style="padding: 8px 0;">✓ Full roof cleaning & sealing</li>
-                            <li style="padding: 8px 0;">✓ Slide-out cleaning & lubrication</li>
-                            <li style="padding: 8px 0;">✓ Complete interior detailing</li>
-                            <li style="padding: 8px 0;">✓ Upholstery & carpet shampooing</li>
-                            <li style="padding: 8px 0;">✓ Cabinet & surface restoration</li>
-                            <li style="padding: 8px 0;">✓ Awning deep clean & treatment</li>
-                            <li style="padding: 8px 0;">✓ 6-month UV protection</li>
-                        </ul>
-                        <button onclick="openBookingModal('Class C RV Detail')" style="background: linear-gradient(135deg, #1976d2, #2196f3, #64b5f6); color: white; padding: 12px 30px; border: 1px solid rgba(180,180,180,0.4); border-radius: 50px; font-weight: 700; cursor: pointer; width: 100%; transition: all 0.3s ease;">Book Detail</button>
-                    </div>
-
-                    <!-- CLASS A -->
-                    <div style="background: rgba(50,50,50,0.5); border: 1px solid rgba(100,100,100,0.3); border-radius: 15px; padding: 30px; transition: transform 0.3s ease, border-color 0.3s ease;">
-                        <div style="background: rgba(21, 101, 192, 0.3); padding: 6px 12px; display: inline-block; border-radius: 20px; margin-bottom: 15px; border: 1px solid rgba(160,160,160,0.2);">
-                            <span style="color: #90caf9; font-size: 0.8rem; font-weight: 700;">PREMIUM</span>
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <h3 style="color: #d4d4d4; font-size: 1.4rem; margin-bottom: 5px;">Class A</h3>
-                            <p style="color: #a0a0a0; font-size: 0.9rem;">Luxury motorhomes & 5th wheels</p>
-                        </div>
-                        <div style="font-size: 2.2rem; font-weight: 800; background: linear-gradient(90deg, #c8a951, #e8c96a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px;">$885–$1,285</div>
-                        <ul style="list-style: none; padding: 0; margin-bottom: 25px; color: #b8b8b8;">
-                            <li style="padding: 8px 0;">✓ Full paint restoration & protection</li>
-                            <li style="padding: 8px 0;">✓ Ceramic coating available</li>
-                            <li style="padding: 8px 0;">✓ Complete interior transformation</li>
-                            <li style="padding: 8px 0;">✓ All slide-outs detailed inside/out</li>
-                            <li style="padding: 8px 0;">✓ Leather conditioning & protection</li>
-                            <li style="padding: 8px 0;">✓ Generator compartment cleaning</li>
-                            <li style="padding: 8px 0;">✓ Storage bay organization & cleaning</li>
-                            <li style="padding: 8px 0;">✓ 1-year protection warranty</li>
-                        </ul>
-                        <button onclick="openBookingModal('Class A RV Detail')" style="background: linear-gradient(135deg, #c8a951, #b8991f); color: #0f0f0f; padding: 12px 30px; border: 1px solid rgba(200,169,81,0.4); border-radius: 50px; font-weight: 700; cursor: pointer; width: 100%; transition: all 0.3s ease;">Book Detail</button>
-                    </div>
-
-                    <!-- LUXURY -->
-                    <div style="background: rgba(50,50,50,0.5); border: 1px solid rgba(100,100,100,0.3); border-radius: 15px; padding: 30px; transition: transform 0.3s ease, border-color 0.3s ease;">
-                        <div style="background: rgba(21, 101, 192, 0.3); padding: 6px 12px; display: inline-block; border-radius: 20px; margin-bottom: 15px; border: 1px solid rgba(160,160,160,0.2);">
-                            <span style="color: #90caf9; font-size: 0.8rem; font-weight: 700;">ULTIMATE</span>
-                        </div>
-                        <div style="margin-bottom: 15px;">
-                            <h3 style="color: #d4d4d4; font-size: 1.4rem; margin-bottom: 5px;">Luxury RV</h3>
-                            <p style="color: #a0a0a0; font-size: 0.9rem;">Super coaches & premium RVs</p>
-                        </div>
-                        <div style="font-size: 2.2rem; font-weight: 800; background: linear-gradient(90deg, #c8a951, #e8c96a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px;">$1,485–$2,485</div>
-                        <ul style="list-style: none; padding: 0; margin-bottom: 25px; color: #b8b8b8;">
-                            <li style="padding: 8px 0;">✓ Multi-day comprehensive detail</li>
-                            <li style="padding: 8px 0;">✓ Premium ceramic coating (5-year)</li>
-                            <li style="padding: 8px 0;">✓ Paint protection film available</li>
-                            <li style="padding: 8px 0;">✓ Complete interior restoration</li>
-                            <li style="padding: 8px 0;">✓ All wood & cabinetry treatment</li>
-                            <li style="padding: 8px 0;">✓ Undercarriage cleaning & protection</li>
-                            <li style="padding: 8px 0;">✓ Chrome & metal polishing</li>
-                            <li style="padding: 8px 0;">✓ Ongoing maintenance plans available</li>
-                        </ul>
-                        <button onclick="openBookingModal('Luxury RV Detail')" style="background: linear-gradient(135deg, #c8a951, #b8991f); color: #0f0f0f; padding: 12px 30px; border: 1px solid rgba(200,169,81,0.4); border-radius: 50px; font-weight: 700; cursor: pointer; width: 100%; transition: all 0.3s ease;">Book Detail</button>
+                <!-- Exterior Wash + Wax -->
+                <div style="margin-bottom: 50px;">
+                    <h4 style="color: #90caf9; font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid rgba(66,165,245,0.3); padding-bottom: 10px;">✨ Exterior Wash + Wax</h4>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; background: rgba(50,50,50,0.5); border: 1px solid rgba(100,100,100,0.3); border-radius: 10px;">
+                            <thead>
+                                <tr style="background: rgba(21, 101, 192, 0.2);">
+                                    <th style="color: #d4d4d4; padding: 15px; text-align: left; border-bottom: 1px solid rgba(100,100,100,0.3);">RV Size</th>
+                                    <th style="color: #d4d4d4; padding: 15px; text-align: right; border-bottom: 1px solid rgba(100,100,100,0.3);">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">Up to 25ft</td>
+                                    <td style="color: #90caf9; padding: 12px 15px; text-align: right; font-weight: 700;">$395</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">26–32ft</td>
+                                    <td style="color: #90caf9; padding: 12px 15px; text-align: right; font-weight: 700;">$525</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">33–40ft</td>
+                                    <td style="color: #90caf9; padding: 12px 15px; text-align: right; font-weight: 700;">$650</td>
+                                </tr>
+                                <tr>
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">40ft+</td>
+                                    <td style="color: #e8c96a; padding: 12px 15px; text-align: right; font-weight: 700;">Call</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </div>
 
-            <!-- Add-Ons Section -->
-            <div style="margin-bottom: 60px;">
-                <h3 style="font-size: 2rem; color: #d4d4d4; margin-bottom: 40px; text-align: center;">Add-ons & À La Carte</h3>
-
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px;">
-                    <div style="background: rgba(50,50,50,0.5); border: 1px solid rgba(100,100,100,0.3); border-radius: 10px; padding: 20px;">
-                        <div style="color: #c8c8c8; font-weight: 700; margin-bottom: 8px;">Ceramic Coating</div>
-                        <div style="font-size: 1.4rem; font-weight: 800; color: #e8c96a; margin-bottom: 10px;">$400–$900</div>
-                        <p style="color: #a0a0a0; font-size: 0.9rem;">3–5 year UV, salt, and oxidation protection.</p>
-                    </div>
-
-                    <div style="background: rgba(50,50,50,0.5); border: 1px solid rgba(100,100,100,0.3); border-radius: 10px; padding: 20px;">
-                        <div style="color: #c8c8c8; font-weight: 700; margin-bottom: 8px;">Awning Replacement</div>
-                        <div style="font-size: 1.4rem; font-weight: 800; color: #e8c96a; margin-bottom: 10px;">$150–$400</div>
-                        <p style="color: #a0a0a0; font-size: 0.9rem;">New awning fabric with protective treatment.</p>
-                    </div>
-
-                    <div style="background: rgba(50,50,50,0.5); border: 1px solid rgba(100,100,100,0.3); border-radius: 10px; padding: 20px;">
-                        <div style="color: #c8c8c8; font-weight: 700; margin-bottom: 8px;">Interior Deep Clean</div>
-                        <div style="font-size: 1.4rem; font-weight: 800; color: #e8c96a; margin-bottom: 10px;">$200–$500</div>
-                        <p style="color: #a0a0a0; font-size: 0.9rem;">Carpet extraction, mold treatment, odor elimination.</p>
-                    </div>
-
-                    <div style="background: rgba(50,50,50,0.5); border: 1px solid rgba(100,100,100,0.3); border-radius: 10px; padding: 20px;">
-                        <div style="color: #c8c8c8; font-weight: 700; margin-bottom: 8px;">Slide-Out Seals</div>
-                        <div style="font-size: 1.4rem; font-weight: 800; color: #e8c96a; margin-bottom: 10px;">$150–$350</div>
-                        <p style="color: #a0a0a0; font-size: 0.9rem;">Replace seals, lubricate, prevent leaks.</p>
-                    </div>
-
-                    <div style="background: rgba(50,50,50,0.5); border: 1px solid rgba(100,100,100,0.3); border-radius: 10px; padding: 20px;">
-                        <div style="color: #c8c8c8; font-weight: 700; margin-bottom: 8px;">Paint Protection Film</div>
-                        <div style="font-size: 1.4rem; font-weight: 800; color: #e8c96a; margin-bottom: 10px;">$500–$1,500</div>
-                        <p style="color: #a0a0a0; font-size: 0.9rem;">PPF on high-impact areas: hood, bumper.</p>
-                    </div>
-
-                    <div style="background: rgba(50,50,50,0.5); border: 1px solid rgba(100,100,100,0.3); border-radius: 10px; padding: 20px;">
-                        <div style="color: #c8c8c8; font-weight: 700; margin-bottom: 8px;">Decal Removal</div>
-                        <div style="font-size: 1.4rem; font-weight: 800; color: #e8c96a; margin-bottom: 10px;">$75–$250</div>
-                        <p style="color: #a0a0a0; font-size: 0.9rem;">Remove vinyl decals, logos, stripe restoration.</p>
+                <!-- Single-Pass Compound + Polish + Wax -->
+                <div style="margin-bottom: 50px;">
+                    <h4 style="color: #90caf9; font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid rgba(66,165,245,0.3); padding-bottom: 10px;">🔧 Single-Pass Compound + Polish + Wax</h4>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; background: rgba(50,50,50,0.5); border: 1px solid rgba(100,100,100,0.3); border-radius: 10px;">
+                            <thead>
+                                <tr style="background: rgba(21, 101, 192, 0.2);">
+                                    <th style="color: #d4d4d4; padding: 15px; text-align: left; border-bottom: 1px solid rgba(100,100,100,0.3);">RV Size</th>
+                                    <th style="color: #d4d4d4; padding: 15px; text-align: right; border-bottom: 1px solid rgba(100,100,100,0.3);">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">Up to 25ft</td>
+                                    <td style="color: #90caf9; padding: 12px 15px; text-align: right; font-weight: 700;">$450</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">26–32ft</td>
+                                    <td style="color: #90caf9; padding: 12px 15px; text-align: right; font-weight: 700;">$595</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">33–40ft</td>
+                                    <td style="color: #90caf9; padding: 12px 15px; text-align: right; font-weight: 700;">$725</td>
+                                </tr>
+                                <tr>
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">40ft+</td>
+                                    <td style="color: #e8c96a; padding: 12px 15px; text-align: right; font-weight: 700;">Call</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-            </div>
 
-            <!-- Pricing Note -->
-            <div style="background: rgba(21, 101, 192, 0.15); border: 1px solid rgba(21, 101, 192, 0.3); border-radius: 15px; padding: 30px; margin-bottom: 60px;">
-                <p style="color: #c8c8c8; margin: 0; line-height: 1.8;">
-                    <strong>Pricing Note:</strong> All packages include mobile service — we come to your location, storage facility, or home. Rates are starting prices for the RV class listed. <strong>Final quote based on condition, complexity, location, and customization requests.</strong> All RVs receive an on-site assessment before work begins.
-                </p>
+                <!-- Multi-Stage Compound + Polish + Wax -->
+                <div style="margin-bottom: 50px;">
+                    <h4 style="color: #90caf9; font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid rgba(66,165,245,0.3); padding-bottom: 10px;">💎 Multi-Stage Compound + Polish + Wax (Heavy Oxidation)</h4>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; background: rgba(50,50,50,0.5); border: 1px solid rgba(100,100,100,0.3); border-radius: 10px;">
+                            <thead>
+                                <tr style="background: rgba(21, 101, 192, 0.2);">
+                                    <th style="color: #d4d4d4; padding: 15px; text-align: left; border-bottom: 1px solid rgba(100,100,100,0.3);">RV Size</th>
+                                    <th style="color: #d4d4d4; padding: 15px; text-align: right; border-bottom: 1px solid rgba(100,100,100,0.3);">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">Up to 25ft</td>
+                                    <td style="color: #90caf9; padding: 12px 15px; text-align: right; font-weight: 700;">$595</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">26–32ft</td>
+                                    <td style="color: #90caf9; padding: 12px 15px; text-align: right; font-weight: 700;">$775</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">33–40ft</td>
+                                    <td style="color: #90caf9; padding: 12px 15px; text-align: right; font-weight: 700;">$950</td>
+                                </tr>
+                                <tr>
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">40ft+</td>
+                                    <td style="color: #e8c96a; padding: 12px 15px; text-align: right; font-weight: 700;">Call</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Interior Only -->
+                <div style="margin-bottom: 50px;">
+                    <h4 style="color: #90caf9; font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid rgba(66,165,245,0.3); padding-bottom: 10px;">🏠 Interior Only</h4>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; background: rgba(50,50,50,0.5); border: 1px solid rgba(100,100,100,0.3); border-radius: 10px;">
+                            <thead>
+                                <tr style="background: rgba(21, 101, 192, 0.2);">
+                                    <th style="color: #d4d4d4; padding: 15px; text-align: left; border-bottom: 1px solid rgba(100,100,100,0.3);">Service</th>
+                                    <th style="color: #d4d4d4; padding: 15px; text-align: right; border-bottom: 1px solid rgba(100,100,100,0.3);">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">Interior Basic — Vac, Wipe-Down, Windows (up to 25ft)</td>
+                                    <td style="color: #90caf9; padding: 12px 15px; text-align: right; font-weight: 700;">$195</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">Interior Basic — 26–32ft</td>
+                                    <td style="color: #90caf9; padding: 12px 15px; text-align: right; font-weight: 700;">$250</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">Interior Deep — Shampoo, Scrub, Condition (up to 25ft)</td>
+                                    <td style="color: #90caf9; padding: 12px 15px; text-align: right; font-weight: 700;">$295</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">Interior Deep — 26–32ft</td>
+                                    <td style="color: #90caf9; padding: 12px 15px; text-align: right; font-weight: 700;">$385</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">Bathroom / Kitchen Sanitize (add-on)</td>
+                                    <td style="color: #90caf9; padding: 12px 15px; text-align: right; font-weight: 700;">+$60</td>
+                                </tr>
+                                <tr>
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">Slide-Out Detail (per slide)</td>
+                                    <td style="color: #90caf9; padding: 12px 15px; text-align: right; font-weight: 700;">+$45</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Full Detail -->
+                <div style="margin-bottom: 50px;">
+                    <h4 style="color: #e8c96a; font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid rgba(200,169,81,0.3); padding-bottom: 10px;">⭐ Full Detail (Interior + Exterior)</h4>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; background: rgba(50,50,50,0.5); border: 1px solid rgba(100,100,100,0.3); border-radius: 10px;">
+                            <thead>
+                                <tr style="background: rgba(200,169,81,0.1);">
+                                    <th style="color: #d4d4d4; padding: 15px; text-align: left; border-bottom: 1px solid rgba(100,100,100,0.3);">RV Size</th>
+                                    <th style="color: #d4d4d4; padding: 15px; text-align: right; border-bottom: 1px solid rgba(100,100,100,0.3);">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">Up to 25ft</td>
+                                    <td style="color: #e8c96a; padding: 12px 15px; text-align: right; font-weight: 700;">$475</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">26–32ft</td>
+                                    <td style="color: #e8c96a; padding: 12px 15px; text-align: right; font-weight: 700;">$625</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(100,100,100,0.2);">
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">33–40ft</td>
+                                    <td style="color: #e8c96a; padding: 12px 15px; text-align: right; font-weight: 700;">$775</td>
+                                </tr>
+                                <tr>
+                                    <td style="color: #b8b8b8; padding: 12px 15px;">40ft+</td>
+                                    <td style="color: #e8c96a; padding: 12px 15px; text-align: right; font-weight: 700;">Call</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="color: #a0a0a0; margin-top: 12px; font-size: 0.9rem;">⭐ <strong>Includes:</strong> Complete exterior wash, wax, roof cleaning, full interior detailing, and all add-ons for a comprehensive RV refresh</p>
+                </div>
+
+                <!-- Important Note -->
+                <div style="background: rgba(21, 101, 192, 0.15); border: 1px solid rgba(21, 101, 192, 0.3); border-left: 4px solid #42a5f5; border-radius: 10px; padding: 20px; margin-top: 30px;">
+                    <p style="color: #c8c8c8; margin: 0; line-height: 1.8; font-size: 0.95rem;">
+                        <strong>★ RV detailing requires advance booking.</strong> Travel surcharges may apply outside Pittsburgh metro. All pricing based on RV condition and complexity. We provide on-site assessment before quoting final price.
+                    </p>
+                </div>
             </div>
 
             <!-- CTA Footer -->
