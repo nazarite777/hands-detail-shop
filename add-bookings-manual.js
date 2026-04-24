@@ -1,30 +1,23 @@
-#!/usr/bin/env node
-
-/**
- * Script to add test bookings to Firestore for schedule display testing
- * Run from project root: node scripts/add-test-bookings.js
- */
-
-// Adjust require path to use functions node_modules
-const path = require('path');
-process.env.NODE_PATH = path.join(__dirname, '../functions/node_modules');
-require('module').Module._initPaths();
+// Script to manually add test bookings to Firestore via Admin SDK
+// This file is sourced from functions/index.js setup
 
 const admin = require('firebase-admin');
 
-// Initialize Firebase Admin with default credentials
-admin.initializeApp({
-  projectId: 'hands-detail',
-  storageBucket: 'hands-detail.appspot.com'
-});
+// Initialize Firebase if not already done
+if (!admin.apps.length) {
+  admin.initializeApp({
+    projectId: 'hands-detail',
+    storageBucket: 'hands-detail.appspot.com'
+  });
+}
 
 const firestore = admin.firestore();
 
 // Service duration mapping (in hours)
 const SERVICE_DURATIONS = {
+  'ESSENTIAL DETAIL': 2.5,
   'EXECUTIVE DETAIL': 4.5,
   'SIGNATURE PRESTIGE': 6.5,
-  'ESSENTIAL DETAIL': 2.5,
   'PRESIDENTIAL ELITE': 9,
   'ULTIMATE ARMOR': 13,
 };
@@ -82,7 +75,7 @@ const testBookings = [
     serviceType: 'EXECUTIVE DETAIL',
     servicePrice: '$165',
     appointmentDate: '2026-04-29',
-    appointmentTime: '01:00 PM',
+    appointmentTime: '13:00',
     status: 'confirmed',
     paymentId: 'test_payment_004',
     amountCents: 3000,
@@ -140,8 +133,21 @@ async function addTestBookings() {
     console.error('❌ Error adding bookings:', error);
     process.exit(1);
   } finally {
-    await admin.app().delete();
+    if (admin.apps.length) {
+      await admin.app().delete();
+    }
   }
 }
 
-addTestBookings();
+// Run if executed directly
+if (require.main === module) {
+  addTestBookings().then(() => {
+    console.log('\n✅ Done!');
+    process.exit(0);
+  }).catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
+}
+
+module.exports = { addTestBookings };
