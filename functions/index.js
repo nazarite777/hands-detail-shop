@@ -1144,3 +1144,67 @@ exports.processMembership = functions.runWith({ secrets: ['SQUARE_ACCESS_TOKEN',
     }
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// getBookings — fetch bookings from Firestore for calendar/schedule display
+// ─────────────────────────────────────────────────────────────────────────────
+exports.getBookings = functions.https.onRequest((request, response) => {
+  return corsHandler(request, response, async () => {
+    try {
+      if (request.method !== 'GET') {
+        return response.status(405).json({ error: 'Method not allowed' });
+      }
+
+      const firestore = admin.firestore();
+      
+      // Get all confirmed bookings from the past 30 days and next 90 days
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const pastDate = new Date(today);
+      pastDate.setDate(pastDate.getDate() - 30);
+      
+      const futureDate = new Date(today);
+      futureDate.setDate(futureDate.getDate() + 90);
+
+      const query = firestore.collection('bookings')
+        .where('status', '==', 'confirmed')
+        .orderBy('appointmentDate', 'asc');
+
+      const snapshot = await query.get();
+      const bookings = [];
+
+      snapshot.forEach(doc => {
+        const booking = doc.data();
+        const bookingDate = new Date(booking.appointmentDate);
+        
+        // Filter to only include bookings within our date range
+        if (bookingDate >= pastDate && bookingDate <= futureDate) {
+          // Return all info for schedule display
+          bookings.push({
+            id: doc.id,
+            date: booking.appointmentDate,
+            time: booking.appointmentTime,
+            service: booking.serviceType,
+            customerName: booking.customerName,
+            customerPhone: booking.customerPhone,
+            customerEmail: booking.customerEmail,
+            customerVehicle: booking.customerVehicle,
+            customerAddress: booking.customerAddress,
+            status: booking.status,
+            createdAt: booking.createdAt
+          });
+        }
+      });
+
+      return response.status(200).json({
+        success: true,
+        count: bookings.length,
+        bookings: bookings
+      });
+
+    } catch (error) {
+      console.error('❌ getBookings error:', error);
+      return response.status(500).json({ error: 'Internal server error', details: error.message });
+    }
+  });
+});
