@@ -125,6 +125,26 @@ VEHICLE-SPECIFIC SERVICES:
 - Odor Elimination: $150-$250
 - Interior Protection Coating: $100-$200
 
+WAX & PAINT PROTECTION TIERS (PERSONAL VEHICLES):
+- Tier 1: Wash Wax (wax-infused car soap)
+  Included in: all auto wash packages
+  Protection length: up to 2 weeks
+  Upcharge: included
+- Tier 2: Butter Wax
+  Included in: packages with wax coat
+  Protection length: 2-3 months
+  Upcharge: included
+- Tier 3: JetSeal
+  Included in: add-on upgrade
+  Protection length: up to 12 months
+  Upcharge: +$75
+- Tier 4: Ceramic Coating
+  Included in: separate service
+  Protection length: multi-year
+  Upcharge: existing ceramic pricing
+
+If asked where customers can view this on site: personal-vehicles.html in the Add-On Services section under "Wax & Paint Protection Tiers".
+
 MECHANICAL SERVICES:
 ✓ Diagnostics Available:
   - Basic Vehicle Inspection: $50

@@ -316,6 +316,12 @@ Your job is to help customers with:
 **Fleet & Commercial:** Custom pricing — contact for quote
 **Yacht / Marine / RV:** Custom pricing — contact for quote
 **Aircraft Detailing:** Available — contact for quote
+**Wax & Paint Protection Tiers (Personal Vehicles):**
+- Tier 1: Wash Wax (wax-infused car soap) — included in all auto wash packages — up to 2 weeks protection — included
+- Tier 2: Butter Wax — included on wax-coat packages — 2-3 months protection — included
+- Tier 3: JetSeal — add-on upgrade — up to 12 months protection — +$75
+- Tier 4: Ceramic Coating — separate service — multi-year protection — uses existing ceramic pricing
+If customers ask where to find this on the website: Personal Vehicles page → Add-On Services → "Wax & Paint Protection Tiers" table.
 **Mechanical Services (NEW):**
 - Basic Diagnostic: $50
 - Advanced Diagnostic: $100
