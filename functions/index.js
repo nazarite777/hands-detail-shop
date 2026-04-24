@@ -1220,3 +1220,108 @@ exports.getBookings = functions.https.onRequest((request, response) => {
     }
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────────
+// addTestBookings — Add test bookings to Firestore (for development/demo)
+// ─────────────────────────────────────────────────────────────────────────────
+exports.addTestBookings = functions.https.onRequest((request, response) => {
+  return corsHandler(request, response, async () => {
+    try {
+      // Simple auth check - only allow from known sources
+      const authHeader = request.headers['authorization'] || '';
+      if (!authHeader.includes('Bearer test-key-')) {
+        return response.status(403).json({ error: 'Unauthorized' });
+      }
+
+      const firestore = admin.firestore();
+      
+      const testBookings = [
+        {
+          customerName: 'Client - Aliquippa',
+          customerPhone: '(412) 555-0001',
+          customerAddress: 'Aliquippa, PA',
+          serviceType: 'EXECUTIVE DETAIL',
+          appointmentDate: '2026-04-24',
+          appointmentTime: '09:00',
+          duration: 4.5,
+          status: 'confirmed',
+          paymentId: 'test_001',
+        },
+        {
+          customerName: 'Client - Pittsburgh',
+          customerPhone: '(412) 555-0002',
+          customerAddress: 'Pittsburgh, PA',
+          serviceType: 'SIGNATURE PRESTIGE',
+          appointmentDate: '2026-04-25',
+          appointmentTime: '09:00',
+          duration: 6.5,
+          status: 'confirmed',
+          paymentId: 'test_002',
+        },
+        {
+          customerName: 'Client A - Gibsonia',
+          customerPhone: '(412) 555-0003',
+          customerAddress: 'Gibsonia, PA',
+          serviceType: 'EXECUTIVE DETAIL',
+          appointmentDate: '2026-04-29',
+          appointmentTime: '08:00',
+          duration: 4.5,
+          status: 'confirmed',
+          paymentId: 'test_003',
+        },
+        {
+          customerName: 'Client B - Gibsonia',
+          customerPhone: '(412) 555-0004',
+          customerAddress: 'Gibsonia, PA',
+          serviceType: 'EXECUTIVE DETAIL',
+          appointmentDate: '2026-04-29',
+          appointmentTime: '13:00',
+          duration: 4.5,
+          status: 'confirmed',
+          paymentId: 'test_004',
+        },
+        {
+          customerName: 'Client - Aliquippa 2',
+          customerPhone: '(412) 555-0005',
+          customerAddress: 'Aliquippa, PA',
+          serviceType: 'EXECUTIVE DETAIL',
+          appointmentDate: '2026-05-01',
+          appointmentTime: '10:00',
+          duration: 4.5,
+          status: 'confirmed',
+          paymentId: 'test_005',
+        },
+        {
+          customerName: 'Client - Pittsburgh Exterior',
+          customerPhone: '(412) 555-0006',
+          customerAddress: 'Pittsburgh, PA',
+          serviceType: 'SIGNATURE PRESTIGE',
+          appointmentDate: '2026-05-21',
+          appointmentTime: '09:00',
+          duration: 6.5,
+          status: 'confirmed',
+          paymentId: 'test_006',
+        },
+      ];
+
+      let added = 0;
+      for (const booking of testBookings) {
+        await firestore.collection('bookings').add({
+          ...booking,
+          createdAt: admin.firestore.FieldValue.serverTimestamp(),
+        });
+        added++;
+      }
+
+      return response.status(200).json({
+        success: true,
+        message: `Added ${added} test bookings`,
+        count: added
+      });
+
+    } catch (error) {
+      console.error('❌ addTestBookings error:', error);
+      return response.status(500).json({ error: 'Failed to add test bookings', details: error.message });
+    }
+  });
+});
