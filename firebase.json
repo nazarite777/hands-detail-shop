@@ -132,5 +132,8 @@
                       "source":  "functions",
                       "runtime":  "nodejs22",
                       "codebase":  "default"
+                  },
+    "firestore": {
+                      "rules": "firestore.rules"
                   }
 }

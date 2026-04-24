@@ -1,0 +1,37 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Public schedule: safe for anyone to read (no personal info stored here)
+    match /public_schedule/{docId} {
+      allow read: if true;
+      allow write: if false; // Only Cloud Functions can write
+    }
+
+    // ── Bookings: private, only authenticated users / Cloud Functions
+    match /bookings/{bookingId} {
+      allow read, write: if false; // Only accessible via Cloud Functions (server-side)
+    }
+
+    // ── Memberships: private
+    match /memberships/{docId} {
+      allow read, write: if false;
+    }
+
+    // ── Gift certificates: private
+    match /gift_certificates/{docId} {
+      allow read, write: if false;
+    }
+
+    // ── Reviews: public read, server write only
+    match /reviews/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // ── Default: deny everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

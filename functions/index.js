@@ -570,11 +570,16 @@ exports.processBooking = functions.runWith({ secrets: ['SQUARE_ACCESS_TOKEN', 'G
         createdAt: admin.firestore.FieldValue.serverTimestamp(),
       });
 
-      // Also save public version (city only, no email)
+      // Also save public version (time, city, service, duration — no personal info)
+      const cityOnly = customerAddress ? customerAddress.split(',').slice(-2).join(',').trim() : customerAddress;
       await firestore.collection('public_schedule').add({
         service: serviceType,
         date: appointmentDate,
-        status: 'booked'
+        time: appointmentTime,
+        city: cityOnly,
+        duration: duration,
+        status: 'booked',
+        createdAt: admin.firestore.FieldValue.serverTimestamp(),
       });
 
       // Send confirmation email (only if customer email provided and Gmail configured)
@@ -1236,78 +1241,29 @@ exports.addTestBookings = functions.https.onRequest((request, response) => {
       const firestore = admin.firestore();
       
       const testBookings = [
-        {
-          customerName: 'Client - Aliquippa',
-          customerPhone: '(412) 555-0001',
-          customerAddress: 'Aliquippa, PA',
-          serviceType: 'EXECUTIVE DETAIL',
-          appointmentDate: '2026-04-24',
-          appointmentTime: '09:00',
-          duration: 4.5,
-          status: 'confirmed',
-          paymentId: 'test_001',
-        },
-        {
-          customerName: 'Client - Pittsburgh',
-          customerPhone: '(412) 555-0002',
-          customerAddress: 'Pittsburgh, PA',
-          serviceType: 'SIGNATURE PRESTIGE',
-          appointmentDate: '2026-04-25',
-          appointmentTime: '09:00',
-          duration: 6.5,
-          status: 'confirmed',
-          paymentId: 'test_002',
-        },
-        {
-          customerName: 'Client A - Gibsonia',
-          customerPhone: '(412) 555-0003',
-          customerAddress: 'Gibsonia, PA',
-          serviceType: 'EXECUTIVE DETAIL',
-          appointmentDate: '2026-04-29',
-          appointmentTime: '08:00',
-          duration: 4.5,
-          status: 'confirmed',
-          paymentId: 'test_003',
-        },
-        {
-          customerName: 'Client B - Gibsonia',
-          customerPhone: '(412) 555-0004',
-          customerAddress: 'Gibsonia, PA',
-          serviceType: 'EXECUTIVE DETAIL',
-          appointmentDate: '2026-04-29',
-          appointmentTime: '13:00',
-          duration: 4.5,
-          status: 'confirmed',
-          paymentId: 'test_004',
-        },
-        {
-          customerName: 'Client - Aliquippa 2',
-          customerPhone: '(412) 555-0005',
-          customerAddress: 'Aliquippa, PA',
-          serviceType: 'EXECUTIVE DETAIL',
-          appointmentDate: '2026-05-01',
-          appointmentTime: '10:00',
-          duration: 4.5,
-          status: 'confirmed',
-          paymentId: 'test_005',
-        },
-        {
-          customerName: 'Client - Pittsburgh Exterior',
-          customerPhone: '(412) 555-0006',
-          customerAddress: 'Pittsburgh, PA',
-          serviceType: 'SIGNATURE PRESTIGE',
-          appointmentDate: '2026-05-21',
-          appointmentTime: '09:00',
-          duration: 6.5,
-          status: 'confirmed',
-          paymentId: 'test_006',
-        },
+        { customerName: 'Client', customerPhone: '(412) 555-0001', customerAddress: 'Aliquippa, PA', serviceType: 'EXECUTIVE DETAIL', appointmentDate: '2026-04-24', appointmentTime: '09:00', duration: 4.5, status: 'confirmed', paymentId: 'test_001' },
+        { customerName: 'Client', customerPhone: '(412) 555-0002', customerAddress: 'Pittsburgh, PA', serviceType: 'SIGNATURE PRESTIGE', appointmentDate: '2026-04-25', appointmentTime: '09:00', duration: 6.5, status: 'confirmed', paymentId: 'test_002' },
+        { customerName: 'Client A', customerPhone: '(412) 555-0003', customerAddress: 'Gibsonia, PA', serviceType: 'EXECUTIVE DETAIL', appointmentDate: '2026-04-29', appointmentTime: '08:00', duration: 4.5, status: 'confirmed', paymentId: 'test_003' },
+        { customerName: 'Client B', customerPhone: '(412) 555-0004', customerAddress: 'Gibsonia, PA', serviceType: 'EXECUTIVE DETAIL', appointmentDate: '2026-04-29', appointmentTime: '13:00', duration: 4.5, status: 'confirmed', paymentId: 'test_004' },
+        { customerName: 'Client', customerPhone: '(412) 555-0005', customerAddress: 'Aliquippa, PA', serviceType: 'EXECUTIVE DETAIL', appointmentDate: '2026-05-01', appointmentTime: '10:00', duration: 4.5, status: 'confirmed', paymentId: 'test_005' },
+        { customerName: 'Client', customerPhone: '(412) 555-0006', customerAddress: 'Pittsburgh, PA', serviceType: 'SIGNATURE PRESTIGE', appointmentDate: '2026-05-21', appointmentTime: '09:00', duration: 6.5, status: 'confirmed', paymentId: 'test_006' },
       ];
 
       let added = 0;
       for (const booking of testBookings) {
+        // Save to private bookings collection (full details)
         await firestore.collection('bookings').add({
           ...booking,
+          createdAt: admin.firestore.FieldValue.serverTimestamp(),
+        });
+        // Save to public_schedule (no personal info)
+        await firestore.collection('public_schedule').add({
+          service: booking.serviceType,
+          date: booking.appointmentDate,
+          time: booking.appointmentTime,
+          city: booking.customerAddress,
+          duration: booking.duration,
+          status: 'booked',
           createdAt: admin.firestore.FieldValue.serverTimestamp(),
         });
         added++;

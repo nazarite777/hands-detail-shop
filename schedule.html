@@ -499,23 +499,61 @@
     </footer>
 
     <script src="main.js"></script>
+    <!-- Firebase auto-config (injected by Firebase Hosting) -->
+    <script src="/__/firebase/10.7.1/firebase-app-compat.js"></script>
+    <script src="/__/firebase/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="/__/firebase/init.js?useEmulator=false"></script>
     <script>
-        const BOOKINGS_API = 'https://us-central1-hands-detail.cloudfunctions.net/getBookings';
         let currentDate = new Date();
         let allBookings = [];
+        let db;
+
+        function initFirebase() {
+            try {
+                // Firebase is initialized by /__/firebase/init.js
+                db = firebase.firestore();
+                console.log('✅ Firebase initialized');
+                loadBookings();
+            } catch (e) {
+                console.error('Firebase init failed:', e);
+                document.getElementById('bookingsList').innerHTML = '<p style="color: #E07A5F;">Unable to load schedule. Please refresh or try again later.</p>';
+            }
+        }
 
         async function loadBookings() {
             try {
-                const response = await fetch(BOOKINGS_API);
-                if (!response.ok) throw new Error('Failed to load bookings');
-                const data = await response.json();
-                allBookings = data.bookings || [];
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                const todayStr = today.toISOString().split('T')[0];
+
+                // Query public_schedule collection (no personal info stored here)
+                const snapshot = await db.collection('public_schedule')
+                    .where('status', '==', 'booked')
+                    .orderBy('date', 'asc')
+                    .get();
+
+                allBookings = [];
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    if (data.date >= todayStr) {
+                        allBookings.push({
+                            id: doc.id,
+                            date: data.date,
+                            time: data.time || '09:00',
+                            service: data.service,
+                            city: data.city || 'Pittsburgh, PA',
+                            duration: data.duration || 4,
+                            status: data.status
+                        });
+                    }
+                });
+
                 console.log('✅ Loaded', allBookings.length, 'bookings');
                 renderCalendar();
                 renderBookingsList();
             } catch (error) {
                 console.error('❌ Error loading bookings:', error);
-                document.getElementById('bookingsList').innerHTML = '<p style="color: var(--red);">Unable to load bookings at this time. Please try again later.</p>';
+                document.getElementById('bookingsList').innerHTML = '<p style="color: #E07A5F;">Unable to load schedule. Please refresh or try again later.</p>';
             }
         }
 
@@ -523,21 +561,17 @@
             const year = currentDate.getFullYear();
             const month = currentDate.getMonth();
 
-            // Update title
             const monthName = new Date(year, month, 1).toLocaleString('default', { month: 'long', year: 'numeric' });
             document.getElementById('calendarMonthYear').textContent = monthName;
 
-            // Clear calendar
             const calendar = document.getElementById('calendar');
             calendar.innerHTML = '';
 
-            // Get first day of month and number of days
             const firstDay = new Date(year, month, 1).getDay();
             const daysInMonth = new Date(year, month + 1, 0).getDate();
             const today = new Date();
             today.setHours(0, 0, 0, 0);
 
-            // Add empty cells for days before month starts
             for (let i = 0; i < firstDay; i++) {
                 const emptyDay = document.createElement('div');
                 emptyDay.className = 'calendar-day';
@@ -545,7 +579,6 @@
                 calendar.appendChild(emptyDay);
             }
 
-            // Add days of month
             for (let day = 1; day <= daysInMonth; day++) {
                 const dayDate = new Date(year, month, day);
                 dayDate.setHours(0, 0, 0, 0);
@@ -554,16 +587,10 @@
                 const dayEl = document.createElement('div');
                 dayEl.className = 'calendar-day';
 
-                // Check if today
-                if (dayDate.getTime() === today.getTime()) {
-                    dayEl.classList.add('is-today');
-                }
+                if (dayDate.getTime() === today.getTime()) dayEl.classList.add('is-today');
 
-                // Check if has bookings
                 const dayBookings = allBookings.filter(b => b.date === dateStr);
-                if (dayBookings.length > 0) {
-                    dayEl.classList.add('has-booking');
-                }
+                if (dayBookings.length > 0) dayEl.classList.add('has-booking');
 
                 dayEl.innerHTML = `
                     <div>
@@ -572,9 +599,17 @@
                     </div>
                     <div class="day-booking-indicator">${dayBookings.length} booking${dayBookings.length !== 1 ? 's' : ''}</div>
                 `;
-
                 calendar.appendChild(dayEl);
             }
+        }
+
+        function formatTime(time24) {
+            if (!time24) return 'TBD';
+            const [h, m] = time24.split(':');
+            const hr = parseInt(h);
+            const ampm = hr >= 12 ? 'PM' : 'AM';
+            const hr12 = hr % 12 || 12;
+            return `${hr12}:${m || '00'} ${ampm}`;
         }
 
         function renderBookingsList() {
@@ -583,38 +618,33 @@
             if (allBookings.length === 0) {
                 container.innerHTML = `
                     <div class="empty-state">
-                        <h3>No Bookings Scheduled</h3>
-                        <p>Good news! We may have availability for your detail service.</p>
+                        <h3>No Upcoming Bookings</h3>
+                        <p>We may have availability for your detail service. Book now to secure your spot!</p>
                     </div>
                 `;
                 return;
             }
 
-            // Sort bookings by date and time
             const sorted = [...allBookings].sort((a, b) => {
-                const dateA = new Date(a.date + 'T' + a.time);
-                const dateB = new Date(b.date + 'T' + b.time);
-                return dateA - dateB;
+                if (a.date !== b.date) return a.date.localeCompare(b.date);
+                return (a.time || '').localeCompare(b.time || '');
             });
 
             container.innerHTML = sorted.map(booking => {
-                const bookingDate = new Date(booking.date + 'T' + booking.time);
+                const bookingDate = new Date(booking.date + 'T12:00:00');
                 const dateStr = bookingDate.toLocaleString('default', { weekday: 'long', month: 'long', day: 'numeric' });
-                const duration = booking.duration ? `${Math.round(booking.duration * 2) / 2}h` : '~4h';
+                const duration = booking.duration ? `~${booking.duration}h` : '~4h';
+                const timeDisplay = formatTime(booking.time);
 
                 return `
                     <div class="booking-card">
-                        <div class="booking-time">${booking.time}</div>
+                        <div class="booking-time">${timeDisplay}</div>
                         <div>
                             <div class="booking-service">${booking.service}</div>
-                            <div style="color: var(--muted); font-size: 0.9rem;">
-                                📍 ${booking.customerAddress}<br>
-                                ⏱️ ~${duration} | ${dateStr}
+                            <div style="color: #5A5A52; font-size: 0.9rem;">
+                                📍 ${booking.city}<br>
+                                ⏱️ ${duration} job time | ${dateStr}
                             </div>
-                        </div>
-                        <div class="booking-customer">
-                            <strong>${booking.customerName}</strong><br>
-                            <a href="tel:${booking.customerPhone}" style="color: var(--gold); text-decoration: none;">${booking.customerPhone}</a>
                         </div>
                     </div>
                 `;
@@ -631,8 +661,8 @@
             renderCalendar();
         }
 
-        // Load bookings on page load
-        window.addEventListener('load', loadBookings);
+        // Initialize when DOM is ready
+        window.addEventListener('load', initFirebase);
     </script>
 
     <script src="/chat-widget.js"></script>
